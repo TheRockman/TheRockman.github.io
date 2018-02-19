@@ -60,7 +60,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   $scope.url = null;
   $scope.snipp = function () {
     if (!$scope.videoId || !$scope.startTime) {
-      $scope.error = "no vieo url"
+      $scope.error = "no video url"
       return;
     }
     if ($scope.startTime === $scope.endTime) {
