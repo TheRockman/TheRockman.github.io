@@ -7,7 +7,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Tags: ['Blog', 'About'],
       Theme: 'dodgerblue',
       Poster: './img/profilePoster.webp',
-      PosterSmall: './img/musicPoster.png',
+      PosterSmall: './img/profilePoster.webp',
       Backdrop: './img/profileBack.webp'
     },
     {
@@ -16,7 +16,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Tags: ['Drawing', 'Making'],
       Theme: '#F53C6D',
       Poster: './img/doodlePoster.webp',
-      PosterSmall: './img/musicPoster.webp',
+      PosterSmall: './img/doodlePoster.webp',
       Backdrop: './img/doodleBack.webp',
       Url: 'https://twitter.com/compileanddraw'
     },
