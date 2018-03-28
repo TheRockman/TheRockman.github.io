@@ -1,0 +1,8 @@
+{
+  "name": "TheRockman",
+  "short_name": "TheRockman",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Portfolio and sandbox"
+}
