@@ -11,7 +11,7 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <img class="backdrop hide-on-phones" ng-src="{{selectedProject.Backdrop}}" alt="">
+    <!-- <img class="backdrop hide-on-phones" ng-src="{{selectedProject.Backdrop}}" alt=""> -->
     <div class="row">
       <div class="flex"></div>
       <div class="flex x3 card">
@@ -22,12 +22,12 @@
               <div class="nav-item padding" ng-class="{'active':isSelectedProject(project)}">
                 {{project.Title}}
               </div>
-              <img ng-cloak class="poster hide-on-phones" ng-if="isSelectedProject(project)" ng-src="{{project.Poster}}" alt="">
+              <!-- <img ng-cloak class="poster hide-on-phones" ng-if="isSelectedProject(project)" ng-src="{{project.Poster}}" alt=""> -->
               <hr style="opacity:0.2;" ng-if="project.Devider" />
             </div>
           </div>
           <div class="flex x3 content relative">
-            <img class="backdrop-inner hide-on-phones" ng-src="{{selectedProject.Backdrop}}" alt="">
+            <!-- <img class="backdrop-inner hide-on-phones" ng-src="{{selectedProject.Backdrop}}" alt=""> -->
             <nav class="flex-row project-actions padding">
               <div class="relative" ng-click="showMenu = !showMenu">
                 <svg style="width:24px;height:24px;cursor:pointer;" viewBox="0 0 24 24">
@@ -49,7 +49,7 @@
               </div>
             </nav>
             <div class="project-article">
-              <img ng-cloak class="poster show-on-phones" ng-src="{{selectedProject.PosterSmall}}" alt="">
+              <!-- <img ng-cloak class="poster show-on-phones" ng-src="{{selectedProject.PosterSmall}}" alt=""> -->
               <br />
               <h2 style="margin:0!important;">{{selectedProject.Title}}</h2>
               <br />
