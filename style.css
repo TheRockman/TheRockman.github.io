@@ -60,6 +60,15 @@ h1, h2, h3, h4{
 .ThemeMenu > li:hover{
   background: rgba(0, 0, 0, 0.3);
 }
+.theme-menu-backdrop{
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+}
 
 .tag{
   position: relative;
@@ -255,4 +264,13 @@ h1, h2, h3, h4{
     background: #333;
     justify-content: center;
   }
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }

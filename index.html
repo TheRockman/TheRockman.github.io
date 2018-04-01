@@ -16,8 +16,8 @@
       <div class="flex"></div>
       <div class="flex x3 card">
         <div class="row">
-          <div class="flex padding relative">
-            <h1 ng-click="menuToggle = !menuToggle">Rockman</h1>
+          <div class="flex padding relative" ng-click="menuToggle = !menuToggle">
+            <h1>Rockman</h1>
             <div class="mobile-menu-closed" ng-repeat="project in projects" ng-click="setSelectedProject(project)" ng-class="{'mobile-menu': menuToggle}">
               <div class="nav-item padding" ng-class="{'active':isSelectedProject(project)}">
                 {{project.Title}}
@@ -30,7 +30,7 @@
             <!-- <img class="backdrop-inner hide-on-phones" ng-src="{{selectedProject.Backdrop}}" alt=""> -->
             <nav class="flex-row project-actions padding">
               <div class="relative" ng-click="showMenu = !showMenu">
-                <svg style="width:24px;height:24px;cursor:pointer;" viewBox="0 0 24 24">
+                <svg style="width:24px;height:24px;cursor:pointer;" class="noselect" viewBox="0 0 24 24">
                   <path fill="#fff" d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z" />
                 </svg>
                 <ul ng-if="showMenu" class="ThemeMenu" ng-cloak>
@@ -39,10 +39,11 @@
                   <li ng-click="updateTheme('#6C4796')">Eldritch</li>
                   <li ng-click="updateTheme('#F53C6D')">Candy</li>
                 </ul>
+                <div ng-if="showMenu" ng-click="showMenu = false;" class="theme-menu-backdrop"></div>
               </div>
               <div>
                 <a href="./projects/editor/index.html" id="Resume">
-                  <svg style="width:24px;height:24px;cursor:pointer;" viewBox="0 0 24 24" name="ResumeIcon" alt="ResumeIcon" id="resumeIcon">
+                  <svg style="width:24px;height:24px;cursor:pointer;" class="noselect" viewBox="0 0 24 24" name="ResumeIcon" alt="ResumeIcon" id="resumeIcon">
                     <path fill="#fff" d="M2,3H22C23.05,3 24,3.95 24,5V19C24,20.05 23.05,21 22,21H2C0.95,21 0,20.05 0,19V5C0,3.95 0.95,3 2,3M14,6V7H22V6H14M14,8V9H21.5L22,9V8H14M14,10V11H21V10H14M8,13.91C6,13.91 2,15 2,17V18H14V17C14,15 10,13.91 8,13.91M8,6A3,3 0 0,0 5,9A3,3 0 0,0 8,12A3,3 0 0,0 11,9A3,3 0 0,0 8,6Z" />
                   </svg>
                 </a>
