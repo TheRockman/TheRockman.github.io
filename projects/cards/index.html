@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+
+    <div class="card" ng-class="{'flip':timing, 'epic':activeCard.epic}" ng-cloak>
+      <div class="epic-overlay" ng-if="activeCard.epic"></div>
+      <div class="content">
+        <img class="card-image" src="{{activeCard.url}}" alt="">
+        <div class="row desc">
+          <div class="flex">
+            <h4 class="header">{{activeCard.name}}</h4>
+            <small>{{activeCard.desc}}</small>
+
+            <br/>
+            <br/>
+
+            <div class="btn-row preview">
+              <div class="stat-align">
+                <svg ng-if="activeCard.disAgreeFrom == 'skull'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
+                </svg>
+
+                <svg ng-show="activeCard.disAgreeFrom === 'population'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M1.5,4V5.5C1.5,9.65 3.71,13.28 7,15.3V20H22V18C22,15.34 16.67,14 14,14C14,14 13.83,14 13.75,14C9,14 5,10 5,5.5V4M14,4A4,4 0 0,0 10,8A4,4 0 0,0 14,12A4,4 0 0,0 18,8A4,4 0 0,0 14,4Z" />
+                </svg>
+
+                <svg ng-if="activeCard.disAgreeFrom == 'gold'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                </svg>
+
+                <svg ng-if="activeCard.disAgreeFrom == 'insight'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+                </svg>
+                &nbsp;
+                {{activeCard.disAgreeAmount}}
+              </div>
+
+              <div class="stat-align">
+                <svg ng-show="activeCard.agreeFrom === 'skull'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
+                </svg>
+
+                <svg ng-show="activeCard.agreeFrom === 'population'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M1.5,4V5.5C1.5,9.65 3.71,13.28 7,15.3V20H22V18C22,15.34 16.67,14 14,14C14,14 13.83,14 13.75,14C9,14 5,10 5,5.5V4M14,4A4,4 0 0,0 10,8A4,4 0 0,0 14,12A4,4 0 0,0 18,8A4,4 0 0,0 14,4Z" />
+                </svg>
+
+                <svg ng-show="activeCard.agreeFrom == 'gold'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                </svg>
+
+                <svg ng-show="activeCard.agreeFrom === 'insight'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#333" d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+                </svg>
+                &nbsp;
+                {{activeCard.agreeAmount}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row footer">
+          <div class="flex btn-row">
+            <button class="btn" type="button" name="button" ng-click="click(false)">
+              <svg style="width:25px;height:25px" viewBox="0 0 24 24">
+                <path fill="#333" d="M19,15V3H23V15H19M15,3A2,2 0 0,1 17,5V15C17,15.55 16.78,16.05 16.41,16.41L9.83,23L8.77,21.94C8.5,21.67 8.33,21.3 8.33,20.88L8.36,20.57L9.31,16H3C1.89,16 1,15.1 1,14V12C1,11.74 1.05,11.5 1.14,11.27L4.16,4.22C4.46,3.5 5.17,3 6,3H15M15,5H5.97L3,12V14H11.78L10.65,19.32L15,14.97V5Z" />
+              </svg>
+            </button>
+            <button class="btn skip" type="button" name="button" ng-if="activeCard.epic" ng-click="skip();">
+              <svg style="width:25px;height:25px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z" />
+              </svg>
+            </button>
+            <button class="btn" type="button" name="button" ng-if="!activeCard.epic" ng-click="click(true)">
+              <svg style="width:25px;height:25px" viewBox="0 0 24 24">
+                <path fill="#333" d="M5,9V21H1V9H5M9,21A2,2 0 0,1 7,19V9C7,8.45 7.22,7.95 7.59,7.59L14.17,1L15.23,2.06C15.5,2.33 15.67,2.7 15.67,3.11L15.64,3.43L14.69,8H21C22.11,8 23,8.9 23,10V12C23,12.26 22.95,12.5 22.86,12.73L19.84,19.78C19.54,20.5 18.83,21 18,21H9M9,19H18.03L21,12V10H12.21L13.34,4.68L9,9.03V19Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row stats">
+      <div class="flex btn-row">
+        <div class="stat-align" ng-class="{'warning':player.skull >= 10}">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
+          </svg>
+          &nbsp;
+          {{player.skull}}
+          <div class="tooltip">
+            Dread
+          </div>
+        </div>
+        <div class="stat-align" ng-class="{'warning':player.population <= 0}">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M1.5,4V5.5C1.5,9.65 3.71,13.28 7,15.3V20H22V18C22,15.34 16.67,14 14,14C14,14 13.83,14 13.75,14C9,14 5,10 5,5.5V4M14,4A4,4 0 0,0 10,8A4,4 0 0,0 14,12A4,4 0 0,0 18,8A4,4 0 0,0 14,4Z" />
+          </svg>
+          &nbsp;
+          {{player.population}}
+          <div class="tooltip">
+            Population
+          </div>
+        </div>
+        <div class="stat-align" ng-class="{'warning':player.gold <= 0}">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+          </svg>
+          &nbsp;
+          {{player.gold}}
+          <div class="tooltip">
+            Gold
+          </div>
+        </div>
+        <div class="stat-align" ng-class="{'warning':player.insight <= 0}">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+          </svg>
+          &nbsp;
+          {{player.insight}}
+          <div class="tooltip">
+            Insight
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
