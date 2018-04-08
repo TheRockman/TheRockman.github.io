@@ -171,7 +171,8 @@ html, body {
   background: transparent;
   border: none;
   box-shadow: var(--level1);
-  outline: none;
+  outline: none!important;
+  border:none!important;
 }
 
 .stat-align{
