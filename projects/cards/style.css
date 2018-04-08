@@ -175,6 +175,10 @@ html, body {
   border:none!important;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 .stat-align{
   display: inline-flex;
   align-items: center;
