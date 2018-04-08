@@ -41,7 +41,7 @@ html, body {
 .x2{
   flex-basis: 25%!important;
 }
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 500px) {
   .row {
     display: flex;
     display: -ms-flexbox;
@@ -53,7 +53,7 @@ html, body {
     -ms-flex: 1;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 500px) {
   .row {
     display: flex;
     display: -ms-flexbox;
@@ -64,7 +64,7 @@ html, body {
     flex: 1 1 auto;
   }
   .card{
-    top: 3%!important;
+    top: 5px!important;
   }
 }
 
