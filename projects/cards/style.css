@@ -64,6 +64,8 @@ html, body {
     flex: 1 1 auto;
   }
   .card{
+    height: unset!important;
+    bottom: 10%!important;
     top: 5px!important;
   }
 }
