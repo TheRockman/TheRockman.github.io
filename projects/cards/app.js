@@ -9,7 +9,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: '',
       disAgreeAmount: -10,
       disAgreeFrom: 'population',
-      desc: 'The distant prince seek his court of lost souls.',
+      desc1: 'To banish Aagyth´mo and win the game you must pay 10 population points. Until you can do so, press right to shuffle him back into the deck. Remember to have enough points to survive the deal.',
+      flavor: 'The distant prince seek his court of lost souls.',
       url:'./img/boss.png',
       epic: true
     },
@@ -20,7 +21,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'population',
       disAgreeAmount: -2,
       disAgreeFrom: 'skull',
-      desc: 'Iä! Iä! Cthulhu fhtagn!',
+      desc2: 'Right: Gain 2 population and add 2 dread.',
+      desc1: 'Left: Remove 2 dread and pay 2 population.',
+      flavor: 'Iä! Iä! Cthulhu fhtagn!',
       url:'./img/placeholder.png'
     },
     {
@@ -30,7 +33,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'gold',
       disAgreeAmount: 1,
       disAgreeFrom: 'population',
-      desc: 'What can you give me for these?',
+      desc2: 'Right: Gain 3 gold and pay 1 population.',
+      desc1: 'Left: Gain 1 population and pay 3 gold.',
+      flavor: 'What can you give me for these?',
       url:'./img/gold.png'
     },
     {
@@ -40,7 +45,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'insight',
       disAgreeAmount: 2,
       disAgreeFrom: 'population',
-      desc: 'We were blind but now do we see',
+      desc2: 'Right: Gain 2 insight and pay 2 population.',
+      desc1: 'Left: Gain 2 population and pay 2 insight.',
+      flavor: 'As one eye closes, another one opens',
       url:'./img/blood.png'
     },
     {
@@ -50,7 +57,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'gold',
       disAgreeAmount: -5,
       disAgreeFrom: 'skull',
-      desc: 'Not even we could have forseen this',
+      desc2: 'Right: Gain 5 gold and add 5 dread.',
+      desc1: 'Left: Remove 5 dread and pay 5 gold.',
+      flavor: 'Not even we could have forseen this',
       url:'./img/placeholder.png'
     },
     {
@@ -60,7 +69,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'skull',
       disAgreeAmount: 3,
       disAgreeFrom: 'insight',
-      desc: 'This place has seen much dread',
+      desc2: 'Right: Remove 1 dread and pay 3 insight.',
+      desc1: 'Left: Gain 3 insight and add 1 dread.',
+      flavor: 'This place has seen much dread',
       url:'./img/placeholder.png'
     },
     {
@@ -70,7 +81,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'skull',
       disAgreeAmount: 1,
       disAgreeFrom: 'insight',
-      desc: 'It is forbidden!',
+      desc2: 'Right: Add 1 dread and pay 1 insight.',
+      desc1: 'Left: Add 1 insight and remove 1 dread.',
+      flavor: 'It is forbidden!',
       url:'./img/placeholder.png'
     }
   ]
@@ -114,7 +127,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     $timeout( function(){
       $scope.timing = false;
       $scope.activeCard = $scope.cards[Math.floor(Math.random() * $scope.cards.length)];
-    }, 1000 );
+    }, 500 );
   }
 
   $scope.click = function (doIAgree) {
@@ -137,7 +150,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         }
       };
 
-    }, 1000 );
+    }, 500 );
   }
 
 });
