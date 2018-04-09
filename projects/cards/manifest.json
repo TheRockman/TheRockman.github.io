@@ -5,7 +5,7 @@
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#800080",
+  "theme_color": "#2e2534",
   "icons": [
     {
       "src": "https://www.materialui.co/materialIcons/image/panorama_fisheye_grey_192x192.png"
