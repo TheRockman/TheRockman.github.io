@@ -10,6 +10,19 @@
   --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
+#preloadedImages
+{
+    width: 0px;
+    height: 0px;
+    display: inline;
+    background-image: url(./img/blood.png);
+    background-image: url(./img/boss.png);
+    background-image: url(./img/envelope.png);
+    background-image: url(./img/gold.png);
+    background-image: url(./img/placeholder.png);
+
+}
+
 /*Quick start body*/
 @font-face {
   font-family: 'Roboto';

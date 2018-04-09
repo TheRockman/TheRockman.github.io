@@ -60,7 +60,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       desc2: 'Right: Gain 5 gold and add 5 dread.',
       desc1: 'Left: Remove 5 dread and pay 5 gold.',
       flavor: 'Not even we could have forseen this',
-      url:'./img/placeholder.png'
+      url:'./img/envelope.png'
     },
     {
       id: 0,
