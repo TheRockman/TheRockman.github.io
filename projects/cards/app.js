@@ -57,8 +57,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       agreeFrom: 'gold',
       disAgreeAmount: -4,
       disAgreeFrom: 'skull',
-      desc2: 'Right: Gain 5 gold and add 5 dread.',
-      desc1: 'Left: Remove 5 dread and pay 5 gold.',
+      desc2: 'Right: Gain 4 gold and add 4 dread.',
+      desc1: 'Left: Remove 4 dread and pay 4 gold.',
       flavor: 'Not even we could have forseen this',
       url:'./img/envelope.png'
     },
