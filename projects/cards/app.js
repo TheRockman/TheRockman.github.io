@@ -53,9 +53,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       id: 0,
       name: 'Crisis',
-      agreeAmount: 5,
+      agreeAmount: 4,
       agreeFrom: 'gold',
-      disAgreeAmount: -5,
+      disAgreeAmount: -4,
       disAgreeFrom: 'skull',
       desc2: 'Right: Gain 5 gold and add 5 dread.',
       desc1: 'Left: Remove 5 dread and pay 5 gold.',

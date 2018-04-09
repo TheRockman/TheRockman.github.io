@@ -69,6 +69,9 @@ html, body {
     bottom: 15%!important;
     top: 5px!important;
   }
+  .info>.tooltip{
+    width: 305px!important;
+  }
 }
 
 .content{
@@ -226,48 +229,6 @@ button::-moz-focus-inner {
   width: 290px;
 }
 
-/*Grid*/
-/*.grid {
-display: flex;
-flex-wrap: wrap;
-}
-.grid-card{
-display: flex;
-width: 100%;
-}
-.list-content {
-display: flex;
-flex-direction: column;
-width: 100%;
-}
-.list-content span {
-flex: 1 0 auto;
-}
-@media all and (min-width: 768px) {
-.grid-card {
-width: 50%;
-}
-}
-@media all and (min-width: 960px) {
-.grid-card {
-width: 33.33%;
-}
-}*/
-
-/*Fab*/
-/*.fab{
-background:dodgerblue;
-width:18px;
-height: 18px;
-padding:15px;
-border-radius:50%;
-font-size: 18px;
-line-height: 18px;
-text-align: center;
-box-shadow: var(--level1);
-}*/
-
-/*Animation*/
 .flip {
   transform: translateY(700px);
   opacity: 0;
@@ -292,14 +253,11 @@ box-shadow: var(--level1);
   pointer-events: none;
 }
 
-
-/*Slant*/
-/*
-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-*/
-
-/*Perfect css background*/
-/*
-background: url(http://lorempixum.com/1440/900/sports) no-repeat center center fixed;
-background-size: cover;
-*/
+svg{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
