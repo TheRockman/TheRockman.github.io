@@ -1,7 +1,7 @@
 var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope, $timeout) {
   console.log('123');
 
-  $scope.cards = [
+  $scope.bosses = [
     {
       id: 0,
       name: 'Aagyth´mo',
@@ -14,6 +14,21 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       url:'./img/boss.png',
       epic: true
     },
+    {
+      id: 1,
+      name: 'Yramog',
+      agreeAmount: null,
+      agreeFrom: '',
+      disAgreeAmount: -18,
+      disAgreeFrom: 'insight',
+      desc1: 'To banish Yramog and win the game you must pay 18 insight points. Until you can do so, press right to shuffle it back into the deck. Remember to have enough points to survive the deal.',
+      flavor: 'Incomprehensible truths are impossible to bear when insanity takes hold.',
+      url:'./img/boss2.png',
+      epic: true
+    }
+  ]
+
+  $scope.cards = [
     {
       id: 0,
       name: 'Manic Chanting',
@@ -88,6 +103,11 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     }
   ]
 
+  function getBoss() {
+    var currentBoss = $scope.bosses[Math.floor(Math.random() * $scope.bosses.length)];
+    $scope.cards.unshift(currentBoss);
+  }
+
   $scope.init = function () {
     for (var i = 0; i < $scope.cards.length; i++) {
       $scope.cards[i].id = i;
@@ -98,6 +118,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       gold: 5,
       insight: 3
     }
+    getBoss();
     $scope.activeCard = $scope.cards[0];
   }
   $scope.init();
