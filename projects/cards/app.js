@@ -19,9 +19,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       name: 'Yramog',
       agreeAmount: null,
       agreeFrom: '',
-      disAgreeAmount: -18,
+      disAgreeAmount: -20,
       disAgreeFrom: 'insight',
-      desc1: 'To banish Yramog and win the game you must pay 18 insight points. Until you can do so, press right to shuffle it back into the deck. Remember to have enough points to survive the deal.',
+      desc1: 'To banish Yramog and win the game you must pay 20 insight points. Until you can do so, press right to shuffle it back into the deck. Remember to have enough points to survive the deal.',
       flavor: 'Incomprehensible truths are impossible to bear when insanity takes hold.',
       url:'./img/boss2.png',
       epic: true
@@ -111,6 +111,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   $scope.init = function () {
     for (var i = 0; i < $scope.cards.length; i++) {
       $scope.cards[i].id = i;
+      if ($scope.cards[i].epic) {
+        $scope.cards.splice(i, 1);
+      }
     }
     $scope.player = {
       skull: 0,
@@ -171,7 +174,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         }
       };
 
-    }, 500 );
+    }, 1000 );
   }
 
 });

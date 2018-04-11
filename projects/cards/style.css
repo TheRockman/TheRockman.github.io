@@ -243,6 +243,7 @@ button::-moz-focus-inner {
 }
 
 .flip {
+  transition: 1s all ease!important;
   transform: translateY(700px);
   opacity: 0;
 }
