@@ -260,7 +260,7 @@ h1, h2, h3, h4{
   }
   .footer{
     padding: var(--spacer);
-    position: relative;
+    position: fixed;
     background: #333;
     justify-content: center;
   }
