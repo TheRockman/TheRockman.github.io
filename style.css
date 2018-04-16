@@ -28,6 +28,7 @@ body{
 
 h1, h2, h3, h4{
   font-weight: lighter;
+  margin: 0 1rem;
   margin: 0 var(--spacer)!important;
 }
 
@@ -51,6 +52,7 @@ h1, h2, h3, h4{
 }
 
 .ThemeMenu > li{
+      padding: 1rem;
   padding: var(--spacer);
   color: #666;
   height: auto;
@@ -73,7 +75,9 @@ h1, h2, h3, h4{
 .tag{
   position: relative;
   margin-right: 5px;
+  padding: 0.5rem 1rem;
   padding: 0.5rem var(--spacer);
+  background: #333;
   background: var(--secondary);
 }
 
@@ -98,6 +102,7 @@ h1, h2, h3, h4{
   width: auto;
   pointer-events: none;
   height: 100%;
+  background: #333;
   background: var(--secondary);
   opacity: 0.2;
 }
@@ -130,6 +135,7 @@ h1, h2, h3, h4{
 }
 
 .link-primary{
+  background: #333;
   background: var(--secondary);
   text-decoration: none!important;
   color: white!important;
@@ -139,12 +145,14 @@ h1, h2, h3, h4{
 }
 
 .content{
+  background: dodgerblue;
   background: var(--primary);
   color: white;
   height: 600px;
 }
 
 .padding{
+  padding: 1rem;
   padding: var(--spacer);
 }
 
@@ -218,6 +226,7 @@ h1, h2, h3, h4{
 .card {
   background: #fff;
   border-radius: 2px;
+  margin: 1rem;
   margin: var(--spacer);
   box-shadow: var(--level1);
   transition: var(--animation);
@@ -235,6 +244,7 @@ h1, h2, h3, h4{
     transform: none;
   }
   .project-article{
+    margin: 1rem;
     margin: var(--spacer)!important;
   }
   .hide-on-phones{
@@ -259,6 +269,7 @@ h1, h2, h3, h4{
     height: auto;
   }
   .footer{
+    padding: 1rem;
     padding: var(--spacer);
     position: fixed;
     background: #333;

@@ -10,7 +10,7 @@
 
 /*background:var(--main);*/
 .pull-right{
-float: right;
+  float: right;
 }
 
 .head{
@@ -24,6 +24,7 @@ body {
   font-size: 16px;
   font-family: sans-serif;
   counter-reset: item;
+  background: #282c34;
   background: var(--main);
   margin: 0;
   overflow-x: hidden;
@@ -38,11 +39,13 @@ ol{
 ol > li {
   counter-increment: item;
   margin-bottom: 5px;
+  color: #abb2bf;
   color: var(--text);
 }
 ol > li:before {
   margin-right: 10px;
   content: counter(item);
+  color: #5c6370;
   color: var(--comment);
   width: 1.2em;
   text-align: left;
@@ -52,6 +55,7 @@ ol > li:before {
 
 ul> li{
   padding: 0.5rem 0;
+  color: #abb2bf;
   color: var(--text);
   cursor: pointer;
   user-select: none;
@@ -63,6 +67,7 @@ ul> li:hover{
 
 h4 {
   font-weight: normal;
+  color: #abb2bf;
   color: var(--text);
   margin-bottom: 0;
 }
@@ -72,6 +77,7 @@ svg{
 }
 
 .selector{
+  color: #e06c75;
   color:var(--selector);
 }
 .blue{
@@ -85,9 +91,11 @@ svg{
 }
 
 label{
+  color: #d19a66;
   color:var(--el);
 }
 .comment{
+  color: #5c6370;
   color: var(--comment);
   font-style: italic;
 }
@@ -116,30 +124,37 @@ i{
   left: 15%;
   right:0;
   width: 100%;
+  background: #21252b;
   background: var(--accent);
   user-select: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .tabs > a{
+  color: #abb2bf;
   color: var(--text);
   text-decoration: none;
   user-select: none;
   padding: 0.5rem 2rem;
+  background: #21252b;
   background: var(--accent);
   border-radius: 2px;
   transition: 0.4s background ease;
 }
 
 .tabs > .active{
+  background:  #282c34;
   background: var(--main);
   border-left: 2px solid dodgerblue;
+  border-bottom: 2px solid  #282c34;
   border-bottom: 2px solid var(--main);
 }
 
 .footer{
+  background: #21252b;
   background:var(--accent);
   padding: 0.5rem;
+  color: #abb2bf;
   color:var(--text);
   border-top:1px solid rgba(0,0,0,0.2);
   position: fixed;
@@ -151,6 +166,7 @@ i{
 
 .sidebar{
   width: 15%;
+  background: #21252b;
   background:var(--accent);
   height: 100vh;
   border-right:1px solid rgba(0,0,0,0.2);
@@ -159,10 +175,12 @@ i{
 .expander{
   cursor: pointer;
   display: none;
+  color: #abb2bf;
   color: var(--text);
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  background: #21252b;
   background:var(--accent);
   line-height: 50px;
   text-align: center;
@@ -191,13 +209,13 @@ i{
 }
 
 @media screen and (max-width: 768px) {
-.sidebar{
-  display: none;
-}
-.tabs{
-  left: 0;
-}
-.expander{
-  display: block;
-}
+  .sidebar{
+    display: none;
+  }
+  .tabs{
+    left: 0;
+  }
+  .expander{
+    display: block;
+  }
 }
