@@ -32,7 +32,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Devider: true
     },
     {
-      Title: 'Project 1 - cards',
+      Title: 'Experiment 1 - cards',
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
       Tags: ['Code', 'Making'],
       Theme: '#6C4796',
@@ -41,7 +41,19 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Backdrop: './img/bg1.jpg',
       Url: './projects/cards/index.html',
       Devider: false
+    },
+    {
+      Title: 'Experiment 2 - mobile',
+      Desc: 'A mobile sandbox.',
+      Tags: ['Code', 'Making'],
+      Theme: '#F53C6D',
+      Poster: 'https://picsum.photos/300/400.3/?random',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/mobile/index.html',
+      Devider: false
     }
+
     // ,{
     //   Title: 'Boilerplate',
     //   Desc: '',
