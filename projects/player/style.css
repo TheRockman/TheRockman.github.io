@@ -20,9 +20,11 @@
 
 body{
   margin: 0;
-  background: #333;
+background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%) fixed;
+  background-size: cover;
+  color: #cacaca;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .flex{
@@ -45,6 +47,9 @@ body{
     flex: 1;
     -ms-flex: 1;
   }
+  .phone-wrap{
+    border-right: 5px solid #333;
+  }
 }
 @media screen and (max-width: 768px) {
   .row {
@@ -63,12 +68,9 @@ body{
 
 .card {
   background: #333;
-  color: #f5f5f5;
-  padding: var(--spacer);
   box-shadow: var(--level1);
   transition: var(--animation);
-  width: 500px;
-  height: auto;
+  width: 100%;
 }
 
 iframe{
@@ -92,16 +94,20 @@ iframe{
   transform: rotate(180deg);
 }
 
+.head{
+  background: #111;
+  color: white;
+}
+
 .searchbar{
-  font-size: 18px;
+  font-size: 16px;
   width: 100%;
-  color: #f5f5f5f5;
-  padding: var(--spacer) 0;
-  text-align: center;
+  color: white;
+  margin: var(--spacer);
+  text-align: left;
   background: transparent;
   outline: none;
   border: none;
-  border-bottom: 1px solid #666;
 }
 
 .playlist{
@@ -123,18 +129,6 @@ iframe{
   padding: var(--spacer) 10px;
   background: #272727;
 }
-.save{
-  background:dodgerblue;
-  width:18px;
-  height: 18px;
-  padding:15px;
-  border-radius:50%;
-  font-size: 18px;
-  line-height: 18px;
-  text-align: center;
-  box-shadow: var(--level1);
-  cursor: pointer;
-}
 
 .ctrlRow{
   margin: 0 var(--spacer);
@@ -150,7 +144,7 @@ iframe{
   line-height: 25px;
 }
 .remove:hover{
-  background: #444;
+  background: rgba(0,0,0,0.3);
 }
 
 .align{
@@ -166,4 +160,34 @@ svg, .remove, li, .save {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.phone-wrap{
+  background: #111;
+  width: 414px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+}
+@media screen and (max-width: 415px) {
+  .phone-wrap{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+.scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
 }

@@ -15,43 +15,61 @@
       <div class="flex"></div>
       <div class="flex">
 
-        <div class="card">
-          <div class="align">
-            <input type="text" class="searchbar" ng-model="query" placeholder="Search here" name="" value="" ng-click="query=null" ng-change="searchy(query)" ng-init="searchy(records[0].name);">
-            <div class="save" ng-click="add()" name="button">+</div>
-          </div>
-          <br/>
-          <div class="frame-wrap" ng-click="$event.stopPropagation();">
-            <iframe ng-if="query" width="560" height="315" ng-class="{'minim':mini}" style="margin:0 auto;"  ng-src="{{url}}" frameborder="0" modestbranding="1" fs="0" rel="0" allow="autoplay; encrypted-media"></iframe>
-            <div class=" expander" >
-              <svg class="remove" ng-click="mini = !mini" ng-class="{'rot':!mini}" style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="#f5f5f5" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
+        <div class="phone-wrap scroll">
+          <div class="wrap">
+            <div class="card">
+              <div class="head align">
+                <div class="remove">
+                  <svg ng-click="query = null" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                  </svg>
+                </div>
+
+
+                <input type="text" class="searchbar" ng-model="query" placeholder="Search here" name="" value=""  ng-change="searchy(query)" ng-init="searchy(records[0].name);">
+
+                <div class="remove">
+                  <svg ng-click="add()" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M2,16H10V14H2M18,14V10H16V14H12V16H16V20H18V16H22V14M14,6H2V8H14M14,10H2V12H14V10Z" />
+                  </svg>
+                </div>
+
+              </div>
+
+              <div class="frame-wrap" ng-click="$event.stopPropagation();" ng-if="query">
+                <iframe width="560" height="315" ng-class="{'minim':mini}" style="margin:0 auto;"  ng-src="{{url}}" frameborder="0" modestbranding="1" fs="0" rel="0" allow="autoplay; encrypted-media"></iframe>
+                <div class="expander">
+                  <svg class="remove" ng-click="mini = !mini" ng-class="{'rot':!mini}" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#cacaca" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="align ctrlRow" ng-if="records.length > 0">
+                <b>Playlist</b>
+                <span>
+                  <svg style="width:24px;height:24px" class="remove" viewBox="0 0 24 24" ng-click="clear()"  ng-touch="clear()">
+                    <path fill="#cacaca" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                  </svg>
+                </span>
+              </div>
+              <ul class="playlist">
+                <li ng-repeat="item in records" ng-click="searchy(item.name);" ng-touch="searchy(item.name);">
+                  {{item.name}}
+                  <div class="remove" ng-click="remove(item)">
+                    X
+                  </div>
+                </li>
+              </ul>
+
             </div>
           </div>
-
-          <div class="align ctrlRow" ng-if="records.length > 0">
-            <b>Playlist</b>
-            <span>
-              <svg style="width:24px;height:24px" class="remove" viewBox="0 0 24 24" ng-click="clear()"  ng-touch="clear()">
-                <path fill="#f5f5f5" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-              </svg>
-            </span>
-          </div>
-          <br/>
-          <ul class="playlist">
-            <li ng-repeat="item in records" ng-click="searchy(item.name);" ng-touch="searchy(item.name);">
-              {{item.name}}
-              <div class="remove" ng-click="remove(item)">
-                X
-              </div>
-            </li>
-          </ul>
-
         </div>
 
+
+
       </div>
-            <div class="flex"></div>
+      <div class="flex"></div>
     </div>
   </div>
 </body>
