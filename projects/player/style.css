@@ -56,6 +56,9 @@ body{
   .flex {
     flex: 1 1 auto;
   }
+  .card{
+      width: 100%;
+  }
 }
 
 .card {
