@@ -73,6 +73,7 @@ h1, h2, h3, h4{
 }
 
 .tag{
+  cursor: pointer;
   position: relative;
   margin-right: 5px;
   padding: 0.5rem 1rem;
@@ -154,6 +155,22 @@ h1, h2, h3, h4{
 .padding{
   padding: 1rem;
   padding: var(--spacer);
+}
+
+.filterOverlay{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  z-index: 90;
+}
+.filterHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .relative{
@@ -275,6 +292,9 @@ h1, h2, h3, h4{
     background: #333;
     justify-content: center;
   }
+}
+.pointer{
+  cursor: pointer;
 }
 
 .noselect {

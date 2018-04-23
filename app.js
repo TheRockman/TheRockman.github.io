@@ -6,7 +6,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       Tags: ['Blog', 'About'],
       Theme: 'dodgerblue',
-      Poster: 'https://picsum.photos/300/400/?random',
+      Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg'
     },
@@ -15,7 +15,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Desc: 'I draw whenever I have the time: on the train, at home or while waiting for code to compile. I use a simple ball point pen when im on the go or my wacom tablet.',
       Tags: ['Drawing', 'Making'],
       Theme: '#F53C6D',
-      Poster: 'https://picsum.photos/300/400.1/?random',
+      Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
       Url: 'https://twitter.com/compileanddraw'
@@ -25,7 +25,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Desc: 'If you are observant you will notice that few of my tracks are longer than one minute. I could claim that this is some artistic choice to impose limits on myself. The truth however is simply that the software im using wont allow larger files to be exported.',
       Tags: ['Music', 'Making'],
       Theme: '#6C4796',
-      Poster: 'https://picsum.photos/300/400.2/?random',
+      Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
       Url: 'https://soundcloud.com/user-586995580',
@@ -36,7 +36,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
       Tags: ['Code', 'Making'],
       Theme: '#6C4796',
-      Poster: 'https://picsum.photos/300/400.2/?random',
+      Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
       Url: './projects/cards/index.html',
@@ -46,8 +46,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Title: 'Experiment 2 - mobile',
       Desc: 'A mobile sandbox.',
       Tags: ['Code', 'Making'],
-      Theme: '#F53C6D',
-      Poster: 'https://picsum.photos/300/400.3/?random',
+      Theme: '#ff6347',
+      Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
       Url: './projects/mobile/index.html',
@@ -64,6 +64,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     //   Url: ''
     // }
   ];
+
+  $scope.filteredList = [];
+  $scope.activeTag = null;
 
   (function generateID() {
     for (var i = 0; i < $scope.projects.length; i++) {
@@ -86,9 +89,28 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     }
   }
 
+  $scope.clearFilter = function () {
+    $scope.filteredList = [];
+    $scope.activeTag = null;
+  }
+
   $scope.updateTheme = function (theme) {
     document.documentElement.style.setProperty('--primary', theme);
   }
 
+  $scope.filterByTag = function (tag) {
+    $scope.clearFilter();
+    $scope.activeTag = tag;
+    for (var i = 0; i < $scope.projects.length; i++) {
+      if($scope.projects[i].Tags.indexOf(tag) !== -1) {
+        $scope.filteredList.push($scope.projects[i]);
+      }
+    }
+  }
+
+  $scope.pickFilteredItem =function (project) {
+    $scope.setSelectedProject(project);
+    $scope.clearFilter();
+  }
 
 });
