@@ -158,19 +158,28 @@ h1, h2, h3, h4{
 }
 
 .filterOverlay{
+  transform: translateY(-10%);
   position: absolute;
-  width: 100%;
+  width: 26%;
   left: 0;
   top: 0;
-  right: 0;
   bottom: 0;
   background: white;
   z-index: 90;
+  transition-delay: 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--animation);
 }
 .filterHeader{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.activeOverlay{
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
 }
 
 .relative{
@@ -291,6 +300,10 @@ h1, h2, h3, h4{
     position: fixed;
     background: #333;
     justify-content: center;
+  }
+  .filterOverlay{
+    width: 100%;
+    right: 0;
   }
 }
 .pointer{

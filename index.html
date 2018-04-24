@@ -16,12 +16,12 @@
       <div class="flex"></div>
       <div class="flex x3 card">
         <div class="row relative">
-          <div ng-cloak class="filterOverlay" ng-if="activeTag" ng-click="$event.stopPropagation()">
+          <div ng-cloak class="filterOverlay" ng-class="{'activeOverlay':activeTag}" ng-click="$event.stopPropagation()">
             <div class="row">
               <div class="flex padding">
                 <strong class="filterHeader">
-                  Showing all projects marked: "{{activeTag}}"
-                  <svg style="width:24px;height:24px; text-align:right;" viewBox="0 0 24 24" ng-click="clearFilter()">
+                  Similar to "{{activeTag}}"
+                  <svg style="width:24px;height:24px; text-align:right;cursor:pointer;" viewBox="0 0 24 24" ng-click="clearFilter()">
                     <path fill="#000000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
                   </svg>
                 </strong>
