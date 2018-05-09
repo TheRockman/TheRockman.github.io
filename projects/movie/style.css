@@ -187,7 +187,7 @@ select::-ms-expand {
   font-size: 1em;
   font-weight: normal;
   color: black;
-  max-width: 280px;
+  max-width: 270px;
   background: transparent;
   background-image: none;
   border:none;
@@ -200,7 +200,7 @@ select::-ms-expand {
 .wrapper {
   display: grid;
   grid-template-columns: 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;
-  grid-gap: 10px;
+  grid-gap: 9px;
   margin: 0 auto;
   max-width: 300px;
 }
