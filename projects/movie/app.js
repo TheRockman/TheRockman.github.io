@@ -4,6 +4,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   $scope.checkout = null;
   $scope.booked = null;
   $scope.loading = null;
+  $scope.state = 'start';
+
   $scope.featured = {
     name: 'Avengers: Infinity War',
     time: new Date(),
@@ -65,7 +67,6 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
 
   $scope.setMovie = function (movie) {
     $scope.selectedMovie = movie;
-    console.log(movie);
   }
 
   $scope.getNumber = function(num) {
@@ -90,6 +91,14 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
 
   $scope.confirm = function () {
     $scope.checkout = true;
+  }
+
+  $scope.goToState = function (newStateString) {
+    $scope.state = newStateString;
+  }
+
+  $scope.resetTickets = function () {
+    $scope.numberOfTickets = 0;
   }
 
 });
