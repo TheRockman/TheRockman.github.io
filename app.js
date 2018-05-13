@@ -63,6 +63,17 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Backdrop: './img/bg1.jpg',
       Url: './projects/movie/index.html',
       Devider: false
+    },
+    {
+      Title: 'Experiment 4 - Nightly',
+      Desc: 'Movie ticket booking flow',
+      Tags: ['Code', 'Making'],
+      Theme: '#6C4796',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/nightly/index.html',
+      Devider: false
     }
 
     // ,{
