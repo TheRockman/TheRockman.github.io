@@ -20,6 +20,15 @@
   margin-top: 8px;
 }
 
+.dot{
+  background: dodgerblue;
+  width: 6px;
+  height: 6px;
+  transform: translateY(-2px);
+  display: inline-block;
+  border-radius: 50%;
+}
+
 body {
   font-size: 16px;
   font-family: sans-serif;
@@ -127,6 +136,7 @@ i{
   background: #21252b;
   background: var(--accent);
   user-select: none;
+  min-height: 25px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -145,7 +155,8 @@ i{
 .tabs > .active{
   background:  #282c34;
   background: var(--main);
-  border-left: 2px solid dodgerblue;
+  border-left: 1px solid #222;
+  border-right: 1px solid #222;
   border-bottom: 2px solid  #282c34;
   border-bottom: 2px solid var(--main);
 }
