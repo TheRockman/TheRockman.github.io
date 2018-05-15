@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        <div class="phone-wrap scroll">
+          <div class="conversation">
+            <div ng-repeat="message in messages">
+              <div class="row" >
+                <div class="flex ">
+                  <div class="bot-msg msg padding" ng-if="message.botMsg">
+                    {{message.botMsg}}
+                  </div>
+                </div>
+                <div class="flex ">
+                  <div class="me-msg msg padding" ng-if="message.meMsg">
+                    {{message.meMsg}}
+                  </div>
+                </div>
+              </div>
+              <div class="reply" ng-if="!botTyping && $last">
+                <div class="row">
+                  <div class="flex me-msg msg padding pointer center" ng-if="!reply.freeTextAllowed" ng-repeat="reply in message.replies" ng-click="sendReply(reply, message.replies, text)">
+                    {{reply.replyMsg}}
+                  </div>
+                  <div class="flex" ng-if="reply.freeTextAllowed" ng-repeat="reply in message.replies">
+                    <form ng-submit="sendReply(reply, message.replies, text)">
+                      <textarea class="free-text" placeholder="type here" name="name" ng-model="text"></textarea>
+                      <button type="submit" class="submit-btn fab" name="button">
+                        →
+                      </button>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row" ng-if="botTyping">
+              <div class="flex padding">
+                <div class="typing-indicator align" >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  &nbsp;
+                  Bot is typing
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>

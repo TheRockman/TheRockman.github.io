@@ -32,7 +32,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Devider: true
     },
     {
-      Title: 'Experiment 1 - Cards',
+      Title: 'Cards',
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
       Tags: ['Code', 'Making'],
       Theme: '#6C4796',
@@ -43,7 +43,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Devider: false
     },
     {
-      Title: 'Experiment 2 - Feed',
+      Title: 'Feed',
       Desc: 'A mobile sandbox.',
       Tags: ['Code', 'Making'],
       Theme: '#ff6347',
@@ -54,7 +54,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Devider: false
     },
     {
-      Title: 'Experiment 3 - Tickets',
+      Title: 'Tickets',
       Desc: 'Movie ticket booking flow',
       Tags: ['Code', 'Making'],
       Theme: '#ff6347',
@@ -65,7 +65,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Devider: false
     },
     {
-      Title: 'Experiment 4 - Nightly',
+      Title: 'Nightly',
       Desc: 'Movie ticket booking flow',
       Tags: ['Code', 'Making'],
       Theme: '#6C4796',
@@ -74,7 +74,19 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Backdrop: './img/bg1.jpg',
       Url: './projects/nightly/index.html',
       Devider: false
+    },
+    {
+      Title: 'Conversation',
+      Desc: 'Just someone to talk to',
+      Tags: ['Code', 'Making'],
+      Theme: 'dodgerblue',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/bot/index.html',
+      Devider: false
     }
+
 
     // ,{
     //   Title: 'Boilerplate',
