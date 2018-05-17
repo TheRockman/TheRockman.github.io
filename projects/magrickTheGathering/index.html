@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        <div class="fluid-row dense">
+          <div class="fluid-flex" ng-repeat="card in cards">
+            <div class="card"  ng-class="{'blue':card.species === 'Human', 'green':card.species === 'Alien'}">
+              <div class="content">
+                <div class="section header align between">
+                  <b>{{card.name}}</b>
+                  <div>
+                    <div class="shm-c">
+                      {{card.episode.length}}
+                    </div>
+                  </div>
+                </div>
+                <img class="avatar" src="{{card.image}}" alt="">
+                <div class="section attrib">
+                  <span ng-if="card.species">{{card.species}},</span>
+                  <span ng-if="card.type">{{card.type}},</span>
+                  <span ng-if="card.gender">{{card.gender}}</span>
+                </div>
+                <div class="section flavor">
+                  <span ng-if="card.origin.name">When {{card.name}} enters
+                    <span ng-if="card.origin.name === 'unknown'">the {{card.origin.name}}</span>
+                    <span ng-if="card.origin.name !== 'unknown'">{{card.origin.name}}</span>, gain 1 life.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="app.js"></script>
+
+  </html>
