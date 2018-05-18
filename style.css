@@ -280,7 +280,7 @@ h1, h2, h3, h4{
     display: block!important;
   }
   .content{
-    height: 100%!important;
+    height: 80vh!important;
   }
   .card{
     margin: 0!important;
