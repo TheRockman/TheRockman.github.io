@@ -443,69 +443,17 @@ details[open] > summary svg > path{
   left: -9px;
   margin-top: 0;
 }
+.an-expandable{
+padding:0!important;
+}
+.an-expandable > summary{
+  padding:var(--spacer);
+}
+.an-expandable-content{
+  padding: var(--spacer);
+}
 
  /* border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%; } */
 .an-timeline-item:hover::before{
   background: var(--accent);
 }
-/*Grid*/
-/*.grid {
-display: flex;
-flex-wrap: wrap;
-}
-.grid-card{
-display: flex;
-width: 100%;
-}
-.list-content {
-display: flex;
-flex-direction: column;
-width: 100%;
-}
-.list-content span {
-flex: 1 0 auto;
-}
-@media all and (min-width: 768px) {
-.grid-card {
-width: 50%;
-}
-}
-@media all and (min-width: 960px) {
-.grid-card {
-width: 33.33%;
-}
-}*/
-
-/*Fab*/
-/*.fab{
-background:dodgerblue;
-width:18px;
-height: 18px;
-padding:15px;
-border-radius:50%;
-font-size: 18px;
-line-height: 18px;
-text-align: center;
-box-shadow: var(--level1);
-}*/
-
-/*Animation*/
-/*@keyframes animation {
-from {}
-to {}
-}
-div {
-animation-name: animation;
-animation-duration: 4s;
-} */
-
-/*Slant*/
-/*
-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-*/
-
-/*Perfect css background*/
-/*
-background: url(http://lorempixum.com/1440/900/sports) no-repeat center center fixed;
-background-size: cover;
-*/
