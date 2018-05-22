@@ -52,7 +52,7 @@ h1, h2, h3, h4{
 }
 
 .ThemeMenu > li{
-      padding: 1rem;
+  padding: 1rem;
   padding: var(--spacer);
   color: #666;
   height: auto;
@@ -79,6 +79,8 @@ h1, h2, h3, h4{
   padding: 0.5rem 1rem;
   padding: 0.5rem var(--spacer);
   background: #333;
+  margin-top: 5px;  
+  display: inline-block;
   background: var(--secondary);
 }
 
@@ -224,19 +226,19 @@ h1, h2, h3, h4{
 @media screen and (min-width: 768px) {
   .row {
     display: flex;
-        display: -ms-flexbox;
+    display: -ms-flexbox;
     flex-direction: row;
     flex-wrap: nowrap;
   }
   .flex {
     flex: 1;
-        -ms-flex: 1;
+    -ms-flex: 1;
   }
 }
 @media screen and (max-width: 768px) {
   .row {
     display: flex;
-        display: -ms-flexbox;
+    display: -ms-flexbox;
     flex-direction: column;
     flex-wrap: nowrap;
   }
@@ -312,9 +314,9 @@ h1, h2, h3, h4{
 
 .noselect {
   -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

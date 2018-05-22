@@ -13,7 +13,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Doodles',
       Desc: 'I draw whenever I have the time: on the train, at home or while waiting for code to compile. I use a simple ball point pen when im on the go or my wacom tablet.',
-      Tags: ['Drawing', 'Making'],
+      Tags: ['Drawing', 'Making', 'Twitter'],
       Theme: '#F53C6D',
       Poster: '',
       PosterSmall: '',
@@ -23,7 +23,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Music',
       Desc: 'If you are observant you will notice that few of my tracks are longer than one minute. I could claim that this is some artistic choice to impose limits on myself. The truth however is simply that the software im using wont allow larger files to be exported.',
-      Tags: ['Music', 'Making'],
+      Tags: ['Music', 'Making', 'Soundcloud'],
       Theme: '#6C4796',
       Poster: '',
       PosterSmall: '',
@@ -34,7 +34,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Cards',
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
-      Tags: ['Code', 'Making'],
+      Tags: ['Code', 'Making', 'Game'],
       Theme: '#2e2534',
       Poster: '',
       PosterSmall: '',
@@ -45,7 +45,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Feed',
       Desc: 'A mobile app sandbox.',
-      Tags: ['Code', 'Making'],
+      Tags: ['Code', 'Making', 'Mobile'],
       Theme: '#fd9981',
       Poster: '',
       PosterSmall: '',
@@ -56,7 +56,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Tickets',
       Desc: 'Movie ticket booking flow',
-      Tags: ['Code', 'Making'],
+      Tags: ['Code', 'Making', 'Mobile'],
       Theme: '#1e90ff',
       Poster: '',
       PosterSmall: '',
@@ -67,7 +67,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Nightly',
       Desc: 'Playing around with SVG backgrounds',
-      Tags: ['Code', 'Making'],
+      Tags: ['Code', 'Making', 'SVG'],
       Theme: '#2d253a',
       Poster: '',
       PosterSmall: '',
@@ -78,7 +78,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     {
       Title: 'Conversation',
       Desc: 'Just someone to talk to',
-      Tags: ['Code', 'Making'],
+      Tags: ['Code', 'Making', 'Mobile'],
       Theme: '#800080',
       Poster: '',
       PosterSmall: '',
