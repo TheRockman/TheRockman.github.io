@@ -229,6 +229,36 @@ li:hover{
   background-color: var(--highlight);
 }
 
+.an-accordion{
+  padding: 0!important;
+}
+.an-accordion-title{
+  cursor: pointer;
+  font-weight: bold;
+  padding: var(--spacer);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.an-accordion-content{
+  padding: var(--spacer);
+  transition: var(--animation);
+}
+details summary::-webkit-details-marker {
+  display:none;
+}
+summary{
+  transition: var(--animation);
+}
+details[open] > summary{
+  color: var(--color-inverse);
+  background: var(--accent);
+}
+details[open] > summary svg > path{
+  fill: var(--color-inverse)!important;
+}
+
+
 .an-billboard{
   width: 100%;
   height: auto;
