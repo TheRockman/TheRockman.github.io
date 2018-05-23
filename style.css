@@ -79,7 +79,7 @@ h1, h2, h3, h4{
   padding: 0.5rem 1rem;
   padding: 0.5rem var(--spacer);
   background: #333;
-  margin-top: 5px;  
+  margin-top: 5px;
   display: inline-block;
   background: var(--secondary);
 }

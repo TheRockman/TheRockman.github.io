@@ -49,11 +49,11 @@
                 <svg style="width:24px;height:24px;cursor:pointer;" class="noselect" viewBox="0 0 24 24">
                   <path fill="#fff" d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z" />
                 </svg>
+                <span id="preload" style="background: url(https://i.imgur.com/bzup1Uu.jpg);"></span>
                 <ul ng-if="showMenu" class="ThemeMenu" ng-cloak>
-                  <li ng-click="updateTheme('dodgerblue')">Sky</li>
-                  <li ng-click="updateTheme('tomato')">Inferno</li>
-                  <li ng-click="updateTheme('#6C4796')">Eldritch</li>
-                  <li ng-click="updateTheme('#F53C6D')">Candy</li>
+                  <li ng-click="updateTheme('dodgerblue')">Solid</li>
+                  <li ng-click="updateTheme('url(https://i.imgur.com/bzup1Uu.jpg) center fixed')">Image</li>
+                  <li ng-click="updateTheme('linear-gradient(to top left, #301C3F, #301C3F 20%, #462F5B 20%, #462F5B 40%, #633A72 40%, #633A72 60%, #8A4186 60%, #8A4186 80%, #bd2d38 80%, #FC3C4B 85%, #FC3C4B 85%)')">Gradient</li>
                 </ul>
                 <div ng-if="showMenu" ng-click="showMenu = false;" class="theme-menu-backdrop"></div>
               </div>
@@ -71,7 +71,7 @@
               <h2 style="margin:0!important;">{{selectedProject.Title}}</h2>
               <br />
               <br />
-              <small class="tag" ng-repeat="tag in selectedProject.Tags" ng-click="filterByTag(tag)">
+              <small class="tag" ng-repeat="tag in selectedProject.Tags | orderBy:Title" ng-click="filterByTag(tag)">
                 {{tag}}
               </small>
               <p>{{selectedProject.Desc}}</p>
