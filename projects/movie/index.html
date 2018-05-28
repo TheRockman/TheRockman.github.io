@@ -20,25 +20,31 @@
                 <img src="{{featured.poster}}" class="featured-poster" alt="">
                 <div class="card-content padding">
                   <h2 class="header-fix">{{featured.name}}</h2>
-                  <br></br>
-                  <small class="endcap align space-between" style="padding: 0.5rem 0;">Next show at {{featured.time | date: "HH:MM"}} <span class="pull-right">Available seats: {{featured.seatsTaken}}</span> </small>
+                  <small class="align space-between" style="padding: 0.5rem 0;">
+                    <span> Next show at {{featured.time | date: "HH:MM"}} </span>
+                    <span class="pull-right">Runtime: {{featured.playtimeH}} hour<span ng-if="featured.playtimeH > 1">s</span> {{featured.playtimeM}} minute<span ng-if="featured.playtimeM > 1">s</span></span>
+                  </small>
+                  <small class="endcap align space-between" style="padding: 0.5rem 0;">
+                    <span>Critic rating: {{featured.rating}} </span>
+                    <span class="pull-right">{{featured.seatsTaken}} seats left </span>
+                  </small>
                   <p>{{featured.desc}}</p>
                   <button type="button" class="primary-btn" name="button" ng-click="setMovie(featured); goToState('booking');">Book</button>
                 </div>
               </div>
             </div>
 
-            <h2 class="padding header-fix play-header">
-              Playing at:
+            <h3 class="padding header-fix play-header">
+              <label for="location">Playing at:</label>
               <div class="selectdiv">
-                <select>
+                <select id="location">
                   <option selected> My location</option>
                   <option>Cinema 1</option>
                   <option>Cinema 2</option>
                   <option>The big cinema down the road</option>
                 </select>
               </div>
-            </h2>
+            </h3>
             <div class="row listings">
               <div class="flex card">
                 <div class="align space-around list-row list-header endcap center" >
@@ -67,8 +73,14 @@
                 <img src="{{selectedMovie.poster}}" class="featured-poster" alt="">
                 <div class="card-content padding">
                   <h2 class="header-fix">{{selectedMovie.name}}</h2>
-                  <br></br>
-                  <small class="endcap align space-between" style="padding: 0.5rem 0;">Next show at {{selectedMovie.time | date: "HH:mm"}} <span class="pull-right">Available seats: {{selectedMovie.seatsTaken}}</span> </small>
+                  <small class="align space-between" style="padding: 0.5rem 0;">
+                    <span> Next show at {{featured.time | date: "HH:MM"}} </span>
+                    <span class="pull-right">Runtime: {{featured.playtimeH}} hour<span ng-if="featured.playtimeH > 1">s</span> {{featured.playtimeM}} minute<span ng-if="featured.playtimeM > 1">s</span></span>
+                  </small>
+                  <small class="endcap align space-between" style="padding: 0.5rem 0;">
+                    <span>Critic rating: {{featured.rating}} </span>
+                    <span class="pull-right">{{featured.seatsTaken}} seats left </span>
+                  </small>
                   <p>{{selectedMovie.desc}}</p>
                 </div>
               </div>
