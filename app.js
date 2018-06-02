@@ -85,6 +85,17 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       Backdrop: './img/bg1.jpg',
       Url: './projects/bot/index.html',
       Devider: false
+    },
+    {
+      Title: 'Turn based',
+      Desc: 'Example of turned based combat logic',
+      Tags: ['Code', 'Making'],
+      Theme: '#37BC9B',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/battle/index.html',
+      Devider: false
     }
 
 

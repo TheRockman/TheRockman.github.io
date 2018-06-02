@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="screen">
+      <div class="section enemy align space enemy-intro-animation">
+        <div class="relative">
+          <div class="stats enemy-stats">
+            <div class="align space align-center">
+              <span class="uppercase">{{enemy.Name}}</span>
+              <small>Lv: {{enemy.Level}}</small>
+            </div>
+            <progress value="{{enemy.CurrentHp}}" max="{{enemy.Hp}}"></progress>
+          </div>
+        </div>
+        <div class="char" style="margin-top:20px;" ng-class="[enemy.Animation]">
+          <img class="enemy-sprite" src="{{enemy.Sprite}}" alt="">
+          <div class="shade"></div>
+        </div>
+      </div>
+      <div class="section player align space player-intro-animation">
+        <div class="char" ng-class="[player.Animation]">
+          <img class="my-sprite" src="{{player.OwnedSprite}}" alt="">
+        </div>
+        <div class="relative">
+          <div class="stats my-stats">
+            <div class="align space align-center">
+              <span class="uppercase">{{player.Name}}</span>
+              <small>Lv: {{player.Level}}</small>
+            </div>
+            <progress value="{{player.CurrentHp}}" max="{{player.Hp}}"></progress>
+          </div>
+        </div>
+      </div>
+      <div class="section textbox align">
+        <div ng-if="showMenu" class="move-menu">
+          <small class="pointer" ng-repeat="move in player.Moves" ng-click="battle(player, move, enemy);">
+            {{move.Name}}<br/>
+          </small>
+        </div>
+        {{message}}
+      </div>
+
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
