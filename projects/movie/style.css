@@ -201,7 +201,7 @@ select::-ms-expand {
   display: grid;
   grid-template-columns: 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;
   grid-gap: 9px;
-  margin: 0 auto;
+  margin: 10px auto;
   max-width: 300px;
 }
 
@@ -209,6 +209,7 @@ select::-ms-expand {
   width: 100%;
   padding: 35px 0;
   border: 2px solid #333;
+  position: relative;
   background: linear-gradient(to bottom, rgba(102,102,102,1) 0%, rgba(214,214,214,1) 0%, rgba(214,214,214,1) 1%, rgba(71,71,71,1) 11%, rgba(44,44,44,1) 19%, rgba(0,0,0,1) 54%, rgba(0,0,0,1) 100%);
 }
 
@@ -266,7 +267,9 @@ select::-ms-expand {
   box-shadow: var(--level1);
   transition: var(--animation);
 }
-
+.conf{
+  top: 0;
+}
 .done-card{
   background: linear-gradient(to top, rgba(3,175,202,1) 0%, rgba(68,244,171,1) 100%)!important;
   position: relative;
@@ -274,6 +277,7 @@ select::-ms-expand {
 }
 
 .back{
+  cursor: pointer;
   position: sticky;
   top: 0;
   left: 0;
@@ -284,4 +288,13 @@ select::-ms-expand {
   background: white;
   border-radius: 50%;
   padding: 5px;
+}
+
+.screen-image{
+  width: 100%;
+  height: auto;
+  transform-origin: top;
+  transform: perspective(70em) rotateX(-82deg);
+  position: absolute;
+  top: 0px;
 }

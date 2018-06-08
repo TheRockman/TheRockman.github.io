@@ -25,7 +25,7 @@
                     <span class="pull-right">Runtime: {{featured.playtimeH}} hour<span ng-if="featured.playtimeH > 1">s</span> {{featured.playtimeM}} minute<span ng-if="featured.playtimeM > 1">s</span></span>
                   </small>
                   <small class="endcap align space-between" style="padding: 0.5rem 0;">
-                    <span>Critic rating: {{featured.rating}} </span>
+                    <span>Critic rating: {{featured.rating}}% </span>
                     <span class="pull-right">{{featured.seatsTaken}} seats left </span>
                   </small>
                   <p>{{featured.desc}}</p>
@@ -78,7 +78,7 @@
                     <span class="pull-right">Runtime: {{featured.playtimeH}} hour<span ng-if="featured.playtimeH > 1">s</span> {{featured.playtimeM}} minute<span ng-if="featured.playtimeM > 1">s</span></span>
                   </small>
                   <small class="endcap align space-between" style="padding: 0.5rem 0;">
-                    <span>Critic rating: {{featured.rating}} </span>
+                    <span>Critic rating: {{featured.rating}}% </span>
                     <span class="pull-right">{{featured.seatsTaken}} seats left </span>
                   </small>
                   <p>{{selectedMovie.desc}}</p>
@@ -89,15 +89,24 @@
               <div class="flex card padding">
                 <h3>Prefered seats</h3>
                 <div class="theater-wrapper">
+                  <img src="{{selectedMovie.poster}}" class="screen-image" alt="">
                   <div class="wrapper" ng-init="getNumber(selectedMovie.seatsTotal)">
                     <div class="seat" ng-click="seat.selected = !seat.selected; calcSeats(seat);" ng-class="{'selected-seat':seat.selected}" ng-repeat="seat in seatNum track by $index"></div>
                   </div>
                 </div>
                 <br></br>
-                <div ng-if="numberOfTickets > 0">
+                <div ng-show="numberOfTickets > 0">
+                  <h2 class="align space-between">
+                    <span>
+                      {{numberOfTickets}}
+                      ticket<span ng-if="numberOfTickets > 1">s</span>
+                    </span>
+                    <span>
+                      {{numberOfTickets * 25}}$
+                    </span>
+                  </h2>
                   <button type="button" class="primary-btn" name="button" ng-click="confirm(); goToState('checkout');">
-                    Book {{numberOfTickets}}
-                    ticket<span ng-if="numberOfTickets > 1">s</span>
+                    Book
                   </button>
                 </div>
               </div>
@@ -113,17 +122,27 @@
             <img src="{{selectedMovie.poster}}" class="backdrop" alt="">
             <div  class="confirm-modal">
               <div class="row featured">
-                <div class="flex card center" ng-class="{'done-card':booked}">
+                <div class="flex card center conf" ng-class="{'done-card':booked}">
                   <div class="card-content padding">
                     <div ng-if="booked === null">
                       <h2 class="header-fix">Please confirm</h2>
-                      <br></br>
-                      {{numberOfTickets}} ticket<span ng-if="numberOfTickets > 1">s</span> for
-                      <br></br>
-                      <h3>{{selectedMovie.name}}</h3>
-                      at {{selectedMovie.time | date: "HH:mm dd/MM/yy"}}
-                      <br></br>
-                      <br></br>
+                      <h3 class="align space-between">
+                        <span>
+                          {{selectedMovie.name}}
+                        </span>
+                        <span>
+                          {{selectedMovie.time | date: "HH:mm dd/MM/yy"}}
+                        </span>
+                      </h3>
+                      <h3 class="align space-between">
+                        <span>
+                          {{numberOfTickets}}
+                          ticket<span ng-if="numberOfTickets > 1">s</span>
+                        </span>
+                        <span>
+                          {{numberOfTickets * 25}}$
+                        </span>
+                      </h3>
                     </div>
                     <button ng-if="booked === null && loading === null" type="button" class="primary-btn" name="button" ng-click="booking();">Confirm</button>
 
