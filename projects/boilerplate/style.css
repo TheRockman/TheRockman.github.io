@@ -25,6 +25,14 @@ body{
   font-size: 18px;
 }
 
+/* ng-animate */
+/* .fade{
+  transition:0.5s linear opacity;
+}
+.fade.ng-hide {
+  opacity:0;
+} */
+
 /*flex*/
 /*.flex{
   flex-basis: 100%;
