@@ -14,7 +14,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         {
           Name: 'Night shade',
           Dmg: 30,
-          Acc: 50
+          Acc: 60
         },
         {
           Name: 'Shadow claw',
@@ -36,12 +36,12 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         {
           Name: 'Ember',
           Dmg: 70,
-          Acc: 40
+          Acc: 50
         },
         {
           Name: 'Flame spin',
           Dmg: 30,
-          Acc: 60
+          Acc: 70
         }
       ]
     },
@@ -187,6 +187,13 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     else {
       return false;
     }
+  }
+
+  $scope.reset = function () {
+    $scope.myTurn = null;
+    $scope.enemy = $scope.setFighter($scope.monsters);
+    $scope.player = $scope.setFighter($scope.monsters);
+    $scope.prepareToBattle();
   }
 
 });

@@ -120,12 +120,35 @@ body{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.move-item{
+  width: 100%;
+  padding: 5px 0;
+}
+.move-item:hover{
+  background: #e0e0e0;
+}
+
 .pointer{
   cursor: pointer;
 }
 
 .uppercase{
   text-transform: uppercase;
+}
+
+.fab{
+  cursor: pointer;
+  border: none!important;
+  outline: none!important;
+  background:tomato;
+  width:50px;
+  color: #fff;
+  height: 50px;
+  padding:15px;
+  border-radius:50%;
+  line-height: 25px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 @keyframes attack {
@@ -194,4 +217,20 @@ animation-iteration-count: 1;
   .screen{
     width: 100%;
   }
+}
+
+@media screen and (max-width: 415px) {
+.move-menu{
+  left:5px;
+  right: 5px;
+  bottom: 5px;
+  position: fixed;
+}
+.stats{
+  transform-origin: center;
+  transform: scale(0.7);
+}
+body{
+  background: steelblue;
+}
 }
