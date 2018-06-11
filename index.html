@@ -8,6 +8,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="angularJs.js"></script>
+    <script type="text/javascript" src="angular-animate.min.js"></script>
 </head>
 <body>
   <div ng-controller="mainCtrl">
@@ -55,7 +56,7 @@
                   <li ng-click="updateTheme('url(https://i.imgur.com/bzup1Uu.jpg) center fixed')">Image</li>
                   <li ng-click="updateTheme('linear-gradient(to top left, #301C3F, #301C3F 20%, #462F5B 20%, #462F5B 40%, #633A72 40%, #633A72 60%, #8A4186 60%, #8A4186 80%, #bd2d38 80%, #FC3C4B 85%, #FC3C4B 85%)')">Gradient</li>
                 </ul>
-                <div ng-if="showMenu" ng-click="showMenu = false;" class="theme-menu-backdrop"></div>
+                <div class="animationIf theme-menu-backdrop" ng-if="showMenu" ng-click="showMenu = false;" ></div>
               </div>
               <div>
                 <a href="./projects/editor/index.html" id="Resume">
