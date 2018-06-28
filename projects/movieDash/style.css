@@ -70,17 +70,6 @@ a{
   overflow: hidden;
 }
 
-.swoosh{
-  width: 2000px;
-  height: 2000px;
-  border-radius: 50%;
-  background: orange;
-  position: relative;
-  top: -225%;
-  left: -100%;
-  z-index: 1;
-}
-
 .poster-wrap{
   position: absolute;
   left: 2%;
@@ -98,7 +87,7 @@ a{
   transition: var(--animation);
 }
 .poster:hover > img{
-  z-index: 100;
+  z-index: 100!important;
   transform:scale(1.1);
   filter: brightness(1.03);
 }
@@ -215,23 +204,54 @@ svg{
 }
 @media screen and (max-width: 768px) {
   /*phone*/
-  .swoosh{
-    display: none;
-  }
   .stage{
     bottom: 0;
     top: 0;
     left: 0;
     right: 0;
     border-radius: 0;
+    margin-bottom: 50px;
+    overflow: initial;
+  }
+  .backdrop{
+    display: none;
   }
   .menu{
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    background: orange;
+    width: 100%!important;
+    background: white;
+    padding: var(--spacer);
+  }
+  .info-wrap{
+    left: 0;
+    right:0;
+    bottom: 25%;
+  }
+  .poster-wrap{
+    transform: scale(1.4);
+  }
+  .poster-wrap > div:nth-child(1){
+    transform: translateX(30px) translateY(10px) rotate(-10deg);
+    z-index: 1;
+  }
+  .poster-wrap > div:nth-child(2){
+    transform: translateX(15px) rotate(-5deg);
+    z-index: 2;
+  }
+  .poster-wrap > div:nth-child(3){
+    transform: rotate(0deg) translateY(-5px);
+    z-index: 3;
+  }
+  .poster-wrap > div:nth-child(4){
+    transform: translateX(-15px) rotate(5deg);
+    z-index: 2;
+  }
+  .poster-wrap > div:nth-child(5){
+      transform: translateX(-30px) translateY(10px) rotate(10deg);
+    z-index: 1;
   }
 }
 
