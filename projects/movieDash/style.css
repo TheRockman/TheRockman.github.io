@@ -100,7 +100,7 @@ a{
   padding: var(--spacer);
   box-shadow: var(--level2);
   border-radius: 25px;
-  z-index: 10;
+  z-index: 9;
 }
 
 svg{
@@ -222,16 +222,19 @@ svg{
     left: 0;
     right: 0;
     width: 73%!important;
-    background: white;
+    background: purple;
     padding: var(--spacer);
     margin: 0 auto;
     border-radius: 10px;
-    box-shadow: var(--level1);
+    box-shadow: var(--level2);
+  }
+  .menu>a{
+    color:white!important;
   }
   .info-wrap{
     left: 0;
     right:0;
-    bottom: 1rem;
+    bottom: 1.5rem;
   }
   .poster-wrap{
     transform: scale(1.4);
