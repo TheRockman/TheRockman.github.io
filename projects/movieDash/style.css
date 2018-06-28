@@ -231,7 +231,7 @@ svg{
   .info-wrap{
     left: 0;
     right:0;
-    bottom: 25%;
+    bottom: 1rem;
   }
   .poster-wrap{
     transform: scale(1.4);
