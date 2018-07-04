@@ -31,17 +31,18 @@
           </svg>
         </div>
       </nav>
-      <div style="z-index:7;" class="relative">
-        <div class="row align justify poster-wrap">
-          <div ng-repeat="item in items" class="flex center" ng-mouseenter="setSelected(item)">
+      {{extreme}}
+      <div style="z-index:7;" class="relative on-top-wrap" ng-class="{'extreme-on-top':extreme}">
+        <div class="row align justify poster-wrap" >
+          <div ng-repeat="item in items" class="flex center" ng-click="goExtreme(item)" ng-mouseenter="setSelected(item)">
             <div class="poster">
-              <img src="{{item.Img}}" alt="">
+              <img src="{{item.Img}}" ng-class="{'extreme-poster':extreme == true && selected == item}" alt="" >
             </div>
           </div>
         </div>
-        
       </div>
-      <div class="row info-wrap">
+
+      <div class="row info-wrap" ng-class="{'extreme-on-info':extreme}">
         <div class="flex card">
           <b>{{selected.Name}}</b>
           <div>

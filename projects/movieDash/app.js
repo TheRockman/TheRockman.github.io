@@ -1,4 +1,5 @@
 var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
+  $scope.extreme = false;
   $scope.items = [
     {
       Name: 'Title A',
@@ -33,7 +34,9 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   ];
   
   $scope.setSelected = function (i) {
-    $scope.selected = i;
+    if (!$scope.extreme) {
+      $scope.selected = i;  
+    }
   }
   
   $scope.getNumber = function(num) {
@@ -46,6 +49,11 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   
   $scope.toggleUmbr = function () {
     $scope.umbr = !$scope.umbr;
+  }
+  
+  $scope.goExtreme = function (i) {
+    $scope.selected = i;
+    $scope.extreme = true;
   }
   
   $scope.umbr = false;
