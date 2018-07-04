@@ -294,6 +294,9 @@ h1, h2, h3, h4{
   .show-on-phones{
     display: block!important;
   }
+  .show-inline-on-phones{
+    display: inline-flex!important;
+  }
   .content{
     height: 80vh!important;
   }
