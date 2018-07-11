@@ -32,6 +32,17 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: true
     },
     {
+      Title: 'UI kit',
+      Desc: 'A no-js ui kit for basic html elements that can be used in any project.',
+      Tags: ['Code', 'Making', 'UI'],
+      Theme: 'tomato',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/uikit/index.html',
+      Devider: false
+    },
+    {
       Title: 'Cards',
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
       Tags: ['Code', 'Making', 'Game'],
