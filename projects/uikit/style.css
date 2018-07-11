@@ -401,6 +401,10 @@ details[open] > summary svg > path{
   textarea{
     width: 100%;
   }
+  .an-menu-wrapper{
+    right:0;
+    min-width: 100%;
+  }
 }
 
 .an-card {
