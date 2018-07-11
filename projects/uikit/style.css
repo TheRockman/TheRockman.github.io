@@ -175,20 +175,32 @@ textarea:focus{
   min-width: 20%;
   
 }
-.an-sidebar-checkbox{
+.an-menu-checkbox{
   display: none;
 }
 .an-menu{
   padding: var(--spacer);
   height: 100%;
   background: #222;
-  color:#f5f5f5;
+  color:var(--color-inverse);
   box-shadow: var(--level2);
   transform: translateX(-100%);
   transition: var(--animation);
 }
-.an-sidebar-checkbox:checked ~ .an-menu{
+.an-context-menu{
+  display: none;
+  position: absolute;
+  top:100%;
+  right: 0;
+  background: white;
+  padding: var(--spacer);
+  box-shadow: var(--level2);
+}
+.an-menu-checkbox:checked ~ .an-menu{
   transform: translateX(0);
+}
+.an-menu-checkbox:checked ~ .an-context-menu{
+  display: block;
 }
 
 input[type=radio], input[type="checkbox"]{
