@@ -97,6 +97,16 @@ h1, h2, h3, h4{
   background: var(--secondary);
 }
 
+.menu-wrap{
+  max-height: 565px;
+  overflow-y: auto;
+}
+.menu-wrap-header{
+  position: sticky;
+  background: white;
+  top: -16px;
+}
+
 .backdrop{
   position: fixed;
   left: 0;
@@ -299,6 +309,10 @@ h1, h2, h3, h4{
   }
   .content{
     height: 80vh!important;
+  }
+  .menu-wrap{
+    max-height: auto;
+    overflow-y: initial;
   }
   .card{
     margin: 0!important;
