@@ -37,7 +37,11 @@ body{
 /* flex*/
 
 .sidebar{
-
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 23.94%;
 }
 
 .stage-wrap{
