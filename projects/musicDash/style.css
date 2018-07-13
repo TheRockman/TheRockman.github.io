@@ -154,35 +154,7 @@ li:hover{
 .x2{
   flex-basis: 25%!important;
 }
-@media screen and (min-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1;
-        -ms-flex: 1;
-  }
-}
-@media screen and (max-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1 1 auto;
-  }
-  .sidebar, .sidebar-mock{
-    display: none;
-  }
-  .hero{
-    height: 30vh;
-  }
-}
+
 
 
 /*fluid layout*/
@@ -271,3 +243,42 @@ clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
 background: url(http://lorempixum.com/1440/900/sports) no-repeat center center fixed;
 background-size: cover;
 */
+
+
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+  .sidebar, .sidebar-mock{
+    display: none;
+  }
+  .hero{
+    height: 30vh;
+  }
+  h1{
+    font-size: 150%!important;
+  }
+  svg{
+    transform-origin: center;
+    transform: scale(0.8);
+    user-select: none;
+  }
+}
