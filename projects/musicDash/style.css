@@ -146,6 +146,10 @@ li:hover{
   width: auto;
 }
 
+.center{
+  text-align: center;
+}
+
 .align{
   display: flex;
   align-items: center;
@@ -224,19 +228,48 @@ li:hover{
 }
 
 .album{
+  transform-origin: center;
+  position: relative;
   width: 50px;
   height: auto;
   border-radius: 50%;
   animation-name: animation;
-  animation-duration: 4s;
+  animation-duration: 8s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
 @keyframes animation {
-from {transform: rotate(0deg);}
-to {transform: rotate(360deg);}
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.more-modal-content{
+  
+}
+.now-playing.active{
+  transition:var(--animation);
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+.active>.more-modal{
+  transition:var(--animation);
+  background: white;
+  padding: 1rem;
+  width: 33%;
+  margin: 0 auto;
+  box-shadow: var(--level2);
+}
+.active>.more-modal>.album{
+  width: 250px;
+  transition:var(--animation);
 }
 /*Animation*/
 /*@keyframes animation {
@@ -292,6 +325,9 @@ background-size: cover;
   }
   .hero{
     height: 30vh;
+  }
+  .active>.more-modal{
+    width: 80%;
   }
   h1{
     font-size: 150%!important;

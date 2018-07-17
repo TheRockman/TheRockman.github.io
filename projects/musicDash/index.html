@@ -87,7 +87,21 @@
         <div class="row bottom-bar pad">
           <div class="flex align justify">
             <span class="align">
-              <img class="album" src="{{selected.cover}}" alt="">
+              <div ng-if="selected" ng-click="setMore();" class="now-playing" ng-class="{'active':more}">
+                <div class="more-modal center">
+                  <img  class="album" src="{{selected.cover}}" alt="">
+                  <div ng-if="more" class="more-modal-content">
+                    <h4>{{selected.title}}</h4>
+                    <p>
+                      {{selected.desc}}
+                    </p>
+                    <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                      <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                    </svg>
+                  </div>   
+                </div>
+              </div>
+              &nbsp;
               &nbsp;
               <b>{{selected.title}}</b>
             </span>
@@ -113,16 +127,12 @@
               &nbsp;
               &nbsp;
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-                <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-              </svg>
-              &nbsp;
-              &nbsp;
-              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path fill="#000000" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
               </svg>
             </span>
           </div>
         </div>
+  
       </div>
     </div>
   </div>

@@ -81,4 +81,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   $scope.setSelected = function (item) {
     $scope.selected = item;
   }
+  $scope.setMore = function () {
+    $scope.more = !$scope.more;
+  }
 });
