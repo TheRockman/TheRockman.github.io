@@ -98,6 +98,7 @@ body{
   border-bottom:1px solid #e0e0e0;
   margin-bottom: 1rem;
   cursor: pointer;
+  position: relative;
 }
 .psuedo-table-row:hover{
   background: #f8f2fc;
@@ -134,6 +135,15 @@ li:hover{
   overflow: hidden;
   background-size: cover;
   border-radius: 50%;
+}
+
+.cover{
+  background: #cacaca;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
 }
 
 .align{
@@ -216,8 +226,18 @@ li:hover{
 .album{
   width: 50px;
   height: auto;
+  border-radius: 50%;
+  animation-name: animation;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
+@keyframes animation {
+from {transform: rotate(0deg);}
+to {transform: rotate(360deg);}
+}
 /*Animation*/
 /*@keyframes animation {
 from {}
