@@ -134,16 +134,29 @@ body{
 .image{
   position: absolute;
   bottom: 6%;
-  width: 170px;
-  height: auto;
-  right: -6%;
+  width: auto;
+  height: 250px;
+  right: -4%;
   transition: var(--animation);
   transform-origin: bottom;
-  z-index: 10;
+  z-index: 5;
 }
 .card:hover > .image{
   transform: rotate(1deg) scale(1.1);
   filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.1));
+}
+
+.searchy{
+  background: transparent;
+  border:none;
+  width: 95%;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none!important;
+  padding: 1rem;
+}
+
+.subtitle{
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .align{
@@ -152,6 +165,14 @@ body{
 }
 .justify{
   justify-content: space-between;
+}
+
+.nav-wrap{
+  position: sticky;
+  top: 0;
+  background: white;
+  box-shadow: var(--level2);
+  z-index: 10;
 }
 
 /*Fab*/
