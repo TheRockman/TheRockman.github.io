@@ -224,6 +224,10 @@ body{
 svg{
   user-select: none;
 }
+
+.center{
+  text-align: center;
+}
 /*Fab*/
 /*.fab{
     background:dodgerblue;

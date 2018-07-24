@@ -17,16 +17,16 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       url: 'https://vignette.wikia.nocookie.net/pachirapong/images/6/6d/Luigi.png/revision/latest?cb=20171124211639'
     },
     {
-      title: 'Link',
-      subtitle: 'Hero of Time, reborn',
+      title: 'Toad',
+      subtitle: '1 in a million',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      url: 'https://vignette.wikia.nocookie.net/vsbattles/images/f/f6/Link_breath_of_the_wild_render_by_jrrenders-dad872p.png/revision/latest?cb=20170717130012'
+      url: 'https://vignette.wikia.nocookie.net/mario/images/9/94/Toad_Artwork_-_Super_Mario_3D_Land.png/revision/latest?cb=20120513165845'
     },
     {
-      title: 'Toon Link',
-      subtitle: 'Hero of Time',
+      title: 'Peach',
+      subtitle: 'Princess of the mushroom kingdom',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      url: 'http://www.pngmart.com/files/2/Zelda-Link-PNG-Picture.png'
+      url: 'https://i.pinimg.com/originals/74/ab/58/74ab58c82e892b0a9f3efee2dcc83a05.png'
     },
     {
       title: 'Waluigi',
