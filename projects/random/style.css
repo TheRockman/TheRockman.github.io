@@ -221,6 +221,9 @@ body{
   margin: var(--spacer);
 }
 
+svg{
+  user-select: none;
+}
 /*Fab*/
 /*.fab{
     background:dodgerblue;
