@@ -27,6 +27,12 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       subtitle: 'Hero of Time',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
       url: 'http://www.pngmart.com/files/2/Zelda-Link-PNG-Picture.png'
+    },
+    {
+      title: 'Waluigi',
+      subtitle: 'Number one',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      url: 'https://vignette.wikia.nocookie.net/supermarioglitchy4/images/4/46/Waluigi.png/revision/latest?cb=20140622194605'
     }
   ]
 });

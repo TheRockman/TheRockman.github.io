@@ -116,6 +116,48 @@ body{
   background: var(--red);
 }
 
+.panel{
+  padding: 1rem;
+  margin: 0.5rem;
+  background: goldenrod;
+  box-shadow: var(--level1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--animation);
+  transform-origin: top center;
+}
+
+.panel:hover{
+  transform: perspective(50em) rotateX(15deg) ;
+  background: #f1bb35;
+  box-shadow: var(--level2);
+}
+.panel::after{
+  content: " ";
+  width: 100%;
+  height: 80px;
+  background: #f1c966;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  opacity: 0.8;
+  transform: rotate(45deg);
+}
+.panel:hover::after{
+  transition: right 1s cubic-bezier(.33,.11,.02,.99);
+  right: 100%;
+}
+.panel-util{
+  padding: 1rem;
+  margin: 0.5rem;
+  background: white;
+  box-shadow: var(--level1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
 .menu{
   position: fixed;
   left: 0;
@@ -173,6 +215,10 @@ body{
   background: white;
   box-shadow: var(--level2);
   z-index: 10;
+}
+
+.spacer{
+  margin: var(--spacer);
 }
 
 /*Fab*/
