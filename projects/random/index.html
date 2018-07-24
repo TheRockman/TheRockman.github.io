@@ -10,9 +10,12 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <div class="menu" tabindex="0">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path fill="#fff" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+    <div class="menu">
+      <svg class="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="#f4eff3" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+      </svg>
+      <svg class="pointer" style="width:24px;height:24px;margin-top: 88vh;" viewBox="0 0 24 24">
+        <path fill="#f4eff3" d="M16,20H20V16H16M16,14H20V10H16M10,8H14V4H10M16,8H20V4H16M10,14H14V10H10M4,14H8V10H4M4,20H8V16H4M10,20H14V16H10M4,8H8V4H4V8Z" />
       </svg>
     </div>
     <div class="row">
@@ -34,58 +37,11 @@
             <input type="text" class="searchy" ng-model="searchText" ng-change="setSearchText(searchText);" placeholder="Search..." name="" value="">
           </div>
         </div>
-        <h3 class="spacer">Achievements:</h3>
-        <div class="fluid-row dense">
-          <div class="fluid-flex panel align justify">
-            <span class="align">
-              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
-                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
-              </svg>
-              <b>Do the thing</b>
-            </span>
-            <small>Just now</small>
-          </div>
-          <div class="fluid-flex panel align justify">
-            <span class="align">
-              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
-                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
-              </svg>
-              <b>Do the thing</b>
-            </span>
-            <small>Today</small>
-          </div>
-          <div class="fluid-flex panel align justify">
-            <span class="align">
-              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
-                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
-              </svg>
-              <b>Do the thing</b>
-            </span>
-            <small>1 day ago</small>
-          </div>
-          <div class="fluid-flex panel align justify">
-            <span class="align">
-              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
-                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
-              </svg>
-              <b>Do the thing</b>
-            </span>
-            <small>2 days ago</small>
-          </div>
-          <div class="fluid-flex panel-util align justify">
-            <span class="align">
-              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
-                <path fill="#e0e0e0" d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z" />
-              </svg>
-              <b>Show all achievements</b>
-            </span>
-          </div>
-        </div>
-        <h3 class="spacer">My top 5:</h3>
+        <h5 class="spacer">My top 5:</h5>
         <div class="fluid-row">
-            <div class="fluid-flex" ng-repeat="item in items | filter:searchText">
+            <div class="fluid-flex" ng-repeat="item in items | orderBy:'rank' | filter:searchText" >
               <div class="card">
-                <b>{{item.title}}</b>
+                <b>#{{item.rank}} {{item.title}}</b>
                 <br>
                 <small class="subtitle">{{item.subtitle}}</small>
                 <p>{{item.desc}}</p>
@@ -94,13 +50,65 @@
             </div>
             <div class="fluid-flex">
               <div class="card center" style="padding-right:1rem;">
-                <svg style="width:45px;height:45px; margin-top:18%;" viewBox="0 0 24 24">
+                <svg style="width:45px;height:45px; margin-top:80px;" viewBox="0 0 24 24">
                   <path fill="#e0e0e0" d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z" />
                 </svg>
                 <br>
                 <b>Show all characters</b>
               </div>
             </div>
+        </div>
+        <h5 class="spacer">Achievements:</h5>
+        <div class="fluid-row dense">
+          <div class="fluid-flex panel align justify">
+            <span class="align">
+              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
+                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+              </svg>
+              &nbsp;
+              <b>Place first</b>
+            </span>
+            <small>Just now</small>
+          </div>
+          <div class="fluid-flex panel align justify">
+            <span class="align">
+              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
+                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+              </svg>
+              <b>Beat 5 levels</b>
+            </span>
+            &nbsp;
+            <small>Today</small>
+          </div>
+          <div class="fluid-flex panel align justify">
+            <span class="align">
+              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
+                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+              </svg>
+              &nbsp;
+              <b>Get 100 coins</b>
+            </span>
+            <small>1 day ago</small>
+          </div>
+          <div class="fluid-flex panel align justify">
+            <span class="align">
+              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
+                  <path fill="#c8971b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+              </svg>
+              &nbsp;
+              <b>Get 20 stars</b>
+            </span>
+            <small>2 days ago</small>
+          </div>
+          <div class="fluid-flex panel-util align justify">
+            <span class="align">
+              <svg style="width:45px;height:45px" viewBox="0 0 24 24">
+                <path fill="#e0e0e0" d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z" />
+              </svg>
+              &nbsp;
+              <b>Show all achievements</b>
+            </span>
+          </div>
         </div>
       </div>
     </div>
