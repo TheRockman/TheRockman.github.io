@@ -126,6 +126,8 @@ textarea{
   outline: none;
   border-bottom:1px solid var(--highlight);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   margin-bottom: calc(var(--spacer) + var(--spacer));
 }
 
@@ -158,6 +160,8 @@ textarea{
   outline: none!important;
   min-width: 20rem;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   margin-bottom: var(--spacer);
   resize: vertical;
 }
@@ -186,6 +190,8 @@ textarea:focus{
   box-shadow: var(--level2);
   transform: translateX(-100%);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 .an-context-menu{
   display: none;
@@ -217,6 +223,8 @@ input[type=radio]::before, input[type="checkbox"]::before{
   background: var(--highlight);
   margin-right: var(--spacer);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   box-shadow: inset 0px 0px 0px 0px rgba(0,0,0,0.1);
   cursor: pointer;
 }
@@ -258,6 +266,8 @@ ul{
 li{
   list-style: none;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   padding: var(--spacer);
   border-bottom: 1px solid var(--highlight);
 }
@@ -280,12 +290,16 @@ li:hover{
 .an-accordion-content{
   padding: var(--spacer);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 details summary::-webkit-details-marker {
   display:none;
 }
 summary{
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 details[open] > summary{
   color: var(--color-inverse);
@@ -313,6 +327,8 @@ details[open] > summary svg > path{
   background-color: var(--accent);
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   color: var(--color-inverse);
 }
 
@@ -426,6 +442,8 @@ details[open] > summary svg > path{
   padding: var(--spacer);
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 .an-keyline-break{
   transform: translateY(-33%);

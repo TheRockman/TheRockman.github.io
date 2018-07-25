@@ -21,6 +21,8 @@
 .animationIf.ng-enter,
 .animationIf.ng-leave {
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 .animationIf.ng-enter,
 .animationIf.ng-leave.ng-leave-active {
@@ -195,6 +197,8 @@ h1, h2, h3, h4{
   opacity: 0;
   pointer-events: none;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 .filterHeader{
   display: flex;
@@ -281,6 +285,8 @@ h1, h2, h3, h4{
   margin: var(--spacer);
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   margin-top: 8vh;
   overflow: hidden;
 }
@@ -323,6 +329,8 @@ h1, h2, h3, h4{
     height: 0;
     opacity: 0;
     transition: var(--animation);
+    -webkit-transition: var(--animation);
+    -moz-transition: var(--animation);
   }
   .mobile-menu{
     opacity: 1;

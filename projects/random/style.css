@@ -125,6 +125,8 @@ body{
   position: relative;
   overflow: hidden;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   transform-origin: top center;
 }
 
@@ -168,6 +170,8 @@ body{
   text-align: center;
   padding-top: var(--spacer);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   box-shadow: var(--level1);
   z-index: 100;
 }
@@ -179,6 +183,8 @@ body{
   height: 250px;
   right: -4%;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   transform-origin: bottom;
   z-index: 5;
 }

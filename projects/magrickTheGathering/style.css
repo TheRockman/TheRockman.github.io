@@ -35,6 +35,8 @@ body{
   padding: 5px;
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   border: 5px solid black;
 }
 .card:hover {

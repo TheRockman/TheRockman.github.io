@@ -84,6 +84,8 @@ body{
 .card {
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   width: 33%;
   margin: 0 auto;
   background: white;

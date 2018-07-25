@@ -249,7 +249,9 @@ li:hover{
   
 }
 .now-playing.active{
-  transition:var(--animation);
+  transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   position: fixed;
   z-index: 100;
   left: 0;
@@ -260,7 +262,9 @@ li:hover{
   padding: 1rem;
 }
 .active>.more-modal{
-  transition:var(--animation);
+  transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   background: white;
   padding: 1rem;
   width: 33%;
@@ -269,7 +273,9 @@ li:hover{
 }
 .active>.more-modal>.album{
   width: 250px;
-  transition:var(--animation);
+  transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 /*Animation*/
 /*@keyframes animation {

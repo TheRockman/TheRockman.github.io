@@ -76,6 +76,8 @@ a{
   right: 2%;
   top: 50px;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 .poster > img{
   cursor: pointer;
@@ -86,6 +88,8 @@ a{
   transform-origin: center;
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
 }
 .poster:hover > img{
   z-index: 100!important;
@@ -187,6 +191,8 @@ svg{
   background: orange;
   border-radius: 50%;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   transform-origin: center;
   transform: scale(0.01);
   position: absolute;

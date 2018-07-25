@@ -66,12 +66,16 @@ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%) fixed;
 .card {
   box-shadow: var(--level1);
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   width: 100%;
 }
 
 iframe{
   width: 100%;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   padding-bottom: var(--spacer);
 }
 .frame-wrap{
@@ -116,6 +120,8 @@ iframe{
   cursor: pointer;
   border-bottom: 1px solid #444;
   transition: var(--animation);
+  -webkit-transition: var(--animation);
+  -moz-transition: var(--animation);
   display: flex;
   justify-content: space-between;
   align-items: center;
