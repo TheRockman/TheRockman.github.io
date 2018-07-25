@@ -1,0 +1,364 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+/*Quick start body*/
+@font-face {
+  font-family: 'Roboto';
+  src: url('roboto.eot');
+  src: url('roboto.eot?#iefix') format('embedded-opentype'),
+  url('roboto.svg#svgFontName') format('svg');
+}
+
+.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}
+
+.inv{
+  background: #76662c;
+  border: 3px outset #666;
+  margin: 5px;
+}
+#itemlist{
+  margin: 0 1rem;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.justify{
+  justify-content: space-between;
+}
+.jcent{
+  justify-content: center;
+}
+
+body{
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  overflow-x: hidden;
+}
+
+.bin {
+  min-height: 50px;
+  min-width: 50px;
+  background: #e0e0e0;
+  float: left;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 5px;
+  position: relative;
+}
+.bin-icon{
+  transform: scale(0.4);
+  transform-origin: center;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+.item {
+  cursor: pointer;
+  min-height: 50px;
+  min-width: 50px;
+  background: #333;
+  border: 3px outset #666;
+  position: relative;
+  float: left;
+}
+.hover-over{
+  font-size: 80%;
+  position: absolute;
+  top: 20px;
+  right: -125px;
+  width: auto;
+  min-height: 125px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  opacity: 0;
+  z-index: 100;
+  user-select: none;
+  pointer-events: none;
+  transition: 1s all ease;
+  padding: 1rem;
+}
+.item:hover > .hover-over{
+  opacity: 1;
+}
+
+.drag > .hover-over{
+  display: none!important;
+}
+.over {
+  box-shadow: 0px 0px 5px 2px rgba(253,255,217,1);
+}
+
+svg{
+  pointer-events: none;
+}
+
+.legendary{
+  border: 3px outset purple;
+}
+.legendary .name {
+  color: purple;
+}
+
+.rare{
+  border: 3px outset goldenrod;
+}
+.rare .name {
+  color: goldenrod;
+}
+
+.uncommon{
+  border: 3px outset dodgerblue;
+}
+.uncommon .name {
+  color: dodgerblue;
+}
+
+.green-gem{
+  background: url('1.png') center center;
+      background-size: contain;
+}
+.cloak{
+  background: url('2.png') center center;
+      background-size: contain;
+}
+.flask{
+  background: url('3.png') center center;
+      background-size: contain;
+}
+.tiara{
+  background: url('4.png') center center;
+      background-size: contain;
+}
+.sword{
+  background: url('5.png') center center;
+      background-size: contain;
+}
+.boot{
+  background: url('6.png') center center;
+      background-size: contain;
+}
+.gem-blue{
+  background: url('7.png') center center;
+      background-size: contain;
+}
+.broken-sword{
+  background: url('8.png') center center;
+      background-size: contain;
+}
+.garnet-blue{
+  background: url('9.png') center center;
+      background-size: contain;
+}
+.skull{
+  background: url('10.png') center center;
+      background-size: contain;
+}
+.flask-blue{
+  background: url('11.png') center center;
+      background-size: contain;
+}
+.mace{
+  background: url('12.png') center center;
+      background-size: contain;
+}
+.flask-small{
+  background: url('13.png') center center;
+      background-size: contain;
+}
+
+.xx{
+  margin:25px 1px;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.border{
+  border: 50px solid transparent;
+  min-height: 200px;
+  border-image: url("frame.png") 27;
+  border-image-slice: 90;
+  color:#f5f5f5;
+  padding: 1rem;
+  /*background: #c5a880;*/
+  border-radius: 40px;
+}
+
+.toolbar{
+  background: black;
+  padding: 0.5rem;
+}
+.toolbar > select, .toolbar > input{
+  padding: 0.5rem;
+  color: black;
+  background: white;
+  outline: none;
+  border: none;
+}
+
+
+/* ng-animate */
+/* .fade{
+  transition:0.5s linear opacity;
+}
+.fade.ng-hide {
+  opacity:0;
+} */
+
+/*flex*/
+/*.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}*/
+
+/*fluid layout*/
+/*
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
+*/
+
+/*Card*/
+/*.card {
+  background: #fff;
+  border-radius: 2px;
+  margin: var(--spacer);
+  padding: var(--spacer);
+  box-shadow: var(--level1);
+  transition: var(--animation);
+}
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*background*/
+/*
+background: url(http://lorempixum.com/1440/900/sports) no-repeat center center fixed;
+background-size: cover;
+*/

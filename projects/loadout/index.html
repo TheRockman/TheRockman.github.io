@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+</head>
+<body ng-app="dragDrop" ng-controller="DragDropCtrl">
+  <div class="row">
+    <div class="flex"></div>
+    <div class="flex x3">
+      <div class="row">
+        <div class="flex">
+          <div class="inv xx border">
+            <div class="align jcent">
+              <div class="bin" title="face" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                <path fill="#000000" d="M9,11.75A1.25,1.25 0 0,0 7.75,13A1.25,1.25 0 0,0 9,14.25A1.25,1.25 0 0,0 10.25,13A1.25,1.25 0 0,0 9,11.75M15,11.75A1.25,1.25 0 0,0 13.75,13A1.25,1.25 0 0,0 15,14.25A1.25,1.25 0 0,0 16.25,13A1.25,1.25 0 0,0 15,11.75M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,11.71 4,11.42 4.05,11.14C6.41,10.09 8.28,8.16 9.26,5.77C11.07,8.33 14.05,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20Z" />
+                </svg>
+              </div>
+            </div>
+            <div class="align justify">
+              <div class="bin" title="weapon" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M6.92,5H5L14,14L15,13.06M19.96,19.12L19.12,19.96C18.73,20.35 18.1,20.35 17.71,19.96L14.59,16.84L11.91,19.5L10.5,18.09L11.92,16.67L3,7.75V3H7.75L16.67,11.92L18.09,10.5L19.5,11.91L16.83,14.58L19.95,17.7C20.35,18.1 20.35,18.73 19.96,19.12Z" />
+                </svg>
+              </div>
+              <div class="bin" title="armor" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M16,21H8A1,1 0 0,1 7,20V12.07L5.7,13.12C5.31,13.5 4.68,13.5 4.29,13.12L1.46,10.29C1.07,9.9 1.07,9.27 1.46,8.88L7.34,3H9C9,4.1 10.34,5 12,5C13.66,5 15,4.1 15,3H16.66L22.54,8.88C22.93,9.27 22.93,9.9 22.54,10.29L19.71,13.12C19.32,13.5 18.69,13.5 18.3,13.12L17,12.07V20A1,1 0 0,1 16,21M20.42,9.58L16.11,5.28C15.8,5.63 15.43,5.94 15,6.2C14.16,6.7 13.13,7 12,7C10.3,7 8.79,6.32 7.89,5.28L3.58,9.58L5,11L8,9H9V19H15V9H16L19,11L20.42,9.58Z" />
+                </svg>
+              </div>
+              <div class="bin" title="shield" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M21,11C21,16.55 17.16,21.74 12,23C6.84,21.74 3,16.55 3,11V5L12,1L21,5V11M12,21C15.75,20 19,15.54 19,11.22V6.3L12,3.18L5,6.3V11.22C5,15.54 8.25,20 12,21Z" />
+                </svg>
+              </div>
+            </div>
+            <div class="align jcent">
+              <div class="bin" title="trinket" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M16,9H19L14,16M10,9H14L12,17M5,9H8L10,16M15,4H17L19,7H16M11,4H13L14,7H10M7,4H9L8,7H5M6,2L2,8L12,22L22,8L18,2H6Z" />
+                </svg>
+              </div>
+              <div class="bin" title="boots" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M17,2A2,2 0 0,1 19,4V7A2,2 0 0,1 17,9V17C17,17.85 16.5,18.57 15.74,18.86L9.5,21.77C8.5,22.24 7.29,21.81 6.83,20.81L6,19C5.5,18 5.95,16.8 6.95,16.34L10,14.91V9A2,2 0 0,1 8,7V4A2,2 0 0,1 10,2H17M10,4V7H17V4H10Z" />
+                </svg>
+              </div>
+              <div class="bin" title="trinket" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M16,9H19L14,16M10,9H14L12,17M5,9H8L10,16M15,4H17L19,7H16M11,4H13L14,7H10M7,4H9L8,7H5M6,2L2,8L12,22L22,8L18,2H6Z" />
+                </svg>
+              </div>
+            </div>
+            
+            <br>
+            <br>
+            <div class="align jcent">
+              <div class="bin" title="potion" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M6,22A3,3 0 0,1 3,19C3,18.4 3.18,17.84 3.5,17.37L9,7.81V6A1,1 0 0,1 8,5V4A2,2 0 0,1 10,2H14A2,2 0 0,1 16,4V5A1,1 0 0,1 15,6V7.81L20.5,17.37C20.82,17.84 21,18.4 21,19A3,3 0 0,1 18,22H6M5,19A1,1 0 0,0 6,20H18A1,1 0 0,0 19,19C19,18.79 18.93,18.59 18.82,18.43L16.53,14.47L14,17L8.93,11.93L5.18,18.43C5.07,18.59 5,18.79 5,19M13,10A1,1 0 0,0 12,11A1,1 0 0,0 13,12A1,1 0 0,0 14,11A1,1 0 0,0 13,10Z" />
+                </svg>
+              </div>
+              <div class="bin" title="potion" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M6,22A3,3 0 0,1 3,19C3,18.4 3.18,17.84 3.5,17.37L9,7.81V6A1,1 0 0,1 8,5V4A2,2 0 0,1 10,2H14A2,2 0 0,1 16,4V5A1,1 0 0,1 15,6V7.81L20.5,17.37C20.82,17.84 21,18.4 21,19A3,3 0 0,1 18,22H6M5,19A1,1 0 0,0 6,20H18A1,1 0 0,0 19,19C19,18.79 18.93,18.59 18.82,18.43L16.53,14.47L14,17L8.93,11.93L5.18,18.43C5.07,18.59 5,18.79 5,19M13,10A1,1 0 0,0 12,11A1,1 0 0,0 13,12A1,1 0 0,0 14,11A1,1 0 0,0 13,10Z" />
+                </svg>
+              </div>
+              <div class="bin" title="potion" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M6,22A3,3 0 0,1 3,19C3,18.4 3.18,17.84 3.5,17.37L9,7.81V6A1,1 0 0,1 8,5V4A2,2 0 0,1 10,2H14A2,2 0 0,1 16,4V5A1,1 0 0,1 15,6V7.81L20.5,17.37C20.82,17.84 21,18.4 21,19A3,3 0 0,1 18,22H6M5,19A1,1 0 0,0 6,20H18A1,1 0 0,0 19,19C19,18.79 18.93,18.59 18.82,18.43L16.53,14.47L14,17L8.93,11.93L5.18,18.43C5.07,18.59 5,18.79 5,19M13,10A1,1 0 0,0 12,11A1,1 0 0,0 13,12A1,1 0 0,0 14,11A1,1 0 0,0 13,10Z" />
+                </svg>
+              </div>
+              <div class="bin" title="potion" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M6,22A3,3 0 0,1 3,19C3,18.4 3.18,17.84 3.5,17.37L9,7.81V6A1,1 0 0,1 8,5V4A2,2 0 0,1 10,2H14A2,2 0 0,1 16,4V5A1,1 0 0,1 15,6V7.81L20.5,17.37C20.82,17.84 21,18.4 21,19A3,3 0 0,1 18,22H6M5,19A1,1 0 0,0 6,20H18A1,1 0 0,0 19,19C19,18.79 18.93,18.59 18.82,18.43L16.53,14.47L14,17L8.93,11.93L5.18,18.43C5.07,18.59 5,18.79 5,19M13,10A1,1 0 0,0 12,11A1,1 0 0,0 13,12A1,1 0 0,0 14,11A1,1 0 0,0 13,10Z" />
+                </svg>
+              </div>
+              <div class="bin" title="potion" droppable drop="handleDrop()">
+                <svg class="bin-icon" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M6,22A3,3 0 0,1 3,19C3,18.4 3.18,17.84 3.5,17.37L9,7.81V6A1,1 0 0,1 8,5V4A2,2 0 0,1 10,2H14A2,2 0 0,1 16,4V5A1,1 0 0,1 15,6V7.81L20.5,17.37C20.82,17.84 21,18.4 21,19A3,3 0 0,1 18,22H6M5,19A1,1 0 0,0 6,20H18A1,1 0 0,0 19,19C19,18.79 18.93,18.59 18.82,18.43L16.53,14.47L14,17L8.93,11.93L5.18,18.43C5.07,18.59 5,18.79 5,19M13,10A1,1 0 0,0 12,11A1,1 0 0,0 13,12A1,1 0 0,0 14,11A1,1 0 0,0 13,10Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex">
+          <div id="itemlist">
+            <div class="toolbar align justify">
+              <input type="text" placeholder="Filter..." ng-model="filter.displayname" name="" value="">
+              <select ng-model="order" name="" >
+                <option value="" selected >Order by...</option>
+                <option value="rarity">Rarity</option>
+                <option value="displayname">Name</option>
+                <option value="itemType">Type</option>
+              </select>
+            </div>
+            <div ng-repeat="item in inventory | orderBy: order | filter : filter" class="item {{item.class}} {{item.rarity}}" title="{{item.itemType}}" id="{{$index}}" draggable>
+              <div class="hover-over">
+                <strong class="name">{{item.displayname}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex"></div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
