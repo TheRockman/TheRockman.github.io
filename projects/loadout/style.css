@@ -52,12 +52,14 @@
 }
 
 .inv{
-  background: #76662c;
+  background: #e8c18a;
   border: 3px outset #666;
   margin: 5px;
 }
 #itemlist{
-  margin: 0 1rem;
+  margin: 1.5rem 1rem;
+  float: left;
+  background: #333;
 }
 
 .align{
@@ -232,15 +234,16 @@ svg{
 }
 
 .toolbar{
-  background: black;
   padding: 0.5rem;
 }
 .toolbar > select, .toolbar > input{
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   color: black;
+  width: 100%;
   background: white;
   outline: none;
   border: none;
+  margin: 5px 0;
 }
 
 
