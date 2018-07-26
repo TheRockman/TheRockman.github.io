@@ -54,7 +54,7 @@
 .inv{
   background: #e8c18a;
   border: 3px outset #666;
-  margin: 5px;
+  margin: 1.5rem 1rem!important;
 }
 #itemlist{
   margin: 1.5rem 1rem;
@@ -114,17 +114,14 @@ body{
 .hover-over{
   font-size: 80%;
   position: absolute;
-  top: 20px;
-  right: -125px;
-  width: auto;
-  min-height: 125px;
+  top: 50px;
+  width: 100px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   opacity: 0;
   z-index: 100;
   user-select: none;
   pointer-events: none;
-  transition: 1s all ease;
   padding: 1rem;
 }
 .item:hover > .hover-over{
