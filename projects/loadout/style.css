@@ -115,7 +115,7 @@ body{
   font-size: 80%;
   position: absolute;
   top: 50px;
-  width: 100px;
+  width: 125px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   opacity: 0;
@@ -137,6 +137,10 @@ body{
 
 svg{
   pointer-events: none;
+}
+
+.name{
+  text-transform: capitalize;
 }
 
 .legendary{
@@ -210,6 +214,30 @@ svg{
 }
 .flask-small{
   background: url('13.PNG') center center;
+      background-size: contain;
+}
+.bone{
+  background: url('14.PNG') center center;
+      background-size: contain;
+}
+.wh{
+  background: url('15.PNG') center center;
+      background-size: contain;
+}
+.herb{
+  background: url('16.PNG') center center;
+      background-size: contain;
+}
+.lid{
+  background: url('17.PNG') center center;
+      background-size: contain;
+}
+.armor-boot{
+  background: url('18.PNG') center center;
+      background-size: contain;
+}
+.cloth{
+  background: url('19.PNG') center center;
       background-size: contain;
 }
 

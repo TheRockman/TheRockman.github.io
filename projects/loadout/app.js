@@ -204,6 +204,12 @@ app.controller('DragDropCtrl', function($scope) {
       rarity:  'common'
     },
     {
+      displayname: "Pot lid",
+      itemType:"shield",
+      class: "lid",
+      rarity:  'common'
+    },
+    {
       displayname: "Pure green",
       itemType:"trinket",
       class: "green-gem",
@@ -220,6 +226,36 @@ app.controller('DragDropCtrl', function($scope) {
       itemType:"weapon",
       class: "broken-sword",
       rarity:  'common'
+    },
+    {
+      displayname: "Bone splinter",
+      itemType:"weapon",
+      class: "bone",
+      rarity:  'rare'
+    },
+    {
+      displayname: "Sorting hat",
+      itemType:"face",
+      class: "wh",
+      rarity:  'legendary'
+    },
+    {
+      displayname: "Herb",
+      itemType:"potion",
+      class: "herb",
+      rarity:  'common'
+    },
+    {
+      displayname: "Steel boot",
+      itemType:"boots",
+      class: "armor-boot",
+      rarity:  'common'
+    },
+    {
+      displayname: "Sack cloth rags",
+      itemType:"armor",
+      class: "cloth",
+      rarity:  'rare'
     }
   ];
   (function () {

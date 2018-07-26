@@ -90,16 +90,7 @@
         </div>
         <div class="flex">
           <div id="itemlist" class="xx border">
-            <div class="toolbar">
-              <input type="text" placeholder="Filter..." ng-model="filter.displayname" name="" value="">
-              <select ng-model="order" name="" >
-                <option value="" selected >Order by...</option>
-                <option value="rarity">Rarity</option>
-                <option value="displayname">Name</option>
-                <option value="itemType">Type</option>
-              </select>
-            </div>
-            <div ng-repeat="item in inventory | orderBy: order | filter : filter" class="item {{item.class}} {{item.rarity}}" title="{{item.itemType}}" id="{{$index}}" draggable>
+            <div ng-repeat="item in inventory | orderBy: 'itemType' " class="item {{item.class}} {{item.rarity}}" title="{{item.itemType}}" id="{{$index}}" draggable>
               <div class="hover-over">
                 <strong class="name">{{item.displayname}}</strong>
               </div>
