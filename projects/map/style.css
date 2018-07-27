@@ -1,0 +1,90 @@
+:root{
+  --animation: transform 600ms cubic-bezier(.33,.11,.02,.99);
+  --s: 1em;
+
+  --texture: url('https://nickdablin.files.wordpress.com/2013/12/step5.gif?w=700') center center;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+/*Quick start body*/
+@font-face {
+  font-family: 'Roboto';
+  src: url('roboto.eot');
+  src: url('roboto.eot?#iefix') format('embedded-opentype'),
+  url('roboto.svg#svgFontName') format('svg');
+}
+
+body{
+  margin: 0;
+  background: #111;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+.stage > div, .tall:before, .tall:after{
+  width:var(--s);
+  height:var(--s);
+}
+.stage{
+  width:20em;
+  height:20em;
+  margin:0 auto;
+  position:relative;
+  top:.25em;
+  box-shadow:.25em .25em 1em rgba(0,0,0,.2);
+  transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
+  transform-style: preserve-3d;
+  outline: 0.5px solid rgba(255,255,255,0.5);
+  
+}
+.stage > div{
+  float:left;
+  outline: 0.5px solid rgba(255,255,255,0.1);
+  transform-origin: 97% 97%;
+  position:relative;
+  box-shadow:.125em .125em .5em rgba(0,0,0,.09);
+  transition: var(--animation);
+}
+.stage > div:hover{
+  cursor: pointer;
+  background: white;
+}
+
+.tall{
+  outline: none;
+  background:#6d9985;
+  background-size: cover!important;
+  transform: translateZ(var(--s));
+  transform-style: preserve-3d;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+.tall:before, .tall:after{
+  content:"";
+  background: #666b61;
+  background-size: cover!important;
+  position: absolute;
+  transform-origin: 100% 100%;
+}
+.tall:before{
+  transform:rotateX(-90deg) translateY(1em);
+  box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
+}
+.tall:after{
+  filter: brightness(0.5);
+  transform:rotateY(90deg) translateX(1em);
+  box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+}
+
+@keyframes example {
+    from {  transform: translateZ(1em);}
+    to {  transform: translateZ(0.9em);}
+}
