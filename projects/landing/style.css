@@ -1,8 +1,8 @@
 :root{
   --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
   --spacer: 1rem;
-  --gradient-part1: #4568dc;
-  --gradient-part2: #b06ab3;
+  --gradient-part1: #a36cf3;
+  --gradient-part2: #df72e8;
 
   /*shadows*/
   --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -24,7 +24,7 @@ body{
   margin: 0;
   background: #f5f5f5;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 nav{
   padding: var(--spacer);
@@ -48,7 +48,8 @@ nav{
   position: relative;
 }
 .hero::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 100 100' fill='rgb(176,106,179)' fill-opacity='1'%3E%3Cpolygon points='0,0 100,0 0,100'%3E%3C/polygon%3E%3C/svg%3E");
+  /* Fill is var(--gradient-part2) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 100 100' fill='#df72e8' fill-opacity='1'%3E%3Cpolygon points='0,0 100,0 0,100'%3E%3C/polygon%3E%3C/svg%3E");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -61,12 +62,41 @@ nav{
   z-index: 1;
   bottom: -100px;
 }
+.hero button{
+  outline: none;
+  border:none;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  background: #f4e8fd;
+  border-radius: 25px;
+  box-shadow: var(--level1);
+  cursor: pointer;
+}
+.hero .blurb{
+  line-height: 1.5rem;
+}
+.hero-clipart{
+  height: 100%;
+  width: auto;
+  filter: hue-rotate(30deg);
+  position: relative;
+  z-index: 100;
+}
 .util > a {
   margin:0 0.5rem;
   color: white!important;
   text-decoration: none;
 }
 
+.pad{
+  padding: var(--spacer);
+}
+.center{
+  text-align: center;
+}
+.spacer{
+  margin-top: 6%;
+}
 /* ng-animate */
 /* .fade{
   transition:0.5s linear opacity;
@@ -106,6 +136,12 @@ nav{
   }
   .flex {
     flex: 1 1 auto;
+  }
+  .hero-clipart{
+    height: 250px;
+  }
+  .blurb-wrap{
+    text-align: center;
   }
 }
 
