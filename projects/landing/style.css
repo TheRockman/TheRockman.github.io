@@ -3,6 +3,7 @@
   --spacer: 1rem;
   --gradient-part1: #a36cf3;
   --gradient-part2: #df72e8;
+  --accent: orange;
 
   /*shadows*/
   --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -25,6 +26,7 @@ body{
   background: #f5f5f5;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  overflow-x: hidden;
 }
 nav{
   padding: var(--spacer);
@@ -62,22 +64,12 @@ nav{
   z-index: 1;
   bottom: -100px;
 }
-.hero button{
-  outline: none;
-  border:none;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  background: #f4e8fd;
-  border-radius: 25px;
-  box-shadow: var(--level1);
-  cursor: pointer;
-}
 .hero .blurb{
   line-height: 1.5rem;
 }
 .hero-clipart{
-  height: 100%;
-  width: auto;
+  width: 100%;
+  height: auto;
   filter: hue-rotate(30deg);
   position: relative;
   z-index: 100;
@@ -86,6 +78,79 @@ nav{
   margin:0 0.5rem;
   color: white!important;
   text-decoration: none;
+}
+.banner{
+  background-image: linear-gradient(to top, var(--gradient-part1), var(--gradient-part2));
+  margin:5% 0;
+  color: white;
+  min-height: 50vh;
+}
+.product-card{
+  background: #fff;
+  border-radius: 2px;
+  margin: var(--spacer);
+  box-shadow: var(--level2);
+  transition: var(--animation);
+  min-height: 50vh;
+  margin-top: -1rem;
+  position: relative;
+}
+.prod-img{;
+  position: relative;
+  background: var(--accent);
+  cursor: pointer;
+}
+.prod-img > img{
+  position: absolute;
+  left: -10%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  transition: var(--animation);
+  transform-origin: center;
+  filter: drop-shadow(15px 15px 5px rgba(0,0,0,0.3));
+}
+.prod-img:hover > img{
+  transform: scale(1.1) rotate(2deg);
+  
+}
+.prod-img::after{
+  content: "New!";
+  position: absolute;
+  background: #333;
+  color:white;
+  font-size: 48px;
+  min-width: 250px;
+  text-align: center;
+  transform-origin: center;
+  transform: rotate(-5deg);
+  bottom: -5px;
+  right: -5px;
+}
+.prod-desc{
+  padding: var(--spacer);
+  text-align: left;
+  color: black;
+}
+.button{
+  outline: none;
+  border:none;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  background: #f4e8fd;
+  border-radius: 25px;
+  min-width: 150px;
+  box-shadow: var(--level1);
+  cursor: pointer;
+}
+.shop-now{
+  color: white;
+  background: var(--accent);
+}
+.shop-later{
+  color: var(--accent);
+  background: white;
 }
 
 .pad{
@@ -96,6 +161,9 @@ nav{
 }
 .spacer{
   margin-top: 6%;
+}
+.subtext{
+  opacity: 0.4;
 }
 /* ng-animate */
 /* .fade{
@@ -126,6 +194,9 @@ nav{
     flex: 1;
         -ms-flex: 1;
   }
+  .content{
+    margin-top: 8%;
+  }
 }
 @media screen and (max-width: 768px) {
   .row {
@@ -142,6 +213,15 @@ nav{
   }
   .blurb-wrap{
     text-align: center;
+  }
+  .content{
+    margin-top: 40%;
+  }
+  .prod-img > img{
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0;
   }
 }
 
@@ -174,7 +254,7 @@ nav{
 */
 
 /*Card*/
-/*.card {
+.card {
   background: #fff;
   border-radius: 2px;
   margin: var(--spacer);
