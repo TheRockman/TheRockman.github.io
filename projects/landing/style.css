@@ -31,6 +31,11 @@ body{
 nav{
   padding: var(--spacer);
 }
+.brand{
+  font-family: 'Damion', cursive;
+  font-weight: lighter;
+  font-size: 2em;
+}
 .align{
   display: flex;
   align-items: center;
@@ -40,6 +45,29 @@ nav{
 }
 .jcent{
   justify-content: center;
+}
+
+.nl-input, .nl-btn{
+  height: 30px;
+  margin: 0;
+  background: #222;
+  color: #f5f5f5;
+  outline: none;
+  border: none;
+}
+.nl-input{
+  padding-left: 0.5em;
+  width: 200px;
+}
+.nl-btn{
+  height: 32px;
+  width: 50px;
+  background: var(--gradient-part1);
+  cursor: pointer;
+}
+
+.relative{
+  position: relative;
 }
 
 .hero {
@@ -81,7 +109,7 @@ nav{
 }
 .banner{
   background-image: linear-gradient(to top, var(--gradient-part1), var(--gradient-part2));
-  margin:5% 0;
+  margin:10% 0 0 0;
   color: white;
   min-height: 50vh;
 }
@@ -165,13 +193,26 @@ nav{
 .subtext{
   opacity: 0.4;
 }
-/* ng-animate */
-/* .fade{
-  transition:0.5s linear opacity;
+
+.photo{
+  top: 0;
+  width: 100%;
+  height: auto;
+  border: 1rem solid white;
+  position: relative;
+  cursor: pointer;
 }
-.fade.ng-hide {
-  opacity:0;
-} */
+
+.footer{
+  background: #333;
+  color:#f5f5f5;
+  padding: 3rem 0;
+}
+.footer a{
+  color: #f5f5f5;
+  text-decoration: none;
+  display: block;
+}
 
 /*flex*/
 .flex{
@@ -209,7 +250,8 @@ nav{
     flex: 1 1 auto;
   }
   .hero-clipart{
-    height: 250px;
+    width: 50%;
+    height: auto;
   }
   .blurb-wrap{
     text-align: center;
@@ -222,6 +264,24 @@ nav{
     width: 100%;
     height: auto;
     left: 0;
+  }
+  .footer .flex{
+    text-align: center;
+    margin: 0 auto;
+  }
+  .footer .align{
+    margin-top:1rem;
+  }
+  .button{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 370px) {
+  .hero-clipart{
+    display: none;
+  }
+  .hero{
+    height: 120vh;
   }
 }
 
