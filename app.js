@@ -3,7 +3,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   $scope.projects = [
     {
       Title: 'About',
-      Desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      Desc: 'Somewhere out there there is a place where UI and UX sometimes meet for a slice of pizza and a pint. Thats also when really awesome stuff gets made. What i do is the equivalent of pulling up a chair and letting them know the next round is on me.',
       Tags: ['Blog', 'About'],
       Theme: 'dodgerblue',
       Poster: '',
@@ -62,6 +62,28 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
       Url: './projects/mobile/index.html',
+      Devider: false
+    },
+    {
+      Title: 'Dashboard',
+      Desc: 'Trying out a dashboard design with a persistent sidebar. Exploring alternatives to the standard mobile top navigation bar in general.',
+      Tags: ['Code', 'Making', 'Mobile'],
+      Theme: '#f10021',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/random/index.html',
+      Devider: false
+    },
+    {
+      Title: 'Landing page',
+      Desc: 'Whats trendy and hip with the suits? Purple lading pages with svg illustrations thats what!',
+      Tags: ['Code', 'Making', 'Mobile'],
+      Theme: '#ab6df1',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/landing/index.html',
       Devider: false
     },
     {
