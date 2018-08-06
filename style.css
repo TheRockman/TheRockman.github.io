@@ -318,7 +318,7 @@ h1, h2, h3, h4{
     padding-bottom: 2rem;
   }
   .menu-wrap{
-    max-height: auto;
+    max-height: unset!important;
     padding-bottom: 2rem;
     overflow-y: initial;
   }
