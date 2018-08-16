@@ -17,8 +17,11 @@
         <label>Moves</label>
 		</div>
 	</header>
-  <div id="modal" style="display:none;">
+  <div id="modal" class="border xx" style="display:none;">
     <img src="http://brianwhiteart.com/wp-content/uploads/graphics_chest_gold_512-200x200.png" alt="">
+    <div class="stars">
+      
+    </div>
   </div>
 	<div class="board" id="board">
 	</div>
@@ -197,14 +200,14 @@
                                scoreModify = matches.length * 5;
                                setTimeout(function() {
                                    COMBO.classList.remove("minor-combo");
-                               }, 3000);
+                               }, 2000);
                            }
                            if (matches.length >= 10) {
                                COMBO.classList.add("mega-combo");
                                scoreModify = matches.length * 10;
                                setTimeout(function() {
                                    COMBO.classList.remove("mega-combo");
-                               }, 3000);
+                               }, 2000);
                            }
                            var score = this.board.calculateScore(scoreModify);
                            // let content = this.node.innerHTML;
@@ -533,6 +536,13 @@
        .token{
            padding: 0!important;
       }
+      #modal{
+        left: 0!important;
+        right: 0!important;
+      }
+      #modal::after{
+        bottom:3vh!important;
+      }
   }
    .hide {
        transform-origin: center;
@@ -630,25 +640,62 @@
        animation-fill-mode: forwards;
   }
   
-  
   @keyframes chest {
-      0%{
-          top: -100%;
-     }
-      60%{
-          top: 25%;
-     }
-      70%{
-          top: 25%;
-     }
-      100%{
-          top: 30%;
-     }
+    
+      0% {
+        -webkit-transform: translateY(-500px);
+                transform: translateY(-500px);
+        -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        opacity: 0;
+      }
+      38% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+        opacity: 1;
+      }
+      55% {
+        -webkit-transform: translateY(-65px);
+                transform: translateY(-65px);
+        -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+      }
+      72% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+      }
+      81% {
+        -webkit-transform: translateY(-28px);
+                transform: translateY(-28px);
+        -webkit-animation-timing-function: ease-in;
+      }
+      90% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+      }
+      95% {
+        -webkit-transform: translateY(-8px);
+                transform: translateY(-8px);
+        -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+      }
+      100% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+      }
  }
   #modal{
     position: fixed;
-    left: 0;
-    right: 0;
+    left: 15%;
+    right: 15%;
     top: 0vh;
     height: 80vh;
     bottom: 10vh;
@@ -657,9 +704,24 @@
     z-index: 200;
     margin: 1rem;
   }
+  #modal::after{
+    content: "";
+    width: 200px;
+    height: 65px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    left: 0;
+    position: absolute;
+    right: 0;
+    margin: 0 auto;
+    bottom: 15vh;
+    z-index: 5;
+    border-radius: 50%;
+  }
   #modal img{
+    bottom: -200px;
     display: none;
     margin: 0 auto;
+    z-index: 10;
   }
   .show-modal{
     display: block!important;
@@ -667,12 +729,36 @@
   .show-modal > img{
     display: block!important;
     transform-origin: center;
-    -webkit-animation: 1.5s chest;
-    -moz-animation: 1.5s chest;
-    animation: 1.5s chest;
+    -webkit-animation: 1s chest;
+    -moz-animation: 1s chest;
+    animation: 1s chest;
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+  }
+  .stars{
+    display: none;
+    animation-delay: 1s;
+  }
+  .show-modal .stars{
+    display: block!important;
+  }
+  
+  .xx{
+    margin:25px 1px;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  
+  .border{
+    border: 50px solid transparent;
+    min-height: 200px;
+    border-image: url("frame.png") 27;
+    border-image-slice: 90;
+    color:#f5f5f5;
+    padding: 1rem;
+    /*background: #c5a880;*/
+    border-radius: 40px;
   }
   </style>
 </html>
