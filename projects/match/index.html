@@ -17,6 +17,9 @@
         <label>Moves</label>
 		</div>
 	</header>
+  <div id="modal" style="display:none;">
+    <img src="http://brianwhiteart.com/wp-content/uploads/graphics_chest_gold_512-200x200.png" alt="">
+  </div>
 	<div class="board" id="board">
 	</div>
       <div id="combo">COMBO!</div>
@@ -50,7 +53,7 @@
  
    var TOKEN = '<section>C</section>';
    var NUMBER_OF_COLUMNS = 7;
-   var NUMBER_OF_ROWS = 9;
+   var NUMBER_OF_ROWS = 8;
    var MAX_MOVES = 25;
    var COMBO = document.getElementById("combo");
    var Token = function() {
@@ -359,8 +362,7 @@
                value: function showGameOver()
  
                {
-                   var newGame = window.confirm('Game Over.  Would you like to play again?');
-                   if (newGame) init();
+                   document.getElementById("modal").classList.add('show-modal');
                }
            }, {
                key: 'recalc',
@@ -468,45 +470,30 @@
   }
    .score-meter{
        position: fixed;
-       right: 0;
+       right: 50px;
        bottom: 0;
   }
-   #score{
-       background: blue;
+   #score, #moves{
+       background: tan;
        height: 50px;
        width: 50px;
        border-radius: 50%;
-       line-height: 50px;
-       color: white;
+       line-height: 40px;
+       border: 5px outset #666;
+       font-weight: bold;
   }
-   .score-meter label{
+   .score-meter label, .move-meter label{
        color: white;
        position: absolute;
-       top:-1rem;
+       top:-2rem;
        left: 0;
        right: 0;
        text-align: center;
   }
    .move-meter{
        position: fixed;
-       left: 0;
+       left: 50px;
        bottom: 0;
-  }
-   #moves{
-       background: red;
-       height: 50px;
-       width: 50px;
-       border-radius: 50%;
-       line-height: 50px;
-       color: white;
-  }
-   .move-meter label{
-       color: white;
-       position: absolute;
-       top:-1rem;
-       left: 0;
-       right: 0;
-       text-align: center;
   }
    .token0 > section {
        background: url('1.PNG') center center;
@@ -532,6 +519,7 @@
        overflow: hidden;
        padding: 25px;
        background: rgba(255, 255, 255, 0.3);
+       border-radius: 5px;
        margin: 20px auto;
   }
    .container{
@@ -540,8 +528,7 @@
   }
    @media screen and (max-width: 768px) {
        .board{
-           margin: 0 auto!important;
-           padding: 0 !important;
+          padding: 1em 0 !important;
       }
        .token{
            padding: 0!important;
@@ -550,8 +537,10 @@
    .hide {
        transform-origin: center;
        -webkit-animation: 1s hide;
+       -moz-animation: 1s hide;
        animation: 1s hide;
        -webkit-animation-fill-mode: forwards;
+       -moz-animation-fill-mode: forwards;
        animation-fill-mode: forwards;
   }
    @keyframes hide {
@@ -591,6 +580,7 @@
        transform: rotate(5deg);
        font-size: 50px;
        color: white;
+       z-index: 100;
        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
    @keyframes minorCombo {
@@ -624,16 +614,65 @@
    .minor-combo{
        transform-origin: center;
        -webkit-animation: 2s minorCombo;
+       -moz-animation: 2s minorCombo;
        animation: 2s minorCombo;
        -webkit-animation-fill-mode: forwards;
+       -moz-animation-fill-mode: forwards;
        animation-fill-mode: forwards;
   }
    .mega-combo{
        transform-origin: center;
        -webkit-animation: 2s megaCombo;
+       -moz-animation: 2s megaCombo;
        animation: 2s megaCombo;
        -webkit-animation-fill-mode: forwards;
+       -moz-animation-fill-mode: forwards;
        animation-fill-mode: forwards;
+  }
+  
+  
+  @keyframes chest {
+      0%{
+          top: -100%;
+     }
+      60%{
+          top: 25%;
+     }
+      70%{
+          top: 25%;
+     }
+      100%{
+          top: 30%;
+     }
+ }
+  #modal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0vh;
+    height: 80vh;
+    bottom: 10vh;
+    background: tan;
+    padding: 1rem;
+    z-index: 200;
+    margin: 1rem;
+  }
+  #modal img{
+    display: none;
+    margin: 0 auto;
+  }
+  .show-modal{
+    display: block!important;
+  }
+  .show-modal > img{
+    display: block!important;
+    transform-origin: center;
+    -webkit-animation: 1.5s chest;
+    -moz-animation: 1.5s chest;
+    animation: 1.5s chest;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
   }
   </style>
 </html>
