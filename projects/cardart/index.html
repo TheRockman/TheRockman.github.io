@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div ng-repeat="card in cards" class="enter card" ng-click="next(card.id)" ng-class="{'exit':selectedCard.id !== card.id}">
+                      <img src="{{card.url}}" class="card-art" alt="">
+                      <div class="card-art-shade"></div>
+          <div class="card-content" style="text-align:center;">
+            <header>
+              <span>{{card.name}}</span>
+            </header>
+            <br>
+            <br>
+            <br>
+            <b ng-repeat="ab in card.abilities" class="cap">
+              {{ab}}<span ng-if="!$last">,</span>
+            </b>
+            <br>
+              <small ng-class="{'ital': card.abilities.length < 1}">{{card.text}}</small>
+            <div class="stat cost gem">
+              <div>{{card.cost}}</div>
+            </div>
+            <div class="stat dmg gem">
+              <div>{{card.dmg}}</div>
+            </div>
+            <div class="stat hp gem">
+              <div>{{card.hp}}</div>
+            </div>
+          </div>
+          <div class="gem" style="transform:scale(0.4);top:0;left:0;"></div>
+          <div class="gem" style="transform:scale(0.4);top:0;right:0;"></div>
+        </div>
+        
+        <div class="coin">
+          <img class="flame" src="flame.gif" alt="">
+          <img src="https://img00.deviantart.net/96c8/i/2013/180/c/2/orzhov_syndicate_guild_symbol_by_drdraze-d6b7yr6.png" class="icoin" alt="">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
