@@ -36,12 +36,11 @@ body::before{
     0%{
       transform: translateX(-1000px) rotate(-360deg);
       filter: blur(25px);
-      opacity: 0;
+      
     }
     100%{
       transform: translateX(0) rotate(0deg);
       filter: blur(0);
-      opacity: 1;
     }
 }
 @keyframes exit {
@@ -69,7 +68,7 @@ body::before{
 
 .card{
   user-select: none;
-  width: 300px;
+  width: 270px;
   height: 400px;
   background: white;
   margin: 0 auto;
