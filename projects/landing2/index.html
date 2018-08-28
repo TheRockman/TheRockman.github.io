@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <nav class="align jsb">
+      <span class="text-center">
+        <a href="#" class="brand">
+          <span>BRAND</span>
+        </a>
+      </span>
+      <span class="links">
+        <select ng-change="setLang(language)" ng-model="language" name="">
+          <option selected value="EN">English</option>
+          <option value="SE">Svenska</option>
+        </select>
+        <select ng-model="theme" ng-change="setTheme(theme)">
+          <option value="light" selected>light</option>
+          <option value="dark">dark</option>
+        </select>
+        <a class="hide-on-phone" href="#">1</a>
+        <a class="hide-on-phone" href="#">2</a>
+        <a class="hide-on-phone" href="#">3</a>
+      </span>
+    </nav>
+    <div class="above-the-fold">
+      <div class="row" >
+        <div class="flex"></div>
+        <div class="flex x3">
+          <div class="header massive text-center">
+            <h1 ng-cloak>{{translate.headerText}}</h1>
+            <small ng-cloak>
+              {{translate.headerBlurb}}
+            </small>  
+            <br>
+            <br>
+          </div>
+          <div class="row align">
+            <div class="flex intro" style="width:100%;">
+              <div class="form-tile card" >
+                <p>Sign up or login</p>
+                  <input type="email" name="" value="" placeholder="Email">
+                  <input type="password" name="" value="" placeholder="Password">
+              </div>
+            </div>
+            <div class="flex text-center">
+              <a href="">
+                <br>
+    <br>
+    <br>
+            <br>
+    <br>
+      <div class="flex"></div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="flex text-center">
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
