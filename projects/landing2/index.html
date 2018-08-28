@@ -52,17 +52,129 @@
             </div>
             <div class="flex text-center">
               <a href="">
+                <img class="header-img intro2" src="img/hero.png">
                 <br>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex"></div>
+      </div>      
+    </div>
+    <h2 class="text-center">{{translate.howItWorks}}</h2>
+    <div class="content row">
+      <div class="tile flex">
+        <svg viewBox="0 0 24 24">
+          <path fill="#fff" d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,20L1.5,16.5L2.91,15.09L5,17.17L9.59,12.59L11,14L5,20Z" />
+        </svg>
+        <span>
+          <h4>{{translate.oneLabel}}</h4>
+          {{translate.oneBody}}
+        </span>
+      </div>
+      <div class="tile flex">
+        <svg viewBox="0 0 24 24">
+          <path fill="#fff" d="M2.3,20.28L11.9,10.68L10.5,9.26L9.78,9.97C9.39,10.36 8.76,10.36 8.37,9.97L7.66,9.26C7.27,8.87 7.27,8.24 7.66,7.85L13.32,2.19C13.71,1.8 14.34,1.8 14.73,2.19L15.44,2.9C15.83,3.29 15.83,3.92 15.44,4.31L14.73,5L16.15,6.43C16.54,6.04 17.17,6.04 17.56,6.43C17.95,6.82 17.95,7.46 17.56,7.85L18.97,9.26L19.68,8.55C20.07,8.16 20.71,8.16 21.1,8.55L21.8,9.26C22.19,9.65 22.19,10.29 21.8,10.68L16.15,16.33C15.76,16.72 15.12,16.72 14.73,16.33L14.03,15.63C13.63,15.24 13.63,14.6 14.03,14.21L14.73,13.5L13.32,12.09L3.71,21.7C3.32,22.09 2.69,22.09 2.3,21.7C1.91,21.31 1.91,20.67 2.3,20.28M20,19A2,2 0 0,1 22,21V22H12V21A2,2 0 0,1 14,19H20Z" />
+        </svg>
+        <span>
+          <h4>{{translate.twoLabel}}</h4>
+          {{translate.twoBody}}
+        </span>
+      </div>
+      <div class="tile flex">
+        <svg viewBox="0 0 24 24">
+          <path fill="#fff" d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" />
+        </svg>
+        <span>
+          <h4>{{translate.threeLabel}}</h4>
+          {{translate.threeBody}}
+        </span>
+      </div>
+      <div class="tile flex">
+        <svg viewBox="0 0 24 24">
+          <path fill="#fff" d="M5,6H23V18H5V6M14,9A3,3 0 0,1 17,12A3,3 0 0,1 14,15A3,3 0 0,1 11,12A3,3 0 0,1 14,9M9,8A2,2 0 0,1 7,10V14A2,2 0 0,1 9,16H19A2,2 0 0,1 21,14V10A2,2 0 0,1 19,8H9M1,10H3V20H19V22H1V10Z" />
+        </svg>
+        <span>
+          <h4>{{translate.fourLabel}}</h4>
+          {{translate.fourBody}}
+        </span>
+      </div>
+    </div>
     <br>
     <br>
+    <div class="row banner align">
+      <div class="flex"></div>
+      <div class="flex x2">
+          <h2>{{translate.encourageLabel}}</h2>
+          <p>{{translate.encourageBody}}</p>
+          <button class="cta-btn" type="button" name="button">{{translate.learnMore}}</button>
+      </div>
+      <div class="flex text-center">
+        <img ng-cloak class="header-img hover" src="img/chest.png" alt="">
+      </div>
+      <div class="flex"></div>
+    </div>
+    <br>
+    <br>
+    <!-- <div class="row">
+      <div class="flex"></div>
+      <div class="flex x3">
+        <h2 class="text-center"></h2>
+        <div class="fluid-row">
+          <div class="fluid-flex media-obj" ng-repeat="tier in tiers">
+            <span class="align jsb">
+                <b>{{tier.name}}</b>
+                <img src="{{tier.logo}}" alt="">
+            </span>
             <br>
+            <br>
+            <small>
+              {{tier.desc}}
+            </small>
+          </div>
+        </div>
+        <h4 href="#" class="text-center" style="text-decoration:underline;cursor:pointer;">See more</h4>
+      </div>
+      <div class="flex"></div>
+    </div> -->
     <br>
+    <br>
+    <div class="row banner q-and-a" style="min-height:250px;">
+      <div class="flex"></div>
+      <div class="flex x3">
+        <h2 class="text-center">{{translate.qa}}</h2>
+        <input class="help-filter" type="text" ng-model="filter.question" placeholder="{{translate.questionLabel}}" name="" value="">
+        <div ng-if="filter.question.length > 1" ng-repeat="q in questions | filter: filter">
+          <div class="q-wrap" ng-click="q.open = !q.open">
+            <h4>{{q.question}}</h4>
+            <div class="a-wrap" ng-if="q.open">
+              {{q.answer}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex"></div>
+    </div>
+    
+    <div class="footer">
+    <div class=" row">
+      <div class="flex"></div>
+      <div class="flex">
+        
+      </div>
+      <div class="flex">
+
+      </div>
+      <div class="flex">
+      
+      </div>
       <div class="flex"></div>
     </div>
     <br>
     <br>
     <div class="row">
       <div class="flex text-center">
+        2018 © Company 
       </div>
     </div>
   </div>
