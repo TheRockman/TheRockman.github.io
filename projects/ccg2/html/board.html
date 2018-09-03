@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="cardApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/card.css">
+  <link rel="stylesheet" href="../css/ribbon.css">
+  <script type="text/javascript" src="../../../angularJs.js"></script>
+</head>
+<body>
+
+  <div ng-controller="MainCtrl as vm">
+    <div class="row">
+      <div class="flex">
+        <div class="row" ng-if="!vm.deckBuilt">
+          <div class="flex panel">
+            <h2>Cards</h2>
+            <p>Click a card to add it to your deck</p>
+            <div class="card-list">
+              <div ng-repeat="card in vm.allCards">
+                <card ng-click="vm.addCardTo(card, vm.myDeck)" card-info="card"></card>
+              </div>
+            </div>
+          </div>
+          <div class="flex panel">
+            <h2>Deck ({{vm.myDeck.length}}/30)</h2>
+            <p>Needs to be between 10 and 30 cards</p>
+            <div class="card-list">
+              <div ng-repeat="card in vm.myDeck">
+                <card ng-click="vm.addCardTo(card, vm.fakeArr, vm.myDeck)" card-info="card"></card>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-show="vm.deckBuilt">
+          <div class="enemy-hand">
+            <div class="cards hand">
+              <card ng-repeat="card in vm.enemy.HandCards" card-info="card"></card>
+            </div>
+          </div>
+
+          <div class="panel board">
+            <div class="row">
+              <div class="flex">
+                <div class="card-list enemy-board">
+                  <div ng-repeat="card in vm.enemyBoard">
+                    <card card-info="card" target="vm.activeTarget" ng-click="vm.setActiveTarget(card)"></card>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <br/>
+            <div class="row" >
+              <div class="flex">
+                <div class="card-list my-board">
+                  <div ng-repeat="card in vm.myBoard">
+                    <card card-info="card" ng-click="vm.basicAtk(card, target)"></card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hand">
+            <div class="cards hand">
+              <card tabindex="2" ng-repeat="card in vm.player.HandCards" ng-click="vm.isItMyTurn && vm.addCardTo(card, vm.myBoard, vm.player.HandCards, card.Cost, vm.player.Mana)" card-info="card" player-mana="vm.player.Mana"></card>
+            </div>
+          </div>
+
+          <div class="player-stats" ng-click="vm.setActiveTarget(vm.player)" ng-class="{'target':vm.activeTarget === vm.player}">
+            <div class="stat">
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,17V16H9V14H13V13H10A1,1 0 0,1 9,12V9A1,1 0 0,1 10,8H11V7H13V8H15V10H11V11H14A1,1 0 0,1 15,12V15A1,1 0 0,1 14,16H13V17H11Z" />
+              </svg>
+              : {{vm.player.Mana}}
+            </div>
+            <img src="../img/card.png" class="player"></img>
+            <div class="stat">
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+              </svg>
+              : {{vm.player.Hp}}
+            </div>
+          </div>
+          <div class="enemy-stats" ng-click="vm.setActiveTarget(vm.enemy)" ng-class="{'target':vm.activeTarget === vm.enemy}">
+
+            <div class="stat">
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,17V16H9V14H13V13H10A1,1 0 0,1 9,12V9A1,1 0 0,1 10,8H11V7H13V8H15V10H11V11H14A1,1 0 0,1 15,12V15A1,1 0 0,1 14,16H13V17H11Z" />
+              </svg>
+              : {{vm.enemy.Mana}}
+            </div>
+            <img src="../img/card.png" class="player"></img>
+            <div class="stat">
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+              </svg>
+              : {{vm.enemy.Hp}}
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div ng-if="!vm.deckBuilt">
+            <button class="positive" ng-click="vm.randomDeck()" title="use default deck">Random deck</button>
+            <button class="negative" ng-click="vm.confirm()" title="stat game">Confirm custom deck</button>
+          </div>
+          <div ng-if="vm.deckBuilt">
+            <b ng-if="vm.myBoard.length === 4" style="color:red;">Board is full</b>
+            <button class="negative" ng-class="{'positive':vm.isItMyTurn}" ng-click="vm.newRound()">
+              <span ng-if="vm.isItMyTurn">End Turn</span>
+              <span ng-if="!vm.isItMyTurn">Enemy Turn</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../js/app.js"></script>
+<script type="text/javascript" src="../js/components/card.js"></script>
+
+</html>

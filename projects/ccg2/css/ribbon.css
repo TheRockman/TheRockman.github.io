@@ -1,0 +1,59 @@
+
+.ribbon-wrap{
+  z-index: 2;
+  position: relative;
+}
+
+.ribbon {
+  font-size: 12px !important;
+  position: relative;
+  background: var(--ribbon-color);
+  left: -15px;
+  width: 114px;
+  color: var(--ribbon-tc);
+  text-align: center;
+  padding: 5px;
+  margin: 4em auto 3em;
+}
+
+.ribbon:before, .ribbon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -2em;
+  border: 1.5em solid var(--ribbon-color);
+  filter: brightness(70%);
+  z-index: -1;
+}
+
+.ribbon:before {
+  left: -1.24em;
+  transform: scale(0.5);
+  border-right-width: 1.5em;
+  border-left-color: transparent;
+}
+
+.ribbon:after {
+  right: -1.24em;
+  transform: scale(0.5);
+  border-left-width: 1.5em;
+  border-right-color: transparent;
+}
+
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: var(--ribbon-color) transparent transparent transparent;
+  filter: brightness(40%);
+  bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 1em 1em 0 0;
+}

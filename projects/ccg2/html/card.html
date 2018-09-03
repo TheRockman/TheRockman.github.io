@@ -1,0 +1,45 @@
+<div class='card slide-in-elliptic-bottom-bck slide-in-elliptic-top-fwd' ng-if="$ctrl.cardInfo" ng-class="{'puff-out-center':$ctrl.cardInfo.Hp < 1}">
+
+  <div class='card-face' ng-class="{'ready':$ctrl.cardInfo.Available === true, 'target':$ctrl.cardInfo === $ctrl.target}">
+    <div class="ribbon-wrap">
+      <h1 class="ribbon">
+        <span class="ribbon-content">{{$ctrl.cardInfo.Name}}</span>
+      </h1>
+    </div>
+
+    <img src="{{$ctrl.cardInfo.Img}}" class="card-avatar" alt="" ng-class="{'disabled':$ctrl.cardInfo.Available === false}"></img>
+
+    <div class="card-desc panel" ng-class="{'disabled':$ctrl.cardInfo.Available === false}">
+      <b ng-repeat="rule in $ctrl.cardInfo.Rules">
+        {{rule}}
+      </b><br/>
+      <small>{{$ctrl.cardInfo.Desc}}</small>
+    </div>
+
+    <div class="card-stats" ng-class="{'disabled':$ctrl.cardInfo.Available === false}">
+      <div class="stat">
+        <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M6.2,2.44L18.1,14.34L20.22,12.22L21.63,13.63L19.16,16.1L22.34,19.28C22.73,19.67 22.73,20.3 22.34,20.69L21.63,21.4C21.24,21.79 20.61,21.79 20.22,21.4L17,18.23L14.56,20.7L13.15,19.29L15.27,17.17L3.37,5.27V2.44H6.2M15.89,10L20.63,5.26V2.44H17.8L13.06,7.18L15.89,10M10.94,15L8.11,12.13L5.9,14.34L3.78,12.22L2.37,13.63L4.84,16.1L1.66,19.29C1.27,19.68 1.27,20.31 1.66,20.7L2.37,21.41C2.76,21.8 3.39,21.8 3.78,21.41L7,18.23L9.44,20.7L10.85,19.29L8.73,17.17L10.94,15Z" />
+        </svg>
+        {{$ctrl.cardInfo.Ap}}
+      </div>
+
+      <div class="counter cost" ng-class="{'able':$ctrl.playerMana >= $ctrl.cardInfo.Cost}">
+        {{$ctrl.cardInfo.Cost}}
+      </div>
+
+      <div class="stat">
+        <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+        </svg>
+        {{$ctrl.cardInfo.Hp}}
+      </div>
+
+    </div>
+    <div class="card-fx" ng-class="{
+      'summonsickness':$ctrl.cardInfo.Available === 'sick',
+      'dead':$ctrl.cardInfo.Hp < 1,
+      'marked': $ctrl.cardInfo === $ctrl.target
+    }"></div>
+  </div>
+</div>
