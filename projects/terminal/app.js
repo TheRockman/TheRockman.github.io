@@ -11,19 +11,24 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         $scope.commands.push(
           {
             text: $scope.availableComms[command](),
-            id: genId()
+            status: "Executing " + command + " command",
+            id: genId(),
+            timestamp: new Date()
           }
         );
       }
       else{
         $scope.commands.push(
           {
-            text: "Invalid operation... Exit.",
-            id: genId()
+            text: "Invalid operation.",
+            status: "Aborting " + command + " command",
+            id: genId(),
+            timestamp: new Date()
           }
         );
       }
-    }, 2000 );
+    }, 1000 );
+    $scope.command = null;
   }
   
   $scope.availableComms = {
