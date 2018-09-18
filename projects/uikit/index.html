@@ -16,7 +16,7 @@
     <div class="an-menu-wrapper">
       <input type="checkbox" id="sidebar" class="an-menu-checkbox" name="" value="">
       <div class="an-menu">
-        menu
+        <b>Menu</b>
       </div>
     </div>
 
@@ -58,13 +58,13 @@
             <p>Adapt</p>
             <div class="an-row">
               <div class="an-flex">
-                <img class="an-billboard" src="https://source.unsplash.com/random/500x500" alt="">
+                <img class="an-billboard" src="https://source.unsplash.com/random/500x500.001" alt="">
               </div>
               <div class="an-flex">
-                <img class="an-billboard" src="https://source.unsplash.com/random/500x500" alt="">
+                <img class="an-billboard" src="https://source.unsplash.com/random/500x500.002" alt="">
               </div>
               <div class="an-flex">
-                <img class="an-billboard" src="https://source.unsplash.com/random/500x500" alt="">
+                <img class="an-billboard" src="https://source.unsplash.com/random/500x500.003" alt="">
               </div>
             </div>
           </div>
@@ -120,31 +120,31 @@
               </span>
             </span>
             <div class="an-row  ">
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="text">Text:</label>
                 <input type="text" id="text" placeholder="Text">
               </div>
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="number">Number:</label>
                 <input type="number" id="number" placeholder="Number">
               </div>
             </div>
             <div class="an-row  ">
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="password">Password:</label>
                 <input type="password" id="password" placeholder="Password">
               </div>
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="email">Email:</label>
                 <input type="email" id="email" placeholder="Email">
               </div>
             </div>
             <div class="an-row">
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="search">Search:</label>
                 <input type="search" id="search" placeholder="Search">
               </div>
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="select">Select</label>
                 <select id="select">
                   <option value="1">1</option>
@@ -154,7 +154,7 @@
               </div>
             </div>
             <div class="an-row">
-              <div class="an-flex">
+              <div class="an-flex an-content">
                 <label for="textarea">Textarea:</label>
                 <textarea id="textarea" placeholder="Textarea"></textarea>
               </div>
@@ -181,6 +181,39 @@
                 </svg>
               </button>
             </div>
+          </div>
+        </div>
+        
+        <div class="an-row">
+          <div class="an-flex an-card">
+            <span class="an-in-a-row an-split-even">
+              <h2>Form validation</h2>
+              <span>
+                <svg class="an-icon" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+                </svg>
+              </span>
+            </span>
+            <form class="an-form">
+              <h4 class="an-center">Form title</h4>
+              <div class="an-row">
+                <div class="an-flex an-content">
+                  <label for="text2">Requered input:</label>
+                  <input type="text" id="text2" required placeholder="Name">
+                </div>
+              </div>
+              <div class="an-row">
+                <div class="an-flex an-content">
+                  <label for="password2">Requered:</label>
+                  <input type="password" id="password2" required placeholder="Password">
+                </div>
+              </div>
+              <div class="an-row">
+                <div class="an-flex">
+                  <button type="submit" class="an-button an-submit" name="button">Validate</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
 
