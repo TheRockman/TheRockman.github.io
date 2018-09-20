@@ -129,6 +129,39 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Backdrop: './img/bg1.jpg',
       Url: './projects/battle/index.html',
       Devider: false
+    },
+    {
+      Title: 'Matching',
+      Desc: 'Example of matching game',
+      Tags: ['Code', 'Game'],
+      Theme: '#37BC9B',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/match/index.html',
+      Devider: false
+    },
+    {
+      Title: 'dashboard',
+      Desc: 'experimental dashboard layout',
+      Tags: ['Code', 'Game'],
+      Theme: '#37BC9B',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/movieDash/index.html',
+      Devider: false
+    },
+    {
+      Title: 'Swap cards',
+      Desc: 'Trying out some animation and more artsy css',
+      Tags: ['Code', 'Game'],
+      Theme: '#37BC9B',
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/cardart/index.html',
+      Devider: false
     }
 
 
