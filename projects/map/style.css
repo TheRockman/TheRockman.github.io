@@ -41,10 +41,11 @@ body{
   transform:rotatex(45deg) rotateZ(45deg) translateZ(-1em);
   transform-style: preserve-3d;
   outline: 0.5px solid rgba(255,255,255,0.5);
-  
 }
 .stage > div{
   float:left;
+  background: url('https://mineblocks.com/1/wiki/images/6/67/Cobblestone.png');
+  background-size: contain;
   outline: 0.5px solid rgba(255,255,255,0.1);
   transform-origin: 97% 97%;
   position:relative;
@@ -59,6 +60,7 @@ body{
 .tall{
   outline: none;
   background:#6d9985;
+  box-shadow: inset 0px 0px 300px 200px rgba(255,255,255,0.3)!important;
   background-size: cover!important;
   transform: translateZ(var(--s));
   transform-style: preserve-3d;
@@ -82,6 +84,21 @@ body{
   filter: brightness(0.5);
   transform:rotateY(90deg) translateX(1em);
   box-shadow:inset -.125em 0em .25em rgba(0,0,0,.1);
+}
+
+.player{
+  background: black!important;
+}
+.player:before{
+  content: "";
+  background: url('https://orig00.deviantart.net/94b2/f/2014/083/c/0/dark_souls_knight_sprite_by_metroid0070-d7bh5dm.png');
+  background-size: cover!important;
+  position: absolute;
+  transform-origin: 100% 100%;
+  height: 50px;
+  width: 25px;
+  transform: rotateX(-90deg) translateY(-70px) translateX(42px) rotateY(45deg);
+  box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
 @keyframes example {

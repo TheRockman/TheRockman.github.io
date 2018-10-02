@@ -1,21 +1,32 @@
 var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
 
   $scope.tiles = [];
-  $scope.moves = 10;
   
   (function init() {
     for (var i = 0; i < 400; i++) {
-      $scope.tiles.push(
-        {
-          tall: preBuild(i),
-          id: i
-        }
-      )
+      if (i !== 205) {
+        $scope.tiles.push(
+          {
+            tall: preBuild(),
+            id: i,
+            player: null
+          }
+        )  
+      } else {
+        $scope.tiles.push(
+          {
+            tall: false,
+            id: i,
+            player: true
+          }
+        )
+      }
     }
   })();
   
-  function preBuild(i) {
-    if (i == 8 || i == 9 || i == 10|| i == 11 ) {
+  function preBuild() {
+    var random = Math.floor(Math.random() * 10) + 1;  
+    if (random == 5) {
       return true;
     } else{
       return false
@@ -23,16 +34,13 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   }
   
   $scope.evolve = function (item) {
-    if ($scope.moves < 1) {
-      alert('no more moves');
-      return;
-    }
     if (item.tall) {
-        $scope.moves =   $scope.moves + 1;
-        item.tall = false;
+      return;
     } else {
-      $scope.moves = $scope.moves - 1;
-      item.tall = true;
+      for (var i = 0; i < $scope.tiles.length; i++) {
+        $scope.tiles[i].player = null;
+      }
+      item.player = true;
     }
   }
 

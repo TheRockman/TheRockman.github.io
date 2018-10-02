@@ -13,7 +13,7 @@
   <div ng-controller="mainCtrl">
   
   <div class="stage">
-    <div ng-repeat="tile in tiles" ng-click="evolve(tile)" ng-class="{'tall' : tile.tall}"></div>
+    <div ng-repeat="tile in tiles" ng-click="evolve(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player}"></div>
   </div>
   
     <p style="position:fixed;top:0;left:0;color:white;">{{moves}}</p>
