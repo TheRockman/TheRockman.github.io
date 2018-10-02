@@ -4,20 +4,31 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   
   (function init() {
     for (var i = 0; i < 400; i++) {
-      if (i !== 205) {
+      if (i == 205) {
         $scope.tiles.push(
           {
-            tall: preBuild(),
+            tall: false,
             id: i,
-            player: null
+            player: true,
+            monster: null
+          }
+        )  
+      } else if (i == 210) {
+        $scope.tiles.push(
+          {
+            tall: false,
+            id: i,
+            player: null,
+            monster: true
           }
         )  
       } else {
         $scope.tiles.push(
           {
-            tall: false,
+            tall: preBuild(),
             id: i,
-            player: true
+            player: null,
+            monster: null
           }
         )
       }
@@ -33,8 +44,8 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     }
   }
   
-  $scope.evolve = function (item) {
-    if (item.tall) {
+  $scope.playerMove = function (item) {
+    if (item.tall || item.monster) {
       return;
     } else {
       for (var i = 0; i < $scope.tiles.length; i++) {
@@ -42,6 +53,49 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       }
       item.player = true;
     }
+    moveEnemy();
+  }
+  
+  function moveEnemy() {
+    $scope.enemyTile = null;
+    for (var i = 0; i < $scope.tiles.length; i++) {
+      if ($scope.tiles[i].monster) {
+        $scope.enemyTile = $scope.tiles[i];
+      }
+    }
+    
+    if ($scope.enemyTile) {
+      var d = Math.random();
+      if (d < 0.2) {
+        if ($scope.enemyTile.id + 20 < 400 && $scope.tiles[$scope.enemyTile.id + 20].tall !== true) {
+          $scope.tiles[$scope.enemyTile.id + 20].monster = true;  
+        } else {
+          moveEnemy();
+        }
+      } else if (d < 0.5) {
+        if ($scope.enemyTile.id - 20 > 0  && $scope.tiles[$scope.enemyTile.id - 20].tall !== true) {
+          $scope.tiles[$scope.enemyTile.id - 20].monster = true;  
+        } else {
+          moveEnemy();
+        }
+      } else if (d < 0.7) {
+        if ($scope.enemyTile.id + 1 > 0 && $scope.enemyTile.id + 1 < 400  && $scope.tiles[$scope.enemyTile.id + 1].tall !== true) {
+          $scope.tiles[$scope.enemyTile.id + 1].monster = true;  
+        } else {
+          moveEnemy();
+        }
+      } else {
+        if ($scope.enemyTile.id - 1 > 0 && $scope.enemyTile.id - 1 < 400 && $scope.tiles[$scope.enemyTile.id - 1].tall !== true) {
+          $scope.tiles[$scope.enemyTile.id - 1].monster = true;  
+        } else {
+          moveEnemy();
+        }
+      }
+      $scope.enemyTile.monster = false;
+    } else {
+      $scope.tiles[210].monster = true;
+    }
+
   }
 
 });

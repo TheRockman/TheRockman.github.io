@@ -11,9 +11,8 @@
 </head>
 <body class="dragscroll" style=" cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
   <div ng-controller="mainCtrl">
-  
   <div class="stage">
-    <div ng-repeat="tile in tiles" ng-click="evolve(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player}"></div>
+    <div ng-repeat="tile in tiles" ng-click="playerMove(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player, 'monster': tile.monster}"></div>
   </div>
   
     <p style="position:fixed;top:0;left:0;color:white;">{{moves}}</p>
