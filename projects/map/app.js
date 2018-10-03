@@ -106,6 +106,13 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       if ($scope.tiles[i].monster) {
         $scope.enemyTile = $scope.tiles[i];
       }
+      if ($scope.tiles[i].player) {
+        if ($scope.tiles[i].id == $scope.playerTile.id + 1 || $scope.tiles[i].id == $scope.playerTile.id - 1 || $scope.tiles[i].id == $scope.playerTile.id + 20 || $scope.tiles[i].id == $scope.playerTile.id - 20) {
+          $scope.tiles[i].move = true;
+        }else {
+          $scope.tiles[i].move = false;
+        }
+      }
     }
     
     if ($scope.enemyTile) {

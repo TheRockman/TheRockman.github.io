@@ -51,10 +51,18 @@ body{
   position:relative;
   box-shadow:.125em .125em .5em rgba(0,0,0,.09);
   transition: var(--animation);
+  outline: 0;
 }
 .stage > div:hover{
   cursor: pointer;
-  background: white;
+  outline: 1px solid lime;
+  outline-offset: -2px;
+}
+
+.move {
+  cursor: pointer;
+  outline: 1px solid white;
+  outline-offset: -2px;
 }
 
 .tall{

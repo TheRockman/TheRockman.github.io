@@ -12,7 +12,7 @@
 <body class="dragscroll" style=" cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
   <div ng-controller="mainCtrl">
   <div class="stage">
-    <div ng-repeat="tile in tiles" ng-click="playerMove(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player, 'monster': tile.monster}"></div>
+    <div ng-repeat="tile in tiles" ng-click="playerMove(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player, 'monster': tile.monster, 'move': tile.move}"></div>
   </div>
     <p>{{life.player}}</p>
     <p>{{life.monster}}</p>
