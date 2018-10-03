@@ -1,6 +1,11 @@
 var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
 
   $scope.tiles = [];
+  $scope.life = {
+    player: 10,
+    monster: 3
+  };
+  $scope.spawn = false;
   
   (function init() {
     for (var i = 0; i < 400; i++) {
@@ -45,18 +50,57 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   }
   
   $scope.playerMove = function (item) {
-    if (item.tall || item.monster) {
+    $scope.playerTile = null;
+    for (var i = 0; i < $scope.tiles.length; i++) {
+      if ($scope.tiles[i].player) {
+        $scope.playerTile = $scope.tiles[i];
+      }
+    }
+    
+    if (item.tall) {
       return;
-    } else {
+    } else if(item.id == $scope.playerTile.id + 1 || item.id == $scope.playerTile.id - 1 || item.id == $scope.playerTile.id + 20 || item.id == $scope.playerTile.id - 20){
+      if (item.monster) {
+        combat(item);
+      }
+      
       for (var i = 0; i < $scope.tiles.length; i++) {
         $scope.tiles[i].player = null;
       }
       item.player = true;
+      moveEnemy();
     }
-    moveEnemy();
+  }
+  
+  function combat() {
+    console.log('Combat');
+    $scope.life.player = $scope.life.player - 1;
+    $scope.life.monster = $scope.life.monster - 1;
+    
+    if ($scope.life.monster < 1) {
+      $scope.spawn = true;
+    }
+  }
+  
+  function spawn() {
+    var random = Math.floor(Math.random() * 380) + 1;  
+    if (!$scope.tiles[random].tall && !$scope.tiles[random].player) {
+      $scope.life.monster = 3;
+      $scope.tiles[random].monster = true;
+      $scope.spawn = false;
+    } else{
+      spawn();
+    }
   }
   
   function moveEnemy() {
+    if ($scope.spawn) {
+       for (var i = 0; i < $scope.tiles.length; i++) {
+         $scope.tiles[i].monster = null;
+       }
+       spawn();  
+    }
+    
     $scope.enemyTile = null;
     for (var i = 0; i < $scope.tiles.length; i++) {
       if ($scope.tiles[i].monster) {
@@ -95,7 +139,6 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     } else {
       $scope.tiles[210].monster = true;
     }
-
   }
 
 });

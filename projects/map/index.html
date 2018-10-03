@@ -14,7 +14,8 @@
   <div class="stage">
     <div ng-repeat="tile in tiles" ng-click="playerMove(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player, 'monster': tile.monster}"></div>
   </div>
-  
+    <p>{{life.player}}</p>
+    <p>{{life.monster}}</p>
     <p style="position:fixed;top:0;left:0;color:white;">{{moves}}</p>
   </div>
 </body>
