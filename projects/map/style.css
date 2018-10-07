@@ -25,6 +25,7 @@ body{
   background: #111;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+  overflow: hidden;
 }
 
 .stage > div, .tall:before, .tall:after{
@@ -52,11 +53,6 @@ body{
   box-shadow:.125em .125em .5em rgba(0,0,0,.09);
   transition: var(--animation);
   outline: 0;
-}
-.stage > div:hover{
-  cursor: pointer;
-  outline: 1px solid lime;
-  outline-offset: -2px;
 }
 
 .move {
@@ -98,6 +94,7 @@ body{
   background: black!important;
 }
 .player:before{
+  pointer-events: none;
   content: "";
   background: url('https://orig00.deviantart.net/94b2/f/2014/083/c/0/dark_souls_knight_sprite_by_metroid0070-d7bh5dm.png');
   background-size: cover!important;
@@ -114,6 +111,7 @@ body{
 }
 .monster:before{
   content: "";
+  pointer-events: none;
   background: url('https://i.giphy.com/media/9COUwZ5H0tRjq/200w.gif');
   background-size: cover!important;
   position: absolute;
@@ -124,7 +122,71 @@ body{
   box-shadow:inset 0em -.125em .25em rgba(0,0,0,.1);
 }
 
+.movable{
+  outline: 1px solid white!important;
+  outline-offset: -2px;
+}
+.movable:hover{
+  cursor: pointer;
+  outline: 1px solid lime!important;
+  outline-offset: -2px;
+}
+.tall.movable{
+  outline: 1px solid red!important;
+}
+
+.battle{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 33vh;
+  height: 33vh;
+  background: black;
+  text-align: center;
+  font-size: 16vh;
+  padding-bottom: 8vh;
+  color: white;
+  font-family: serif;
+  z-index: 10;
+  background: url('https://i.pinimg.com/originals/04/15/c9/0415c99f1b7b9b188343109bb07b9039.gif') center center;
+  background-size: cover;
+  overflow: hidden;
+}
+.battle > .player-avatar{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  animation: charge1;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.battle > .monster-avatar{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  animation: charge2;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes example {
     from {  transform: translateZ(1em);}
     to {  transform: translateZ(0.9em);}
+}
+
+@keyframes charge1 {
+    from {  transform: translateX(-100%);}
+    to {  transform: translateX(0);}
+}
+@keyframes charge2 {
+    from {  transform: translateX(100%);}
+    to {  transform: translateX(0);}
+}
+
+@media only screen and (max-width: 500px) {
+  .player-avatar, .monster-avatar{
+    display: none!important;
+  }
 }

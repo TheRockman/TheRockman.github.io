@@ -11,11 +11,14 @@
 </head>
 <body class="dragscroll" style=" cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
   <div ng-controller="mainCtrl">
+    <div class="battle" ng-if="fight">
+      <p>{{life.player}} &nbsp; &nbsp; &nbsp; {{life.monster}}</p>
+      <img class="player-avatar" src="https://vignette.wikia.nocookie.net/assassinscreed/images/6/6f/Knight_1.png/revision/latest?cb=20110315090230" alt="">
+      <img class="monster-avatar" src="https://78.media.tumblr.com/554f722c2bf577d4651aa8e5a762f261/tumblr_n74thn8Egh1qza1qzo1_r1_500.gif" alt="">
+    </div>
   <div class="stage">
-    <div ng-repeat="tile in tiles" ng-click="playerMove(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player, 'monster': tile.monster, 'move': tile.move}"></div>
+    <div ng-repeat="tile in tiles" ng-click="playerMove(tile)" ng-class="{'tall' : tile.tall, 'player': tile.player, 'monster': tile.monster, 'move': tile.move, 'movable': tile.id == playerTile.id + 1 || tile.id == playerTile.id - 1 || tile.id == playerTile.id + 20 || tile.id == playerTile.id - 20}"></div>
   </div>
-    <p>{{life.player}}</p>
-    <p>{{life.monster}}</p>
     <p style="position:fixed;top:0;left:0;color:white;">{{moves}}</p>
   </div>
 </body>
