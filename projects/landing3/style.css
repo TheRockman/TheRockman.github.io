@@ -18,13 +18,10 @@
   url('roboto.svg#svgFontName') format('svg');
 }
 
-body{
-  margin: 0;
-  background: #302935;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight: lighter;
+a{
   color: white;
+  text-decoration: none;
+  display: block;
 }
 
 *{
@@ -45,35 +42,50 @@ body{
   padding: var(--spacer);
 }
 
+
+.header{
+  background: #3d334b;
+  box-shadow: var(--level3);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0.5em;
+}
+.header-icon{
+  height: 30px;
+  width: auto;
+}
 /*Card*/
 .card {
   background: #3d334b;
   border-radius: 2px;
   margin: var(--spacer);
-  margin-top: 5%;
   box-shadow: var(--level2);
   transition: var(--animation);
 }
 @keyframes sway {
   0% {
-    background-position-x: 6%;
+    background-position-x: -10px;
   }
   100%{
-    background-position-x: 8%;
+    background-position-x: 0px;
   }
 }
 
 .poster{
   animation-name: sway;
   animation-duration: 5s;
+  animation-fill-mode: cubic-bezier(.33,.11,.02,.99);
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   transform-origin: 20% 20%;
   background: url('https://cdn.dribbble.com/users/191949/screenshots/5370062/monster_illustration.jpg') center center no-repeat;
   background-size: cover;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
+  border-top-right-radius: 300px;
+  border-bottom-right-radius: 300px;
   min-width: 33vw;
   min-height: 75vh;
   box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), inset 0 3px 6px rgba(0,0,0,0.23);
@@ -113,7 +125,60 @@ body{
   cursor: pointer;
 }
 
+.ribbon{
+  padding: var(--spacer);
+  background: #221d26!important;
+}
+
+.content-tile{
+  cursor: pointer;
+  text-align: center;
+  min-height: 300px;
+  margin-bottom: var(--spacer)!important;
+}
+.tile-image{
+  margin: 0 auto;
+  height: 100px;
+  width: auto;
+}
+.body-text{
+  line-height: 2em;
+}
+
+
+@keyframes swing {
+  0% {
+    transform: scale(0.51) rotate(5deg);
+  }
+  100%{
+    transform: scale(0.49) rotate(-5deg);
+  }
+}
+
+.paralax{
+  animation-name: swing;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  position: sticky;
+  top: 60vh;
+  width: 100%;
+  transform: scale(0.5) rotate(10deg);
+  filter: drop-shadow(5px,5px,5px, #000);
+}
+
+.footer{
+  background: transparent!important;
+  padding: 0 1em;
+  padding-top: 200px;
+  padding-bottom: 50px;
+}
+
 /*flex*/
+.row{
+  background: #302935;
+}
 .flex{
   flex-basis: 100%;
 }
@@ -150,10 +215,66 @@ body{
     border-radius: 0!important;
   }
   .cta-btn{
-    position: relative;
+    position: unset;
     margin: 2em;
   }
   .card{
     margin: 0;
+  }
+  .paralax{
+    display: none;
+  }
+}
+.new-body{
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  color: white;
+  position: relative;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #d83649;
+  overflow: hidden;
+}
+body:before, body:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  min-width: 300vw;
+  min-height: 300vw;
+  background-color: #302935;
+  z-index: -1;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+body:before {
+  bottom: 15vh;
+  border-radius: 45%;
+  animation-duration: 10s;
+}
+body:after {
+  bottom: 12vh;
+  opacity: .5;
+  border-radius: 47%;
+  animation-duration: 10s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, 0) rotateZ(0deg);
+  }
+  50% {
+    transform: translate(-50%, -2%) rotateZ(180deg);
+  }
+  100% {
+    transform: translate(-50%, 0%) rotateZ(360deg);
   }
 }
