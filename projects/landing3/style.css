@@ -65,23 +65,8 @@ a{
   box-shadow: var(--level2);
   transition: var(--animation);
 }
-@keyframes sway {
-  0% {
-    background-position-x: -10px;
-  }
-  100%{
-    background-position-x: 0px;
-  }
-}
 
 .poster{
-  animation-name: sway;
-  animation-duration: 5s;
-  animation-fill-mode: cubic-bezier(.33,.11,.02,.99);
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
-  transform-origin: 20% 20%;
   background: url('https://cdn.dribbble.com/users/191949/screenshots/5370062/monster_illustration.jpg') center center no-repeat;
   background-size: cover;
   border-top-right-radius: 300px;
@@ -100,7 +85,7 @@ a{
 }
 
 .cta-btn{
-  background: linear-gradient(to bottom, #a944f4 0%,#7923fd 100%); 
+  background: linear-gradient(to bottom, #a944f4 0%,#7923fd 100%);
   padding: var(--spacer);
   text-align: center;
   border-radius: 25px;
