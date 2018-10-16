@@ -13,7 +13,7 @@ body::before{
   left: 0;
   right: 0;
   top: 0;
-  background: #15153b;
+  background: #0c67c0;
   z-index: -1;
 }
 .wrap{
@@ -25,15 +25,14 @@ body::before{
   padding: 2rem;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-
 .background {
   width: 18.5em;
   height: 1.125em;
   border-radius: 1.125em;
-  color: #1c1c48;
+  color: dodgerblue;
   margin: 0 auto;
   background-color: currentColor;
-  box-shadow: -15.625em 1.125em #15153b, 16.25em 1.125em #15153b, 0 1.125em, -2.25em 2.25em, 2.25em 2.25em, -16.25em 3.375em #15153b, 16.875em 3.375em #15153b, 0 3.375em, 1.25em 4.5em, -1.25em 4.5em, -16.875em 5.625em #15153b, 17.5em 5.625em #15153b, 0 5.625em, -0.625em 6.75em, 0.625em 6.75em;
+  box-shadow: -15.625em 1.125em #0c67c0, 16.25em 1.125em #0c67c0, 0 1.125em, -2.25em 2.25em, 2.25em 2.25em, -16.25em 3.375em #0c67c0, 16.875em 3.375em #0c67c0, 0 3.375em, 1.25em 4.5em, -1.25em 4.5em, -16.875em 5.625em #0c67c0, 17.5em 5.625em #0c67c0, 0 5.625em, -0.625em 6.75em, 0.625em 6.75em;
 }
 
 
