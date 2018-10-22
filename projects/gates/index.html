@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        <div class="stage">
+          <div class="pl" >
+            <div class="dir" style="left:-64px;" ng-click="updateCSS('--posx', currentX + 90, false)">
+              <
+            </div>
+            <div class="dir action" ng-if="action" style="bottom:170px;" ng-click="action();">
+              {{item.actionLabel}}
+            </div>
+            <div class="dir" style="right:-64px;" ng-click="updateCSS('--posx', currentX - 90, true)">
+              >
+            </div>
+          </div>
+          <div class="obst" ng-show="item" ng-class="item.class"></div>
+        </div>
+        {{msg}}
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
