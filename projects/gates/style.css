@@ -16,10 +16,11 @@
 }
 
 body{
-  margin: 0 20%;
+  margin: 0;
   background: black;
   color: white;
   font-weight: lighter;
+  text-align: center;
   font-size: 32px;
   font-family: 'VT323', monospace;
 }
@@ -83,20 +84,25 @@ body{
   position: absolute;
   right: var(--obst-pos);
   bottom: 0;
-  height: 10px;
-  width: 10px;
-  background: green;
+  height: 64px;
+  width: 64px;
+  background: white;
 }
 .apple{
   background: red;
 }
 .skeleton{
-  height: 270px;
-  width: 230px;
-  bottom: -70px;
-  transform: scale(0.6) scaleX(-1) translateX(-330px);
-  background: url('http://pixeljoint.com/files/icons/full/policeman_walk.gif');
+  background: green;
 }
+.block{
+  background-color: brown;
+}
+
+.life{
+  width: 32px;
+  height: auto;
+}
+
 
 /* ng-animate */
 /* .fade{
