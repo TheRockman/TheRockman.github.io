@@ -28,7 +28,7 @@ body{
 .stage{
   width:720px;
   position: relative;
-  margin: 10% auto;
+  margin: 1em auto;
   overflow: hidden;
   background: url('cover.png') center center;
   background-repeat: repeat-x;
@@ -47,9 +47,9 @@ body{
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: 60px;
+  width: 70px;
   background-size: cover;
-  height: 150px;
+  height: 160px;
   background: url('https://alfahir.hu/sites/default/files/kepek/bs_walk.gif') center center no-repeat;
 }
 .dir{
@@ -87,6 +87,7 @@ body{
   height: 64px;
   width: 64px;
   background: white;
+  margin-right: -100px;
 }
 .apple{
   background: red;
@@ -101,6 +102,11 @@ body{
 .life{
   width: 32px;
   height: auto;
+  margin-top: 1em;
+}
+
+.outline{
+  filter: drop-shadow(1px -10px 0px #fff);
 }
 
 

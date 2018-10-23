@@ -84,6 +84,10 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   function exausted() {
     $scope.msg = 'Took damage due to hunger';
     $scope.life = $scope.life - 1;
+    if ($scope.life < 1) {
+      $scope.life = 1;
+      $scope.msg = "Died"
+    }
   }
   
   $scope.getNumber = function(num) {
