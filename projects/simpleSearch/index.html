@@ -13,11 +13,16 @@
     text-align: center;
   }
   .input{
+    position: fixed;
+    left: 0.5em;
+    right: 0.5em;
+    bottom: 5em;
     width: 80vw;
+    margin: 0 auto;
     font-size: 16px;
     border: none;
     outline: none!important;
-    padding: 0.5em;
+    padding: 1em;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
     border-radius: 8px;
   }
@@ -32,10 +37,5 @@
         <input class="btn" type="submit" value="search" />
     </form>
   </div>
-  <script type="text/javascript">
-    window.onload = function() {
-      document.getElementById("box").focus();
-    };
-  </script>
 </body>
 </html>
