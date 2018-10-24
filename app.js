@@ -186,7 +186,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
-      Url: './projects/movieDash/index.html',
+      Url: './projects/musicDash/index.html',
       Devider: false
     },
     {
