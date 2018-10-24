@@ -1,5 +1,9 @@
 var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
 
+  function getAColor() {
+    return 'dodgerblue';
+  } 
+
   $scope.projects = [
     {
       Title: 'About',
@@ -14,7 +18,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Doodles',
       Desc: 'I draw whenever I have the time: on the train, at home or while waiting for code to compile. I use a simple ball point pen when im on the go or my wacom tablet.',
       Tags: ['Drawing', 'Making', 'Twitter'],
-      Theme: '#DA4453',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -24,7 +28,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Music',
       Desc: 'If you are observant you will notice that few of my tracks are longer than one minute. I could claim that this is some artistic choice to impose limits on myself. The truth however is simply that the software im using wont allow larger files to be exported.',
       Tags: ['Music', 'Making', 'Soundcloud'],
-      Theme: '#E9573F',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -35,7 +39,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'UI kit',
       Desc: 'A no-js ui kit for basic html elements that can be used in any project.',
       Tags: ['Code', 'Making', 'UI'],
-      Theme: 'tomato',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -46,7 +50,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Cards',
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
       Tags: ['Code', 'Making', 'Game'],
-      Theme: '#967ADC',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -57,7 +61,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Feed',
       Desc: 'A mobile app sandbox.',
       Tags: ['Code', 'Making', 'Mobile'],
-      Theme: '#8CC152',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -68,7 +72,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Dashboard',
       Desc: 'Trying out a dashboard design with a persistent sidebar. Exploring alternatives to the standard mobile top navigation bar in general.',
       Tags: ['Code', 'Making', 'Mobile'],
-      Theme: '#f10021',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -79,7 +83,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Landing page',
       Desc: 'Whats trendy and hip with the suits? Purple lading pages with svg illustrations thats what!',
       Tags: ['Code', 'Making', 'Mobile'],
-      Theme: '#ab6df1',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -87,10 +91,21 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: false
     },
     {
+      Title: 'Another landing page',
+      Desc: 'Playing around with dynamic languages and themes',
+      Tags: ['Code', 'Mobile'],
+      Theme: getAColor(),
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/landing2/index.html',
+      Devider: false
+    },
+    {
       Title: 'Tickets',
       Desc: 'Movie ticket booking flow',
       Tags: ['Code', 'Making', 'Mobile'],
-      Theme: '#4AB9DC',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -101,7 +116,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Nightly',
       Desc: 'Playing around with SVG backgrounds',
       Tags: ['Code', 'Making', 'SVG'],
-      Theme: '#434A54',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -112,7 +127,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Conversation',
       Desc: 'Just someone to talk to',
       Tags: ['Code', 'Making', 'Mobile'],
-      Theme: '#37BC9B',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -120,10 +135,32 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: false
     },
     {
+      Title: 'Inventory',
+      Desc: 'A drag and drop inventory loadout',
+      Tags: ['Code', 'game'],
+      Theme: getAColor(),
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/loadout/index.html',
+      Devider: false
+    },
+    {
+      Title: 'Scifi',
+      Desc: 'A non-responsive future telephone',
+      Tags: ['Code', 'UI'],
+      Theme: getAColor(),
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/scifiui/index.html',
+      Devider: false
+    },
+    {
       Title: 'Turn based',
       Desc: 'Example of turned based combat logic',
       Tags: ['Code', 'Making'],
-      Theme: '#37BC9B',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -134,7 +171,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Title: 'Matching',
       Desc: 'Example of matching game',
       Tags: ['Code', 'Game'],
-      Theme: '#37BC9B',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -142,10 +179,10 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: false
     },
     {
-      Title: 'dashboard',
+      Title: 'Dashboard',
       Desc: 'experimental dashboard layout',
       Tags: ['Code', 'Game'],
-      Theme: '#37BC9B',
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
@@ -153,10 +190,32 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: false
     },
     {
-      Title: 'Swap cards',
-      Desc: 'Trying out some animation and more artsy css',
+      Title: 'Walking simulator',
+      Desc: 'Small idea i had about a sidescroller game. Still using placeholder art thats not mine!',
       Tags: ['Code', 'Game'],
-      Theme: '#37BC9B',
+      Theme: getAColor(),
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/gates/index.html',
+      Devider: false
+    },
+    {
+      Title: 'FizzBuzz',
+      Desc: 'FizzBuzz example in CSS',
+      Tags: ['Code'],
+      Theme: getAColor(),
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/fb/index.html',
+      Devider: false
+    },
+    {
+      Title: 'Shuffle cards',
+      Desc: 'Trying out some animation and more fancy css',
+      Tags: ['Code', 'Game'],
+      Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
