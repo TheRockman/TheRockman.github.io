@@ -28,9 +28,14 @@
 <body>
   <div>
     <form action="http://www.google.com/search" method="get">
-        <input class="input" type="text" name="q" autocomplete="off" autofocus="on"/>
+        <input id="box" class="input" type="text" name="q" autocomplete="off"/>
         <input class="btn" type="submit" value="search" />
     </form>
   </div>
+  <script type="text/javascript">
+    window.onload = function() {
+      document.getElementById("box").focus();
+    };
+  </script>
 </body>
 </html>
