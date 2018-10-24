@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style media="screen">
+  body{
+    background: #fff;
+    font-family: Arial,sans-serif;
+    color: #3C4043;
+    text-align: center;
+  }
+  .input{
+    width: 80vw;
+    font-size: 16px;
+    border: none;
+    outline: none!important;
+    padding: 0.5em;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border-radius: 8px;
+  }
+  .btn{
+    visibility: hidden;
+  }
+</style>
+<body>
+  <div>
+    <form action="http://www.google.com/search" method="get">
+        <input class="input" type="text" name="q" autocomplete="off" autofocus="on"/>
+        <input class="btn" type="submit" value="search" />
+    </form>
+  </div>
+</body>
+</html>
