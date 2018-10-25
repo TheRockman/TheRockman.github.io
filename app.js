@@ -47,6 +47,17 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: false
     },
     {
+      Title: 'UI sandbox',
+      Desc: 'Small things i dont feel like building a page around',
+      Tags: ['Code', 'Making', 'UI'],
+      Theme: getAColor(),
+      Poster: '',
+      PosterSmall: '',
+      Backdrop: './img/bg1.jpg',
+      Url: './projects/ui-sandbox/index.html',
+      Devider: false
+    },
+    {
       Title: 'Cards',
       Desc: 'I like card games. So i tried to make a simple one that can be played on the bus.',
       Tags: ['Code', 'Making', 'Game'],

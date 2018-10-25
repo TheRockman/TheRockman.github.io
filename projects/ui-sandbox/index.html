@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row head">
+      <div class="flex">
+        <h1 style="margin-top:0;">UI sandbox</h1>
+        <span class="subtext">Just radom cool UI deas and concepts</span>
+      </div>
+    </div>
+    <div class="fluid-row">
+      
+      <div class="fluid-flex card center">
+        <p class="card-header">Gender Toggle</p>
+        <input id="genderToggle" ng-model="gender" type="checkbox">
+        <label for="genderToggle">
+          <div class="gender-label" ng-class="{'active':gender}">
+            <svg class="tie" style="width:48px;height:48px" viewBox="0 0 24 24" ng-class="{'active-tie':gender}">
+              <path fill="#000000" d="M15,14L21,17V7L15,10V14M9,14L3,17V7L9,10V14M10,10H14V14H10V10Z" />
+            </svg>
+          </div>
+        </label>
+        <br>
+        <span class="gender-text" ng-class="{'slide': gender}">
+          <span class="gender-text" ng-class="{'fade': gender}">FE</span>MALE
+        </span>
+      </div>
+      
+      <div class="fluid-flex card center">
+        <p class="card-header">Eyes on the price</p>
+          <img src="http://www.arenawp.com/wp-content/uploads/st/thumb-stock-photo-outline-head-man-character-person.jpg" class="outline" alt="">
+        <div class="coin">
+          <svg xmlns="http://www.w3.org/2000/svg" width="151" height="110" viewBox="0 0 151 110">
+            <g id="Page-1" fill="none" fill-rule="evenodd">
+              <path fill="" id="face" d="M125,55 C125,82.61423749155,102.61423749155,105,75,105,47.38576250845,105,25,82.61423749155,25,55,25,27.385762508450004,47.38576250845,5,75,5,102.61423749155,5,125,27.385762508450004,125,55z"></path>
+              <g id="face-components">
+                <path id="mouth" ng-style="{'transform': 'translateY(' + updatedEyesY + 'px)'}" stroke="#000" stroke-width="3" d="M61.5 76.903h27.003" stroke-linecap="round" data-svg-origin="61.5 76.90234375" transform="matrix(1,0,0,1,0,0)"></path>
+                <g id="eyes-container" ng-style="{'transform': 'translateX(' + updatedEyesX + 'px) translateY(' + updatedEyesY + 'px)'}"> 
+                  <path id="l-eye" stroke="#000" stroke-width="5" d="M47 63.5c1.38 0 2.5-1.12 2.5-2.503S48.38 58.5 47 58.5s-2.5 1.114-2.5 2.497c0 1.382 1.12 2.503 2.5 2.503z" stroke-linecap="round" data-svg-origin="47 61" transform="matrix(1,0,0,1,0,0)"></path>
+                  <path id="r-eye" stroke="#000" stroke-width="5" d="M101.5 64c1.38 0 2.5-1.12 2.5-2.503S102.88 59 101.5 59 99 60.114 99 61.497C99 62.88 100.12 64 101.5 64z" stroke-linecap="round" data-svg-origin="101.5 61.5" transform="matrix(1,0,0,1,0,0)"></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <br>
+        <input type="text" placeholder="start typing" ng-change="updateEyes(einput)" class="eye-put" ng-model="einput" name="" value=""/>
+      </div>
+      
+      <div class="fluid-flex card">
+        <p class="card-header">Label</p>
+      </div>
+      
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
