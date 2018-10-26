@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div id="perspective">
+        <div id="pane">
+          <section ng-repeat="i in cubes" class="cube" ng-click="turn(currentPlayer, i);" ng-class="{'danger':i.attack, 'edge':i.edge, 'trap billboard':i.state === 'trap', 'current':i.state === currentPlayer, 'item billboard':i.state == 'item', 'player1 billboard':i.state == 'player1', 'player2 billboard':i.state == 'player2'}"><div class="face front"></div><div class="face back"></div><div class="face top"></div><div class="face bottom"></div><div class="face left"></div><div class="face right"></div></section>
+        </div>
+    </div>
+    
+    <div class="menu">
+      <div>
+        <div ng-show="currentPlayer === 'player1'">
+          1
+          <button type="button" ng-click="attack()" name="button">Attack</button>
+          <ul class="itemlist">
+            <li ng-click="useItem(i.itemName)" ng-repeat="i in player1.items">{{i.itemName}}</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div ng-show="currentPlayer === 'player2'">
+          2
+          <button type="button" ng-click="attack()" name="button">Attack</button>
+          <ul class="itemlist">
+            <li ng-click="useItem(i.itemName)" ng-repeat="i in player2.items">{{i.itemName}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
