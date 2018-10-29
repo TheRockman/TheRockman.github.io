@@ -66,6 +66,26 @@
         </h1>
       </div>
       
+      <div class="fluid-flex card" style="background:purple;">
+        <p class="card-header">Tab toggle</p>
+        <div class="card special-card1">
+          <div>
+            <input type="radio" id="togg1" ng-model="myVar" value="1">
+            <label for="togg1">
+              Black
+            </label>
+          </div>
+          <br>
+          <div>
+            <input type="radio" id="togg2" ng-model="myVar" value="0">
+            <label for="togg2">
+              White
+            </label>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Yin_yang.svg/1000px-Yin_yang.svg.png" ng-class="{'rot':myVar>0 }" alt="">
+        </div>
+      </div>
+      
     </div>
   </div>
 </body>

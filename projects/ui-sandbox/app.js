@@ -25,4 +25,6 @@ $scope.updateEyes = function(x) {
   $scope.updatedEyesX = leng;
 }
 
+$scope.myVar = 1;
+
 });

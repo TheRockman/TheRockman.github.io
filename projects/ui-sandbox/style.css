@@ -294,6 +294,62 @@ body{
   font-size: 70px;
 }
 
+/*FOUR*/
+.special-card1{
+  padding: 0;
+  padding-top: 1em;
+  overflow: hidden;
+  padding-bottom: 1em;
+  box-shadow: none;
+  background: linear-gradient(to right, #fff 19%, #fff 19%, #fff 80%,purple 80%,purple 95%,purple 95%);
+}
+.special-card1 input{
+  margin: 1em 1em 1em 0;
+  transition: var(--animation);
+  position: relative;
+  opacity: 0;
+}
+.special-card1 label{
+    position: relative;
+    padding: 0.5em 2em;
+    cursor: pointer;
+}
+.special-card1 label:before{
+  content: "";
+  width: 8em;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -10em;
+  background: purple;
+  border-top-right-radius:  4em;
+  border-bottom-right-radius:  4em;
+  border: 1px solid #999;
+  border-left: 0;
+  transition: var(--animation);
+  transition-delay: 0.2s;
+}
+.special-card1 input[type="radio"]:checked~label:before{
+  transform: translateX(3em);
+}
+.special-card1 img{
+  position: absolute;
+  right: 0;
+  height: 74%;
+  width: auto;
+  top: 0;
+  border:1em solid purple;
+  border-radius: 50%;
+  bottom: 0;
+  transform-origin: center;
+  transition: var(--animation);
+  background: purple;
+}
+.rot{
+  transform: rotate(180deg);
+}
+
+
 /*Fab*/
 /*.fab{
     background:dodgerblue;
