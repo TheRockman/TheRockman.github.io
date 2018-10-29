@@ -301,7 +301,7 @@ body{
   overflow: hidden;
   padding-bottom: 1em;
   box-shadow: none;
-  background: linear-gradient(to right, #fff 19%, #fff 19%, #fff 80%,purple 80%,purple 95%,purple 95%);
+  background: linear-gradient(to right, #fff 19%, #fff 19%, #fff 80%,#5652b2 80%,#5652b2 95%,#5652b2 95%);
 }
 .special-card1 input{
   margin: 1em 1em 1em 0;
@@ -321,7 +321,7 @@ body{
   top: 0;
   bottom: 0;
   left: -10em;
-  background: purple;
+  background: #5652b2;
   border-top-right-radius:  4em;
   border-bottom-right-radius:  4em;
   border: 1px solid #999;
@@ -338,17 +338,77 @@ body{
   height: 74%;
   width: auto;
   top: 0;
-  border:1em solid purple;
+  border:1em solid #5652b2;
   border-radius: 50%;
   bottom: 0;
   transform-origin: center;
   transition: var(--animation);
-  background: purple;
+  background: #5652b2;
 }
 .rot{
   transform: rotate(180deg);
 }
 
+/*FIVE*/
+.keyBtn{
+    background:dodgerblue;
+    width:24px;
+    height: 24px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    box-shadow: var(--level1);
+    cursor: pointer;
+    margin: 0 auto;
+    position: relative;
+}
+.keys{
+  left: -175px;
+  right: -175px;
+  bottom: -50%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: white;
+  width: 0px;
+  transition: var(--animation);
+  padding: 1em;
+  transform: scale(0);
+  transform-origin: center;
+  width: auto;
+  z-index: 1000;
+}
+.openKeys{
+  transform: scale(1);
+  bottom: 110%;
+}
+.keyRow{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keyRow button{
+  background: #333;
+  min-width: 1.9em;
+  color: white;
+  border:none;
+  margin: 5px;
+  border-radius: 3px;
+  padding: 0.5em;
+  transform-origin: bottom center;
+}
+.keyRow button:hover{
+  background: #666;
+}
+.keyRow button:active{
+  background: white;
+  color: black;
+}
+.shift button{
+  text-transform: lowercase;
+}
 
 /*Fab*/
 /*.fab{

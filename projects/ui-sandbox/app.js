@@ -25,6 +25,22 @@ $scope.updateEyes = function(x) {
   $scope.updatedEyesX = leng;
 }
 
+//FOUR
 $scope.myVar = 1;
+
+//FIVE
+$scope.keyVal = '';
+$scope.lastVal = '';
+$scope.updateKeyVal = function (uc, lc) {
+  if ($scope.shift) {
+    $scope.keyVal = $scope.keyVal+lc;
+  } else {
+    $scope.keyVal = $scope.keyVal+uc;
+  }
+}
+$scope.eraseKeyVal = function () {
+  $scope.keyVal = $scope.keyVal.slice(0, -1);
+}
+
 
 });

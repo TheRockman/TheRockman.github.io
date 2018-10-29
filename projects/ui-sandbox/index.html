@@ -66,7 +66,7 @@
         </h1>
       </div>
       
-      <div class="fluid-flex card" style="background:purple;">
+      <div class="fluid-flex card" style="background:#5652b2;">
         <p class="card-header">Tab toggle</p>
         <div class="card special-card1">
           <div>
@@ -83,6 +83,77 @@
             </label>
           </div>
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Yin_yang.svg/1000px-Yin_yang.svg.png" ng-class="{'rot':myVar>0 }" alt="">
+        </div>
+      </div>
+      
+      <div class="fluid-flex card">
+        <p class="card-header">Keyboard</p>
+        <div class="key-wrap center">
+          <div ng-click="keyOpen  = !keyOpen" class="keyBtn">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="#fff" d="M19,10H17V8H19M19,13H17V11H19M16,10H14V8H16M16,13H14V11H16M16,17H8V15H16M7,10H5V8H7M7,13H5V11H7M8,11H10V13H8M8,8H10V10H8M11,11H13V13H11M11,8H13V10H11M20,5H4C2.89,5 2,5.89 2,7V17A2,2 0 0,0 4,19H20A2,2 0 0,0 22,17V7C22,5.89 21.1,5 20,5Z" />
+            </svg>
+            <div ng-class="{'openKeys':keyOpen, 'shift':shift}"  ng-click="$event.stopPropagation();" class="keys" >
+              <div class="keyRow">
+                <button type="button" tabindex="0" ng-click="updateKeyVal('1','1')" name="button">1</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('2','2')" name="button">2</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('3','3')" name="button">3</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('4','4')" name="button">4</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('5','5')" name="button">5</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('6','6')" name="button">6</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('7','7')" name="button">7</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('8','8')" name="button">8</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('9','9')" name="button">9</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('?','?')" name="button">?</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('!','!')" name="button">!</button>
+              </div>
+              <div class="keyRow">
+                <button type="button" tabindex="0" ng-click="updateKeyVal('Q','q')" name="button">Q</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('W','w')" name="button">W</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('E','e')" name="button">E</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('R','r')" name="button">R</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('T','t')" name="button">T</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('Y','y')" name="button">Y</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('U','u')" name="button">U</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('I','i')" name="button">I</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('O','o')" name="button">O</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('P','p')" name="button">P</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('Å','å')" name="button">Å</button>
+              </div>
+              <div class="keyRow">
+                <button type="button" tabindex="0" ng-click="updateKeyVal('A','a')" name="button">A</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('S','s')" name="button">S</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('D','d')" name="button">D</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('F','f')" name="button">F</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('G','g')" name="button">G</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('H','h')" name="button">H</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('J','j')" name="button">J</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('K','k')" name="button">K</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('L','l')" name="button">L</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('Ö','ö')" name="button">Ö</button>
+                <button type="button" tabindex="0" ng-click="updateKeyVal('Ä','ä')" name="button">Ä</button>
+              </div>
+              <div class="keyRow">
+                <button type="button" style="font-size:100%; padding:0 5px;" ng-click="shift = !shift" name="button">🠹</button>
+                <button type="button" ng-click="updateKeyVal('Z','z')" name="button">Z</button>
+                <button type="button" ng-click="updateKeyVal('X','x')" name="button">X</button>
+                <button type="button" ng-click="updateKeyVal('C','c')" name="button">C</button>
+                <button type="button" ng-click="updateKeyVal('V','v')" name="button">V</button>
+                <button type="button" ng-click="updateKeyVal('B','b')" name="button">B</button>
+                <button type="button" ng-click="updateKeyVal('N','n')" name="button">N</button>
+                <button type="button" ng-click="updateKeyVal('M','m')" name="button">M</button>
+                <button type="button" ng-click="updateKeyVal(',',';')" name="button">,</button>
+                <button type="button" ng-click="updateKeyVal('.',':')" name="button">.</button>
+                <button type="button" ng-click="updateKeyVal('-','_')" name="button">-</button>
+              </div>
+              <div class="keyRow">
+                <button type="button" style="width:22em;" ng-disabled="lastVal === keyVal" ng-click="updateKeyVal(' ', ' ')" name="button">space</button>
+                <button type="button" style="font-size:100%; padding:0 5px;" ng-click="$event.stopPropagation(); eraseKeyVal()" name="button">🠨</button>
+              </div>
+            </div>
+            
+          </div>
+          <input type="text" ng-model="keyVal" name="" value="">
         </div>
       </div>
       
