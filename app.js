@@ -69,14 +69,14 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       Devider: false
     },
     {
-      Title: 'Feed',
-      Desc: 'A mobile app sandbox.',
-      Tags: ['Code', 'Making', 'Mobile'],
+      Title: 'photo dashboard',
+      Desc: 'A dashboard layout for users and creators',
+      Tags: ['Code', 'Making', 'UI'],
       Theme: getAColor(),
       Poster: '',
       PosterSmall: '',
       Backdrop: './img/bg1.jpg',
-      Url: './projects/mobile/index.html',
+      Url: './projects/imageDash/index.html',
       Devider: false
     },
     {
