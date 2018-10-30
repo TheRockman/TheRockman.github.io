@@ -128,38 +128,38 @@
               <button type="button" name="button">Popular stories</button>
             </nav>
             <div class="align jsb anit-align">
-              <img class="featuret" src="https://picsum.photos/1920/1000.1/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.2/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.3/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.4/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.1/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.2/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.3/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.4/?random" alt="">
             </div>
             <nav class="align jsb padd">
               <b>Latest</b>
               <span>
               <span>
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <svg ng-click="list = true" style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path fill="#000000" d="M7,5H21V7H7V5M7,13V11H21V13H7M4,4.5A1.5,1.5 0 0,1 5.5,6A1.5,1.5 0 0,1 4,7.5A1.5,1.5 0 0,1 2.5,6A1.5,1.5 0 0,1 4,4.5M4,10.5A1.5,1.5 0 0,1 5.5,12A1.5,1.5 0 0,1 4,13.5A1.5,1.5 0 0,1 2.5,12A1.5,1.5 0 0,1 4,10.5M7,19V17H21V19H7M4,16.5A1.5,1.5 0 0,1 5.5,18A1.5,1.5 0 0,1 4,19.5A1.5,1.5 0 0,1 2.5,18A1.5,1.5 0 0,1 4,16.5Z" />
                 </svg>
               </span>
               <span>
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <svg ng-click="list = false" style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path fill="#000000" d="M4,2H20A2,2 0 0,1 22,4V20A2,2 0 0,1 20,22H4C2.92,22 2,21.1 2,20V4A2,2 0 0,1 4,2M4,4V11H11V4H4M4,20H11V13H4V20M20,20V13H13V20H20M20,4H13V11H20V4Z" />
                 </svg>
               </span>
               </span>
             </nav>
-            <div class="align jsb anit-align">
-              <img class="featuret" src="https://picsum.photos/1920/1000.5/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.6/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.7/?random" alt="">
+            <div class="align jsb anit-align" ng-class="{'layoutList':list}">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.5/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.6/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.7/?random" alt="">
             </div>
-            <div class="align jsb anit-align">
-              <img class="featuret" src="https://picsum.photos/1920/1000.8/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.9/?random" alt="">
-              <img class="featuret" src="https://picsum.photos/1920/1000.10/?random" alt="">
+            <div class="align jsb anit-align" ng-class="{'layoutList':list}">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.8/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.9/?random" alt="">
+              <img class="featuret" tabindex="0" src="https://picsum.photos/1920/1000.10/?random" alt="">
             </div>
             <div class="center">
-              <button type="button" name="button">Load more</button>
+              <button style="width: 50%;margin: 1em 0;" type="button" name="button">Load more</button>
             </div>
           </div>
           <div class="flex user-stats padd">
