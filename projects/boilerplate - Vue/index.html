@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script src="https://unpkg.com/vue"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div id="app">
+    <div class="row">
+      <div class="flex"></div>
+      <div class="flex x3">        
+        <div style="margin:10px;">
+          <div class="align jsb">
+            <div class="dot" v-on:click="setSlide(1)" v-bind:class="{ active: selectedSlide === 1 }">
+              1
+            </div>
+            <div class="dot" v-on:click="setSlide(2)" v-bind:class="{ active: selectedSlide === 2 }">
+              2
+            </div>
+            <div class="dot" v-on:click="setSlide(3)" v-bind:class="{ active: selectedSlide === 3 }">
+              3
+            </div>
+          </div>
+          <div class="card">
+            <div class="card" v-if="selectedSlide === 1">
+              <h1>Slide nr 1</h1>
+              <p>What is your name?: </p>
+              <input type="number" v-model="arrLeng" name="" placeholder="Show # names" value="">
+              <p style="cursor:pointer" v-for="item in items.slice(0, arrLeng)" v-on:click="selectedItem = item">{{item.name}}</p>
+              <br>
+              <div v-if="selectedItem !== null">
+                <b>My name is:</b>
+                </br>
+                {{selectedItem.name}}
+              </div>
+              <button type="button" v-on:click="incSlide(selectedItem)" name="button">Next</button>
+              <span v-if="error" style="color: red">{{error}}</span>
+            </div>
+            <div class="card" v-if="selectedSlide === 2">
+              <h1>Slide nr 2</h1>
+              <p>What is your favorite thing?:</p>
+              <input type="text" v-model="message" name="" value="">
+              <br>
+              <br>
+              Are you sure?: 
+              <input type="checkbox" v-model="done" name="" value="">
+              <br>
+              <p style="padding:1em; border:1px solid black;">
+                <span v-if="message"><i>You like {{message}}? <span style="text-transform: uppercase;">I love {{message}}!</span> </i></span> | <span v-if="done" style="color:green;">☑ Yes im sure</span> <span style="color:red;" v-if="!done">☒ Im not so sure</span>
+              </p>
+              <button type="button" v-on:click="incSlide(message)" name="button">Next</button>
+              <span v-if="error" style="color: red">{{error}}</span>
+            </div>
+            <div class="card" v-if="selectedSlide === 3">
+              <h1>Slide nr 3</h1>
+              <p>ya did it mate</p>
+              <img src="https://media.tenor.com/images/63d618d47777e50dcb20cf23792c4189/tenor.gif" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex"></div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
