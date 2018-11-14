@@ -15,9 +15,7 @@
   
   --accent: #f92653;
 }
-html{
-  overflow-x: hidden;
-}
+
 body{
   margin: 0;
   background: var(--main1);
@@ -134,12 +132,30 @@ nav{
   height: 60vh;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 .overlay{
   height: 66.3vh;
   width: auto;
   margin-top: -1.2vh;
-  margin-right: 100px;
+  margin-right: 33%;
+  position: relative;
+}
+.hero::after{
+  content: "My mission in life \A is merely to survive";
+  position: absolute;
+  text-align: left;
+  white-space: pre;
+  right: 25%;
+  top: 50%;
+  color: white;
+  font-size: 32px;
+  background: black;
+  padding: 0.5em;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: bold;
+  transform: skew(-20deg);
+  text-transform: uppercase;
 }
 .fancy-text{
   font-family: 'Fira Sans', sans-serif;
@@ -230,6 +246,16 @@ nav{
     box-shadow: var(--level2);
     bottom: var(--spacer)!important;
     right: var(--spacer)!important;
+  }
+  .overlay{
+    margin-right:0px;
+    margin-left: -100px;
+  }
+  .hero::after{
+    left: var(--spacer);
+    right: var(--spacer);
+    transform: skew(0deg);
+    font-style: italic;
   }
 }
 
