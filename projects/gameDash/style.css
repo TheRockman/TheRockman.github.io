@@ -22,6 +22,7 @@ body{
   color: #f5f5f5;
   font-family: 'Raleway', sans-serif;
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 .align{
@@ -128,7 +129,15 @@ nav{
 .hero{
   background: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/bfc40e67228265.5b32555e70f0b.png') center center no-repeat fixed;
   background-size: cover;
-  height: 50vh;
+  height: 60vh;
+  position: relative;
+  text-align: center;
+}
+.overlay{
+  height: 66.3vh;
+  width: auto;
+  margin-top: -1.2vh;
+  margin-right: 100px;
 }
 .fancy-text{
   font-family: 'Fira Sans', sans-serif;
