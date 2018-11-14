@@ -204,6 +204,26 @@ nav{
 .page{
   padding: var(--spacer);
 }
+h1{
+  margin: 0.5em 0;
+  font-size: 2.5em;
+}
+.fab{
+    background:dodgerblue;
+    width:24px;
+    height: 24px;
+    padding: 15px;
+    border-radius:50%;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    box-shadow: var(--level1);
+    position: sticky;
+    top: 55vh;
+    margin-top: -5vh;
+    margin-left: 15vh;
+    cursor: pointer;
+}
 
 .flex{
   flex-basis: 100%;
@@ -257,28 +277,11 @@ nav{
     transform: skew(0deg);
     font-style: italic;
   }
+  .hero::after, h1{
+    font-size: 125%;
+  }
 }
 
-h1{
-  margin: 0.5em 0;
-  font-size: 2.5em;
-}
-.fab{
-    background:dodgerblue;
-    width:24px;
-    height: 24px;
-    padding: 15px;
-    border-radius:50%;
-    font-size: 24px;
-    line-height: 24px;
-    text-align: center;
-    box-shadow: var(--level1);
-    position: sticky;
-    top: 55vh;
-    margin-top: -5vh;
-    margin-left: 15vh;
-    cursor: pointer;
-}
 
 /*Animation*/
 /*@keyframes animation {
