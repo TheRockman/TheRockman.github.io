@@ -42,6 +42,7 @@ nav{
   border-left: 5px solid var(--accent);
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 .brand{
   font-size: 20px;
@@ -50,6 +51,80 @@ nav{
   background: var(--main3);
   padding: 0.5em;
 }
+.subnav svg{
+  transition: var(--animation);
+  cursor: pointer;
+  outline: none!important;
+}
+.subnav svg:hover path,
+.subnav svg:focus path{  
+  fill: white;
+}
+.user-info{
+  cursor: pointer;
+  outline: none!important;
+  position: relative;
+}
+.user-info > small{
+  opacity: 0;
+  transform: translateX(1em);
+  transition: var(--animation);
+}
+.user-info:hover > small,
+.user-info:focus > small{
+  opacity: 1;
+  transform: translateX(0);
+}
+.profile{
+  position: absolute;
+  transition: var(--animation);
+  background: var(--main3);
+  box-shadow: var(--level3);
+  display: none;
+  top: 2em;
+  right: 0;
+  width: 300px;
+}
+.face{
+  padding: var(--spacer) 0;
+  background: var(--main1);
+  text-align: center;
+}
+.profile h3{
+  margin: 0;
+}
+.coin{
+  border: 0.5em solid var(--main2);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.rank img{
+  width: 25%;
+  height: auto;
+}
+.user-info:focus > .profile{
+  display: block!important;
+}
+.exp-bar{
+  width: 90%;
+  background: var(--main1);
+  height: 0.5em;
+  position: relative;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+.exp-bar::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  border-radius: 10px;
+  background: white;
+}
+
 .hero{
   background: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/bfc40e67228265.5b32555e70f0b.png') center center no-repeat fixed;
   background-size: cover;
@@ -79,8 +154,12 @@ nav{
   padding: 0.5em;
   transform: skew(-20deg);
   margin: 0 2px;
+  transition: var(--animation);
   background: var(--accent);
   cursor: pointer;
+}
+.tag:hover{
+  margin-right: 0.5em;
 }
 .tag > div{
   transform: skew(0deg);
@@ -147,46 +226,6 @@ h1{
   margin: 0.5em 0;
   font-size: 2.5em;
 }
-
-/*fluid layout*/
-/*
-.fluid-row {
-  display: grid;
-  grid-gap: 0px;
-  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
-}
-.fluid-flex{
-  padding: 5px;
-}
-
-.dense{
-  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
-}
-
-@media screen and (max-width: 960px) {
-  .fluid-row{
-    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .fluid-row{
-    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
-  }
-}
-*/
-
-/*Card*/
-/*.card {
-  background: #fff;
-  border-radius: 2px;
-  margin: var(--spacer);
-  padding: var(--spacer);
-  box-shadow: var(--level1);
-  transition: var(--animation);
-}
-
-/*Fab*/
 .fab{
     background:dodgerblue;
     width:24px;
