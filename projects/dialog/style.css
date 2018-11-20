@@ -13,6 +13,7 @@
 body{
   margin: 0;
   background: #111;
+  overflow-x: hidden;
   font-family: 'Raleway', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
@@ -42,8 +43,12 @@ body{
   text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
 .menu{
-  width: 33%;
-  margin-left: 66%;
+  width: 366px;
+  margin-left: 480px;
+  background:  linear-gradient(to right, #111 0%, #111 50%,transparent 92%);
+  position: absolute;
+  top: 300px;
+  border-left: 1px solid white;
 }
 h3{
   font-style: italic;
@@ -61,6 +66,26 @@ h3{
   color: white;
   text-align: center;
   padding-top:20%;
+}
+@keyframes animation {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+.sh {
+animation-name: animation;
+animation-duration: 0.4s;
+font-size: 110%;
+animation-iteration-count: 60;
 }
 
 /* ng-animate */
