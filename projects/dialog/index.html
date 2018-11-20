@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div ng-if="overlay" class="overlay">
+      This is a sound demo, headphones are recommended before continuing
+      <br>
+      <br>
+      <button ng-click="play()" type="button" name="button">Got it</button>
+    </div>
+      <div class="center" style="width:100%;">
+        <!-- {{conversation[0].replies}} -->
+        <img src="https://78.media.tumblr.com/9bc7e8ebf1c4e62fac92e79ab4f81be3/tumblr_owk8pudWcr1s2em5fo1_500.gif" alt="">
+        <br>
+        <h3>{{line}}</h3>
+        <br>
+        
+        <div class="menu">
+          <p class="reply pointer" ng-repeat="reply in currentReplies" ng-click="advance(reply); $event.stopPropagation()">{{reply.line}}</p>
+        </div>
+      </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
