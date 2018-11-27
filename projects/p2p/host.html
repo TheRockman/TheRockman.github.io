@@ -18,9 +18,9 @@
 
           <div class="row">
             <div class="flex">
-              <div class="message" id="message"></div>
-              <input type="text" id="sendMessageBox" ng-model="gameState.shared.str" placeholder="Enter a message..." autofocus="true" />
-              <button type="button" id="sendButton">Send</button>
+              {{gameState}}
+              <br>
+              <button type="button" ng-click="passTurn('client')" ng-show="gameState.shared.turn === 'host'" name="button">pass turn</button>
             </div>
           </div>
 
@@ -40,8 +40,6 @@
                 var recvId = document.getElementById("receiver-id");
                 var status = document.getElementById("status");
                 var message = document.getElementById("message");
-                var sendMessageBox = document.getElementById("sendMessageBox");
-                var sendButton = document.getElementById("sendButton");
 
                 $scope.gameState = {
                   me: {
@@ -49,15 +47,19 @@
                   },
                   shared: {
                     passedHand: [],
-                    str: $scope.chatText
+                    turn: ''
                   }
+                }
+                
+                $scope.passTurn = function (input) {
+                  $scope.gameState.shared.turn = input;
+                  conn.send($scope.gameState.shared);
                 }
 
                 function ready() {
                     conn.on('data', function (data) {
                         $scope.gameState.shared = data;
-                        console.log("Data recieved");
-                        addMessage(data);
+                        console.log("Data recieved", data, $scope.gameState.shared);
                     });
                     conn.on('close', function () {
                         status.innerHTML = "Connection reset<br>Awaiting connection...";
@@ -71,21 +73,6 @@
                     peer.on('error', function (err) {
                         alert('' + err)
                     });
-
-                    // Listen for enter
-                    sendMessageBox.onkeypress = function (e) {
-                        var event = e || window.event;
-                        var char = event.which || event.keyCode;
-                        if (char == '13')
-                            sendButton.click();
-                    };
-                    // Send message
-                    sendButton.onclick = function () {
-                        sendMessageBox.value = "";
-                        conn.send($scope.gameState.shared);
-                        console.log("Sent: " + $scope.gameState.shared)
-                        addMessage($scope.gameState.shared);
-                    };
                 }
 
                 function initialize() {
@@ -130,11 +117,6 @@
                         status.innerHTML = "Connected";
                         ready()
                     });
-                }
-
-                function addMessage(msg) {
-                    console.log(msg);
-                    message.innerHTML = "<br>" + msg.str;
                 }
 
                 if (conn) {
