@@ -7,15 +7,14 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-          <h1>Host</h1>
-          <div id="status" class="status"></div>
+
 
           <div class="align jsb card">
-            <span>
-              <div id="receiver-id" style="font-weight: bold;" title="Copy this ID to the input on send.html.">
-                Room Code:
-              </div>
-            </span>
+            <b>Host</b>
+            <div id="status" class="status"></div>
+            <div id="receiver-id" style="font-weight: bold;" title="Copy this ID to the input on send.html.">
+              Room Code:
+            </div>
           </div>
 
           <div class="row">
@@ -43,19 +42,21 @@
                 var sendMessageBox = document.getElementById("sendMessageBox");
                 var sendButton = document.getElementById("sendButton");
 
+                var gameState = {
+                  me: {
+                    hand: []
+                  },
+                  shared: {
+                    passedHand: [],
+                    str: ''
+                  }
+                }
+
                 function ready() {
                     conn.on('data', function (data) {
+                        gameState.shared = data;
                         console.log("Data recieved");
-                        var cueString = "<span class=\"cueMsg\">Cue: </span>";
-                        switch (data) {
-                            case 'Reset':
-                                reset();
-                                addMessage(data);
-                                break;
-                            default:
-                                addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
-                                break;
-                        };
+                        addMessage(data);
                     });
                     conn.on('close', function () {
                         status.innerHTML = "Connection reset<br>Awaiting connection...";
@@ -79,15 +80,11 @@
                     };
                     // Send message
                     sendButton.onclick = function () {
-                        msg = sendMessageBox.value;
+                        gameState.shared.str = sendMessageBox.value;
                         sendMessageBox.value = "";
-                        conn.send(msg);
-                        console.log("Sent: " + msg)
-                        addMessage("<span class=\"selfMsg\">Self: </span>" + msg);
-                    };
-                    // Clear messages box
-                    clearMsgsButton.onclick = function () {
-                        clearMessages();
+                        conn.send(gameState);
+                        console.log("Sent: " + gameState)
+                        addMessage(gameState);
                     };
                 }
 
@@ -135,37 +132,9 @@
                     });
                 }
 
-                // function go() {
-                //     standbyBox.className = "display-box hidden";
-                //     goBox.className = "display-box go";
-                //     fadeBox.className = "display-box hidden";
-                //     offBox.className = "display-box hidden";
-                //     return;
-                // };
-
                 function addMessage(msg) {
-                    var now = new Date();
-                    var h = now.getHours();
-                    var m = addZero(now.getMinutes());
-                    var s = addZero(now.getSeconds());
-
-                    if (h > 12)
-                        h -= 12;
-                    else if (h === 0)
-                        h = 12;
-
-                    function addZero(t) {
-                        if (t < 10)
-                            t = "0" + t;
-                        return t;
-                    };
-
-                    message.innerHTML = "<br><span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg + message.innerHTML;
-                }
-
-                function clearMessages() {
-                    message.innerHTML = "";
-                    addMessage("Msgs cleared");
+                    console.log(msg);
+                    message.innerHTML = "<br>" + msg;
                 }
 
                 if (conn) {
