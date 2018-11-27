@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
         <title>Client</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body ng-controller="mainCtrl">
         
         <div class="align jsb card">
-          <b>Client</b>
+          <b>Client {{test}}</b>
           <div id="status" class="status"></div>
           <span>
             <span style="font-weight: bold">
@@ -23,13 +23,15 @@
         <div class="row">
           <div class="flex">
             <div class="message" id="message"></div>
-            <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
+            <input type="text" id="sendMessageBox" ng-model="gameState.shared.str" placeholder="Enter a message..." autofocus="true" />
             <button type="button" id="sendButton">Send</button>
           </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
         <script type="text/javascript">
+          var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope) {
             (function () {
 
                 var destId = "";
@@ -49,7 +51,8 @@
                 var sendButton = document.getElementById("sendButton");
                 var clearMsgsButton = document.getElementById("clearMsgsButton");
                 
-                var gameState = {
+                $scope.chatText = null;
+                $scope.gameState = {
                   me: {
                     hand: []
                   },
@@ -76,7 +79,7 @@
                   peer.disconnect();
                     // Recieve data (only messages)
                     conn.on('data', function (data) {
-                        gameState.shared = data;
+                        $scope.gameState.shared = data;
                         console.log("Data recieved");
                         addMessage(data);
                     });
@@ -107,11 +110,10 @@
                     };
                     // Send message
                     sendButton.onclick = function () {
-                        gameState.shared.str = sendMessageBox.value;
                         sendMessageBox.value = "";
-                        conn.send(gameState);
-                        console.log("Sent: " + gameState)
-                        addMessage(gameState);
+                        conn.send($scope.gameState.shared);
+                        console.log("Sent: " + $scope.gameState.shared)
+                        addMessage($scope.gameState.shared);
                     };
                 };
 
@@ -163,7 +165,7 @@
 
                 function addMessage(msg) {
                     console.log(msg);
-                    message.innerHTML = "<br>" + msg;
+                    message.innerHTML = "<br>" + msg.str;
                 };
 
                 if (conn) {
@@ -177,6 +179,9 @@
                     join();
                 };
             })();
+          });
+        
+
         </script>
     </body>
 </html>
