@@ -3,17 +3,27 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
-        <title>Peer-to-Peer Cue System --- Reciever</title>
+        <title>Host</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
           <h1>Host</h1>
-          <div id="receiver-id" style="font-weight: bold;" title="Copy this ID to the input on send.html.">ID:</div>
-          <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
-          <button type="button" id="sendButton">Send</button>
-          <div class="chat">
-            <div id="status" class="status"></div>
-            <div class="message" id="message"></div>
+          <div id="status" class="status"></div>
+
+          <div class="align jsb card">
+            <span>
+              <div id="receiver-id" style="font-weight: bold;" title="Copy this ID to the input on send.html.">
+                Room Code:
+              </div>
+            </span>
+          </div>
+
+          <div class="row">
+            <div class="flex">
+              <div class="message" id="message"></div>
+              <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
+              <button type="button" id="sendButton">Send</button>
+            </div>
           </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
@@ -90,7 +100,7 @@
 
                     peer.on('open', function (id) {
                         peerId = id;
-                        console.log('ID: ' + id);
+                        console.log('Room Code: ' + id);
                     });
                     peer.on('error', function (err) {
                         if (err.type === 'unavailable-id') {
@@ -109,7 +119,7 @@
                         initialize();
 
                     peer.on('open', function () {
-                        recvId.innerHTML = "ID: " + peer.id;
+                        recvId.innerHTML = "Room Code: " + peer.id;
                         status.innerHTML = "Awaiting connection...";
                     });
                     peer.on('connection', function (c) {

@@ -3,23 +3,30 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
-        <title>Peer-to-Peer Cue System --- Sender</title>
+        <title>Client</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>Client</h1>
-
-        <span style="font-weight: bold">ID: </span>
-        <input type="text" id="receiver-id" title="Input the ID from receive.html">
-        <button id="connect-button">Connect</button>
-        <br>
-        <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
-        <button type="button" id="sendButton">Send</button>
-        <div class="chat">
-          <div id="status" class="status"></div>
-          <div class="message" id="message"></div>
+        <div id="status" class="status"></div>
+        
+        <div class="align jsb card">
+          <span>
+            <span style="font-weight: bold">
+              Room Code: 
+            </span>
+            <input type="text" id="receiver-id" placeholder="Enter hosts room code">          
+          </span> 
+          <button id="connect-button">Connect</button>
         </div>
 
+        <div class="row">
+          <div class="flex">
+            <div class="message" id="message"></div>
+            <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
+            <button type="button" id="sendButton">Send</button>
+          </div>
+        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
         <script type="text/javascript">
