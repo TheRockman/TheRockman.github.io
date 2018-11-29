@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="top-nav align jsb">
+      123
+    </div>
+    <div class="bot-nav align jsb">
+      123
+    </div>
+    <div class="row">
+      <div class="flex">
+        <ul class="box-list">
+          <li ng-repeat="slot in leftMenu track by $index" ng-click="slot.open = !slot.open">
+            <img ng-src="{{slot.picked}}" class="icon" alt="">
+            <div ng-if="slot.open" class="context-menu-left">
+              <button type="button" ng-click="slot.picked = option.url" ng-repeat="option in slot.options" name="button">{{option.text}}</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="flex x2 avatar">
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/596dacce-70a0-4cb7-b3d8-67a2e94df833/db4065d-d9294f4c-36d9-4e18-b61c-baa06d5446c3.png" alt="">
+      </div>
+      <div class="flex">
+        <ul class="box-list">
+          <li ng-repeat="slot in rightMenu track by $index" ng-click="slot.open = !slot.open">
+            <img ng-src="{{slot.picked}}" class="icon" alt="">
+            <div ng-if="slot.open" class="context-menu-right">
+              <button type="button" ng-click="slot.picked = option.url" ng-repeat="option in slot.options" name="button">{{option.text}}</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
