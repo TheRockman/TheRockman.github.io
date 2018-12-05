@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        <!-- <h3>discard</h3>
+        <button type="button" ng-click="discardPile = shuffle(discardPile)" name="button">shuffle this</button>
+        <button type="button" ng-click="reload()" name="button">shuffle this into hand</button>
+        <div ng-repeat="card in discardPile">
+          {{card}}
+        </div>
+        <hr>
+        <h3>currentDeck</h3>
+        <button type="button" ng-click="currentDeck = shuffle(currentDeck)" name="button">shuffle this</button>
+        <div ng-repeat="card in currentDeck">
+          {{card}}
+          <button type="button" ng-click="discard(card.Name, currentDeck)" name="button">discard this</button>  
+        </div>
+        <hr> -->
+        <div ng-repeat="card in activeCard">
+          
+          <div class="center">
+            <h4>{{card.Name}}</h4>
+            <i>"{{card.Desc}}"</i>
+          </div>
+
+          <div class="align jc">
+            <div class="pointer card center" ng-class="{'not-possible':ability.Possible}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
+              <span ng-if="ability.Name === 'pay'">
+                <hr>
+                P {{ability.Amount}} {{ability.Type}}
+                <hr>
+                <br>
+                <br><i>"{{ability.Text}}"</i>
+              </span>
+              <span ng-if="ability.Name === 'convert'">
+                <hr>
+                P {{ability.Amount}} {{ability.Type}}
+                <hr>
+                G {{ability.ForAmount}} {{ability.ForType}}
+                <br><i>"{{ability.Text}}"</i>
+              </span>
+              <span ng-if="ability.Name === 'gain'">
+                <br>
+                <hr>
+                G {{ability.Amount}} {{ability.Type}}
+                <hr>
+                <br><i>"{{ability.Text}}"</i>
+              </span>
+              <span ng-if="ability.Name === 'discard' || ability.Name === 'concede'">
+                <br><i>{{ability.Text}}</i>
+              </span>
+              <br>
+            </div>  
+          </div>
+        </div>
+        <hr>
+        <div class="center">
+          <button type="button" ng-click="pickTopCard(true)" name="button">Draw from deck</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats align jsb">
+      <p>H: {{hearts}}</p> 
+      <p>C: {{clubs}}</p> 
+      <p>D: {{diamonds}}</p> 
+      <p>S: {{spades}}</p> 
+      <p>J: {{joker}}</p> 
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
