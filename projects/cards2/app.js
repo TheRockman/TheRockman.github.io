@@ -13,7 +13,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         },
         {
           Name: 'discard',
-          Text: 'Maybe later'  
+          Text: 'Maybe later'
         },
         {
           Name: 'gain',
@@ -21,15 +21,6 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Amount: 3,
           Text: ''
         }
-        // {
-        //   Name: 'convert',
-        //   Type: 'hearts',
-        //   Amount: 2,
-        //   ForType: 'clubs',
-        //   ForAmount: 1,
-        //   Possible: false,
-        //   Text: 'Throw a feast to boost crew morale'
-        // }
       ]
     },
     {
@@ -44,18 +35,18 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Text: 'Thank you'
         },
         {
+          Name: 'discard',
+          Text: 'Maybe later'
+        },
+        {
           Name: 'convert',
           Type: 'diamonds',
           Amount: 1,
           ForType: 'hearts',
           ForAmount: 3,
           Text: ''
-        },
-        {
-          Name: 'discard',
-          Text: 'Maybe later'  
         }
-      ] 
+      ]
     },
     {
       Id: 3,
@@ -78,23 +69,25 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Name: 'concede',
           Text: 'I cant pay that'
         }
-      ] 
+      ]
     }
   ];
 
   //piles
   $scope.currentDeck = [];
   $scope.discardPile = [];
-  
+
   $scope.activeCard = [];
-  
+
   //resources
   $scope.hearts = 5;
   $scope.clubs = 5;
   $scope.diamonds = 5;
   $scope.spades = 5;
   $scope.joker = 5;
-  
+
+  $scope.candraw = true;
+
   //check values for exess
   var checkValues = function () {
     if ($scope.hearts >= 10) {
@@ -114,7 +107,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       return false;
     }
   }
-  
+
   //Shuffle one pile with itself, nothing enters, nothing exits
   $scope.shuffle = function(array) {
     console.log('shuffle:', array);
@@ -128,7 +121,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     }
     return array;
   };
-  
+
   //Move a card from one pile (splice) to another (add)
   $scope.moveCard = function(cardName, from, to, thenShuffleNewPile)  {
     console.log('move:', cardName, 'from:', from, 'to:', to);
@@ -145,25 +138,26 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       to = $scope.shuffle(to);
     }
   }
-  
+
   //Pick the top card in a pile and move it
   $scope.pickTopCard = function (shouldReloadOnEmpty) {
     if (shouldReloadOnEmpty && $scope.currentDeck.length === 0) {
       $scope.reload();
     }
-    
+
     var topCard = $scope.currentDeck[0];
+    $scope.candraw = false;
     if ($scope.activeCard.length === 0 && topCard) {
       $scope.moveCard(topCard.Name, $scope.currentDeck, $scope.activeCard)
     }
   }
-  
+
   //Shorthand for just discarding a card
   $scope.discard = function (cardName, from) {
     console.log('discard:', cardName, 'from:', from);
     $scope.moveCard(cardName, from, $scope.discardPile, false);
   }
-  
+
   $scope.reload = function () {
     var size = $scope.discardPile.length;
     if (size > 0) {
@@ -175,7 +169,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       $scope.discardPile = [];
     }
   }
-  
+
   //Activate selected ability, 0 is discard
   $scope.activate = function (card, ability) {
     console.log(ability);
@@ -212,13 +206,15 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         alert('You are carrying too much, get rid of it or you will lose next turn')
       }
     };
+    $scope.candraw = true;
   }
-  
+
   //Dummy deck
   $scope.basicSetup = function () {
     $scope.currentDeck = $scope.allCards.slice(0);
     $scope.currentDeck = $scope.shuffle($scope.currentDeck);
+    $scope.currentDeck = $scope.shuffle($scope.currentDeck);
   }
   $scope.basicSetup();
-  
+
 });
