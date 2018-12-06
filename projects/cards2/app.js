@@ -90,17 +90,18 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
 
   //check values for exess
   var checkValues = function () {
-    if ($scope.hearts >= 10) {
+    var max = 15;
+    if ($scope.hearts >= max) {
       return true;
-    } else if ($scope.clubs >= 10) {
+    } else if ($scope.clubs >= max) {
       return true;
-    } else if ($scope.diamonds >= 10) {
+    } else if ($scope.diamonds >= max) {
       return true;
-    } else if ($scope.diamonds >= 10) {
+    } else if ($scope.diamonds >= max) {
       return true;
-    } else if ($scope.spades >= 10) {
+    } else if ($scope.spades >= max) {
       return true;
-    } else if ($scope.joker >= 10) {
+    } else if ($scope.joker >= max) {
       return true;
     } else {
       $scope.doom = false;
@@ -148,6 +149,11 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     var topCard = $scope.currentDeck[0];
     $scope.candraw = false;
     if ($scope.activeCard.length === 0 && topCard) {
+      for (var i = 0; i < topCard.Abilities.length; i++) {
+        if (topCard.Abilities[i].Name === 'pay' || topCard.Abilities[i].Name === 'convert') {
+          topCard.Abilities[i].Possible = $scope[topCard.Abilities[i].Type] >= topCard.Abilities[i].Amount;  
+        }
+      }
       $scope.moveCard(topCard.Name, $scope.currentDeck, $scope.activeCard)
     }
   }
