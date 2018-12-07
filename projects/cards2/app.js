@@ -25,18 +25,18 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     },
     {
       Id: 2,
-      Name: 'Red Death',
-      Desc: 'This is good..',
+      Name: 'Drifting derelict',
+      Desc: 'You spot a unmanned ship with tattered sails drifting towards you',
       Abilities: [
         {
           Name: 'gain',
-          Type: 'clubs',
+          Type: 'hearts',
           Amount: 3,
-          Text: 'Thank you'
+          Text: 'Take only what you can reach'
         },
         {
           Name: 'discard',
-          Text: 'Maybe later'
+          Text: 'Let it pass by'
         },
         {
           Name: 'convert',
@@ -44,7 +44,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Amount: 1,
           ForType: 'hearts',
           ForAmount: 3,
-          Text: ''
+          Text: 'Spend some supplies to raid and scuttle the ship'
         }
       ]
     },

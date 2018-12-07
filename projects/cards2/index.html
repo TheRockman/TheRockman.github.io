@@ -35,22 +35,22 @@
           </div>
 
           <div class="align jc" style="position:fixed;left:0;right:0;bottom:12vh;">
-            <div class="pointer card center" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
+            <div class="pointer card center border" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
               <span ng-if="ability.Name === 'pay'">
-                - {{ability.Amount}} {{ability.Type}}
+                <i>{{ability.Text}}</i>
                 <hr>
-                <i>"{{ability.Text}}"</i>
+                - {{ability.Amount}} {{ability.Type}}
               </span>
               <span ng-if="ability.Name === 'convert'">
-                - {{ability.Amount}} {{ability.Type}}
-                + {{ability.ForAmount}} {{ability.ForType}}
+                <i>{{ability.Text}}</i>
                 <hr>
-                <i>"{{ability.Text}}"</i>
+                - {{ability.Amount}} {{ability.Type}} <br>
+                + {{ability.ForAmount}} {{ability.ForType}}
               </span>
               <span ng-if="ability.Name === 'gain'">
-                + {{ability.Amount}} {{ability.Type}}
+                <i>{{ability.Text}}</i>
                 <hr>
-                <i>"{{ability.Text}}"</i>
+                + {{ability.Amount}} {{ability.Type}}
               </span>
               <span ng-if="ability.Name === 'discard' || ability.Name === 'concede'">
                 <i>{{ability.Text}}</i>
@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <div class="center pull card pointer" ng-class="{'can-draw':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)"></div>
+    <div class="center pull card pointer border" ng-class="{'can-draw':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)"></div>
     <div class="stats align jsb">
       <p ng-class="{'danger':hearts>7}">H: {{hearts}}</p>
       <p ng-class="{'danger':clubs>7}">C: {{clubs}}</p>

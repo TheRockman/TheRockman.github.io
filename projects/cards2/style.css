@@ -19,6 +19,30 @@ body{
   overflow: hidden;
 }
 
+/*Card*/
+.card {
+  position: relative;
+  background: #5a544e;
+  color: white;
+  border-radius: 5px;
+  width: 20vw;
+  height: 30vw;
+  margin: var(--spacer);
+  padding: var(--spacer);
+  box-shadow: var(--level1);
+  transform-origin: bottom center;
+}
+.card:nth-child(1){
+  animation-delay: 1.5s!important;
+}
+.card:nth-child(2){
+  z-index: 10;
+  animation-delay: 1.7s!important;
+}
+.card:nth-child(3){
+  animation-delay: 1.9s!important;
+}
+
 .align{
   display: flex;
   align-items: center;
@@ -64,6 +88,10 @@ body{
     flex: 1;
         -ms-flex: 1;
   }
+  .card{
+    width: 12vw;
+    height: 20vw;
+  }
 }
 @media screen and (max-width: 768px) {
   .row {
@@ -75,6 +103,7 @@ body{
   .flex {
     flex: 1 1 auto;
   }
+
 }
 
 .title{
@@ -86,33 +115,11 @@ body{
   box-shadow: var(--level1);
 }
 
-/*Card*/
-.card {
-  position: relative;
-  background: #fff;
-  border-radius: 5px;
-  width: 20vw;
-  height: 30vw;
-  margin: var(--spacer);
-  padding: var(--spacer);
-  box-shadow: var(--level1);
-  transform-origin: bottom center;
-}
-.card:nth-child(1){
-  animation-delay: 1.5s!important;
-}
-.card:nth-child(2){
-  z-index: 10;
-  animation-delay: 1.7s!important;
-}
-.card:nth-child(3){
-  animation-delay: 1.9s!important;
-}
-
 .card i {
   position: absolute;
   left: 0;
   right: 0;
+  font-size: 75%;
   bottom: var(--spacer);
 }
 
@@ -153,6 +160,13 @@ body{
   transform: rotate(-19deg);
 }
 
+.border{
+  border: 10px solid transparent;
+  border-image: url(frame.png) 10;
+  border-image-slice: 50;
+  border-radius: 30px;
+}
+
 .stats{
   background: black;
   color: white;
@@ -165,7 +179,9 @@ body{
 }
 .pull{
   position: fixed;
-  background: #5d3a3a;
+  background-color: #332e1b!important;
+  background-size: contain;
+  border-radius: 15px;
   bottom: 1rem;
   left: 0;
   right: 0;
@@ -174,6 +190,15 @@ body{
   	-webkit-animation: slide-in-elliptic-bottom-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   	        animation: slide-in-elliptic-bottom-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
           animation-iteration-count: 1;
+}
+.pull::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+    background: url('http://www.saucecubaine.fr/wordpress/wp-content/uploads/Bilgewater_Burning_Tides_A3P3.png') center center no-repeat;
 }
 .can-draw {
 	-webkit-animation: slit-out-horizontal 0.5s ease-in both;
