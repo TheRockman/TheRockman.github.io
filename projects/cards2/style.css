@@ -30,7 +30,7 @@ body{
   width: 20vw;
   height: 30vw;
   margin: 0.5em;
-  padding: var(--spacer);
+  padding: 0.5em;
   box-shadow: var(--level1);
   transform-origin: bottom center;
 }
@@ -113,6 +113,7 @@ body{
   background: #1B1B1D;
   border-radius: 5px;
   color: #848B7B;
+  font-size: 110%;
   margin: 0 var(--spacer) var(--spacer) var(--spacer);
   padding: var(--spacer);
   box-shadow: var(--level1);
@@ -131,32 +132,29 @@ body{
 }
 .not-possible::after{
   position: absolute;
-  content: "Impossible";
-  left: -20px;
-  right: -19px;
-  bottom: 15%;
-  text-align: center;
-  padding: var(--spacer);
-  color: white;
-  z-index: 4;
-  background: tomato;
-  transform-origin: center;
-  box-shadow: var(--level2);
-  transform: rotate(19deg);
+      content: "";
+      left: 10px;
+      right: 10px;
+      bottom: 15%;
+      text-align: center;
+      padding: 5px;
+      color: white;
+      background: #543434;
+      transform-origin: center;
+      transform: rotate(30deg);
 }
 .not-possible::before{
   position: absolute;
-  content: "Impossible";
-  left: -20px;
-  right: -19px;
-  bottom: 15%;
-  text-align: center;
-  padding: var(--spacer);
-  color: white;
-  background: tomato;
-  transform-origin: center;
-  box-shadow: var(--level2);
-  transform: rotate(-19deg);
+      content: "";
+      left: 10px;
+      right: 10px;
+      bottom: 15%;
+      text-align: center;
+      padding: 5px;
+      color: white;
+      background: #543434;
+      transform-origin: center;
+      transform: rotate(-30deg);
 }
 
 .border{

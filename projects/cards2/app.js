@@ -3,23 +3,23 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     {
       Id: 1,
       Name: 'Smooth sailing',
-      Desc: 'Steady as she goes cap´tn',
+      Desc: 'The sea is calm. For now...',
       Abilities: [
         {
           Name: 'gain',
           Type: 'diamonds',
-          Amount: 3,
-          Text: ''
+          Amount: 2,
+          Text: 'Do some repairs'
         },
         {
           Name: 'discard',
-          Text: 'Maybe later'
+          Text: 'Stay on course'
         },
         {
           Name: 'gain',
           Type: 'spades',
           Amount: 3,
-          Text: ''
+          Text: 'Anchor and get some sleep'
         }
       ]
     },
@@ -50,24 +50,24 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     },
     {
       Id: 3,
-      Name: 'Green Death',
-      Desc: 'Is this good..',
+      Name: 'Seasickness',
+      Desc: 'A large part of the crew is feeling ill',
       Abilities: [
         {
           Name: 'pay',
           Type: 'hearts',
           Amount: 2,
-          Text: 'Thanks'
+          Text: 'Quarantine them'
         },
         {
           Name: 'pay',
           Type: 'spades',
           Amount: 5,
-          Text: 'Thanks'
+          Text: 'Do nothing'
         },
         {
           Name: 'concede',
-          Text: 'I cant pay that'
+          Text: 'Throw them overboard'
         }
       ]
     }
