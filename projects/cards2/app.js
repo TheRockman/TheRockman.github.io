@@ -26,13 +26,13 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     {
       Id: 2,
       Name: 'Drifting derelict',
-      Desc: 'You spot a unmanned ship with tattered sails drifting towards you',
+      Desc: 'You spot a damaged ship with tattered sails drifting towards you',
       Abilities: [
         {
           Name: 'gain',
           Type: 'hearts',
-          Amount: 3,
-          Text: 'Take only what you can reach'
+          Amount: 2,
+          Text: 'Invite the remaining crewmen onboard'
         },
         {
           Name: 'discard',
@@ -40,11 +40,11 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         },
         {
           Name: 'convert',
-          Type: 'diamonds',
+          Type: 'clubs',
           Amount: 1,
           ForType: 'hearts',
           ForAmount: 3,
-          Text: 'Spend some supplies to raid and scuttle the ship'
+          Text: 'Board it and take everything you can find'
         }
       ]
     },
@@ -68,6 +68,33 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         {
           Name: 'concede',
           Text: 'Throw them overboard'
+        }
+      ]
+    },
+    {
+      Id: 4,
+      Name: 'Pirates!',
+      Desc: 'On the horizon you spot black sails, the air smells like gunpowder and rum',
+      Abilities: [
+        {
+          Name: 'convert',
+          Type: 'clubs',
+          Amount: 4,
+          ForType: 'joker',
+          ForAmount: 2,
+          Text: 'Give them what they want and get out of here'
+        },
+        {
+          Name: 'convert',
+          Type: 'hearts',
+          Amount: 2,
+          ForType: 'spades',
+          ForAmount: 3,
+          Text: 'Fight them, steal their rum'
+        },
+        {
+          Name: 'concede',
+          Text: 'You and your crew will be keelhauled by dawn'
         }
       ]
     }
@@ -209,7 +236,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         alert('game over, items overflow')
       } else {
         $scope.doom = true;
-        alert('You are carrying too much, get rid of it or you will lose next turn')
+        alert('You are carrying too much cargo, get rid of it or you will lose next turn')
       }
     };
     $scope.candraw = true;

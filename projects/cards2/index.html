@@ -55,31 +55,54 @@
           <div class="align jc" style="position:fixed;left:0;right:0;bottom:20vh;">
             <div class="pointer card center border" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
               <span ng-if="ability.Name === 'pay'">
-                <i>{{ability.Text}}</i>
-                <hr>
-                - {{ability.Amount}} {{ability.Type}}
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#848B7B" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
+                </svg>
+                <br>
+                  <i>{{ability.Text}}</i>
+                  <hr>
+                  - {{ability.Amount}} {{ability.Type}}
               </span>
+              
               <span ng-if="ability.Name === 'convert'">
-                <i>{{ability.Text}}</i>
-                <hr>
-                - {{ability.Amount}} {{ability.Type}} <br>
-                + {{ability.ForAmount}} {{ability.ForType}}
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#848B7B" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
+                </svg>
+                <br>
+                  <i>{{ability.Text}}</i>
+                  <hr>
+                  - {{ability.Amount}} {{ability.Type}} <br>
+                  + {{ability.ForAmount}} {{ability.ForType}}
               </span>
+              
               <span ng-if="ability.Name === 'gain'">
-                <i>{{ability.Text}}</i>
-                <hr>
-                + {{ability.Amount}} {{ability.Type}}
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#848B7B" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10Z" />
+                </svg>
+                <br>
+                  <i>{{ability.Text}}</i>
+                  <hr>
+                  + {{ability.Amount}} {{ability.Type}}
               </span>
+              
               <span ng-if="ability.Name === 'discard'">
-                <i>{{ability.Text}}</i>
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#848B7B" d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z" />
+                </svg>
+                <br>
+                  <i>{{ability.Text}}</i>
               </span>
+              
               <span ng-if="ability.Name === 'concede'">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path fill="#848B7B" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
                 </svg>
                 <br>
-                <i>{{ability.Text}}</i>
+                  <i>{{ability.Text}}</i>
+                  <hr>
+                  Game over
               </span>
+              
               <br>
             </div>
           </div>
@@ -89,11 +112,11 @@
 
     <div class="center pull card pointer border" ng-class="{'can-draw':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)"></div>
     <div class="stats align jsb">
-      <p ng-class="{'danger':hearts>7}">H: {{hearts}}</p>
-      <p ng-class="{'danger':clubs>7}">C: {{clubs}}</p>
-      <p ng-class="{'danger':diamonds>7}">D: {{diamonds}}</p>
-      <p ng-class="{'danger':spades>7}">S: {{spades}}</p>
-      <p ng-class="{'danger':joker>7}">J: {{joker}}</p>
+      <p ng-class="{'danger':hearts>14}">H: {{hearts}}</p>
+      <p ng-class="{'danger':clubs>14}">C: {{clubs}}</p>
+      <p ng-class="{'danger':diamonds>14}">D: {{diamonds}}</p>
+      <p ng-class="{'danger':spades>14}">S: {{spades}}</p>
+      <p ng-class="{'danger':joker>14}">J: {{joker}}</p>
     </div>
 
   </div>
