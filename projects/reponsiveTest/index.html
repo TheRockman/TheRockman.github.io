@@ -13,7 +13,9 @@
   <div class="overlay"></div>
   <div ng-controller="mainCtrl">
     <div class="top-nav align jsb">
-      <span></span>
+      <span>
+        <b>PlayerName123</b>
+      </span>
       <span class="align">
         <span class="align">
           <img class="curr" src="https://www.freepngimg.com/thumb/coins/4-2-coins-png-thumb.png" alt="">
@@ -28,9 +30,6 @@
           &nbsp;
           200
         </span>
-        &nbsp;
-        &nbsp;
-        &nbsp;
       </span>
     </div>
     <div class="bot-nav align jsb">
@@ -40,7 +39,7 @@
       <div class="flex center">
         <p>Loadout</p>
         <ul class="box-list">
-          <li ng-repeat="slot in leftMenu track by $index" ng-click="slot.open = !slot.open">
+          <li ng-repeat="slot in leftMenu track by $index" ng-mouseenter="slot.open = true" ng-mouseleave="slot.open = false">
             <img ng-src="{{slot.picked}}" class="icon" alt="">
             <div ng-if="slot.open" class="context-menu-left">
               <button type="button" ng-click="slot.picked = option.url" ng-repeat="option in slot.options" name="button">{{option.text}}</button>
@@ -54,7 +53,7 @@
       <div class="flex center">
         <p>Items</p>
         <ul class="box-list">
-          <li ng-repeat="slot in rightMenu track by $index" ng-click="slot.open = !slot.open">
+          <li ng-repeat="slot in rightMenu track by $index"  ng-mouseenter="slot.open = true" ng-mouseleave="slot.open = false">
             <img ng-src="{{slot.picked}}" class="icon" alt="">
             <div ng-if="slot.open" class="context-menu-right">
               <button type="button" ng-click="slot.picked = option.url" ng-repeat="option in slot.options" name="button">{{option.text}}</button>

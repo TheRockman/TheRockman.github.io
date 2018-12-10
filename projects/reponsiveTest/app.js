@@ -5,55 +5,55 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     }
   ];
@@ -62,55 +62,55 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: ""},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     },
     {
       picked: 0,
       options: [
-        {text: '1', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '2', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '3', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"},
-        {text: '4', url: "https://4vector.com/iraw/free-vector-icon-cube-green-clip-art_117088_Icon_Cube_Green_clip_art_medium.png"}
+        {text: '1', url: "https://via.placeholder.com/150"},
+        {text: '2', url: "https://via.placeholder.com/150"},
+        {text: '3', url: "https://via.placeholder.com/150"},
+        {text: '4', url: "https://via.placeholder.com/150"}
       ]
     }
   ]
