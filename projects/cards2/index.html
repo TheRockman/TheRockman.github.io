@@ -34,7 +34,7 @@
             <i>"{{card.Desc}}"</i>
           </div>
 
-          <div class="align jc" style="position:fixed;left:0;right:0;bottom:12vh;">
+          <div class="align jc" style="position:fixed;left:0;right:0;bottom:20vh;">
             <div class="pointer card center border" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
               <span ng-if="ability.Name === 'pay'">
                 <i>{{ability.Text}}</i>
