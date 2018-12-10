@@ -10,15 +10,35 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
 </head>
 <body>
+  <div class="overlay"></div>
   <div ng-controller="mainCtrl">
     <div class="top-nav align jsb">
-      123
+      <span></span>
+      <span class="align">
+        <span class="align">
+          <img class="curr" src="https://www.freepngimg.com/thumb/coins/4-2-coins-png-thumb.png" alt="">
+          &nbsp;
+          50 000
+        </span>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <span class="align">
+          <img class="curr" src="http://dragon-mania-legends-wiki.mobga.me/images/5/5f/Pile_of_Gems.png" alt="">
+          &nbsp;
+          200
+        </span>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+      </span>
     </div>
     <div class="bot-nav align jsb">
       123
     </div>
     <div class="row">
-      <div class="flex">
+      <div class="flex center">
+        <p>Loadout</p>
         <ul class="box-list">
           <li ng-repeat="slot in leftMenu track by $index" ng-click="slot.open = !slot.open">
             <img ng-src="{{slot.picked}}" class="icon" alt="">
@@ -28,10 +48,11 @@
           </li>
         </ul>
       </div>
-      <div class="flex x2 avatar">
-        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/596dacce-70a0-4cb7-b3d8-67a2e94df833/db4065d-d9294f4c-36d9-4e18-b61c-baa06d5446c3.png" alt="">
+      <div class="flex x2 avatar center">
+        <img src="https://i.gifer.com/On3I.gif" alt="">
       </div>
-      <div class="flex">
+      <div class="flex center">
+        <p>Items</p>
         <ul class="box-list">
           <li ng-repeat="slot in rightMenu track by $index" ng-click="slot.open = !slot.open">
             <img ng-src="{{slot.picked}}" class="icon" alt="">
