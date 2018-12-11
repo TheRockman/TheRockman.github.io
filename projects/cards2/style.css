@@ -176,7 +176,7 @@ body{
 }
 .pull{
   position: fixed;
-  background-color: #352f27!important;
+  background: url('http://seriarte.info/wp-content/uploads/2018/09/wood-table-texture-wood-table-pattern-free-vector-dark-wooden-table-texture-wood-table-leg-patterns-wood-table-pattern-dark-wooden-table-background-texture-wood-table-texture-psd.jpg') center center;
   background-size: contain;
   border-radius: 15px;
   bottom: 11%;
@@ -195,7 +195,9 @@ body{
   right: 0;
   top: 0;
   bottom: 0;
-    background: url('http://www.saucecubaine.fr/wordpress/wp-content/uploads/Bilgewater_Burning_Tides_A3P3.png') center center no-repeat;
+  filter: drop-shadow(0px 15px 20px #222);
+  background-size: contain;
+  background: url('https://vignette.wikia.nocookie.net/pop3/images/3/37/Mesh_kraken_round_shield.png/revision/latest?cb=20180428231114') center center no-repeat;
 }
 .can-draw {
   -webkit-animation: slide-out-elliptic-bottom-bck 0.7s ease-in both;
@@ -466,8 +468,8 @@ body{
 }
 
 .background span {
-  width: 15vmin;
-  height: 15vmin;
+  width: 5vmin;
+  height: 5vmin;
   border-radius: 20vmin;
   backface-visibility: hidden;
   position: absolute;
