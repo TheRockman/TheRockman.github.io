@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../angular-animate.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <!-- https://www.uplabs.com/posts/twitch-redesign-concept -->
+  <div ng-controller="mainCtrl">
+    <div class="row" ng-if="!signedIn">
+      <div class="flex">
+        <div class="stage">
+          <div class="row align padding">
+            <img src="https://d1dq9tiesi76an.cloudfront.net/pub/media//fermion/images/wallpapers/img/leagend-of-cranes-mobile-wallpaper.jpg" class="flex poster" alt="">
+            <div class="flex x2">
+              <div class="spacer">
+                <h3>Lorem ipsum dolor sit amet, anim id est laborum. Consectetur adipisicing elit, velit</h3>
+                <br>
+                <input type="text" name="" placeholder="  Username" value="">
+                <br>
+                <input type="password" name="" placeholder="  Password" value="">
+                <br>
+                <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, velit esse cillum dolore eu fugiat nulla pariatur.</small>  
+                <br>
+                <br>
+                <button type="button" class="cta" name="button" ng-click="login();">
+                  <div ng-if="loading" ng-cloak class="spinner"></div>
+                  <span ng-if="!loading" ng-cloak>Sign in</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-if="signedIn">
+      123
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>

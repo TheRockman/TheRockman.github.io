@@ -1,0 +1,192 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+
+h3{
+  font-weight: lighter;
+}
+
+.spinner{
+  width: 15px;
+  height: 15px;
+  border: 1px solid transparent;
+  border-top: 1px solid white;
+  margin: 0 auto;
+  border-radius: 50%;
+  animation: spin;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  transform-origin: center;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+/*flex*/
+.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+  .stage{
+    margin:0%!important;
+  }
+  .spacer {
+    margin: 0 20%;
+  }
+  .poster {
+    width: 100%!important;
+  }
+}
+
+.cta{
+  background: #6441a4;
+  border: 0;
+  width: 100%;
+  transition: var(--animation);
+  color: white;
+  padding: 1em;
+  border-radius: 5px;
+  font-size: 18px!important;
+  outline: none;
+  cursor: pointer;
+}
+.cta:focus{
+  outline: 1px solid white;
+  filter: brightness(1.1);
+}
+.stage{
+  margin: 3% 15%;
+  background: #25222d;
+  box-shadow: var(--level3);
+}
+input{
+  width: 100%;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  padding: 1.5em 0;
+  color: white;
+  background: #1f1d24;
+}
+.padding{
+  min-height: 50vh;
+}
+.spacer{
+  margin: 0 20%;
+}
+.poster{
+  max-height: 80vh;
+  filter: hue-rotate(90deg);
+}
+
+/*Card*/
+/*.card {
+  background: #fff;
+  border-radius: 2px;
+  margin: var(--spacer);
+  padding: var(--spacer);
+  box-shadow: var(--level1);
+  transition: var(--animation);
+}
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*background*/
+/*
+background: url(http://lorempixum.com/1440/900/sports) no-repeat center center fixed;
+background-size: cover;
+*/
