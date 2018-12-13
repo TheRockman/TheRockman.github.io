@@ -93,8 +93,9 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Text: 'Fight them, steal their rum'
         },
         {
-          Name: 'concede',
-          Text: 'You and your crew will be keelhauled by dawn'
+          Name: 'Event',
+          Text: 'You and your crew will be keelhauled by dawn',
+          Insert: 'Dark times'
         }
       ]
     }
@@ -103,6 +104,29 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   //piles
   $scope.currentDeck = [];
   $scope.discardPile = [];
+  $scope.exilePile = [];
+
+  $scope.sideDeck = [
+    {
+      Id: 0,
+      Name: 'Dark times',
+      Desc: '',
+      Abilities: [
+        {
+          Name: 'concede',
+          Text: 'You and your crew will be keelhauled by dawn'
+        },
+        {
+          Name: 'concede',
+          Text: 'You and your crew will be keelhauled by dawn'
+        },
+        {
+          Name: 'concede',
+          Text: 'You and your crew will be keelhauled by dawn'
+        }
+      ]
+    }
+  ]
 
   $scope.activeCard = [];
 
@@ -215,6 +239,11 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     else if (ability.Name === 'gain') {
       $scope[ability.Type] = $scope[ability.Type] + ability.Amount;
       $scope.discard(card.Name, $scope.activeCard);
+    } 
+    else if (ability.Insert) {
+      console.log(ability.Insert);
+      $scope.moveCard(card.Name, $scope.activeCard, $scope.exilePile, false);
+      $scope.moveCard(ability.Insert, $scope.sideDeck, $scope.discardPile, false);
     }
     else if (ability.Name === 'pay') {
       ability.Possible = $scope[ability.Type] >= ability.Amount;
