@@ -93,9 +93,9 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Text: 'Fight them, steal their rum'
         },
         {
-          Name: 'Event',
-          Text: 'You and your crew will be keelhauled by dawn',
-          Insert: 'Dark times'
+          Name: 'event',
+          Text: 'That rum looks good. join their crew',
+          Insert: 'Pirate life'
         }
       ]
     }
@@ -123,6 +123,55 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         {
           Name: 'concede',
           Text: 'You and your crew will be keelhauled by dawn'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Pirate life',
+      Desc: 'Not a plunder in sight, on the salty seas',
+      Abilities: [
+        {
+          Name: 'convert',
+          Type: 'diamonds',
+          Amount: 2,
+          ForType: 'joker',
+          ForAmount: 1,
+          Text: 'Hoard some supplies for yourself'
+        },
+        {
+          Name: 'discard',
+          Text: 'Keep looking at the horizon'
+        },
+        {
+          Name: 'event',
+          Text: 'Plan a mutiny!',
+          Insert: 'Pirate mutiny'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Pirate mutiny',
+      Desc: 'Kill the captain, long live the new captain!',
+      Abilities: [
+        {
+          Name: 'convert',
+          Type: 'joker',
+          Amount: 3,
+          ForType: 'hearts',
+          ForAmount: 3,
+          Text: 'There is a new captain appointed'
+        },
+        {
+          Name: 'concede',
+          Text: 'The mutiny failed. You and your crew will be keelhauled by dawn'
+        },
+        {
+          Name: 'pay',
+          Type: 'spades',
+          Amount: 1,
+          Text: 'You are punished: No rum for a month!'
         }
       ]
     }
