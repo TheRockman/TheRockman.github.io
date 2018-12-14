@@ -86,6 +86,9 @@ h3{
   .fluid-row{
     grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
   }
+  .dense{
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto))!important;
+  }
 }
 /*flex*/
 .flex{
@@ -131,6 +134,9 @@ h3{
   .poster {
     width: 100%!important;
   }
+  .sidebar{
+    display: none;
+  }
 }
 
 .cta{
@@ -148,6 +154,22 @@ h3{
 .cta:focus{
   outline: 1px solid white;
   filter: brightness(1.1);
+}
+.mini-cta{
+  background: #6441a4;
+  border: 0;
+  width: 100%;
+  transition: var(--animation);
+  color: white;
+  padding: 0.5em;
+  border-radius: 5px;
+  font-size: 12px!important;
+  outline: none;
+  cursor: pointer;
+  margin: 5px;
+}
+.shade{
+  box-shadow: var(--level2);
 }
 .stage{
   margin: 3% 15%;
@@ -194,7 +216,7 @@ h3{
   overflow-y: hidden;
   height: 100vh;
   background: #6441a4;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: lighter;
 }
 
@@ -248,6 +270,9 @@ h3{
 
 nav{
   padding: 0.5em;
+  position: sticky;
+  top: -16px;
+  background: #25222d;
 }
 /*Card*/
 /*.card {
