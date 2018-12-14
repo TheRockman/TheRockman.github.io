@@ -127,9 +127,13 @@ h3{
   }
   .stage{
     margin:0%!important;
+    overflow-y: auto;
+    max-height: 100vh;
+    padding-bottom: 200px;;
   }
   .spacer {
     margin: 0 20%;
+    padding-bottom: 200px;
   }
   .poster {
     width: 100%!important;
