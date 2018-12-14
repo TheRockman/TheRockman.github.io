@@ -17,6 +17,7 @@ body{
   font-family: 'Raleway', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
+  overflow: hidden;
 }
 
 .align{
@@ -56,16 +57,48 @@ h3{
     transform: rotate(360deg);
   }
 }
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+  cursor: pointer;
+  padding-top: 1em;
+}
+.fluid-flex img{
+  width: 100%;
+  height: auto;
+}
 
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(11%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
 /*flex*/
 .flex{
   flex-basis: 100%;
 }
+.x2{
+  flex-basis: 25%!important;
+}
 .x3{
   flex-basis: 50%!important;
 }
-.x2{
-  flex-basis: 25%!important;
+.x6{
+  flex-basis: 70%!important;
 }
 @media screen and (min-width: 768px) {
   .row {
@@ -121,7 +154,7 @@ h3{
   background: #25222d;
   box-shadow: var(--level3);
 }
-input{
+.stage input{
   width: 100%;
   outline: none;
   border: 0;
@@ -130,6 +163,11 @@ input{
   padding: 1.5em 0;
   color: white;
   background: #1f1d24;
+}
+.stage-2{
+  padding: 1em 2em;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 .padding{
   min-height: 50vh;
@@ -142,6 +180,75 @@ input{
   filter: hue-rotate(90deg);
 }
 
+.background-color{
+  background: #25222d;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.sidebar{
+  overflow-y: hidden;
+  height: 100vh;
+  background: #6441a4;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.menu{
+  padding: 0;
+}
+.menu li{
+  user-select: none;
+  padding: 0.5em 0;
+  margin: 1em 0;
+  list-style: none;
+  opacity: 0.5;
+  border-right: 2px solid transparent;
+}
+.menu li:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.friendlist{
+  position: relative;
+  padding: 0;
+  background:#52299e;
+}
+.friendlist li{
+  list-style: none;
+  padding: 1em 2em;
+}
+.friend-avatar{
+  width: 3em;
+  height: 3em;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+.on{
+  border: 2px solid #4cdb05;
+}
+.off{
+  border: 2px solid #ff4b4b;
+}
+
+.search{
+  background: #1f1d24;
+  border: 0;
+  outline: 0;
+  padding-left: 1em;
+  min-width: 250px;
+  border-radius: 5px;
+  color: white;
+}
+
+nav{
+  padding: 0.5em;
+}
 /*Card*/
 /*.card {
   background: #fff;
@@ -153,17 +260,22 @@ input{
 }
 
 /*Fab*/
-/*.fab{
-    background:dodgerblue;
+.fab{
+  cursor: pointer;
+    background:#52299e;
     width:18px;
     height: 18px;
-    padding:15px;
+    padding:10px;
     border-radius:50%;
     font-size: 18px;
     line-height: 18px;
     text-align: center;
-    box-shadow: var(--level1);
-}*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: -18px;
+}
 
 /*Animation*/
 /*@keyframes animation {
