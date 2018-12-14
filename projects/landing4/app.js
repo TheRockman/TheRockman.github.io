@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope, $timeout) {
-  $scope.signedIn = true;
+  $scope.signedIn = false;
   $scope.loading = false;
   
   $scope.login = function () {
