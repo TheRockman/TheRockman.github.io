@@ -141,6 +141,12 @@ h3{
   .sidebar{
     display: none;
   }
+  nav{
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: inline-block!important;
+  }
 }
 
 .cta{
