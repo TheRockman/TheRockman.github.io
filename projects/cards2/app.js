@@ -181,10 +181,10 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
 
   //resources
   $scope.hearts = 5;
-  $scope.clubs = 5;
-  $scope.diamonds = 5;
-  $scope.spades = 5;
-  $scope.joker = 5;
+  $scope.clubs = 3;
+  $scope.diamonds = 3;
+  $scope.spades = 7;
+  $scope.joker = 0;
 
   $scope.candraw = true;
 
@@ -251,7 +251,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     if ($scope.activeCard.length === 0 && topCard) {
       for (var i = 0; i < topCard.Abilities.length; i++) {
         if (topCard.Abilities[i].Name === 'pay' || topCard.Abilities[i].Name === 'convert') {
-          topCard.Abilities[i].Possible = $scope[topCard.Abilities[i].Type] >= topCard.Abilities[i].Amount;  
+          topCard.Abilities[i].Possible = $scope[topCard.Abilities[i].Type] >= topCard.Abilities[i].Amount;
         }
       }
       $scope.moveCard(topCard.Name, $scope.currentDeck, $scope.activeCard)
@@ -288,7 +288,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     else if (ability.Name === 'gain') {
       $scope[ability.Type] = $scope[ability.Type] + ability.Amount;
       $scope.discard(card.Name, $scope.activeCard);
-    } 
+    }
     else if (ability.Insert) {
       console.log(ability.Insert);
       $scope.moveCard(card.Name, $scope.activeCard, $scope.exilePile, false);
@@ -311,7 +311,10 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
     }
     if (checkValues()) {
       if ($scope.doom) {
-        alert('game over, items overflow')
+        alert('game over, items overflow');
+        $scope.currentDeck = null;
+        $scope.activeCard = null;
+        $scope.discardPile = null;
       } else {
         $scope.doom = true;
         alert('You are carrying too much cargo, get rid of it or you will lose next turn')
