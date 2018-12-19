@@ -11,11 +11,42 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <div class="stage">
+    <div class="stage" ng-class="active.Alignment">
       <div class="step-prev" ng-click="prev()"><</div>
       <div class="step-next" ng-click="next()">></div>
-      <div ng-animate-swap="active" class="swap-animation">
-        {{active.url}}
+      <div ng-animate-swap="active" class="swap-animation scroll characters">
+        <img ng-src="{{active.Url}}" class="portrait" alt="">
+        <h1 class="name">{{active.Name}}</h1>
+        <div class="desc">
+          <br>
+          <p>{{active.Desc}}</p>
+          <br>
+          <div class="row">
+            <div class="card flex align jsb">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M6.92,5H5L14,14L15,13.06M19.96,19.12L19.12,19.96C18.73,20.35 18.1,20.35 17.71,19.96L14.59,16.84L11.91,19.5L10.5,18.09L11.92,16.67L3,7.75V3H7.75L16.67,11.92L18.09,10.5L19.5,11.91L16.83,14.58L19.95,17.7C20.35,18.1 20.35,18.73 19.96,19.12Z" />
+              </svg>
+              {{active.Atk}}
+            </div>
+            <div class="card flex align jsb">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M21,11C21,16.55 17.16,21.74 12,23C6.84,21.74 3,16.55 3,11V5L12,1L21,5V11M12,21C15.75,20 19,15.54 19,11.22V6.3L12,3.18V21Z" />
+              </svg>
+              {{active.Def}}
+            </div>  
+          </div>
+          <div class="stats card">
+            <div class="align jsb">
+              <b>Wins</b>
+              <b>{{active.Wins}}</b>
+            </div>
+            <div class="align jsb">
+              <b>Losses</b>
+              <b>{{active.Losses}}</b>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
