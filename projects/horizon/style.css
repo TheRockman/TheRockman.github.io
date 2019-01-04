@@ -105,11 +105,11 @@ svg, img{
 }
 .profile{
   width: 80vh;
+  max-width: 100vw;
   text-align: center;
   min-height: 100vh;
   background: #fff;
   border-radius: 2px;
-  margin: 0 var(--spacer);
   padding: var(--spacer);
   box-shadow: var(--level1);
   transition: var(--animation);
