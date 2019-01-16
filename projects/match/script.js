@@ -1,4 +1,8 @@
 "use strict";
+function restart() {
+location.reload();
+}
+
 var _createClass = function() {
     function defineProperties(target, props) {
         for (var i = 0; i < props.length; i++) {
@@ -28,6 +32,7 @@ var NUMBER_OF_COLUMNS = 7;
 var NUMBER_OF_ROWS = 8;
 var MAX_MOVES = 25;
 var COMBO = document.getElementById("combo");
+var MOVELABEL = document.getElementById("wrap");
 var Token = function() {
     function Token(board, type, col, row) {
         _classCallCheck(this, Token);
@@ -83,7 +88,7 @@ var Token = function() {
             setTimeout(function() {
                 _this.detach();
                 callback && callback();
-            }, 1000);
+            }, 2000);
         }
     }, {
         key: 'handleClick',
@@ -94,9 +99,9 @@ var Token = function() {
         key: 'setupStyles',
         value: function setupStyles() {
             this.node.style.position = 'absolute';
-            this.node.style.width = Token.width + 'px';
-            this.node.style.height = Token.height + 'px';
-            this.node.style.padding = Token.padding + 'px';
+            this.node.style.width = Token.width + 'vw';
+            this.node.style.height = Token.height + 'vw';
+            this.node.style.padding = Token.padding + 'vw';
             this.node.style.transition = 'transform 0.5s';
         }
     }, {
@@ -120,7 +125,7 @@ var Token = function() {
                 // Update visual position
                 var positionX = x * Token.width;
                 var positionY = this.board.height - y * Token.height - Token.height;
-                this.node.style.transform = 'translate3d(' + positionX + 'px, ' + positionY + 'px, 0px)';
+                this.node.style.transform = 'translate3d(' + positionX + 'vw, ' + positionY + 'vw, 0px)';
             }
         }, {
             key: 'makeMove',
@@ -161,18 +166,24 @@ var Token = function() {
                         }
                         if (matches.length >= 8 && matches.length < 10) {
                             COMBO.classList.add("minor-combo");
+                            MOVELABEL.classList.add("spark");
                             scoreModify = matches.length * 5;
                             COMBO.innerHTML = "NICE!";
+                            this.board.moves = this.board.moves - 2;
                             setTimeout(function() {
                                 COMBO.classList.remove("minor-combo");
+                                MOVELABEL.classList.remove("spark");
                             }, 2000);
                         }
                         if (matches.length >= 10) {
                             COMBO.classList.add("mega-combo");
+                            MOVELABEL.classList.add("spark");
                             scoreModify = matches.length * 10;
                             COMBO.innerHTML = "AWESOME!";
+                            this.board.moves = this.board.moves - 3;
                             setTimeout(function() {
                                 COMBO.classList.remove("mega-combo");
+                                MOVELABEL.classList.remove("spark");
                             }, 2000);
                         }
                         var score = this.board.calculateScore(scoreModify);
@@ -249,9 +260,9 @@ var Token = function() {
         }]);
         return Token;
     }();
-    Token.width = 54;
-    Token.height = 54;
-    Token.padding = 6;
+    Token.width = 14;
+    Token.height = 14;
+    Token.padding = 1;
     var Board = function() {
         function Board(cols, rows) {
             _classCallCheck(this, Board);
@@ -264,8 +275,8 @@ var Token = function() {
             this.height = Token.height * rows;
             this.score = 0;
             this.moves = 0;
-            this.node.style.width = this.width + 'px';
-            this.node.style.height = this.height + 'px';
+            this.node.style.width = this.width + 'vw';
+            this.node.style.height = this.height + 'vw';
 
             this.tokens = new Array(cols);
             // console.log(this.tokens);
@@ -305,7 +316,7 @@ var Token = function() {
         }, {
             key: 'displayStats',
             value: function displayStats() {
-                this.scoreNode.innerHTML = this.score;
+                this.scoreNode.innerHTML = this.score + ' POINTS';
                 this.movesNode.innerHTML = MAX_MOVES - this.moves;
             }
         }, {

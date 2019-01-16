@@ -4,27 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
   <title></title>
 </head>
-<body>
+<body id="wrap">
   <div class="container">
     <header>
-      <div class="stats score-meter">
-        <div id="score"></div>
-        <label>Points</label>
-      </div>
-      <div class="stats move-meter">
+      <div id="move-wrap" class="stats move-meter">
         <div id="moves"></div>
         <label>Moves</label>
       </div>
     </header>
-    <div id="modal" class="border xx" style="display:none;">
-      <img src="chest.png" alt="">
-      <div class="stars">LEVEL COMPLETE</div>
+    <div id="modal" style="display:none;" onclick="restart()">
+      <div class="stars">
+        <svg style="width:52px;height:52px;margin-left:1rem;" viewBox="0 0 24 24">
+          <path fill="#364155" d="M7,2V13H10V22L17,10H13L17,2H7Z" />
+        </svg>
+        <br>
+        <div id="score" style="font-size:2rem;">10 POINTS</div>
+        <p>LEVEL COMPLETE</p>
+        <br>
+        <p style="background:#fed53d;width:80%;margin: 0 10%; padding:1rem 0;">NEXT LEVEL</p>
+
+      </div>
     </div>
     <div class="board" id="board">
     </div>
-    <div id="combo"></div>
+    <div id="combo" class="tsh"></div>
   </div>
   <script src="script.js"></script>
 </body>
