@@ -173,7 +173,7 @@ var Token = function() {
                             setTimeout(function() {
                                 COMBO.classList.remove("minor-combo");
                                 MOVELABEL.classList.remove("spark");
-                            }, 2000);
+                            }, 1000);
                         }
                         if (matches.length >= 10) {
                             COMBO.classList.add("mega-combo");
@@ -184,7 +184,7 @@ var Token = function() {
                             setTimeout(function() {
                                 COMBO.classList.remove("mega-combo");
                                 MOVELABEL.classList.remove("spark");
-                            }, 2000);
+                            }, 1000);
                         }
                         var score = this.board.calculateScore(scoreModify);
                         // let content = this.node.innerHTML;
