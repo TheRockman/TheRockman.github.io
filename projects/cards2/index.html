@@ -10,36 +10,19 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
-  <!-- <div class="background">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div> -->
+
   <div ng-controller="mainCtrl">
     <div class="row">
       <div class="flex">
         <div ng-repeat="card in activeCard">
 
-          <div class="title" ng-class="{'title-enter':candraw === false}">
-            <h4 class="center">{{card.Name}}</h4>
+          <div class="center" ng-class="{'title-enter':candraw === false}">
+            <h4>{{card.Name}}</h4>
             <i>{{card.Desc}}</i>
           </div>
 
-          <div class="" style="position:fixed; bottom:15vh;left:1rem;right:1rem;">
-            <div style="background:#1B1B1D;color:#848B7B;" class="pointer center border" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
+          <div>
+            <div class="pointer" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
               <span ng-if="ability.Name === 'pay'">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path fill="#848B7B" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
@@ -80,7 +63,7 @@
                 <i>{{ability.Text}}</i>
                 <br>
                 <br>
-                <span style="color:white;">
+                <span>
                   <span ng-if="ability.Amount">
                     <span ng-if="ability.Name == 'gain'">+</span>
                     <span ng-if="ability.Name == 'pay' || ability.Name == 'convert'">-</span>
@@ -100,7 +83,9 @@
       </div>
     </div>
 
-    <div class="center pull card pointer border" ng-class="{'can-draw':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)"></div>
+    <div class="pointer card" ng-class="{'drawn':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)">
+      draw
+    </div>
     <div class="stats align jsb">
       <p ng-class="{'danger':hearts>14}">H: {{hearts}}</p>
       <p ng-class="{'danger':clubs>14}">C: {{clubs}}</p>
