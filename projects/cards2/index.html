@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
-  <div class="background">
+  <!-- <div class="background">
     <span></span>
     <span></span>
     <span></span>
@@ -27,7 +27,7 @@
     <span></span>
     <span></span>
     <span></span>
-  </div>
+  </div> -->
   <div ng-controller="mainCtrl">
     <div class="row">
       <div class="flex">
@@ -38,8 +38,8 @@
             <i>{{card.Desc}}</i>
           </div>
 
-          <div class="align jc" style="position:fixed;left:0;right:0;bottom:20vh;">
-            <div class="pointer card center border" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
+          <div class="" style="position:fixed; bottom:15vh;left:1rem;right:1rem;">
+            <div style="background:#1B1B1D;color:#848B7B;" class="pointer center border" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
               <span ng-if="ability.Name === 'pay'">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path fill="#848B7B" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
