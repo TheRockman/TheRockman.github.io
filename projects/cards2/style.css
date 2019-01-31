@@ -28,6 +28,16 @@ body{
 .drawn{
   display: none;
 }
+.draw{
+  position: absolute;
+  bottom: 90px;
+  padding: 1rem;
+  width: 80%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
 .card:nth-child(1){
   animation-delay: 1.5s!important;
 }
@@ -66,7 +76,7 @@ body{
   outline: 2px solid red;
 }
 .slider{
-  width: 90%;
+  width: 50%;
   position: fixed;
   bottom: 90px;
   left: 0;
