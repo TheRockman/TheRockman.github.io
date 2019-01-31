@@ -22,7 +22,7 @@
           </div>
 
           <div>
-            <div class="pointer" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
+            <div class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-hide="ability !== card.Abilities[abilityIndex]" ng-repeat="ability in card.Abilities" ng-click="activate(card, ability)">
               <span ng-if="ability.Name === 'pay'">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path fill="#848B7B" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
@@ -86,6 +86,7 @@
     <div class="pointer card" ng-class="{'drawn':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)">
       draw
     </div>
+    <input class="slider" ng-show="candraw === false" type="range" min="0" max="2" ng-model="abilityIndex" name="" value="">
     <div class="stats align jsb">
       <p ng-class="{'danger':hearts>14}">H: {{hearts}}</p>
       <p ng-class="{'danger':clubs>14}">C: {{clubs}}</p>

@@ -1,4 +1,5 @@
 var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
+  $scope.abilityIndex = 1;
   $scope.allCards = [
     {
       Id: 1,

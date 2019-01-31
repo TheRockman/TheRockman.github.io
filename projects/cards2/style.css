@@ -62,7 +62,23 @@ body{
 .fade.ng-hide {
   opacity:0;
 } */
-
+.front{
+  outline: 2px solid red;
+}
+.slider{
+  width: 90%;
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.ability-wrap{
+  background: #333;
+  color: white;
+  height: 300px;
+  text-align: center;
+}
 /*flex*/
 .flex{
   flex-basis: 100%;
