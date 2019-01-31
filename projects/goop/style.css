@@ -1,0 +1,248 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+  color: white;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+.goo {
+  -webkit-filter: url("#fancy-goo");
+  filter: url("#fancy-goo");
+}
+.goo *{
+  /* transition: 4s all ease-in-out; */
+}
+
+.blurb{
+  background: white;
+}
+.content{
+  background: #6c63ff;
+}
+.blurb, .content{
+  height: -webkit-fill-available;
+}
+
+.splash{
+  position: absolute;
+  left: -20%;
+  bottom: -5px;
+  width: 105%;
+  height: 90%;
+}
+.stage{
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  bottom: 10%;
+  right: 10%;
+  background: #6c63ff;
+  box-shadow: var(--level2);
+}
+.aside{
+  left: -220px;
+  width: 200px;
+  background: #6c63ff;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  top: 35px;
+}
+
+/*flex*/
+.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 1140px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 1140px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+  .flex, .aside{
+    color: black;
+    background: white;
+  }
+  svg > path{
+    fill:black;
+  }
+  .goo{
+    -webkit-filter: url("");
+    filter: url("");
+  }
+  .aside{
+    position: relative;
+    left: unset;
+    top: unset;
+    width: 100%;
+    padding: 0;
+  }
+  .card{
+    position: relative!important;
+    padding: 0!important;
+    margin: 0!important;
+  }
+  .stage{
+    box-shadow: none;
+    background: transparent;
+    padding: 1rem;
+  }
+  .socials > .jsb{
+    justify-content: center;
+  }
+  .socials > p{
+    text-align: center;
+  }
+  .splash{
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/*fluid layout*/
+/*
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
+*/
+
+/*Card*/
+.card {
+  /* background: #fff; */
+  margin: var(--spacer);
+  padding: var(--spacer);
+  transition: var(--animation);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
