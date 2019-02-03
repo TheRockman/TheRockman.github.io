@@ -292,6 +292,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   //Activate selected ability, 0 is discard
   $scope.activate = function (card, ability) {
     console.log(ability);
+    if (ability.Possible === false) {
+      return;
+    }
     $scope.response = ability.After;
     if (ability.Name === 'concede') {
       alert('Game over')
