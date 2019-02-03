@@ -1,5 +1,5 @@
-var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
-  $scope.abilityIndex = 1;
+var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
+  $scope.response = null;
   $scope.allCards = [
     {
       Id: 1,
@@ -10,17 +10,20 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Name: 'gain',
           Type: 'diamonds',
           Amount: 2,
-          Text: 'Do some repairs'
+          Text: 'Do some repairs',
+          After: 'Your crew manages to patch a few holes'
         },
         {
           Name: 'discard',
-          Text: 'Stay on course'
+          Text: 'Stay on course',
+          After: 'You keep sailing'
         },
         {
           Name: 'gain',
           Type: 'spades',
           Amount: 3,
-          Text: 'Anchor and get some sleep'
+          Text: 'Anchor and get some sleep',
+          After: 'The rocking of the waves lul you to sleep. But you wake from briney dreams.'
         }
       ]
     },
@@ -33,11 +36,13 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Name: 'gain',
           Type: 'hearts',
           Amount: 2,
-          Text: 'Invite the remaining crewmen onboard'
+          Text: 'Invite the remaining crewmen onboard',
+          After: 'The crewmen tell of seamonsters and ghost ships, clearly they are in shock.'
         },
         {
           Name: 'discard',
-          Text: 'Let it pass by'
+          Text: 'Let it pass by',
+          After: 'You have enough mouths to feed already and out here its every man for himself.'
         },
         {
           Name: 'convert',
@@ -45,7 +50,8 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Amount: 1,
           ForType: 'hearts',
           ForAmount: 3,
-          Text: 'Board it and take everything you can find'
+          Text: 'Board it and take everything you can find',
+          After: 'You send over a rading party, the drifting ships crew cower and hands you their valuables.'
         }
       ]
     },
@@ -58,17 +64,20 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Name: 'pay',
           Type: 'hearts',
           Amount: 2,
-          Text: 'Quarantine them'
+          Text: 'Quarantine them',
+          After: 'You manage to stop it from spreading but two of your men perish.'
         },
         {
           Name: 'pay',
           Type: 'spades',
           Amount: 5,
-          Text: 'Do nothing'
+          Text: 'Do nothing',
+          After: 'Your crew is in agony. Boils, rashes, vomit and pus as far as the eye can see. We will just have to ride it out.'
         },
         {
           Name: 'concede',
-          Text: 'Throw them overboard'
+          Text: 'Throw them overboard',
+          After: 'A grim end indeed, but better to end the suffering.'
         }
       ]
     },
@@ -83,7 +92,8 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Amount: 4,
           ForType: 'joker',
           ForAmount: 2,
-          Text: 'Give them what they want and get out of here'
+          Text: 'Give them what they want',
+          After: 'The pirate captain laugh and his crew join in as you are tied to the mast and robbed for all they can find.'
         },
         {
           Name: 'convert',
@@ -91,12 +101,14 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
           Amount: 2,
           ForType: 'spades',
           ForAmount: 3,
-          Text: 'Fight them, steal their rum'
+          Text: 'Steal their rum',
+          After: 'You send out two men to sneak aboard the pirate ship and steal their rum while you distract them with fancy talk and flattery. As soon as you spot your men returning you quickly order a retreat.'
         },
         {
           Name: 'event',
-          Text: 'That rum looks good. join their crew',
-          Insert: 'Pirate life'
+          Text: 'Join their crew',
+          Insert: 'Pirate life',
+          After: 'Avast ye buccaneers! Give no quarter!'
         }
       ]
     }
@@ -142,7 +154,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
         },
         {
           Name: 'discard',
-          Text: 'Keep looking at the horizon'
+          Text: 'No prey, no pay'
         },
         {
           Name: 'event',
@@ -280,6 +292,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
   //Activate selected ability, 0 is discard
   $scope.activate = function (card, ability) {
     console.log(ability);
+    $scope.response = ability.After;
     if (ability.Name === 'concede') {
       alert('Game over')
     }
