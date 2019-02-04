@@ -19,6 +19,7 @@ body{
   font-size: 14px;
   overflow: hidden;
   color: black;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/dark-paths.png");
 }
 
 /*Card*/
@@ -81,7 +82,7 @@ ul[rn-carousel] > li{
 }
 
 .ability-wrap{
-  background: #ceaf78;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/vintage-concrete.png");
   color: #333!important;
   height: 400px;
   text-align: center;
@@ -96,12 +97,18 @@ ul[rn-carousel] > li{
   filter: grayscale(100);
 }
 
+.response{
+  background: white;
+  padding: 0.5rem;
+  box-shadow: var(--level2);
+}
+
 .swipe-wrap{
   position: fixed!important;
   bottom:0;
   left: 0;
   right: 0;
-  min-height: 45vh;
+  min-height: 60vh;
 }
 .swipe-wrap:before, .swipe-wrap::after{
   position: absolute;
@@ -129,6 +136,25 @@ button{
   background: #444;
   padding: 0.5rem;
   color: #e0e0e0;
+}
+.pick-ability{
+  position: absolute;
+  bottom: 15vh;
+  left: 0;
+  right: 0;
+}
+.icon-coin{
+  background: white;
+  border:3px solid #333;
+  width: 25px!important;
+  height: 25px!important;
+  border-radius: 999px;
+  margin: 0 auto;
+  line-height: 40px;
+  margin-top: -50px;
+  padding: 8px;
+  text-align: center;
+  position: relative;
 }
 
  #tv {

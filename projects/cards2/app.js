@@ -36,7 +36,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Name: 'gain',
           Type: 'hearts',
           Amount: 2,
-          Text: 'Invite the remaining crewmen onboard',
+          Text: 'Invite the remaining crew',
           After: 'The crewmen tell of seamonsters and ghost ships, clearly they are in shock.'
         },
         {
@@ -50,7 +50,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Amount: 1,
           ForType: 'hearts',
           ForAmount: 3,
-          Text: 'Board it and take everything you can find',
+          Text: 'Take everything you can find',
           After: 'You send over a rading party, the drifting ships crew cower and hands you their valuables.'
         }
       ]
