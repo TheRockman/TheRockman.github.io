@@ -17,55 +17,59 @@
     <div class="row">
       <div class="flex">
 
+        <div class="center response" ng-if="candraw === true && !response">
+          <i>Lets go</i>
+        </div>
+
         <div class="center response" ng-if="candraw === true && response">
           <i>{{response}}</i>
         </div>
 
         <div ng-cloak ng-repeat="card in activeCard">
-          <div class="center" ng-class="{'title-enter':candraw === false}">
+          <div class="center response" ng-class="{'title-enter':candraw === false}">
             <h4>{{card.Name}}</h4>
             <i>{{card.Desc}}</i>
           </div>
 
           <div>
             <ul rn-carousel class="image swipe-wrap">
-              <li class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities">
+              <li  ng-cloak class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities">
 
                 <div id="tv">
                   {{ability.Text}}
                 </div>
 
-                <div class="icon-coin" ng-if="ability.Name === 'pay'">
+                <div ng-cloak class="icon-coin" ng-if="ability.Name === 'pay'">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path fill="#333" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
                   </svg>
                 </div>
 
-                <div class="icon-coin" ng-if="ability.Name === 'convert'">
+                <div ng-cloak class="icon-coin" ng-if="ability.Name === 'convert'">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path fill="#333" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
                   </svg>
                 </div>
 
-                <div class="icon-coin" ng-if="ability.Name === 'gain'">
+                <div ng-cloak class="icon-coin" ng-if="ability.Name === 'gain'">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path fill="#333" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10Z" />
                   </svg>
                 </div>
 
-                <div class="icon-coin" ng-if="ability.Name === 'discard'">
+                <div ng-cloak class="icon-coin" ng-if="ability.Name === 'discard'">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                       <path fill="#333" d="M19,8L15,12H18A6,6 0 0,1 12,18C11,18 10.03,17.75 9.2,17.3L7.74,18.76C8.97,19.54 10.43,20 12,20A8,8 0 0,0 20,12H23M6,12A6,6 0 0,1 12,6C13,6 13.97,6.25 14.8,6.7L16.26,5.24C15.03,4.46 13.57,4 12,4A8,8 0 0,0 4,12H1L5,16L9,12" />
                   </svg>
                 </div>
 
-                <div class="icon-coin" ng-if="ability.Name === 'event'">
+                <div ng-cloak class="icon-coin" ng-if="ability.Name === 'event'">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                       <path fill="#333" d="M21.5,10.8L13.2,2.5C12.5,1.8 11.5,1.8 10.8,2.5L2.5,10.8C1.8,11.5 1.8,12.5 2.5,13.2L10.8,21.5C11.5,22.2 12.5,22.2 13.2,21.5L21.5,13.2C22.1,12.5 22.1,11.5 21.5,10.8M12.5,17H11V15.5H12.5V17M14.3,11.8C13.9,12.3 13.2,12.6 12.9,13.1C12.6,13.5 12.6,14 12.6,14.5H11C11,13.7 11,13 11.3,12.5C11.6,12 12.3,11.7 12.7,11.4C13.9,10.3 13.6,8.7 11.9,8.6C11.1,8.6 10.4,9.3 10.4,10.1H9C9,8.4 10.3,7.1 12,7.1C14.7,7.1 15.9,9.8 14.3,11.8Z" />
                   </svg>
                 </div>
 
-                <div class="icon-coin" ng-if="ability.Name === 'concede'">
+                <div ng-cloak class="icon-coin" ng-if="ability.Name === 'concede'">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path fill="#333" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
                   </svg>

@@ -89,12 +89,14 @@ ul[rn-carousel] > li{
   border: 0.5rem solid #111;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  user-select: none;
 }
 
 .not-possible{
-  color:red!important;
-  opacity: 0.8;
   filter: grayscale(100);
+}
+.not-possible > button{
+  display: none;
 }
 
 .response{
@@ -151,21 +153,21 @@ button{
   border-radius: 999px;
   margin: 0 auto;
   line-height: 40px;
-  margin-top: -50px;
+  margin-top: -8%;
   padding: 8px;
   text-align: center;
   position: relative;
 }
 
  #tv {
-   line-height: 85px;
-   top: -10%;
+   line-height: 65px;
+   top: -10px;
    overflow: hidden;
    position: relative;
-   width: 75%;
+   width: 90%;
    height: 70px;
    margin: 0 auto;
-   background: #222;
+   background: #111;
    border-radius: 50% / 10%;
    color: white;
    text-align: center;
