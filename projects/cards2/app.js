@@ -126,21 +126,21 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Type: 'diamonds',
           Amount: 0,
           Text: 'Option 1',
-          After: 'Nice choice.'
+          After: 'Nice choice. Tap "draw" again to get a new card.'
         },
         {
           Name: 'gain',
           Type: 'diamonds',
           Amount: 0,
           Text: 'Option 2',
-          After: 'Nice choice.'        
+          After: 'Nice choice. Tap "draw" again to get a new card.'        
         },
         {
           Name: 'gain',
           Type: 'diamonds',
           Amount: 0,
           Text: 'Option 3',
-          After: 'Nice choice.'
+          After: 'Nice choice. Tap "draw" again to get a new card.'
         }
       ]
     },
@@ -154,21 +154,21 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Type: 'diamonds',
           Amount: 1,
           Text: 'Gain one D',
-          After: 'Nice, we now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or loose the game. Keep an eye out for red numbers.'
+          After: 'Nice, you now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or immediately loose the game. Keep an eye out for red numbers.'
         },
         {
           Name: 'gain',
           Type: 'diamonds',
           Amount: 1,
           Text: 'Gain one D',
-          After: 'Nice, we now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or loose the game. Keep an eye out for red numbers.'
+          After: 'Nice, you now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or immediately loose the game. Keep an eye out for red numbers.'
         },
         {
           Name: 'gain',
           Type: 'diamonds',
           Amount: 1,
           Text: 'Gain one D',
-          After: 'Nice, we now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or loose the game. Keep an eye out for red numbers.'
+          After: 'Nice, you now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or immediately loose the game. Keep an eye out for red numbers.'
         }
       ]
     },
@@ -212,7 +212,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ForType: 'spades',
           ForAmount: 1,
           Text: 'Swap 1 H for 1 S',
-          After: 'If you dont have enough of the resource to swap this option will be disabled.'
+          After: 'If you dont have enough of the resource to swap, this option will be disabled.'
         },
         {
           Name: 'convert',
@@ -221,7 +221,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ForType: 'spades',
           ForAmount: 1,
           Text: 'Swap 1 H for 1 S',
-          After: 'If you dont have enough of the resource to swap this option will be disabled.'
+          After: 'If you dont have enough of the resource to swap, this option will be disabled.'
         },
         {
           Name: 'convert',
@@ -230,7 +230,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ForType: 'spades',
           ForAmount: 1,
           Text: 'Swap 1 H for 1 S',
-          After: 'If you dont have enough of the resource to swap this option will be disabled.'
+          After: 'If you dont have enough of the resource to swap, this option will be disabled.'
         }
       ]
     },
@@ -259,7 +259,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       Id: 1,
       Name: 'Step 6',
-      Desc: 'Options with a question mark will insert a new cards into your deck. It will show up randomly after a shuffle.',
+      Desc: 'Options with a question mark will insert a new card into your deck. The new card will show up after the deck has been shuffled.',
       Abilities: [
         {
           Name: 'event',
@@ -289,17 +289,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {
           Name: 'concede',
           Text: 'End tutorial',
-          After: 'A grim end indeed, but better to end the suffering.'
+          After: ''
         },
         {
           Name: 'concede',
           Text: 'End tutorial',
-          After: 'A grim end indeed, but better to end the suffering.'
+          After: ''
         },
         {
           Name: 'concede',
           Text: 'End tutorial',
-          After: 'A grim end indeed, but better to end the suffering.'
+          After: ''
         }
       ]
     },
