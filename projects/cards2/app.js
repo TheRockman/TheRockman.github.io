@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
   $scope.response = null;
   $scope.tutorial = '';
+  
   $scope.allCards = [
     {
       Id: 1,
@@ -309,11 +310,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
   ];
 
-  //piles
-  $scope.currentDeck = [];
-  $scope.discardPile = [];
-  $scope.exilePile = [];
-
   $scope.sideDeck = [
     {
       Id: 0,
@@ -384,6 +380,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       ]
     }
   ]
+
+  //piles
+  $scope.currentDeck = [];
+  $scope.discardPile = [];
+  $scope.exilePile = [];
 
   $scope.activeCard = [];
 
@@ -542,14 +543,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     };
     $scope.candraw = true;
   }
-
-  //Dummy deck
-  // $scope.basicSetup = function () {
-  //   $scope.currentDeck = $scope.allCards.slice(0);
-  //   $scope.currentDeck = $scope.shuffle($scope.currentDeck);
-  //   $scope.currentDeck = $scope.shuffle($scope.currentDeck);
-  // }
-  // $scope.basicSetup();
 
   //Tutorial
   $scope.determineTutorial = function (tutorial) {

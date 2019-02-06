@@ -14,22 +14,22 @@
 <body>
 
   <div ng-controller="mainCtrl">
-    <div ng-if="!tutorial">
+    <div ng-if="!tutorial" class="draw">
       <button type="button" name="button" ng-click="determineTutorial('main')">New game</button>
       <button type="button" name="button" ng-click="determineTutorial('run')">Tutorial</button>
     </div>
-    <div ng-if="currentDeck.length > 0">
+    <div ng-cloak ng-if="currentDeck.length > 0">
       <div class="row">
         <div class="flex">
   
-          <div class="center response" ng-if="candraw === true && !response && !tutorial">
-            <i>Lets go</i>
+          <div class="response" ng-if="candraw === true && !response && tutorial !== 'run'">
+            <h4>Backstory</h4>
+            <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</i>
           </div>
-          <div class="center response" ng-if="candraw === true && !response && tutorial === 'run'">
+          <div class="response" ng-if="candraw === true && !response && tutorial === 'run'">
             <h4>Tutorial</h4>
             <i>Note the resource counters at the bottom of the screen, then tap "draw" to start.</i>
           </div>
-  
           <div class="center response" ng-if="candraw === true && response">
             <i>{{response}}</i>
           </div>
@@ -107,9 +107,12 @@
         </div>
       </div>
   
-      <button class="pointer draw" ng-class="{'drawn':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)">
-        draw
-      </button>
+      <div class="draw">
+        <button class="pointer" ng-class="{'drawn':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)">
+          draw
+        </button>
+      </div>
+
       <div class="stats align jsb">
         <p ng-class="{'danger':hearts>14}">H: {{hearts}}</p>
         <p ng-class="{'danger':clubs>14}">C: {{clubs}}</p>

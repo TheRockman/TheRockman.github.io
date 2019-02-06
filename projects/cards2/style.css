@@ -38,6 +38,11 @@ body{
   left: 0;
   right: 0;
 }
+.draw > button{
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem;
+}
 
 .card:nth-child(1){
   animation-delay: 1.5s!important;
