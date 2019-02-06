@@ -28,7 +28,7 @@
           </div>
           <div class="response" ng-if="candraw === true && !response && tutorial === 'run'">
             <h4>Tutorial</h4>
-            <i>Note the resource counters at the bottom of the screen, then tap "draw" to start.</i>
+            <i> The bar shows how much is left of your journey. Your resources are shown at the bottom of the screen. Tap "draw" to continue.</i>
           </div>
           <div class="center response" ng-if="candraw === true && response">
             <i>{{response}}</i>
@@ -108,6 +108,7 @@
       </div>
   
       <div class="draw"  ng-class="{'drawn':candraw === false}">
+        <input type="range" style="width:100%;" ng-model="progress" min="1" max="30" disabled name="" value="">
         <button class="pointer" ng-class="{'flip':candraw === true}" ng-click="pickTopCard(true)">
           draw
         </button>

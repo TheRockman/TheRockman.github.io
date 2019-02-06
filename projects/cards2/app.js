@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
   $scope.response = null;
   $scope.tutorial = '';
+  $scope.progress = 1;
   
   $scope.allCards = [
     {
@@ -451,7 +452,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
 
   //Pick the top card in a pile and move it
   $scope.pickTopCard = function (shouldReloadOnEmpty) {
-    if (shouldReloadOnEmpty && $scope.currentDeck.length === 0) {
+    if (shouldReloadOnEmpty || $scope.currentDeck.length === 0) {
       $scope.reload();
     }
 
@@ -541,6 +542,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         alert('You are carrying too much cargo, get rid of it or you will lose next turn')
       }
     };
+    $scope.progress = $scope.progress + 1;
+    if ($scope.progress === 30) {
+      console.log('THE END');
+    }
     $scope.candraw = true;
   }
 
