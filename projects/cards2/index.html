@@ -107,8 +107,8 @@
         </div>
       </div>
   
-      <div class="draw">
-        <button class="pointer" ng-class="{'drawn':candraw === false, 'flip':candraw === true}" ng-click="pickTopCard(true)">
+      <div class="draw"  ng-class="{'drawn':candraw === false}">
+        <button class="pointer" ng-class="{'flip':candraw === true}" ng-click="pickTopCard(true)">
           draw
         </button>
       </div>
