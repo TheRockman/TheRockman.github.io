@@ -1,5 +1,6 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
   $scope.response = null;
+  $scope.tutorial = '';
   $scope.allCards = [
     {
       Id: 1,
@@ -111,6 +112,200 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           After: 'Avast ye buccaneers! Give no quarter!'
         }
       ]
+    }
+  ];
+  
+  $scope.tutorialCards = [
+    {
+      Id: 1,
+      Name: 'Step 1',
+      Desc: 'Each card you draw will give you 3 options. Swipe left and right to view them and tap "choose" to select that option.',
+      Abilities: [
+        {
+          Name: 'gain',
+          Type: 'diamonds',
+          Amount: 0,
+          Text: 'Option 1',
+          After: 'Nice choice.'
+        },
+        {
+          Name: 'gain',
+          Type: 'diamonds',
+          Amount: 0,
+          Text: 'Option 2',
+          After: 'Nice choice.'        
+        },
+        {
+          Name: 'gain',
+          Type: 'diamonds',
+          Amount: 0,
+          Text: 'Option 3',
+          After: 'Nice choice.'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Step 2',
+      Desc: 'Options with an up arrow will increase one of your resources',
+      Abilities: [
+        {
+          Name: 'gain',
+          Type: 'diamonds',
+          Amount: 1,
+          Text: 'Gain one D',
+          After: 'Nice, we now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or loose the game. Keep an eye out for red numbers.'
+        },
+        {
+          Name: 'gain',
+          Type: 'diamonds',
+          Amount: 1,
+          Text: 'Gain one D',
+          After: 'Nice, we now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or loose the game. Keep an eye out for red numbers.'
+        },
+        {
+          Name: 'gain',
+          Type: 'diamonds',
+          Amount: 1,
+          Text: 'Gain one D',
+          After: 'Nice, we now have one more D. If you get more than 15 of any resource you will have one turn to reduce that resource or loose the game. Keep an eye out for red numbers.'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Step 3',
+      Desc: 'Options with a down arrow will decrease one of your resources',
+      Abilities: [
+        {
+          Name: 'pay',
+          Type: 'spades',
+          Amount: 1,
+          Text: 'Pay one S',
+          After: 'Use these cards to manage resources that you have too much of. If you are unable to pay this option will be disabled.'
+        },
+        {
+          Name: 'pay',
+          Type: 'spades',
+          Amount: 1,
+          Text: 'Pay one S',
+          After: 'Use these cards to manage resources that you have too much of. If you are unable to pay this option will be disabled.'
+        },
+        {
+          Name: 'pay',
+          Type: 'spades',
+          Amount: 1,
+          Text: 'Pay one S',
+          After: 'Use these cards to manage resources that you have too much of. If you are unable to pay this option will be disabled.'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Step 4',
+      Desc: 'Options with a double arrow will exchange one resource for another',
+      Abilities: [
+        {
+          Name: 'convert',
+          Type: 'hearts',
+          Amount: 1,
+          ForType: 'spades',
+          ForAmount: 1,
+          Text: 'Swap 1 H for 1 S',
+          After: 'If you dont have enough of the resource to swap this option will be disabled.'
+        },
+        {
+          Name: 'convert',
+          Type: 'hearts',
+          Amount: 1,
+          ForType: 'spades',
+          ForAmount: 1,
+          Text: 'Swap 1 H for 1 S',
+          After: 'If you dont have enough of the resource to swap this option will be disabled.'
+        },
+        {
+          Name: 'convert',
+          Type: 'hearts',
+          Amount: 1,
+          ForType: 'spades',
+          ForAmount: 1,
+          Text: 'Swap 1 H for 1 S',
+          After: 'If you dont have enough of the resource to swap this option will be disabled.'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Step 5',
+      Desc: 'Options with round arrows will shuffle the card back into the deck with no other effect,',
+      Abilities: [
+        {
+          Name: 'discard',
+          Text: 'Discard this card',
+          After: 'If all other options are bad, use the discard option to skip that card and hope for a better moment.'
+        },
+        {
+          Name: 'discard',
+          Text: 'Discard this card',
+          After: 'If all other options are bad, use the discard option to skip that card and hope for a better moment.'
+        },
+        {
+          Name: 'discard',
+          Text: 'Discard this card',
+          After: 'If all other options are bad, use the discard option to skip that card and hope for a better moment.'
+        },
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Step 6',
+      Desc: 'Options with a question mark will insert a new cards into your deck. It will show up randomly after a shuffle.',
+      Abilities: [
+        {
+          Name: 'event',
+          Text: 'Insert next step',
+          Insert: 'Step 7',
+          After: 'Inserting new cards will allow you to change different resources and give you more chaces to insert new cards.'
+        },
+        {
+          Name: 'event',
+          Text: 'Insert next step',
+          Insert: 'Step 7',
+          After: 'Inserting new cards will allow you to change different resources and give you more chaces to insert new cards.'
+        },
+        {
+          Name: 'event',
+          Text: 'Insert next step',
+          Insert: 'Step 7',
+          After: 'Inserting new cards will allow you to change different resources and give you more chaces to insert new cards.'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: 'Step 7',
+      Desc: 'Options with a skull will immediately end the game.',
+      Abilities: [
+        {
+          Name: 'concede',
+          Text: 'End tutorial',
+          After: 'A grim end indeed, but better to end the suffering.'
+        },
+        {
+          Name: 'concede',
+          Text: 'End tutorial',
+          After: 'A grim end indeed, but better to end the suffering.'
+        },
+        {
+          Name: 'concede',
+          Text: 'End tutorial',
+          After: 'A grim end indeed, but better to end the suffering.'
+        }
+      ]
+    },
+    {
+      Id: 1,
+      Name: "[Error] Code: Swan"
     }
   ];
 
@@ -297,7 +492,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
     $scope.response = ability.After;
     if (ability.Name === 'concede') {
-      alert('Game over')
+      if ($scope.tutorial === 'run') {
+        alert('well done, tutorial complete!');
+      }else {
+        alert('game over, items overflow');
+      }
+      location.reload();
     }
     if (ability.Name === 'discard') {
       $scope.discard(card.Name, $scope.activeCard);
@@ -307,9 +507,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.discard(card.Name, $scope.activeCard);
     }
     else if (ability.Insert) {
-      console.log(ability.Insert);
-      $scope.moveCard(card.Name, $scope.activeCard, $scope.exilePile, false);
-      $scope.moveCard(ability.Insert, $scope.sideDeck, $scope.discardPile, false);
+      if ($scope.tutorial === 'run') {
+        $scope.activeCard = [];
+      } else{
+        console.log(ability.Insert);
+        $scope.moveCard(card.Name, $scope.activeCard, $scope.exilePile, false);
+        $scope.moveCard(ability.Insert, $scope.sideDeck, $scope.discardPile, false);
+      }
     }
     else if (ability.Name === 'pay') {
       ability.Possible = $scope[ability.Type] >= ability.Amount;
@@ -326,12 +530,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.discard(card.Name, $scope.activeCard);
       }
     }
+    
     if (checkValues()) {
       if ($scope.doom) {
         alert('game over, items overflow');
-        $scope.currentDeck = null;
-        $scope.activeCard = null;
-        $scope.discardPile = null;
+        location.reload();
       } else {
         $scope.doom = true;
         alert('You are carrying too much cargo, get rid of it or you will lose next turn')
@@ -341,11 +544,23 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   }
 
   //Dummy deck
-  $scope.basicSetup = function () {
-    $scope.currentDeck = $scope.allCards.slice(0);
-    $scope.currentDeck = $scope.shuffle($scope.currentDeck);
-    $scope.currentDeck = $scope.shuffle($scope.currentDeck);
-  }
-  $scope.basicSetup();
+  // $scope.basicSetup = function () {
+  //   $scope.currentDeck = $scope.allCards.slice(0);
+  //   $scope.currentDeck = $scope.shuffle($scope.currentDeck);
+  //   $scope.currentDeck = $scope.shuffle($scope.currentDeck);
+  // }
+  // $scope.basicSetup();
 
+  //Tutorial
+  $scope.determineTutorial = function (tutorial) {
+    $scope.tutorial = tutorial;
+    if ($scope.tutorial=== 'main') {
+      //standard game
+      $scope.currentDeck = $scope.allCards.slice(0);
+      $scope.currentDeck = $scope.shuffle($scope.currentDeck);
+      $scope.currentDeck = $scope.shuffle($scope.currentDeck);
+    } else if ($scope.tutorial=== 'run') {
+      $scope.currentDeck = $scope.tutorialCards.slice(0);
+    }
+  }
 });
