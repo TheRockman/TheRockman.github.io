@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Downloader</title>
+    <script type="text/javascript" src="../../angularJs.js"></script>
+  </head>
+  <body>
+    <div ng-controller="mainCtrl">
+      <iframe style="opacity:0;" ng-src="{{trustedUrl}}" width="1px" height="1px"></iframe>
+      <div class="wrap">
+        <div class="form-wrap">
+          <input class="form-input" style="background:white;margin-top:-24px;color:black;" type="text" autofocus ng-model="searchTerm">
+          <button class="form-input" style="color:white;" type="button" ng-click="search()" name="button">Download</button>    
+        </div>
+      </div>
+      <style media="screen">
+        body, html{
+          font-family: Verdana, Geneva, sans-serif;
+          color:white;
+          margin:0;
+          padding:0;
+          background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+          overflow:hidden;
+        }
+        .wrap{
+          width:100vw;
+          height:100vh;
+          overflow:hidden;
+          position:relative;
+        }
+        .form-wrap{
+          position:fixed;
+          left:0;
+          right:0;
+          bottom:0;
+          padding-bottom:10vh;
+          background:white;
+          display: grid;
+        }
+        .form-input{
+          box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          outline:none;
+          background: #be3b5f;
+          text-align:center;
+          border:none;
+          position: relative;
+          padding: 1rem 0;
+          margin: 1rem auto;
+          width:80%;
+        }
+      </style>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope, $sce) {
+      $scope.searchTerm = '';
+      $scope.url = 'https://www.recordmp3.co/#/watch?v=https%3A%2F%2F';
+      $scope.trustedUrl = null;
+      $scope.search = function () {
+        $scope.url = $scope.url + $scope.searchTerm;
+        $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+        console.log($scope.url);
+      }
+    });
+  </script>
+</html>
