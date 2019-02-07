@@ -10,10 +10,13 @@
     <div ng-controller="mainCtrl">
       <iframe style="opacity:0;" ng-src="{{trustedUrl}}" width="1px" height="1px"></iframe>
       <div class="wrap">
-        <div class="form-wrap">
-          <input class="form-input" style="background:white;margin-top:-24px;color:black;" type="text" autofocus ng-model="searchTerm">
-          <button class="form-input" style="color:white;" type="button" ng-click="search()" name="button">Download</button>    
+        <div ng-if="msg" ng-cloak style="text-align:center;">
+          {{msg}}
         </div>
+        <form class="form-wrap" ng-submit="search()">
+          <input class="form-input" style="background:white;margin-top:-24px;color:black;" type="text" ng-model="searchTerm">
+          <button class="form-input" style="color:white;" type="submit" name="button">Download</button>    
+        </form>
       </div>
       <style media="screen">
         body, html{
@@ -58,11 +61,30 @@
       $scope.searchTerm = '';
       $scope.url = 'https://www.recordmp3.co/#/watch?v=https%3A%2F%2F';
       $scope.trustedUrl = null;
+      $scope.msg = '';
       $scope.search = function () {
         $scope.url = $scope.url + $scope.searchTerm;
         $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+        $scope.msg = 'Checking given url';
         console.log($scope.url);
       }
+      $scope.getPaste =function () {
+        navigator.clipboard.readText()
+        .then(text => {
+          if (text.includes("youtube")) {
+            console.log('Pasted content: ', text);
+            $scope.url = $scope.url + text;
+            $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+            $scope.msg = 'Checking clipboard url';
+            console.log($scope.url);
+            $scope.$digest();
+          }
+        })
+        .catch(err => {
+          $scope.$digest();
+        });
+      }
+      $scope.getPaste();
     });
   </script>
 </html>
