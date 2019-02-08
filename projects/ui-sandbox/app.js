@@ -42,5 +42,6 @@ $scope.eraseKeyVal = function () {
   $scope.keyVal = $scope.keyVal.slice(0, -1);
 }
 
+$scope.slide = 'one';
 
 });
