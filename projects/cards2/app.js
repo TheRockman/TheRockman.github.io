@@ -453,7 +453,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   //Pick the top card in a pile and move it
   $scope.pickTopCard = function (shouldReloadOnEmpty) {
     if (shouldReloadOnEmpty || $scope.currentDeck.length === 0) {
-      $scope.reload();
+      if ($scope.tutorial !== 'run') {
+        $scope.reload();
+      }
     }
 
     var topCard = $scope.currentDeck[0];
