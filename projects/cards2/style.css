@@ -253,6 +253,10 @@ button{
 
 }
 
+.selected-crew{
+  background: green;
+}
+
 .danger{
   color: red;
 }

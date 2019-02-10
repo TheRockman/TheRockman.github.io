@@ -2,7 +2,55 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.response = null;
   $scope.tutorial = '';
   $scope.progress = 1;
-  
+
+  $scope.finalCrew = [];
+  $scope.availableCrew = [];
+  $scope.crewComplete = false;
+  $scope.allCrew = [
+    {
+      Name: 'Joe',
+      Perk: 'Doctor',
+      Status: 'Healthy',
+      Portrait: 'img/sailor.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Dwayne',
+      Perk: 'Trader',
+      Status: 'Healthy',
+      Portrait: 'img/sailor.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Steve',
+      Perk: 'Pirate',
+      Status: 'Healthy',
+      Portrait: 'img/sailor.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Jane',
+      Perk: 'Trader',
+      Status: 'Healthy',
+      Portrait: 'img/sailor2.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Alicia',
+      Perk: 'Navigator',
+      Status: 'Healthy',
+      Portrait: 'img/sailor2.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Jack',
+      Perk: '123',
+      Status: 'Healthy',
+      Portrait: 'img/sailor.jpg',
+      Selected: false
+    }
+  ];
+
   $scope.allCards = [
     {
       Id: 1,
@@ -116,7 +164,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       ]
     }
   ];
-  
+
   $scope.tutorialCards = [
     {
       Id: 1,
@@ -135,7 +183,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Type: 'diamonds',
           Amount: 0,
           Text: 'Option 2',
-          After: 'Nice choice. Tap "draw" again to get a new card.'        
+          After: 'Nice choice. Tap "draw" again to get a new card.'
         },
         {
           Name: 'gain',
@@ -534,7 +582,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.discard(card.Name, $scope.activeCard);
       }
     }
-    
+
     if (checkValues()) {
       if ($scope.doom) {
         alert('game over, items overflow');
@@ -550,6 +598,29 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
     $scope.candraw = true;
   }
+
+  //Crew
+  $scope.crewPick = function (selectedMate) {
+    if (selectedMate === undefined) {
+      $scope.crewComplete = !$scope.crewComplete;
+      return;
+    }
+    selectedMate.Selected = !selectedMate.Selected;
+    if (selectedMate.Selected && $scope.finalCrew.length < 3) {
+      $scope.moveCard(selectedMate.Name, $scope.availableCrew, $scope.finalCrew, false);
+    } else {
+      $scope.moveCard(selectedMate.Name, $scope.finalCrew, $scope.availableCrew, false);
+    }
+  };
+
+  var buildAvailableCrew = function () {
+    for (var i = 0; i < 5; i++) {
+      var randi = Math.floor(Math.random() * $scope.allCrew.length);
+      $scope.moveCard($scope.allCrew[randi].Name, $scope.allCrew, $scope.availableCrew, false);
+    }
+    console.log($scope.availableCrew);
+  }
+  buildAvailableCrew();
 
   //Tutorial
   $scope.determineTutorial = function (tutorial) {
