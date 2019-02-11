@@ -22,7 +22,7 @@
       <div class="row">
         <div class="flex">
 
-          <div ng-if="!crewComplete">
+          <div ng-cloak ng-if="!crewComplete">
             <div class="response" >
               <h4>Build a crew</h4>
               <i>Select 3</i>
@@ -55,7 +55,7 @@
           </div>
 
 
-          <div class="response" ng-if="candraw === true && !response && tutorial !== 'run' && crewComplete">
+          <div ng-cloak class="response" ng-if="candraw === true && !response && tutorial !== 'run' && crewComplete">
             <h4>Backstory</h4>
             <i>
               You set out with
@@ -66,12 +66,12 @@
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</i>
           </div>
 
-          <div class="response" ng-if="candraw === true && !response && tutorial === 'run'">
+          <div ng-cloak class="response" ng-if="candraw === true && !response && tutorial === 'run'">
             <h4>Tutorial</h4>
             <i> The bar shows how much is left of your journey. Your resources are shown at the bottom of the screen. Tap "draw" to continue.</i>
           </div>
 
-          <div class="center response" ng-if="candraw === true && response">
+          <div ng-cloak class="center response" ng-if="candraw === true && response">
             <i>{{response}}</i>
           </div>
 
@@ -83,7 +83,7 @@
 
             <div>
               <ul rn-carousel class="image swipe-wrap">
-                <li  ng-cloak class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities">
+                <li ng-cloak class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities">
 
                   <div id="tv">
                     {{ability.Text}}
@@ -162,6 +162,41 @@
         <p ng-class="{'danger':spades>14}">S: {{spades}}</p>
         <p ng-class="{'danger':joker>14}">J: {{joker}}</p>
       </div>
+      
+      <!-- Crew stats-->
+      <div class="show-hide-crew" ng-if="crewComplete" ng-click="toggleCrewStats()">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="#ffffff" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" />
+        </svg>
+      </div>
+      <ul ng-cloak rn-carousel ng-if="crewStats" class="swipe-wrap crew-swipe">
+          <li ng-repeat="crew in finalCrew">
+            <div style="background:#222;color:white;">
+              <div class="align">
+                <img ng-src="{{crew.Portrait}}">
+                <h2> 
+                  &nbsp;
+                  &nbsp;
+                  &nbsp;
+                  {{crew.Name}}
+                </h2>
+              </div>
+              <div style="padding: 1rem;">
+                <h3 style="margin:0;">{{crew.Status}}</h3>
+                <span ng-if="crew.Status == 'Healthy'">No issues</span>
+                <span ng-if="crew.Status == 'Sickly'">Chance to increase healt related costs</span>
+                <span ng-if="crew.Status == 'Drunk'">Slight risk to miss bonuses</span>
+          
+                <hr>
+                <h3 style="margin:0;">{{crew.Perk}}</h3>
+                <span ng-if="crew.Perk == 'Pirate'">Chance to gain bonuses while doing pirate things</span>
+                <span ng-if="crew.Perk == 'Trader'">Chance to gain bonuses while doing exchanges</span>
+                <span ng-if="crew.Perk == 'Doctor'">Chance to gain bonuses while picking health related options</span>
+                <span ng-if="crew.Perk == 'Navigator'">Chance to gain bonuses while sailing</span>
+              </div>
+            </div> 
+          </li>
+      <ul>
     </div>
 
   </div>

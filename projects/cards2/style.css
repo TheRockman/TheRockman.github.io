@@ -134,6 +134,25 @@ ul[rn-carousel] > li{
   right: 5px;
   content: ">";
 }
+.crew-swipe{
+  background: #333;
+  min-height: 100vh;
+  z-index: 200;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.show-hide-crew{
+  position: fixed;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0 auto;
+  z-index: 201;
+}
+
 button{
   width: 50%;
   margin: 0 auto;

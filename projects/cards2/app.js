@@ -6,6 +6,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.finalCrew = [];
   $scope.availableCrew = [];
   $scope.crewComplete = false;
+  $scope.crewStats = false;
+  
   $scope.allCrew = [
     {
       Name: 'Joe',
@@ -31,20 +33,20 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       Name: 'Jane',
       Perk: 'Trader',
-      Status: 'Healthy',
+      Status: 'Sickly',
       Portrait: 'img/sailor2.jpg',
       Selected: false
     },
     {
       Name: 'Alicia',
       Perk: 'Navigator',
-      Status: 'Healthy',
+      Status: 'Drunk',
       Portrait: 'img/sailor2.jpg',
       Selected: false
     },
     {
       Name: 'Jack',
-      Perk: '123',
+      Perk: 'Navigator',
       Status: 'Healthy',
       Portrait: 'img/sailor.jpg',
       Selected: false
@@ -465,6 +467,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.doom = false;
       return false;
     }
+  }
+  
+  $scope.toggleCrewStats = function () {
+    $scope.crewStats = !$scope.crewStats;
   }
 
   //Shuffle one pile with itself, nothing enters, nothing exits
