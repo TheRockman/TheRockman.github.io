@@ -21,13 +21,18 @@
     <div ng-cloak ng-if="currentDeck.length > 0">
       <div class="row">
         <div class="flex">
-
+          <div class="show-hide-crew" ng-if="crewComplete" ng-click="toggleCrewStats()">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="#ffffff" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" />
+            </svg>
+          </div>
+          
           <div ng-cloak ng-if="!crewComplete">
             <div class="response" >
               <h4>Build a crew</h4>
               <i>Select 3</i>
               <p class="align selected-crew" ng-repeat="mate in finalCrew" ng-click="crewPick(mate)">
-                <img ng-src="{{mate.Portrait}}" >
+                <img class="portrait" ng-src="{{mate.Portrait}}" >
                 &nbsp;
                 &nbsp;
                 <span>
@@ -37,7 +42,7 @@
                 </span>
               </p>
               <p class="align" ng-repeat="mate in availableCrew" ng-click="crewPick(mate)">
-                <img ng-src="{{mate.Portrait}}" >
+                <img class="portrait" ng-src="{{mate.Portrait}}" >
                 &nbsp;
                 &nbsp;
                 <span>
@@ -162,18 +167,15 @@
         <p ng-class="{'danger':spades>14}">S: {{spades}}</p>
         <p ng-class="{'danger':joker>14}">J: {{joker}}</p>
       </div>
-      
-      <!-- Crew stats-->
-      <div class="show-hide-crew" ng-if="crewComplete" ng-click="toggleCrewStats()">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-          <path fill="#ffffff" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" />
-        </svg>
-      </div>
+    
       <ul ng-cloak rn-carousel ng-if="crewStats" class="swipe-wrap crew-swipe">
+          <br>
+          <br>
+          <br>
           <li ng-repeat="crew in finalCrew">
             <div style="background:#222;color:white;">
               <div class="align">
-                <img ng-src="{{crew.Portrait}}">
+                <img class="portrait" ng-src="{{crew.Portrait}}">
                 <h2> 
                   &nbsp;
                   &nbsp;

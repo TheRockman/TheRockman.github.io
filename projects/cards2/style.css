@@ -142,10 +142,13 @@ ul[rn-carousel] > li{
   top: 0;
   bottom: 0;
 }
-
+.portrait{
+  width: 48px;
+  height: 48px;
+}
 .show-hide-crew{
-  position: fixed;
-  bottom: 10vh;
+  position: relative;
+  top:0;
   left: 0;
   right: 0;
   text-align: center;
