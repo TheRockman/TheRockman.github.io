@@ -21,14 +21,9 @@
     <div ng-cloak ng-if="currentDeck.length > 0">
       <div class="row">
         <div class="flex">
-          <div class="show-hide-crew" ng-if="crewComplete" ng-click="toggleCrewStats()">
-            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-              <path fill="#ffffff" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" />
-            </svg>
-          </div>
-          
+
           <div ng-cloak ng-if="!crewComplete">
-            <div class="response" >
+            <div class="response crew-picker" >
               <h4>Build a crew</h4>
               <i>Select 3</i>
               <p class="align selected-crew" ng-repeat="mate in finalCrew" ng-click="crewPick(mate)">
@@ -89,61 +84,62 @@
             <div>
               <ul rn-carousel class="image swipe-wrap">
                 <li ng-cloak class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities">
-
-                  <div id="tv">
-                    {{ability.Text}}
+                  <div class="align jsb" style="padding:0 0.5rem;">
+                    <h3>{{ability.Text}}</h3>
+  
+                    <div ng-cloak class="icon-coin" ng-if="ability.Name === 'pay'">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#333" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
+                      </svg>
+                    </div>
+  
+                    <div ng-cloak class="icon-coin" ng-if="ability.Name === 'convert'">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#333" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
+                      </svg>
+                    </div>
+  
+                    <div ng-cloak class="icon-coin" ng-if="ability.Name === 'gain'">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#333" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10Z" />
+                      </svg>
+                    </div>
+  
+                    <div ng-cloak class="icon-coin" ng-if="ability.Name === 'discard'">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                          <path fill="#333" d="M19,8L15,12H18A6,6 0 0,1 12,18C11,18 10.03,17.75 9.2,17.3L7.74,18.76C8.97,19.54 10.43,20 12,20A8,8 0 0,0 20,12H23M6,12A6,6 0 0,1 12,6C13,6 13.97,6.25 14.8,6.7L16.26,5.24C15.03,4.46 13.57,4 12,4A8,8 0 0,0 4,12H1L5,16L9,12" />
+                      </svg>
+                    </div>
+  
+                    <div ng-cloak class="icon-coin" ng-if="ability.Name === 'event'">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                          <path fill="#333" d="M21.5,10.8L13.2,2.5C12.5,1.8 11.5,1.8 10.8,2.5L2.5,10.8C1.8,11.5 1.8,12.5 2.5,13.2L10.8,21.5C11.5,22.2 12.5,22.2 13.2,21.5L21.5,13.2C22.1,12.5 22.1,11.5 21.5,10.8M12.5,17H11V15.5H12.5V17M14.3,11.8C13.9,12.3 13.2,12.6 12.9,13.1C12.6,13.5 12.6,14 12.6,14.5H11C11,13.7 11,13 11.3,12.5C11.6,12 12.3,11.7 12.7,11.4C13.9,10.3 13.6,8.7 11.9,8.6C11.1,8.6 10.4,9.3 10.4,10.1H9C9,8.4 10.3,7.1 12,7.1C14.7,7.1 15.9,9.8 14.3,11.8Z" />
+                      </svg>
+                    </div>
+  
+                    <div ng-cloak class="icon-coin" ng-if="ability.Name === 'concede'">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#333" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
+                      </svg>
+                    </div>
                   </div>
-
-                  <div ng-cloak class="icon-coin" ng-if="ability.Name === 'pay'">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                      <path fill="#333" d="M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
-                    </svg>
-                  </div>
-
-                  <div ng-cloak class="icon-coin" ng-if="ability.Name === 'convert'">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                      <path fill="#333" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M8,17L12,21.5L16,17H8Z" />
-                    </svg>
-                  </div>
-
-                  <div ng-cloak class="icon-coin" ng-if="ability.Name === 'gain'">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                      <path fill="#333" d="M12,2.5L8,7H16L12,2.5M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10Z" />
-                    </svg>
-                  </div>
-
-                  <div ng-cloak class="icon-coin" ng-if="ability.Name === 'discard'">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="#333" d="M19,8L15,12H18A6,6 0 0,1 12,18C11,18 10.03,17.75 9.2,17.3L7.74,18.76C8.97,19.54 10.43,20 12,20A8,8 0 0,0 20,12H23M6,12A6,6 0 0,1 12,6C13,6 13.97,6.25 14.8,6.7L16.26,5.24C15.03,4.46 13.57,4 12,4A8,8 0 0,0 4,12H1L5,16L9,12" />
-                    </svg>
-                  </div>
-
-                  <div ng-cloak class="icon-coin" ng-if="ability.Name === 'event'">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="#333" d="M21.5,10.8L13.2,2.5C12.5,1.8 11.5,1.8 10.8,2.5L2.5,10.8C1.8,11.5 1.8,12.5 2.5,13.2L10.8,21.5C11.5,22.2 12.5,22.2 13.2,21.5L21.5,13.2C22.1,12.5 22.1,11.5 21.5,10.8M12.5,17H11V15.5H12.5V17M14.3,11.8C13.9,12.3 13.2,12.6 12.9,13.1C12.6,13.5 12.6,14 12.6,14.5H11C11,13.7 11,13 11.3,12.5C11.6,12 12.3,11.7 12.7,11.4C13.9,10.3 13.6,8.7 11.9,8.6C11.1,8.6 10.4,9.3 10.4,10.1H9C9,8.4 10.3,7.1 12,7.1C14.7,7.1 15.9,9.8 14.3,11.8Z" />
-                    </svg>
-                  </div>
-
-                  <div ng-cloak class="icon-coin" ng-if="ability.Name === 'concede'">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                      <path fill="#333" d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
-                    </svg>
-                  </div>
-                    <br>
-                    <br>
-                    <b>
-                      <span ng-if="ability.Amount">
-                        <span ng-if="ability.Name == 'gain'">+</span>
-                        <span ng-if="ability.Name == 'pay' || ability.Name == 'convert'">-</span>
-                        {{ability.Amount}} {{ability.Type}} <br>
-                      </span>
-                      <span ng-if="ability.ForAmount">
-                        + {{ability.ForAmount}} {{ability.ForType}} <br>
-                      </span>
-                      <span ng-if="ability.Insert">
-                        [Insert "{{ability.Insert}}"] <br>
-                      </span>
-                    </b>
+                  
+                  <b>
+                    <span ng-if="ability.Amount">
+                      <span ng-if="ability.Name == 'gain'">+</span>
+                      <span ng-if="ability.Name == 'pay' || ability.Name == 'convert'">-</span>
+                      {{ability.Amount}} {{ability.Type}} <br>
+                    </span>
+                    <span ng-if="ability.ForAmount">
+                      + {{ability.ForAmount}} {{ability.ForType}} <br>
+                    </span>
+                    <span ng-if="ability.Insert">
+                      [Insert "{{ability.Insert}}"] <br>
+                    </span>
+                    <span ng-if="ability.CrewMod">
+                      Crew: "{{ability.CrewMod}}" <br>
+                    </span>
+                  </b>
                   <br>
                   <button type="button" class="pick-ability" ng-click="activate(card, ability)" name="button">Choose</button>
                 </li>
@@ -160,6 +156,15 @@
         </button>
       </div>
 
+      <div class="options align jsb">
+        <div class="show-hide-crew align" ng-if="crewComplete" ng-click="toggleCrewStats()">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="red" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" />
+          </svg>
+          &nbsp;
+          {{finalCrew.length}}
+        </div>
+      </div>
       <div class="stats align jsb">
         <p ng-class="{'danger':hearts>14}">H: {{hearts}}</p>
         <p ng-class="{'danger':clubs>14}">C: {{clubs}}</p>
@@ -169,11 +174,8 @@
       </div>
     
       <ul ng-cloak rn-carousel ng-if="crewStats" class="swipe-wrap crew-swipe">
-          <br>
-          <br>
-          <br>
           <li ng-repeat="crew in finalCrew">
-            <div style="background:#222;color:white;">
+            <div style="color:white;">
               <div class="align">
                 <img class="portrait" ng-src="{{crew.Portrait}}">
                 <h2> 
@@ -184,17 +186,36 @@
                 </h2>
               </div>
               <div style="padding: 1rem;">
-                <h3 style="margin:0;">{{crew.Status}}</h3>
-                <span ng-if="crew.Status == 'Healthy'">No issues</span>
-                <span ng-if="crew.Status == 'Sickly'">Chance to increase healt related costs</span>
-                <span ng-if="crew.Status == 'Drunk'">Slight risk to miss bonuses</span>
-          
-                <hr>
-                <h3 style="margin:0;">{{crew.Perk}}</h3>
+                <br>
+                <span class="align">
+                  <svg ng-cloak ng-if="crew.Perk === 'Doctor'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M18,14H14V18H10V14H6V10H10V6H14V10H18M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                  </svg>
+                  
+                  <svg ng-cloak ng-if="crew.Perk === 'Navigator'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M2,11L4.05,11.1C4.3,8.83 5.5,6.85 7.25,5.56L6.13,3.84C5.86,3.36 6,2.75 6.5,2.47C7,2.2 7.59,2.36 7.87,2.84L8.8,4.66C9.78,4.24 10.86,4 12,4C13.14,4 14.22,4.24 15.2,4.66L16.13,2.84C16.41,2.36 17,2.2 17.5,2.47C18,2.75 18.14,3.36 17.87,3.84L16.75,5.56C18.5,6.85 19.7,8.83 19.95,11.1L22,11A1,1 0 0,1 23,12A1,1 0 0,1 22,13L19.95,12.9C19.7,15.17 18.5,17.15 16.75,18.44L17.87,20.16C18.14,20.64 18,21.25 17.5,21.53C17,21.8 16.41,21.64 16.13,21.16L15.2,19.34C14.22,19.76 13.14,20 12,20C10.86,20 9.78,19.76 8.8,19.34L7.87,21.16C7.59,21.64 7,21.8 6.5,21.53C6,21.25 5.86,20.64 6.13,20.16L7.25,18.44C5.5,17.15 4.3,15.17 4.05,12.9L2,13A1,1 0 0,1 1,12A1,1 0 0,1 2,11M9.07,11.35C9.2,10.74 9.53,10.2 10,9.79L8.34,7.25C7.11,8.19 6.27,9.6 6.05,11.2L9.07,11.35M12,9C12.32,9 12.62,9.05 12.9,9.14L14.28,6.45C13.58,6.16 12.81,6 12,6C11.19,6 10.42,6.16 9.72,6.45L11.1,9.14C11.38,9.05 11.68,9 12,9M14.93,11.35L17.95,11.2C17.73,9.6 16.89,8.19 15.66,7.25L14,9.79C14.47,10.2 14.8,10.74 14.93,11.35M14.93,12.65C14.8,13.26 14.47,13.8 14,14.21L15.66,16.75C16.89,15.81 17.73,14.4 17.95,12.8L14.93,12.65M12,15C11.68,15 11.38,14.95 11.09,14.86L9.72,17.55C10.42,17.84 11.19,18 12,18C12.81,18 13.58,17.84 14.28,17.55L12.91,14.86C12.62,14.95 12.32,15 12,15M9.07,12.65L6.05,12.8C6.27,14.4 7.11,15.81 8.34,16.75L10,14.21C9.53,13.8 9.2,13.26 9.07,12.65Z" /> 
+                  </svg>
+                  
+                  <svg ng-cloak ng-if="crew.Perk === 'Trader'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95L2,14C1.53,16 3,17 5.5,17C8,17 9.56,16 9,14L6.05,7H9.17C9.5,7.85 10.15,8.5 11,8.83V20H2V22H22V20H13V8.82C13.85,8.5 14.5,7.85 14.82,7H17.95L15,14C14.53,16 16,17 18.5,17C21,17 22.56,16 22,14L19.05,7H21V5H14.83C14.4,3.8 13.27,3 12,3M12,5A1,1 0 0,1 13,6A1,1 0 0,1 12,7A1,1 0 0,1 11,6A1,1 0 0,1 12,5M5.5,10.25L7,14H4L5.5,10.25M18.5,10.25L20,14H17L18.5,10.25Z" />
+                  </svg>
+                  
+                  <svg ng-cloak ng-if="crew.Perk === 'Pirate'" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M15.8,18.5L21.8,20.1L21.4,22L12,19.5L2.6,22L2.1,20.1L8.1,18.5L2,16.9L2.5,15L11.9,17.5L21.3,15L21.8,16.9L15.8,18.5M18,8C18,9.8 17.2,11.3 16,12.4V15H14V13.7L14,13H13V15H11V13H10V13.7L10,15H8V12.4C6.8,11.3 6,9.8 6,8A6,6 0 0,1 12,2A6,6 0 0,1 18,8M11,7.5C11,6.7 10.3,6 9.5,6C8.7,6 8,6.7 8,7.5C8,8.3 8.7,9 9.5,9C10.3,9 11,8.3 11,7.5M13,11L12,9L11,11H13M16,7.5C16,6.7 15.3,6 14.5,6C13.7,6 13,6.7 13,7.5C13,8.3 13.7,9 14.5,9C15.3,9 16,8.3 16,7.5Z" />
+                  </svg>
+                  &nbsp;
+                  <h3>{{crew.Perk}}</h3>
+                </span>
                 <span ng-if="crew.Perk == 'Pirate'">Chance to gain bonuses while doing pirate things</span>
                 <span ng-if="crew.Perk == 'Trader'">Chance to gain bonuses while doing exchanges</span>
                 <span ng-if="crew.Perk == 'Doctor'">Chance to gain bonuses while picking health related options</span>
                 <span ng-if="crew.Perk == 'Navigator'">Chance to gain bonuses while sailing</span>
+                <hr>
+                <h3>{{crew.Status}}</h3>
+                <span ng-if="crew.Status == 'Healthy'">No issues</span>
+                <span ng-if="crew.Status == 'Sickly'">Chance to increase healt related costs</span>
+                <span ng-if="crew.Status == 'Drunk'">Slight risk to miss bonuses</span>
+          
               </div>
             </div> 
           </li>

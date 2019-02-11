@@ -19,7 +19,7 @@ body{
   font-size: 14px;
   overflow: hidden;
   color: black;
-  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/dark-paths.png");
+  background: #3D013C;
 }
 
 /*Card*/
@@ -31,7 +31,7 @@ body{
 }
 .draw{
   position: absolute;
-  bottom: 90px;
+  bottom: 7vh;
   padding: 1rem;
   width: 80%;
   margin: 0 auto;
@@ -87,13 +87,13 @@ ul[rn-carousel] > li{
 }
 
 .ability-wrap{
-  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/vintage-concrete.png");
+  background:white;
   color: #333!important;
-  height: 400px;
+  height: 50vh!important;
   text-align: center;
-  border: 0.5rem solid #111;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  margin: 20px!important;
+  border-right: 10px solid #3d013c;
+  border-left: 10px solid #3d013c;
   user-select: none;
 }
 
@@ -105,7 +105,8 @@ ul[rn-carousel] > li{
 }
 
 .response{
-  background: white;
+  background: #60487F;
+  color:white;
   padding: 0.5rem;
   box-shadow: var(--level2);
 }
@@ -115,7 +116,7 @@ ul[rn-carousel] > li{
   bottom:0;
   left: 0;
   right: 0;
-  min-height: 60vh;
+  min-height: 63vh;
 }
 .swipe-wrap:before, .swipe-wrap::after{
   position: absolute;
@@ -134,8 +135,12 @@ ul[rn-carousel] > li{
   right: 5px;
   content: ">";
 }
+.crew-picker{
+  height: 90vh;
+  overflow-y: auto;
+}
 .crew-swipe{
-  background: #333;
+  background: #222;
   min-height: 100vh;
   z-index: 200;
   margin: 0;
@@ -161,10 +166,12 @@ button{
   margin: 0 auto;
   text-align: center;
   outline: none;
-  border: 3px outset #333;
-  background: #444;
+  border: none;
+  border-radius: 5px;
+  box-shadow: var(--level1);
+  background: #fff;
   padding: 0.5rem;
-  color: #e0e0e0;
+  color: #333;
 }
 .pick-ability{
   position: absolute;
@@ -174,43 +181,16 @@ button{
 }
 .icon-coin{
   background: white;
-  border:3px solid #333;
+  box-shadow: var(--level1);
   width: 25px!important;
   height: 25px!important;
   border-radius: 999px;
-  margin: 0 auto;
   line-height: 40px;
-  margin-top: -8%;
-  padding: 8px;
+  padding: 3px;
+  transform-origin: center;
+  transform: scale(0.8);
   text-align: center;
-  position: relative;
 }
-
- #tv {
-   line-height: 65px;
-   top: -10px;
-   overflow: hidden;
-   position: relative;
-   width: 90%;
-   height: 70px;
-   margin: 0 auto;
-   background: #111;
-   border-radius: 50% / 10%;
-   color: white;
-   text-align: center;
-   text-indent: .1em;
- }
- #tv:before {
-   content: '';
-   position: absolute;
-   top: 10%;
-   bottom: 10%;
-   right: -5%;
-   left: -5%;
-   z-index: -1;
-   background: inherit;
-   border-radius: 5% / 50%;
- }
 
 /*flex*/
 .flex{
@@ -247,7 +227,7 @@ button{
 
 }
 
-.stats{
+.stats, .options{
   background: black;
   color: white;
   padding: var(--spacer);
@@ -255,7 +235,13 @@ button{
   bottom: 0;
   left: 0;
   right: 0;
+  height: 1vh;
   z-index: 100;
+}
+.options{
+  bottom: 6vh;
+  z-index: 202;
+  background: transparent;
 }
 .pull{
   width: 10px;
@@ -276,7 +262,7 @@ button{
 }
 
 .selected-crew{
-  background: green;
+  background: #7888BF;
 }
 
 .danger{

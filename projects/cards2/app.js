@@ -10,7 +10,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   $scope.allCrew = [
     {
-      Name: 'Joe',
+      Name: 'Abe',
       Perk: 'Doctor',
       Status: 'Healthy',
       Portrait: 'img/sailor.jpg',
@@ -50,8 +50,47 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       Status: 'Healthy',
       Portrait: 'img/sailor.jpg',
       Selected: false
+    },
+    {
+      Name: 'Siv',
+      Perk: 'Trader',
+      Status: 'Sickly',
+      Portrait: 'img/sailor2.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Ana',
+      Perk: 'Navigator',
+      Status: 'Drunk',
+      Portrait: 'img/sailor2.jpg',
+      Selected: false
+    },
+    {
+      Name: 'Boris',
+      Perk: 'Navigator',
+      Status: 'Healthy',
+      Portrait: 'img/sailor.jpg',
+      Selected: false
     }
   ];
+  
+  $scope.allStates = [
+    {
+      Name: 'Drunk'
+    },
+    {
+      Name: 'Sickly'
+    },
+    {
+      Name: 'Cursed'
+    },
+    {
+      Name: 'Daring'
+    },
+    {
+      Name: 'Insane'
+    }
+  ]
 
   $scope.allCards = [
     {
@@ -64,18 +103,20 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Type: 'diamonds',
           Amount: 2,
           Text: 'Do some repairs',
+          CrewMod: 1,
           After: 'Your crew manages to patch a few holes'
         },
         {
           Name: 'discard',
           Text: 'Stay on course',
-          After: 'You keep sailing'
+          After: 'You keep sailing',
         },
         {
           Name: 'gain',
           Type: 'spades',
           Amount: 3,
           Text: 'Anchor and get some sleep',
+          CrewMod: -1,
           After: 'The rocking of the waves lul you to sleep. But you wake from briney dreams.'
         }
       ]
@@ -369,7 +410,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       Abilities: [
         {
           Name: 'concede',
-          Text: 'You and your crew will be keelhauled by dawn'
+          Text: 'You and your crew will be keelhauled by dawn',
         },
         {
           Name: 'concede',
@@ -392,16 +433,19 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Amount: 2,
           ForType: 'joker',
           ForAmount: 1,
-          Text: 'Hoard some supplies for yourself'
+          Text: 'Hoard some supplies for yourself',
+          After: 'TEMP'
         },
         {
           Name: 'discard',
-          Text: 'No prey, no pay'
+          Text: 'No prey, no pay',
+          After: 'TEMP'
         },
         {
           Name: 'event',
           Text: 'Plan a mutiny!',
-          Insert: 'Pirate mutiny'
+          Insert: 'Pirate mutiny',
+          After: 'TEMP'
         }
       ]
     },
@@ -416,17 +460,20 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Amount: 3,
           ForType: 'hearts',
           ForAmount: 3,
-          Text: 'There is a new captain appointed'
+          Text: 'There is a new captain appointed',
+          After: 'TEMP',
         },
         {
           Name: 'concede',
-          Text: 'The mutiny failed. You and your crew will be keelhauled by dawn'
+          Text: 'The mutiny failed. You and your crew will be keelhauled by dawn',
+          After: 'TEMP',
         },
         {
           Name: 'pay',
           Type: 'spades',
           Amount: 1,
-          Text: 'You are punished: No rum for a month!'
+          Text: 'You are punished: No rum for a month!',
+          After: 'TEMP',
         }
       ]
     }
@@ -462,6 +509,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     } else if ($scope.spades >= max) {
       return true;
     } else if ($scope.joker >= max) {
+      return true;
+    } else if ($scope.finalCrew.length < 1) {
       return true;
     } else {
       $scope.doom = false;
@@ -541,12 +590,48 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.discardPile = [];
     }
   }
+  
+  $scope.applyCrewMod = function (mod) {
+    if (mod > 0) {
+      for (var i = 0; i < mod; i++) {
+        if ($scope.allCrew.length >= mod) {
+          $scope.moveCard($scope.allCrew[i].Name, $scope.allCrew, $scope.finalCrew, false);
+        } else{
+          console.log('no more room');
+        }
+      }
+    } else if (mod < 0) {
+      var positive = mod * -1;
+      for (var i = 0; i < positive; i++) {
+        if ($scope.finalCrew.length >= positive) {
+          $scope.moveCard($scope.finalCrew[i].Name, $scope.finalCrew, $scope.allCrew, false);
+        } else{
+          console.log('No more crew');
+        }
+      }
+    }
+  }
+  $scope.assignRandomStatusEffects = function () {
+    for (var i = 0; i < $scope.finalCrew.length; i++) {
+      if ($scope.finalCrew[i].Status === 'Healthy') {
+        var rand1 = Math.floor(Math.random() * 6);
+        var rand2 = Math.floor(Math.random() * $scope.allStates.length);
+        if (rand1 === 1) {
+          console.log($scope.finalCrew[i].Name, 'status was changed to ', $scope.allStates[rand2].Name);
+          $scope.finalCrew[i].Status = $scope.allStates[rand2].Name;
+        }
+      }
+    }
+  }
 
   //Activate selected ability, 0 is discard
   $scope.activate = function (card, ability) {
     console.log(ability);
     if (ability.Possible === false) {
       return;
+    }
+    if (ability.CrewMod) {
+      $scope.applyCrewMod(ability.CrewMod);
     }
     $scope.response = ability.After;
     if (ability.Name === 'concede') {
@@ -589,6 +674,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       }
     }
 
+    $scope.assignRandomStatusEffects();
+    
     if (checkValues()) {
       if ($scope.doom) {
         alert('game over, items overflow');
