@@ -98,7 +98,7 @@ ul[rn-carousel] > li{
 }
 
 .not-possible{
-  filter: grayscale(100);
+  
 }
 .not-possible > button{
   display: none;
@@ -190,6 +190,11 @@ button{
   transform-origin: center;
   transform: scale(0.8);
   text-align: center;
+}
+
+.bonus-wrap{
+  background: dodgerblue!important;
+  color:white!important;
 }
 
 /*flex*/

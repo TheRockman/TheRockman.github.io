@@ -144,6 +144,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Amount: 1,
           ForType: 'hearts',
           ForAmount: 3,
+          Bonus: 'Pirate',
+          BonusAmount: 1,
+          BonusType: 'clubs',
           Text: 'Take everything you can find',
           After: 'You send over a rading party, the drifting ships crew cower and hands you their valuables.'
         }
@@ -158,6 +161,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Name: 'pay',
           Type: 'hearts',
           Amount: 2,
+          Bonus: 'Doctor',
+          BonusAmount: 2,
+          BonusType: 'hearts',
           Text: 'Quarantine them',
           After: 'You manage to stop it from spreading but two of your men perish.'
         },
@@ -199,7 +205,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           After: 'You send out two men to sneak aboard the pirate ship and steal their rum while you distract them with fancy talk and flattery. As soon as you spot your men returning you quickly order a retreat.'
         },
         {
-          Name: 'event',
+          Name: 'gain',
+          Type: 'hearts',
+          Amount: 2,
           Text: 'Join their crew',
           Insert: 'Pirate life',
           After: 'Avast ye buccaneers! Give no quarter!'
@@ -611,6 +619,18 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       }
     }
   }
+  
+  $scope.applyBonuswMod = function (mod) {
+    if (mod.BonusAmount > 0) {
+      $scope[mod.BonusType] = $scope[mod.BonusType] + mod.BonusAmount;
+      console.log('Bonus: you got extra', mod.BonusType, 'since you had a', mod.Bonus);
+    } else if (mod.BonusAmount < 0) {
+      var positive = mod.BonusAmount * -1;
+      $scope[mod.BonusType] = $scope[mod.BonusType] - positive;
+      console.log('Bonus: you lost an extra', mod.BonusType, 'since you had a', mod.Bonus);
+    }
+  }
+  
   $scope.assignRandomStatusEffects = function () {
     for (var i = 0; i < $scope.finalCrew.length; i++) {
       if ($scope.finalCrew[i].Status === 'Healthy') {
@@ -624,6 +644,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
   }
 
+  $scope.crewHasBonus = function (bonus) {
+    var res = false;
+    for (var i = 0; i < $scope.finalCrew.length; i++) {
+      if ($scope.finalCrew[i].Perk === bonus) {
+        res = true;
+      }
+    }
+    return res;
+  }
+  
   //Activate selected ability, 0 is discard
   $scope.activate = function (card, ability) {
     console.log(ability);
@@ -672,6 +702,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope[ability.ForType] = $scope[ability.ForType] + ability.ForAmount;
         $scope.discard(card.Name, $scope.activeCard);
       }
+    }
+    
+    if (ability.Bonus && $scope.crewHasBonus(ability.Bonus)) {  
+      $scope.applyBonuswMod(ability);
     }
 
     $scope.assignRandomStatusEffects();

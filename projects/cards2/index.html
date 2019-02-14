@@ -83,7 +83,7 @@
 
             <div>
               <ul rn-carousel class="image swipe-wrap">
-                <li ng-cloak class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false}" ng-repeat="ability in card.Abilities">
+                <li ng-cloak class="pointer ability-wrap" ng-class="{'not-possible':ability.Possible === false, 'card-enter':candraw === false, 'bonus-wrap':crewHasBonus(ability.Bonus)}" ng-repeat="ability in card.Abilities">
                   <div class="align jsb" style="padding:0 0.5rem;">
                     <h3>{{ability.Text}}</h3>
   
@@ -124,7 +124,7 @@
                     </div>
                   </div>
                   
-                  <b>
+                  <div>
                     <span ng-if="ability.Amount">
                       <span ng-if="ability.Name == 'gain'">+</span>
                       <span ng-if="ability.Name == 'pay' || ability.Name == 'convert'">-</span>
@@ -139,7 +139,15 @@
                     <span ng-if="ability.CrewMod">
                       Crew: "{{ability.CrewMod}}" <br>
                     </span>
-                  </b>
+                    <span ng-if="crewHasBonus(ability.Bonus)">
+                      {{ability.Bonus}} bonus:
+                      <span ng-if="ability.BonusAmount > 0">+</span>
+                      <span ng-if="ability.BonusAmount < 0">-</span>
+                      {{ability.BonusAmount}} 
+                      {{ability.BonusType}} 
+                      <br>
+                    </span>
+                  </div>
                   <br>
                   <button type="button" class="pick-ability" ng-click="activate(card, ability)" name="button">Choose</button>
                 </li>
