@@ -104,6 +104,10 @@ ul[rn-carousel] > li{
   display: none;
 }
 
+.crew-change > path{
+  fill:dodgerblue!important;
+}
+
 .response{
   background: #60487F;
   color:white;

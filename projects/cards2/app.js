@@ -19,7 +19,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       Name: 'Dwayne',
       Perk: 'Trader',
-      Status: 'Healthy',
+      Status: 'Insane',
       Portrait: 'img/sailor.jpg',
       Selected: false
     },
@@ -33,7 +33,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       Name: 'Jane',
       Perk: 'Trader',
-      Status: 'Sickly',
+      Status: 'Cursed',
       Portrait: 'img/sailor2.jpg',
       Selected: false
     },
@@ -506,17 +506,15 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   //check values for exess
   var checkValues = function () {
     var max = 15;
-    if ($scope.hearts >= max) {
+    if ($scope.hearts >= max || $scope.hearts < 0 ) {
       return true;
-    } else if ($scope.clubs >= max) {
+    } else if ($scope.clubs >= max || $scope.clubs < 0 ) {
       return true;
-    } else if ($scope.diamonds >= max) {
+    } else if ($scope.diamonds >= max || $scope.diamonds < 0 ) {
       return true;
-    } else if ($scope.diamonds >= max) {
+    } else if ($scope.spades >= max || $scope.spades < 0 ) {
       return true;
-    } else if ($scope.spades >= max) {
-      return true;
-    } else if ($scope.joker >= max) {
+    } else if ($scope.joker >= max || $scope.joker < 0 ) {
       return true;
     } else if ($scope.finalCrew.length < 1) {
       return true;
@@ -571,6 +569,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
 
     var topCard = $scope.currentDeck[0];
     $scope.candraw = false;
+    $scope.drunk = false;
+    $scope.crewChange = false;
+    
     if ($scope.activeCard.length === 0 && topCard) {
       for (var i = 0; i < topCard.Abilities.length; i++) {
         if (topCard.Abilities[i].Name === 'pay' || topCard.Abilities[i].Name === 'convert') {
@@ -621,6 +622,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   }
   
   $scope.applyBonuswMod = function (mod) {
+    if ($scope.crewHasStatus('Insane')) {
+      mod.BonusAmount = mod.BonusAmount * -1;
+    }
+    
     if (mod.BonusAmount > 0) {
       $scope[mod.BonusType] = $scope[mod.BonusType] + mod.BonusAmount;
       console.log('Bonus: you got extra', mod.BonusType, 'since you had a', mod.Bonus);
@@ -631,14 +636,26 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
   }
   
-  $scope.assignRandomStatusEffects = function () {
+  $scope.assignRandomStatusEffects = function () {  
     for (var i = 0; i < $scope.finalCrew.length; i++) {
+      
+      if ($scope.crewHasStatus('Cursed')) {
+        var rand1 = Math.floor(Math.random() * 6);
+        if (rand1 === 1) {
+          console.log($scope.finalCrew[i].Name, ' was cursed');
+          $scope.finalCrew[i].Status = 'Cursed';
+          $scope.crewChange = true;
+        }
+        return;
+      }
+      
       if ($scope.finalCrew[i].Status === 'Healthy') {
         var rand1 = Math.floor(Math.random() * 6);
         var rand2 = Math.floor(Math.random() * $scope.allStates.length);
         if (rand1 === 1) {
           console.log($scope.finalCrew[i].Name, 'status was changed to ', $scope.allStates[rand2].Name);
           $scope.finalCrew[i].Status = $scope.allStates[rand2].Name;
+          $scope.crewChange = true;
         }
       }
     }
@@ -647,7 +664,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.crewHasBonus = function (bonus) {
     var res = false;
     for (var i = 0; i < $scope.finalCrew.length; i++) {
-      if ($scope.finalCrew[i].Perk === bonus) {
+      if ($scope.finalCrew[i].Perk === bonus && $scope.finalCrew[i].Status !== 'Cursed') {
+        res = true;
+      }
+    }
+    return res;
+  }
+  
+  $scope.crewHasStatus = function (status) {
+    var res = false;
+    for (var i = 0; i < $scope.finalCrew.length; i++) {
+      if ($scope.finalCrew[i].Status === status) {
         res = true;
       }
     }
@@ -657,6 +684,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   //Activate selected ability, 0 is discard
   $scope.activate = function (card, ability) {
     console.log(ability);
+    
     if (ability.Possible === false) {
       return;
     }
@@ -672,21 +700,21 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       }
       location.reload();
     }
+    if (ability.Insert) {
+      if ($scope.tutorial === 'run') {
+        $scope.activeCard = [];
+      } else{
+        $scope.moveCard(card.Name, $scope.activeCard, $scope.exilePile, false);
+        $scope.moveCard(ability.Insert, $scope.sideDeck, $scope.discardPile, false);
+        console.log('Isert:', ability.Insert, 'into', $scope.discardPile);
+      }
+    }
     if (ability.Name === 'discard') {
       $scope.discard(card.Name, $scope.activeCard);
     }
     else if (ability.Name === 'gain') {
       $scope[ability.Type] = $scope[ability.Type] + ability.Amount;
       $scope.discard(card.Name, $scope.activeCard);
-    }
-    else if (ability.Insert) {
-      if ($scope.tutorial === 'run') {
-        $scope.activeCard = [];
-      } else{
-        console.log(ability.Insert);
-        $scope.moveCard(card.Name, $scope.activeCard, $scope.exilePile, false);
-        $scope.moveCard(ability.Insert, $scope.sideDeck, $scope.discardPile, false);
-      }
     }
     else if (ability.Name === 'pay') {
       ability.Possible = $scope[ability.Type] >= ability.Amount;
@@ -705,7 +733,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
     
     if (ability.Bonus && $scope.crewHasBonus(ability.Bonus)) {  
-      $scope.applyBonuswMod(ability);
+      if ($scope.crewHasStatus('Drunk')) {
+          var rand1 = Math.floor(Math.random() * 6);
+          if (rand1 !== 1) {
+            $scope.applyBonuswMod(ability);
+          } else {
+            $scope.drunk = true;
+          }
+      } else {
+        $scope.applyBonuswMod(ability);
+      }
     }
 
     $scope.assignRandomStatusEffects();
