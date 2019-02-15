@@ -14,7 +14,14 @@
 <body>
 
   <div ng-controller="mainCtrl">
-    <div ng-if="!tutorial" class="draw">
+    <div ng-if="!tutorial" class="draw center">
+      <div class="title-wrap">
+        <img src="img/temp.png" class="title" alt="">
+        <section>
+          <br>
+          <span>lorem ipsum</span>
+        </section>
+      </div>
       <button type="button" name="button" ng-click="determineTutorial('main')">New game</button>
       <button type="button" name="button" ng-click="determineTutorial('run')">Tutorial</button>
     </div>
