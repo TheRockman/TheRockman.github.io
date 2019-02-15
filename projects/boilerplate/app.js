@@ -1,3 +1,3 @@
-var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", function($scope) {
+var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
 
 });
