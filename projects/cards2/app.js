@@ -60,7 +60,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     },
     {
       Name: 'Ana',
-      Perk: 'Navigator',
+      Perk: 'Doctor',
       Status: 'Drunk',
       Portrait: 'img/sailor2.jpg',
       Selected: false
@@ -85,7 +85,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       Name: 'Cursed'
     },
     {
-      Name: 'Daring'
+      Name: 'Skilled'
     },
     {
       Name: 'Insane'
@@ -172,6 +172,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Type: 'spades',
           Amount: 5,
           Text: 'Do nothing',
+          Bonus: 'Doctor',
+          BonusAmount: -2,
+          BonusType: 'hearts',
           After: 'Your crew is in agony. Boils, rashes, vomit and pus as far as the eye can see. We will just have to ride it out.'
         },
         {
@@ -640,8 +643,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     for (var i = 0; i < $scope.finalCrew.length; i++) {
       
       if ($scope.crewHasStatus('Cursed')) {
-        var rand1 = Math.floor(Math.random() * 6);
-        if (rand1 === 1) {
+        var rand = Math.floor(Math.random() * 50);
+        if (rand === 1) {
           console.log($scope.finalCrew[i].Name, ' was cursed');
           $scope.finalCrew[i].Status = 'Cursed';
           $scope.crewChange = true;
@@ -740,6 +743,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           } else {
             $scope.drunk = true;
           }
+      } else if ($scope.crewHasStatus('Skilled')) {
+        var rand1 = Math.floor(Math.random() * 6);
+        if (rand1 !== 1) {
+          $scope.applyBonuswMod(ability + 1);
+          console.log('skilled bonus', ability, ability + 1);
+        }
       } else {
         $scope.applyBonuswMod(ability);
       }

@@ -154,14 +154,13 @@
                     </span>
                     <span ng-if="crewHasBonus(ability.Bonus)">
                       {{ability.Bonus}} bonus <span ng-if="crewHasStatus('Insane')">(Insane)</span>:
-                      <!-- normal -->
-                      <span ng-if="ability.BonusAmount > 0 && !crewHasStatus('Insane')">+</span>
-                      <span ng-if="ability.BonusAmount < 0 && !crewHasStatus('Insane')">-</span>
-                      <!-- insane -->
-                      <span ng-if="ability.BonusAmount > 0 && crewHasStatus('Insane')">-</span>
-                      <span ng-if="ability.BonusAmount < 0 && crewHasStatus('Insane')">+</span>
+
+                      <!-- <span ng-if="ability.BonusAmount > 0">+</span>
+                      <span ng-if="ability.BonusAmount < 0">-</span> -->
                       
-                      {{ability.BonusAmount}} 
+                      <b ng-if="crewHasStatus('Insane')">{{ability.BonusAmount * -1}}</b>
+                      <span ng-if="!crewHasStatus('Insane')">{{ability.BonusAmount}}</span> 
+                       
                       {{ability.BonusType}} 
                       <br>
                     </span>
@@ -243,6 +242,7 @@
                 <span ng-if="crew.Status == 'Drunk'">Slight risk to miss bonuses</span>
                 <span ng-if="crew.Status == 'Cursed'">Can not provide bonuses, will spread the curse</span>
                 <span ng-if="crew.Status == 'Insane'">Inverts all bonus values</span>
+                <span ng-if="crew.Status == 'Skilled'">Bigger bonuses</span>
               </div>
             </div> 
           </li>
