@@ -125,6 +125,13 @@ h3{
   .flex {
     flex: 1 1 auto;
   }
+  #searchy{
+    width: 100%;
+  }
+  #usery{
+    justify-content: inherit;
+    margin-top: 1rem;
+  }
   .stage{
     margin:0%!important;
     overflow-y: auto;
