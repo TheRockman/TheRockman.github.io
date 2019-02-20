@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <nav class="card">
+      123
+    </nav>
+    <div class="stage">
+      
+      <div class="row" >
+        <div class="flex x2">
+          <div class="card">
+            1
+          </div>
+        </div>
+        <div class="flex">
+          <div class="card">
+            2
+          </div>
+        </div>
+      </div>
+      
+      <div class="fluid-row">
+        <div class="fluid-flex" ng-repeat="match in matches">
+          <div class="card" style="margin-top:3rem;">
+            <div class="align jsb team-wrap">
+              <span class="center banner">
+                <img class="logo" src="https://pureesportsaz.com/wp-content/uploads/2018/05/footer-logo-300x277.png" alt="">
+                <h3 class="name">
+                  {{match.team1}}
+                </h3>
+              </span>
+              <span class="center big">
+                VS
+              </span>
+              <span class="center banner">
+                <img class="logo" src="http://d1mt9jmphk9kik.cloudfront.net/tops/image1475872510.png" alt="">
+                <h3 class="name">
+                  {{match.team2}}
+                </h3>
+              </span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="center">
+              <p> Over {{match.matches}} matcher </p>
+              <small>Starts in</small>
+              <h2 class="time"> {{match.time}} </h2>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
