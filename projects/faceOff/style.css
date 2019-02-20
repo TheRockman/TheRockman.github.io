@@ -78,6 +78,18 @@ svg, svg path, img{
   .flex {
     flex: 1 1 auto;
   }
+  .name{
+    font-size: 20px!important;
+    margin-top: -61px!important;
+    color: white!important;
+  }
+  .banner{
+    background: #333;
+    border-radius: 10px;
+  }
+  .big{
+    margin-bottom: -2rem!important;
+  }
 }
 
 nav{
