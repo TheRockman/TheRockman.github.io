@@ -101,6 +101,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.setFlight = function (flight) {
     if ($scope.checkFlight(flight)) {
       $scope.flight = null;
+      
     } else {
       $scope.flight = flight;
     }
