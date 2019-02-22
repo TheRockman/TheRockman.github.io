@@ -103,6 +103,9 @@ ul > li{
   right: 0;
   z-index: -2;
 }
+.gallery p {
+  padding: 0.5rem;
+}
 .gallery img{
   border-radius: 10px;
   outline: none!important;

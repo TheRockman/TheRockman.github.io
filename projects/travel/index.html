@@ -85,8 +85,11 @@
               </div>
 
             </div>
-            <div class="gallery align jsb">
-              <img tabindex="0" ng-repeat="pic in place.Gallery" ng-src="{{pic.Url}}" alt="">
+            <div class="gallery">
+              <p>Pictures from {{place.Title}}</p>
+              <div class=" align jsb">
+                <img tabindex="0" ng-repeat="pic in place.Gallery" ng-src="{{pic.Url}}" alt="">
+              </div>
             </div>
           </li>
         </ul>
