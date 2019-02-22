@@ -24,6 +24,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Arrival: '19:00',
           Price: 1000
         }
+      ],
+      Gallery: [
+        {
+          Url: 'https://picsum.photos/400/400.001/?random'
+        },
+        {
+          Url: 'https://picsum.photos/400/400.002/?random'
+        },
+        {
+          Url: 'https://picsum.photos/400/400.003/?random'
+        }
       ]
     },
     {
@@ -49,6 +60,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Arrival: '19:00',
           Price: 1000
         }
+      ],
+      Gallery: [
+        {
+          Url: 'https://picsum.photos/400/400.004/?random'
+        },
+        {
+          Url: 'https://picsum.photos/400/400.005/?random'
+        },
+        {
+          Url: 'https://picsum.photos/400/400.006/?random'
+        }
       ]
     },
     {
@@ -73,6 +95,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Departute: '16:45',
           Arrival: '19:00',
           Price: 1000
+        }
+      ],
+      Gallery: [
+        {
+          Url: 'https://picsum.photos/400/400.007/?random'
+        },
+        {
+          Url: 'https://picsum.photos/400/400.008/?random'
+        },
+        {
+          Url: 'https://picsum.photos/400/400.009/?random'
         }
       ]
     }

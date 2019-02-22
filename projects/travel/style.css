@@ -96,6 +96,32 @@ ul > li{
   transition: var(--animation);
 }
 
+.gallery{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -2;
+}
+.gallery img{
+  border-radius: 10px;
+  outline: none!important;
+  width: auto;
+  height: 100px;
+  margin: 0.5rem;
+  transition: var(--animation);
+}
+.gallery img:focus{
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 200px;
+  height: auto;
+  bottom: 1rem;
+  box-shadow: var(--leve2);
+  margin: 0 auto;
+}
+
 .subset{
   opacity: 0;
   height: 0;
