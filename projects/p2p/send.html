@@ -14,9 +14,9 @@
           <input type="text" id="sendMessageBox" ng-model="sendPacket.sendMessageBox" placeholder="Enter a message..." autofocus="true" />
           <button type="button" ng-click="sendBtn()" id="sendButton">Send</button>
           <div id="status" class="status"></div>
-          <div class="message">
-            <p ng-repeat="d in data">{{d}}</p>
-          </div>
+          <ul>
+            <li ng-repeat="d in data">{{d}}</li>
+          </ul>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>

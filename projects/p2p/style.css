@@ -20,20 +20,7 @@ body {
 }
 
 .status {
-    height: 125px;
-    vertical-align: text-top;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border-bottom: 2px solid black;
-    
-}
-
-.message {
-    height: 125px;
-    max-height: 125px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid black;
-    overflow: auto;
+    color: magenta;
 }
 
 .msg-time {
