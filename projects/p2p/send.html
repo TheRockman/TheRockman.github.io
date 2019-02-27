@@ -6,20 +6,22 @@
         <title>Client</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <h1>Peer-to-Peer Cue System --- Sender</h1>
-
-        <div>
-          <span style="font-weight: bold">ID: </span>
+    <body ng-app="myApp">
+        <div ng-controller="sendCtrl">
+          <span>ID: </span>
           <input type="text" id="receiver-id" title="Host ID">
           <button id="connect-button">Connect</button>
-          <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
-          <button type="button" id="sendButton">Send</button>
+          <input type="text" id="sendMessageBox" ng-model="sendPacket.sendMessageBox" placeholder="Enter a message..." autofocus="true" />
+          <button type="button" ng-click="sendBtn()" id="sendButton">Send</button>
           <div id="status" class="status"></div>
-          <div class="message" id="message"></div>
+          <div class="message">
+            <p ng-repeat="d in data">{{d}}</p>
+          </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
+        <script type="text/javascript" src="../../angularJs.js"></script>
+        <script type="text/javascript" src="app.js"></script>
         <script src="send.js"></script>
     </body>
 </html>

@@ -6,16 +6,20 @@
         <title>Host</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <div>
+    <body ng-app="myApp">
+        <div ng-controller="receiveCtrl">
           <div id="receiver-id" title="Give this ID to the client.">ID:</div>
-          <input type="text" id="sendMessageBox" placeholder="Enter a message..." autofocus="true" />
-          <button type="button" id="sendButton">Send</button>
+          <input type="text" id="sendMessageBox" ng-model="sendPacket.sendMessageBox" placeholder="Enter a message..." autofocus="true" />
+          <button type="button" ng-click="sendBtn()">Send</button>
           <div id="status" class="status"></div>
-          <div class="message" id="message"></div>
+          <div class="message">
+            <p ng-repeat="d in data">{{d}}</p>
+          </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.18/peer.min.js"></script>
+        <script type="text/javascript" src="../../angularJs.js"></script>
+        <script type="text/javascript" src="app.js"></script>
         <script src="receive.js"></script>
     </body>
 </html>
