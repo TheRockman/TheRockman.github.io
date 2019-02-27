@@ -83,6 +83,7 @@ var app = angular.module("myApp", []); app.controller("receiveCtrl", function($s
           conn.on('data', function (data) {
             $scope.data.push(data);
             console.log($scope.data);
+            $scope.$apply($scope.data);
           });
           conn.on('close', function () {
               status.innerHTML = "Connection reset<br>Awaiting connection...";
