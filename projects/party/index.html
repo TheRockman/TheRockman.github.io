@@ -15,15 +15,26 @@
   <div ng-controller="mainCtrl">
     <div class="row">
       <div class="flex">
-        
-        <ul style="min-height: 80vh;" rn-carousel ng-if="party.length > 0 && addForm == false">
-          <li class="slide" ng-repeat="member in party track by $index" ng-if="member.name">
+        <ul ng-cloak style="min-height: 90vh; overflow-y:auto;" rn-carousel ng-if="party.length > 0 && addForm == false">
+          <li class="slide" ng-cloak ng-repeat="member in party track by $index" ng-if="member.name">
             <nav class="align jsb">
-              <button type="button" ng-click="add()" name="button">+</button>
-              <button type="button" ng-click="editMember(member)" ng-if="party.length > 0" ng-click="addForm = !addForm" name="button">edit</button>
-              <button type="button" ng-click="deleteMember(member)" ng-if="party.length > 0" name="button">delete</button>
+              <button class="icon" type="button" ng-click="add()" name="button">
+                <svg class="non-int" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
+                </svg>
+              </button>
+              <button class="icon" type="button" ng-click="editMember(member)" ng-if="party.length > 0" ng-click="addForm = !addForm" name="button">
+                <svg class="non-int" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M17,3H14V6H10V3H7A2,2 0 0,0 5,5V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V5A2,2 0 0,0 17,3M12,8A2,2 0 0,1 14,10A2,2 0 0,1 12,12A2,2 0 0,1 10,10A2,2 0 0,1 12,8M16,16H8V15C8,13.67 10.67,13 12,13C13.33,13 16,13.67 16,15V16M13,5H11V1H13V5M16,19H8V18H16V19M12,21H8V20H12V21Z" />
+                </svg>
+              </button>
+              <button class="icon" type="button" ng-click="deleteMember(member)" ng-if="party.length > 0" name="button">
+                <svg class="non-int" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                </svg>
+              </button>
             </nav>
-            <div class="align jsb pad">
+            <div class="align jsb pad non-int">
               <div>
                 <h2>{{member.name}}</h2>
                 <small>{{member.race}} {{member.class}}</small>
@@ -32,7 +43,7 @@
                 <h2>Ac: {{member.AC}}</h2>
               </div>
             </div>
-            <div class="align jsb pad">
+            <div class="align jsb non-int card">
               <div class="center">
                 STR
                 <br>
@@ -64,7 +75,7 @@
                 {{member.CHA}}
               </div>
             </div>
-            <div class="pad">
+            <div class="pad  non-int">
               Perception: {{member.PER}} <br>
               Stealth: {{member.STE}} <br>
             </div>
@@ -72,28 +83,52 @@
               Notes:
               <textarea style="width: 100%;" name="name" ng-model="member.note"></textarea>
             </div>
+            <img ng-src="{{member.img}}" class="avatar" alt="">
+            <br>
+            <br>
+            <br>
           </li>
         </ul>
         <!-- str dex con int wis cha -->
-        <form ng-submit="addMember()" class="form" ng-if="party.length < 1 || addForm == true">
-          <input type="text" ng-model="form.name" placeholder="name" name="" value="">
-          <input type="text" ng-model="form.race" placeholder="race" name="" value="">
-          <input type="text" ng-model="form.class" placeholder="class" name="" value="">
-          <input type="text" ng-model="form.AC" placeholder="AC" name="" value="">
-          <h3>Mods</h3>
-          <input type="text" ng-model="form.STR" placeholder="STR" name="" value="">
-          <input type="text" ng-model="form.DEX" placeholder="DEX" name="" value="">
-          <input type="text" ng-model="form.CON" placeholder="CON" name="" value="">
-          <input type="text" ng-model="form.INT" placeholder="INT" name="" value="">
-          <input type="text" ng-model="form.WIS" placeholder="WIS" name="" value="">
-          <input type="text" ng-model="form.CHA" placeholder="CHA" name="" value="">
+        <form ng-submit="addMember()" ng-cloak class="form" ng-if="party.length < 1 || addForm == true">
+          <div class="align jsb">
+            <input type="text" ng-model="form.name" placeholder="name" name="" value="">
+            <input type="text" ng-model="form.race" placeholder="race" name="" value="">
+          </div>
+          <div class="align jsb">
+            <input type="text" ng-model="form.class" placeholder="class" name="" value="">
+            <input type="text" ng-model="form.AC" placeholder="AC" name="" value="">
+          </div>
+          <hr>
+          <div class="align jsb">
+            <input type="text" ng-model="form.STR" placeholder="STR" name="" value="">
+            <input type="text" ng-model="form.DEX" placeholder="DEX" name="" value="">
+          </div>
+          <div class="align jsb">
+            <input type="text" ng-model="form.CON" placeholder="CON" name="" value="">
+            <input type="text" ng-model="form.INT" placeholder="INT" name="" value="">
+          </div>
+          <div class="align jsb">
+            <input type="text" ng-model="form.WIS" placeholder="WIS" name="" value="">
+            <input type="text" ng-model="form.CHA" placeholder="CHA" name="" value="">
+          </div>
+          <div class="align jsb">
+            <input type="text" ng-model="form.PER" placeholder="Perception" name="" value="">
+            <input type="text" ng-model="form.STE" placeholder="Stealth" name="" value="">
+          </div>
+          <hr>
+          <div class="align jsb">
+            <input type="text" ng-model="form.img" placeholder="Portrait" name="" value="">
+          </div>
           
-          <input type="text" ng-model="form.PER" placeholder="Perception" name="" value="">
-          <input type="text" ng-model="form.STE" placeholder="Stealth" name="" value="">
+          <div class="align jsb">
+            <textarea name="name" ng-model="form.note" placeholder="notes"></textarea>
+          </div>
           
-          <textarea name="name" ng-model="form.note" rows="8" placeholder="notes" cols="80"></textarea>
+          <div class="center">
+            <button type="submit" name="button">save</button>
+          </div>
           
-          <button type="submit" name="button">save</button>
         </form>
       </div>
     </div>

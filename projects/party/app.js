@@ -2,6 +2,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   // $window.localStorage.setItem(key,value)
   
   $scope.party = JSON.parse($window.localStorage.getItem('party'));
+  if ($scope.party == null) {
+    $scope.party = [];
+  }
   $scope.form = {};
   
   $scope.addForm = false;
@@ -40,7 +43,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.deleteMember = function (member) {
     for (var i = 0; i < $scope.party.length; i++) {
       if ($scope.party[i].name == member.name) {
-        $scope.party[i] = null;
+        $scope.party.splice(i, 1);
         $window.localStorage.setItem('party', JSON.stringify($scope.party));
       }
     }
