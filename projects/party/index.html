@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        
+        <ul style="min-height: 80vh;" rn-carousel ng-if="party.length > 0 && addForm == false">
+          <li class="slide" ng-repeat="member in party track by $index" ng-if="member.name">
+            <nav class="align jsb">
+              <button type="button" ng-click="add()" name="button">+</button>
+              <button type="button" ng-click="editMember(member)" ng-if="party.length > 0" ng-click="addForm = !addForm" name="button">edit</button>
+              <button type="button" ng-click="deleteMember(member)" ng-if="party.length > 0" name="button">delete</button>
+            </nav>
+            <div class="align jsb pad">
+              <div>
+                <h2>{{member.name}}</h2>
+                <small>{{member.race}} {{member.class}}</small>
+              </div>
+              <div>
+                <h2>Ac: {{member.AC}}</h2>
+              </div>
+            </div>
+            <div class="align jsb pad">
+              <div class="center">
+                STR
+                <br>
+                {{member.STR}}
+              </div>
+              <div class="center">
+                DEX
+                <br>
+                {{member.DEX}}
+              </div>
+              <div class="center">
+                CON
+                <br>
+                {{member.CON}}
+              </div>
+              <div class="center">
+                INT
+                <br>
+                {{member.INT}}
+              </div>
+              <div class="center">
+                WIS
+                <br>
+                {{member.WIS}}
+              </div>
+              <div class="center">
+                CHA
+                <br>
+                {{member.CHA}}
+              </div>
+            </div>
+            <div class="pad">
+              Perception: {{member.PER}} <br>
+              Stealth: {{member.STE}} <br>
+            </div>
+            <div class="pad">
+              Notes:
+              <textarea style="width: 100%;" name="name" ng-model="member.note"></textarea>
+            </div>
+          </li>
+        </ul>
+        <!-- str dex con int wis cha -->
+        <form ng-submit="addMember()" class="form" ng-if="party.length < 1 || addForm == true">
+          <input type="text" ng-model="form.name" placeholder="name" name="" value="">
+          <input type="text" ng-model="form.race" placeholder="race" name="" value="">
+          <input type="text" ng-model="form.class" placeholder="class" name="" value="">
+          <input type="text" ng-model="form.AC" placeholder="AC" name="" value="">
+          <h3>Mods</h3>
+          <input type="text" ng-model="form.STR" placeholder="STR" name="" value="">
+          <input type="text" ng-model="form.DEX" placeholder="DEX" name="" value="">
+          <input type="text" ng-model="form.CON" placeholder="CON" name="" value="">
+          <input type="text" ng-model="form.INT" placeholder="INT" name="" value="">
+          <input type="text" ng-model="form.WIS" placeholder="WIS" name="" value="">
+          <input type="text" ng-model="form.CHA" placeholder="CHA" name="" value="">
+          
+          <input type="text" ng-model="form.PER" placeholder="Perception" name="" value="">
+          <input type="text" ng-model="form.STE" placeholder="Stealth" name="" value="">
+          
+          <textarea name="name" ng-model="form.note" rows="8" placeholder="notes" cols="80"></textarea>
+          
+          <button type="submit" name="button">save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
