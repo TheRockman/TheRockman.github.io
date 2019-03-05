@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stage">
+      <div class="backdrop"></div>
+      <img src="http://inkrea.se/wp-content/uploads/2016/05/placeholder-logo-300x217.png" class="logo" alt="">
+      <ul class="menu" rn-carousel rn-carousel-transition="slide">
+        <li>
+          <img src="https://toppng.com/public/uploads/preview/pepperoni-pizza-115269026294dpmzfbizi.png" alt="">
+          <h3>Cheese</h3>
+        </li>
+        <li>
+          <img src="https://toppng.com/public/uploads/preview/pepperoni-pizza-115269026294dpmzfbizi.png" alt="">
+          <h3>Cheese</h3>
+        </li>
+        <li>
+          <img src="https://toppng.com/public/uploads/preview/pepperoni-pizza-115269026294dpmzfbizi.png" alt="">
+          <h3>Cheese</h3>
+        </li>
+        <div class="btn" ng-click="size = !size" ng-class="{'size':size}">
+          Order
+          <div ng-if="size">
+            S M L
+          </div>
+        </div>
+      </ul>
+    </div>
+
+        <!-- <ul rn-carousel>
+          <li></li>
+        </ul> -->
+        
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
