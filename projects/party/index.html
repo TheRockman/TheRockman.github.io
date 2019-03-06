@@ -15,7 +15,7 @@
   <div ng-controller="mainCtrl">
     <div class="row">
       <div class="flex">
-        <ul ng-cloak style="min-height: 90vh; overflow-y:auto;" rn-carousel ng-if="party.length > 0 && addForm == false">
+        <ul ng-cloak style="min-height: 95vh; overflow-y:auto;" rn-carousel ng-if="party.length > 0 && addForm == false">
           <li class="slide" ng-cloak ng-repeat="member in party track by $index" ng-if="member.name">
             <nav class="align jsb">
               <button class="icon" type="button" ng-click="add()" name="button">
@@ -34,59 +34,60 @@
                 </svg>
               </button>
             </nav>
-            <div class="align jsb pad non-int">
-              <div>
-                <h2>{{member.name}}</h2>
-                <small>{{member.race}} {{member.class}}</small>
+            <div class="card">
+              <div class="align jsb pad non-int">
+                <div>
+                  <h2>{{member.name}}</h2>
+                  <small>{{member.race}} {{member.class}}</small>
+                </div>
+                <div>
+                  <h2>Ac: {{member.AC}}</h2>
+                </div>
               </div>
-              <div>
-                <h2>Ac: {{member.AC}}</h2>
+              <div class="align jsb non-int">
+                <div class="center">
+                  STR
+                  <br>
+                  {{member.STR}}
+                </div>
+                <div class="center">
+                  DEX
+                  <br>
+                  {{member.DEX}}
+                </div>
+                <div class="center">
+                  CON
+                  <br>
+                  {{member.CON}}
+                </div>
+                <div class="center">
+                  INT
+                  <br>
+                  {{member.INT}}
+                </div>
+                <div class="center">
+                  WIS
+                  <br>
+                  {{member.WIS}}
+                </div>
+                <div class="center">
+                  CHA
+                  <br>
+                  {{member.CHA}}
+                </div>
+              </div>
+              <div class="pad non-int">
+                Perception: {{member.PER}} <br>
+                Stealth: {{member.STE}} <br>
+              </div>
+              <div class="pad">
+                Notes:
+                <textarea style="width: 100%;" name="name" ng-model="member.note"></textarea>
               </div>
             </div>
-            <div class="align jsb non-int card">
-              <div class="center">
-                STR
-                <br>
-                {{member.STR}}
-              </div>
-              <div class="center">
-                DEX
-                <br>
-                {{member.DEX}}
-              </div>
-              <div class="center">
-                CON
-                <br>
-                {{member.CON}}
-              </div>
-              <div class="center">
-                INT
-                <br>
-                {{member.INT}}
-              </div>
-              <div class="center">
-                WIS
-                <br>
-                {{member.WIS}}
-              </div>
-              <div class="center">
-                CHA
-                <br>
-                {{member.CHA}}
-              </div>
-            </div>
-            <div class="pad  non-int">
-              Perception: {{member.PER}} <br>
-              Stealth: {{member.STE}} <br>
-            </div>
-            <div class="pad">
-              Notes:
-              <textarea style="width: 100%;" name="name" ng-model="member.note"></textarea>
-            </div>
-            <img ng-src="{{member.img}}" class="avatar" alt="">
-            <br>
-            <br>
-            <br>
+
+            <img ng-src="{{member.img}}" class="avatar non-int" alt="">
+
           </li>
         </ul>
         <!-- str dex con int wis cha -->

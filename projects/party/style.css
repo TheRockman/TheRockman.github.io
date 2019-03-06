@@ -12,7 +12,7 @@
 
 body{
   margin: 0;
-  background: #f5f5f5;
+  background: #333;
   font-family: 'Raleway', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
@@ -39,7 +39,7 @@ svg, svg path, img{
 }
 
 .slide{
-  background: #f5f5f5;
+  background: #333;
 }
 
 .pad{
@@ -62,12 +62,17 @@ nav{
 
 .avatar{
   text-align: center;
-  width: 75%;
-  height: auto;
+  width: auto;
+  height: 100%;
   margin: 0 auto;
   position: absolute;
   left: 0;
+  top: 0;
   right: 0;
+  z-index: -1;
+  opacity: 0.8;
+  filter: grayscale(50%);
+  pointer-events: none;
 }
 
 /* ng-animate */
@@ -142,11 +147,14 @@ nav{
 
 /*Card*/
 .card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 2px;
   padding: var(--spacer);
   box-shadow: var(--level1);
-  transition: var(--animation);
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
 }
 .icon{
   background: #e0e0e0;
