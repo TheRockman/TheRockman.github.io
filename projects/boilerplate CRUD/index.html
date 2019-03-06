@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+  <body>
+    <div ng-controller="mainCtrl">
+      <button type="button" name="button" ng-click="setView('admin')" ng-if="view !== 'admin'">show admin</button>
+      <button type="button" name="button" ng-click="setView('')" ng-if="view == 'admin'">hide admin</button>
+      
+      <div class="row" ng-if="view === 'admin'">
+        <div class="flex"></div>
+        <div class="flex x2">
+          <div class="admin">
+            <div ng-if="items.length > 0 && formIsVisible == false">
+              <h1 class="align jsb">
+                Index
+                <button style="float:right;" type="button" class="btn" ng-if="formIsVisible == false" ng-click="toggleForm()" name="button">add</button></h1>
+              <hr>
+              <ul class="table">
+                <li ng-repeat="item in items track by $index" class="align jsb">
+                  {{item}}
+                  <span class="pull-right">
+                    <button type="button" class="btn" ng-click="edit(item)" name="button">edit</button>
+                    <button type="button" class="btn" ng-click="delete(item)" name="button">delete</button>
+                  </span>
+                </li>
+              </ul>
+              
+              {{item}}
+            </div>
+            
+            <form ng-submit="create()" ng-cloak class="form" ng-if="items.length < 1 || formIsVisible == true">
+              <h1>Form</h1>
+              <span class="align jsb">
+                <label for="f1">Field 1</label>
+                <input id="f1" type="text" ng-model="formItem.field1" name="" value="">
+              </span>
+              
+              <span class="align jsb">
+                <label for="f2">Field 2</label>
+                <input id="f2" type="text" ng-model="formItem.field2" name="" value="">
+              </span>
+              <br>
+              <button type="button" class="btn" ng-click="cancelForm()" name="button">cancel</button>
+              <button type="submit" class="btn" name="button">save</button>
+            </form>
+          </div>
+        </div>
+        <div class="flex"></div>
+      </div>
+
+    </div>
+  </body>
+  
+  <script type="text/javascript" src="app.js"></script>
+</html>
