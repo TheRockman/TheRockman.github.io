@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+
+    <div class="">
+      <h2>Tri state</h2>
+      <div class="switch switch--horizontal">
+        <input id="radio-a" type="radio" name="first-switch" />
+        <label for="radio-a">Nytt lån</label>
+        <input id="radio-b" type="radio" name="first-switch"/>
+        <label for="radio-b">Samla lån</label><span class="toggle-outside"><span class="toggle-inside"></span></span>
+      </div>
+    </div>
+    <br>
+    <div class="">
+      <h2>Radio</h2>
+      <form class="rad align">
+        <div>
+          <input id="toggle1" type="radio" name="test" value="">
+          <label for="toggle1" class="radio-label">Nytt lån</label>
+        </div>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <div>
+          <input id="toggle2" type="radio" name="test" value="">
+          <label for="toggle2" class="radio-label">Samla lån</label>
+        </div>
+      </form>
+    </div>
+    <br>
+    <div class="">
+      <h2></h2>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
