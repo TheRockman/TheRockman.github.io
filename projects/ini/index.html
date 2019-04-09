@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex card">
+        <div style="margin: 0 auto;" class="center">
+          <h3>{{dice}}</h3>
+          <button type="button" ng-click="roll(4)" name="button">D4</button>
+          <button type="button" ng-click="roll(6)" name="button">D6</button>
+          <button type="button" ng-click="roll(8)" name="button">D8</button>
+          <button type="button" ng-click="roll(10)" name="button">D10</button>
+          <button type="button" ng-click="roll(12)" name="button">D12</button>
+          <button type="button" ng-click="roll(20)" name="button">D20</button>
+          <button type="button" ng-click="roll(100)" name="button">D100</button>
+        </div>
+      </div>
+      <div class="flex card">
+        <form class="" ng-submit="addToOrder()">
+          <input type="text" placeholder="Name" name="" value="" ng-model="form.name">
+          <input type="number" placeholder="Initiative" name="" value="" ng-model="form.ini">
+          <br>
+          <button type="submit" name="button">add</button>
+          <button type="button" tabindex="-1" ng-click="clear()" name="button">Clear</button>
+        </form>
+        <ul>
+          <li ng-repeat="item in order | orderBy: 'ini'">[{{item.ini}}] - {{item.name}}</li>
+        </ull>
+      </div>
+      <div class="flex card">
+        <strong class="rd">Strength:</strong>
+        <small>
+          Athletics
+        </small>
+        <br>
+        <strong class="rd">Dexterity:</strong>
+        <small>
+          Acrobatics,
+          Sleight of Hand,
+          Stealth
+        </small>
+        <br>
+        <strong class="rd">Intelligence:</strong>
+        <small>
+          Arcana,
+          History,
+          Investigation,
+          Nature,
+          Religion
+        </small>
+        <br>
+        <strong class="rd">Wisdom:</strong>
+        <small>
+          Animal Handling,
+          Insight,
+          Medicine,
+          Perception,
+          Survival
+        </small>
+        <br>
+        <strong class="rd">Charisma:</strong>
+        <small>
+          Deception,
+          Intimidation,
+          Performance,
+          Persuasion
+        </small>
+      </div>
+      <div class="flex card center">
+        {{npc}}
+        <hr>
+        <button type="button" ng-click="gen('m')" name="button">M npc</button>
+        <button type="button" ng-click="gen('f')" name="button">F npc</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
