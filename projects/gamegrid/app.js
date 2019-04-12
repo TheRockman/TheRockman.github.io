@@ -5,6 +5,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   $scope.units = [
     {
+      name: 'Gus',
       x: 2,
       y: 2,
       stats: {
@@ -13,6 +14,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       }
     },
     {
+      name: 'Ellie',
       x: 2,
       y: 8,
       stats: {
@@ -20,10 +22,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       }
     },
     {
+      name: 'Devi',
       x: 8,
       y: 8,
       stats: {
-        type: 'fighter'
+        type: 'rouge'
       }
     }
   ];
@@ -32,20 +35,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     $scope.Style = {'transform':'perspective(105em) translateY(-'+y*50+'px) translateX(-'+x*10+'px) rotateX(40deg)'}
   }
   
-  $scope.setCameraToNextOrPrev = function (order) {
+  $scope.setCameraToUnit = function (unit) {
     for (var i = 0; i < $scope.units.length; i++) {
-      if (order === 'next') {
-        if (i + 1 <= $scope.units.length ) {
-          $scope.camera($scope.units[i+1].x, $scope.units[i+1].y);
-        } else{
-          $scope.camera($scope.units[0].x, $scope.units[0].y);
-        }
-      } else if(order === 'prev'){
-        if (i-1 > -1) {
-          $scope.camera($scope.units[i-1].x, $scope.units[i-1].y);
-        } else{
-          $scope.camera($scope.units[$scope.units.length-1].x, $scope.units[$scope.units.length-1].y);
-        }
+      if ($scope.units[i].name === unit.name) {
+        $scope.camera(unit.x, unit.y)
       }
     }
   }

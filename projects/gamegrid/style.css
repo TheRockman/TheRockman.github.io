@@ -50,7 +50,20 @@ svg, svg path, img{
   background: red;
 }
 .fighter{
-  background: blue;
+  background: url('https://pa1.narvii.com/6300/73b3e4b3329b07d09df81a0c0ad0ba242374dde9_hq.gif');
+  background-size: cover;
+  background-position: center;
+  transform-origin: bottom;
+  outline: none;
+  transform: rotateX(-30deg) perspective(50em) translateY(-40px);
+}
+.rouge{
+  background: url('https://i.imgur.com/5iWBieQ.gif');
+  background-size: cover;
+  background-position: center;
+  transform-origin: bottom;
+  outline: none;
+  transform: rotateX(-30deg) perspective(50em) translateY(-40px);
 }
 .grid{
   display: inline-flex; 
