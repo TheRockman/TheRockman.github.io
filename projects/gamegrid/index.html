@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <nav>
+      <button type="button" ng-click="setCameraToNextOrPrev('prev')" name="button">prev unit</button>
+      <button type="button" ng-click="setCameraToNextOrPrev('next')" name="button">next unit</button>
+    </nav>
+    <div class="grid" ng-style="Style">
+      <div ng-repeat="tile in tiles" class="tile" ng-click="camera(tile.x, tile.y);" ng-class="{'fighter':tile.unit.type === 'fighter', 'active':tile.unit.active}"></div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
