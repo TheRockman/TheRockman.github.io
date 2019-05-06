@@ -11,7 +11,15 @@
 <body>
   <div ng-controller="mainCtrl">
     <div class="map-wrap">
-      <div class="square" ng-repeat="square in map" ng-click="moveRight(square)" ng-class="{'pl': containsSymbol(square.icon,'🚹'), 'wall': containsSymbol(square.icon, '🔳')}"></div>
+      <div ng-style="square.sprite" class="square" ng-repeat="square in map" ng-keypress="myFunct($event, square)" ng-model="square" ng-class="{
+      'pl': containsSymbol(square.icon,'🚹'),
+      'water': containsSymbol(square.icon,'🚾'),
+      'road': containsSymbol(square.icon,'✴️'),
+      'poi': containsSymbol(square.icon,'🚼'),
+      'reflect': containsSymbol(square.icon,'🚹') && containsSymbol(map[square.id + 32].icon,'🚾'),
+      'wall': containsSymbol(square.icon, '🔳'),
+      }">
+      </div>
     </div>
   </div>
 </body>
