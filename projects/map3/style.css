@@ -75,9 +75,35 @@ svg, svg path, img{
   background: url('img/up.png') center center no-repeat;
   background-size: contain;
 }
-
+.bumpL{
+  background: url('img/bumpL.png') center center no-repeat;
+  background-size: contain;
+}
+.bumpCL{
+  background: url('img/bumpCL.png') center center no-repeat;
+  background-size: contain;
+}
+.bumpD{
+  background: url('img/bumpD.png') center center no-repeat;
+  background-size: contain;
+}
+.bumpCR{
+  background: url('img/bumpCR.png') center center no-repeat;
+  background-size: contain;
+}
+.bumpR{
+  background: url('img/bumpR.png') center center no-repeat;
+  background-size: contain;
+}
+.bumpL{
+  background: url('img/bumpL.png') center center no-repeat;
+  background-size: contain;
+}
 .tree{
   background: url('img/bush.png');
+}
+.grass2{
+  background: url('img/grassT.png');
 }
 .wall{
   background: transparent;
