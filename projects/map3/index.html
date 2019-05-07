@@ -13,11 +13,15 @@
     <div class="map-wrap">
       <div ng-style="square.sprite" class="square" ng-repeat="square in map" ng-keypress="myFunct($event, square)" ng-model="square" ng-class="{
       'pl': containsSymbol(square.icon,'🚹'),
+      'reflect': containsSymbol(square.icon,'🚹') && containsSymbol(map[square.id + 32].icon,'🚾'),
+      'up': containsSymbol(square.icon,'🚹') && facing === 'up',
+      'left': containsSymbol(square.icon,'🚹') && facing === 'left',
+      'right': containsSymbol(square.icon,'🚹') && facing === 'right',
+      'down': containsSymbol(square.icon,'🚹') && facing === 'down',
       'water': containsSymbol(square.icon,'🚾'),
       'road': containsSymbol(square.icon,'✴️'),
       'poi': containsSymbol(square.icon,'🚼'),
       'tree': containsSymbol(square.icon,'⏫'),
-      'reflect': containsSymbol(square.icon,'🚹') && containsSymbol(map[square.id + 32].icon,'🚾'),
       'wall': containsSymbol(square.icon, '🔳'),
       }">
       </div>
