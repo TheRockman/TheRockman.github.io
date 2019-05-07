@@ -42,7 +42,7 @@ svg, svg path, img{
   width: 16px;
   height: 16px;
   position: relative;
-  background: url('http://www.geldfritz.net/cdn/21/2004/79/minecraft-grass-block-pixel_155533.png') center center;
+  background: #95d67e;
   background-size: contain;
   display: inline-flex;
   /* outline: 1px solid lime; */
@@ -57,11 +57,14 @@ svg, svg path, img{
 .pl{
   background: red;
 }
+.tree{
+  background: darkgreen;
+}
 .wall{
   background: transparent;
 }
 .road{
-  background: brown;
+  background: #fcd884;
 }
 .water{
   background: dodgerblue;
@@ -81,10 +84,6 @@ svg, svg path, img{
 }
 .poi{
   background: gray;
-}
-
-.u1{
-  background: url(../img/up1.png) center center;
 }
 /* ng-animate */
 /* .fade{
