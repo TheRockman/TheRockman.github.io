@@ -6,7 +6,7 @@
   <title></title>
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="../../angularJs.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
@@ -28,8 +28,13 @@
       'bumpD': containsSymbol(square.icon,'⬇️'),
       'bumpCR': containsSymbol(square.icon,'↘️'),
       'bumpR': containsSymbol(square.icon,'➡️'),
+      'fence': containsSymbol(square.icon,'✝️'),
       'wall': containsSymbol(square.icon, '🔳'),
       }">
+      </div>
+      <div class="dialog" ng-if="modal">
+        It´s a sign. But you can´t read it.
+        <!-- 30char per line, 2 lines -->
       </div>
     </div>
   </div>
