@@ -162,6 +162,11 @@ svg, svg path, img{
 .poi{
   background: url('img/sign.png');
 }
+.editMode{
+  transform: scale(1.2);
+  filter: drop-shadow(0 3px 1px #4444dd);
+  z-index: 1;
+}
 .dialog{
   position: absolute;
   left: 5px;

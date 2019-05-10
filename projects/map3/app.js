@@ -3,7 +3,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     "🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳",
     "🔳","✳️","✳️","⬇️","⬇️","⬇️","⬇️","✳️","⬅️","✳️","➡️","➡️","✳️","✳️","✳️","✳️","✴️","✴️","✴️","✳️","✳️","⏫","⏫","✳️","✳️","✳️","⏫","⏫","⏫","✳️","✳️","🔳",
     "🔳","✳️","➡️","🆚","🆚","🆚","🆚","⬅️","⬅️","✳️","➡️","➡️","✳️","✳️","✳️","✳️","✴️","✴️","✴️","✳️","✳️","⏫","⏫","✳️","⏫","✳️","✳️","✳️","✳️","✳️","✳️","🔳",
-    "🔳","⬇️","↘️","🆚","🆚","🆚","🆚","⬅️","↙️","⬇️","↘️","➡️","✳️","✳️","🚹","✳️","✴️","✴️","✴️","✳️","✳️","⏫","⏫","✳️","⏫","⏫","⏫","⏫","⏫","⏫","✳️","🔳",
+    "🔳","⬇️","↘️","🆚","🆚","🆚","🆚","⬅️","↙️","⬇️","↘️","➡️","✳️","✳️","✳️","✳️","✴️","✴️","✴️","✳️","✳️","⏫","⏫","✳️","⏫","⏫","⏫","⏫","⏫","⏫","✳️","🔳",
     "🔳","✳️","✳️","✳️","✳️","✳️","✳️","↙️","⬇️","⬇️","⬇️","↘️","✳️","✳️","✳️","✳️","✴️","✴️","✴️","✳️","✳️","⏫","⏫","✳️","✳️","✳️","✳️","⏫","🚼","✳️","✳️","🔳",
     "🔳","✳️","✴️","✴️","✴️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✴️","✴️","✴️","✳️","✳️","⏫","⏫","⏫","⏫","⏫","✳️","⏫","⏫","⏫","⏫","🔳",
     "🔳","✴️","✴️","✳️","✴️","✴️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","🚼","✳️","✴️","✴️","✴️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","✳️","⏫","⏫","⏫","⏫","🔳",
@@ -37,13 +37,24 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   $scope.offset = false;
   $scope.jump = false;
   $scope.modal = false;
+  $scope.playerPos = 48;
+  $scope.editSquare = null;
+  $scope.editMode = false;
   $scope.constMap = angular.copy($scope.map);
   
   for (var i = 0; i < $scope.map.length; i++) {
-    $scope.map[i] = {
-      icon: $scope.map[i],
-      id: i
+    if (i === $scope.playerPos) {
+      $scope.map[i] = {
+        icon: '🚹',
+        id: i
+      }
+    } else {
+      $scope.map[i] = {
+        icon: $scope.map[i],
+        id: i
+      }
     }
+
   }
   $scope.containsSymbol = function (square, symbol) {
     if (square.indexOf(symbol) == -1) {
@@ -62,6 +73,10 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       }
     }
     return result;
+  }
+  
+  $scope.setEditSquare = function (sq) {
+    $scope.editSquare = sq;
   }
   
   window.addEventListener('keydown', function(e){
@@ -116,6 +131,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
           $scope.map[square.id + 1].icon = '🚹';
           if ($scope.constMap[square.id] !== '🚹') {
             square.icon = $scope.constMap[square.id];
+            $scope.playerPos = square.id + 1;
           } else{
             square.icon = "";
           }
@@ -137,6 +153,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
           $scope.map[square.id - 1].icon = '🚹';
           if ($scope.constMap[square.id] !== '🚹') {
             square.icon = $scope.constMap[square.id];
+            $scope.playerPos = square.id - 1;
           } else{
             square.icon = "";
           }
@@ -158,6 +175,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
           $scope.map[square.id - 32].icon = '🚹';
           if ($scope.constMap[square.id] !== '🚹') {
             square.icon = $scope.constMap[square.id];
+            $scope.playerPos = square.id - 32;
           } else{
             square.icon = "";
           }
@@ -179,6 +197,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
           $scope.map[square.id + 64].icon = '🚹';
           if ($scope.constMap[square.id] !== '🚹') {
             square.icon = $scope.constMap[square.id];
+            $scope.playerPos = square.id + 64;
           } else{
             square.icon = "";
           }
