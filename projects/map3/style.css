@@ -59,21 +59,48 @@ svg, svg path, img{
 .pl{
   background: url('img/down.png') center center no-repeat;
   background-size: contain;
+  z-index: 100;
+  transition: 0.05s transform ease;
 }
 .down{
   background: url('img/down.png') center center no-repeat;
+  background-size: contain;
+}
+.downOffset{
+  background: url('img/downStep.png') center center no-repeat;
+  transform: translateY(8px);
   background-size: contain;
 }
 .left{
   background: url('img/left.png') center center no-repeat;
   background-size: contain;
 }
+.leftOffset{
+  background: url('img/leftStep.png') center center no-repeat;
+  transform: translateX(-8px);
+  background-size: contain;
+}
 .right{
   background: url('img/right.png') center center no-repeat;
   background-size: contain;
 }
+.rightOffset{
+  background: url('img/rightStep.png') center center no-repeat;
+  transform: translateX(8px);
+  background-size: contain;
+}
 .up{
   background: url('img/up.png') center center no-repeat;
+  background-size: contain;
+}
+.upOffset{
+  background: url('img/upStep.png') center center no-repeat;
+  transform: translateY(-8px);
+  background-size: contain;
+}
+.jump{
+  background: url('img/jump.png') center center no-repeat;
+  transform: translateY(16px) scale(2);
   background-size: contain;
 }
 .bumpL{

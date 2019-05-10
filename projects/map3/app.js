@@ -34,6 +34,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     "🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳","🔳"
   ];
   $scope.facing = 'down';
+  $scope.offset = false;
+  $scope.jump = false;
   $scope.modal = false;
   $scope.constMap = angular.copy($scope.map);
   
@@ -65,8 +67,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   window.addEventListener('keydown', function(e){
       var squareX = '';
       for (var i = 0; i < $scope.map.length; i++) {
-        if ($scope.map[i].icon === '🚹') {
+        if (squareX === '' && $scope.map[i].icon === '🚹') {
           squareX = $scope.map[i];
+          break;
         }
       }
       $scope.modal = false;
@@ -87,8 +90,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
           $scope.facing = 'down';
           $scope.moveDown(squareX);
         }
-      }, 160 );
-
+      }, 300 );
       
       //poi
       if (e.key === "Enter") {
@@ -107,13 +109,19 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       if ($scope.isWall($scope.map[square.id + 1])) {
         return;
       } else{
-        $scope.map[square.id + 1].icon = '🚹';
-        if ($scope.constMap[square.id] !== '🚹') {
-          square.icon = $scope.constMap[square.id];
-        } else{
-          square.icon = "";
-        }
+        $scope.offset = true;
         $scope.$digest();
+        
+        $timeout( function(){
+          $scope.map[square.id + 1].icon = '🚹';
+          if ($scope.constMap[square.id] !== '🚹') {
+            square.icon = $scope.constMap[square.id];
+          } else{
+            square.icon = "";
+          }
+          $scope.offset = false;
+          $scope.$digest();
+        }, 150 );
       }
     }
   }
@@ -122,13 +130,19 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       if ($scope.isWall($scope.map[square.id - 1])) {
         return;
       } else{
-        $scope.map[square.id - 1].icon = '🚹';
-        if ($scope.constMap[square.id] !== '🚹') {
-          square.icon = $scope.constMap[square.id];
-        } else{
-          square.icon = "";
-        }
+        $scope.offset = true;
         $scope.$digest();
+        
+        $timeout( function(){
+          $scope.map[square.id - 1].icon = '🚹';
+          if ($scope.constMap[square.id] !== '🚹') {
+            square.icon = $scope.constMap[square.id];
+          } else{
+            square.icon = "";
+          }
+          $scope.offset = false;
+          $scope.$digest();
+        }, 150 );
       }
     }
   }
@@ -137,13 +151,19 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       if ($scope.isWall($scope.map[square.id - 32])) {
         return;
       } else{
-        $scope.map[square.id - 32].icon = '🚹';
-        if ($scope.constMap[square.id] !== '🚹') {
-          square.icon = $scope.constMap[square.id];
-        } else{
-          square.icon = "";
-        }
+        $scope.offset = true;
         $scope.$digest();
+        
+        $timeout( function(){
+          $scope.map[square.id - 32].icon = '🚹';
+          if ($scope.constMap[square.id] !== '🚹') {
+            square.icon = $scope.constMap[square.id];
+          } else{
+            square.icon = "";
+          }
+          $scope.offset = false;
+          $scope.$digest();
+        }, 150 );
       }
     }
   }
@@ -151,23 +171,35 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     if ($scope.containsSymbol(square.icon, '🚹')) {
       if ($scope.isWall($scope.map[square.id + 32]) && $scope.map[square.id+32].icon !== '⬇️') {
         return;
-      } else if($scope.map[square.id+32].icon === '⬇️'){
-        $scope.map[square.id + 64].icon = '🚹';
-        if ($scope.constMap[square.id] !== '🚹') {
-          square.icon = $scope.constMap[square.id];
-        } else{
-          square.icon = "";
-        }
+      } else if($scope.map[square.id + 32].icon === '⬇️'){
+        $scope.jump = true;
         $scope.$digest();
+        
+        $timeout( function(){
+          $scope.map[square.id + 64].icon = '🚹';
+          if ($scope.constMap[square.id] !== '🚹') {
+            square.icon = $scope.constMap[square.id];
+          } else{
+            square.icon = "";
+          }
+          $scope.jump = false;
+          $scope.$digest();
+        }, 150 );
       }
       else{
-        $scope.map[square.id + 32].icon = '🚹';
-        if ($scope.constMap[square.id] !== '🚹') {
-          square.icon = $scope.constMap[square.id];
-        } else{
-          square.icon = "";
-        }
+        $scope.offset = true;
         $scope.$digest();
+        
+        $timeout( function(){
+          $scope.map[square.id + 32].icon = '🚹';
+          if ($scope.constMap[square.id] !== '🚹') {
+            square.icon = $scope.constMap[square.id];
+          } else{
+            square.icon = "";
+          }
+          $scope.offset = false;
+          $scope.$digest();
+        }, 150 );
       }
     }
   }
