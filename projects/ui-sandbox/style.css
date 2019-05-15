@@ -459,6 +459,59 @@ body{
   transform: translateY(-75%);
 }
 
+.text-box{
+  border-bottom: 3px solid white;
+  color: white;
+  font-weight: bold;
+  height: 1rem;
+  display: flex;
+  width: 0px;
+  overflow: hidden;
+  margin: 2rem auto;
+  justify-content: center;
+  transition: var(--animation);
+  animation: line 1s cubic-bezier(.8,0,0,1);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+.text-box div:nth-of-type(0){
+  animation-delay: calc( .5s + (.1s * 1) );
+}
+.text-box div:nth-of-type(1){
+animation-delay: calc( .5s + (.1s * 2) );
+}
+.text-box div:nth-of-type(2){
+animation-delay: calc( .5s + (.1s * 3) );
+}
+.text-box div:nth-of-type(3){
+animation-delay: calc( .5s + (.1s * 4) );
+}
+.text-box div:nth-of-type(4){
+animation-delay: calc( .5s + (.1s * 5) );
+}
+.text-box div{
+  transform: translateY(1rem);
+  animation: word 1.25s cubic-bezier(.5,.2,0,1);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+@keyframes line {
+  0%{
+    width: 0px;
+  }
+  100%{
+    width: 200px;
+  }
+}
+@keyframes word {
+  0%{
+    transform: translateY(1rem);
+  }
+  100%{
+    transform: translateY(-4px);
+  }
+}
+
 /*Fab*/
 /*.fab{
     background:dodgerblue;
