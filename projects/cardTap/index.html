@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        
+        {{currentPhase}} <button type="button" ng-click="nextPhase()" name="button">next phase</button>
+        
+      
+        
+        <div class="pool-display align jsb">
+          <span>
+            Red: {{pool.red}}
+          </span>
+          <span>
+            Blu: {{pool.blue}}
+          </span>
+          <span>
+            Whi: {{pool.white}}
+          </span>
+          <span>
+            Blk: {{pool.black}}
+          </span>
+          <span>
+            Gre: {{pool.green}}
+          </span>
+          <span>
+            Gra: {{pool.gray}}
+          </span>
+        </div>
+        
+        <p>Board</p>
+        <div class="align jsc">
+          <div class="card" ng-class="{'tapped': card.tapped, 'sick': card.sick}" ng-repeat="card in stuffOnBoard" ng-click="card.attackAction(card)">
+            <div class="cost align jsb">
+              <b>
+              {{card.name}}
+              </b>
+              <span>
+                {{card.cost.amount}} {{card.cost.type}}
+              </span>
+            </div>
+            <img ng-src="{{card.art}}" alt="">
+            <div class="pad">
+              <b>{{card.effect}} </br></b>
+              {{card.desc}}
+              <div class="stats">
+                {{card.power}} / {{card.toughness}}
+              </div>
+            </div>
+            <div ng-if="card.tapAction" class="tap-trigger" ng-click="card.tapAction(card, card.tapActionParams); $event.stopPropagation();">
+              <svg style="width:1rem;height:1rem" viewBox="0 0 24 24">
+                <path fill="#fff" d="M18.4,10.6C16.55,9 14.15,8 11.5,8C6.85,8 2.92,11.03 1.54,15.22L3.9,16C4.95,12.81 7.95,10.5 11.5,10.5C13.45,10.5 15.23,11.22 16.62,12.38L13,16H22V7L18.4,10.6Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <p>Lands</p>
+        <div class="align jsb">
+          <div class="card" ng-class="{'tapped': card.tapped}" ng-repeat="card in landsOnBoard" ng-click="card.tapAction(card, card.tapActionParams)">
+            <div ng-if="!card.fullArt">
+              <div class="cost align jsb" ng-if="card.name">
+                <b>
+                {{card.name}}
+                </b>
+              </div>
+              <img ng-src="{{card.art}}" alt="">
+              <div class="pad">
+                {{card.desc}}
+              </div>
+            </div>
+            <img ng-if="card.fullArt" ng-src="{{card.art}}" class="full-art" alt="">
+          </div>
+        </div>
+        
+        <p>Hand</p>
+        <div class="align jsc">
+          <div class="card" ng-repeat="card in stuffInHand" ng-class="{'castable': pool[card.cost.type] >= card.cost.amount}" ng-click="card.handAction(card, card.tapActionParams)">
+            <div class="cost align jsb">
+              <b>
+              {{card.name}}
+              </b>
+              <span>
+                {{card.cost.amount}} {{card.cost.type}}
+              </span>
+            </div>
+            <img ng-src="{{card.art}}" alt="">
+            <div class="pad">
+              <b>{{card.effect}} </br></b>
+              {{card.desc}}
+              <div class="stats">
+                {{card.power}} / {{card.toughness}}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
