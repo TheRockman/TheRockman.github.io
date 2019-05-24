@@ -209,6 +209,13 @@ svg, svg path, img{
 .hand-wrap:hover ~ .board-wrap{
   filter: blur(1px) grayscale(80%) brightness(0.7);
 }
+.castable{
+  box-shadow: 0px -8px 15px 0px #bada55;
+  filter: brightness(1.3);
+}
+.hand-wrap> .card:hover{
+  box-shadow: 0px 3px 25px 0px rgba(82,246,255,1);
+}
 .board-wrap{
   background: url('https://wallpapercave.com/wp/Zr1gj1a.jpg') no-repeat center center;
   background-size: cover;
