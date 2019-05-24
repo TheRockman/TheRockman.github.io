@@ -55,6 +55,21 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       // $scope.pool[params.type] = $scope.pool[params.type] + params.amount;
     }
   }
+  $scope.summon = function(card, params){
+    if(card.tapped === false && card.sick === false || card.effect == 'haste'){
+      card.tapped = true;
+      for (var j = -1, x = params.amount; ++j < x;) {
+        for (var i = -1, len = $scope.tokens.length; ++i < len;) {
+          if ($scope.tokens[i].name === params.type) {
+            $scope.tokens[i].id = $scope.genId();
+            var clone = {};
+            angular.copy($scope.tokens[i], clone);
+            $scope.stuffOnBoard.push(clone);
+          }
+        };
+      };
+    }
+  }
   $scope.draw = function(card, params){
     console.log(params);
     if(card.tapped === false && card.sick === false || card.effect == 'haste'){
@@ -184,7 +199,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       id: $scope.genId(),
       type: 'creature',
-      name: 'Lost soul',
+      name: 'Dies',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
@@ -197,13 +212,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       toughness: 0,
       art: 'https://cdn.dribbble.com/users/329207/screenshots/1868886/bemocs_fox_sports_dribbble.jpg',
       fullArt: false,
-      desc: 'Tap this creature: draw 3 cards. This card dies at the start of next phase',
+      desc: 'When this creature dies, summon two 1/1 Bot token',
       tapped: false,
       handAction: $scope.playCard,
       attackAction: $scope.attack,
-      tapAction: $scope.draw,
-      tapActionParams: {
-        amount: 3
+      deathAction: $scope.summon,
+      deathActionParams: {
+        amount: 2,
+        type: 'Bot'
       }
     },
     {
@@ -310,6 +326,31 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       id: $scope.genId(),
       type: 'creature',
+      name: 'Bot horn',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      cost: {
+        amount: 1,
+        type: 'red'
+      },
+      power: 1,
+      toughness: 3,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/1726399/bemocs_dribble.jpg',
+      fullArt: false,
+      desc: 'Tap this card: create a 1/1 Bot token',
+      tapped: false,
+      handAction: $scope.playCard,
+      attackAction: $scope.attack,
+      tapAction: $scope.summon,
+      tapActionParams: {
+        amount: 1,
+        type: 'Bot'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'creature',
       name: 'The deep deep',
       originalUntapIn: 0,
       untapIn: 0,
@@ -407,6 +448,24 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   $scope.stuffInGrave = [];
   
+  $scope.tokens = [
+    {
+      id: $scope.genId(),
+      type: 'creature',
+      name: 'Bot',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      power: 1,
+      toughness: 1,
+      art: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/78a1c18341199.560bb835772de.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      attackAction: $scope.attack
+    }
+  ];
+  
   $scope.drawFromDeck = function(){
     var x = Math.floor(Math.random() * $scope.stuffInDeck.length - 1) + 1;
     if(x < 1 || x > $scope.stuffInDeck.length){
@@ -430,6 +489,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.tollTheDead = function(arr){
     for (var i = -1, len = arr.length; ++i < len;) {
       if(arr[i].toughness < 1){
+        if(arr[i].deathAction){
+          arr[i].deathAction(arr[i], arr[i].deathActionParams);
+        }
         $scope.moveCard(arr[i], arr, $scope.stuffInGrave, false);
       };
     }
