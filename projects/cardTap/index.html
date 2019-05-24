@@ -19,6 +19,12 @@
           <button type="button" ng-click="nextPhase()" name="button">End {{currentPhase}}</button>
         </div>
         
+        <div class="life-counter hpe">
+          {{opponent.hp}}
+        </div>
+        <div class="life-counter hpm">
+          {{opponent.hp}}
+        </div>
         <div class="pool-display align jsb">
           <span>
             Red: {{pool.red}}
@@ -67,7 +73,7 @@
       
       <div class="board-wrap">
         <div class="align jsc" style="min-height: 300px;">
-          <div class="card" ng-class="{'tapped': card.tapped, 'sick': card.sick}" ng-repeat="card in stuffOnBoard">
+          <div class="card"  ng-dblclick="card.toughness = 0" ng-class="{'tapped': card.tapped, 'sick': card.sick}" ng-repeat="card in stuffOnBoard">
             <div class="cost align jsb">
               <b>
               {{card.name}}
