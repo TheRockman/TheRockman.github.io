@@ -142,6 +142,8 @@ svg, svg path, img{
   transform-origin: center;
   position: relative;
   cursor: pointer;
+  border: 3px solid black;
+  border-radius: 10px;
 }
 .card img{
   width: 100%;
@@ -159,12 +161,14 @@ svg, svg path, img{
 .sick{
   filter: grayscale(100%);
 }
-.tap-trigger{
+.tap-wrap{
   display: none;
   position: absolute;
-  bottom: 0;
+  top: 1rem;
   left: 0;
   right: 0;
+}
+.tap-trigger{
   border-radius: 50px;
   width: 1rem;
   margin: 0 auto;
@@ -174,8 +178,8 @@ svg, svg path, img{
   padding: 5px 7px;
   text-align: center;
 }
-.card:hover .tap-trigger{
-  display: block;
+.card:hover .tap-wrap{
+  display: flex;
 }
 .full-art{
   height: 100%!important;
@@ -189,7 +193,50 @@ svg, svg path, img{
   padding: 5px;
   border-radius: 10px;
 }
+.hand-wrap{
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition-delay: 1s;
+  transition: var(--animation);
+  transform: translateY(120px);
+}
+.hand-wrap:hover{
+  transform: translateY(-4rem) scale(1.1);
+}
+.hand-wrap:hover ~ .board-wrap{
+  filter: blur(1px) grayscale(80%) brightness(0.7);
+}
+.board-wrap{
+  background: url('https://wallpapercave.com/wp/Zr1gj1a.jpg') no-repeat center center;
+  background-size: cover;
+  transition-delay: 4s;
+  transition: 4s all ease;
+  min-height: 100vh;
+  transition: var(--animation);
+}
+.board-wrap .card{
+  box-shadow: var(--level2);
+}
 
+.turn-info{
+  z-index: 1000;
+  position: fixed;
+  bottom: 33vh;
+  right: 0;
+}
+.turn-info button{
+  background: linear-gradient(to bottom, lime 0%,#bada55 100%);
+  padding: var(--spacer);
+  text-align: center;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 18px;
+  border: 10px solid rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
 /*Fab*/
 /*.fab{
     background:dodgerblue;

@@ -1,6 +1,6 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
 
-  $scope.turnPhases = ['upkeep', 'main1', 'combat', 'main2', 'end'];
+  $scope.turnPhases = ['upkeep', 'main1', 'combat', 'main2', 'turn'];
   $scope.currentPhase = 'upkeep';
   $scope.pool = {
     red: 0,
@@ -42,14 +42,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   }
   
   $scope.addMana = function(card, params){
-    if(card.tapped === false && card.sick === false || card.effect !== 'haste'){
+    if(card.tapped === false && card.sick === false || card.effect == 'haste'){
       card.tapped = true;
       console.log('ping');
       $scope.pool[params.type] = $scope.pool[params.type] + params.amount;
     }
   }
   $scope.attack = function(card, params){
-    if(card.tapped === false && card.sick === false || card.effect !== 'haste'){
+    if(card.tapped === false && card.sick === false || card.effect == 'haste'){
       card.tapped = true;
       console.log('bang');
       // $scope.pool[params.type] = $scope.pool[params.type] + params.amount;
@@ -57,18 +57,24 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   }
   $scope.draw = function(card, params){
     console.log(params);
-    if(card.tapped === false && card.sick === false || card.effect !== 'haste'){
+    if(card.tapped === false && card.sick === false || card.effect == 'haste'){
       card.tapped = true;
       for (var i = -1, len = params.amount; ++i < len;) {
         $scope.drawFromDeck();
       };
     }
   }
+  
+  var playedLandThisTurn = false;
+  
   $scope.playCard = function(card){
-    if($scope.pool[card.cost.type] >= card.cost.amount){
+    if(card.type === 'land' && !playedLandThisTurn){
+      playedLandThisTurn = true;
+      $scope.moveCard(card, $scope.stuffInHand, $scope.landsOnBoard, false);
+    } else if ($scope.pool[card.cost.type] >= card.cost.amount){
       $scope.pool[card.cost.type] = $scope.pool[card.cost.type] - card.cost.amount;
-      console.log('played', card.name);
       $scope.moveCard(card, $scope.stuffInHand, $scope.stuffOnBoard, false);
+      console.log('played', card.name);
     } else{
       console.log('not enough');
     }
@@ -225,81 +231,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         amount: 3,
         target: 'opponent'
       }
-    }
-  ];
-  
-  $scope.landsOnBoard = [
-    {
-      id: $scope.genId(),
-      type: 'land',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/6220354/bemocs_geneseo_sailing.jpg',
-      fullArt: true,
-      tapped: false,
-      tapAction: $scope.addMana,
-      tapActionParams: {
-        amount: 1,
-        type: 'blue'
-      }
     },
-    {
-      id: $scope.genId(),
-      type: 'land',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/6220354/bemocs_geneseo_sailing.jpg',
-      fullArt: true,
-      tapped: false,
-      tapAction: $scope.addMana,
-      tapActionParams: {
-        amount: 1,
-        type: 'blue'
-      }
-    },
-    {
-      id: $scope.genId(),
-      type: 'land',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/2432173/dribbble.jpg',
-      fullArt: true,
-      tapped: false,
-      tapAction: $scope.addMana,
-      tapActionParams: {
-        amount: 1,
-        type: 'black'
-      }
-    },
-    {
-      id: $scope.genId(),
-      type: 'land',
-      name: 'Flash fire',
-      originalUntapIn: 1,
-      untapIn: 1,
-      sick: false,
-      cost: {
-        amount: 2,
-        type: 'red'
-      },
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/5305832/bemocs_db_dribbble_05_schwartz_bier.jpg',
-      fullArt: false,
-      desc: 'Tap this card: add 2 mana. this card dont untap during your next turn',
-      tapped: false,
-      tapAction: $scope.addMana,
-      tapActionParams: {
-        amount: 2,
-        type: 'red'
-      }
-    }
-  ];
-  
-  $scope.stuffOnBoard = [];
-  
-  $scope.stuffInHand = [
     {
       id: $scope.genId(),
       type: 'creature',
@@ -394,13 +326,93 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       tapped: false,
       handAction: $scope.playCard,
       attackAction: $scope.attack
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/6220354/bemocs_geneseo_sailing.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 1,
+        type: 'blue'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/6220354/bemocs_geneseo_sailing.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 1,
+        type: 'blue'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/2432173/dribbble.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 1,
+        type: 'black'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      name: 'Flash fire',
+      originalUntapIn: 1,
+      untapIn: 1,
+      sick: false,
+      cost: {
+        amount: 2,
+        type: 'red'
+      },
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/5305832/bemocs_db_dribbble_05_schwartz_bier.jpg',
+      fullArt: false,
+      desc: 'Tap this card: add 2 mana. this card dont untap during your next turn',
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 2,
+        type: 'red'
+      }
     }
   ];
+  
+  $scope.landsOnBoard = [];
+  
+  $scope.stuffOnBoard = [];
+  
+  $scope.stuffInHand = [];
   
   $scope.stuffInGrave = [];
   
   $scope.drawFromDeck = function(){
-    $scope.moveCard($scope.stuffInDeck[0], $scope.stuffInDeck, $scope.stuffInHand, false);
+    var x = Math.floor(Math.random() * $scope.stuffInDeck.length - 1) + 1;
+    if(x < 1 || x > $scope.stuffInDeck.length){
+      x = 0;
+    }
+    $scope.moveCard($scope.stuffInDeck[x], $scope.stuffInDeck, $scope.stuffInHand, false);
   }
   
   $scope.untapAll = function(arr){
@@ -442,6 +454,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.untapAll($scope.landsOnBoard);
         $scope.untapAll($scope.stuffOnBoard);
         $scope.drawFromDeck();
+        playedLandThisTurn = false;
       break;
       case 'main1':
       // code block
@@ -452,12 +465,20 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       case 'main2':
       // code block
       break;
-      case 'end':
+      case 'turn':
       // code block
         $scope.emptyPool();
       break;
     }
   }
+  
+  ///start of game
+  $scope.drawFromDeck();
+  $scope.drawFromDeck();
+  $scope.drawFromDeck();
+  $scope.drawFromDeck();
+  $scope.drawFromDeck();
+                                          
   
   $scope.nextPhase = function(){
     var index = $scope.turnPhases.indexOf($scope.currentPhase);
