@@ -12,12 +12,19 @@
 
 body{
   margin: 0;
-  background: #f5f5f5;
+  background: #222;
   font-family: 'Raleway', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
   overflow-x: hidden;
   padding-bottom: 5rem;
+}
+.top{
+  background: url('https://wallpapercave.com/wp/Zr1gj1a.jpg') no-repeat center center;
+  background-size: cover;
+}
+.discardBod{
+  filter: grayscale(50%);
 }
 
 .align{
@@ -204,12 +211,23 @@ svg, svg path, img{
   transition: var(--animation);
   transform: translateY(120px);
 }
-.hand-wrap:hover{
+.discard-text{
+  display: block;
+  position: absolute;
+  top:-5rem;
+  color: white;
+}
+.hand-wrap:hover, .discard{
   transform: translateY(-4rem) scale(1.1);
 }
-.hand-wrap:hover ~ .board-wrap{
-  filter: blur(1px) grayscale(80%) brightness(0.7);
+.hand-wrap:hover ~ .board-wrap, .discard ~ .board-wrap{
+  filter: blur(1px) grayscale(80%) brightness(0.6);
+  opacity: 0.8;
 }
+.ready-to-strike{
+  filter: drop-shadow(0px -5px 5px tomato);
+}
+
 .castable{
   box-shadow: 0px -8px 15px 0px #bada55;
   filter: brightness(1.3);
@@ -218,8 +236,6 @@ svg, svg path, img{
   box-shadow: 0px 3px 25px 0px rgba(82,246,255,1);
 }
 .board-wrap{
-  background: url('https://wallpapercave.com/wp/Zr1gj1a.jpg') no-repeat center center;
-  background-size: cover;
   transition-delay: 4s;
   transition: 4s all ease;
   min-height: 100vh;
@@ -307,3 +323,60 @@ clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
 background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
 background-size: cover;
 */
+.board-wrap .ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  transform: translateY(250%);
+  transition-delay: 1s;
+}
+
+.board-wrap .ng-enter-active {
+  transform: translateY(0%);
+  transition-delay: 1s;
+}
+
+.board-wrap .ng-leave {
+  -webkit-transition: 1s;
+  transition: 1s;
+  
+  transform: scale(1);
+}
+
+.board-wrap .ng-leave-active {
+  transform: scale(2);
+  opacity: 0;
+}
+
+/*_____________________________________________*/
+
+.hand-wrap .ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  transform: translateY(100%)
+}
+
+.hand-wrap .ng-enter-active {
+  transform: translateY(0%)
+}
+
+.hand-wrap .ng-leave {
+  -webkit-transition: 1s;
+  transition: 1s;
+  transform: translateY(0%)
+}
+
+.hand-wrap .ng-leave-active {
+  transform: translateY(250%)
+}
+
+
+/* .ng-move {
+  -webkit-transition: 1s;
+  transition: 1s;
+  
+  background: gold;
+}
+
+.ng-move-active {
+  background: #fff;
+} */

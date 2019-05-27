@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
+var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']); app.controller("mainCtrl", function($scope) {
 
   $scope.turnPhases = ['upkeep', 'main1', 'combat', 'main2', 'turn'];
   $scope.currentPhase = 'upkeep';
@@ -106,9 +106,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     console.log(params);
     if(card.tapped === false && card.sick === false || card.effect == 'haste'){
       card.tapped = true;
-      for (var i = -1, len = params.amount; ++i < len;) {
+      
+      params.times.forEach(i => Array(i).fill(i).forEach(_ => {
+        console.log(i, 'draw effect');
         $scope.drawFromDeck(false);
-      };
+      }))
+      
     }
   }
   
@@ -132,31 +135,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   }
   
   $scope.stuffInDeck = [
-    {
-      id: $scope.genId(),
-      type: 'spell',
-      name: 'Lost soul',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      effect: 'haste',
-      cost: {
-        amount: 1,
-        type: 'black'
-      },
-      power: 0,
-      toughness: 0,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/1868886/bemocs_fox_sports_dribbble.jpg',
-      fullArt: false,
-      desc: 'Tap this creature: draw 2 cards. This card dies at the start of next phase',
-      tapped: false,
-      handAction: $scope.playCard,
-      attackAction: $scope.attack,
-      deathAction: $scope.draw,
-      deathActionParams: {
-        amount: 2
-      }
-    },
     {
       id: $scope.genId(),
       type: 'creature',
@@ -211,10 +189,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       id: $scope.genId(),
       type: 'spell',
-      name: 'Lost soul',
+      name: 'Lost soul (OK)',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
+      effect: 'haste',
       cost: {
         amount: 1,
         type: 'black'
@@ -223,13 +202,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       toughness: 0,
       art: 'https://cdn.dribbble.com/users/329207/screenshots/1868886/bemocs_fox_sports_dribbble.jpg',
       fullArt: false,
-      desc: 'Tap this creature: draw 2 cards. This card dies at the start of next phase',
+      desc: 'Draw 2 cards',
       tapped: false,
       handAction: $scope.playCard,
       attackAction: $scope.attack,
       deathAction: $scope.draw,
       deathActionParams: {
-        amount: 2
+        times: [0,2]
       }
     },
     {
@@ -261,10 +240,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     {
       id: $scope.genId(),
       type: 'spell',
-      name: 'Lost soul',
+      name: 'Lost soul (OK)',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
+      effect: 'haste',
       cost: {
         amount: 1,
         type: 'black'
@@ -273,13 +253,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       toughness: 0,
       art: 'https://cdn.dribbble.com/users/329207/screenshots/1868886/bemocs_fox_sports_dribbble.jpg',
       fullArt: false,
-      desc: 'Tap this creature: draw 3 cards. This card dies at the start of next phase',
+      desc: 'Draw 2 cards',
       tapped: false,
       handAction: $scope.playCard,
       attackAction: $scope.attack,
       deathAction: $scope.draw,
       deathActionParams: {
-        amount: 2
+        times: [0,2]
       }
     },
     {
@@ -440,6 +420,38 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/6220354/bemocs_geneseo_sailing.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 1,
+        type: 'blue'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/2432173/dribbble.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 1,
+        type: 'black'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
       art: 'https://cdn.dribbble.com/users/329207/screenshots/2432173/dribbble.jpg',
       fullArt: true,
       tapped: false,
@@ -500,6 +512,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
   ];
   
+  $scope.startDiscardFromHandState = function(){
+    $scope.discardState = true;
+  }
+  $scope.endDiscardFromHandState = function(card){
+    $scope.moveCard(card, $scope.stuffInHand, $scope.stuffInGrave, false);
+    $scope.discardState = false;
+  }
+  
   $scope.drawFromDeck = function(random){
     if (random){
       var x = Math.floor(Math.random() * $scope.stuffInDeck.length - 1) + 1;
@@ -509,7 +529,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     } else {
       var x = 0;
     }
-    $scope.moveCard($scope.stuffInDeck[x], $scope.stuffInDeck, $scope.stuffInHand, false);
+    if($scope.stuffInHand.length < 6){
+      $scope.moveCard($scope.stuffInDeck[x], $scope.stuffInDeck, $scope.stuffInHand, false);
+    } else {
+      $scope.startDiscardFromHandState();
+    }
   }
   
   $scope.untapAll = function(arr){
@@ -567,7 +591,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.drawFromDeck(true);
   $scope.drawFromDeck(true);
   $scope.drawFromDeck(true);
-                                          
   
   $scope.nextPhase = function(){
     var index = $scope.turnPhases.indexOf($scope.currentPhase);
