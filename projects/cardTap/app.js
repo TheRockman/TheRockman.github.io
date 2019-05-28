@@ -30,6 +30,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
           arr[i].deathAction(arr[i], arr[i].deathActionParams);
         }
         $scope.moveCard(arr[i], arr, $scope.stuffInGrave, false);
+        $scope.tollTheDead(arr);
       };
     }
   };
@@ -132,6 +133,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
       console.log('not enough');
     }
     $scope.sortArr($scope.stuffOnBoard);
+    $scope.sortArr($scope.landsOnBoard);
   }
   
   $scope.stuffInDeck = [
@@ -239,56 +241,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     },
     {
       id: $scope.genId(),
-      type: 'spell',
-      name: 'Lost soul (OK)',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      effect: 'haste',
-      cost: {
-        amount: 1,
-        type: 'black'
-      },
-      power: 0,
-      toughness: 0,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/1868886/bemocs_fox_sports_dribbble.jpg',
-      fullArt: false,
-      desc: 'Draw 2 cards',
-      tapped: false,
-      handAction: $scope.playCard,
-      attackAction: $scope.attack,
-      deathAction: $scope.draw,
-      deathActionParams: {
-        times: [0,2]
-      }
-    },
-    {
-      id: $scope.genId(),
-      type: 'creature',
-      name: 'Mr boom',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      cost: {
-        amount: 2,
-        type: 'red'
-      },
-      power: 1,
-      toughness: 1,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/1407172/hemispheres_war_inc_1.jpg',
-      fullArt: false,
-      desc: 'Tap this card: deal 2 damage to each opponent',
-      tapped: false,
-      handAction: $scope.playCard,
-      attackAction: $scope.attack,
-      tapAction: $scope.harm,
-      tapActionParams: {
-        amount: 2,
-        target: 'opponent'
-      }
-    },
-    {
-      id: $scope.genId(),
       type: 'creature',
       name: 'Mr boom',
       originalUntapIn: 0,
@@ -385,6 +337,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     {
       id: $scope.genId(),
       type: 'land',
+      name: 'island',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
@@ -401,6 +354,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     {
       id: $scope.genId(),
       type: 'land',
+      name: 'island',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
@@ -417,22 +371,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     {
       id: $scope.genId(),
       type: 'land',
-      originalUntapIn: 0,
-      untapIn: 0,
-      sick: false,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/6220354/bemocs_geneseo_sailing.jpg',
-      fullArt: true,
-      tapped: false,
-      handAction: $scope.playCard,
-      tapAction: $scope.addMana,
-      tapActionParams: {
-        amount: 1,
-        type: 'blue'
-      }
-    },
-    {
-      id: $scope.genId(),
-      type: 'land',
+      name: 'swamp',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
@@ -449,6 +388,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     {
       id: $scope.genId(),
       type: 'land',
+      name: 'swamp',
       originalUntapIn: 0,
       untapIn: 0,
       sick: false,
@@ -465,22 +405,34 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     {
       id: $scope.genId(),
       type: 'land',
-      name: 'Flash fire',
-      originalUntapIn: 1,
-      untapIn: 1,
+      name: 'mountain',
+      originalUntapIn: 0,
+      untapIn: 0,
       sick: false,
-      cost: {
-        amount: 2,
-        type: 'red'
-      },
       art: 'https://cdn.dribbble.com/users/329207/screenshots/5305832/bemocs_db_dribbble_05_schwartz_bier.jpg',
-      fullArt: false,
-      desc: 'Tap this card: add 2 mana. this card dont untap during your next turn',
+      fullArt: true,
       tapped: false,
       handAction: $scope.playCard,
       tapAction: $scope.addMana,
       tapActionParams: {
-        amount: 2,
+        amount: 1,
+        type: 'red'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'land',
+      name: 'mountain',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/5305832/bemocs_db_dribbble_05_schwartz_bier.jpg',
+      fullArt: true,
+      tapped: false,
+      handAction: $scope.playCard,
+      tapAction: $scope.addMana,
+      tapActionParams: {
+        amount: 1,
         type: 'red'
       }
     }

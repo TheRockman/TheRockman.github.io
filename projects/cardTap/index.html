@@ -82,14 +82,11 @@
       
       <div class="board-wrap">
         <div class="align jsc" style="min-height: 300px;">
-          <div class="card"  ng-dblclick="card.toughness = 0" ng-class="{'tapped': card.tapped, 'sick': card.sick, 'ready-to-strike': card.attackAction && currentPhase === 'combat' && card.tapped === false && card.sick === false}" ng-repeat="card in stuffOnBoard">
+          <div class="card"  ng-dblclick="card.toughness = 0" ng-class="{'tapped': card.tapped, 'sick': card.sick, 'ready-to-strike': card.attackAction && currentPhase === 'combat' && card.tapped === false && card.sick === false, 'smalcard':stuffOnBoard.length > 5}" ng-repeat="card in stuffOnBoard">
             <div class="cost align jsb">
               <b>
               {{card.name}}
               </b>
-              <span>
-                {{card.cost.amount}} {{card.cost.type}}
-              </span>
             </div>
             <img ng-src="{{card.art}}" alt="">
             <div class="pad">
@@ -115,7 +112,7 @@
         </div>
         
         <div class="align jsc" style="min-height: 300px;">
-          <div class="card" ng-class="{'tapped': card.tapped}" ng-repeat="card in landsOnBoard">
+          <div class="card" ng-class="{'tapped': card.tapped, 'smaland':landsOnBoard.length > 5}" ng-repeat="card in landsOnBoard">
             <div ng-if="!card.fullArt">
               <div class="cost align jsb" ng-if="card.name">
                 <b>

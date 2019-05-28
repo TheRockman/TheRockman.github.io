@@ -193,6 +193,20 @@ svg, svg path, img{
   height: 100%!important;
   width: auto!important;
 }
+.smaland{
+  width: 100px!important;
+  height: 100px!important;
+  margin: -5px!important;
+}
+.smalcard{
+  width: 100px!important;
+  height: 100px!important;
+}
+.smalcard:hover .pad{
+  display: block;
+  position: absolute;
+  
+}
 .stats{
   position: absolute;
   right: 0;
@@ -217,8 +231,11 @@ svg, svg path, img{
   top:-5rem;
   color: white;
 }
-.hand-wrap:hover, .discard{
+.hand-wrap:hover{
   transform: translateY(-4rem) scale(1.1);
+}
+.discard{
+  transform: translateY(-30vh) scale(0.9)!important;
 }
 .hand-wrap:hover ~ .board-wrap, .discard ~ .board-wrap{
   filter: blur(1px) grayscale(80%) brightness(0.6);
@@ -285,44 +302,6 @@ svg, svg path, img{
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-/*Fab*/
-/*.fab{
-    background:dodgerblue;
-    width:18px;
-    height: 18px;
-    padding:15px;
-    border-radius:50%;
-    font-size: 18px;
-    line-height: 18px;
-    text-align: center;
-    box-shadow: var(--level1);
-}*/
-
-/*Animation*/
-/*@keyframes animation {
-from {}
-to {}
-}
-div {
-animation-name: animation;
-animation-duration: 4s;
-} */
-
- /*warm gradiend*/
- /*
- background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
- */
-
-/*Slant*/
-/*
-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-*/
-
-/*random image + background*/
-/*
-background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
-background-size: cover;
-*/
 .board-wrap .ng-enter {
   -webkit-transition: 1s;
   transition: 1s;
@@ -352,25 +331,25 @@ background-size: cover;
 .hand-wrap .ng-enter {
   -webkit-transition: 1s;
   transition: 1s;
-  transform: translateY(100%)
+  transform: translateY(100%);
 }
 
 .hand-wrap .ng-enter-active {
-  transform: translateY(0%)
+  transform: translateY(0%);
 }
 
 .hand-wrap .ng-leave {
   -webkit-transition: 1s;
   transition: 1s;
-  transform: translateY(0%)
+  transform: translateY(0%);
 }
 
 .hand-wrap .ng-leave-active {
-  transform: translateY(250%)
+  transform: translateY(250%);
 }
 
 
-/* .ng-move {
+.ng-move {
   -webkit-transition: 1s;
   transition: 1s;
   
@@ -379,4 +358,4 @@ background-size: cover;
 
 .ng-move-active {
   background: #fff;
-} */
+}
