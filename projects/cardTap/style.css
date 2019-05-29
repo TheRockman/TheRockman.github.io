@@ -166,6 +166,20 @@ svg, svg path, img{
 .castable{
 
 }
+.castLand{
+
+}
+.castLand:hover::after{
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  background: url('https://www.freeiconspng.com/uploads/red-x-png-4.png') center center no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0px 2px 3px #333);
+}
 .sick{
   filter: grayscale(100%);
 }
@@ -205,7 +219,6 @@ svg, svg path, img{
 .smalcard:hover .pad{
   display: block;
   position: absolute;
-  
 }
 .stats{
   position: absolute;
@@ -214,6 +227,11 @@ svg, svg path, img{
   background: lightgray;
   padding: 5px;
   border-radius: 10px;
+}
+.buffed{
+  background: #bcffbb;
+  color: green;
+  filter: drop-shadow(0px 2px 2px green);
 }
 .hand-wrap{
   position: fixed;
@@ -301,6 +319,12 @@ svg, svg path, img{
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+
+.smallRow{
+  min-height: unset!important;
+}
+
+/*Ng stuff _________________________*/
 
 .board-wrap .ng-enter {
   -webkit-transition: 1s;

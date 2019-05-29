@@ -50,7 +50,7 @@
         
       <div class="align jsc hand-wrap" ng-class="{'discard': discardState}">
         <h2 class="discard-text" ng-if="discardState">Max hand size reached, discard one card</h2>
-        <div class="card" ng-repeat="card in stuffInHand" ng-class="{'castable': pool[card.cost.type] >= card.cost.amount}" ng-click="card.handAction(card, card.tapActionParams)">
+        <div class="card" ng-repeat="card in stuffInHand" ng-class="{'castable': pool[card.cost.type] >= card.cost.amount, 'castLand': playedLandThisTurn && card.type === 'land'}" ng-click="card.handAction(card, card.tapActionParams)">
           <div  ng-if="!card.fullArt">
             <div class="cost align jsb">
               <b>
@@ -92,7 +92,7 @@
             <div class="pad">
               <b>{{card.effect}} </br></b>
               {{card.desc}}
-              <div class="stats" ng-if="card.power > 0">
+              <div class="stats" ng-class="{'buffed': card.buffed}" ng-if="card.power > 0">
                 {{card.power}} / {{card.toughness}}
               </div>
             </div>
@@ -111,7 +111,7 @@
           </div>
         </div>
         
-        <div class="align jsc" style="min-height: 300px;">
+        <div class="align jsc" style="min-height: 300px;" ng-class="{'smallRow': landsOnBoard.length > 5}">
           <div class="card" ng-class="{'tapped': card.tapped, 'smaland':landsOnBoard.length > 5}" ng-repeat="card in landsOnBoard">
             <div ng-if="!card.fullArt">
               <div class="cost align jsb" ng-if="card.name">

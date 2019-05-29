@@ -87,6 +87,15 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
       $scope[params.target].hp = $scope[params.target].hp - params.amount;
     }
   }
+  $scope.buff = function(card, params){
+    if(params.target === 'all'){
+      for (let i = -1, len = $scope.stuffOnBoard.length; ++i < len;) {
+        $scope.stuffOnBoard[i].power = $scope.stuffOnBoard[i].power + params.pbuff;
+        $scope.stuffOnBoard[i].toughness = $scope.stuffOnBoard[i].toughness + params.tbuff;
+        $scope.stuffOnBoard[i].buffed = true;
+      };
+    }
+  }
   $scope.summon = function(card, params){
     if(card.tapped === false && card.sick === false || card.effect == 'haste'){
       card.tapped = true;
@@ -116,14 +125,20 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     }
   }
   
-  var playedLandThisTurn = false;
+  $scope.playedLandThisTurn = false;
   
   $scope.playCard = function(card){
-    if(card.type === 'land' && !playedLandThisTurn){
-      playedLandThisTurn = true;
+    if($scope.discardState){
+      return;
+    }
+    if(card.type === 'land' && !$scope.playedLandThisTurn){
+      $scope.playedLandThisTurn = true;
       $scope.moveCard(card, $scope.stuffInHand, $scope.landsOnBoard, false);
     } else if ($scope.pool[card.cost.type] >= card.cost.amount){
       $scope.pool[card.cost.type] = $scope.pool[card.cost.type] - card.cost.amount;
+      if(card.passiveAction){
+        card.passiveAction(card, card.passiveActionParams);
+      }
       $scope.moveCard(card, $scope.stuffInHand, $scope.stuffOnBoard, false);
       console.log('played', card.name);
       if(card.toughness < 1){
@@ -137,6 +152,32 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
   }
   
   $scope.stuffInDeck = [
+    {
+      id: $scope.genId(),
+      type: 'creature',
+      name: 'Lord',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      cost: {
+        amount: 2,
+        type: 'red'
+      },
+      power: 2,
+      toughness: 2,
+      art: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/d2871943121071.57e3e8d2068d8.jpg',
+      fullArt: false,
+      desc: 'When this card is played, all creatures you control get +1/+1',
+      tapped: false,
+      handAction: $scope.playCard,
+      attackAction: $scope.attack,
+      passiveAction: $scope.buff,
+      passiveActionParams: {
+        target: 'all',
+        pbuff: 1,
+        tbuff: 1
+      }
+    },
     {
       id: $scope.genId(),
       type: 'creature',
@@ -302,7 +343,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
       },
       power: 1,
       toughness: 3,
-      art: 'https://cdn.dribbble.com/users/329207/screenshots/1726399/bemocs_dribble.jpg',
+      art: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a145c530106393.5613cbecd334d.jpg',
       fullArt: false,
       desc: 'Tap this card: create a 1/1 Bot token',
       tapped: false,
@@ -519,7 +560,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
         $scope.untapAll($scope.landsOnBoard);
         $scope.untapAll($scope.stuffOnBoard);
         $scope.drawFromDeck(false);
-        playedLandThisTurn = false;
+        $scope.playedLandThisTurn = false;
       break;
       case 'main1':
       // code block
