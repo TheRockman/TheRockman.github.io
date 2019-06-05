@@ -119,9 +119,63 @@ $scope.sufix = [
   'VAN (e)',
 ]
 
+$scope.jobs = [
+  'Mekaniker',
+  'Uppfödare',
+  'Shaman',
+  'glasblsåsare',
+  'Stable hand',
+  'Innkeeper',
+  'Blacksmith',
+  'Washerwoman',
+  'Town cryer',
+  'Tailor',
+  'Portrait painter',
+  'Cobbler',
+  'Lamplighter',
+  'Tanner',
+  'Herbalist',
+  'Farmer',
+  'Carpenter',
+  'Stonemason',
+  'Miner',
+  'Fortune teller',
+  'Baker',
+  'Town guard',
+  'Doctor',
+  'Messenger',
+  'Banker',
+  'Animal tamer',
+  'Guide',
+  'Cartographer',
+  'Academic',
+  'Actor',
+  'Apprentice',
+  'Brewer',
+  'Cook',
+  'Fisher',
+  'Gravedigger',
+  'Lumberjack',
+  'Sailor',
+  'Scribe',
+  'Servant',
+  'Trader',
+  'Wanderer',
+  'Wizard',
+  'Wrestler',
+  'Author',
+  'Clocksmith',
+  'Alchemist',
+  'Librarian',
+  'Woodcarver',
+  'Roofer',
+  'Sculptor'
+]
+
 $scope.gen = function (gender) {
   var firstName = '';
   var lastname = '';
+  $scope.work = $scope.jobs[Math.floor((Math.random() * $scope.jobs.length-1) + 1)];
   if (gender === 'm') {
     firstName = $scope.male[Math.floor((Math.random() * $scope.male.length-1) + 1)]
   } else if (gender === 'f'){
@@ -132,6 +186,7 @@ $scope.gen = function (gender) {
   
   var fullName = firstName + ' ' + lastname;
   $scope.npc = fullName;
+  
 }
 
 });
