@@ -1,0 +1,238 @@
+:root{
+--main-color: #ec821b;
+--black: #111;
+--white: #fff;
+--off-white: #ede3c9;
+--hue-rotation: 180deg;
+--spacer: 1rem;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+body {
+  margin: 0!important;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex {
+  flex-basis: 100%;
+}
+@media screen and (min-width: 800px) {
+  .flex {
+    flex: 1;
+  }
+}
+
+.spacer{
+  position: relative;
+  z-index: 1000;
+  color: var(--white) !important;
+  background: #210002;
+  filter: hue-rotate(var(--hue-rotation));
+  padding: 200px 10%;
+}
+
+.layer-cont, .layer {
+  height: 1000px;
+}
+
+#parallax {
+  display: block;
+}
+
+.layer-cont {
+  position: relative;
+  z-index: 10;
+}
+
+.layer {
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: absolute;
+}
+
+.layer.parallax {
+  position: fixed;
+}
+
+#parallax h1{
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 150px;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 400%;
+}
+
+#layer-0 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax0.png");
+  background-color: #ffaf1b;
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-1 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax1.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+/*#layer-2 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax2.png");
+  filter: hue-rotate(var(--hue-rotation));
+}*/
+
+#layer-3 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax3.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-4 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax4.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-5 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax5.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-6 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax6.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-7 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax7.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-8 {
+  background-image: url("http://www.firewatchgame.com/images/parallax/parallax8.png");
+  filter: hue-rotate(var(--hue-rotation));
+}
+
+#layer-scrim {
+  background-color: #ffaf00;
+  opacity: 0;
+}
+
+h1{
+  font-family: 'Amatic SC', cursive;
+}
+
+.image{
+  width: 75%;
+  height: auto;
+  border: 5px solid var(--off-white);
+  border-radius: 5px;
+  box-shadow: 0px 24px 26px -7px rgba(0,0,0,0.42);
+  transition: 0.6s all ease-in-out;
+  border-bottom: 25px solid var(--off-white);
+}
+
+.tilt, .tilt2{
+  margin: 5rem 0;
+}
+
+.tilt{
+    transform: rotate(5deg);
+}
+
+.tilt2{
+  transform: rotate(-5deg);
+}
+
+.tilt:hover, .tilt2:hover{
+  transform: rotate(0deg) scale(1.2,1.2);
+  cursor: pointer;
+}
+
+.hero{
+  width: 25%!important;
+}
+
+hr {
+  text-align: center;
+  margin: 5rem 25%;
+  height: 0;
+}
+
+hr:after {
+  content: '\002666';
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  padding: 0 10px;
+  background: #210002;
+  color: #8c8b8b;
+  font-size: 18px;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  padding: var(--spacer);
+  z-index: 2000;
+}
+
+.footer> .flex > .menu-item{
+  display: inline-flex;
+  color:var(--white);
+  position: relative;
+  margin-right: var(--spacer);
+}
+
+.trigger{
+  cursor: pointer;
+  outline: none!important;
+}
+
+.trigger:focus > svg > path {
+  fill: var(--main-color)!important;
+}
+
+.trigger > .menu{
+  background: #222;
+  width: 300px;
+  position: absolute;
+  left:-200%;
+  bottom:15px;
+  color:var(--main-color);
+  padding-left: 0;
+  padding: var(--spacer);
+  list-style: georgian;
+  transition: 0.5s all ease-in-out;
+  transform-origin: bottom center;
+  transform: translate(-200%);
+}
+
+.trigger:focus > .menu{
+  transform: none;
+}
+
+.menu li{
+  padding: var(--spacer);
+  border-bottom:1px solid transparent;
+}
+.menu li:hover{
+  border-bottom:1px solid var(--main-color);
+}
+
+.center{
+  text-align: center;
+}
+
+.pull-right{
+  float: right;
+}

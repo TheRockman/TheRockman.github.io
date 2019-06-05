@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Sunset peak</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="layer-cont" id="parallax">
+    <div class="layer parallax" id="layer-0" data-speed="2"></div>
+    <div class="layer parallax" id="layer-1" data-speed="5"></div>
+    <div class="layer parallax" id="layer-2" data-speed="11">
+      <h1>Sunset peak<br>↓</h1>
+    </div>
+    <div class="layer parallax" id="layer-3" data-speed="16"></div>
+    <div class="layer parallax" id="layer-4" data-speed="26"></div>
+    <div class="layer parallax" id="layer-5" data-speed="36"></div>
+    <div class="layer parallax" id="layer-6" data-speed="49"></div>
+    <div class="layer" id="layer-scrim"></div>
+    <div class="layer parallax" id="layer-7" data-speed="69"></div>
+    <div class="layer" id="layer-8" data-speed="100"></div>
+  </div>
+
+  <div class="spacer">
+    <div class="row">
+      <div class="flex center">
+        <img class="image tilt" src="https://cdn.dribbble.com/users/31348/screenshots/3429996/greetings_from_austin.jpg" alt="">
+      </div>
+      <div class="flex">
+        <h1 id="section1">Where are we?</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="flex">
+        <h1 id="section2">Head on out there</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      </div>
+      <div class="flex center">
+        <img class="image tilt2" src="https://cdn.dribbble.com/users/329207/screenshots/3364859/bemocs_rei_end_of_season_dribbble.jpg"  alt="">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="flex center">
+        <img class="image hero" src="https://cdn.dribbble.com/users/22122/screenshots/742071/hikeordie_d.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer row">
+    <div class="flex">
+      <div class="trigger menu-item" tabindex="0">
+        <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M17,4V8H18V10H17.64L21,23H18.93L18.37,20.83L12,17.15L5.63,20.83L5.07,23H3L6.36,10H6V8H7V4H6V3L12,1L18,3V4H17M7.28,14.43L6.33,18.12L10,16L7.28,14.43M15.57,10H8.43L7.8,12.42L12,14.85L16.2,12.42L15.57,10M17.67,18.12L16.72,14.43L14,16L17.67,18.12Z" />
+        </svg>
+        <ul class="menu">
+          <li id="homeTrigger">Home </li>
+          <li id="section1Trigger">Where are we</li>
+          <li id="section2Trigger">Head on out there</li>
+        </ul>
+      </div>
+      <div class="menu-item">About</div>
+      <div class="menu-item">Contact</div>
+      <div class="pull-right">
+        <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M3.55,18.54L4.96,19.95L6.76,18.16L5.34,16.74M11,22.45C11.32,22.45 13,22.45 13,22.45V19.5H11M12,5.5A6,6 0 0,0 6,11.5A6,6 0 0,0 12,17.5A6,6 0 0,0 18,11.5C18,8.18 15.31,5.5 12,5.5M20,12.5H23V10.5H20M17.24,18.16L19.04,19.95L20.45,18.54L18.66,16.74M20.45,4.46L19.04,3.05L17.24,4.84L18.66,6.26M13,0.55H11V3.5H13M4,10.5H1V12.5H4M6.76,4.84L4.96,3.05L3.55,4.46L5.34,6.26L6.76,4.84Z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function castParallax() {
+
+    var opThresh = 350;
+    var opFactor = 750;
+
+    window.addEventListener("scroll", function(event){
+
+      var top = this.pageYOffset;
+      var layers = document.getElementsByClassName("parallax");
+      var layer, speed, yPos;
+      for (var i = 0; i < layers.length; i++) {
+        layer = layers[i];
+        speed = layer.getAttribute('data-speed');
+        var yPos = -(top * speed / 100);
+        layer.setAttribute('style', 'transform: translate3d(0px, ' + yPos + 'px, 0px)');
+
+      }
+    });
+  }
+
+  $("#homeTrigger").click(function() {
+    $('html, body').animate({
+      scrollTop: $("#parallax").offset().top
+    }, 1000);
+  });
+
+  $("#section1Trigger").click(function() {
+    $('html, body').animate({
+      scrollTop: $("#section1").offset().top
+    }, 1000);
+  });
+
+  $("#section2Trigger").click(function() {
+    $('html, body').animate({
+      scrollTop: $("#section2").offset().top
+    }, 1000);
+  });
+
+
+
+  document.body.onload = castParallax();
+  </script>
+
+</body>
+</html>
