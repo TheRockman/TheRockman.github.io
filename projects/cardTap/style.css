@@ -350,6 +350,10 @@ svg, svg path, img{
   opacity: 0;
 }
 
+.targeted{
+  outline: 2px solid white;
+}
+
 /*_____________________________________________*/
 
 .hand-wrap .ng-enter {

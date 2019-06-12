@@ -22,6 +22,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
       return v.toString(16);
     });
   }
+  $scope.targetState = false;
   
   $scope.tollTheDead = function(arr){
     for (var i = -1, len = arr.length; ++i < len;) {
@@ -88,12 +89,32 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
     }
   }
   $scope.buff = function(card, params){
-    if(params.target === 'all'){
-      for (let i = -1, len = $scope.stuffOnBoard.length; ++i < len;) {
-        $scope.stuffOnBoard[i].power = $scope.stuffOnBoard[i].power + params.pbuff;
-        $scope.stuffOnBoard[i].toughness = $scope.stuffOnBoard[i].toughness + params.tbuff;
-        $scope.stuffOnBoard[i].buffed = true;
-      };
+    if(card.tapped === false && card.sick === false || card.effect == 'haste'){
+      card.tapped = true;
+      switch(params.target) {
+        case 'all':
+          //add loop for opponent when they exist
+          for (let i = -1, len = $scope.stuffOnBoard.length; ++i < len;) {
+            $scope.stuffOnBoard[i].power = $scope.stuffOnBoard[i].power + params.pbuff;
+            $scope.stuffOnBoard[i].toughness = $scope.stuffOnBoard[i].toughness + params.tbuff;
+            $scope.stuffOnBoard[i].buffed = true;
+          };
+        break;
+        case 'all-yours':
+          for (let i = -1, len = $scope.stuffOnBoard.length; ++i < len;) {
+            $scope.stuffOnBoard[i].power = $scope.stuffOnBoard[i].power + params.pbuff;
+            $scope.stuffOnBoard[i].toughness = $scope.stuffOnBoard[i].toughness + params.tbuff;
+            $scope.stuffOnBoard[i].buffed = true;
+          };
+        break;
+        case 'creature':
+          $scope.targetedCard.power = $scope.targetedCard.power + params.pbuff;
+          $scope.targetedCard.toughness = $scope.targetedCard.toughness + params.tbuff;
+          $scope.targetedCard.buffed = true;
+        break;
+        default:
+        // code block
+      }
     }
   }
   $scope.summon = function(card, params){
@@ -201,6 +222,32 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
       tapActionParams: {
         amount: 2,
         target: 'opponent'
+      }
+    },
+    {
+      id: $scope.genId(),
+      type: 'creature',
+      name: 'Patches',
+      originalUntapIn: 0,
+      untapIn: 0,
+      sick: false,
+      cost: {
+        amount: 1,
+        type: 'black'
+      },
+      power: 1,
+      toughness: 1,
+      art: 'https://cdn.dribbble.com/users/329207/screenshots/1407172/hemispheres_war_inc_1.jpg',
+      fullArt: false,
+      desc: 'Tap this card: target creature gets +1/+1',
+      tapped: false,
+      handAction: $scope.playCard,
+      attackAction: $scope.attack,
+      tapAction: $scope.buff,
+      tapActionParams: {
+        target: 'creature',
+        pbuff: 1,
+        tbuff: 1
       }
     },
     {
@@ -511,6 +558,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel', 'ngAnimate']);
   $scope.endDiscardFromHandState = function(card){
     $scope.moveCard(card, $scope.stuffInHand, $scope.stuffInGrave, false);
     $scope.discardState = false;
+  }
+  $scope.target = function(card){
+    $scope.targetedCard = card;
   }
   
   $scope.drawFromDeck = function(random){
