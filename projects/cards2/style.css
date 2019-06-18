@@ -126,6 +126,8 @@ ul[rn-carousel] > li{
 
 .crew-change > path{
   fill:dodgerblue!important;
+  background: dodgerblue;
+  color: white;
 }
 
 .response{
@@ -166,22 +168,31 @@ ul[rn-carousel] > li{
 .crew-swipe{
   background: #222;
   min-height: 100vh;
+  overflow-y: auto;
   z-index: 200;
   margin: 0;
   top: 0;
   bottom: 0;
+}
+.crew-swipe::before,.crew-swipe::after{
+  content: none;
+  display: none;
 }
 .portrait{
   width: 48px;
   height: 48px;
 }
 .show-hide-crew{
-  position: relative;
-  top:0;
-  left: 0;
+  position: absolute;
+  top:-1rem;
+  box-shadow: var(--level2);
   right: 0;
-  text-align: center;
-  margin: 0 auto;
+  width: 5rem;
+  background: white;
+  border-radius: 1000px;
+  padding: 0.5rem;
+  color: black;
+  justify-content: center;
   z-index: 201;
 }
 
