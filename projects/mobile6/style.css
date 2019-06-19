@@ -201,14 +201,14 @@ button{
 }
 
 .doot{
-  width: 5vw;
-  height: 5vw;
+  width: 4rem;
+  height: 4rem;
   border-radius: 1000px;
   background: white;
   margin: 0.5rem;
   border: 2px solid transparent;
   filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.3));
-  line-height: 82px;
+  line-height: 4rem;
   text-align: center;
   overflow: hidden;
 }
