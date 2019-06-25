@@ -302,9 +302,9 @@ img{
   border-radius: 2px;
   margin: 2px;
   height: 230px;
-  overflow: hidden;
   background: #222;
   text-align: center;
+  cursor: pointer;
   line-height: 230px;
   color: #cacaca;
   box-shadow: var(--level1);
@@ -313,7 +313,28 @@ img{
 .box img{
   margin: 0 auto;
 }
-
+.tooltip{
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 10px;
+  left: -290px;
+  width: 300px;
+  z-index: 100!important;
+  text-align: left;
+  line-height: 1.3rem;
+}
+.ttheader{
+  padding: 1rem;
+  color: white;
+}
+.ttheader h2{
+  margin: 0;
+}
+.box:hover .tooltip{
+  opacity: 1;
+}
 /*Card*/
 .card {
   color: black;
