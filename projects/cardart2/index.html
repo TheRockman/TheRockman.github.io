@@ -6,10 +6,9 @@
     </head>
 
     <body>
-
         <div id="top">
             <div class="perspective">
-                <div class="card" tabindex="0">
+                <div class="card " tabindex="0">
                     <div class="thumb">
                       <div class="title lv lv4 align jsb">
                         <b>
@@ -20,15 +19,15 @@
                         </span>
                       </div>
                       
-                      <img class="port lv lv3" src="http://magic.wizards.com/sites/mtg/files/image_legacy_migration/images/magic/daily/arcana/1145_2_lcs1vuqoif.jpg" alt="">
+                      <img class="port lv lv2" src="http://magic.wizards.com/sites/mtg/files/image_legacy_migration/images/magic/daily/arcana/1145_2_lcs1vuqoif.jpg" alt="">
                     
-                      <div class="title lv lv5 align jsb">
+                      <div class="title lv lv4 align jsb">
                         <b>Creature - Soldier</b>
                         <span>
                         <img src="http://www.powernine.com/sets/AvacynRestored.png" width="20" height="20" alt="">
                         </span>
                       </div>
-                      <section class="text lv lv3">
+                      <section class="text lv lv2">
                         As long as Herp Of Derp is attacking, it gets +2/+0.<br/>
                         Pay 4 life: Herp Of Derp gains deathtouch until end of turn.
                       </section>
@@ -39,10 +38,13 @@
                         <small>sdalksdjölaksjölkasd</small>
                         <small>2017 Jhon johonsson</small>
                       </div>
+                      <div id="foil" class="foil"></div>
+                      <div id="sparkle" class="sparkle"></div>
                     </div>
                 </div>
             </div>
         </div>
+
 
 
       <style media="screen">
@@ -146,8 +148,7 @@
 
         .card .thumb {
           background-size: cover;
-          height: 100%;
-          width: 100%;
+          height: 413px;
           background: #eae3c6;
           padding: 5px;
           border: 10px solid black;
@@ -167,9 +168,11 @@
           opacity: 0.8;
           filter: blur(55px);
         }
+        .lv, .lv0, .lv1, .lv2, .lv3, .lv4, .lv5, .sparkle{
+          transition: 0.3s transform ease-in-out;
+        }
         .card .lv{
           transform: translateZ(5px);
-          transition: 0.3s transform ease;
         }
         .card:focus .lv0 {
           transform: translateZ(20px);
@@ -189,6 +192,41 @@
         .card:focus .lv5 {
           transform: translateZ(90px);
         }
+        .card:focus .sparkle{
+          mix-blend-mode: unset!important;
+        }
+        
+        .foil{
+          background-image: linear-gradient(
+            115deg,
+            transparent 0%,
+            rgb(0, 231, 255) 30%,
+            rgb(255, 0, 231) 70%,
+            transparent 100%
+          );
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          pointer-events: none;
+          transform: translateZ(6px);
+          opacity: 0.2;
+          border-radius: 20px;
+        }
+        .sparkle{
+          pointer-events: none;
+          background: url('sparkles.gif');
+          mix-blend-mode: color-dodge;
+          opacity: 0.4;
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          transform: translateZ(6px);
+          border-radius: 20px;
+        }
         
         img {
           margin: auto;
@@ -200,10 +238,12 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script type="text/javascript">
         var o = $(".card");
+        var f = $("#foil");
         $("#top").on("mousemove", function (t) {
           var e = -($(window).innerWidth() / 2 - t.pageX) / 60,
           n = ($(window).innerHeight() / 2 - t.pageY) / 40;
           o.attr("style", "transform: rotateY(" + e + "deg) rotateX(" + n + "deg);-webkit-transform: rotateY(" + e + "deg) rotateX(" + n + "deg);-moz-transform: rotateY(" + e + "deg) rotateX(" + n + "deg)")
+          f.attr("style", "background-image: linear-gradient( 115deg, transparent 0%, rgb(0, 231, 255) " + e + "%, rgb(255, 0, 231)" + n*30 + "%, transparent 100% )");
         })
       </script>
       
