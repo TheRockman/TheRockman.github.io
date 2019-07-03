@@ -4,17 +4,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.oneTick = 0;
   $scope.twoTick = 0;
   $scope.threTick = 0;
-  
+
   $scope.oneMulti = 1;
   $scope.twoMulti = 1;
   $scope.threMulti = 1;
-  
+
   $scope.timeBonus = 1;
   $scope.chests = 0;
-  
+
   $scope.baseTime = 1001 - $scope.timeBonus;
   $scope.price = 100;
-  
+
   $scope.buy = function(type){
     if(type === 0 && $scope.dosh >= $scope.price*$scope.timeBonus){
       $scope.dosh = $scope.dosh - $scope.price*$scope.timeBonus;
@@ -26,24 +26,24 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.dosh = $scope.dosh - $scope.price;
       $scope.oneMulti = $scope.oneMulti + 1;
     }
-    
+
     if(type === 2 && $scope.dosh >= $scope.price*10){
       $scope.dosh = $scope.dosh - $scope.price*10;
       $scope.twoMulti = $scope.twoMulti + 1;
     }
-    
+
     if(type === 3 && $scope.dosh >= $scope.price*100){
       $scope.dosh = $scope.dosh - $scope.price*100;
       $scope.threMulti = $scope.threMulti + 1;
     }
-    
+
     if(type === 4 && $scope.dosh >=  1000000 ){
       $scope.dosh = $scope.dosh - 1000000;
       $scope.chests = $scope.chests + 1;
     }
 
   }
-  
+
   $scope.wheelOne = function(){
     $timeout( function(){
       $scope.dosh = $scope.dosh + 1 * $scope.oneMulti;
@@ -55,7 +55,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.wheelOne();
     }, $scope.baseTime );
   }
-  
+
 
   $scope.wheelTwo = function(){
     $scope.dosh = $scope.dosh + 10 * $scope.twoMulti;
@@ -65,17 +65,24 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.twoTick = 0;
     }
   }
-  
+
 
   $scope.wheelThree = function(){
-    $scope.dosh = $scope.dosh + 100  * $scope.threMulti;
+    $scope.dosh = $scope.dosh + 100 * $scope.threMulti;
     $scope.threTick = $scope.threTick + 1;
     if($scope.threTick > 9){
-      console.log('wow what a waste');
       $scope.threTick = 0;
     }
   }
-  
+
+  $scope.timewarp = function(){
+    var original = angular.copy($scope.baseTime);
+    $scope.baseTime = 10;
+    $timeout( function(){
+      $scope.baseTime = original;
+    }, 5000);
+  }
+
   $scope.pop = function(){
     $scope.dosh = $scope.dosh + 1;
     $scope.popFX = true;
@@ -83,7 +90,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.popFX = false;
     }, 100);
   }
-  
+
   $scope.wheelOne();
 
 });

@@ -15,10 +15,14 @@
   <div ng-controller="mainCtrl">
     <div class="row">
       <div class="flex stage">
-        <nav class="align center">
-          {{chests}}
-          &nbsp;
-          <img style="width: 25px; height: auto;" src="https://gamepedia.cursecdn.com/smite_gamepedia/thumb/8/85/TreasureRoll_Triumphant2.png/256px-TreasureRoll_Triumphant2.png?version=0369570634274d6ce44599cc85005e3b" alt="">
+        <nav class="align jsb">
+          <span class="align">
+            &nbsp;
+            {{chests}}
+            &nbsp;
+            <img style="width: 25px; height: auto;" src="https://gamepedia.cursecdn.com/smite_gamepedia/thumb/8/85/TreasureRoll_Triumphant2.png/256px-TreasureRoll_Triumphant2.png?version=0369570634274d6ce44599cc85005e3b" alt="">
+          </span>
+
         </nav>
         <div ng-click="pop()" class="dosh-wrap relative center pointer">
           <img ng-class="{'poppy': popFX}" src="https://images.squarespace-cdn.com/content/v1/53e5e8b4e4b0f39bef5e536c/1547215224537-CKW4KQXKD9Y2D28HJCSW/ke17ZwdGBToddI8pDm48kLPswmMOqQZ9-Q6KHLjvbpZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UVTQf06wQztZgT3ocQ_Nttc9pRe5bgfSgFgLIpbw9lM5m7cT0R_dexc_UL_zbpz6JQ/sun.gif?format=2500w" alt="">
@@ -39,7 +43,7 @@
             100
           </button>
         </div>
-      
+
         <div class="align jsb card">
           <div class="icon-box upgrade">
             <img src="https://vignette.wikia.nocookie.net/riseofcivilizations/images/8/8b/Building_Storehouse_1_5.png/revision/latest/scale-to-width-down/180?cb=20181114154001" alt="">
@@ -53,7 +57,7 @@
             1000
           </button>
         </div>
-      
+
         <div class="align jsb card">
           <div class="icon-box upgrade">
             <img src="https://vignette.wikia.nocookie.net/riseofcivilizations/images/5/59/Building_City_Hall_1_5.png/revision/latest/scale-to-width-down/180?cb=20181114154456" alt="">
@@ -67,7 +71,7 @@
             10000
           </button>
         </div>
-                
+
         <div class="align jsb">
           <button type="button" class="time pointer" ng-click="buy(0)" name="button">
             <img src="https://az571148.vo.msecnd.net/propressroom/Content/Artwork/Eva/BlizzardLive/artwork/2018/06/01231247-40ac53b6-8898-4b04-9df1-210284739905/Taverns_of_Time_Hourglass_Icon.png?lightbox=y&ex=2019-06-06+03%3A00%3A00&sky=be5d5d93973d50c4466cb9f6d1c50594cafdb5ca46cbd5d728882c3a168488c4" alt="">
@@ -87,7 +91,7 @@
           </button>
         </div>
 
-  
+
       </div>
     </div>
     <!-- <div class="stats">
