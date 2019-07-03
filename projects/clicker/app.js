@@ -10,6 +10,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.threMulti = 1;
   
   $scope.timeBonus = 1;
+  $scope.chests = 0;
   
   $scope.baseTime = 1001 - $scope.timeBonus;
   $scope.price = 100;
@@ -34,6 +35,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     if(type === 3 && $scope.dosh >= $scope.price*100){
       $scope.dosh = $scope.dosh - $scope.price*100;
       $scope.threMulti = $scope.threMulti + 1;
+    }
+    
+    if(type === 4 && $scope.dosh >=  1000000 ){
+      $scope.dosh = $scope.dosh - 1000000;
+      $scope.chests = $scope.chests + 1;
     }
 
   }
