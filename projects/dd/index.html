@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="align jsb stage relative">
+      <span ng-if="$scope.crit">CRIT</span>
+      <div class="align">
+        <div
+          class="unit relative"
+          ng-repeat="char in myParty"
+          ng-click="target(char, $index)"
+          ng-class="{'active': currentChar === char, 'target': currentTarget === char, 'charAttacking': attacking && currentChar === char, 'corpse': char.Dead}">
+          {{char.Name}}
+          {{char.BASHP}}
+          <img ng-src="{{char.URL}}" alt="">
+        </div>
+      </div>
+      <div class="align">
+        <div
+          class="unit relative"
+          ng-repeat="enemy in enemyParty"
+          ng-click="target(enemy, $index)"
+          ng-class="{'active': currentChar === enemy, 'target': currentTarget === enemy, 'enemyAttacking': attacking && currentChar === enemy, 'corpse': enemy.Dead}">
+          {{enemy.Name}}
+          {{enemy.BASHP}}
+          <img ng-src="{{enemy.URL}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="" ng-if="currentChar.Team === 'char'">
+      <hr>
+      <div class="align">
+        <button class="move" ng-repeat="move in currentChar.Moves" ng-click="doTheThing(move)" ng-disabled="move.AvailableWhenMyTargetIs.indexOf(currentTarget.targetIndex) === -1 || move.AvailableWhenMyPositionIs.indexOf(charIndex) === -1 ">
+          {{move.Name}}
+          <br>
+          T: <span class="dot" ng-repeat="dot in move.AvailableWhenMyTargetIs" ng-class="{'blip': dot === 'x' || dot === 'y' || dot === 'z'}">■</span>
+          <br>
+          P: <span class="dit" ng-repeat="dot in move.AvailableWhenMyPositionIs" ng-class="{'blip': dot === 'x' || dot === 'y' || dot === 'z'}">■</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
