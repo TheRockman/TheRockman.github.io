@@ -1,5 +1,5 @@
 :root{
-  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --animation: all 0.5s cubic-bezier(.33,.11,.02,.99);
   --spacer: 1rem;
 
   /*shadows*/
@@ -36,6 +36,14 @@ svg, svg path, img{
 }
 .relative{
   position: relative;
+}
+.state{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2rem;
+  text-align: center;
+  z-index: 1000;
 }
 
 .unit{

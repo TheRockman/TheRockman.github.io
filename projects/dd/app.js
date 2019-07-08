@@ -1,4 +1,5 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout) {
+  $scope.pace = 1000;
 
   $scope.myParty = [];
   $scope.enemyParty = [];
@@ -321,37 +322,39 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   }
   
   $scope.turnController = function(){
-    $scope.currentTarget = null;
-    $scope.currentChar = null;
-    $scope.charIndex = -1;
-    $scope.turnOrder = $scope.myParty.concat($scope.enemyParty);
-    $scope.turnOrder.sort(function(a, b) {
-        return parseFloat(a.BASSPD) - parseFloat(b.BASSPD);
-    });
-    $scope.tollTheDead();
-    $scope.turnIndex = $scope.turnIndex + 1;
-    if($scope.turnIndex >= $scope.turnOrder.length){
-      $scope.turnIndex = 0;
-    }
-    
-    $scope.currentChar = $scope.turnOrder[$scope.turnIndex];
-    if($scope.currentChar.Dead){
+    $timeout( function(){
+      $scope.currentTarget = null;
       $scope.currentChar = null;
-      $scope.turnController();
-      return;
-    }
-    
-    if($scope.currentChar.Team === 'enemy'){
-      $scope.ai();
-    }
-    else if($scope.currentChar.Team === 'none'){
-      $scope.turnController();
-      return;
-    } else{
-      $scope.charIndex = $scope.myParty.indexOf($scope.currentChar);
-      console.log('ci', $scope.charIndex);
-      return;
-    }
+      $scope.charIndex = -1;
+      $scope.turnOrder = $scope.myParty.concat($scope.enemyParty);
+      $scope.turnOrder.sort(function(a, b) {
+          return parseFloat(a.BASSPD) - parseFloat(b.BASSPD);
+      });
+      $scope.tollTheDead();
+      $scope.turnIndex = $scope.turnIndex + 1;
+      if($scope.turnIndex >= $scope.turnOrder.length){
+        $scope.turnIndex = 0;
+      }
+      
+      $scope.currentChar = $scope.turnOrder[$scope.turnIndex];
+      if($scope.currentChar.Dead){
+        $scope.currentChar = null;
+        $scope.turnController();
+        return;
+      }
+      
+      if($scope.currentChar.Team === 'enemy'){
+        $scope.ai();
+      }
+      else if($scope.currentChar.Team === 'none'){
+        $scope.turnController();
+        return;
+      } else{
+        $scope.charIndex = $scope.myParty.indexOf($scope.currentChar);
+        console.log('ci', $scope.charIndex);
+        return;
+      }
+    }, $scope.pace );
   }
   $scope.turnController();
 
@@ -383,8 +386,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             if( Math.random() > 0.7){
               //CRIT
               console.log('Crit!');
-              $scope.cirt = true;
-              $timeout( function(){$scope.cirt = null}, 1000 );
               var critBonus = thing.CRIT;
             }
             
@@ -398,21 +399,31 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
                 $scope.move($scope.myParty, $scope.myParty.indexOf($scope.currentChar), thing.POSMOD);
               }
             }
+            var combinedDMG = $scope.currentChar.BASDMG + thing.DMGMOD + critBonus;
+            $scope.currentTarget.BASHP = $scope.currentTarget.BASHP - combinedDMG;
             
-            $scope.currentTarget.BASHP = $scope.currentTarget.BASHP - ($scope.currentChar.BASDMG + thing.DMGMOD + critBonus);
+            if(critBonus > 0){
+              $scope.state = 'Critical ' + combinedDMG + 'DMG';
+            } else{
+              $scope.state = combinedDMG + 'DMG';
+            }
+            $timeout( function(){$scope.state = null}, 1000 );
+            
             $scope.turnController();
             return;
             
           } else{
             //The attack missed
             console.log('miss');
+            $scope.state = 'MISS!';
+            $timeout( function(){$scope.state = null}, 1000 );
             $scope.attacking = false;
             $scope.turnController();
             return;
           }
-        }, 1000 );
+        }, $scope.pace );
         
-      }, 500 );
+      }, $scope.pace );
       
     } else{
       return;

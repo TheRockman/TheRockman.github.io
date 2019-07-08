@@ -14,7 +14,6 @@
 <body>
   <div ng-controller="mainCtrl">
     <div class="align jsb stage relative">
-      <span ng-if="$scope.crit">CRIT</span>
       <div class="align">
         <div
           class="unit relative"
@@ -24,6 +23,7 @@
           {{char.Name}}
           {{char.BASHP}}
           <img ng-src="{{char.URL}}" alt="">
+          <b class="state" ng-if="currentTarget === char && state">{{state}}</b>
         </div>
       </div>
       <div class="align">
@@ -35,6 +35,7 @@
           {{enemy.Name}}
           {{enemy.BASHP}}
           <img ng-src="{{enemy.URL}}" alt="">
+          <b class="state" ng-if="currentTarget === enemy && state">{{state}}</b>
         </div>
       </div>
     </div>
