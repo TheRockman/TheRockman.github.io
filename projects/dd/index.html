@@ -23,8 +23,12 @@
           <span ng-if="char.BUFF">{{char.BUFFTICK}}x{{char.BUFF}}</span>
           {{char.Name}}
           {{char.BASHP}}
-          <img ng-src="{{char.URL}}" alt="">
-          <b class="state" ng-if="currentTarget === char && state">{{state}}</b>
+          <!-- <img ng-src="{{char.URL}}" alt=""> -->
+          <b class="state" ng-if="currentTarget === char && state">
+            {{state.text}}
+          </b>
+          <img class="overlay crit-mark bad" src="https://cdn1.iconfinder.com/data/icons/bomb-6/200/1299-512.png" ng-if="currentTarget === char && state.desc === 'crit'" alt="">
+          <img class="overlay crit-heal good" src="https://i.ya-webdesign.com/images/healthy-vector-medical-19.png" ng-if="currentTarget === char && state.desc === 'heal'" alt="">
         </div>
       </div>
       <div class="align">
@@ -36,8 +40,12 @@
           <span ng-if="enemy.BUFF">{{enemy.BUFFTICK}}x{{enemy.BUFF}}</span>
           {{enemy.Name}}
           {{enemy.BASHP}}
-          <img ng-src="{{enemy.URL}}" alt="">
-          <b class="state" ng-if="currentTarget === enemy && state">{{state}}</b>
+          <!-- <img ng-src="{{enemy.URL}}" alt=""> -->
+          <b class="state" ng-if="currentTarget === enemy && state.text">
+            {{state.text}}
+          </b>
+          <img class="overlay crit-mark bad" src="https://cdn1.iconfinder.com/data/icons/bomb-6/200/1299-512.png" ng-if="currentTarget === enemy && state.desc === 'crit'" alt="">
+          <img class="overlay crit-heal good" src="https://i.ya-webdesign.com/images/healthy-vector-medical-19.png" ng-if="currentTarget === enemy && state.desc === 'heal'" alt="">
         </div>
       </div>
     </div>

@@ -55,7 +55,31 @@ svg, svg path, img{
 .unit img{
   height: 100%;
   width: auto;
-  display: none;
+}
+.overlay{
+  width: auto!important;
+  height: 50%!important;
+}
+.crit-mark{
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  /*enter animate*/
+}
+.crit-heal{
+  transform: scale(0.4);
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  /*enter animate*/
+}
+.bad{
+  filter: drop-shadow(0px 0px 4px red)
+}
+.good{
+  filter: drop-shadow(0px 0px 4px lime)
 }
 
 .active{
@@ -93,6 +117,7 @@ svg, svg path, img{
   outline: 1px solid black;
   margin: 1rem;
   padding: 1rem;
+  color: black;
 }
 button{
   background: green;

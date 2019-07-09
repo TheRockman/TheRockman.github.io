@@ -1,5 +1,9 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout) {
   $scope.pace = 1000;
+  $scope.state = {
+    text: null,
+    desc: null
+  }
 
   $scope.myParty = [];
   $scope.enemyParty = [];
@@ -493,15 +497,22 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             }
             
             if(critBonus > 0 && !heal){
-              $scope.state = 'Critical! ' + combinedDMG + 'DMG';
+              $scope.state.text = 'Critical! ' + combinedDMG + 'DMG';
+              $scope.state.desc = 'crit';
             } else if(critBonus > 0 && heal){
-              $scope.state = 'Critical! ' + combinedDMG + 'Healed';
+              $scope.state.text = 'Critical! ' + combinedDMG + 'Healed';
+              $scope.state.desc = 'critHeal';
             } else if(critBonus === 0 && heal){
-              $scope.state = combinedDMG + 'Healed';
+              $scope.state.text = combinedDMG + 'Healed';
+              $scope.state.desc = 'heal';
             } else{
-              $scope.state = combinedDMG + 'DMG';
+              $scope.state.text = combinedDMG + 'DMG';
+              $scope.state.desc = 'dmg';
             }
-            $timeout( function(){$scope.state = null}, 1000 );
+            $timeout( function(){
+              $scope.state.text = null;
+              $scope.state.desc = null;
+            }, 1000 );
             
             $scope.turnController();
             return;
@@ -509,8 +520,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           } else{
             //The attack missed
             console.log('miss');
-            $scope.state = 'MISS!';
-            $timeout( function(){$scope.state = null}, 1000 );
+            $scope.state.text = 'MISS!';
+            $scope.state.desc = 'miss';
+            $timeout( function(){
+              $scope.state.text = null;
+              $scope.state.desc = null;
+            }, 1000 );
             $scope.attacking = false;
             $scope.turnController();
             return;
