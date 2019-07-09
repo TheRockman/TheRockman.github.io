@@ -20,7 +20,7 @@
           ng-repeat="char in myParty"
           ng-click="target(char, $index)"
           ng-class="{'active': currentChar === char, 'target': currentTarget === char, 'charAttacking': attacking && currentChar === char, 'corpse': char.Dead}">
-          <span ng-if="char.BUFF">{{char.BUFF}}</span>
+          <span ng-if="char.BUFF">{{char.BUFFTICK}}x{{char.BUFF}}</span>
           {{char.Name}}
           {{char.BASHP}}
           <img ng-src="{{char.URL}}" alt="">
@@ -33,7 +33,7 @@
           ng-repeat="enemy in enemyParty"
           ng-click="target(enemy, $index)"
           ng-class="{'active': currentChar === enemy, 'target': currentTarget === enemy, 'enemyAttacking': attacking && currentChar === enemy, 'corpse': enemy.Dead}">
-          <span ng-if="enemy.BUFF">{{enemy.BUFF}}</span>
+          <span ng-if="enemy.BUFF">{{enemy.BUFFTICK}}x{{enemy.BUFF}}</span>
           {{enemy.Name}}
           {{enemy.BASHP}}
           <img ng-src="{{enemy.URL}}" alt="">

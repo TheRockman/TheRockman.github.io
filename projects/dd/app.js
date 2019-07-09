@@ -21,6 +21,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'https://gamepedia.cursecdn.com/darkestdungeon_gamepedia/d/d4/Brigand_Fusilier.png',
       Dead: false,
       Team: 'char',
+      BUFF: null,
+      BUFFTICK: -1,
       BASDMG: 20,
       BASSPD: 10,
       BASACC: 80,
@@ -32,6 +34,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: 0,
+          TARGETPOSMOD: null,
           CRIT: 40,
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
@@ -39,8 +42,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {
           Name: 'Retreat',
           ACCMOD: 0,
-          DMGMOD: -20,
+          DMGMOD: 'none',
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 0,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -50,6 +54,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: 3,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -63,6 +68,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'https://www.pinclipart.com/picdir/big/254-2548584_brigand-matchman-official-darkest-dungeon-wiki-png-clipart.png',
       Dead: false,
       Team: 'char',
+      BUFF: null,
+      BUFFTICK: -1,
       BASDMG: 20,
       BASSPD: 80,
       BASACC: 80,
@@ -74,7 +81,18 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
+          AvailableWhenMyTargetIs: $scope.any,
+          AvailableWhenMyPositionIs: $scope.any
+        },
+        {
+          Name: 'Drag',
+          ACCMOD: -10,
+          DMGMOD: 10,
+          POSMOD: null,
+          CRIT: 10,
+          TARGETPOSMOD: 0,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -83,6 +101,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -96,6 +115,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'https://www.pinclipart.com/picdir/big/254-2548584_brigand-matchman-official-darkest-dungeon-wiki-png-clipart.png',
       Dead: false,
       Team: 'char',
+      BUFF: null,
+      BUFFTICK: -1,
       BASDMG: 20,
       BASSPD: 30,
       BASACC: 80,
@@ -107,6 +128,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -114,8 +136,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {
           Name: 'debuff',
           ACCMOD: -10,
-          DMGMOD: 10,
+          DMGMOD: 'none',
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           BUFF: 'accDebuff',
           AvailableWhenMyTargetIs: $scope.any,
@@ -124,8 +147,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {
           Name: 'buff',
           ACCMOD: -10,
-          DMGMOD: 10,
+          DMGMOD: 'none',
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           BUFF: 'accBuff',
           AvailableWhenMyTargetIs: $scope.any,
@@ -136,6 +160,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: 3,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -149,6 +174,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'https://gamepedia.cursecdn.com/darkestdungeon_gamepedia/d/d4/Brigand_Fusilier.png',
       Dead: false,
       Team: 'char',
+      BUFF: null,
+      BUFFTICK: -1,
       BASDMG: 20,
       BASSPD: 40,
       BASACC: 80,
@@ -160,6 +187,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 40,
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
@@ -169,6 +197,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: 100,
           DMGMOD: -50,
           POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -176,8 +205,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {
           Name: 'Retreat',
           ACCMOD: 0,
-          DMGMOD: -20,
+          DMGMOD: 'none',
           POSMOD: 0,
+          TARGETPOSMOD: null,
           CRIT: 0,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -187,6 +217,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: 3,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -203,6 +234,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'http://www.sclance.com/pngs/darkest-dungeon-png/darkest_dungeon_png_369475.png',
       Dead: false,
       Class: 'fighter',
+      BUFF: null,
+      BUFFTICK: -1,
       BASSPD: 20,
       BASDMG: 5,
       BASACC: 80,
@@ -210,20 +243,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       MAXHP: 50,
       Moves: [
         {
-          Name: 'slice',
-          ACCMOD: -10,
-          DMGMOD: 10,
-          POSMOD: null,
-          CRIT: 10,
-          AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
-        },
-        {
-          Name: 'charge',
-          ACCMOD: -10,
-          DMGMOD: 10,
-          POSMOD: null,
-          CRIT: 10,
+          Name: 'Sneak attack',
+          ACCMOD: 0,
+          DMGMOD: 20,
+          POSMOD: 3,
+          TARGETPOSMOD: null,
+          CRIT: 20,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         }
@@ -236,6 +261,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'http://www.sclance.com/pngs/darkest-dungeon-png/darkest_dungeon_png_369475.png',
       Dead: false,
       Class: 'fighter',
+      BUFF: null,
+      BUFFTICK: -1,
       BASSPD: 20,
       BASDMG: 10,
       BASACC: 80,
@@ -243,19 +270,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       MAXHP: 50,
       Moves: [
         {
-          Name: 'slice',
-          ACCMOD: -10,
-          DMGMOD: 10,
-          POSMOD: null,
-          CRIT: 10,
-          AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
-        },
-        {
           Name: 'charge',
           ACCMOD: -10,
           DMGMOD: 10,
-          POSMOD: null,
+          POSMOD: 0,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -269,6 +288,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'http://www.sclance.com/pngs/darkest-dungeon-png/darkest_dungeon_png_369475.png',
       Dead: false,
       Class: 'fighter',
+      BUFF: null,
+      BUFFTICK: -1,
       BASSPD: 20,
       BASDMG: 1,
       BASACC: 80,
@@ -280,15 +301,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: null,
-          CRIT: 10,
-          AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
-        },
-        {
-          Name: 'charge',
-          ACCMOD: -10,
-          DMGMOD: 10,
-          POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -302,6 +315,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       URL: 'http://www.sclance.com/pngs/darkest-dungeon-png/darkest_dungeon_png_369475.png',
       Dead: false,
       Class: 'fighter',
+      BUFF: null,
+      BUFFTICK: -1,
       BASSPD: 20,
       BASDMG: 20,
       BASACC: 1,
@@ -313,15 +328,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           ACCMOD: -10,
           DMGMOD: 10,
           POSMOD: null,
-          CRIT: 10,
-          AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
-        },
-        {
-          Name: 'charge',
-          ACCMOD: -10,
-          DMGMOD: 10,
-          POSMOD: null,
+          TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
@@ -358,6 +365,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     };
   }
   
+  $scope.checkStatus = function(){
+    if($scope.currentChar.BUFF !== null){
+      if($scope.currentChar.BUFFTICK === -1){
+        $scope.currentChar.BUFF = null;
+      } else{
+        $scope.currentChar.BUFFTICK = $scope.currentChar.BUFFTICK - 1;
+      }
+    }
+  }
+  
   $scope.turnController = function(){
     $timeout( function(){
       $scope.currentTarget = null;
@@ -379,6 +396,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.turnController();
         return;
       }
+      $scope.checkStatus();
       
       if($scope.currentChar.Team === 'enemy'){
         $scope.ai();
@@ -416,10 +434,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         var hitCheck = Math.floor(Math.random() * 101);
         
         //acc buffs/debuffs
-        if($scope.currentChar.BUFF === 'accBuff'){
-          hitCheck = hitCheck / 2;
-        } else if($scope.currentChar.BUFF === 'accDebuff'){
-          hitCheck = hitCheck * 2;
+        if($scope.currentChar.BUFF !== null){
+          if($scope.currentChar.BUFF === 'accBuff'){
+            hitCheck = hitCheck - 10;
+          } else if($scope.currentChar.BUFF === 'accDebuff'){
+            hitCheck = hitCheck + 10;
+          }
         }
         
         $scope.attacking = true;
@@ -439,6 +459,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             
             if(thing.BUFF){
               $scope.currentTarget.BUFF = thing.BUFF;
+              if($scope.currentTarget.BUFFTICK < 0){
+                $scope.currentTarget.BUFFTICK = 2;
+              }
             }
             
             if(thing.POSMOD !== null){
@@ -448,9 +471,18 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
                 $scope.move($scope.myParty, $scope.myParty.indexOf($scope.currentChar), thing.POSMOD);
               }
             }
+            if(thing.TARGETPOSMOD !== null){
+              if($scope.currentTarget.Team === 'enemy'){
+                $scope.move($scope.enemyParty, $scope.enemyParty.indexOf($scope.currentTarget), thing.TARGETPOSMOD);
+              } else{
+                $scope.move($scope.myParty, $scope.myParty.indexOf($scope.currentTarget), thing.TARGETPOSMOD);
+              }
+            }
             var combinedDMG = $scope.currentChar.BASDMG + thing.DMGMOD + critBonus;
             var heal = false;
-            if(thing.DMGMOD < 1){
+            if(thing.DMGMOD === 'none'){
+              combinedDMG = 0;
+            } else if(thing.DMGMOD < 0){
               heal = true;
             }
             
