@@ -55,18 +55,23 @@ svg, svg path, img{
 .unit img{
   height: 100%;
   width: auto;
+  display: none;
 }
 
 .active{
-  outline: 1px solid green;
+  border-bottom: 2px solid white;
+  box-shadow: inset 0px -200px 129px -102px rgba(125,255,158,0.6);
 }
 .target{
-  outline: 1px solid red;
+  border-bottom: 2px solid white;
+  box-shadow: inset 0px -200px 129px -102px rgba(255,127,127,1);
 }
 .charAttacking{
+  z-index: 10;
   transform: scale(1.1) translateX(200px);
 }
 .enemyAttacking{
+  z-index: 10;
   transform: scale(1.1) translateX(-200px);
 }
 .corpse{

@@ -25,6 +25,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASSPD: 10,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'Shot',
@@ -66,6 +67,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASSPD: 80,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'slice',
@@ -98,6 +100,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASSPD: 30,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'slice',
@@ -105,6 +108,26 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           DMGMOD: 10,
           POSMOD: null,
           CRIT: 10,
+          AvailableWhenMyTargetIs: $scope.any,
+          AvailableWhenMyPositionIs: $scope.any
+        },
+        {
+          Name: 'debuff',
+          ACCMOD: -10,
+          DMGMOD: 10,
+          POSMOD: null,
+          CRIT: 10,
+          BUFF: 'accDebuff',
+          AvailableWhenMyTargetIs: $scope.any,
+          AvailableWhenMyPositionIs: $scope.any
+        },
+        {
+          Name: 'buff',
+          ACCMOD: -10,
+          DMGMOD: 10,
+          POSMOD: null,
+          CRIT: 10,
+          BUFF: 'accBuff',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -130,6 +153,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASSPD: 40,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'Shot',
@@ -139,6 +163,15 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           CRIT: 40,
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
+        },
+        {
+          Name: 'Heal',
+          ACCMOD: 100,
+          DMGMOD: -50,
+          POSMOD: null,
+          CRIT: 10,
+          AvailableWhenMyTargetIs: $scope.any,
+          AvailableWhenMyPositionIs: $scope.any
         },
         {
           Name: 'Retreat',
@@ -174,6 +207,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASDMG: 5,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'slice',
@@ -206,6 +240,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASDMG: 10,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'slice',
@@ -238,6 +273,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       BASDMG: 1,
       BASACC: 80,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'slice',
@@ -268,8 +304,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       Class: 'fighter',
       BASSPD: 20,
       BASDMG: 20,
-      BASACC: 80,
+      BASACC: 1,
       BASHP: 50,
+      MAXHP: 50,
       Moves: [
         {
           Name: 'slice',
@@ -377,6 +414,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       
       $timeout( function(){
         var hitCheck = Math.floor(Math.random() * 101);
+        
+        //acc buffs/debuffs
+        if($scope.currentChar.BUFF === 'accBuff'){
+          hitCheck = hitCheck / 2;
+        } else if($scope.currentChar.BUFF === 'accDebuff'){
+          hitCheck = hitCheck * 2;
+        }
+        
         $scope.attacking = true;
         
         $timeout( function(){
@@ -392,6 +437,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             console.log('hit');
             $scope.attacking = false;
             
+            if(thing.BUFF){
+              $scope.currentTarget.BUFF = thing.BUFF;
+            }
+            
             if(thing.POSMOD !== null){
               if($scope.currentChar.Team === 'enemy'){
                 $scope.move($scope.enemyParty, $scope.enemyParty.indexOf($scope.currentChar), thing.POSMOD);
@@ -400,10 +449,23 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               }
             }
             var combinedDMG = $scope.currentChar.BASDMG + thing.DMGMOD + critBonus;
-            $scope.currentTarget.BASHP = $scope.currentTarget.BASHP - combinedDMG;
+            var heal = false;
+            if(thing.DMGMOD < 1){
+              heal = true;
+            }
             
-            if(critBonus > 0){
-              $scope.state = 'Critical ' + combinedDMG + 'DMG';
+            if($scope.currentTarget.BASHP - combinedDMG > $scope.currentTarget.MAXHP){
+              $scope.currentTarget.BASHP = $scope.currentTarget.MAXHP;
+            } else {
+              $scope.currentTarget.BASHP = $scope.currentTarget.BASHP - combinedDMG;
+            }
+            
+            if(critBonus > 0 && !heal){
+              $scope.state = 'Critical! ' + combinedDMG + 'DMG';
+            } else if(critBonus > 0 && heal){
+              $scope.state = 'Critical! ' + combinedDMG + 'Healed';
+            } else if(critBonus === 0 && heal){
+              $scope.state = combinedDMG + 'Healed';
             } else{
               $scope.state = combinedDMG + 'DMG';
             }
