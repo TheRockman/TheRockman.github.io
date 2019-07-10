@@ -127,7 +127,7 @@ svg, svg path, img{
   transform: scale(1.1) translateX(-200px);
 }
 .corpse{
-  background: url('https://vignette.wikia.nocookie.net/darkestdungeon/images/7/79/Shallow_grave.png/revision/latest?cb=20150205110253');
+  background: url('https://vignette.wikia.nocookie.net/darkestdungeon/images/7/79/Shallow_grave.png/revision/latest?cb=20150205110253') no-repeat center bottom;
   background-size: contain;
 }
 .corpse img{

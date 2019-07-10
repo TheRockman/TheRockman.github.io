@@ -101,6 +101,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           AvailableWhenMyPositionIs: $scope.any
         },
         {
+          Name: 'Carve',
+          ACCMOD: 10,
+          DMGMOD: 'none',
+          POSMOD: null,
+          TARGETPOSMOD: null,
+          CRIT: 1,
+          BUFF: 'bleed',
+          AvailableWhenMyTargetIs: $scope.any,
+          AvailableWhenMyPositionIs: $scope.any
+        },
+        {
           Name: 'charge',
           ACCMOD: -10,
           DMGMOD: 10,
@@ -328,12 +339,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       MAXHP: 50,
       Moves: [
         {
-          Name: 'slice',
-          ACCMOD: -10,
-          DMGMOD: 10,
+          Name: 'Carve',
+          ACCMOD: 10,
+          DMGMOD: 'none',
           POSMOD: null,
           TARGETPOSMOD: null,
-          CRIT: 10,
+          CRIT: 1,
+          BUFF: 'bleed',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         }
@@ -375,6 +387,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.currentChar.BUFF = null;
       } else{
         $scope.currentChar.BUFFTICK = $scope.currentChar.BUFFTICK - 1;
+        if($scope.currentChar.BUFF === 'bleed'){
+          $scope.currentChar.BASHP = $scope.currentChar.BASHP - 10;
+          if($scope.currentChar.BASHP < 1){
+            $scope.turnController();
+            return;
+          }
+        }
       }
     }
   }
