@@ -12,8 +12,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.char3 = ['x', 'y', 2, 'z'];
   $scope.char2 = ['x', 1, 'y', 'z'];
   $scope.char1 = [0, 'x', 'y', 'z'];
-  $scope.backLine = ['x', 3, 2, 'y'];
-  $scope.frontLine = ['x', 1, 0, 'y'];
+  $scope.backLine = ['x', 'y', 2, 3];
+  $scope.frontLine = [0, 1, 'x', 'y'];
   $scope.midLine = ['x', 1, 2, 'y'];
   $scope.any = [0, 1, 2, 3];
   
@@ -22,7 +22,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       ID: 'id-' + Math.random().toString(36).substr(2, 16),
       Name: 'Bob',
       Class: 'ranger',
-      URL: 'https://gamepedia.cursecdn.com/darkestdungeon_gamepedia/d/d4/Brigand_Fusilier.png',
+      URL: 'https://d1m0snbrxrb9db.cloudfront.net/uploads%2F20170720T0742Z_e9202a1c753c43c5e4d416d143448c67%2Fhellion-sprite-attack_buff.png',
       Dead: false,
       Team: 'char',
       BUFF: null,
@@ -61,7 +61,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
+          AvailableWhenMyPositionIs: $scope.frontLine
         }
       ]
     },
@@ -69,7 +69,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       ID: 'id-' + Math.random().toString(36).substr(2, 16),
       Name: 'Jane',
       Class: 'fighter',
-      URL: 'https://www.pinclipart.com/picdir/big/254-2548584_brigand-matchman-official-darkest-dungeon-wiki-png-clipart.png',
+      URL: 'https://staticdelivery.nexusmods.com/mods/804/images/195-0-1462634330.png',
       Dead: false,
       Team: 'char',
       BUFF: null,
@@ -87,8 +87,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 10,
-          AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
+          AvailableWhenMyTargetIs: $scope.frontLine,
+          AvailableWhenMyPositionIs: $scope.backLine
         },
         {
           Name: 'Drag',
@@ -108,7 +108,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
+          AvailableWhenMyPositionIs: $scope.frontLine
         }
       ]
     },
@@ -116,7 +116,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       ID: 'id-' + Math.random().toString(36).substr(2, 16),
       Name: 'Simon',
       Class: 'fighter',
-      URL: 'https://www.pinclipart.com/picdir/big/254-2548584_brigand-matchman-official-darkest-dungeon-wiki-png-clipart.png',
+      URL: 'https://unwrittengeek.files.wordpress.com/2015/09/arbalest-sprite-attack_bandage.png?w=768',
       Dead: false,
       Team: 'char',
       BUFF: null,
@@ -134,8 +134,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 10,
-          AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
+          AvailableWhenMyTargetIs: $scope.frontLine,
+          AvailableWhenMyPositionIs: $scope.backLine
         },
         {
           Name: 'debuff',
@@ -167,7 +167,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
+          AvailableWhenMyPositionIs: $scope.frontLine
         }
       ]
     },
@@ -175,7 +175,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       ID: 'id-' + Math.random().toString(36).substr(2, 16),
       Name: 'John',
       Class: 'ranger',
-      URL: 'https://gamepedia.cursecdn.com/darkestdungeon_gamepedia/d/d4/Brigand_Fusilier.png',
+      URL: 'https://i.ya-webdesign.com/images/stress-sprite-darkest-dungeon-png-7.png',
       Dead: false,
       Team: 'char',
       BUFF: null,
@@ -224,7 +224,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 10,
           AvailableWhenMyTargetIs: $scope.any,
-          AvailableWhenMyPositionIs: $scope.any
+          AvailableWhenMyPositionIs: $scope.frontLine
         }
       ]
     }

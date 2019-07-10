@@ -20,15 +20,34 @@
           ng-repeat="char in myParty"
           ng-click="target(char, $index)"
           ng-class="{'active': currentChar === char, 'target': currentTarget === char, 'charAttacking': attacking && currentChar === char, 'corpse': char.Dead}">
-          <span ng-if="char.BUFF">{{char.BUFFTICK}}x{{char.BUFF}}</span>
+          
+          <div ng-if="!char.Dead" class="statuses align jsc">
+            <span ng-if="char.BUFF === 'accBuff'" class="good buff-wrap">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000" d="M12,7L17,12H14V16H10V12H7L12,7M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" />
+              </svg>
+              <div class="tooltip">
+                + ACC for {{char.BUFFTICK + 1}} turns
+              </div>
+            </span>
+            <span ng-if="char.BUFF === 'accDebuff'" class="bad buff-wrap">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000" d="M12,17L7,12H10V8H14V12H17L12,17M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" />
+              </svg>
+              <div class="tooltip">
+                - ACC for {{char.BUFFTICK + 1}} turns
+              </div>
+            </span>
+          </div>
+
           {{char.Name}}
           {{char.BASHP}}
-          <!-- <img ng-src="{{char.URL}}" alt=""> -->
+          <!-- <img class="avatar" ng-src="{{char.URL}}" alt=""> -->
           <b class="state" ng-if="currentTarget === char && state">
             {{state.text}}
           </b>
-          <img class="overlay crit-mark bad" src="https://cdn1.iconfinder.com/data/icons/bomb-6/200/1299-512.png" ng-if="currentTarget === char && state.desc === 'crit'" alt="">
-          <img class="overlay crit-heal good" src="https://i.ya-webdesign.com/images/healthy-vector-medical-19.png" ng-if="currentTarget === char && state.desc === 'heal'" alt="">
+          <img ng-cloak class="overlay crit-mark bad" src="https://cdn1.iconfinder.com/data/icons/bomb-6/200/1299-512.png" ng-if="currentTarget === char && state.desc === 'crit'" alt="">
+          <img ng-cloak class="overlay crit-heal good" src="https://i.ya-webdesign.com/images/healthy-vector-medical-19.png" ng-if="currentTarget === char && state.desc === 'heal'" alt="">
         </div>
       </div>
       <div class="align">
@@ -37,15 +56,34 @@
           ng-repeat="enemy in enemyParty"
           ng-click="target(enemy, $index)"
           ng-class="{'active': currentChar === enemy, 'target': currentTarget === enemy, 'enemyAttacking': attacking && currentChar === enemy, 'corpse': enemy.Dead}">
-          <span ng-if="enemy.BUFF">{{enemy.BUFFTICK}}x{{enemy.BUFF}}</span>
+          
+          <div ng-if="!enemy.Dead" class="statuses align jsc">
+            <span ng-if="enemy.BUFF === 'accBuff'" class="good buff-wrap">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000" d="M12,7L17,12H14V16H10V12H7L12,7M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" />
+              </svg>
+              <div class="tooltip">
+                + ACC for {{enemy.BUFFTICK + 1}} turns
+              </div>
+            </span>
+            <span ng-if="enemy.BUFF === 'accDebuff'" class="bad buff-wrap">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000" d="M12,17L7,12H10V8H14V12H17L12,17M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" />
+              </svg>
+              <div class="tooltip">
+                - ACC for {{enemy.BUFFTICK + 1}} turns
+              </div>
+            </span>  
+          </div>
+          
           {{enemy.Name}}
           {{enemy.BASHP}}
-          <!-- <img ng-src="{{enemy.URL}}" alt=""> -->
+          <!-- <img class="avatar" ng-src="{{enemy.URL}}" alt=""> -->
           <b class="state" ng-if="currentTarget === enemy && state.text">
             {{state.text}}
           </b>
-          <img class="overlay crit-mark bad" src="https://cdn1.iconfinder.com/data/icons/bomb-6/200/1299-512.png" ng-if="currentTarget === enemy && state.desc === 'crit'" alt="">
-          <img class="overlay crit-heal good" src="https://i.ya-webdesign.com/images/healthy-vector-medical-19.png" ng-if="currentTarget === enemy && state.desc === 'heal'" alt="">
+          <img ng-cloak class="overlay crit-mark bad" src="https://cdn1.iconfinder.com/data/icons/bomb-6/200/1299-512.png" ng-if="currentTarget === enemy && state.desc === 'crit'" alt="">
+          <img ng-cloak class="overlay crit-heal good" src="https://i.ya-webdesign.com/images/healthy-vector-medical-19.png" ng-if="currentTarget === enemy && state.desc === 'heal'" alt="">
         </div>
       </div>
     </div>
