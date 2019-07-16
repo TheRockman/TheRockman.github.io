@@ -40,6 +40,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: 0,
           TARGETPOSMOD: null,
           CRIT: 40,
+          Icon: 'shot.PNG',
+          Desc: 'A ranged attack with high crit rate',
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
         },
@@ -50,6 +52,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 0,
+          Icon: 'retreat.PNG',
+          Desc: 'Move to the back',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -60,6 +64,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: 3,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Icon: 'charge.PNG',
+          Desc: 'Attack and move to the front',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.frontLine
         }
@@ -87,6 +93,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Desc: 'A normal attack',
+          Icon: 'slice.PNG',
           AvailableWhenMyTargetIs: $scope.frontLine,
           AvailableWhenMyPositionIs: $scope.backLine
         },
@@ -97,6 +105,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           CRIT: 10,
           TARGETPOSMOD: 0,
+          Icon: 'drag.PNG',
+          Desc: 'Attack and move a enemy to the front',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -108,6 +118,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 1,
           BUFF: 'bleed',
+          Icon: 'carve.PNG',
+          Desc: 'Apply "bleed" to an enemy',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -118,6 +130,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Icon: 'charge.PNG',
+          Desc: 'Attack and move to the front',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.frontLine
         }
@@ -145,6 +159,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Icon: 'slice.PNG',
+          Desc: 'A normal attack',
           AvailableWhenMyTargetIs: $scope.frontLine,
           AvailableWhenMyPositionIs: $scope.backLine
         },
@@ -156,6 +172,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 10,
           BUFF: 'accDebuff',
+          Icon: 'debuff.PNG',
+          Desc: 'Lower targets accuracy',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -167,6 +185,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 10,
           BUFF: 'accBuff',
+          Icon: 'buff.PNG',
+          Desc: 'Increase targets accuracy',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -177,6 +197,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: 3,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Icon: 'charge.PNG',
+          Desc: 'Attack and move to the front',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.frontLine
         }
@@ -204,16 +226,20 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 40,
+          Icon: 'shot.PNG',
+          Desc: 'A ranged attack with high crit rate',
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
         },
         {
-          Name: 'Heal',
+          Name: 'Bandage',
           ACCMOD: 100,
           DMGMOD: -50,
           POSMOD: null,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Icon: 'heal.PNG',
+          Desc: 'Heal target',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -224,6 +250,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: 0,
           TARGETPOSMOD: null,
           CRIT: 0,
+          Icon: 'retreat.PNG',
+          Desc: 'Move to the back',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.any
         },
@@ -234,6 +262,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           POSMOD: 3,
           TARGETPOSMOD: null,
           CRIT: 10,
+          Icon: 'charge.PNG',
+          Desc: 'Attack and move to the front',
           AvailableWhenMyTargetIs: $scope.any,
           AvailableWhenMyPositionIs: $scope.frontLine
         }
@@ -364,7 +394,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.turnIndex = -1;
   
   $scope.ai = function(){
-    $scope.currentTarget = $scope.myParty[0];
+    var randomTarget = Math.floor(Math.random()*3) + 1;
+    
+    $scope.currentTarget = $scope.myParty[randomTarget];
     $scope.doTheThing($scope.currentChar.Moves[0]);
   }
   

@@ -107,11 +107,15 @@
       <hr>
       <div class="align">
         <button class="move" ng-repeat="move in currentChar.Moves" ng-click="doTheThing(move)" ng-disabled="move.AvailableWhenMyTargetIs.indexOf(currentTarget.targetIndex) === -1 || move.AvailableWhenMyPositionIs.indexOf(charIndex) === -1 ">
-          {{move.Name}}
+          <img ng-src="{{move.Icon}}" alt="">
           <br>
           T: <span class="dot" ng-repeat="dot in move.AvailableWhenMyTargetIs" ng-class="{'blip': dot === 'x' || dot === 'y' || dot === 'z'}">■</span>
           <br>
           P: <span class="dit" ng-repeat="dot in move.AvailableWhenMyPositionIs" ng-class="{'blip': dot === 'x' || dot === 'y' || dot === 'z'}">■</span>
+          <div class="tooltip">
+            <h4>{{move.Name}}</h4>
+            {{move.Desc}}
+          </div>
         </button>
       </div>
     </div>
