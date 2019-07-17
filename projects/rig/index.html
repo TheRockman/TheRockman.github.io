@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stage" ng-mousemove="read($event)">
+        <div class="head" ng-style="sway2">
+          <div class="brow align-b jsb" ng-style="IYsway2">
+            <div class="bro"></div>
+            <div class="bro"></div>
+          </div>
+          <div class="eye-wrap align jsb" ng-style="sway1">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+          <div class="cheeks align-b jsb" ng-style="IYsway2"></div>
+          <div class="nose" ng-style="sway1">🌢</div>
+          <div class="mouth" ng-style="IYsway2"></div>
+        </div>
+        <div class="l-ear" ng-class="{'facing': pos.x > 250}" ng-style="IXsway3"></div>
+        <div class="r-ear" ng-class="{'facing': pos.x < 250}" ng-style="IXsway3"></div>
+        <div class="hair" ng-style="sway1"></div>
+    </div>
+    <div class="align jsc">
+      <div id="xbox" class="x-box box">
+        <div class="handle" ng-style="xStyle" id="xhandle"></div>
+      </div>
+      <div id="ybox" class="y-box box">
+        <div class="handle" ng-style="yStyle" id="yhandle"></div>
+      </div>
+      <div id="zbox" class="z-box box">
+        <div class="handle" ng-style="zStyle" id="zhandle"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
