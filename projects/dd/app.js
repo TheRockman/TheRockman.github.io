@@ -4,6 +4,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     text: null,
     desc: null
   }
+  
+  $scope.moveAnouncer = '';
 
   $scope.myParty = [];
   $scope.enemyParty = [];
@@ -41,7 +43,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 40,
           Icon: 'shot.PNG',
-          Desc: 'A ranged attack with high crit rate',
+          Desc: 'Attack with high crit rate',
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
         },
@@ -49,7 +51,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Name: 'Retreat',
           ACCMOD: 0,
           DMGMOD: 'none',
-          POSMOD: null,
+          POSMOD: 0,
           TARGETPOSMOD: null,
           CRIT: 0,
           Icon: 'retreat.PNG',
@@ -127,7 +129,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           Name: 'charge',
           ACCMOD: -10,
           DMGMOD: 10,
-          POSMOD: null,
+          POSMOD: 3,
           TARGETPOSMOD: null,
           CRIT: 10,
           Icon: 'charge.PNG',
@@ -227,7 +229,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           TARGETPOSMOD: null,
           CRIT: 40,
           Icon: 'shot.PNG',
-          Desc: 'A ranged attack with high crit rate',
+          Desc: 'Attack with high crit rate',
           AvailableWhenMyTargetIs: $scope.char4,
           AvailableWhenMyPositionIs: $scope.char1
         },
@@ -394,10 +396,17 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.turnIndex = -1;
   
   $scope.ai = function(){
-    var randomTarget = Math.floor(Math.random()*3) + 1;
+    $scope.currentTarget = {};
     
+    var randomTarget = Math.floor(Math.random()*3) + 1;
     $scope.currentTarget = $scope.myParty[randomTarget];
-    $scope.doTheThing($scope.currentChar.Moves[0]);
+    
+    if($scope.currentTarget.Dead){
+      $scope.ai();
+    } else {
+      var randomMove = Math.floor(Math.random()*$scope.currentChar.Moves.length-1) + 1;
+      $scope.doTheThing($scope.currentChar.Moves[randomMove]);
+    }
   }
   
   $scope.tollTheDead = function(){
@@ -498,6 +507,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }
         
         $scope.attacking = true;
+        $scope.moveAnouncer = thing.Name;
         
         $timeout( function(){
           if($scope.currentChar.BASACC + thing.ACCMOD > hitCheck){
@@ -563,6 +573,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             $timeout( function(){
               $scope.state.text = null;
               $scope.state.desc = null;
+              $scope.moveAnouncer = '';
             }, 1000 );
             
             $scope.turnController();

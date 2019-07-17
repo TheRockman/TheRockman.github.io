@@ -99,7 +99,7 @@ svg, svg path, img{
   z-index: 10000;
   background: #222;
   width: 100px;
-  border-radius: 100px;
+  border: 1px solid white;
   padding: 0.5rem;
   color: white;
 }
@@ -125,6 +125,7 @@ svg, svg path, img{
 .active{
   /* border-bottom: 2px solid white; */
   box-shadow: inset 0px -200px 129px -102px rgba(125,255,158,0.6);
+  position: relative;
 }
 .target{
   /* border-bottom: 2px solid white; */
