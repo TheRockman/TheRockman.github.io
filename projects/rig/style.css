@@ -92,6 +92,15 @@ svg, svg path, img{
   height: 50px;
   z-index: 3;
 }
+.brow2{
+  position:absolute;
+  pointer-events: none;
+  top: 110px;
+  left: 125px;
+  width: 50%;
+  height: 50px;
+  z-index: 3;
+}
 .bro{
   width: 75px;
   height: 25px;
