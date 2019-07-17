@@ -56,7 +56,7 @@ svg, svg path, img{
 }
 .box{
   position: relative;
-  outline: 3px dashed rgba(0, 0, 0, 0.2); 
+  outline: 3px dashed rgba(0, 0, 0, 0.2);
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.05);
@@ -68,7 +68,7 @@ svg, svg path, img{
   overflow: hidden;
   width: 500px;
   height: 500px;
-  outline: 3px dashed rgba(0, 0, 0, 0.2); 
+  outline: 3px dashed rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   margin-top: 5%;
 }
@@ -95,9 +95,9 @@ svg, svg path, img{
 .brow2{
   position:absolute;
   pointer-events: none;
-  top: 110px;
+  top: 120px;
   left: 125px;
-  width: 50%;
+  width: 100%;
   height: 50px;
   z-index: 3;
 }
@@ -118,6 +118,30 @@ svg, svg path, img{
   z-index: 1;
   border-radius: 200px;
   position: relative;
+}
+.body{
+  height: 400px;
+  width: 50%;
+  left: 0;
+  right: 0;
+  top: 250px;
+  background: purple;
+  margin: 0 auto;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 200px;
+  position: absolute;
+  border-top: 40px solid #333;
+}
+.brow-wrap{
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .hair{
   background: #333;
@@ -155,6 +179,9 @@ svg, svg path, img{
   background: #333;
   border-radius: 1000px;
   display: inline-block;
+  animation: blink-1 3.5s both;
+  animation-iteration-count: infinite;
+  transform-origin: center;
 }
 .eye-wrap{
   position: absolute;
@@ -162,6 +189,16 @@ svg, svg path, img{
   left: 40px;
   right: 40px;
 }
+
+@keyframes blink-1 {
+  0% {
+    transform: rotateX(90deg);
+  }
+  10% {
+    transform: rotateX(0deg);
+  }
+}
+
 .l-ear{
   height: 75px;
   width: 45px;
