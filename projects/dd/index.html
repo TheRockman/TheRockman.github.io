@@ -10,23 +10,25 @@
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <script type="text/javascript" src="../../carousel.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Julee&display=swap" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <h2 class="center">
+    <h2 class="center logger">
       <span ng-if="moveAnouncer.length > 0">
-        _
         {{moveAnouncer}}
       </span>
     </h2>
     <div class="align jsb stage relative">
+      <div class="backdrop" ng-class="{'cameraBlur':attacking}"></div>
       <div class="align">
         <div
           class="unit relative"
           ng-repeat="char in myParty"
           ng-click="target(char, $index)"
-          ng-class="{'active': currentChar === char, 'target': currentTarget === char, 'charAttacking': attacking && currentChar === char, 'corpse': char.Dead}">
+          ng-class="{'active': currentChar === char, 'target': currentTarget === char, 'charAttacking': attacking && currentChar === char, 'charBeingAttacked': attacking && currentTarget === char,  'corpse': char.Dead, 'cameraBlur':attacking && currentChar !== char && currentTarget !== char}">
           
+          <!-- <img ng-cloak class="dmg-indicator reverse" ng-if="currentTarget === char && attacking && state.desc !== 'miss' && currentChar.Team === 'enemy'" src="https://png2.kisspng.com/sh/cb0ca57f44c28c58a403737e91250b10/L0KzQYm3U8E4N5DAfZH0aYP2gLBuTfJtd5DpRdZ7YYfsfri0gBxqeF5miuY2Ynzyf7W0kCBtaaV5feQ2cH7qPYbogfQzbpVpe6sDNkG8PoeCU8I0PWg8Sac7MUK8SYW5UcgzPWYziNDw/kisspng-blood-drawing-clip-art-blood-splatter-png-5aad2fddc98619.6932357715212994218255.png" alt=""> -->
           <div ng-if="!char.Dead" class="statuses align jsc">
             <span ng-if="char.BUFF === 'accBuff'" class="good buff-wrap">
               <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -69,8 +71,9 @@
           class="unit relative"
           ng-repeat="enemy in enemyParty"
           ng-click="target(enemy, $index)"
-          ng-class="{'active': currentChar === enemy, 'target': currentTarget === enemy, 'enemyAttacking': attacking && currentChar === enemy, 'corpse': enemy.Dead}">
+          ng-class="{'active': currentChar === enemy, 'target': currentTarget === enemy, 'enemyAttacking': attacking && currentChar === enemy, 'enemyBeingAttacked': attacking && currentTarget === enemy, 'corpse': enemy.Dead,  'cameraBlur': attacking && currentChar !== enemy && currentTarget !== enemy}">
           
+          <!-- <img ng-cloak class="dmg-indicator" ng-if="currentTarget === enemy && attacking && state.desc !== 'miss' && currentChar.Team === 'char'" src="https://png2.kisspng.com/sh/cb0ca57f44c28c58a403737e91250b10/L0KzQYm3U8E4N5DAfZH0aYP2gLBuTfJtd5DpRdZ7YYfsfri0gBxqeF5miuY2Ynzyf7W0kCBtaaV5feQ2cH7qPYbogfQzbpVpe6sDNkG8PoeCU8I0PWg8Sac7MUK8SYW5UcgzPWYziNDw/kisspng-blood-drawing-clip-art-blood-splatter-png-5aad2fddc98619.6932357715212994218255.png" alt=""> -->
           <div ng-if="!enemy.Dead" class="statuses align jsc">
             <span ng-if="enemy.BUFF === 'accBuff'" class="good buff-wrap">
               <svg style="width:24px;height:24px" viewBox="0 0 24 24">

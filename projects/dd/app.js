@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout) {
-  $scope.pace = 1000;
+  $scope.pace = 1500;
   $scope.state = {
     text: null,
     desc: null
@@ -507,7 +507,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }
         
         $scope.attacking = true;
+        
         $scope.moveAnouncer = thing.Name;
+        
+        $timeout( function(){
+          $scope.moveAnouncer = '';
+        }, $scope.pace - 100 );
         
         $timeout( function(){
           if($scope.currentChar.BASACC + thing.ACCMOD > hitCheck){
@@ -574,7 +579,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               $scope.state.text = null;
               $scope.state.desc = null;
               $scope.moveAnouncer = '';
-            }, 1000 );
+            }, $scope.pace );
             
             $scope.turnController();
             return;
@@ -587,7 +592,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             $timeout( function(){
               $scope.state.text = null;
               $scope.state.desc = null;
-            }, 1000 );
+            }, $scope.pace );
             $scope.attacking = false;
             $scope.turnController();
             return;

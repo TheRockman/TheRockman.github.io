@@ -56,6 +56,7 @@ svg, svg path, img{
   height: 200px;
   transition: var(--animation);
   margin: 0 0.5rem;
+  position: relative;
   text-align: center;
 }
 .avatar{
@@ -82,10 +83,10 @@ svg, svg path, img{
   /*enter animate*/
 }
 .bad{
-  filter: drop-shadow(0px 0px 4px red)
+  filter: drop-shadow(0px 0px 4px red);
 }
 .good{
-  filter: drop-shadow(0px 0px 4px lime)
+  filter: drop-shadow(0px 0px 4px lime);
 }
 .buff-wrap{
   position: relative;
@@ -125,34 +126,78 @@ svg, svg path, img{
 .active{
   /* border-bottom: 2px solid white; */
   box-shadow: inset 0px -200px 129px -102px rgba(125,255,158,0.6);
+  filter: drop-shadow(0px 0px 4px lime);
   position: relative;
 }
 .target{
   /* border-bottom: 2px solid white; */
   box-shadow: inset 0px -200px 129px -102px rgba(255,127,127,1);
+  filter: drop-shadow(0px 0px 4px red);
 }
 .charAttacking{
   z-index: 10;
-  transform: scale(1.1) translateX(200px);
+  transform: scale(1.5) translateX(150px) translateY(60px) rotate(3deg);
 }
 .enemyAttacking{
   z-index: 10;
-  transform: scale(1.1) translateX(-200px);
+  transform: scale(1.5) translateX(-150px) translateY(60px) rotate(-3deg);
+}
+.enemyBeingAttacked{
+  z-index: 10;
+  transform: scale(1.5) translateX(-150px) translateY(60px) rotate(3deg);
+}
+.charBeingAttacked{
+  z-index: 10;
+  transform: scale(1.5) translateX(150px) translateY(60px) rotate(-3deg);
 }
 .corpse{
   background: url('https://vignette.wikia.nocookie.net/darkestdungeon/images/7/79/Shallow_grave.png/revision/latest?cb=20150205110253') no-repeat center bottom;
   background-size: contain;
 }
+
+.dmg-indicator{
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+.reverse{
+  left: -20px;
+  transform: rotateY(180deg);
+}
+
 .corpse img{
   display: none;
 }
-
+.logger{
+  font-family: 'Julee', cursive;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: white;
+  filter: drop-shadow(0px 0px 4px #333);
+}
 
 .stage{
   height: 50vh;
   overflow: hidden;
   width: 90vw;
   margin: 0 auto;
+}
+.backdrop{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://pbs.twimg.com/media/CqH2o0lW8AAw6q9.jpg') center 130% no-repeat;
+  background-size: cover;
+}
+.cameraBlur{
+  filter: blur(5px);
 }
 
 .move{
