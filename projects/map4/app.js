@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout, $document, $window) {
   $scope.charIndex = 147;
   $scope.wipeout = false;
+  $scope.score = 0;
   $scope.speed = 60;
   $scope.grid = [];
   for (let i = -1, len = 200; ++i < len;) {
@@ -11,7 +12,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   $scope.checkCrash = function(){
     if($scope.grid[$scope.charIndex].solid){
-        console.log('crash');
+          $scope.wipeout = false;
           $scope.speed = 10000;
         $timeout( function(){
           $window.location.reload();
@@ -38,7 +39,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             solid: Math.floor(Math.random() * 50) + 1 === 50
           }
         );
-        $scope.grid.pop();
+        var popped = $scope.grid.pop();
+        if(popped.solid){
+          $scope.score = $scope.score + 900;
+        }
       };
       
       $scope.forward();
@@ -48,7 +52,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   
   $document.bind('keydown', function (e) {
-    if(e.keyCode === 65 || e.keyCode === 37){
+    if($scope.wipeout){
+      return;
+    } else if(e.keyCode === 65 || e.keyCode === 37){
       //left
       console.log('left');
       if($scope.charIndex > 145){
@@ -62,6 +68,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.charIndex++;
         $scope.checkCrash();
       }
+    } else if(e.keyCode === 75){
+      $scope.speed = 120;
     }
   });
 });
