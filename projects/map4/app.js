@@ -18,7 +18,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       $scope.speed = 100000;
       $scope.youWin = true;
     }
-    if($scope.grid[$scope.charIndex].solid){
+    if($scope.grid[$scope.charIndex].solid || $scope.youWin){
           $scope.wipeout = true;
           $scope.speed = 10000;
           $scope.topScore = window.localStorage.getItem('score');
