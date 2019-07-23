@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout, $document, $window) {
   $scope.charIndex = 147;
   $scope.wipeout = false;
+  $scope.bossHp = 100;
   $scope.topScore = window.localStorage.getItem('score');
   $scope.score = 0;
   $scope.speed = 60;
@@ -12,6 +13,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   };
   
   $scope.checkCrash = function(){
+    if($scope.bossHp < 1){
+      $scope.feverTime = false;
+      $scope.speed = 100000;
+      $scope.youWin = true;
+    }
     if($scope.grid[$scope.charIndex].solid){
           $scope.wipeout = true;
           $scope.speed = 10000;
@@ -29,7 +35,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.fever = function(){
     $timeout( function(){
       $scope.feverTime = true;
-      $scope.speed = 30;
+      $scope.speed = 40;
     }, 120000);
   }
   $scope.fever();
@@ -47,6 +53,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         );
         var popped = $scope.grid.pop();
         if(popped.solid){
+          if($scope.feverTime){
+            $scope.bossDmg = true;
+            $scope.bossHp = $scope.bossHp - 1;
+            $timeout( function(){
+              $scope.bossDmg = false;
+            }, 100);
+          }
           $scope.score = $scope.score + 900;
         }
       };
@@ -75,7 +88,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.checkCrash();
       }
     } else if(e.keyCode === 75){
-      $scope.speed = 120;
+      $scope.speed = 300;
     }
   });
 });
