@@ -1,7 +1,7 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout, $document, $window) {
   $scope.charIndex = 147;
   $scope.wipeout = false;
-  $scope.speed = 50;
+  $scope.speed = 60;
   $scope.grid = [];
   for (let i = -1, len = 200; ++i < len;) {
     $scope.grid.push({
@@ -18,6 +18,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }, 1000);
     }
   };
+  
+  $scope.fever = function(){
+    $timeout( function(){
+      $scope.feverTime = true;
+      $scope.speed = 30;
+    }, 120000);
+  }
+  $scope.fever();
   
   //forward
   $scope.forward = function(){

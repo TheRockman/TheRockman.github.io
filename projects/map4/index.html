@@ -14,7 +14,8 @@
 <body>
   <div ng-controller="mainCtrl">
     <div class="fade"></div>
-    <div class="grid-wrap">
+    <img src="https://www.laguiadelvaron.com/wp-content/uploads/2017/09/45dc86f84906fcf2e90cae87f54758fd.gif" class="boss" alt="">
+    <div class="grid-wrap" ng-class="{'fever': feverTime}">
       <div class="tile" ng-repeat="tile in grid" ng-class="{'solid': tile.solid, 'char': $index === charIndex}">
         <img src="https://tchol.org/images/loading-bar-gif-png-5.gif" ng-if="$index === charIndex" alt="">
         <!-- <img src="https://i.ya-webdesign.com/images/destiny-ghost-gif-png-3.gif" ng-if="$index === charIndex" alt=""> -->
