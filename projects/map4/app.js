@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout, $document, $window) {
   $scope.charIndex = 147;
   $scope.wipeout = false;
+  $scope.topScore = window.localStorage.getItem('score');
   $scope.score = 0;
   $scope.speed = 60;
   $scope.grid = [];
@@ -12,8 +13,13 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   $scope.checkCrash = function(){
     if($scope.grid[$scope.charIndex].solid){
-          $scope.wipeout = false;
+          $scope.wipeout = true;
           $scope.speed = 10000;
+          $scope.topScore = window.localStorage.getItem('score');
+          if(!$scope.topScore || $scope.topScore < $scope.score){
+            $scope.topScore = $scope.score;
+            window.localStorage.setItem('score', $scope.score);
+          }
         $timeout( function(){
           $window.location.reload();
         }, 1000);
