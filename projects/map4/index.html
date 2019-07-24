@@ -18,7 +18,8 @@
     <div class="stats">
       <h1 data-after="SCORE">SCORE</h1>
       <p class="score">{{score}}</p>
-      <p ng-if="topScore">Best {{topScore}}</p>
+      <p ng-if="topScore">Best: {{topScore}}</p>
+      <p ng-if="topScore">Last: {{lastScore}}</p>
     </div>
     <div class="fade"></div>
     <img src="https://www.laguiadelvaron.com/wp-content/uploads/2017/09/45dc86f84906fcf2e90cae87f54758fd.gif" ng-if="bossHp > 0" class="boss" ng-class="{'bossDmg': bossDmg}" alt="">

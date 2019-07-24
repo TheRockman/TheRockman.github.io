@@ -3,6 +3,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.wipeout = false;
   $scope.bossHp = 100;
   $scope.topScore = window.localStorage.getItem('score');
+  $scope.lastScore = window.localStorage.getItem('lastscore');
   $scope.score = 0;
   $scope.speed = 60;
   $scope.grid = [];
@@ -26,6 +27,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             $scope.topScore = $scope.score;
             window.localStorage.setItem('score', $scope.score);
           }
+          window.localStorage.setItem('lastscore', $scope.score);
         $timeout( function(){
           $window.location.reload();
         }, 1000);
