@@ -1,7 +1,9 @@
 var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout, $document, $window) {
   $scope.charIndex = 147;
+  $scope.sound = window.localStorage.getItem('sound');
   $scope.wipeout = false;
   $scope.bossHp = 100;
+  var audio = new Audio('pew1.mp3');
   $scope.topScore = window.localStorage.getItem('score');
   $scope.lastScore = window.localStorage.getItem('lastscore');
   $scope.score = 0;
@@ -34,6 +36,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     }
   };
   
+  $scope.toggleSound = function(){
+    $scope.sound = !$scope.sound;
+    window.localStorage.setItem('sound', $scope.sound);
+  }
+  
   $scope.fever = function(){
     $timeout( function(){
       $scope.feverTime = true;
@@ -53,6 +60,15 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
             solid: Math.floor(Math.random() * 50) + 1 === 50
           }
         );
+        
+        if($scope.sound){
+          if($scope.grid[0].solid || $scope.grid[1].solid || $scope.grid[2].solid || $scope.grid[3].solid || $scope.grid[4].solid){
+            $timeout( function(){
+              audio.play();
+            }, 2000);
+          }
+        }
+
         var popped = $scope.grid.pop();
         if(popped.solid){
           if($scope.feverTime){
