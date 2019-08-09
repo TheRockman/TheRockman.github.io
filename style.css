@@ -66,42 +66,7 @@ nav{
   text-decoration: none;
 }
 .content{
-  margin: 3%;
-}
-
-.avatar{
-  width: 100px;
-  height: 100px;
-  border-radius: 1000px;
-  background: #3f51b5;
-  border: 3px outset white;
-  margin-right: 1rem;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
-}
-
-.avatar img{
-  height: 130px;
-  width: auto;
-  position: absolute;
-  bottom: 15px;
-  left: 16px;
-  z-index: 1;
-}
-.fade{
-  width: 100%;
-  height: 100px;
-  transform-origin: center;
-  transform: rotate(10deg) scale(1);
-  border-bottom-left-radius: 1000px;
-  border-bottom-right-radius: 1000px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(229,112,231,0) 67%, #2a2648 72%, #272343 100%);
-}
-.fade2{
-      background: linear-gradient(to bottom, rgba(229,112,231,0) 45%, #8a2b96 85%, #ff00eb 100%);
+  
 }
 
 /* ng-animate */
@@ -184,6 +149,22 @@ nav{
 }
 .menuOpen{
   left: 0;
+}
+
+.hero{
+  width: 100vw;
+  height: 66vh;
+  background: red;
+  overflow: hidden;
+}
+.avatar{
+  position: absolute;
+  height: 33vh;
+  width: auto;
+  right: 0;
+  bottom: 0;
+  transition: var(--animation);
+  transform: rotateY(180deg);
 }
 
 /*fluid layout*/
@@ -296,8 +277,10 @@ nav{
   .profile{
     order: -1;
   }
-  .content{
-    margin: 1rem;
+  .content{  }
+  .avatar{
+    left: 0;
+    margin: 0 auto;
   }
 }
 
