@@ -42,18 +42,19 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   
   $scope.compare = function(a, b){
     var mod = 1
+    $scope.result = 'n';
     if(eval(a).strong.includes(eval(b).name)){
       if($scope.globalSide === eval(a).side){
         mod = 2;
       }
-      $scope.result = eval(a);
+      $scope.result = 'a';
       $scope.p2.hp = $scope.p2.hp -mod;
       $scope.globalSide = eval(a).side;
     } else if(eval(b).strong.includes(eval(a).name)){
       if($scope.globalSide === eval(b).side){
         mod = 2;
       }
-      $scope.result = eval(b);
+      $scope.result = 'b';
       $scope.p1.hp = $scope.p1.hp -mod;
       $scope.globalSide = eval(b).side;
     }
