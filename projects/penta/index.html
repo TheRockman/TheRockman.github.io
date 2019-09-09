@@ -137,7 +137,7 @@
     <div class="center battlefield row" ng-cloak ng-if="color1 && color2">
       <div class="flex"></div>
       <div class="flex">
-        <div class="card" ng-class="{'a2b':result === 'a', 'drawa':result === 'n'}">
+        <div class="card" ng-class="{'a2b':result === 'a', 'b2a-hit':result === 'b', 'drawa':result === 'n'}">
           {{color1}}
         </div>
       </div>
@@ -145,7 +145,7 @@
         <button type="button" ng-click="compare(color1, color2)" name="button">go</button>
       </div>
       <div class="flex">
-        <div class="card" ng-class="{'b2a':result === 'b', 'drawb':result === 'n'}">
+        <div class="card" ng-class="{'b2a':result === 'b', 'a2b-hit':result === 'a', 'drawb':result === 'n'}">
           {{color2}}
         </div>
       </div>
