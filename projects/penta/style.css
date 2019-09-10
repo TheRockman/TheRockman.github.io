@@ -153,6 +153,7 @@ h4{
   box-shadow: var(--level2);
   position: relative;
   cursor: pointer;
+  user-select: none;
 }
 .red{
   background: var(--red);
@@ -241,6 +242,8 @@ h4{
   padding: var(--spacer);
   text-align: center;
   z-index: 10;
+  color: black;
+  text-transform: uppercase;
 }
 .lock{
   animation: slide-in-blurred-top 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
