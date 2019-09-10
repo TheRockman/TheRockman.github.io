@@ -1,4 +1,8 @@
 var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope, $timeout) {
+  
+  var bash = new Audio('bash.mp3');
+  var dink = new Audio('dink.mp3');
+  var lock  = new Audio('lock.mp3');
 
   $scope.p1 = {
     hp: 5
@@ -40,6 +44,10 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     weak: ['purple', 'green']
   }
   
+  $scope.play = function(input){
+    eval(input).play();
+  }
+  
   $scope.compare = function(a, b){
     var mod = 1
     $scope.result = 'n';
@@ -50,6 +58,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       $scope.result = 'a';
       $scope.p2.hp = $scope.p2.hp -mod;
       $scope.globalSide = eval(a).side;
+      $timeout( function(){$scope.play('bash');}, 650 );
     } else if(eval(b).strong.includes(eval(a).name)){
       if($scope.globalSide === eval(b).side){
         mod = 2;
@@ -57,6 +66,9 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       $scope.result = 'b';
       $scope.p1.hp = $scope.p1.hp -mod;
       $scope.globalSide = eval(b).side;
+      $timeout( function(){$scope.play('bash');}, 650 );
+    } else{
+      $timeout( function(){$scope.play('dink');}, 200 );
     }
     
     $timeout( function(){

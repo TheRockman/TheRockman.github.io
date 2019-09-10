@@ -23,6 +23,7 @@ body{
   color: white;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
+  overflow: hidden;
   transition: background 600ms cubic-bezier(.33,.11,.02,.99);
 }
 body::after{
@@ -188,6 +189,18 @@ h4{
   display: none;
 }
 
+
+.char{
+  position: absolute;
+  width: 200px;
+  height: auto;
+  left: 0;
+  transform-origin: center;
+}
+.invert-char{
+  /* transform: rotateY(180deg); */
+  right: 0;
+}
 /*fluid layout*/
 /*
 .fluid-row {
@@ -226,6 +239,7 @@ h4{
   transition: all 150ms ease-in-out;
   margin: var(--spacer);
   padding: var(--spacer);
+  text-align: center;
 }
 .lock{
   animation: slide-in-blurred-top 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
@@ -285,7 +299,7 @@ h4{
     transform: translateX(-10px) rotate(5deg);
   }
   100% {
-    transform: translate(0) rotate(0deg);
+    transform: translateX(1000px) rotate(-360deg);
   }
 }
 
@@ -323,7 +337,7 @@ h4{
     transform: translateX(10px) rotate(-5deg);
   }
   100% {
-    transform: translate(0) rotate(0deg);
+    transform: translateX(-1000px) rotate(360deg);
   }
 }
 
