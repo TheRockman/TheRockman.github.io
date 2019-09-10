@@ -2,7 +2,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   
   var bash = new Audio('bash.mp3');
   var dink = new Audio('dink.mp3');
-  var lock  = new Audio('lock.mp3');
+  var lock1  = new Audio('lock.mp3');
+  var lock2  = new Audio('lock.mp3');
 
   $scope.p1 = {
     hp: 5
