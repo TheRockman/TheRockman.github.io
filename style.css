@@ -16,6 +16,7 @@ body{
   overflow-x: hidden;
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
+  color: white;
   padding-bottom: 44px;
   overflow-x: hidden;
 }
@@ -66,7 +67,7 @@ nav{
   text-decoration: none;
 }
 .content{
-  
+  line-height: 1.5em;
 }
 
 /* ng-animate */
@@ -146,6 +147,7 @@ nav{
   background: #222;
   border:none;
   outline: none;
+  color: white;
 }
 .menuOpen{
   left: 0;
@@ -154,17 +156,8 @@ nav{
 .hero{
   width: 100vw;
   height: 66vh;
-  background: red;
+  background: linear-gradient(45deg, rgba(81,80,156,1) 0%,rgba(173,73,188,1) 71%,rgba(149,67,214,1) 100%);
   overflow: hidden;
-}
-.avatar{
-  position: absolute;
-  height: 33vh;
-  width: auto;
-  right: 0;
-  bottom: 0;
-  transition: var(--animation);
-  transform: rotateY(180deg);
 }
 
 /*fluid layout*/

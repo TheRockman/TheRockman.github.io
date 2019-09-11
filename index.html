@@ -27,19 +27,19 @@
       <div ng-repeat="project in projects | filter: filter">
         <a target="_blank" href="projects/{{project.path}}/index.html" ng-mouseenter="preview(project)"> {{project.path}} </a>
       </div>
-      <img style="width: 200px; margin: 0 auto; height: auto; filter:drop-shadow(-30px 0 6px rgba(0,0,0,0.3));" src="https://i.imgur.com/j51uHm1.gif" alt="">
+      <img ng-if="!filter.path" style="width: 200px; margin: 0 auto; height: auto; filter:drop-shadow(-30px 0 6px rgba(0,0,0,0.3));" src="https://i.imgur.com/j51uHm1.gif" alt="">
     </div>
     
     <div class="content" ng-click="menu = false">
       <div class="hero relative">
         <div class="row">
-          <div class="flex x2 center">
-            <h1>Rockman</h1>
-          </div>
-          <div class="flex center">
-            <img class="avatar" src="" alt="">
+          <div class="flex x2">
+            <h1>&nbsp;Rockman</h1>
           </div>
         </div>
+      </div>
+      <div class="">
+
       </div>
     </div>
   </div>
