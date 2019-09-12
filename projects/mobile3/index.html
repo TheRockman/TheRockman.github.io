@@ -9,32 +9,33 @@
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <script type="text/javascript" src="../../carousel.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
     <div class="stage">
-      <div class="backdrop"></div>
-      <img src="http://inkrea.se/wp-content/uploads/2016/05/placeholder-logo-300x217.png" class="logo" alt="">
-      <ul class="menu" rn-carousel rn-carousel-transition="slide">
-        <li>
-          <img src="https://toppng.com/public/uploads/preview/pepperoni-pizza-115269026294dpmzfbizi.png" alt="">
-          <h3>Cheese</h3>
-        </li>
-        <li>
-          <img src="https://toppng.com/public/uploads/preview/pepperoni-pizza-115269026294dpmzfbizi.png" alt="">
-          <h3>Cheese</h3>
-        </li>
-        <li>
-          <img src="https://toppng.com/public/uploads/preview/pepperoni-pizza-115269026294dpmzfbizi.png" alt="">
-          <h3>Cheese</h3>
-        </li>
-        <div class="btn" ng-click="size = !size" ng-class="{'size':size}">
-          Order
-          <div ng-if="size">
-            S M L
-          </div>
+      <div class="align jsb slidewrap">
+        <div class="slide" ng-class="{'left':slide === 0, 'middle':slide === 1, 'right':slide === 2,}">
+          <p ng-if="slide === 0">INSIDE THE EIGHTH DIMENSION...</p>
+          <p ng-if="slide === 1">I SEE YOU´VE COME <b>BACK</b> DEAR DOCTOR!</p>
+          <p ng-if="slide === 2">
+            YOU LEARN TO FOLLOW THE GUYS WHO ALWAYS SEEM TO KNOW WHERE THEY´RE HEADED.
+            <div></div>
+            <div></div>
+            <div></div>
+          </p>
         </div>
+      </div>
+      <ul class="menu" rn-carousel rn-carousel-index="slide" rn-carousel-transition="slide" rn-carousel-locked="active" rn-carousel-controls-allow-loop="true">
+        <li ng-dblclick="toggleActive()">
+          <img src="https://www.kraken.com/_assets/files/2019-01/kraken_body01_final_01/orig.png" alt="">
+        </li>
+        <li ng-dblclick="toggleActive()">
+          <img src="https://www.kraken.com/_assets/files/2019-04/intermediate3/orig.png" alt="">
+        </li>
+        <li ng-dblclick="toggleActive()">
+          <img src="https://i-love-png.com/images/kraken_body03_final_01.png" alt="">
+        </li>
       </ul>
     </div>
 
