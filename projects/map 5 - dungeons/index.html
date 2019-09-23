@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    
+    <div class="wrap">
+      <div class="tile" ng-class="{
+        'player': tile.tile === 'player',
+        's': tile.tile === 'player' && facing === 's',
+        'e': tile.tile === 'player' && facing === 'e',
+        'w': tile.tile === 'player' && facing === 'w',
+        'n': tile.tile === 'player' && facing === 'n',
+        'wall': tile.tile === 'wall',
+        'enemy1': tile.tile === 'enemy1',
+        'enemy2': tile.tile === 'enemy2',
+        'door': tile.tile === 'door',
+        'hole': tile.tile === 'hole'
+        }"
+        ng-repeat="tile in currentRoom.map track by $index"></div>
+    </div>
+    
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
