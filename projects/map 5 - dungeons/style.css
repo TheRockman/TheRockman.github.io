@@ -61,7 +61,16 @@ svg, svg path, img{
   background: blue!important;
 }
 .player{
-  background: green!important;
+  position: relative;
+}
+.player::before{
+  content: '_';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: green;
 }
 .enemy1{
   background: purple!important;
@@ -69,17 +78,50 @@ svg, svg path, img{
 .enemy1{
   background: purple!important;
 }
-.n{
+.n::before{
   box-shadow: inset 0px 10px 5px 0px rgba(0,0,0,0.75);
+  animation-name: n-step;
+  animation-duration: 99ms;
+  animation-fill-mode: forwards;
 }
-.s{
+@keyframes n-step {
+  0% {transform: translateY(0px);}
+  99% {transform: translateY(-8px);}
+  100% {transform: translateY(0px);}
+}
+
+.s::before{
   box-shadow: inset 0px -10px 5px 0px rgba(0,0,0,0.75);
+  animation-name: s-step;
+  animation-duration: 99ms;
+  animation-fill-mode: forwards;
 }
-.w{
+@keyframes s-step {
+  0% {transform: translateY(0px);}
+  99% {transform: translateY(8px);}
+  100% {transform: translateY(0px);}
+}
+.w::before{
   box-shadow: inset 10px 0px 5px 0px rgba(0,0,0,0.75);
+  animation-name: w-step;
+  animation-duration: 99ms;
+  animation-fill-mode: forwards;
 }
-.e{
+@keyframes w-step {
+  0% {transform: translateX(0px);}
+  99% {transform: translateX(-8px);}
+  100% {transform: translateX(0px);}
+}
+.e::before{
   box-shadow: inset -10px 0px 5px 0px rgba(0,0,0,0.75);
+  animation-name: e-step;
+  animation-duration: 99ms;
+  animation-fill-mode: forwards;
+}
+@keyframes e-step {
+  0% {transform: translateX(0px);}
+  99% {transform: translateX(8px);}
+  100% {transform: translateX(0px);}
 }
 
 /* ng-animate */

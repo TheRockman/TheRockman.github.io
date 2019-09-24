@@ -139,53 +139,58 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           originalRoom = $scope.rooms[j];
         }
       }
-
-      $timeout( function(){
+      var timing = 100;
         if (e.key === "ArrowRight") {
           $scope.facing = 'e';
-          if($scope.currentRoom.map[playerTile.index+1].door && $scope.currentRoom.eastExit){
-            $scope.roomChange($scope.currentRoom.eastExit);
-          }
-          else if(!$scope.currentRoom.map[playerTile.index+1].solid){
-            $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
-            $scope.currentRoom.map[playerTile.index+1] = $scope.originalPlayer;
-          }
+          $timeout( function(){
+            if($scope.currentRoom.map[playerTile.index+1].door && $scope.currentRoom.eastExit){
+              $scope.roomChange($scope.currentRoom.eastExit);
+            }
+            else if(!$scope.currentRoom.map[playerTile.index+1].solid){
+              $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
+              $scope.currentRoom.map[playerTile.index+1] = $scope.originalPlayer;
+            }
+          }, timing );
         }
         if (e.key === "ArrowLeft") {
           $scope.facing = 'w';
-          if($scope.currentRoom.map[playerTile.index-1].door && $scope.currentRoom.westExit){
-            $scope.roomChange($scope.currentRoom.westExit);
-          }
-          else if(!$scope.currentRoom.map[playerTile.index-1].solid){
-            $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
-            $scope.currentRoom.map[playerTile.index-1] = $scope.originalPlayer;
-          }
+          $timeout( function(){
+            if($scope.currentRoom.map[playerTile.index-1].door && $scope.currentRoom.westExit){
+              $scope.roomChange($scope.currentRoom.westExit);
+            }
+            else if(!$scope.currentRoom.map[playerTile.index-1].solid){
+              $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
+              $scope.currentRoom.map[playerTile.index-1] = $scope.originalPlayer;
+            }
+          }, timing );
         }
         if (e.key === "ArrowUp") {
           $scope.facing = 'n';
-          if($scope.currentRoom.map[playerTile.index-9].door && $scope.currentRoom.northExit){
-            $scope.roomChange($scope.currentRoom.northExit);
-          }
-          else if(!$scope.currentRoom.map[playerTile.index-9].solid){
-            $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
-            $scope.currentRoom.map[playerTile.index-9] = $scope.originalPlayer;
-          }
+          $timeout( function(){
+            if($scope.currentRoom.map[playerTile.index-9].door && $scope.currentRoom.northExit){
+              $scope.roomChange($scope.currentRoom.northExit);
+            }
+            else if(!$scope.currentRoom.map[playerTile.index-9].solid){
+              $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
+              $scope.currentRoom.map[playerTile.index-9] = $scope.originalPlayer;
+            }
+          }, timing );
         }
         if (e.key === "ArrowDown") {
           $scope.facing = 's';
-          if($scope.currentRoom.map[playerTile.index+9].door && $scope.currentRoom.southExit){
-            $scope.roomChange($scope.currentRoom.southExit);
-          }
-          else if(!$scope.currentRoom.map[playerTile.index+9].solid){
-            $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
-            $scope.currentRoom.map[playerTile.index+9] = $scope.originalPlayer;
-          }
+          $timeout( function(){
+            if($scope.currentRoom.map[playerTile.index+9].door && $scope.currentRoom.southExit){
+              $scope.roomChange($scope.currentRoom.southExit);
+            }
+            else if(!$scope.currentRoom.map[playerTile.index+9].solid){
+              $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
+              $scope.currentRoom.map[playerTile.index+9] = $scope.originalPlayer;
+            }
+          }, timing );
         }
-      }, 1 );
       
       //poi
       if (e.key === "Enter") {
-
         $scope.$digest();
       }
   });
