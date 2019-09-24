@@ -119,18 +119,33 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       }
     }
   }
+  
+  $scope.cleanupDupePlayers = function(){
+    var index;
+    for (i = 0; i < $scope.currentRoom.map.length; i++) {
+      if($scope.currentRoom.map[i].tile === 'player'){
+        index = i;
+        $scope.currentRoom.map[i] = {tile: '', solid: false};
+        console.log('found');
+      }
+    }
+    console.log(index);
+    $scope.currentRoom.map[index] = $scope.originalPlayer;
+  };
 
-  window.addEventListener('keydown', function(e){
+  window.addEventListener('keyup', function(e){
       var playerTile = {
         index: 0,
         tile: ''
       };
       var originalRoom = '';
+      var nrOfPlayerSprites = 0;
       
       for (i = 0; i < $scope.currentRoom.map.length; i++) {
         if($scope.currentRoom.map[i].tile === 'player'){
           playerTile.tile = $scope.currentRoom.map[i].tile;
           playerTile.index = i;
+          nrOfPlayerSprites++;
         }
       }
       
@@ -139,8 +154,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           originalRoom = $scope.rooms[j];
         }
       }
+      
       var timing = 100;
         if (e.key === "ArrowRight") {
+          $scope.cleanupDupePlayers();
           $scope.facing = 'e';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index+1].door && $scope.currentRoom.eastExit){
@@ -153,6 +170,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           }, timing );
         }
         if (e.key === "ArrowLeft") {
+          $scope.cleanupDupePlayers();
           $scope.facing = 'w';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index-1].door && $scope.currentRoom.westExit){
@@ -165,6 +183,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           }, timing );
         }
         if (e.key === "ArrowUp") {
+          $scope.cleanupDupePlayers();
           $scope.facing = 'n';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index-9].door && $scope.currentRoom.northExit){
@@ -177,6 +196,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           }, timing );
         }
         if (e.key === "ArrowDown") {
+          $scope.cleanupDupePlayers();
           $scope.facing = 's';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index+9].door && $scope.currentRoom.southExit){
