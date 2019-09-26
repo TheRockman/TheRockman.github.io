@@ -155,7 +155,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }
       }
       
-      var timing = 100;
+      var timing = 0;
         if (e.key === "ArrowRight") {
           $scope.cleanupDupePlayers();
           $scope.facing = 'e';

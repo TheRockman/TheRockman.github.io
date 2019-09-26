@@ -39,7 +39,7 @@ svg, svg path, img{
 }
 
 .wrap{
-  line-height: 14px;
+  line-height: 12px;
   width: 576px;
   height: 576px;
   margin: 0 auto;
@@ -48,11 +48,15 @@ svg, svg path, img{
   display: inline-block;
   width: 64px;
   height: 64px;
-  background: red;
-  outline: 1px solid black;
+  background: url('../map3/img/grass.png') center center no-repeat;
+  background-size: contain;
 }
 .wall{
-  background: gray!important;
+  background: url('../map3/img/bush.png') center center no-repeat;
+  background-size: contain;
+  z-index: 10;
+  position: relative;
+  /* box-shadow: 0px -16px 0px 0px rgba(0,0,0,0.3); */
 }
 .hole{
   background: black!important;
@@ -71,6 +75,7 @@ svg, svg path, img{
   right: 0;
   bottom: 0;
   background: green;
+  filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
 }
 .enemy1{
   background: purple!important;
@@ -79,48 +84,71 @@ svg, svg path, img{
   background: purple!important;
 }
 .n::before{
-  box-shadow: inset 0px 10px 5px 0px rgba(0,0,0,0.75);
+  background: url('../map3/img/up.png') center center no-repeat;
+  background-size: contain;
   animation-name: n-step;
-  animation-duration: 99ms;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 @keyframes n-step {
-  0% {transform: translateY(0px);}
-  99% {transform: translateY(-8px);}
+  0% {
+    transform: translateY(32px);
+  }
+  50%{
+    background: url('../map3/img/upStep.png') center center no-repeat;
+    background-size: contain;
+  }
   100% {transform: translateY(0px);}
 }
-
 .s::before{
-  box-shadow: inset 0px -10px 5px 0px rgba(0,0,0,0.75);
+  background: url('../map3/img/down.png') center center no-repeat;
+  background-size: contain;
   animation-name: s-step;
-  animation-duration: 99ms;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 @keyframes s-step {
-  0% {transform: translateY(0px);}
-  99% {transform: translateY(8px);}
+  0% {
+    transform: translateY(-32px);
+  }
+  50%{
+    background: url('../map3/img/downStep.png') center center no-repeat;
+    background-size: contain;
+  }
   100% {transform: translateY(0px);}
 }
 .w::before{
-  box-shadow: inset 10px 0px 5px 0px rgba(0,0,0,0.75);
+  background: url('../map3/img/left.png') center center no-repeat;
+  background-size: contain;
   animation-name: w-step;
-  animation-duration: 99ms;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 @keyframes w-step {
-  0% {transform: translateX(0px);}
-  99% {transform: translateX(-8px);}
+  0% {
+    transform: translateX(32px);
+  }
+  50%{
+    background: url('../map3/img/leftStep.png') center center no-repeat;
+    background-size: contain;
+  }
   100% {transform: translateX(0px);}
 }
 .e::before{
-  box-shadow: inset -10px 0px 5px 0px rgba(0,0,0,0.75);
+  background: url('../map3/img/right.png') center center no-repeat;
+  background-size: contain;
   animation-name: e-step;
-  animation-duration: 99ms;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 @keyframes e-step {
-  0% {transform: translateX(0px);}
-  99% {transform: translateX(8px);}
+  0% {
+    transform: translateX(-32px);
+  }
+  50%{
+    background: url('../map3/img/rightStep.png') center center no-repeat;
+    background-size: contain;
+  }
   100% {transform: translateX(0px);}
 }
 
