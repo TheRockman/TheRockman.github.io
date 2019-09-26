@@ -11,16 +11,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'enemy1', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'door', door: 'w', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'door', door: 'e', solid: false},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'door', door: 'e', solid: false},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'door', door: 's', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
       ],
       northExit: {target: 'room2', active: false, from: 's'},
-      eastExit: {target: 'room2', active: false, from: 'w'},
-      southExit: {target: 'room2', active: false, from: 'n'},
-      westExit: {target: 'room2', active: false, from: 'e'}
+      eastExit: {target: 'room4', active: false, from: 'w'},
     },
     {
       name: 'room2',
@@ -43,6 +41,22 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       map: [
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'door', door: 'w', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'door', door: 's', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
+      ],
+      westExit: {target: 'room2', active: false, from: 'e'},
+      southExit: {target: 'room4', active: false, from: 'n'}
+    },
+    {
+      name: 'room4',
+      map: [
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'door', door: 'n', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: '', solid: false}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: 'wall', solid: true},
         {tile: 'door', door: 'w', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
@@ -51,7 +65,8 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
       ],
-      westExit: {target: 'room2', active: false, from: 'e'}
+      westExit: {target: 'room1', active: false, from: 'e'},
+      northExit: {target: 'room3', active: false, from: 's'}
     }
   ];
   
@@ -94,11 +109,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.init = function(){
     $scope.currentRoom = angular.copy($scope.rooms[0]);
     $scope.AI('e');
-    for (i = 0; i < $scope.currentRoom.map.length; i++) {
-      if( $scope.currentRoom.map[i].tile === 'door' && $scope.enterFrom === $scope.currentRoom.map[i].door){
-        $scope.currentRoom.map[i] = $scope.originalPlayer;
-      }
-    }
+    // for (i = 0; i < $scope.currentRoom.map.length; i++) {
+    //   if( $scope.currentRoom.map[i].tile === 'door' && $scope.enterFrom === $scope.currentRoom.map[i].door){
+    //     $scope.currentRoom.map[i] = $scope.originalPlayer;
+    //   }
+    // }
+    $scope.currentRoom.map[67] = $scope.originalPlayer;
   }
   $scope.init();
   
@@ -126,7 +142,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       if($scope.currentRoom.map[i].tile === 'player'){
         index = i;
         $scope.currentRoom.map[i] = {tile: '', solid: false};
-        console.log('found');
       }
     }
     console.log(index);
@@ -158,12 +173,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       var timing = 0;
         if (e.key === "ArrowRight") {
           $scope.cleanupDupePlayers();
-          $scope.facing = 'e';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index+1].door && $scope.currentRoom.eastExit){
               $scope.roomChange($scope.currentRoom.eastExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index+1].solid){
+              $scope.facing = 'e';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index+1] = $scope.originalPlayer;
             }
@@ -171,12 +186,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }
         if (e.key === "ArrowLeft") {
           $scope.cleanupDupePlayers();
-          $scope.facing = 'w';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index-1].door && $scope.currentRoom.westExit){
               $scope.roomChange($scope.currentRoom.westExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index-1].solid){
+              $scope.facing = 'w';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index-1] = $scope.originalPlayer;
             }
@@ -184,12 +199,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }
         if (e.key === "ArrowUp") {
           $scope.cleanupDupePlayers();
-          $scope.facing = 'n';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index-9].door && $scope.currentRoom.northExit){
               $scope.roomChange($scope.currentRoom.northExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index-9].solid){
+              $scope.facing = 'n';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index-9] = $scope.originalPlayer;
             }
@@ -197,12 +212,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         }
         if (e.key === "ArrowDown") {
           $scope.cleanupDupePlayers();
-          $scope.facing = 's';
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index+9].door && $scope.currentRoom.southExit){
               $scope.roomChange($scope.currentRoom.southExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index+9].solid){
+              $scope.facing = 's';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index+9] = $scope.originalPlayer;
             }
