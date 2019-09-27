@@ -22,7 +22,7 @@
       <div class="textbox" ng-if="showMSG">
         {{msg}}
       </div>
-      <div class="tile" ng-class="{
+      <div class="tile {{persist}}" ng-class="{
         'player': tile.tile === 'player',
         's': tile.tile === 'player' && facing === 's',
         'e': tile.tile === 'player' && facing === 'e',
@@ -34,6 +34,7 @@
         'pillar': tile.tile === 'pillar',
         'door': tile.tile === 'door',
         'sign': tile.tile === 'sign',
+        'shrub': tile.tile === 'shrub',
         'death': tile.tile === 'player' && death,
         'hole': tile.tile === 'hole'
         }"
@@ -43,6 +44,7 @@
       <br/>
       <div class="pointer" ng-click="save()">save</div> - <div class="pointer" ng-click="load()">load</div>
     </div>
+    {{facing}} {{persist}}
     
   </div>
 </body>
