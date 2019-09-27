@@ -41,7 +41,7 @@ svg, svg path, img{
   background: black;
   color:white;
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
   right: 0;
   font-style: italic;
@@ -52,6 +52,17 @@ svg, svg path, img{
   z-index: 100;
   height: 96px;
   padding: 32px;
+  transition: var(--animation);
+}
+.textbox::after{
+  content: 'Close ↵';
+  position: absolute;
+  color: white;
+  right: 1rem;
+  bottom: 1rem;
+}
+.textboxShow{
+  bottom:0;
 }
 
 .wrap{

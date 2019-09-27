@@ -19,7 +19,7 @@
         <span></span>
         <span></span>
       </div> -->
-      <div class="textbox" ng-if="showMSG">
+      <div class="textbox" ng-class="{'textboxShow': showMSG}">
         {{msg}}
       </div>
       <div class="tile {{persist}}" ng-class="{
