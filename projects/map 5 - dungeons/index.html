@@ -19,6 +19,9 @@
         <span></span>
         <span></span>
       </div> -->
+      <div class="textbox" ng-if="showMSG">
+        {{msg}}
+      </div>
       <div class="tile" ng-class="{
         'player': tile.tile === 'player',
         's': tile.tile === 'player' && facing === 's',
@@ -28,10 +31,17 @@
         'wall': tile.tile === 'wall',
         'enemy1': tile.tile === 'enemy1',
         'enemy2': tile.tile === 'enemy2',
+        'pillar': tile.tile === 'pillar',
         'door': tile.tile === 'door',
+        'sign': tile.tile === 'sign',
+        'death': tile.tile === 'player' && death,
         'hole': tile.tile === 'hole'
         }"
         ng-repeat="tile in currentRoom.map track by $index"></div>
+    </div>
+    <div class="center">
+      <br/>
+      <div class="pointer" ng-click="save()">save</div> - <div class="pointer" ng-click="load()">load</div>
     </div>
     
   </div>

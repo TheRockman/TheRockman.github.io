@@ -2,7 +2,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
 
   $scope.enterFrom = 's';
   $scope.facing = 'n';
+  $scope.death = false;
   $scope.originalPlayer = {tile: 'player', solid: false};
+  $scope.showMSG = false;
+  $scope.saveState;
+  $scope.msg = '';
   $scope.rooms = [
     {
       name: 'room1',
@@ -26,7 +30,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'sign', msg: 'Im a sign, signs have text on them... most of the time.', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'door', door: 'e', solid: false},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
@@ -42,10 +46,10 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'pillar', msg:'A strange pillar with carved runes along the base. Wonder what its for', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'door', door: 'w', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'door', door: 's', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
       ],
@@ -58,7 +62,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'door', door: 'n', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'wall', solid: true}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: '', solid: false}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: 'hole', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: 'hole', solid: true}, {tile: 'hole', solid: true}, {tile: 'hole', solid: true}, {tile: '', solid: false}, {tile: 'hole', solid: true}, {tile: 'hole', solid: true}, {tile: 'hole', solid: true}, {tile: 'wall', solid: true},
         {tile: 'door', door: 'w', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
@@ -147,6 +151,15 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     console.log(index);
     $scope.currentRoom.map[index] = $scope.originalPlayer;
   };
+  
+  $scope.save = function(){
+    $scope.saveState = angular.copy($scope.currentRoom);
+  }
+  $scope.load = function(){
+    $scope.death = false;
+    $scope.showMSG = false;
+    $scope.currentRoom = angular.copy($scope.saveState);
+  }
 
   window.addEventListener('keyup', function(e){
       var playerTile = {
@@ -173,6 +186,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       var timing = 0;
         if (e.key === "ArrowRight") {
           $scope.cleanupDupePlayers();
+          if($scope.showMSG || $scope.death){return;}
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index+1].door && $scope.currentRoom.eastExit){
               $scope.roomChange($scope.currentRoom.eastExit);
@@ -182,9 +196,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index+1] = $scope.originalPlayer;
             }
+            if(originalRoom.map[playerTile.index+1].tile === 'hole'){
+              $scope.facing = 'e';
+              $scope.death = true;
+            }
           }, timing );
         }
         if (e.key === "ArrowLeft") {
+          if($scope.showMSG || $scope.death){return;}
           $scope.cleanupDupePlayers();
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index-1].door && $scope.currentRoom.westExit){
@@ -195,9 +214,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index-1] = $scope.originalPlayer;
             }
+            if(originalRoom.map[playerTile.index-1].tile === 'hole'){
+              $scope.facing = 'w';
+              $scope.death = true;
+            }
           }, timing );
         }
         if (e.key === "ArrowUp") {
+          if($scope.showMSG || $scope.death){return;}
           $scope.cleanupDupePlayers();
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index-9].door && $scope.currentRoom.northExit){
@@ -208,9 +232,14 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index-9] = $scope.originalPlayer;
             }
+            if(originalRoom.map[playerTile.index-9].tile === 'hole'){
+              $scope.facing = 'n';
+              $scope.death = true;
+            }
           }, timing );
         }
         if (e.key === "ArrowDown") {
+          if($scope.showMSG || $scope.death){return;}
           $scope.cleanupDupePlayers();
           $timeout( function(){
             if($scope.currentRoom.map[playerTile.index+9].door && $scope.currentRoom.southExit){
@@ -221,11 +250,39 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.currentRoom.map[playerTile.index+9] = $scope.originalPlayer;
             }
+            if(originalRoom.map[playerTile.index+9].tile === 'hole'){
+              $scope.facing = 's';
+              $scope.death = true;
+            }
           }, timing );
         }
       
-      //poi
-      if (e.key === "Enter") {
+        if (e.key === "Enter") {
+          var mod = 0;
+          switch ($scope.facing) {
+            case 'n':
+            mod = playerTile.index-9;
+            break;
+          case 'e':
+            mod = playerTile.index+1;
+            break;
+          case 's':
+            mod = playerTile.index+9;
+            break;
+          case 'w':
+            mod = playerTile.index-1;
+            break;
+          default:
+          console.log('Sorry');
+        }
+        
+        if($scope.currentRoom.map[mod].msg && $scope.showMSG === false){
+             $scope.msg = $scope.currentRoom.map[mod].msg;
+             $scope.showMSG = true;
+        } else if ( $scope.currentRoom.map[mod].msg && $scope.showMSG === true){
+             $scope.msg = '';
+             $scope.showMSG = false;
+        }
         $scope.$digest();
       }
   });

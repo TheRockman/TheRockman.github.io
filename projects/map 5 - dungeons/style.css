@@ -37,12 +37,30 @@ svg, svg path, img{
 .relative{
   position: relative;
 }
+.textbox{
+  background: black;
+  color:white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-style: italic;
+  font-weight: lighter;
+  text-transform: uppercase;
+  font-size: 32px;
+  line-height: 32px;
+  z-index: 100;
+  height: 96px;
+  padding: 32px;
+}
 
 .wrap{
+  position: relative;
   line-height: 0;
   width: 576px;
-  height: 640px;
+  height: 576px;
   margin: 0 auto;
+  filter: grayscale(1);
 }
 .nav{
   font-weight: lighter;
@@ -60,24 +78,35 @@ svg, svg path, img{
   display: inline-block;
   width: 64px;
   height: 64px;
-  background: url('../map3/img/grass.png') center center no-repeat;
+  background: url('img/grass.png') center center no-repeat;
   background-size: contain;
 }
-.wall{
-  background: url('../map3/img/bush.png') center center no-repeat;
+.wall, .pillar, .player, .sign{
+  position: relative;
+}
+.wall::before{
+  background: url('img/bush.png') center center no-repeat;
   background-size: contain;
   z-index: 10;
-  position: relative;
-  /* box-shadow: 0px -16px 0px 0px rgba(0,0,0,0.3); */
+  content: '_';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
 }
-.hole{
-  background: black!important;
-}
-.door{
-  background: blue!important;
-}
-.player{
-  position: relative;
+.sign::before{
+  background: url('img/sign.png') center center no-repeat;
+  background-size: contain;
+  z-index: 10;
+  content: '_';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
 }
 .player::before{
   content: '_';
@@ -88,6 +117,26 @@ svg, svg path, img{
   bottom: 0;
   background: green;
   filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
+}
+.hole{
+  background: url('img/hole.png') center center no-repeat!important;
+  background-size: contain;
+}
+.pillar::before{
+  background: url('img/pillar.png') center center no-repeat;
+  background-size: contain;
+  z-index: 10;
+  content: '_';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 124px;
+  filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
+}
+.door{
+  background: url('img/door.png') center center no-repeat!important;
+  background-size: contain;
 }
 .enemy1{
   background: purple!important;
@@ -164,6 +213,23 @@ svg, svg path, img{
   100% {transform: translateX(0px);}
 }
 
+.n.death::before{
+  transform: translateY(-64px);
+  background: url('../map3/img/upStep.png') center center no-repeat;
+}
+.e.death::before{
+  transform: translateX(64px);
+    background: url('../map3/img/rightStep.png') center center no-repeat;
+}
+.s.death::before{
+  transform: translateY(64px);
+    background: url('../map3/img/downStep.png') center center no-repeat;
+}
+.w.death::before{
+  transform: translateX(-64px);
+    background: url('../map3/img/leftStep.png') center center no-repeat;
+}
+
 .death::before{
   animation-name: death;
   animation-duration: 1s;
@@ -171,42 +237,37 @@ svg, svg path, img{
 }
 @keyframes death {
   0% {
-    background: url('../map3/img/down.png') center center no-repeat;
     background-size: contain;
+    background-size: 80%;
+    filter: brightness(0.8);
   }
-  12%{
-    background: url('../map3/img/right.png') center center no-repeat;
-    background-size: contain;
+  25%{
+    background-size: 60%;
+    filter: brightness(0.6);
   }
-  24%{
-    background: url('../map3/img/up.png') center center no-repeat;
-    background-size: contain;
+  50%{
+    background-size: 40%;
+    filter: brightness(0.4);
   }
-  36%{
-    background: url('../map3/img/left.png') center center no-repeat;
-    background-size: contain;
-  }
-  48% {
-    background: url('../map3/img/down.png') center center no-repeat;
-    background-size: contain;
-  }
-  60%{
-    background: url('../map3/img/right.png') center center no-repeat;
-    background-size: contain;
-  }
-  72%{
-    background: url('../map3/img/up.png') center center no-repeat;
-    background-size: contain;
-  }
-  84%{
-    background: url('../map3/img/left.png') center center no-repeat;
-    background-size: contain;
+  75%{
+    background-size: 20%;
+    filter: brightness(0.2);
   }
   100% {
-    background: url('../map3/img/down.png') center center no-repeat;
-    background-size: contain;
+    background-size: 0%;
+    opacity: 0;
   }
 }
+
+/* .e.death::before{
+  transform: translateX(32px);
+}
+.s.death::before{
+  transform: translateY(-32px);
+}
+.w.death::before{
+  transform: translateX(-32px);
+} */
 
 /* ng-animate */
 /* .fade{
