@@ -59,6 +59,7 @@ svg, svg path, img{
   line-height: 0;
   width: 576px;
   height: 576px;
+  overflow: hidden;
   margin: 0 auto;
   filter: grayscale(1);
 }
@@ -81,7 +82,7 @@ svg, svg path, img{
   background: url('img/grass.png') center center no-repeat;
   background-size: contain;
 }
-.wall, .pillar, .player, .sign{
+.wall, .pillar, .player, .sign, .enemy1{
   position: relative;
 }
 .wall::before{
@@ -138,10 +139,19 @@ svg, svg path, img{
   background: url('img/door.png') center center no-repeat!important;
   background-size: contain;
 }
-.enemy1{
-  background: purple!important;
+.enemy1::before{
+  background: url('https://media1.giphy.com/media/67sjZ6l0bMIWTZvguN/source.gif') center center no-repeat;
+  background-size: 120%;
+  z-index: 10;
+  content: '_';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
 }
-.enemy1{
+.enemy2{
   background: purple!important;
 }
 .n::before{

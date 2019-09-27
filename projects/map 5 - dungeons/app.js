@@ -13,7 +13,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
       map: [
         {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'door', door: 'n', solid: false}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
-        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'enemy1', solid: false}, {tile: 'wall', solid: true},
+        {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: 'enemy1', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'door', door: 'e', solid: false},
         {tile: 'wall', solid: true}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: '', solid: false}, {tile: 'wall', solid: true},
@@ -76,6 +76,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   
   //Enemy
   $scope.AI = function(dir){
+    var timing = 700;
     $timeout( function(){
       for (i = 0; i < $scope.currentRoom.map.length; i++) {
         if($scope.currentRoom.map[i].tile === 'enemy1'){
@@ -107,18 +108,23 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           }
         }
       }
-    },700);
+    }, timing);
+  }
+  
+  $scope.save = function(){
+    $scope.saveState = angular.copy($scope.currentRoom);
+  }
+  $scope.load = function(){
+    $scope.death = false;
+    $scope.showMSG = false;
+    $scope.currentRoom = angular.copy($scope.saveState);
   }
   
   $scope.init = function(){
     $scope.currentRoom = angular.copy($scope.rooms[0]);
-    $scope.AI('e');
-    // for (i = 0; i < $scope.currentRoom.map.length; i++) {
-    //   if( $scope.currentRoom.map[i].tile === 'door' && $scope.enterFrom === $scope.currentRoom.map[i].door){
-    //     $scope.currentRoom.map[i] = $scope.originalPlayer;
-    //   }
-    // }
+    // $scope.AI('e');
     $scope.currentRoom.map[67] = $scope.originalPlayer;
+    $scope.save();
   }
   $scope.init();
   
@@ -151,15 +157,6 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     console.log(index);
     $scope.currentRoom.map[index] = $scope.originalPlayer;
   };
-  
-  $scope.save = function(){
-    $scope.saveState = angular.copy($scope.currentRoom);
-  }
-  $scope.load = function(){
-    $scope.death = false;
-    $scope.showMSG = false;
-    $scope.currentRoom = angular.copy($scope.saveState);
-  }
 
   window.addEventListener('keyup', function(e){
       var playerTile = {
