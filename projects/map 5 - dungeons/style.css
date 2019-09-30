@@ -28,6 +28,9 @@ body{
 .jsb{
   justify-content: space-between;
 }
+.fl{
+  display: flex;
+}
 .pointer{
   cursor: pointer;
 }
@@ -66,6 +69,7 @@ svg, svg path, img{
 }
 
 .wrap{
+  box-shadow: var(--level2);
   position: relative;
   line-height: 0;
   width: 576px;
@@ -288,6 +292,7 @@ svg, svg path, img{
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 @keyframes death {
   0% {
     background-size: contain;
@@ -315,10 +320,90 @@ svg, svg path, img{
 /*Battle*/
 .battle-wrap {
   background: #333;
-  color: white;
+  font-size: 32px;
+  line-height: 32px;
 }
 .battle-row{
+  background: whitesmoke;
   position: relative;
-  padding: 0 1rem;
-  height: 33%;
+  padding: 16px;
+  height: 144px;
+}
+.log, .battle-menu{
+  background: black;
+  margin: 16px;
+  color: white;
+  outline: 2px solid white;
+}
+.battle-menu{
+  position: absolute;
+  bottom: -32px;
+  right: -24px;
+  width: 25%;
+  height: 75%;
+  padding: 16px;
+  filter: drop-shadow(0px -10px 0px rgba(0, 0, 0, 0.3));
+}
+.battle-menu ul{
+  padding: 0;
+  margin: 0;
+}
+.battle-menu ul li{
+  list-style: none;
+}
+.active{
+  color: #333;
+}
+.p-sprite, .e-sprite{
+  outline: 1px solid black;
+  width: 150px;
+  height: auto;
+}
+
+.dmg{
+  animation-name: blink;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+@keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+.pCharge{
+  animation-name: pcharge;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes pcharge {
+  0%{
+    transform: translateX(-5);
+  }
+  70%{
+    transform: translateX(-5);
+  }
+  90%{
+    transform: translateX(10px);
+  }
+  100%{
+    transform: translateX(0);
+  }
 }

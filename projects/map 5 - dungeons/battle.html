@@ -12,16 +12,29 @@
   <body>
     <div ng-controller="battleCtrl">
       <div class="wrap battle-wrap">
-        <div class="battle-row align jsb" style="background: #999;">
-          <span>123</span>
-          <span>123</span>
+        <div class="battle-row fl jsb" style="align-items:flex-start;">
+          <span>
+            123
+            <br/>
+            <progress value="50" max="100"></progress>
+          </span>
+          <img src="https://icon-library.net/images/icon-pgn/icon-pgn-11.jpg" ng-class="{'eCharge': enemy.charge}" class="e-sprite" alt="">
         </div>
-        <div class="battle-row align jsb" style="background: #555;">
-          <span>123</span>
-          <span>123</span>
+        <div class="battle-row fl jsb" style="align-items:flex-end;">
+          <img src="https://icon-library.net/images/icon-pgn/icon-pgn-11.jpg" ng-class="{'pCharge': player.charge}" class="p-sprite" alt="">
+          <span>
+            {{player.name}}
+            <br/>
+            <progress value="50" max="100"></progress>
+          </span>
         </div>
-        <div class="battle-row">
-          
+        <div class="battle-row log">
+          {{feed}}
+          <div class="battle-menu" ng-if="myTurn">
+            <ul>
+              <li ng-repeat="move in player.moves" ng-class="{'active':menuIndex === $index}">{{move.name}}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
