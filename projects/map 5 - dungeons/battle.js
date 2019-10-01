@@ -40,10 +40,12 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
       
       $scope.log('Wooah, its an enemy !!!');
       $scope.enemy.charge = true;
+      $scope.player.dmg = true;
       
       $timeout( function(){
         $scope.myTurn = true;
         $scope.enemy.charge = false;
+        $scope.player.dmg = false;
       }, $scope.timing );
       
     }, $scope.timing );
@@ -67,8 +69,10 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
         $scope.myTurn = false;
         $scope.menuIndex = 0;
         $scope.player.charge = true;
+        $scope.enemy.dmg = true;
         $timeout( function(){
           $scope.player.charge = false;
+          $scope.enemy.dmg = false;
           $scope.ai();
         }, $scope.timing );
       }

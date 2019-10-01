@@ -355,7 +355,6 @@ svg, svg path, img{
   color: #333;
 }
 .p-sprite, .e-sprite{
-  outline: 1px solid black;
   width: 150px;
   height: auto;
 }
@@ -427,5 +426,31 @@ svg, svg path, img{
     }
     100% {
       transform: translate(0);
+    }
+  }
+  
+  .dmg{
+    animation: ddmm 0.5s cubic-bezier(.33,.11,.02,.99)both;
+    animation-delay: 1.5s;
+  }
+  @keyframes ddmm {
+    0% {
+      transform: translateX(0px);
+    }
+    25% {
+      transform: translateX(-10px);
+      opacity: 0.8;
+    }
+    50%{
+      transform: translateX(10px);
+      opacity: 1;
+    }
+    75%{
+      transform: translateX(-10px);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
     }
   }
