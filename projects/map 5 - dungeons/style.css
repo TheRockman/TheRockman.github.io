@@ -388,22 +388,44 @@ svg, svg path, img{
   }
 }
 
-.pCharge{
-  animation-name: pcharge;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-}
-@keyframes pcharge {
-  0%{
-    transform: translateX(-5);
+  .pCharge{
+    animation: a2b 2s cubic-bezier(.33,.11,.02,.99)both;
   }
-  70%{
-    transform: translateX(-5);
+  @keyframes a2b {
+    0% {
+      transform: translateX(0px);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    30%{
+      transform: translateX(-25px);
+    }
+    45%{
+      transform: translateX(40px);
+    }
+    100% {
+      transform: translate(0);
+    }
   }
-  90%{
-    transform: translateX(10px);
+
+  .eCharge{
+    animation: b2a 2s cubic-bezier(.33,.11,.02,.99)both;
   }
-  100%{
-    transform: translateX(0);
+  @keyframes b2a {
+    0% {
+      transform: translateX(0px);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    30%{
+      transform: translateX(-25px);
+    }
+    45%{
+      transform: translateX(40px);
+    }
+    100% {
+      transform: translate(0);
+    }
   }
-}

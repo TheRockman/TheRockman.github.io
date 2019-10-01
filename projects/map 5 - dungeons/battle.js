@@ -39,9 +39,11 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
     $timeout( function(){
       
       $scope.log('Wooah, its an enemy !!!');
+      $scope.enemy.charge = true;
       
       $timeout( function(){
         $scope.myTurn = true;
+        $scope.enemy.charge = false;
       }, $scope.timing );
       
     }, $scope.timing );
@@ -66,6 +68,7 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
         $scope.menuIndex = 0;
         $scope.player.charge = true;
         $timeout( function(){
+          $scope.player.charge = false;
           $scope.ai();
         }, $scope.timing );
       }
