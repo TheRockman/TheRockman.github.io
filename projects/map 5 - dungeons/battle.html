@@ -12,30 +12,33 @@
   <body>
     <div ng-controller="battleCtrl">
       <div class="wrap battle-wrap">
-        <div class="battle-row fl jsb" style="align-items:flex-start;">
-          <span>
-            123
-            <br/>
-            <progress value="50" max="100"></progress>
-          </span>
-          <img src="https://www.trzcacak.rs/myfile/full/242-2427036_view-blastoise-pokemon-red-blastoise-sprite.png" ng-class="{'eCharge': enemy.charge, 'dmg': enemy.dmg}" class="e-sprite char" alt="">
-        </div>
-        <div class="battle-row fl jsb" style="align-items:flex-end;">
-          <img src="https://pbs.twimg.com/media/D1hLQFwXQAMPO2n.png" ng-class="{'pCharge': player.charge, 'dmg': player.dmg}" class="p-sprite char" alt="">
-          <span>
-            {{player.name}}
-            <br/>
-            <progress value="50" max="100"></progress>
-          </span>
-        </div>
-        <div class="battle-row log">
-          {{feed}}
-          <div class="battle-menu" ng-if="myTurn">
-            <ul>
-              <li ng-repeat="move in player.moves" ng-class="{'active':menuIndex === $index}">{{move.name}}</li>
-            </ul>
+        <div class="inner">
+          <div class="battle-row fl jsb" style="align-items:flex-start;">
+            <span>
+              123
+              <br/>
+              <progress value="50" max="100"></progress>
+            </span>
+            <img src="https://www.trzcacak.rs/myfile/full/242-2427036_view-blastoise-pokemon-red-blastoise-sprite.png" ng-class="{'eCharge': enemy.charge, 'dmg': enemy.dmg}" class="e-sprite char" alt="">
+          </div>
+          <div class="battle-row fl jsb" style="align-items:flex-end;">
+            <img src="https://pbs.twimg.com/media/D1hLQFwXQAMPO2n.png" ng-class="{'pCharge': player.charge, 'dmg': player.dmg}" class="p-sprite char" alt="">
+            <span>
+              {{player.name}}
+              <br/>
+              <progress value="50" max="100"></progress>
+            </span>
+          </div>
+          <div class="battle-row log">
+            {{feed}}
+            <div class="battle-menu" ng-if="myTurn">
+              <ul>
+                <li ng-repeat="move in player.moves" ng-class="{'active':menuIndex === $index}">{{move.name}}</li>
+              </ul>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </body>

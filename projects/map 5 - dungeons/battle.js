@@ -30,6 +30,13 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
     
   };
   
+  $scope.endBattleTrigger = function(){
+    console.log('its over...');
+    $timeout( function(){
+      document.location.replace('index.html');
+    }, 1000 );
+  }
+  
   $scope.log = function(msg){
     $scope.feed = msg;
     $timeout( function(){$scope.feed = null;}, $scope.timing );
@@ -76,6 +83,7 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
           $scope.ai();
         }, $scope.timing );
       }
+      $scope.endBattleTrigger();
     }
     
     $scope.$digest();

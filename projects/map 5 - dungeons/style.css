@@ -78,6 +78,55 @@ svg, svg path, img{
   margin: 0 auto;
   filter: grayscale(1);
 }
+
+.fight{
+  animation-name: battle;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 9999;
+}
+@keyframes battle {
+  0% {
+    background: transparent;
+  }
+  10% {
+    background: #333;
+  }
+  20% {
+    background: transparent;
+  }
+  30% {
+    background: #333;
+  }
+  40% {
+    background: transparent;
+  }
+  50% {
+    background: #333;
+  }
+  60% {
+    background: transparent;
+  }
+  70% {
+    background: #333;
+  }
+  80% {
+    background: transparent;
+  }
+  90% {
+    background: #333;
+  }
+  100% {
+    background: #333;
+  }
+}
+
 .nav{
   font-weight: lighter;
   font-style: italic;
@@ -322,6 +371,26 @@ svg, svg path, img{
   background: #333;
   font-size: 32px;
   line-height: 32px;
+}
+.inner img{
+  transform: translateX(-500px);
+  animation-name: intro;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes intro {
+  0% {
+    filter: brightness(0);
+    transform: translateX(-500px);
+  }
+  90%{
+    transform: translate(0px);
+    filter: brightness(0);
+  }
+  100% {
+    filter: brightness(1);
+    transform: translateX(0px);
+  }
 }
 .battle-row{
   background: whitesmoke;

@@ -1,10 +1,11 @@
-var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout) {
+var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $window, $timeout) {
 
   $scope.enterFrom = 's';
   $scope.facing = 'n';
   $scope.death = false;
   $scope.originalPlayer = {tile: 'player', solid: false};
   $scope.showMSG = false;
+  $scope.pretpareToBattle = false;
   $scope.persist;
   $scope.saveState;
   $scope.msg = '';
@@ -137,11 +138,28 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     $scope.currentRoom = angular.copy($scope.saveState);
   }
   
+  $scope.battleTrigger= function(){
+    console.log('here we go...');
+    $scope.pretpareToBattle = true;
+    $timeout( function(){
+      localStorage.setItem('saveState', JSON.stringify($scope.currentRoom) );
+      document.location.replace('battle.html');
+    }, 1000 );
+  }
+  
   $scope.init = function(){
-    $scope.currentRoom = angular.copy($scope.rooms[0]);
-    // $scope.AI('e');
-    $scope.currentRoom.map[67] = $scope.originalPlayer;
-    $scope.save();
+    var prevState = localStorage.getItem('saveState');
+    if(!prevState){
+      $scope.currentRoom = angular.copy($scope.rooms[0]);
+      // $scope.AI('e');
+      $scope.currentRoom.map[67] = $scope.originalPlayer;
+      $scope.save();
+    } else {
+      //from battle
+      $scope.death = false;
+      $scope.showMSG = false;
+      $scope.currentRoom = JSON.parse(prevState);
+    }
   }
   $scope.init();
   
@@ -277,6 +295,11 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
               $scope.death = true;
             }
           }, timing );
+        }
+        
+        if (e.key === '0') {
+          $scope.battleTrigger();
+          $scope.$digest();
         }
       
         if (e.key === "Enter") {
