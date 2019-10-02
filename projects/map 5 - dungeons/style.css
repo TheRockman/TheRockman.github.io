@@ -58,7 +58,7 @@ svg, svg path, img{
   transition: var(--animation);
 }
 .textbox::after{
-  content: 'Close ↵';
+  content: '↵';
   position: absolute;
   color: white;
   right: 1rem;
@@ -497,7 +497,7 @@ svg, svg path, img{
       transform: translate(0);
     }
   }
-  
+
   .dmg{
     animation: ddmm 0.5s cubic-bezier(.33,.11,.02,.99)both;
     animation-delay: 1.5s;
