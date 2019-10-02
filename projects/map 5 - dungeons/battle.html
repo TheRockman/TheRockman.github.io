@@ -15,18 +15,18 @@
         <div class="inner">
           <div class="battle-row fl jsb" style="align-items:flex-start;">
             <span>
-              123
+              {{enemy.name}}
               <br/>
-              <progress value="50" max="100"></progress>
+              <progress value="{{enemy.HP}}" max="100"></progress>
             </span>
-            <img src="https://www.trzcacak.rs/myfile/full/242-2427036_view-blastoise-pokemon-red-blastoise-sprite.png" ng-class="{'eCharge': enemy.charge, 'dmg': enemy.dmg}" class="e-sprite char" alt="">
+            <img src="https://giantbomb1.cbsistatic.com/uploads/square_small/4/49405/1100038-channeler.png" ng-class="{'eCharge': enemy.charge, 'dmg': enemy.dmg}" class="e-sprite char" alt="">
           </div>
           <div class="battle-row fl jsb" style="align-items:flex-end;">
-            <img src="https://pbs.twimg.com/media/D1hLQFwXQAMPO2n.png" ng-class="{'pCharge': player.charge, 'dmg': player.dmg}" class="p-sprite char" alt="">
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61a7d39c-85f5-4786-a290-5311c415465c/dcm12sh-1df1a16a-f338-495e-a703-80143264344e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYxYTdkMzljLTg1ZjUtNDc4Ni1hMjkwLTUzMTFjNDE1NDY1Y1wvZGNtMTJzaC0xZGYxYTE2YS1mMzM4LTQ5NWUtYTcwMy04MDE0MzI2NDM0NGUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MvQOE9xgBZC1Yt8z_2W8aeO8VNn17CHdi7JjQ80wJ8M" ng-class="{'pCharge': player.charge, 'dmg': player.dmg}" class="p-sprite char" alt="">
             <span>
               {{player.name}}
               <br/>
-              <progress value="50" max="100"></progress>
+              <progress value="{{player.HP}}" max="100"></progress>
             </span>
           </div>
           <div class="battle-row log">
@@ -43,4 +43,3 @@
     </div>
   </body>
 </html>
-  

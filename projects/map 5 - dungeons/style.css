@@ -372,7 +372,7 @@ svg, svg path, img{
   font-size: 32px;
   line-height: 32px;
 }
-.inner img{
+.inner{
   transform: translateX(-500px);
   animation-name: intro;
   animation-duration: 1s;
@@ -381,7 +381,7 @@ svg, svg path, img{
 @keyframes intro {
   0% {
     filter: brightness(0);
-    transform: translateX(-500px);
+    transform: translateY(500px);
   }
   90%{
     transform: translate(0px);
@@ -389,7 +389,7 @@ svg, svg path, img{
   }
   100% {
     filter: brightness(1);
-    transform: translateX(0px);
+    transform: translateY(0px);
   }
 }
 .battle-row{
@@ -428,36 +428,11 @@ svg, svg path, img{
   height: auto;
 }
 
-.dmg{
-  animation-name: blink;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-}
-@-webkit-keyframes blink-1 {
-  0%,
-  50%,
-  100% {
-    opacity: 1;
-  }
-  25%,
-  75% {
-    opacity: 0;
-  }
-}
-@keyframes blink-1 {
-  0%,
-  50%,
-  100% {
-    opacity: 1;
-  }
-  25%,
-  75% {
-    opacity: 0;
-  }
-}
-
   .pCharge{
-    animation: a2b 2s cubic-bezier(.33,.11,.02,.99)both;
+    animation-name: a2b;
+    animation-delay: 0.5;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
   }
   @keyframes a2b {
     0% {
@@ -478,48 +453,81 @@ svg, svg path, img{
   }
 
   .eCharge{
-    animation: b2a 2s cubic-bezier(.33,.11,.02,.99)both;
+    animation-name: b2a;
+    animation-delay: 0.5;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
   }
   @keyframes b2a {
     0% {
       transform: translateX(0px);
     }
     25% {
-      transform: translateX(-10px);
+      transform: translateX(10px);
     }
     30%{
-      transform: translateX(-25px);
+      transform: translateX(25px);
     }
     45%{
-      transform: translateX(40px);
+      transform: translateX(-40px);
     }
     100% {
       transform: translate(0);
     }
   }
 
+  progress{
+    outline: 1px solid red;
+  }
   .dmg{
-    animation: ddmm 0.5s cubic-bezier(.33,.11,.02,.99)both;
-    animation-delay: 1.5s;
+    animation-delay: 0.6s;
+    animation-name: ddmm!important;
+    animation-duration: 0.8s;
+    /* animation-delay: 1.5s; */
   }
   @keyframes ddmm {
     0% {
-      transform: translateX(0px);
+      transform: translateX(0);
+      opacity: 0;
     }
-    25% {
-      transform: translateX(-10px);
-      opacity: 0.8;
-    }
-    50%{
-      transform: translateX(10px);
+    10% {
+      transform: translateX(0);
       opacity: 1;
     }
-    75%{
-      transform: translateX(-10px);
-      opacity: 0.8;
+    20% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    30% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    40% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    60% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    70% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    80% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    90% {
+      transform: translateX(0);
+      opacity: 1;
     }
     100% {
-      transform: translateX(0px);
+      transform: translateX(0);
       opacity: 1;
     }
   }
