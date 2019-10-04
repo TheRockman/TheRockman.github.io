@@ -11,22 +11,22 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
     moves: [
       {
         name: 'boop',
-        ACmod: 2,
-        dmgMod: 20
+        ACmod: 1,
+        dmgMod: 25
       },
       {
         name: 'dunk',
-        ACmod: 1,
+        ACmod: 2,
         dmgMod: 5
       },
       {
         name: 'lick',
-        ACmod: 0,
+        ACmod: 2,
         dmgMod: 10
       },
       {
         name: 'patch',
-        ACmod: 0,
+        ACmod: 5,
         dmgMod: -25
       }
     ]
@@ -135,14 +135,14 @@ var app = angular.module("myApp", []); app.controller("battleCtrl", function($sc
             //DMG MOVE
             $scope.log($scope.player.name + ' ' +  move.name + 'ed '+ $scope.enemy.name +'!');
             $scope.enemy.HP = $scope.enemy.HP - ($scope.dice(20) + move.dmgMod);
+            $scope.player.charge = true;
+            $scope.enemy.dmg = true;
           } else{
             //HEAL
             $scope.log($scope.player.name + ' regained some energy!');
             $scope.player.HP = $scope.player.HP - ($scope.dice(20) + move.dmgMod);
           }
           $scope.menuIndex = 0;
-          $scope.player.charge = true;
-          $scope.enemy.dmg = true;
           $timeout( function(){
             $scope.player.charge = false;
             $scope.enemy.dmg = false;
