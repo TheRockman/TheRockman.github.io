@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stage">
+      <video ng-class="{'blur': view === 'play'}" ng-cloak class="backdrop" mute autoplay loop >
+        <source src="backdrop.mp4" type="video/mp4">
+      </video>
+      <div class="content" ng-if="view === 'play'">
+        <h1 class="chunky" style="font-size:4vw;"> PLAY </h1>
+        <div class="align card-wrap">
+          <div class="card">
+            <div class="blob" style="background-color:rgba(32,102,202,1);">
+              
+            </div>
+            <svg style="width:3vw;height:3vw" viewBox="0 0 24 24">
+              <path fill="#000000" d="M7,2V13H10V22L17,10H13L17,2H7Z" />
+            </svg>
+            <br/>
+            QUICK PLAY
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ea commodo.</p>
+          </div>
+          <div class="card">
+            <div class="blob" style="background-color:rgba(7,145,64,1);">
+              
+            </div>
+            <svg style="width:3vw;height:3vw" viewBox="0 0 24 24">
+              <path fill="#000000" d="M18.72,14.76C19.07,13.91 19.26,13 19.26,12C19.26,11.28 19.15,10.59 18.96,9.95C18.31,10.1 17.63,10.18 16.92,10.18C13.86,10.18 11.15,8.67 9.5,6.34C8.61,8.5 6.91,10.26 4.77,11.22C4.73,11.47 4.73,11.74 4.73,12A7.27,7.27 0 0,0 12,19.27C13.05,19.27 14.06,19.04 14.97,18.63C15.54,19.72 15.8,20.26 15.78,20.26C14.14,20.81 12.87,21.08 12,21.08C9.58,21.08 7.27,20.13 5.57,18.42C4.53,17.38 3.76,16.11 3.33,14.73H2V10.18H3.09C3.93,6.04 7.6,2.92 12,2.92C14.4,2.92 16.71,3.87 18.42,5.58C19.69,6.84 20.54,8.45 20.89,10.18H22V14.67H22V14.69L22,14.73H21.94L18.38,18L13.08,17.4V15.73H17.91L18.72,14.76M9.27,11.77C9.57,11.77 9.86,11.89 10.07,12.11C10.28,12.32 10.4,12.61 10.4,12.91C10.4,13.21 10.28,13.5 10.07,13.71C9.86,13.92 9.57,14.04 9.27,14.04C8.64,14.04 8.13,13.54 8.13,12.91C8.13,12.28 8.64,11.77 9.27,11.77M14.72,11.77C15.35,11.77 15.85,12.28 15.85,12.91C15.85,13.54 15.35,14.04 14.72,14.04C14.09,14.04 13.58,13.54 13.58,12.91A1.14,1.14 0 0,1 14.72,11.77Z" />
+            </svg>
+            <br/>
+            ARCADE
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ea commodo.</p>
+          </div>
+          <div class="card">
+            <div class="blob" style="background-color:purple;">
+              
+            </div>
+            <svg style="width:3vw;height:3vw" viewBox="0 0 24 24">
+              <path fill="#000000" d="M19.5 17C19.36 17 19.24 17 19.11 17.04L17.5 13.8C17.95 13.35 18.25 12.71 18.25 12C18.25 10.62 17.13 9.5 15.75 9.5C15.61 9.5 15.5 9.5 15.35 9.54L13.74 6.3C14.21 5.84 14.5 5.21 14.5 4.5C14.5 3.12 13.38 2 12 2S9.5 3.12 9.5 4.5C9.5 5.2 9.79 5.84 10.26 6.29L8.65 9.54C8.5 9.5 8.39 9.5 8.25 9.5C6.87 9.5 5.75 10.62 5.75 12C5.75 12.71 6.04 13.34 6.5 13.79L4.89 17.04C4.76 17 4.64 17 4.5 17C3.12 17 2 18.12 2 19.5C2 20.88 3.12 22 4.5 22S7 20.88 7 19.5C7 18.8 6.71 18.16 6.24 17.71L7.86 14.46C8 14.5 8.12 14.5 8.25 14.5C8.38 14.5 8.5 14.5 8.63 14.46L10.26 17.71C9.79 18.16 9.5 18.8 9.5 19.5C9.5 20.88 10.62 22 12 22S14.5 20.88 14.5 19.5C14.5 18.12 13.38 17 12 17C11.87 17 11.74 17 11.61 17.04L10 13.8C10.45 13.35 10.75 12.71 10.75 12C10.75 11.3 10.46 10.67 10 10.21L11.61 6.96C11.74 7 11.87 7 12 7C12.13 7 12.26 7 12.39 6.96L14 10.21C13.54 10.66 13.25 11.3 13.25 12C13.25 13.38 14.37 14.5 15.75 14.5C15.88 14.5 16 14.5 16.13 14.46L17.76 17.71C17.29 18.16 17 18.8 17 19.5C17 20.88 18.12 22 19.5 22S22 20.88 22 19.5C22 18.12 20.88 17 19.5 17M4.5 20.5C3.95 20.5 3.5 20.05 3.5 19.5S3.95 18.5 4.5 18.5 5.5 18.95 5.5 19.5 5.05 20.5 4.5 20.5M13 19.5C13 20.05 12.55 20.5 12 20.5S11 20.05 11 19.5 11.45 18.5 12 18.5 13 18.95 13 19.5M7.25 12C7.25 11.45 7.7 11 8.25 11S9.25 11.45 9.25 12 8.8 13 8.25 13 7.25 12.55 7.25 12M11 4.5C11 3.95 11.45 3.5 12 3.5S13 3.95 13 4.5 12.55 5.5 12 5.5 11 5.05 11 4.5M14.75 12C14.75 11.45 15.2 11 15.75 11S16.75 11.45 16.75 12 16.3 13 15.75 13 14.75 12.55 14.75 12M19.5 20.5C18.95 20.5 18.5 20.05 18.5 19.5S18.95 18.5 19.5 18.5 20.5 18.95 20.5 19.5 20.05 20.5 19.5 20.5Z" />
+            </svg>
+            <br/>
+            TOURNAMENT
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ea commodo.</p>
+          </div>
+          <div class="card">
+            <div class="blob" style="background-color:rgba(2,142,158,1);">
+              
+            </div>
+            <svg style="width:3vw;height:3vw" viewBox="0 0 24 24">
+              <path fill="#000000" d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8V5H4M4,19H8V15H4M4,14H8V10H4V14Z" />
+            </svg>
+            <br/>
+            GAME BROWSER
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ea commodo.</p>
+          </div>
+        </div>
+        <div class="bib">
+          <h4>GROUP UP BEGFORE YOU PLAY</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ea commodo.</p>
+        </div>
+        <div class="button">
+          FIND A GROUP
+        </div>
+      </div>
+      <div class="content" ng-if="view != 'play'">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Overwatch_text_logo.svg/1280px-Overwatch_text_logo.svg.png" alt="">
+        <a ng-click="view('play')"><h1 class="chunky">Play</h1></a>
+        <a><h1 class="chunky">Training</h1></a>
+        <a><h1 class="chunky">Gallery</h1></a>
+        <a><h1 class="chunky align ">
+          Loot box
+          &nbsp;
+          <span class="align shiny gold" style="font-size: 1.2vw;">
+            <svg style="width:2vw;height:2vw" viewBox="0 0 24 24">
+              <path fill="gold" d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L6.04,7.5L12,10.85L17.96,7.5L12,4.15Z" />
+            </svg>
+            5
+          </span>
+          
+        </h1></a>
+        
+        <h3>SOCIAL</h3>
+        <h3>CAREER PROFILE</h3>
+        <h3>OPTIONS</h3>
+        
+        <div class="profile align">
+          <img src="https://media.mmo-champion.com/images/news/2018/march/moira.jpg" class="avatar" alt="">
+          <div>
+            PIXELPANDA47
+          </div>
+        </div>
+        
+        <div class="chatter">
+          <p ng-if="ping0" class="blu">xX_GenjiMain_Xx: I need healing!</p>
+          <p ng-if="ping1" class="blu">xX_GenjiMain_Xx: I need healing!</p>
+          <p ng-if="ping2" class="blu">xX_GenjiMain_Xx: I need healing!</p>
+          <p class="gold">{{players}} friends playing Overwatch</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
