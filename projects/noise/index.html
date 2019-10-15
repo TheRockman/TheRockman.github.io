@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="board">
+        <button type="button" ng-click="beep('C1')" name="button">C</button>
+        <button type="button" class="sharp" ng-click="beep('C#1')" name="button">C#</button>
+        <button type="button" ng-click="beep('D1')" name="button">D</button>
+        <button type="button" class="sharp" ng-click="beep('D#1')" name="button">D#</button>
+        <button type="button" ng-click="beep('E1')" name="button">E</button>
+        <button type="button" ng-click="beep('F1')" name="button">F</button>
+        <button type="button" class="sharp" ng-click="beep('F#1')" name="button">F#</button>
+        <button type="button" ng-click="beep('G1')" name="button">G</button>
+        <button type="button" class="sharp" ng-click="beep('G#1')" name="button">G#</button>
+        <button type="button" ng-click="beep('A1')" name="button">A</button>
+        <button type="button" class="sharp" ng-click="beep('A#1')" name="button">A#</button>
+        <button type="button" ng-click="beep('B1')" name="button">B</button>
+        <button type="button" ng-click="beep('C2')" name="button">C</button>
+        <button type="button" class="sharp" ng-click="beep('C#2')" name="button">C#</button>
+        <button type="button" ng-click="beep('D2')" name="button">D</button>
+        <button type="button" class="sharp" ng-click="beep('D#2')" name="button">D#</button>
+        <button type="button" ng-click="beep('E2')" name="button">E</button>
+        <button type="button" ng-click="beep('F2')" name="button">F</button>
+        <button type="button" class="sharp" ng-click="beep('F#2')" name="button">F#</button>
+        <button type="button" ng-click="beep('G2')" name="button">G</button>
+        <button type="button" class="sharp" ng-click="beep('G#2')" name="button">G#</button>
+        <button type="button" ng-click="beep('A2')" name="button">A</button>
+        <button type="button" class="sharp" ng-click="beep('A#2')" name="button">A#</button>
+        <button type="button" ng-click="beep('B2')" name="button">B</button>
+      </div>
+      
+      <br/>
+      
+      <button type="button" ng-click="sing(tune, 200, 'triangle', null);" name="button">sing A</button>
+      <button type="button" ng-click="sing(tune2, 300, 'sine', 75);" name="button">sing B</button>
+      
+      <select ng-model="type" name="">
+          <option value="sine">sine</option>
+          <option value="square">square</option>
+          <option value="sawtooth">sawtooth</option>
+          <option value="triangle">triangle</option>
+      </select>
+      <input type="range" min="0.00" max="0.09" step="0.01" ng-model="globalVol" name="" value="">
+      <input type="text" ng-model="tempo" name="" value="">
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
