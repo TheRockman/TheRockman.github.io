@@ -39,21 +39,24 @@ svg, svg path, img{
 }
 
 .board{
-  display: inline-flex;
+  width: 100vw;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 .board button{
-  text-align: center;
-  height: 100px;
-  width: 3vw;
-  margin: 0!important;
+  width:3.5vw;
+  height: 10vw;
 }
 .sharp{
-  width: 25px;
-  background: black;
+  background: #333;
   color: white;
   transform-origin: top center;
   transform: scale(0.8);
+}
+
+.current{
+  filter: drop-shadow(0 0 5px dodgerblue);
 }
 
 /* ng-animate */
