@@ -10,6 +10,7 @@
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <script type="text/javascript" src="../../carousel.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
@@ -36,8 +37,15 @@
                 Firstname Lastnamesson
               </span>
               <span class="align">
-                <button type="button" name="button">View</button>
-                <button type="button" name="button" ng-click="challange()">Challange</button>
+                <svg class="pointer" style="width:20px;height:20px" viewBox="0 0 24 24">
+                  <path fill="#fff" d="M19,21V19H15V17H19V15L22,18L19,21M10,4A4,4 0 0,1 14,8A4,4 0 0,1 10,12A4,4 0 0,1 6,8A4,4 0 0,1 10,4M10,14C11.15,14 12.25,14.12 13.24,14.34C12.46,15.35 12,16.62 12,18C12,18.7 12.12,19.37 12.34,20H2V18C2,15.79 5.58,14 10,14Z" />
+                </svg>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <svg  class="pointer" ng-click="challange()" style="width:20px;height:20px" viewBox="0 0 24 24">
+                  <path fill="#fff" d="M6.2,2.44L18.1,14.34L20.22,12.22L21.63,13.63L19.16,16.1L22.34,19.28C22.73,19.67 22.73,20.3 22.34,20.69L21.63,21.4C21.24,21.79 20.61,21.79 20.22,21.4L17,18.23L14.56,20.7L13.15,19.29L15.27,17.17L3.37,5.27V2.44H6.2M15.89,10L20.63,5.26V2.44H17.8L13.06,7.18L15.89,10M10.94,15L8.11,12.13L5.9,14.34L3.78,12.22L2.37,13.63L4.84,16.1L1.66,19.29C1.27,19.68 1.27,20.31 1.66,20.7L2.37,21.41C2.76,21.8 3.39,21.8 3.78,21.41L7,18.23L9.44,20.7L10.85,19.29L8.73,17.17L10.94,15Z" />
+                </svg>
               </span>
             </div>
           </div>
@@ -80,8 +88,8 @@
             <b>2008-08-08</b>
           </div>
           <div class="align jsb info-row">
-            <p>Something:</p>
-            <b>xyz</b>
+            <p>Duels won:</p>
+            <b>10</b>
           </div>
         </div>
       </div>
@@ -89,9 +97,17 @@
         <div class="card">
           <div class="duel align jsa" ng-if="duel">
             <div class="overlay">
+              <div class="align jsb">
+                <span></span>
+                <span style="margin: 1rem;">
+                  <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="#fff" d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" />
+                  </svg>
+                </span>
+              </div>
               <br/>
               <br/>
-              <h2>Duel</h2> 
+              <h1 style="font-family: 'Rock Salt', cursive;">VS</h1> 
               <span>Ends in 8 hours</span>
               <br/>
               <br/>
@@ -100,7 +116,8 @@
               <br/>
               <br/>
               <br/>
-              <h3>Total duel scores: 10 wins, 2 losses</h3>
+              <br/>
+              <h3>Total duel score: 10 wins, 2 losses</h3>
             </div>
             <div class="center">
               <img src="https://i2.wp.com/metro.co.uk/wp-content/uploads/2015/11/twitter.png?quality=90&strip=all&zoom=1&resize=644%2C637&ssl=1" class="avatar" alt="">
@@ -135,10 +152,57 @@
           </div>
           <br/>
           <hr>
-          <p>Goal tracker - 90% </p>
+          <p>Goal tracker: 90% </p>
           <progress value="90" max="100">0%</progress>
-          <p>Another goal - 45%</p>
+          <p>Another goal: 45%</p>
           <progress value="45" max="100">0%</progress>
+        </div>
+        <div class="row">
+          <div class="flex">
+            <div class="card">
+              <h2>Cool data</h2>
+              <span style="display: flex;">
+                <img src="Capture.png" alt="">
+                &nbsp;
+                &nbsp;
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+                </p>
+              </span>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="card">
+              <h2>Nice values</h2>
+              <table style="width:100%">
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Age</th>
+                </tr>
+                <tr>
+                  <td>Jill</td>
+                  <td>Smith</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Jill</td>
+                  <td>Smith</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Jill</td>
+                  <td>Smith</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Eve</td>
+                  <td>Jackson</td>
+                  <td>94</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
