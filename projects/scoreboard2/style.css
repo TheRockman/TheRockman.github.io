@@ -1,0 +1,318 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+  --main: #7674ec;
+  --tint:  #2b3549;
+  --gradient:  linear-gradient(to right, #c69dff 0%, #0f85ff 92%);
+}
+
+body{
+  margin: 0;
+  background: #222c3d;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.jsa{
+  justify-content: space-around;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+hr{
+  filter: invert(1);
+  transform: rotate(180deg);
+}
+
+nav{
+  padding: var(--spacer);
+  background: var(--tint);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  transition: all 150ms ease-in-out;
+}
+/* ng-animate */
+/* .fade{
+  transition:0.5s linear opacity;
+}
+.fade.ng-hide {
+  opacity:0;
+} */
+
+.info-row{
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+  background: var(--tint);
+  margin: var(--spacer);
+  padding: var(--spacer);
+}
+.search{
+  position: relative;
+}
+.dropdown{
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  width: 50vw;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  transition: all 150ms ease-in-out;
+  background: #333;
+  margin: var(--spacer);
+  padding: var(--spacer);
+  z-index: 100;
+}
+.search input{
+  background: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  border-bottom: 1px solid #fff;
+}
+
+.gloss-card {
+  position: relative;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  transition: all 150ms ease-in-out;
+  background: var(--gradient);
+  margin: var(--spacer);
+  padding: var(--spacer);
+}
+.avatar{
+  width: 100px;
+  height: 100px;
+  border-radius: 1000px;
+  border: 3px solid white;
+  box-shadow: var(--level2);
+}
+.mini{
+  width: 40px;
+  height: 40px;
+}
+
+.duel{
+  background: url('https://i1.wp.com/windowscustomization.com/wp-content/uploads/2018/12/Double-Embers.gif?zoom=2.625&fit=750%2C353&quality=80&strip=all&ssl=1')  no-repeat center center;
+  /* background: tomato; */
+  padding: 1rem;
+  border-radius: 10px;
+  background-size: cover;
+  box-shadow: var(--level2);
+  position: relative;
+  opacity: 0;
+  animation-name: flash;
+  animation-duration: 0.5s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+.duel .overlay{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+.duel .avatar{
+  filter: drop-shadow(0 0 15px tomato);
+}
+
+/*flex*/
+.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}
+
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+  width: 100%;
+  height: 20px;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #222c3d;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+progress[value]::-webkit-progress-value {
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+/*fluid layout*/
+
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+}
+.dense h3{
+  margin: 0;
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto))!important;
+  }
+}
+
+.intro {
+  opacity: 0;
+  transform: translateY(-10);
+  animation-name: animation;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes animation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes flash {
+  from {
+    opacity: 0;
+    filter: brightness(200);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+
+
+
+/*Card*/
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */

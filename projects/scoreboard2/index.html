@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <nav class="align jsb">
+      <span class="pointer">
+        <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z" />
+        </svg>
+      </span>
+      <span>
+        <div class="search align jsb">
+          <input placeholder="Find..." ng-model="search" type="text" name="" value="">
+          &nbsp;
+          <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+          </svg>
+          
+          <div class="dropdown" ng-if="search">
+            <div class="align jsb">
+              <span class="align">
+                <img class="mini avatar" src="https://i2.wp.com/www.docker.com/blog/wp-content/uploads/jenny.png?zoom=2.625&fit=96%2C96&ssl=1" alt="">
+                &nbsp;
+                &nbsp;
+                Firstname Lastnamesson
+              </span>
+              <span class="align">
+                <button type="button" name="button">View</button>
+                <button type="button" name="button" ng-click="challange()">Challange</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </span>
+    </nav>
+    <div class="row">
+      <div class="flex intro">
+        <div class="gloss-card">
+          <div class="center">
+            <div class="align jsb">
+              <span>
+                <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                  <path fill="#fff" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                </svg>
+              </span>
+              <span class="pointer">
+                <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                  <path fill="#fff" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                </svg>
+              </span>
+            </div>
+            <img src="https://i2.wp.com/metro.co.uk/wp-content/uploads/2015/11/twitter.png?quality=90&strip=all&zoom=1&resize=644%2C637&ssl=1" class="avatar" alt="">
+            <h2>Firstname McLastname</h2>
+          </div>
+          <div class="align jsb info-row">
+            <p>Cases:</p>
+            <b>9000</b>
+          </div>
+          <div class="align jsb info-row">
+            <p>Role:</p>
+            <b>Team lead</b>
+          </div>
+          <div class="align jsb info-row">
+            <p>Employee number:</p>
+            <b>123</b>
+          </div>
+          <div class="align jsb info-row">
+            <p>Hiredate:</p>
+            <b>2008-08-08</b>
+          </div>
+          <div class="align jsb info-row">
+            <p>Something:</p>
+            <b>xyz</b>
+          </div>
+        </div>
+      </div>
+      <div class="flex x3 intro">
+        <div class="card">
+          <div class="duel align jsa" ng-if="duel">
+            <div class="overlay">
+              <br/>
+              <br/>
+              <h2>Duel</h2>
+              <span>Ends in 8 hours</span>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <h3>Total duel scores: 10 wins, 2 losses</h3>
+            </div>
+            <div class="center">
+              <img src="https://i2.wp.com/metro.co.uk/wp-content/uploads/2015/11/twitter.png?quality=90&strip=all&zoom=1&resize=644%2C637&ssl=1" class="avatar" alt="">
+              <h3>Firstname1</h3>
+              <h1>800</h1>
+            </div>
+            <div class="center">
+              <img src="https://i2.wp.com/www.docker.com/blog/wp-content/uploads/jenny.png?zoom=2.625&fit=96%2C96&ssl=1" class="avatar" alt="">
+              <h3>Firstname2</h3>
+              <h1>900</h1>
+            </div>
+          </div>
+          
+          <h2>Current stats</h2>
+          <div class="fluid-row dense">
+            <div class="fluid-flex center">
+              <h3>11k</h3>
+              Sent
+            </div>
+            <div class="fluid-flex center">
+              <h3>12k</h3>
+              Returned
+            </div>
+            <div class="fluid-flex center">
+              <h3>13k</h3>
+              Payed
+            </div>
+            <div class="fluid-flex center">
+              <h3>14k</h3>
+              Prev Payed
+            </div>
+          </div>
+          <br/>
+          <hr>
+          <p>Goal tracker - 90% </p>
+          <progress value="90" max="100">0%</progress>
+          <p>Another goal - 45%</p>
+          <progress value="45" max="100">0%</progress>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
