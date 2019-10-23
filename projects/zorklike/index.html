@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <!-- <div class="align jsb" style="margin: 1rem;">
+      <b>Actions:</b>
+      <b>>move x</b>
+      <b>>look x</b>
+      <b>>take x</b>
+      <b>>open x</b>
+      <b>>use x with y</b>
+    </div> -->
+    <ul>
+      <li ng-repeat="item in feed track by $index">
+        {{item}}
+      </li>
+    </ul>
+    <nav>
+      <form ng-submit="callCommand()">
+        <input placeholder="Type here" autofocus type="text" ng-model="command" name="" value="">
+      </form>
+    </nav>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
