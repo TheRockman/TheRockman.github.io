@@ -13,20 +13,18 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <!-- <div class="align jsb" style="margin: 1rem;">
-      <b>Actions:</b>
-      <b>>move x</b>
-      <b>>look x</b>
-      <b>>take x</b>
-      <b>>open x</b>
-      <b>>use x with y</b>
-    </div> -->
-    
-    <ul>
-      <li ng-repeat="item in feed track by $index">
-        {{item}}
-      </li>
-    </ul>
+    <div class="align jsb" style="padding: 1rem; background: #111;">
+      <small>Action commands:</small>
+      <small>>look x</small>
+      <small>>move x</small>
+      <small>>take x</small>
+      <small>>open x</small>
+      <small>>use x with y</small>
+    </div>
+
+    <p ng-repeat="item in feed track by $index">
+      {{item}}
+    </p>
     <nav>
       <form ng-submit="callCommand()">
         <input placeholder="Type here" autofocus type="text" ng-model="command" name="" value="">

@@ -13,7 +13,7 @@
 body{
   margin: 0;
   background: black;
-  color: #666;
+  color: #e0e0e0;
   font-family: Courier, Monaco, monospace;
   font-size: 16px;
 }
@@ -42,15 +42,16 @@ nav{
   border-top: 1px solid white;
 }
 input{
-  width: 95vw;
+  width: 90vw;
   padding: 1rem 0;
   background: transparent;
   border:none;
   outline: none;
   color: white;
+  margin-left: 1rem;
 }
-li{
-  margin: 1rem 0;
+p{
+  margin: 1rem;
 }
 
 /* ng-animate */
