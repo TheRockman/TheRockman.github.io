@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stage scroll">
+      <img class="backdrop" ng-class="{'blur':state === 0}" src="https://app.microventures.com/assets/img/blog/secondary-trading-sellers-portrait@2x.png" alt="">
+      <div class="profile-wrap enter" ng-if="state === 0">
+        <img src="{{profile.url}}" alt="">
+        <h2>{{profile.name}}</h2>
+        <button class="cta" type="button" name="button">GET A BOOST</button>
+      </div>
+      <div class="feed">
+        <nav class="align jsb pad">
+          <div class="slide" ng-class="{'zero':state === 0, 'one': state === 1, 'two': state === 2}"></div>
+          <span ng-click="state = 0">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24" ng-class="{'active':state===0}">
+              <path fill="#000000" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 10.12,16.5 12,16.5C13.88,16.5 16.5,17.38 16.93,18.28C15.57,19.36 13.86,20 12,20C10.14,20 8.43,19.36 7.07,18.28M18.36,16.83C16.93,15.09 13.46,14.5 12,14.5C10.54,14.5 7.07,15.09 5.64,16.83C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M12,6C10.06,6 8.5,7.56 8.5,9.5C8.5,11.44 10.06,13 12,13C13.94,13 15.5,11.44 15.5,9.5C15.5,7.56 13.94,6 12,6M12,11A1.5,1.5 0 0,1 10.5,9.5A1.5,1.5 0 0,1 12,8A1.5,1.5 0 0,1 13.5,9.5A1.5,1.5 0 0,1 12,11Z" />
+            </svg>
+          </span>
+          <span ng-click="state = 1">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24" ng-class="{'active':state===1}">
+              <path fill="#000000" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M9.75,7.82C8.21,7.82 7,9.03 7,10.57C7,12.46 8.7,14 11.28,16.34L12,17L12.72,16.34C15.3,14 17,12.46 17,10.57C17,9.03 15.79,7.82 14.25,7.82C13.38,7.82 12.55,8.23 12,8.87C11.45,8.23 10.62,7.82 9.75,7.82Z" />
+            </svg>
+          </span>
+          <span  ng-click="state = 2">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24" ng-class="{'active':state===2}">
+              <path fill="#000000" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12H20A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4V2M18.78,3C18.61,3 18.43,3.07 18.3,3.2L17.08,4.41L19.58,6.91L20.8,5.7C21.06,5.44 21.06,5 20.8,4.75L19.25,3.2C19.12,3.07 18.95,3 18.78,3M16.37,5.12L9,12.5V15H11.5L18.87,7.62L16.37,5.12Z" />
+            </svg>
+          </span>
+        </nav>
+        
+        <div class="slide-0 enter" ng-if="state === 0" >
+          <div class="pad">
+            <h3>About me</h3>
+            <!-- <textarea class="profile-bio" ng-model="profile.bio"></textarea> -->
+            <p>{{profile.bio}}</p>
+            <h3>Looking for</h3>
+            
+            <label class="checkbox align jsb" for="check1">
+              <div>Friends</div>
+              <input id="check1" type="checkbox" style="transform:translateX(-1000px)" />
+              <span>✔</span>
+            </label>
+            <br>
+            <label class="checkbox align jsb" for="check2">
+              <div>Partner</div>
+              <input id="check2" type="checkbox" style="transform:translateX(-1000px)" />
+              <span>✔</span>
+            </label>
+            <br>
+            <label class="checkbox align jsb" for="check3">
+              <div>Party</div>
+              <input id="check3" type="checkbox" style="transform:translateX(-1000px)" />
+              <span>✔</span>
+            </label>
+            
+          </div>
+        </div>
+        
+        <div class="slide-1 enter" ng-if="state === 1" >
+          <div class="feed-item align" ng-if="item.unswiped" ng-repeat="item in feedList" ng-click="openItem(item)" ng-class="{'openWrap': item.open, 'nope':item.swipe === false, 'yep':item.swipe === true}">
+            <figure style="display: flex;">
+              <img class="image" src="{{item.url}}" alt="">
+              <span class="pad" ng-if="!item.open">
+                <b>{{item.name}} ({{item.age}})</b>
+                <br/>
+                <small class="align">
+                  <svg style="width:14px;height:14px" viewBox="0 0 24 24">
+                    <path fill="#000000" d="M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z" />
+                  </svg>
+                  {{item.distance}} km away
+                </small>
+                <p>{{item.bioShort}}</p>
+              </span>
+            </figure>
+            <div ng-if="item.open" class="item-card">
+              <div class="rate-wrap">
+                <div class="fab" ng-click="nope(item)">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path fill="#fb4321" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                  </svg>
+                </div>
+                <div class="fab" ng-click="yep(item)">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path fill="#24fb21" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+                  </svg>
+                </div>
+              </div>
+              <h3>{{item.name}} ({{item.age}})</h3>
+              {{item.bio}}
+            </div>
+            <span class="border"></span>
+          </div>
+        </div>
+        
+        <div class="slide-2 enter" ng-if="state === 2" >
+          <div class="pad">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
