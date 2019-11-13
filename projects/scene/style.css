@@ -342,12 +342,51 @@ svg, svg path, img{
 
 .img{
   position: absolute;
-  right: 180px;
-  top: 59px;
+  left: -10rem;
+  top: 50px;
   height: 145px;
   width: auto;
-  z-index: 12;
+  z-index: 11;
+  animation-name: ride;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
 }
+@keyframes ride {
+  0% {
+    left: -10rem;
+  }
+  100% {
+    left: 100rem;
+  }
+}
+
+.img2{
+  position: absolute;
+  right: -10rem;
+  top: 50px;
+  height: 145px;
+  transform-origin: bottom;
+  transform: rotateY(180deg) scale(0.8);
+  filter: brightness(0.8) saturate(0.8); 
+  width: auto;
+  z-index: 10;
+  animation-name: ride2;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-delay: 16s;
+}
+@keyframes ride2 {
+  0% {
+    right: -10rem;
+  }
+  100% {
+    right: 100rem;
+  }
+}
+
 /* ng-animate */
 /* .fade{
   transition:0.5s linear opacity;
