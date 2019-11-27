@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stage scroll">
+      <div class="list-item align" ng-repeat="item in items" ng-class="{'open':item.open}" ng-click="item.open = !item.open">
+        <div class="backlink align jsb" ng-if="item.open">
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+          </svg>
+          <span>{{item.title}}</span>
+          <span></span>
+        </div>
+        <figure>
+          <img src="{{item.cover}}" alt="">
+        </figure>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <div class="content" ng-click="$event.stopPropagation();">
+          <div class="actions align jsb" ng-if="item.open">
+            <div class="pill align">
+              <span class="align">
+                <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                </svg>
+                &nbsp;
+                {{item.time}} minutes
+              </span>
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              <span class="align">
+                <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                  <path fill="#000000" d="M11,9H9V2H7V9H5V2H3V9C3,11.12 4.66,12.84 6.75,12.97V22H9.25V12.97C11.34,12.84 13,11.12 13,9V2H11V9M16,6V14H18.5V22H21V2C18.24,2 16,4.24 16,6Z" />
+                </svg>
+                &nbsp;
+                {{item.size}} portions
+              </span>
+            </div>
+            <div class="fab">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="list">
+            <div class="header">{{item.title}}</div>
+            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit<small>
+            <div ng-if="item.open">
+              <br/>
+              <label class="tick-row align jsb" ng-class="{'done':stuff.check}" ng-repeat="stuff in item.stuff">
+                {{stuff.name}}
+                <input type="checkbox" ng-model="stuff.check" name="" value=""> 
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
