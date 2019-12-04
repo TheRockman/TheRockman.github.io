@@ -45,12 +45,12 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     },
     {
       url: 'https://www.burgerking.se/011_se/Product%20images/Dips/image-thumb__7684__modMenuProductTile/BBQ%201500x1500~-~640w@2x.png',
-      name: 'Zirp Zorp Zauce - white',
+      name: 'Zirp Zorp Zauce - dark',
       price: 1
     },
     {
       url: 'https://www.burgerking.se/011_se/Product%20images/Dips/image-thumb__7693__modMenuProductTile/SWEET%26SOUR%20DIP%201500x1500~-~640w@2x.png',
-      name: 'Zirp Zorp Zauce - dark',
+      name: 'Zirp Zorp Zauce - lighter',
       price: 1
     },
     {
