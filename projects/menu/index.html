@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="hero">
+      <h1>Zirp Zorp Burger Corp</h1>
+      <img src="https://www.freepnglogos.com/uploads/burger-png/burger-png-png-images-yellow-images-12.png" class="backdrop" alt="">
+    </div>
+    <span class="header">
+      Meals
+    </span>
+    <div class="row">
+      <div ng-repeat="item in items1" class="flex center">
+        <span class="ping" ng-if="item.ping">+1</span>
+        <img src="{{item.url}}" alt="">
+        <b>{{item.name}}</b>
+        <br/>
+        <br/>
+        <div class="cta" ng-class="{'bling':item.ping}" ng-click="ping(item);">
+          <p>${{item.price}}</p>
+          Add to meal
+        </div>
+      </div>
+    </div>
+    <br/>
+    <hr/>
+    <span class="header">
+      Sides
+    </span>
+    <div class="row">
+      <div ng-repeat="item in items2" class="flex center">
+        <span class="ping" ng-if="item.ping">+1</span>
+        <img src="{{item.url}}" alt="">
+        <b>{{item.name}}</b>
+        <br/>
+        <br/>
+        <div class="cta" ng-class="{'bling':item.ping}" ng-click="ping(item);">
+          <p>${{item.price}}</p>
+          Add to meal
+        </div>
+      </div>
+    </div>
+    <code class="bill">
+      <div class="center">
+        ORDER
+      </div>
+      <p ng-repeat="item in cart.order" class="align jsb">
+        {{ cart[item.url] }}x {{item.name}} <span>${{item.price}}</span>
+      </p>
+      <div class="align jsb">
+        Total: <span>${{cart.total}}</span>
+      </div>
+    </code>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
