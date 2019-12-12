@@ -10,7 +10,7 @@
 <body>
   <div ng-controller="mainCtrl">
     <div class="row">
-      <div class="flex">
+      <div class="flex relative">
         <img src="http://pixelartmaker.com/art/58d2cbf24f07452.png" class="life" ng-repeat="item in getNumber(life) track by $index">
         <div class="stage">
           <div class="pl" >
@@ -26,7 +26,10 @@
           </div>
           <div class="obst" ng-show="item" ng-class="item.class"></div>
         </div>
-        {{msg}}
+        <div class="msg">
+          {{msg}}
+        </div>
+        <div ng-class="{'moveGround':animateGrass}" class="foreground"></div>
       </div>
     </div>
   </div>

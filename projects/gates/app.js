@@ -1,4 +1,4 @@
-var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope) {
+var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope, $timeout) {
   $scope.currentX = 0;
   $scope.item = {
     class: 'apple',
@@ -11,10 +11,22 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
   $scope.msg = '';
   $scope.life = 3;
   
+  $scope.animateGrass = false;
+  
   $scope.updateCSS = function (cvar, value, right) {
+    if($scope.animateGrass === true){
+      return;
+    }
+    
     if ($scope.action === fight || $scope.action === force) {
       return;
     }
+    
+    $scope.animateGrass = true;
+    $timeout( function(){
+      $scope.animateGrass = false;
+    }, 600 );
+    
     $scope.msg = '';
     $scope.currentX = value;
     document.documentElement.style.setProperty(cvar, value+'px');    
@@ -105,7 +117,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         class: 'skeleton',
         actionLabel: 'Punch',
         type: 'enemy',
-        label: 'the skeleton',
+        label: 'the enemy',
       }
     } else if (ra === 2) {
       return {
@@ -126,7 +138,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         class: 'skeleton',
         actionLabel: 'Punch',
         type: 'enemy',
-        label: 'the skeleton',
+        label: 'the enemy',
       };
     }
   }

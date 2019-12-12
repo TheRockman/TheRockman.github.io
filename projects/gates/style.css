@@ -15,6 +15,10 @@
   --obst-pos: 0;
 }
 
+.relative{
+  position: relative;
+}
+
 body{
   margin: 0;
   background: black;
@@ -36,26 +40,59 @@ body{
   background-position: var(--posx), var(--posy);
   height: 300px;
   background-color: #222;
-  border-bottom: 30px solid #36354e;
+  border-bottom: 30px solid #2c2209;
+}
+
+@keyframes example {
+  from {background-position: 0 0;}
+  to {background-position: -625px 0;}
+}
+
+.moveGround{
+  animation-name: example;
+  animation-duration: 600ms;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+.foreground{
+  height: 30px;
+  filter: brightness(0.2) hue-rotate(260deg);
+  background: url(https://media.indiedb.com/cache/images/members/4/3141/3140805/thumb_620x2000/grassdirt1.png) repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  width: 720px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.msg{
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
 }
 
 .pl{
   display: inline-flex;
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   z-index: 10;
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: 70px;
-  background-size: cover;
+  width: 140px;
   height: 160px;
-  background: url('https://alfahir.hu/sites/default/files/kepek/bs_walk.gif') center center no-repeat;
+  background: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/19083221188277.562fd0b16ab01.gif') bottom center no-repeat;
+  background-size: cover;
 }
 .dir{
   user-select: none;
   background: transparent;
-  bottom:10px;
+  bottom:40px;
   width: 2em;
   height: 2em;
   color: white;
@@ -93,7 +130,11 @@ body{
   background: red;
 }
 .skeleton{
-  background: green;
+  width: 140px;
+  height: 160px;
+  transform: rotateY(180deg) translateY(30px);
+  background: url('https://cdn.gamedevmarket.net/wp-content/uploads/20191203193340/b58581b3b39df25819b1a6642e1614f2c8eeab2d.gif') bottom center no-repeat;
+  background-size: cover;
 }
 .block{
   background-color: brown;
