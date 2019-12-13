@@ -188,6 +188,7 @@ svg, svg path, img{
 }
 .player::before{
   content: '_';
+  color: transparent;
   position: absolute;
   left: 0;
   top: 0;
