@@ -138,6 +138,42 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     '0'
   ]
 
+  $scope.layer1 = [
+    '0',
+    '0',
+    '0',
+    '0',
+    'D2',
+    '0',
+    'A2',
+    '0',
+    '0',
+    'D2',
+    '0',
+    'A2',
+    '0',
+    'D2',
+    'A2',
+    '0',
+    'D2',
+    '0',
+    'C#2',
+    '0',
+    'A2',
+    '0',
+    '0',
+    'C#2',
+    '0',
+    'A2',
+    '0',
+    'C#2',
+    'A2',
+    '0',
+    'D2',
+    '0',
+    'A2',
+  ];
+
   $scope.translate = function(input){
     switch(input) {
       case 'C1':
