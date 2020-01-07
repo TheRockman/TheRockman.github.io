@@ -8,11 +8,15 @@
   --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  
+  --sub-text: #7083a1;
+  
 }
 
 body{
   margin: 0;
   background: #f1f8fd;
+  color: #3a4655;
   font-family: 'Raleway', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
@@ -73,6 +77,43 @@ svg, svg path, img{
   box-shadow: inset 3px 3px 3px rgba(255,255,255,0.5), inset -3px -3px 3px rgba(0,0,0,0.05);
 }
 
+.img-tile{
+  min-height: 32px;
+  line-height: 32px;
+  background-color: #fff;
+  padding: 8px;
+  margin: 8px;
+  position: relative;
+  border-radius: 8px;
+  color: #222e51;
+  margin: 8px auto;
+  overflow: hidden;
+  box-shadow: 6px 6px 6px rgba(0,0,0,0.05), -6px -6px 6px rgba(255,255,255,0.6), inset 2px 2px 5px rgba(0,0,0,0.03), inset -2px -2px 5px rgba(255,255,255,0.4);
+}
+.img-tile img{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  transform-origin: center;
+  transition: all 300ms cubic-bezier(.33,.11,.02,.99);
+  width: 100%;
+}
+.img-tile:hover img{
+  transform: scale(1.1) rotate(-5deg);
+}
+.img-tile span{
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  z-index: 1;
+  color: white;
+  line-height: 16px;
+  text-shadow: rgba(0, 0, 0, 0.3) 0px 2px;
+}
+
 .panel{
   border-radius: 8px;
   margin: 16px;
@@ -92,63 +133,43 @@ svg, svg path, img{
   font-weight: bold;
   letter-spacing: 1px;
   text-shadow: rgba(0, 0, 0, 0.3) 0px 2px;
-  box-shadow: -10px 0px 25px 8px rgba(245, 111, 184, 0.3), 10px 0px 25px 8px rgba(248, 149, 82, 0.3);
+  box-shadow: -10px 0px 25px 8px rgba(245, 111, 184, 0.2), 10px 0px 25px 8px rgba(248, 149, 82, 0.2);
 }
-/* ng-animate */
-/* .fade{
-  transition:0.5s linear opacity;
-}
-.fade.ng-hide {
-  opacity:0;
-} */
 
-/*flex*/
-.flex{
-  flex-basis: 100%;
+.w100{
+  width: 100%;
 }
-.x3{
-  flex-basis: 50%!important;
+
+.porthole{
+  border-radius: 2000px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid white;
+  overflow: hidden;
+  position: relative;
 }
-.x2{
-  flex-basis: 25%!important;
-}
-@media screen and (min-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1;
-        -ms-flex: 1;
-  }
-}
-@media screen and (max-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1 1 auto;
-  }
+.porthole img{
+  width: 100%;
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: -0%;
 }
 
 /*fluid layout*/
-/*
+
 .fluid-row {
   display: grid;
   grid-gap: 0px;
   grid-template-columns: repeat(auto-fill, minmax(33%, auto));
 }
 .fluid-flex{
-  padding: 5px;
+  padding: 8px;
+  margin: 8px;
 }
 
 .dense{
-  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+  grid-template-columns: repeat(auto-fill, minmax(21%, auto));
 }
 
 @media screen and (max-width: 960px) {
@@ -161,8 +182,14 @@ svg, svg path, img{
   .fluid-row{
     grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
   }
+  .img-tile{
+    width:92.4%!important;
+  }
+  .img-tile img{
+    top: -25%;
+  }
 }
-*/
+
 
 /*Card*/
 /*
