@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <select class="" ng-model="current" name="">
+      <option selected value="player1">P1</option>
+      <option value="player2">P2</option>
+      <option value="player3">P3</option>
+    </select>
+    <div class="row">
+      <div class="flex">
+        <div class="grid" ng-style="gridStyle">
+          <div class="player" ng-style="player1Pos">
+            123
+          </div>
+          <div class="player2" ng-style="player2Pos">
+            123
+          </div>
+          <div class="player3" ng-style="player3Pos">
+            123
+          </div>
+          <div class="tile" ng-click="moveToTile(tile)" ng-style="z-index:tile.y" ng-repeat="tile in grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>

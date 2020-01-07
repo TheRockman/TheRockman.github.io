@@ -1,0 +1,243 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: #f5f5f5;
+  color: black:
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+.grid{
+  transform-style: preserve-3d;
+  font-size: 0;
+  transform: rotateZ(25deg) rotateY(40deg) rotateX(-50deg);
+  margin: 0 auto;
+}
+.tile{
+  width: 16px;
+  height: 16px;
+  outline: 0.5px solid black;
+  display: inline-grid;
+  position: relative;
+  z-index: 0;
+  background: green;
+}
+.cord{
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 16px;
+  background: white;
+  opacity: 0;
+}
+.tile:hover{
+  background: red;
+}
+.tile:hover > .cord{
+  opacity: 1;
+}
+
+.player{
+  transition: 0.5s;
+  background: url('https://gamepedia.cursecdn.com/zelda_gamepedia_en/thumb/f/f6/CoH_Cadence_Sprite.gif/271px-CoH_Cadence_Sprite.gif?version=45e9c0ee1bf122e203df658730cacfa7');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.player2{
+  transition: 0.5s;
+  background: url('https://www.spike-chunsoft.co.jp/necrodancer-zelda/assets/images/top/LinkFront_Beat.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.player3{
+  transition: 0.5s;
+  background: url('https://www.zeldadungeon.net/wp-content/uploads/2019/04/ZeldaFront_Beat.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+/* ng-animate */
+/* .fade{
+  transition:0.5s linear opacity;
+}
+.fade.ng-hide {
+  opacity:0;
+} */
+
+/*flex*/
+/*.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}*/
+
+/*fluid layout*/
+/*
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
+*/
+
+/*Card*/
+/*
+.card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+  background: #fff;
+  margin: var(--spacer);
+  padding: var(--spacer);
+}
+.card:hover {
+  box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+}
+*/
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */
