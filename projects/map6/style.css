@@ -79,27 +79,9 @@ svg, svg path, img{
   margin-top: -10px;
   margin-left: -10px;
 }
-.player2{
-  transition: 0.5s;
-  background: url('https://www.spike-chunsoft.co.jp/necrodancer-zelda/assets/images/top/LinkFront_Beat.gif');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  margin-top: -10px;
-  margin-left: -10px;
-}
-.player3{
-  transition: 0.5s;
-  background: url('https://www.zeldadungeon.net/wp-content/uploads/2019/04/ZeldaFront_Beat.gif');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  margin-top: -10px;
-  margin-left: -10px;
+
+.blocked{
+  background: black;
 }
 
 /* ng-animate */
