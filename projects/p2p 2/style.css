@@ -1,5 +1,6 @@
 body {
     font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    background: #131417;
 }
 
 .align{
@@ -31,16 +32,62 @@ body {
 .grid{
   width: 300px;
   height: 300px;
+  margin: 0 auto;
+  margin-top: 10%;
+  transform-style: preserve-3d;
+  transform: perspective(110em) rotateZ(50deg) rotateX(40deg) rotateY(-40deg);
 }
-.tile{
+.tile {
   width: 100px;
   height: 100px;
-  outline: 1px solid black;
-  display: inline-grid;
+	outline: 1px solid black;
+	display: block;
+	background: #515547;
+	float: left;
+	font-size:0px;
+	transition: 0.2s all ease;
+	position: relative;
+	transform-style: preserve-3d;
+  cursor: pointer;
 }
+.tile::before{
+	outline: 1px solid black;
+	content: "_";
+	position: absolute;
+	color: transparent;
+	width: 100px;
+	height: 100px;
+	background: #515547;
+  box-shadow: inset 10px 10px 300px 0px rgba(0,0,0,0.25);
+	transform-origin: top center;
+	transition: 0.2s all ease;
+	transform: rotateZ(0deg) rotateX(-90deg) rotateY(0deg) translateY(1px) translateZ(100px) translateX(0px);
+}
+.tile::after{
+	outline: 1px solid black;
+	content: "_";
+	position: absolute;
+	color: transparent;
+	width: 100px;
+	height: 100px;
+	background: #515547;
+  box-shadow: inset 10px 10px 300px 0px rgba(0,0,0,0.50);
+	transform-origin: top center;
+	transition: 0.2s all ease;
+	transform: rotateZ(0deg) rotateY(-90deg) rotateX(0deg) translateX(-50px) translateZ(-51px) translateY(0px);
+}
+
+.tile:hover,
+.tile:hover::before,
+.tile:hover::after{
+  background: dodgerblue;
+}
+
 .p1{
   background: tomato;
+  transform: translateZ(-10px);
 }
 .p2{
   background: lime;
+  transform: translateZ(10px);
 }
