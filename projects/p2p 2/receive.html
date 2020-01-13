@@ -15,7 +15,7 @@
           </div>
           
           <div class="grid">
-            <div class="tile" ng-repeat="tile in sharedData" ng-class="{'p1':tile.status === 'senders', 'p2':tile.status === 'receiver'}" ng-click="changeTile(tile)">
+            <div class="tile" ng-repeat="tile in sharedData.grid" ng-class="{'p1':tile.status === 'senders', 'p2':tile.status === 'receiver'}" ng-click="changeTile(tile)">
               
             </div>
           </div>
