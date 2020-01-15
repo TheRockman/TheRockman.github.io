@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div class="stage " ng-controller="mainCtrl">
+    <div class="enemy-avatar">
+      <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_04.gif" />
+      <p>123</p>
+    </div>
+    <div class="avatar">
+      <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_09.gif" />
+      <p>123</p>
+    </div>
+    
+    <div class="hand enemy-hand align jsc">
+      <div class="card" ng-repeat="card in enemyHand">
+        <div class="card-cover">
+          <img src="https://media.hearthpwn.com/attachments/41/849/cardback_67.png" class="img" alt="">
+        </div>
+      </div>
+    </div>
+    
+    <div class="board">
+      
+      <div class="enemy-deck">
+        <div class="card">
+          <div class="card-cover" ng-if="deck.length > 0">
+            <img src="https://media.hearthpwn.com/attachments/41/849/cardback_67.png" class="img" alt="">
+          </div>
+        </div>
+      </div>
+      
+      <div class="board-part enemy-board align jsc">
+        <div class="card" ng-repeat="card in enemyBoard">
+          <div class="card-cover">
+            <img src="{{card.url}}" class="img" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="board-part my-board align jsc">
+        <div class="card" ng-repeat="card in myBoard">
+          <div class="card-cover">
+            <img src="{{card.url}}" class="img" alt="">
+          </div>
+        </div>
+      </div>
+      
+      <div class="deck">
+        <div class="card">
+          <div class="card-cover" ng-if="deck.length > 0" ng-click="draw()">
+            <img src="https://media.hearthpwn.com/attachments/41/849/cardback_67.png" class="img" alt="">
+            <div class="deck-info">
+              {{deck.length}}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="hand align jsc">
+      <div class="card" ng-repeat="card in hand" ng-click="play(card)">
+        <div class="card-cover">
+          <img src="{{card.url}}" class="img" alt="">
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>

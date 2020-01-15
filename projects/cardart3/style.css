@@ -1,0 +1,366 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: url('https://cdna.artstation.com/p/assets/images/images/021/885/792/large/grace-liu-tft-02.jpg?1573311922') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.jsc{
+  justify-content: center;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.img{
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+  transition: transform .35s ease-in-out;
+}
+
+.hand{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  margin: 0 auto;
+  z-index: 100;
+  will-change: transform;
+  transform: translateY(50%);
+  transition: .35s all ease-in-out;
+}
+.hand:hover{
+  transform: translateX(0);
+}
+.enemy-hand{
+  top: 0;
+  bottom: unset;
+  pointer-events: none;
+  transform: scale(0.8) translateY(-60%);
+}
+
+.deck{
+  position: absolute;
+  left: 2rem;
+  bottom: -2rem;
+  transform: scale(0.7);
+  transform-origin: bottom left;
+  z-index: 2;
+}
+.deck-info{
+  user-select: none;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  right: 1rem;
+  text-align: center;
+  color: white;
+  line-height: 160px;
+  font-size: 100px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  opacity: 0;
+}
+.deck:hover .deck-info{
+  opacity: 1;
+}
+.enemy-deck{
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: scale(0.7);
+  transform-origin: top right;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+.board-part{
+  height: 40vh;
+  width: 85vw;
+  margin: 0 auto;
+  border: 1px solid #333;
+  position: relative;
+  filter: drop-shadow(15px 15px 3px rgba(0, 0, 0, 0.2));
+}
+.board{
+  transform: perspective(50rem) rotateX(12deg);
+  /* background: url('https://cdna.artstation.com/p/assets/images/images/021/885/792/large/grace-liu-tft-02.jpg?1573311922')  no-repeat center center fixed; */
+  background-size: contain;
+  margin-top: 10vh;
+  z-index: 1;
+}
+.enemy-avatar{
+  text-align: center;
+  color: white;
+  position: fixed;
+  z-index: 10;
+  left: 1rem;
+  top: -1rem;
+}
+.enemy-avatar img, .avatar img{
+  width: 100px;
+  height: auto;
+}
+.avatar{
+  text-align: center;
+  color: white;
+  position: fixed;
+  z-index: 10;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  height: 210px;
+  margin: 1rem;
+  perspective: 1000px;
+}
+.card-cover {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:black;
+  background-size: cover;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform-origin: top center;
+  will-change: transform;
+  transform: skewX(0.001deg);
+  transition: transform .35s ease-in-out;
+  transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;
+}
+.card-cover::after {
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.2) 42%, rgba(255, 255, 255, 0) 60%);
+  transform: translateY(-20%);
+  will-change: transform;
+  transition: -webkit-transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1), -webkit-transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+}
+.card:hover{
+  box-shadow: 0 0 15px #fff;
+}
+.card:hover .card-cover {
+  transform: rotateX(7deg) translateY(-6px);
+}
+.card:hover .card-cover::after {
+  transform: translateY(0%);
+}
+.card::before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px 12px rgba(0, 0, 0, 0.4);
+  will-change: opacity;
+  transform-origin: top center;
+  transform: skewX(0.001deg);
+  transition: opacity .5s ease-in-out, -webkit-transform .35s ease-in-out;
+  transition: transform .35s ease-in-out, opacity .5s ease-in-out;
+  transition: transform .35s ease-in-out, opacity .5s ease-in-out, -webkit-transform .35s ease-in-out;
+}
+.card:hover::before {
+  opacity: 0.6;
+  transform: rotateX(7deg) translateY(-6px) scale(1.05);
+}
+
+
+/* ng-animate */
+/* .fade{
+  transition:0.5s linear opacity;
+}
+.fade.ng-hide {
+  opacity:0;
+} */
+
+/*flex*/
+/*.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}*/
+
+/*fluid layout*/
+/*
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
+*/
+
+/*Card*/
+/*
+.card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+  background: #fff;
+  margin: var(--spacer);
+  padding: var(--spacer);
+}
+.card:hover {
+  box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+}
+*/
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */
