@@ -13,6 +13,10 @@
 </head>
 <body>
   <div class="stage " ng-controller="mainCtrl">
+    <svg id="svg">
+      <line id="line" x1="{{x1}}" x2="{{x2}}" y1="{{y1}}" y2="{{y2}}"></line>
+    </svg>
+
     <div class="enemy-avatar">
       <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_04.gif" />
       <p>123</p>
@@ -21,7 +25,7 @@
       <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_09.gif" />
       <p>123</p>
     </div>
-    
+
     <div class="hand enemy-hand align jsc">
       <div class="card" ng-repeat="card in enemyHand">
         <div class="card-cover">
@@ -29,9 +33,9 @@
         </div>
       </div>
     </div>
-    
+
     <div class="board">
-      
+
       <div class="enemy-deck">
         <div class="card">
           <div class="card-cover" ng-if="deck.length > 0">
@@ -39,22 +43,22 @@
           </div>
         </div>
       </div>
-      
+
       <div class="board-part enemy-board align jsc">
-        <div class="card" ng-repeat="card in enemyBoard">
+        <div class="card" ng-repeat="card in enemyBoard" ng-click="drawArrow($event)">
           <div class="card-cover">
             <img src="{{card.url}}" class="img" alt="">
           </div>
         </div>
       </div>
       <div class="board-part my-board align jsc">
-        <div class="card" ng-repeat="card in myBoard">
+        <div class="card" ng-repeat="card in myBoard" ng-click="drawArrow($event)">
           <div class="card-cover">
             <img src="{{card.url}}" class="img" alt="">
           </div>
         </div>
       </div>
-      
+
       <div class="deck">
         <div class="card">
           <div class="card-cover" ng-if="deck.length > 0" ng-click="draw()">
@@ -65,9 +69,9 @@
           </div>
         </div>
       </div>
-      
+
     </div>
-    
+
     <div class="hand align jsc">
       <div class="card" ng-repeat="card in hand" ng-click="play(card)">
         <div class="card-cover">
@@ -75,7 +79,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>

@@ -20,6 +20,24 @@ body{
   overflow: hidden;
 }
 
+#svg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#line{
+  stroke-width:10px;
+  stroke:rgb(255,255,255);
+  filter: drop-shadow(0px 0px 16px magenta);
+  position: relative;
+}
+#line text{
+  position: absolute;
+}
+
 .align{
   display: flex;
   align-items: center;
@@ -167,7 +185,6 @@ svg, svg path, img{
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background:black;
   background-size: cover;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
