@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    
+    <div class="face-container">
+      <div class="face">
+        <div class="eye left">
+          <div class="lower">
+            <div class="lid"></div>
+          </div>
+          <div class="upper">
+            <div class="lid"></div>
+          </div>
+        </div>
+        <div class="eye right">
+          <div class="lower">
+            <div class="lid"></div>
+          </div>
+          <div class="upper">
+            <div class="lid"></div>
+          </div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+    
+    <div class="ctrls align jsb">
+      <div class="">
+        <p>left eye</p>
+        <input type="range"min="-20" max="20" ng-model="llr" ng-change="updateCssVar();">
+        <input type="range"min="0" max="50" ng-model="llp" ng-change="updateCssVar();">
+        <input type="range"min="-20" max="20" ng-model="lur" ng-change="updateCssVar();">
+        <input type="range"min="0" max="50" ng-model="lup" ng-change="updateCssVar();">
+      </div>
+      
+      <div class="">
+        <p>face</p>
+        <input type="range"min="-15" max="15" ng-model="frx" ng-change="updateCssVar();">
+        <input type="range"min="-15" max="15" ng-model="fry" ng-change="updateCssVar();">
+        <input type="range"min="-10" max="10" ng-model="frz" ng-change="updateCssVar();">
+        <input type="range"min="-10" max="10" ng-model="fpy" ng-change="updateCssVar();">
+        <input type="range"min="150" max="220" ng-model="mpy" ng-change="updateCssVar();">
+        <input type="range"min="0" max="2" step="0.1" ng-model="mwx" ng-change="updateCssVar();">
+      </div>
+      
+      <div class="rctrl" ng-class="{'disabled':symetry}">
+        <p>right eye</p>
+        <input type="range"min="-20" max="20" ng-model="rlr" ng-change="updateCssVar();">
+        <input type="range"min="0" max="50" ng-model="rlp" ng-change="updateCssVar();">
+        <input type="range"min="-20" max="20" ng-model="rur" ng-change="updateCssVar();">
+        <input type="range"min="0" max="50" ng-model="rup" ng-change="updateCssVar();">
+      </div>
+
+    </div>
+    
+    <button type="button" ng-click="mad();" name="button">mad</button>
+    <button type="button" ng-click="squint();" name="button">squint</button>
+    <button type="button" ng-click="sad();" name="button">sad</button>
+    <button type="button" ng-click="huh();" name="button">???</button>
+    
+    <input type="checkbox" ng-model="symetry" ng-change="updateCssVar();" name="" value="">
+    
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
