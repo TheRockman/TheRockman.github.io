@@ -14,7 +14,8 @@
 <body>
   <div class="stage " ng-controller="mainCtrl">
     <svg id="svg">
-      <line id="line" x1="{{x1}}" x2="{{x2}}" y1="{{y1}}" y2="{{y2}}"></line>
+      <!-- <line id="line" d="M0 0" x1="{{x1}}" x2="{{x2}}" y1="{{y1}}" y2="{{y2}}"></line> -->
+      <path id="line" d="M {{x1}} {{y1}} Q 10 200 {{x2}} {{y2}}" fill="transparent"></path>
     </svg>
 
     <div class="enemy-avatar">
@@ -34,7 +35,7 @@
       </div>
     </div>
 
-    <div class="board">
+    <div class="board" ng-mousemove="mousePos($event)" ng-mousedown="handleClick($event)" oncontextmenu="return false">
 
       <div class="enemy-deck">
         <div class="card">
@@ -45,16 +46,16 @@
       </div>
 
       <div class="board-part enemy-board align jsc">
-        <div class="card" ng-repeat="card in enemyBoard" ng-click="drawArrow($event)">
+        <div class="card" ng-repeat="card in enemyBoard" ng-click="drawArrow($event); $event.stopPropagation();">
           <div class="card-cover">
-            <img src="{{card.url}}" class="img" alt="">
+            <img src="{{card.url}}" class="img" alt="opponent">
           </div>
         </div>
       </div>
       <div class="board-part my-board align jsc">
-        <div class="card" ng-repeat="card in myBoard" ng-click="drawArrow($event)">
+        <div class="card" ng-repeat="card in myBoard" ng-click="drawArrow($event); $event.stopPropagation();">
           <div class="card-cover">
-            <img src="{{card.url}}" class="img" alt="">
+            <img src="{{card.url}}" class="img" alt="mine">
           </div>
         </div>
       </div>

@@ -120,48 +120,89 @@ function offset(el) {
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 }
 
-// ng-mousemove="myFunc($event)"
-// $scope.mouse = {
-//   x: null,
-//   y: null
-// };
-// $scope.myFunc = function(myE){
-//   $scope.mouse.x = myE.clientX;
-//   $scope.mouse.y = myE.clientY;
-//   console.log($scope.mouse);
-// }
+$scope.mouse = {
+  x: null,
+  y: null
+};
+$scope.mousePos = function(myE){
+  $scope.mouse.x = myE.clientX;
+  $scope.mouse.y = myE.clientY;
+  
+  if($scope.x1 && $scope.endArrowDiv === null){
+    $scope.x2 = $scope.mouse.x;
+    $scope.y2 = $scope.mouse.y;
+  }
+}
+
+$scope.handleClick = function(evt) {
+  switch(evt.which) {
+      case 1:
+          // this is left click
+          console.log('123');
+          break;
+      case 2:
+          // in case you need some middle click things
+          break;
+      case 3:
+          // this is right click
+          if(!$scope.endArrowDiv){
+            $scope.x1 = undefined;
+            $scope.x2 = undefined;
+            $scope.y1 = undefined;
+            $scope.y2 = undefined;
+          }
+          break;
+      default:
+          break;
+  }
+}
 
 $scope.startArrowDiv = null;
 $scope.endArrowDiv = null;
 
 $scope.drawArrow = function(card){
-  if(!$scope.startArrowDiv){
+  if(!$scope.startArrowDiv && !$scope.endArrowDiv){
+    //No points set - etstablish start point and follow mouse
     $scope.startArrowDiv = card.target;
-    console.log(card.target);
-  } else if(!$scope.endArrowDiv){
-    $scope.endArrowDiv = card.target;
-  } else{
-    $scope.startArrowDiv = null;
-  }
-
-  console.log($scope.startArrowDiv, $scope.endArrowDiv);
-
-  if ($scope.startArrowDiv) {
     var div1Offset = offset($scope.startArrowDiv);
     $scope.x1 = div1Offset.left + ($scope.startArrowDiv.offsetWidth/2);
     $scope.y1 = div1Offset.top + ($scope.startArrowDiv.offsetHeight/2);
-  } else{
-    $scope.x1 = $scope.x2;
-    $scope.y1 = $scope.y2;
+    $scope.x2 = $scope.mouse.x;
+    $scope.y2 = $scope.mouse.y;
+    return;
   }
 
-  if ($scope.endArrowDiv) {
+  if(!$scope.startArrowDiv && $scope.endArrowDiv) {
+    //Endpoint with no start, reset state
+    $scope.startArrowDiv = null;
+    $scope.endArrowDiv = null;
+    $scope.x1 = null;
+    $scope.y1 = null;
+    $scope.x2 = null;
+    $scope.y2 = null;
+    return;
+  }
+  
+  if($scope.startArrowDiv && !$scope.endArrowDiv) {
+    //Startpoint is set, so set endpoint
+    $scope.endArrowDiv = card.target;
     var div2Offset = offset($scope.endArrowDiv);
     $scope.x2 = div2Offset.left + ($scope.endArrowDiv.offsetWidth/2);
     $scope.y2 = div2Offset.top + ($scope.endArrowDiv.offsetHeight/2);
-  } else{
-    $scope.x2 = $scope.x1;
-    $scope.y2 = $scope.y1;
+    return;
+  }
+  
+  if($scope.startArrowDiv && $scope.endArrowDiv){
+    //Have start and end, etstablish new start and follow mouse
+    $scope.endArrowDiv = null;
+    $scope.startArrowDiv = card.target;
+    var div1Offset = offset($scope.startArrowDiv);
+    $scope.x1 = div1Offset.left + ($scope.startArrowDiv.offsetWidth/2);
+    $scope.y1 = div1Offset.top + ($scope.startArrowDiv.offsetHeight/2);
+    
+    $scope.x2 = $scope.mouse.x;
+    $scope.y2 = $scope.mouse.y;
+    return;
   }
 }
 
