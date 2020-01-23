@@ -13,12 +13,12 @@
 </head>
 <body>
   <div class="stage " ng-controller="mainCtrl">
-    <svg id="svg" class="glow">      
+    <svg id="svg" class="glow">
       <!-- <line id="line" d="M0 0" x1="{{x1}}" x2="{{x2}}" y1="{{y1}}" y2="{{y2}}"></line> -->
-      <path id="line" d="M {{x1}} {{y1}} Q {{mouse.x}} 200 {{x2}} {{y2}}" fill="transparent"></path>
+      <path id="line" d="M {{x1}} {{y1}} Q {{curve-10}} 200 {{x2}} {{y2}}" fill="transparent"></path>
     </svg>
     <svg id="svg" class="blur">
-      <path id="line" class="arrow-shade" d="M {{x1}} {{y1}} Q {{mouse.x/2}} 200 {{x2}} {{y2}}" fill="transparent"></path>
+      <path id="line" class="arrow-shade" d="M {{x1}} {{y1}} Q {{(curve-10)/2}} 200 {{x2}} {{y2}}" fill="transparent"></path>
     </svg>
 
     <div class="enemy-avatar">

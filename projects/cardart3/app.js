@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $document) {
+var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $document, $timeout) {
 
 var genId = function(){
   return 'xxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -71,12 +71,28 @@ $scope.enemyBoard = [
   }
 ];
 
+window.addEventListener('resize', function(event){
+  $scope.refreshCurrentArrow();
+});
+
 $scope.draw = function(){
   $scope.moveCard($scope.deck[0], $scope.deck, $scope.hand, false)
 }
 
 $scope.play = function(card){
-  $scope.moveCard(card, $scope.hand, $scope.myBoard, false)
+  $scope.moveCard(card, $scope.hand, $scope.myBoard, false);
+  $scope.refreshCurrentArrow();
+}
+
+$scope.refreshCurrentArrow = function(){
+  $timeout( function(){
+    var div1Offset = offset($scope.startArrowDiv);
+    var div2Offset = offset($scope.endArrowDiv);
+    $scope.x1 = div1Offset.left + ($scope.startArrowDiv.offsetWidth/2);
+    $scope.y1 = div1Offset.top + ($scope.startArrowDiv.offsetHeight/2);
+    $scope.x2 = div2Offset.left + ($scope.endArrowDiv.offsetWidth/2);
+    $scope.y2 = div2Offset.top + ($scope.endArrowDiv.offsetHeight/2);
+  }, 10 );
 }
 
 //Shuffle one pile with itself, nothing enters, nothing exits
@@ -112,6 +128,7 @@ $scope.moveCard = function(card, from, to, thenShuffleNewPile)  {
 
 $scope.arrowStartCard = null;
 $scope.arrowEndCard = null;
+$scope.curve = 0;
 
 function offset(el) {
   var rect = el.getBoundingClientRect(),
@@ -131,6 +148,7 @@ $scope.mousePos = function(myE){
   if($scope.x1 && $scope.endArrowDiv === null){
     $scope.x2 = $scope.mouse.x;
     $scope.y2 = $scope.mouse.y;
+    $scope.curve = $scope.mouse.x;
   }
 }
 
@@ -189,6 +207,7 @@ $scope.drawArrow = function(card){
     var div2Offset = offset($scope.endArrowDiv);
     $scope.x2 = div2Offset.left + ($scope.endArrowDiv.offsetWidth/2);
     $scope.y2 = div2Offset.top + ($scope.endArrowDiv.offsetHeight/2);
+    $scope.curve = $scope.mouse.x;
     return;
   }
   
@@ -205,11 +224,5 @@ $scope.drawArrow = function(card){
     return;
   }
 }
-
-// window.addEventListener('resize', function(event){
-//   console.log(event);
-//   $scope.drawArrow();
-// });
-
 
 });

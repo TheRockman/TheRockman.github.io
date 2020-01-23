@@ -41,20 +41,20 @@ body{
   stroke:rgb(255,255,255);
   filter: drop-shadow(0px 0px 16px magenta);
   position: relative;
-  stroke-dasharray: 0;
-  /* animation: dash 15s linear;
-  animation-iteration-count: infinite; */
+  stroke-dasharray: 10;
+  animation: dash 15s linear;
+  animation-iteration-count: infinite;
 }
 
 .arrow-shade{
   stroke: rgba(0, 0, 0, 0.8)!important;
 }
 
-/* @keyframes dash {
+@keyframes dash {
   to {
     stroke-dashoffset: -1000;
   }
-} */
+}
 #line text{
   position: absolute;
 }
