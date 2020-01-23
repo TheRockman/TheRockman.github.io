@@ -95,6 +95,10 @@ $scope.refreshCurrentArrow = function(){
   }, 10 );
 }
 
+$scope.attackAnimationPath = function(){
+  document.documentElement.style.setProperty('--attackPath', "path('M" + $scope.x1 +" "+ $scope.y1 +" Q "+ $scope.x2 +" "+ $scope.y2 + " " + $scope.x2 +" "+ $scope.y2 +", T "+ $scope.x2 +" "+ $scope.y2 +"')" )
+}
+
 //Shuffle one pile with itself, nothing enters, nothing exits
 $scope.shuffle = function(array) {
   console.log('shuffle:', array);
@@ -204,6 +208,8 @@ $scope.drawArrow = function(card){
   if($scope.startArrowDiv && !$scope.endArrowDiv) {
     //Startpoint is set, so set endpoint
     $scope.endArrowDiv = card.target;
+    $scope.attackAnimationPath();
+    $scope.attacking = true;
     var div2Offset = offset($scope.endArrowDiv);
     $scope.x2 = div2Offset.left + ($scope.endArrowDiv.offsetWidth/2);
     $scope.y2 = div2Offset.top + ($scope.endArrowDiv.offsetHeight/2);

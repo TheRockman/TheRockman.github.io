@@ -8,6 +8,8 @@
   --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  
+  --attackPath: path("M-110 0 Q 0 0, 0 0 T 0 0");
 }
 
 body{
@@ -57,6 +59,72 @@ body{
 }
 #line text{
   position: absolute;
+}
+
+/* dust */
+/* https://kylaking.com/images/dirt-transparent-gif-6.gif */
+
+.puff{
+  background: url('https://kylaking.com/images/dirt-transparent-gif-6.gif') center center no-repeat;
+  animation: 0.2s puff 2s linear;
+  background-size: contain;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  position: absolute;
+  left: -125px;
+  top: -150px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+@keyframes puff {
+  0%{
+    opacity: 1;
+  }
+  99%{
+    opacity: 1
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+
+.ball {
+  width: 100px;
+  height: 100px;
+  background: url('https://orangemushroom.files.wordpress.com/2016/07/bunker-buster-effect.gif?w=375') center center no-repeat;
+  transform: rotate(90deg);
+  background-blend-mode: difference;
+  background-size: contain;
+  offset-path: var(--attackPath);
+  offset-distance: 0%;
+  position: fixed;
+  z-index: 111;
+  animation: 0.5s red-ball 2s linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+}
+
+@keyframes red-ball {
+  0%{
+    offset-distance: 0%;
+    opacity: 1;
+  }
+  90%{
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  99%{
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  100%{
+    offset-distance: 100%;
+    opacity: 0;
+  }
 }
 
 .align{

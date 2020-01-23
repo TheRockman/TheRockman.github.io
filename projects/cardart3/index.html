@@ -20,6 +20,7 @@
     <svg id="svg" class="blur">
       <path id="line" class="arrow-shade" d="M {{x1}} {{y1}} Q {{(curve-10)/2}} 200 {{x2}} {{y2}}" fill="transparent"></path>
     </svg>
+        <div ng-if="attacking" class="ball"></div>
 
     <div class="enemy-avatar">
       <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_04.gif" />
@@ -57,6 +58,7 @@
       </div>
       <div class="board-part my-board align jsc">
         <div class="card" ng-repeat="card in myBoard" ng-click="drawArrow($event); $event.stopPropagation();">
+          <div class="puff"></div>
           <div class="card-cover">
             <img src="{{card.url}}" class="img" alt="mine">
           </div>
@@ -83,7 +85,7 @@
         </div>
       </div>
     </div>
-
+    
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>
