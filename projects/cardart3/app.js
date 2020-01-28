@@ -9,7 +9,22 @@ var genId = function(){
 
 $scope.deck = [
   {
-    url: 'https://imgur.com/KEqmf3A.png',
+    url: 'https://mtgcardsmith.com/view/complete/full/2017/7/18/1500347605692014.png',
+    owener: 'player',
+    id: genId(),
+  },
+  {
+    url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
+    owener: 'player',
+    id: genId(),
+  },
+  {
+    url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
+    owener: 'player',
+    id: genId(),
+  },
+  {
+    url: 'https://img.scryfall.com/cards/large/front/c/0/c046dfb0-9ca3-4219-a6b0-d7503bc2fbd0.jpg?1562202020',
     owener: 'player',
     id: genId(),
   },
@@ -19,12 +34,22 @@ $scope.deck = [
     id: genId(),
   },
   {
-    url: 'https://imgur.com/KEqmf3A.png',
+    url: 'https://mtgcardsmith.com/view/complete/full/2017/7/18/1500347605692014.png',
     owener: 'player',
     id: genId(),
   },
   {
-    url: 'https://imgur.com/KEqmf3A.png',
+    url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
+    owener: 'player',
+    id: genId(),
+  },
+  {
+    url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
+    owener: 'player',
+    id: genId(),
+  },
+  {
+    url: 'https://img.scryfall.com/cards/large/front/c/0/c046dfb0-9ca3-4219-a6b0-d7503bc2fbd0.jpg?1562202020',
     owener: 'player',
     id: genId(),
   },
@@ -35,13 +60,7 @@ $scope.deck = [
   }
 ];
 
-$scope.hand = [
-  {
-    url: 'https://imgur.com/KEqmf3A.png',
-    owener: 'player',
-    id: genId(),
-  }
-];
+$scope.hand = [];
 
 $scope.enemyHand = [
   {
@@ -70,6 +89,9 @@ $scope.enemyBoard = [
     owener: 'enemy',
   }
 ];
+
+$scope.mullDisplay = [];
+$scope.mullAmount = 5;
 
 window.addEventListener('resize', function(event){
   $scope.refreshCurrentArrow();
@@ -230,5 +252,32 @@ $scope.drawArrow = function(card){
     return;
   }
 }
+
+//phases
+$scope.mull = function(amount){
+  for (i = 0; i < amount; i++) {
+    $scope.moveCard($scope.deck[0], $scope.deck, $scope.mullDisplay, false);
+  }
+}
+
+$scope.mullConfirm = function(){
+  $scope.mullMode = false;
+  $scope.hand = angular.copy($scope.mullDisplay);
+  $scope.mullDisplay = [];
+}
+
+$scope.mullDeny = function(){
+  for (i = 0; i < $scope.mullDisplay.length; i++) {
+    $scope.moveCard($scope.mullDisplay[i], $scope.mullDisplay, $scope.deck, true);
+  }
+  $timeout( function(){
+    $scope.mullAmount = $scope.mullAmount - 1;
+    $scope.mull($scope.mullAmount);
+  }, 100 );
+}
+
+$scope.mullMode = true;
+$scope.mull($scope.mullAmount);
+
 
 });

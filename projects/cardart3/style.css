@@ -184,6 +184,18 @@ svg, svg path, img{
   transform: scale(0.8) translateY(-60%);
 }
 
+.mullOverlay{
+  text-align: center;
+  position: fixed;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .deck{
   position: absolute;
   left: 2rem;

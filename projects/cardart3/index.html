@@ -22,6 +22,19 @@
     </svg>
         <div ng-if="attacking" class="ball"></div>
 
+    <div class="mullOverlay" ng-click="$event.stopPropagation();" ng-if="mullDisplay.length > 0 && mullMode">
+      <div class="align jsb">
+        <div class="card" ng-repeat="card in mullDisplay">
+          <div class="card-cover">
+            <img src="{{card.url}}" class="img" alt="mine">
+          </div>
+        </div>
+      </div>
+      <button type="button" ng-click="mullDeny()" name="button">Mulligan {{mullAmount}}</button>
+      <button type="button" ng-click="mullConfirm()" name="button">Keep</button>
+    </div>
+
+
     <div class="enemy-avatar">
       <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_04.gif" />
       <p>123</p>
@@ -40,7 +53,7 @@
     </div>
 
     <div class="board" ng-mousemove="mousePos($event)" ng-mousedown="handleClick($event)" oncontextmenu="return false">
-
+      
       <div class="enemy-deck">
         <div class="card">
           <div class="card-cover" ng-if="deck.length > 0">
