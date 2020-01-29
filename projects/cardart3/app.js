@@ -201,6 +201,28 @@ $scope.handleClick = function(evt) {
   }
 }
 
+$scope.lookAtCard = function(evt, card) {
+  switch(evt.which) {
+      case 1:
+          // this is left click
+          
+          break;
+      case 2:
+          // in case you need some middle click things
+          break;
+      case 3:
+          // this is right click
+          $scope.lookingCard = card;
+          break;
+      default:
+          break;
+  }
+}
+
+$scope.stopLookingAtCard = function(){
+  $scope.lookingCard = null;
+}
+
 $scope.startArrowDiv = null;
 $scope.endArrowDiv = null;
 
