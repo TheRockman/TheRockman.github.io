@@ -91,7 +91,7 @@ $scope.enemyBoard = [
 ];
 
 $scope.mullDisplay = [];
-$scope.mullAmount = 5;
+$scope.mullAmount = 3;
 
 window.addEventListener('resize', function(event){
   $scope.refreshCurrentArrow();
@@ -254,8 +254,8 @@ $scope.drawArrow = function(card){
 }
 
 //phases
-$scope.mull = function(amount){
-  for (i = 0; i < amount; i++) {
+$scope.mull = function(){
+  for (i = 0; i < 5; i++) {
     $scope.moveCard($scope.deck[0], $scope.deck, $scope.mullDisplay, false);
   }
 }
@@ -267,17 +267,16 @@ $scope.mullConfirm = function(){
 }
 
 $scope.mullDeny = function(){
-  for (i = 0; i < $scope.mullDisplay.length; i++) {
-    $scope.moveCard($scope.mullDisplay[i], $scope.mullDisplay, $scope.deck, true);
+  $scope.mullAmount = $scope.mullAmount -1;
+  for (i = 0; i < 5; i++) {
+    $scope.moveCard($scope.mullDisplay[0], $scope.mullDisplay, $scope.deck, true);
   }
-  $timeout( function(){
-    $scope.mullAmount = $scope.mullAmount - 1;
-    $scope.mull($scope.mullAmount);
-  }, 100 );
+  
+  $scope.mull();
 }
 
 $scope.mullMode = true;
-$scope.mull($scope.mullAmount);
+$scope.mull();
 
 
 });
