@@ -7,6 +7,30 @@ var genId = function(){
   });
 }
 
+$scope.phases = [
+  {
+    name: 'start',
+    index: 0
+  },
+  {
+    name: 'main',
+    index: 1
+  },
+  {
+    name: 'combat',
+    index: 2
+  },
+  {
+    name: 'main',
+    index: 3
+  },
+  {
+    name: 'end',
+    index: 4
+  }
+];
+$scope.currentPhase = $scope.phases[0];
+
 $scope.deck = [
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2017/7/18/1500347605692014.png',
@@ -300,5 +324,15 @@ $scope.mullDeny = function(){
 $scope.mullMode = true;
 $scope.mull();
 
+
+$scope.phaseStep = function(){
+  var index = $scope.currentPhase.index;
+  if($scope.currentPhase.name === 'end'){
+    //reset turn phase
+    $scope.currentPhase = $scope.phases[0];
+  } else{
+    $scope.currentPhase = $scope.phases[index+1];
+  }
+}
 
 });

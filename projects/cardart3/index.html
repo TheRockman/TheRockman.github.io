@@ -74,7 +74,7 @@
       </div>
 
       <div class="board-part enemy-board align jsc">
-        <div class="card" ng-repeat="card in enemyBoard" ng-click="drawArrow($event); $event.stopPropagation();">
+        <div class="card" ng-repeat="card in enemyBoard" ng-click="drawArrow($event); $event.stopPropagation();" ng-mousedown="lookAtCard($event, card); $event.stopPropagation();" oncontextmenu="return false">
           <div class="card-cover">
             <img src="{{card.url}}" class="img" alt="opponent">
           </div>
@@ -100,6 +100,10 @@
         </div>
       </div>
 
+    </div>
+    
+    <div class="phase-ctrl">
+      <button type="button" ng-click="phaseStep()" name="button">{{currentPhase}} | next</button>
     </div>
 
     <div class="hand align jsc">
