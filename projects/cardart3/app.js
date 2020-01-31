@@ -35,51 +35,81 @@ $scope.deck = [
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2017/7/18/1500347605692014.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://img.scryfall.com/cards/large/front/c/0/c046dfb0-9ca3-4219-a6b0-d7503bc2fbd0.jpg?1562202020',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://imgur.com/KEqmf3A.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2017/7/18/1500347605692014.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://mtgcardsmith.com/view/complete/full/2019/1/15/1547584954972957.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://img.scryfall.com/cards/large/front/c/0/c046dfb0-9ca3-4219-a6b0-d7503bc2fbd0.jpg?1562202020',
     owener: 'player',
+    cost: 1,
+    dmg: 1,
+    hp: 2,
     id: genId(),
   },
   {
     url: 'https://imgur.com/KEqmf3A.png',
     owener: 'player',
+    cost: 1,
+    dmg: 2,
+    hp: 3,
     id: genId(),
   }
 ];
@@ -110,9 +140,27 @@ $scope.enemyBoard = [
   {
     url: 'https://image.redbull.com/rbcom/052/2019-08-01/f1005421-a8e4-4b0c-b877-357bbcb340f9/0001/1/1100/1/knight-of-the-ebon-legion-mtg.png',
     id: genId(),
+    cost: 1,
+    dmg: 2,
+    hp: 2,
     owener: 'enemy',
   }
 ];
+
+$scope.myGrave = [];
+$scope.enemyGrave = [];
+
+$scope.playerData = {
+  life: 20,
+  mana: 0,
+  name: 'Sven'
+}
+
+$scope.enemyData = {
+  life: 20,
+  mana: 0,
+  name: 'Eric'
+}
 
 $scope.mullDisplay = [];
 $scope.mullAmount = 3;
@@ -277,11 +325,12 @@ $scope.drawArrow = function(card){
     //Startpoint is set, so set endpoint
     $scope.endArrowDiv = card.target;
     $scope.attackAnimationPath();
-    $scope.attacking = true;
     var div2Offset = offset($scope.endArrowDiv);
     $scope.x2 = div2Offset.left + ($scope.endArrowDiv.offsetWidth/2);
     $scope.y2 = div2Offset.top + ($scope.endArrowDiv.offsetHeight/2);
     $scope.curve = $scope.mouse.x;
+    
+    $scope.fight($scope.startArrowDiv.id, $scope.endArrowDiv.id);
     return;
   }
   
@@ -297,6 +346,64 @@ $scope.drawArrow = function(card){
     $scope.y2 = $scope.mouse.y;
     return;
   }
+}
+
+$scope.fight = function(givenAttacker, givenDefender){
+  var foundAttacker;
+  var foundDefender;
+  
+  //look in my board
+  console.log($scope.myBoard[0].id, givenAttacker);
+  for (i = 0; i < $scope.myBoard.length; i++) {
+    if($scope.myBoard[i].id === givenAttacker){
+      foundAttacker = $scope.myBoard[i];
+    } else if($scope.myBoard[i].id = givenDefender){
+      foundDefender = $scope.myBoard[i];
+    }
+  }
+
+  //look in enemy board
+  for (i = 0; i < $scope.enemyBoard.length; i++) {
+    if($scope.enemyBoard[i].id === givenAttacker){
+      foundAttacker = $scope.enemyBoard[i];
+    } else if($scope.enemyBoard[i].id = givenDefender){
+      foundDefender = $scope.enemyBoard[i];
+    }
+  }
+  
+  if(foundAttacker && foundDefender){
+    foundAttacker.hp = foundAttacker.hp - foundDefender.dmg;
+    foundDefender.hp = foundDefender.hp - foundAttacker.dmg;
+    console.log('fight!', foundAttacker, foundDefender);
+    foundDefender.attacking = true;
+    foundAttacker.attacking = true;
+  
+    $timeout( function(){
+      foundDefender.attacking = false;
+      foundAttacker.attacking = false;
+      
+      if(foundDefender.hp < 1 && foundDefender.owener === "player"){
+        $scope.moveCard(foundDefender, $scope.myBoard, $scope.myGrave, false);
+      }
+      if(foundAttacker.hp < 1 && foundAttacker.owener === "player"){
+        $scope.moveCard(foundAttacker, $scope.myBoard, $scope.myGrave, false);
+      }
+      if(foundDefender.hp < 1 && foundDefender.owener === "enemy"){
+        $scope.moveCard(foundDefender, $scope.enemyBoard, $scope.enemyGrave, false);
+      }
+      if(foundAttacker.hp < 1 && foundAttacker.owener === "enemy"){
+        $scope.moveCard(foundAttacker, $scope.enemyBoard, $scope.enemyGrave, false);
+      }
+    
+      $scope.x1 = undefined;
+      $scope.x2 = undefined;
+      $scope.y1 = undefined;
+      $scope.y2 = undefined;
+      $scope.startArrowDiv = undefined;
+      $scope.endArrowDiv = undefined;
+    }, 2000 );
+  }
+  
 }
 
 //phases

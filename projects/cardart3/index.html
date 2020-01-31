@@ -20,7 +20,6 @@
     <svg id="svg" class="blur">
       <path id="line" class="arrow-shade" d="M {{x1}} {{y1}} Q {{(curve-10)/2}} 200 {{x2}} {{y2}}" fill="transparent"></path>
     </svg>
-        <div ng-if="attacking" class="ball"></div>
 
     <div class="mullOverlay" ng-click="$event.stopPropagation();" ng-if="mullDisplay.length > 0 && mullMode">
       <div class="align jsb">
@@ -48,11 +47,11 @@
 
     <div class="enemy-avatar">
       <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_04.gif" />
-      <p>123</p>
+      <p>{{enemyData.name}}</p>
     </div>
     <div class="avatar">
       <img src="https://wow.zamimg.com/images/hearthstone/heroes/animated/HERO_09.gif" />
-      <p>123</p>
+      <p>{{playerData.name}}</p>
     </div>
 
     <div class="hand enemy-hand align jsc">
@@ -74,17 +73,27 @@
       </div>
 
       <div class="board-part enemy-board align jsc">
-        <div class="card" ng-repeat="card in enemyBoard" ng-click="drawArrow($event); $event.stopPropagation();" ng-mousedown="lookAtCard($event, card); $event.stopPropagation();" oncontextmenu="return false">
-          <div class="card-cover">
+        <div class="card" ng-class="{'enemyAttacking': card.attacking, 'dying': card.hp < 1}" ng-repeat="card in enemyBoard" ng-click="drawArrow($event); $event.stopPropagation();" ng-mousedown="lookAtCard($event, card); $event.stopPropagation();" oncontextmenu="return false">
+          <div class="card-cover" id="{{card.id}}">
             <img src="{{card.url}}" class="img" alt="opponent">
+            <div class="stats-overlay">
+              <p>cost: {{card.cost}}</p>
+              <p>A: {{card.dmg}}</p>
+              <p>T: {{card.hp}}</p>
+            </div>
           </div>
         </div>
       </div>
       <div class="board-part my-board align jsc">
-        <div class="card" ng-repeat="card in myBoard" ng-click="drawArrow($event); $event.stopPropagation();"  ng-mousedown="lookAtCard($event, card); $event.stopPropagation();" oncontextmenu="return false">
+        <div class="card" ng-class="{'meAttacking':card.attacking, 'dying': card.hp < 1}" ng-repeat="card in myBoard" ng-click="drawArrow($event); $event.stopPropagation();"  ng-mousedown="lookAtCard($event, card); $event.stopPropagation();" oncontextmenu="return false">
           <div class="puff"></div>
-          <div class="card-cover">
+          <div class="card-cover"  id="{{card.id}}">
             <img src="{{card.url}}" class="img" alt="mine">
+            <div class="stats-overlay">
+              <p>cost: {{card.cost}}</p>
+              <p>A: {{card.dmg}}</p>
+              <p>T: {{card.hp}}</p>
+            </div>
           </div>
         </div>
       </div>

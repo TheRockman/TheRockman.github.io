@@ -91,43 +91,6 @@ body{
   }
 }
 
-
-.ball {
-  width: 100px;
-  height: 100px;
-  background: url('https://orangemushroom.files.wordpress.com/2016/07/bunker-buster-effect.gif?w=375') center center no-repeat;
-  transform: rotate(90deg);
-  background-blend-mode: difference;
-  background-size: contain;
-  offset-path: var(--attackPath);
-  offset-distance: 0%;
-  position: fixed;
-  z-index: 111;
-  animation: 0.5s red-ball 2s linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  animation-direction: normal;
-}
-
-@keyframes red-ball {
-  0%{
-    offset-distance: 0%;
-    opacity: 1;
-  }
-  90%{
-    offset-distance: 100%;
-    opacity: 1;
-  }
-  99%{
-    offset-distance: 100%;
-    opacity: 1;
-  }
-  100%{
-    offset-distance: 100%;
-    opacity: 0;
-  }
-}
-
 .align{
   display: flex;
   align-items: center;
@@ -298,7 +261,32 @@ svg, svg path, img{
   height: 210px;
   margin: 5px;
   perspective: 1000px;
+  transition: transform 300ms ease;
 }
+.meAttacking{
+  transform: translateY(-40px);
+}
+.enemyAttacking{
+  transform: translateY(40px);
+}
+.dying{
+  animation: puff-out-center 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+  animation-delay: 1s;
+}
+
+@keyframes puff-out-center {
+  0% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+    opacity: 0;
+  }
+}
+
 .card-cover {
   cursor: pointer;
   position: absolute;
@@ -316,6 +304,12 @@ svg, svg path, img{
   transform: skewX(0.001deg);
   transition: transform .35s ease-in-out;
   transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;
+}
+.stats-overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: magenta;
 }
 .card-cover::after {
   display: block;
