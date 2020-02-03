@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="grid-container">
+      <div class="tile" ng-repeat="tile in grid" ng-click="setTile(tile)" ng-style="{'background-color':tile.color}" ng-class="{
+        'edge':tile.x === 0 || tile.y === 0 || tile.x === 11 || tile.y === 11,
+        'bottom':tile.y === 11 && tile.x > 0 && tile.x < 11,
+        'left':tile.x === 0 && tile.y > 0 && tile.y < 11,
+        'top':tile.y === 0 && tile.x > 0 && tile.x < 11,
+        'right':tile.x === 11 && tile.y > 0 && tile.y < 11,
+        'corner':tile.x === 0 && tile.y == 0 || tile.x === 11 && tile.y == 11 || tile.x === 0 && tile.y == 11 || tile.x === 11 && tile.y == 0
+      }">
+      
+      </div>
+    </div>
+    <br/>
+    <div ng-if="currentTile" class="highlight">
+      {{currentTile}}
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
