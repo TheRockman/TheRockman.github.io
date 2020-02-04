@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {
+var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout) {
   $scope.grid = [];
   
   generateTiles = function(){
@@ -109,11 +109,63 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
         $scope.grid[i].name = 'boardwalk';
         $scope.grid[i].color = '#0173bd';
       }
+      
+      if($scope.grid[i].x === 11 && $scope.grid[i].y == 11){
+        $scope.grid[i].hasPlayerOne = true;
+        $scope.grid[i].hasPlayerTwo = true;
+      }
     }
   }
   generateTiles();
   
-  $scope.setTile = function(tile){
-    $scope.currentTile = tile;
+  $scope.findPlayer = function(){
+    var players = {
+      one: {},
+      two: {}
+    }
+    
+    for (i = 0; i < $scope.grid.length; i++) {
+      if($scope.grid[i].hasPlayerOne){
+        players.one = $scope.grid[i];
+        players.one.index = i;
+      }
+      if($scope.grid[i].hasPlayerTwo){
+        players.two = $scope.grid[i];
+        players.two.index = i;
+      }
+    }
+    return players;
   }
+  
+  $scope.rollAndGo = function(){
+    var diceRoll = Math.floor( Math.random() * 6 ) +1;
+    var index;
+    
+    console.log('rolled ', diceRoll);
+    
+    for (j = 0; j < diceRoll; j++) {
+      var players = $scope.findPlayer();
+      
+      if(players.one.y === 11 && players.one.x > 0){
+        //bottom row
+        console.log('moving bottom');
+        players.one.hasPlayerOne = undefined;
+        $scope.grid[players.one.index - 1].hasPlayerOne = true;
+        
+      } else if (players.one.x === 0 && players.one.y === 11){
+        //left corner
+        console.log('left corner');
+        players.one.hasPlayerOne = undefined;
+        $scope.grid[players.one.index - 11].hasPlayerOne = true;
+        
+      } else if(players.one.x === 0 && players.one.y < 11){
+        //left corner
+        console.log('moving up left');
+        players.one.hasPlayerOne = undefined;
+        $scope.grid[players.one.index - 11].hasPlayerOne = true;
+      }
+      
+    }
+  }
+
 });

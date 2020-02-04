@@ -88,6 +88,28 @@ svg, svg path, img{
 .highlight{
   width: 100%;
 }
+
+.playerOne::before{
+  content: "X";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 1000px;
+  background: red;
+}
+.playerTwo::after{
+  content: "X";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 1000px;
+  background: blue;
+}
+
 /* ng-animate */
 /* .fade{
   transition:0.5s linear opacity;
