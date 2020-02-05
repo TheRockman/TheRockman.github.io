@@ -13,6 +13,9 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
+    <div class="money" ng-class="{'whoop-in': showGoGains === true, 'whoop-out':showGoGains === false}">
+      test
+    </div>
     <div class="grid-container">
       <div class="tile" ng-repeat="tile in grid" ng-click="setTile(tile)" ng-style="{'background-color':tile.color}" ng-class="{
         'edge':tile.x === 0 || tile.y === 0 || tile.x === 11 || tile.y === 11,
@@ -24,8 +27,7 @@
         'playerTwo':tile.hasPlayerTwo,
         'corner':tile.x === 0 && tile.y == 0 || tile.x === 11 && tile.y == 11 || tile.x === 0 && tile.y == 11 || tile.x === 11 && tile.y == 0
       }">
-      {{tile.x}}|
-      {{tile.y}}
+        
       </div>
     </div>
     <button type="button" ng-click="rollAndGo();" name="button">move</button>
