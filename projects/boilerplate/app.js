@@ -1,4 +1,4 @@
-var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope) {
 
 });
 
