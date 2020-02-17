@@ -1,0 +1,371 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+.backdrop{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transform-origin: center;
+  transform: scale(1);
+  transition: all 1s cubic-bezier(.33,.11,.02,.99);;
+  background: url('https://www.elsetge.cat/myimg/f/14-148053_blue-space-wallpaper-blue-space.jpg') center center fixed;
+  background-size: cover;
+}
+.green{
+  transform: scale(1.1);
+  filter: hue-rotate(-30deg);
+}
+.black{
+  transform: scale(1.2);
+  filter: hue-rotate(65deg);
+}
+.blue{
+  transform: scale(1.3);
+  filter: hue-rotate(0deg);
+}
+.red{
+  transform: scale(1.4);
+  filter: hue-rotate(190deg);
+}
+
+
+.stage{
+  width: 90vw;
+  height: 80vh;
+  box-shadow: var(--level2);
+  border-radius: 5px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+  padding: var(--spacer);
+  overflow: hidden;
+  margin: 5vh auto;
+}
+button{
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+}
+.squircle{
+  /* mix-blend-mode: lighten; */
+  position: absolute;
+  top: -250px;
+  right: -500px;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 20%;
+  transform-origin: center;
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: var(--animation);
+}
+.ctrls{
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  list-style: none;
+  padding: 0;
+  z-index: 10;
+}
+
+.top{
+  transform: rotate(30deg);
+  box-shadow: inset 0px 0px 127px 52px rgb(155, 211, 174, 0.3);
+}
+.right{
+  transform: rotate(120deg);
+  box-shadow: inset 0px 0px 127px 52px rgba(0,0,0,0.75);
+}
+.bottom{
+  transform: rotate(210deg);
+  box-shadow: inset 0px 0px 127px 52px rgb(170, 224, 250, 0.3);
+}
+.left{
+  transform: rotate(300deg);
+  box-shadow: inset 0px 0px 127px 52px rgb(248, 85, 85, 0.3);
+}
+.img{
+  width: 260px;
+  height: auto;
+  position: absolute;
+  transition: var(--animation);
+}
+.top-img{
+  left: -100px;
+  top: -100px;
+  transform-origin: center;
+}
+.right-img{
+  top: -100px;
+  right: -100px;
+  transform-origin: center;
+}
+.bottom-img{
+  bottom: -100px;
+  right: -100px;
+  transform-origin: center;
+}
+.left-img{
+  bottom: -100px;
+  left: -100px;
+  transform-origin: center;
+}
+
+.content{
+  position: absolute;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  z-index: 10;
+  min-width: 400px;
+  color: white;
+}
+.text{
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+/*
+Left === 1
+bottom === 2
+right === 3
+top === 4
+*/
+.left > .top-img{
+  transform: rotate(60deg);
+}
+.bottom > .right-img{
+  transform: rotate(150deg);
+}
+.right > .bottom-img{
+  transform: rotate(-120deg);
+}
+.top > .left-img{
+  transform: rotate(-30deg);
+}
+
+/* ng-animate */
+/* .fade{
+  transition:0.5s linear opacity;
+}
+.fade.ng-hide {
+  opacity:0;
+} */
+
+/*flex*/
+/*.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1;
+        -ms-flex: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}*/
+
+/*fluid layout*/
+/*
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
+*/
+
+/*Card*/
+/*
+.card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+  background: #fff;
+  margin: var(--spacer);
+  padding: var(--spacer);
+}
+.card:hover {
+  box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+}
+*/
+
+/* Glow card */
+/* .glow-card-wrap {
+  margin:1rem;
+  width: 300px;
+  min-height: 230px;
+  position: relative;
+}
+.glow-card {
+  background-image: url('https://wallpaperaccess.com/full/898601.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.glow-card:before, .glow-card:after{
+  content: "";
+  background: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  border-radius: 15px;
+  z-index: 2;
+  box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+}
+.glow-card:before {
+  z-index: 1;
+  transform: translateY(20px) scale(0.9);
+  filter: blur(25px);
+  opacity: 0.9;
+} */
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */
