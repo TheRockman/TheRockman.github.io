@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <nav class="align jcc">
+      <span>
+        <svg style="width:24px;height:24px" ng-click="left = !left" viewBox="0 0 24 24">
+          <path fill="#fff" d="M19,3H5A2,2 0 0,0 3,5V19C3,20.11 3.9,21 5,21H19C20.11,21 21,20.11 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M15.71,7.41L11.12,12L15.71,16.59L14.29,18L8.29,12L14.29,6L15.71,7.41Z" />
+        </svg>
+        <svg style="width:24px;height:24px" ng-click="top = !top" viewBox="0 0 24 24">
+          <path fill="#fff" d="M19,3H5A2,2 0 0,0 3,5V19C3,20.11 3.9,21 5,21H19C20.11,21 21,20.11 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M7.41,8.29L12,12.88L16.59,8.29L18,9.71L12,15.71L6,9.71L7.41,8.29Z" />
+        </svg>
+        <svg style="width:24px;height:24px" ng-click="right = !right" viewBox="0 0 24 24">
+          <path fill="#fff" d="M19,3H5A2,2 0 0,0 3,5V19C3,20.11 3.9,21 5,21H19C20.11,21 21,20.11 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M8.29,16.59L12.88,12L8.29,7.41L9.71,6L15.71,12L9.71,18L8.29,16.59Z" />
+        </svg>
+      </span>
+    </nav>
+    <div class="row content">
+      <div class="flex left-bar" ng-if="left">
+        <h4>Friends</h4>
+        <div ng-repeat="user in users" class="align user-item" ng-class="{'condensed':right}">
+          <img src="{{user.url}}" alt="">
+          &nbsp;
+          &nbsp;
+          <section>
+            <h5>{{user.name}}</h5>
+            <p>{{user.score}}</p>
+          </section>
+        </div>
+        <div class="friend-finder">
+          <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M13 2V3H12V9H11V10H9V11H8V12H7V13H5V12H4V11H3V9H2V15H3V16H4V17H5V18H6V22H8V21H7V20H8V19H9V18H10V19H11V22H13V21H12V17H13V16H14V15H15V12H16V13H17V11H15V9H20V8H17V7H22V3H21V2M14 3H15V4H14Z" />
+          </svg>
+          <br/>
+          Find more friends
+        </div>
+      </div>
+      <div class="flex x3 ">
+        <div class="top-bar" ng-class="{'topExpanded':top}">
+          1
+        </div>
+        <div class="center-stage">
+          321
+        </div>
+      </div>
+      <div class="flex chat scroll right-bar" ng-if="right">
+        <div class="msg align" ng-repeat="msg in log | orderBy:'-'">
+          <b>{{msg.title}}: &nbsp;</b>
+          <span ng-if="!msg.emote">
+            {{msg.text}}
+          </span>
+          <span ng-if="msg.emote">
+            <img class="emote" ng-repeat="e in msg.emote track by $index" src="{{msg.text}}" alt="">
+          </span>
+        </div>
+        <form class="form" ng-submit="send(chatMSG)">
+          <input placeholder="Chat..." type="text" name="" ng-model="chatMSG" value="">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
