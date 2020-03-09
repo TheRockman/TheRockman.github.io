@@ -14,12 +14,13 @@
 <body>
   <div ng-controller="mainCtrl">
     <input type="range" ng-model="speed" min="500" max="3000" name="" value="">
-    <div class="wrap">
-      <img class="background" ng-class="{'quake':current.quake}" src="https://66.media.tumblr.com/0dbffdf8e1a9d024602964aeeb760143/tumblr_pdjkwb7QWb1xwjwxko1_640.gifv" alt="">
+    <div class="wrap" ng-class="{'right':current.camera === 'right', 'center':current.camera === 'center'}">
+      <img src="{{current.face}}" class="overlay" ng-if="current.camera === 'overlay'" alt="">
+      <img class="background" ng-class="{'quake':current.quake}" src="img/bgtmpl.png" alt="">
       <img class="face" src="{{current.face}}" alt="">
     </div>
     <div class="text-box">
-      <p> &nbsp; {{current.text}}</p>
+      <span>{{current.typeText}}</span>
     </div>
   </div>
 </body>
