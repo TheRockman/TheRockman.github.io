@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="bg"></div>
+    <div ng-if="winScreen" class="win" ng-click="winScreen = false" alt=""></div>
+    <div class="wrap xx border">
+      <div class="backdrop"></div>
+      <div class="align jsb">
+        <div class="one relative" ng-click="wheels.one.locked = !wheels.one.locked" ng-class="{'spin':wheels.one.spinning}">
+          <div class="ice" ng-if="wheels.one.locked"></div>
+          <img class="slot" src="img/{{wheels.one[result.one.prevRolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.one[result.one.prevRolledIndex]}}
+            </span>
+          </img>
+          <img class="slot" src="img/{{wheels.one[result.one.rolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.one[result.one.rolledIndex]}}
+            </span>
+          </img>
+          <img class="slot" src="img/{{wheels.one[result.one.nextRolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.one[result.one.nextRolledIndex]}}
+            </span>
+          </img>
+        </div>
+        <div class="two relative" ng-click="wheels.two.locked = !wheels.two.locked" ng-class="{'spin':wheels.two.spinning}">
+          <div class="ice" ng-if="wheels.two.locked"></div>
+          <img class="slot" src="img/{{wheels.two[result.two.prevRolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.two[result.two.prevRolledIndex]}}
+            </span>
+          </img>
+          <img class="slot" src="img/{{wheels.two[result.two.rolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.two[result.two.rolledIndex]}}
+            </span>
+          </img>
+          <img class="slot" src="img/{{wheels.two[result.two.nextRolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.two[result.two.nextRolledIndex]}}
+            </span>
+          </img>
+        </div>
+        <div class="three relative" ng-click="wheels.three.locked = !wheels.three.locked" ng-class="{'spin':wheels.three.spinning}">
+          <div class="ice" ng-if="wheels.three.locked"></div>
+          <img class="slot" src="img/{{wheels.three[result.three.prevRolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.three[result.three.prevRolledIndex]}}
+            </span>
+          </img>
+          <img class="slot" src="img/{{wheels.three[result.three.rolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.three[result.three.rolledIndex]}}
+            </span>
+          </img>
+          <img class="slot" src="img/{{wheels.three[result.three.nextRolledIndex]}}.png" alt="">
+            <span>
+              x{{wheels.three[result.three.nextRolledIndex]}}
+            </span>
+          </img>
+        </div>
+      </div>
+    </div>
+    <div class="ctrls">
+      <input type="number" placeholder="Bet" ng-model="bet" name="" value="">
+      <button type="button" ng-click="spin()" name="button">go</button>
+      <h1>${{score}}</h1>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
