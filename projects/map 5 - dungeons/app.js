@@ -224,18 +224,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           $scope.cleanupDupePlayers();
           if($scope.showMSG || $scope.death){return;}
           $timeout( function(){
+            $scope.facing = 'e';
             if($scope.currentRoom.map[playerTile.index+1].door && $scope.currentRoom.eastExit){
-              $scope.facing = 'e';
               $scope.roomChange($scope.currentRoom.eastExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index+1].solid){
-              $scope.facing = 'e';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.persist = originalRoom.map[playerTile.index+1].persist;
               $scope.currentRoom.map[playerTile.index+1] = $scope.originalPlayer;
             }
             if(originalRoom.map[playerTile.index+1].tile === 'hole'){
-              $scope.facing = 'e';
               $scope.death = true;
             }
           }, timing );
@@ -244,18 +242,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           if($scope.showMSG || $scope.death){return;}
           $scope.cleanupDupePlayers();
           $timeout( function(){
+            $scope.facing = 'w';
             if($scope.currentRoom.map[playerTile.index-1].door && $scope.currentRoom.westExit){
-              $scope.facing = 'w';
               $scope.roomChange($scope.currentRoom.westExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index-1].solid){
-              $scope.facing = 'w';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.persist = originalRoom.map[playerTile.index-1].persist;
               $scope.currentRoom.map[playerTile.index-1] = $scope.originalPlayer;
             }
             if(originalRoom.map[playerTile.index-1].tile === 'hole'){
-              $scope.facing = 'w';
               $scope.death = true;
             }
           }, timing );
@@ -264,18 +260,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           if($scope.showMSG || $scope.death){return;}
           $scope.cleanupDupePlayers();
           $timeout( function(){
+            $scope.facing = 'n';
             if($scope.currentRoom.map[playerTile.index-9].door && $scope.currentRoom.northExit){
-              $scope.facing = 'n';
               $scope.roomChange($scope.currentRoom.northExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index-9].solid){
-              $scope.facing = 'n';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.persist = originalRoom.map[playerTile.index-9].persist;
               $scope.currentRoom.map[playerTile.index-9] = $scope.originalPlayer;
             }
             if(originalRoom.map[playerTile.index-9].tile === 'hole'){
-              $scope.facing = 'n';
               $scope.death = true;
             }
           }, timing );
@@ -284,18 +278,16 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
           if($scope.showMSG || $scope.death){return;}
           $scope.cleanupDupePlayers();
           $timeout( function(){
+            $scope.facing = 's';
             if($scope.currentRoom.map[playerTile.index+9].door && $scope.currentRoom.southExit){
-              $scope.facing = 's';
               $scope.roomChange($scope.currentRoom.southExit);
             }
             else if(!$scope.currentRoom.map[playerTile.index+9].solid){
-              $scope.facing = 's';
               $scope.currentRoom.map[playerTile.index] = originalRoom.map[playerTile.index];
               $scope.persist = originalRoom.map[playerTile.index+9].persist;
               $scope.currentRoom.map[playerTile.index+9] = $scope.originalPlayer;
             }
             if(originalRoom.map[playerTile.index+9].tile === 'hole'){
-              $scope.facing = 's';
               $scope.death = true;
             }
           }, timing );

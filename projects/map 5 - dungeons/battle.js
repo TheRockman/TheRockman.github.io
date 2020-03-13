@@ -1,5 +1,7 @@
 var app = angular.module("myApp", []); app.controller("battleCtrl", function($scope, $timeout) {
 
+  //AC only multiples of 5 between 30 and 100 (inclusive) are used
+
   $scope.feed;
   $scope.menuIndex = 0;
   $scope.myTurn = true;
