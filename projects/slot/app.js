@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $timeout) {
-
+  var audio = new Audio('sound.mp3');
   
   $scope.shuffle = function(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -121,14 +121,14 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     }else{
       $scope.score = $scope.score - $scope.bet;
     }
-    
+    audio.play();
     
     if(!$scope.wheels.one.locked){
       $scope.wheels.one.spinning = true;
       $timeout( function(){
         $scope.result.one = $scope.generateResult();
         $scope.wheels.one.spinning = false;
-      }, 1000 );
+      }, 1200 );
     }
     
     if(!$scope.wheels.two.locked){
@@ -136,7 +136,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $timeout( function(){
         $scope.result.two = $scope.generateResult();
         $scope.wheels.two.spinning = false;
-      }, 2000 );
+      }, 2200 );
     }
 
     if(!$scope.wheels.three.locked){
@@ -144,12 +144,12 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $timeout( function(){
         $scope.result.three = $scope.generateResult();
         $scope.wheels.three.spinning = false;
-      }, 3000 );
+      }, 3200 );
     }
     
     $timeout( function(){
       $scope.checkWin();
-    }, 3100 );
+    }, 3210 );
     
   }
   
