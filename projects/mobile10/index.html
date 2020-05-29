@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="cart" ng-class="{'expanded':showCart, 'compact':!showCart}">
+      <div class="align jsb top">
+        <small>Cart <span ng-if="cartList.length>0">({{cartList.length}})</span></small>
+        <svg ng-click="showCart = !showCart" style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M7.4,15.4L12,10.8L16.6,15.4L18,14L12,8L6,14L7.4,15.4Z" />
+        </svg>
+      </div>
+      <div class="compact" ng-if="!showCart">
+        <div class="align">
+          <div class="porthole" ng-repeat="item in cartList">
+            <img ng-src="{{item.url}}" alt="">
+          </div>
+        </div>
+      </div>
+      <div ng-if="showCart">
+        <ul class="scroll">
+          <div class="empty" ng-if="cartList.length < 1">
+            <br/>
+            <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+              <path fill="#fff" d="M2,10.96C1.5,10.68 1.35,10.07 1.63,9.59L3.13,7C3.24,6.8 3.41,6.66 3.6,6.58L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.66,6.72 20.82,6.88 20.91,7.08L22.36,9.6C22.64,10.08 22.47,10.69 22,10.96L21,11.54V16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V10.96C2.7,11.13 2.32,11.14 2,10.96M12,4.15V4.15L12,10.85V10.85L17.96,7.5L12,4.15M5,15.91L11,19.29V12.58L5,9.21V15.91M19,15.91V12.69L14,15.59C13.67,15.77 13.3,15.76 13,15.6V19.29L19,15.91M13.85,13.36L20.13,9.73L19.55,8.72L13.27,12.35L13.85,13.36Z" />
+            </svg>
+            <h2>Wow!</h2>
+            <p>The cart is empty<br/>Lets try adding some stuff</p>
+          </div>
+          <li class="align jsb" ng-repeat="item in cartList">
+            <div class="align">
+              <div class="porthole">
+                <img ng-src="{{item.url}}" alt="">
+              </div>
+              <div class="">
+                <small>{{item.name}}</small>
+                <br/>
+                <b>${{item.price}}</b>
+              </div>
+            </div>
+
+            <div class="align jsb" style="margin-top:1rem;">
+              <span class="tiny fab" ng-click="minus(item)">-</span>
+              <span>
+                &nbsp;
+                &nbsp;
+                {{item.amount}}
+                &nbsp;
+                &nbsp;
+              </span>
+              <span class="tiny fab" ng-click="plus(item)">+</span>
+            </div>
+          </li>
+        </ul>
+        <div class="cta" ng-if="cartList.length>0">
+          Checkout
+        </div>
+      </div>
+    </div>
+
+    <div class="stage relative scroll">
+      <div class="splash">
+        Lobster
+      </div>
+      <div class="card">
+        <div class="align jsb nav">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#333" d="M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z" />
+          </svg>
+          <p>Sneakers</p>
+          <svg ng-click="showCart = !showCart" style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#333" d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z" />
+          </svg>
+        </div>
+        <div class="" ng-repeat="item in list">
+          <div class="showcase">
+            <img ng-src="{{item.url}}" alt="">
+          </div>
+          <b>{{item.name}}</b>
+          <br/>
+          <br/>
+          <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</small>
+          <div class="align jsb actions">
+            <b>123</b>
+            <div class="fab" ng-click="add(item)">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path fill="#fff" d="M11,9H13V6H16V4H13V1H11V4H8V6H11M7,18A2,2 0 0,0 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0 7,18M17,18A2,2 0 0,0 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20A2,2 0 0,0 17,18M7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L21.16,4.96L19.42,4H19.41L18.31,6L15.55,11H8.53L8.4,10.73L6.16,6L5.21,4L4.27,2H1V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.29,15 7.17,14.89 7.17,14.75Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
