@@ -78,7 +78,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     if($scope.format === "landing"){
       $scope.fr = '&fit=crop&w=460&h=460&';
     }else{
-      $scope.fr = '&fit=crop&w=1350&'
+      $scope.fr = '&fit=crop&w=1350&h=900&'
     }
     $scope.output = $scope.input.split('com/').pop().split('?ix')[0].toString();
   }
