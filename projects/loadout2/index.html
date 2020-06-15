@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="backdrop">
+      <div class="row stage">
+        <div class="flex x2">
+          <div class="card left-card">
+            <div class="align">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+              </svg>
+              &nbsp;
+              Back
+            </div>
+            <div class="align jsb">
+              <div class="bubble">
+                <p>Rank</p>
+                <span>2023</span>
+              </div>
+              <div class="bubble">
+                <p>Progress</p>
+                <span>76%</span>
+              </div>
+              <div class="bubble">
+                <p>Tag</p>
+                <span>#231k123hws</span>
+              </div>
+            </div>
+            <div class="align jsb">
+              <div>
+                <p>123</p>
+                <div class="progress"></div>
+              </div>
+              <div>
+                <p>123</p>
+                <div class="progress"></div>
+              </div>
+            </div>
+            <div class="align jsb">
+              <div>
+                <p>123</p>
+                <div class="progress"></div>
+              </div>
+              <div>
+                <p>123</p>
+                <div class="progress"></div>
+              </div>
+            </div>
+            <div class="align jsb">
+              <div>
+                <p>123</p>
+                <div class="progress"></div>
+              </div>
+              <div>
+                <p>123</p>
+                <div class="progress"></div>
+              </div>
+            </div>
+            <br/>
+            <div class="acc">
+              <p style="margin:0;" class="center pointer" ng-click="open = !open">
+                Perks
+              </p>
+              <div class="expander fluid-row" ng-class="{'open': open || windowWidth>768}">
+                <div class="fluid-flex align">
+                  <img src="https://therockman.github.io/projects/dd/shot.PNG" alt="">
+                  <div>+1 ranged</div>
+                </div>
+                <div class="fluid-flex align">
+                  <img src="https://therockman.github.io/projects/dd/retreat.PNG" alt="">
+                  <div>-10% to hit</div>
+                </div>
+                <div class="fluid-flex align">
+                  <img src="https://therockman.github.io/projects/dd/charge.PNG" alt="">
+                  <div>+2 DMG </div>
+                </div>
+                <div class="fluid-flex align">
+                  <img src="https://therockman.github.io/projects/dd/charge.PNG" alt="">
+                  <div>+2 DMG</div>
+                </div>
+                <div class="fluid-flex align">
+                  <img src="https://therockman.github.io/projects/dd/charge.PNG" alt="">
+                  <div>+2 DMG</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex x2">
+          <div class="card right-card">
+            <h2>Titan #2020</h2>
+            <span>lorem ipsum</span>
+            <br/>
+            <b>$9001</b>
+            <img class="char relative" style="z-index:1;" src="https://media1.giphy.com/media/1PfuLqeHx7mrC/source.gif" alt="">
+            <div class="shadow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
