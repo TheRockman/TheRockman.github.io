@@ -18,7 +18,7 @@ body{
   font-size: 16px;
   color: white;
   padding-bottom: 44px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .align{
@@ -155,7 +155,7 @@ nav{
 
 .hero{
   width: 100vw;
-  height: 66vh;
+  height: 100vh;
   background: linear-gradient(45deg, rgba(81,80,156,1) 0%,rgba(173,73,188,1) 71%,rgba(149,67,214,1) 100%);
   overflow: hidden;
 }
