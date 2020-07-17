@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="wrap relative">
+      <div class="menu">
+        <button type="button" ng-click="check()" name="button">make a guess</button>
+        <div class="align jsb" style="margin: 5px 0;">
+          <div ng-repeat="dot in options" ng-class="{'red':dot === 1, 'blue':dot === 2, 'green':dot === 3, 'white':dot === 4, 'pink':dot === 5, 'yellow':dot === 6}" class="dot" ng-click="makeGuess(dot)"></div>
+        </div>
+      </div>
+      
+      <div ng-repeat="item in guesses track by $index" class="align rw jsb guess" ng-class="{'locked': attempts !== $index}">
+        <p style="color:red;">{{item.perfectMatch}}</p>
+        <p style="color:white;">{{item.correctColor}}</p>
+        <div class="dot" ng-repeat="dot in item.dots track by $index" ng-click="setActive($index)" ng-class="{'selected': selectedDot === $index ,'red':dot === 1, 'blue':dot === 2, 'green':dot === 3, 'white':dot === 4, 'pink':dot === 5, 'yellow':dot === 6}" ></div>
+      </div>
+      
+      <div class="align jsb master rw" ng-class="{'game-over':reveal}">
+        <div ng-repeat="dot in master track by $index" class="dot" ng-class="{'red':dot === 1, 'blue':dot === 2, 'green':dot === 3, 'white':dot === 4, 'pink':dot === 5, 'yellow':dot === 6} "></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
