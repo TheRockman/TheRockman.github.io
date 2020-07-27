@@ -9,24 +9,35 @@
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
     <!-- https://cdn2.scratch.mit.edu/get_image/gallery/6052198_170x100.png -->
-    
+
     <div class="camera">
       <div class="light"></div>
-      <img src="https://cdn2.scratch.mit.edu/get_image/gallery/6052198_170x100.png" class="char" ng-style="char" alt="">
-      <img src="https://www.jing.fm/clipimg/full/62-629312_bush-clipart-cartoon-bush-clipart-transparent-background.png" class="billboard" style="z-index:70; width:100px; bottom:100px; right:400px;" ng-style="camera">
-      <img src="https://www.jing.fm/clipimg/full/62-629312_bush-clipart-cartoon-bush-clipart-transparent-background.png" class="billboard" style="z-index:30; width:100px; bottom:140px; left:200px;" ng-style="camera">
+      <img  ng-cloak src="https://smw.ltquick.nl/MarioAwards/2017/present/m8/chr/yoshissm-ani.gif" class="char" ng-style="char" alt="">
+      <!-- <img ng-if="!moving" src="https://i.pinimg.com/originals/3f/33/9f/3f339fd70a7dce8de6d9808b322fcbb3.png" class="char" ng-style="char" alt=""> -->
+
+      <img class="billboard" style="z-index:110; width:100px; bottom:60px; left:20rem;" ng-style="camera" src="https://www.jing.fm/clipimg/full/62-629312_bush-clipart-cartoon-bush-clipart-transparent-background.png">
+      <img class="billboard" style="z-index:30; width:100px; bottom:140px; left:50rem;" ng-style="camera" src="https://www.jing.fm/clipimg/full/62-629312_bush-clipart-cartoon-bush-clipart-transparent-background.png">
+
+      <img class="billboard" style="z-index:30; width:70px; bottom:130px; left:70rem;" ng-style="camera" src="https://www.mariowiki.com/images/0/0e/PMCS_Yoshi_Animated.gif">
+      <div class="speech" ng-if="Xcam < -500 && Xcam > -690 && charPosDepth<-80" style="bottom:230px; left:70rem;" ng-style="camera">Long texts that fit in boxes are cool, dont you agree?</div>
+
+      <img class="billboard" style="z-index:10; width:60px; bottom:150px; left:90rem;" ng-style="camera" src="https://vignette.wikia.nocookie.net/papermario/images/9/93/PMCS_Pry_Guy.gif/revision/latest?cb=20180223162402">
+      <div class="speech" ng-if="Xcam < -850 && Xcam > -1020 && charPosDepth<-80" style="bottom:235px; left:90rem;" ng-style="camera">Oh shoot! I wish I knew how to read...</div>
+
+      <img class="billboard" style="z-index:200; width:400px; bottom:-150px; left:70rem;" ng-style="camera" src="https://www.jing.fm/clipimg/full/34-344207_rock-clipart-png-rock-clipart-no-background.png">
+
       <div class="enviroment wrap" ng-style="camera">
         <div class="floor">
           <div class="backplate"></div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>
