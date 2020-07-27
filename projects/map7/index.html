@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <!-- https://cdn2.scratch.mit.edu/get_image/gallery/6052198_170x100.png -->
+    
+    <div class="camera">
+      <div class="light"></div>
+      <img src="https://cdn2.scratch.mit.edu/get_image/gallery/6052198_170x100.png" class="char" ng-style="char" alt="">
+      <img src="https://www.jing.fm/clipimg/full/62-629312_bush-clipart-cartoon-bush-clipart-transparent-background.png" class="billboard" style="z-index:70; width:100px; bottom:100px; right:400px;" ng-style="camera">
+      <img src="https://www.jing.fm/clipimg/full/62-629312_bush-clipart-cartoon-bush-clipart-transparent-background.png" class="billboard" style="z-index:30; width:100px; bottom:140px; left:200px;" ng-style="camera">
+      <div class="enviroment wrap" ng-style="camera">
+        <div class="floor">
+          <div class="backplate"></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
