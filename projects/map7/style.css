@@ -40,8 +40,8 @@ svg, svg path, img{
 }
 
 .camera{
-  width: 1095px;
-  height: 80vh;
+  width: 1024px;
+  height: 768px;
   margin: 10vh auto;
 
   background: url(https://i.pinimg.com/originals/82/fd/76/82fd7692b2416909f3a0e4fcf8e1229f.gif) no-repeat center center fixed;
@@ -61,33 +61,46 @@ svg, svg path, img{
   height: 640px;
   transform: perspective(50rem) rotateX(60deg);
   transform-origin: bottom center;
-  background: url('https://cdn.pixabay.com/photo/2017/02/22/18/02/polka-dots-2090134_960_720.jpg');
+  background: url('https://cdna.artstation.com/p/assets/images/images/007/803/170/large/jo-torres-grass-with-daisy.jpg?1508614198');
   background-size: contain;
   position: absolute;
   bottom: 0;
 }
 .backplate{
-  transform: perspective(50rem) rotateX(-28deg);
+  transform: perspective(25px) rotateX(-1deg);
   height: 340px;
   position: absolute;
   transform-origin: center bottom;
-  top: -250px;
+  top: -326px;
   left: 0;
   right: 0;
   margin: 0 auto;
   background: red;
-  background: url('https://tr.rbxcdn.com/5d5a481ccb26a7a3d6b8b9ed0603d399/420/420/Decal/Png');
+  background: url('https://png2.cleanpng.com/sh/0313f1620816662b128a75e9833059b5/L0KzQYq3V8EzN6l5e5H0aYP2gLBuTfZmdpRqReJ4coTkcr3sTf5mfKh0it02Z4LkgLnwgCMua51uiJ9qcoSwhMPojwNxaaNqRadtMkjkSLLtUsE2OGk3RqMCNEe4R4q9UcU3Omo5Tak6MUG2Roa1kP5o/kisspng-fence-portable-network-graphics-clip-art-transpare-5d28a8af215082.1747579615629457111365.png');
+  background-size: 6% 100%;
+}
+.road{
+  transform: perspective(0rem) rotateX(-130deg);
+  height: 340px;
+  position: absolute;
+  transform-origin: center bottom;
+  top: -100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: red;
+  background: url('https://s-media-cache-ak0.pinimg.com/736x/ac/45/32/ac4532af5172c86db15fb43b0b681280.jpg');
   background-size: contain;
 }
 
 .light{
-  mix-blend-mode: soft-light;
+  mix-blend-mode: overlay;
   position: absolute;
   height: 100%;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 120;
+  z-index: 300;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(15,22,39,0) 34%,rgba(33,50,87,0.87) 76%,rgba(44,66,114,0.87) 100%);
 }
 
