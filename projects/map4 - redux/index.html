@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <script type="text/javascript" src="../../carousel.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stats">
+      <!-- <h1 data-after="SCORE">SCORE</h1>
+      <p class="score">{{score}}</p>
+      <p ng-if="topScore">Best: {{topScore}}</p>
+      <p ng-if="topScore">Last: {{lastScore}}</p> -->
+      <div class="" ng-click="toggleSound()">
+        <svg ng-if="sound" style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+        </svg>
+        <svg ng-if="!sound" style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="#fff" d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.46 14,18.7V20.77C15.38,20.45 16.63,19.82 17.68,18.96L19.73,21L21,19.73L12,10.73M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M16.5,12C16.5,10.23 15.5,8.71 14,7.97V10.18L16.45,12.63C16.5,12.43 16.5,12.21 16.5,12Z" />
+        </svg>
+      </div>
+    </div>
+    <div class="grid-wrap">
+      <div class="tile" ng-repeat="tile in grid" ng-style="{z-index:$index+10}" ng-class="{'solid': tile.solid, 'char': $index === charIndex, 'jump': $index === charIndex && jumping}">
+        <img src="https://media0.giphy.com/media/2ipOXiyd3KuwIraVr2/giphy.gif" ng-if="$index === charIndex" alt="">
+        <div class="obs" ng-if="tile.solid"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
