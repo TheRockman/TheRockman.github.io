@@ -1,0 +1,74 @@
+:root{
+  --animation: all 800ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: #222;
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+}
+img{
+  width: 250px;
+  height: 330px;
+}
+.slot{
+  width: 250px;
+  height: 330px;
+  border: 4px dashed #555;
+  transform: scale(0.9);
+  border-radius: 10px;
+}
+
+.hand{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20vh;
+  transform: scale(0.7);
+}
+
+.card{
+  transition: var(--animation);
+  position: absolute;
+  padding-bottom: 15rem;
+  transform-origin: center bottom;
+  cursor: pointer;
+}
+.card:hover{
+  padding-bottom: 30rem;
+  z-index: 10;
+  filter: drop-shadow(0 -6mm 4mm teal);
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.jsc{
+  justify-content: center;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}

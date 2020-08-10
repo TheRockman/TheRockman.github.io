@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div class="center" ng-controller="mainCtrl">
+    <div class="align jsc stage">
+      <img ng-cloak src="{{cards[picked[0]]}}" alt="">
+      <img ng-cloak src="{{cards[picked[1]]}}" alt="">
+      <div ng-if="!selected" class="slot"></div>
+      <img ng-if="selected" ng-cloak src="{{cards[selected]}}" alt="">
+    </div>
+    <div class="hand align jsc">
+        <img ng-style="fan($index)" ng-click="select(card)" class="card" ng-repeat="card in hand" src="{{cards[card]}}" alt="">
+    </div>
+    <button type="button" ng-click="generate()" name="button">generate</button>
+    <button type="button" ng-click="reloadHand()" name="button">new hand</button>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
