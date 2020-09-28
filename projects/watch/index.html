@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+      <div ng-if="!currentScenario.done && !eventText">
+        {{currentScenario.desc}}
+        <br/>
+        <button type="button" ng-repeat="action in currentScenario.actions" ng-click="action.action(action.actionProps); setActionIndex($index)" name="button">{{action.desc}}</button>  
+      </div>
+      <div ng-if="eventText">
+        {{eventText}}
+        <br/>
+        <button type="button" ng-click="nextEvent(currentScenario.actions[actionIndex].actionProps)" name="button">OK</button>
+      </div>
+    </br>
+    {{watcher}}
+    </br>
+    {{inventory}}
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
