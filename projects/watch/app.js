@@ -1,7 +1,11 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $http) {
   $scope.eventText;
   $scope.nextEvent;
   $scope.actionIndex;
+  
+  $http.get('phones.json').then(function(data) {
+   console.log(data);
+  });
   
   $scope.progress = function(){
     $scope.eventText = null;
