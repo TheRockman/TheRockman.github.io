@@ -12,7 +12,9 @@
 
 body{
   margin: 0;
-  background: url('https://cdn.wallpapersafari.com/23/69/4cJekv.jpg') center center no-repeat;
+  color: white;
+  background: url('https://www.lago.it/wp-content/uploads/2015/11/1_gallery_soggiorno.jpg') center center no-repeat;
+  background-size: cover;
   font-family: 'Raleway', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
@@ -48,7 +50,25 @@ svg, svg path, img{
 .p{
   perspective: 100rem;
 }
+.mover{
+  cursor: grab;
+}
+.mover .wedge{
+  box-shadow: inset 0px 0px 79px 121px rgba(102,219,255,0.3);
+  
+}
+
+iframe{
+  height: 100%;
+  width: 100%;
+  background: #222;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+}
+
 .wedge{
+  user-select: none;
   transform-style: preserve-3d;
   transform-origin: bottom;
   height: 600px;
@@ -57,16 +77,21 @@ svg, svg path, img{
   padding: 1rem;
   text-align: center;
   border-radius: 14px;
-  box-shadow: inset 0px 0px 79px 121px rgba(102,219,255,0.3);
+  transition: var(--animation);
+  background: rgba(0, 0, 0, 0.2);
+  /* border: 1px solid white; */
   transform: translateY(500px) translateZ(150px) rotateY(180deg)  rotateX(90deg);
 }
-.wedge:nth-of-type(1){
+.start{
   transform-origin: bottom right;
   transform: translateY(500px) translateZ(150px) rotateY(180deg) rotateZ(140deg) rotateX(90deg);
 }
-.wedge:nth-of-type(3){
+.end{
   transform-origin: bottom left;
   transform: translateY(500px) translateZ(150px) rotateY(180deg) rotateZ(-140deg) rotateX(90deg);
+}
+.expanded{
+  width: 2500px;
 }
 .content-flip{
   transform:  rotateY(180deg);
@@ -85,5 +110,30 @@ svg, svg path, img{
   left: 0;
   right: 0;
   margin: 0 auto;
-  border: 10px dashed black;
+  /* border: 10px dashed black; */
+}
+
+.app{
+  background: #333;
+  height: auto;
+  line-height: 64px;
+  cursor: pointer;
+}
+.app:hover{
+  background: #666;
+}
+
+svg{
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
 }
