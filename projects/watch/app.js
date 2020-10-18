@@ -2,17 +2,24 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.eventText;
   $scope.nextEvent;
   $scope.actionIndex;
-  
+
+  $scope.factions = {
+    king: 0,
+    mages: 0,
+    guild: 0,
+    elves: 0
+  };
+
   $scope.progress = function(){
     $scope.eventText = null;
     $scope.adventureDepth++;
     $scope.currentScenario = $scope.scenarios[$scope.adventureIndex].path[$scope.adventureDepth];
   }
-  
+
   $scope.levelUp = function(props){
     $scope.eventText = null;
     $scope.nextEvent = null;
-    
+
     console.log('+1', $scope);
     $scope.watcher.stats[props.attribute] = $scope.watcher.stats[props.attribute] + props.value;
     if($scope.watcher.stats[props.attribute]>18){
@@ -21,11 +28,11 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.eventText = props.levelUpText;
     $scope.nextEvent = $scope.abort;
   }
-  
+
   $scope.levelDown = function(props){
     $scope.eventText = null;
     $scope.nextEvent = null;
-    
+
     console.log('-1');
     $scope.watcher.stats[props.attribute] = $scope.watcher.stats[props.attribute] - props.value;
     if($scope.watcher.stats[props.attribute]<0){
@@ -34,59 +41,59 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.eventText = props.levelDownText;
     $scope.nextEvent = $scope.abort;
   }
-  
+
   $scope.upSupplies = function(props){
     $scope.eventText = null;
     $scope.nextEvent = null;
-    
+
     console.log('supplies +1', $scope);
     $scope.inventory[props.attribute] = $scope.inventory[props.attribute] + props.value;
 
     $scope.eventText = props.successText;
     $scope.nextEvent = $scope.abort;
   }
-  
+
   $scope.takeDamage = function(props){
     $scope.eventText = null;
     $scope.nextEvent = null;
-    
+
     console.log('oof');
     $scope.watcher.stats.HP = $scope.watcher.stats.HP - props.damage;
     if($scope.watcher.stats.HP <= 0){
       console.log('dead');
     }
-    
+
     $scope.eventText = props.damageText;
     $scope.nextEvent = $scope.abort;
   }
-  
+
   $scope.dice = function(diceSize) {
     return 0 + Math.floor(Math.random()*diceSize)
   }
-  
+
   $scope.pickNewScenario = function(){
     $scope.eventText = null;
     console.log('11');
       $scope.scenarios = $scope.scenarios.filter(function (el) {
       return !el.done;
     });
-    
+
     if(  $scope.scenarios.length === 0){
       $scope.adventureIndex = 0;
       $scope.currentScenario = $scope.boss;
     }else{
       var roll = $scope.dice(  $scope.scenarios.length);
       $scope.adventureIndex = roll;
-      
+
       $scope.currentScenario = $scope.scenarios[roll];
     }
   }
-  
+
   $scope.skillCheck = function(props){
     $scope.eventText = null;
     $scope.nextEvent = null;
     var roll = $scope.dice(20);
-    
+
     if(roll === 20){
       $scope.eventText = props.successText;
       console.log('CRIT success', roll + $scope.watcher.stats[props.test], props.dc);
@@ -103,11 +110,11 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.nextEvent = props.failure;
     }
   }
-  
+
   $scope.buy = function(props){
     $scope.eventText = null;
     $scope.nextEvent = null;
-    
+
     if($scope.inventory.gold >= props.price){
       $scope.inventory.gold = $scope.inventory.gold - props.price;
       $scope.eventText = props.successText;
@@ -117,23 +124,28 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.nextEvent = props.failure;
     }
   }
-  
+
   $scope.abort = function(){
     $scope.eventText = null;
     $scope.nextEvent = null;
-    
+
     console.log('aborted');
     //mark scenario as done
     $scope.scenarios[$scope.adventureIndex].done = true;
     $scope.eventText = $scope.currentScenario.ending;
-    
+
     $scope.adventureDepth = -1;
-    
+
     $scope.nextEvent = $scope.pickNewScenario;
   }
-  
+
   $scope.setActionIndex = function(i){
     $scope.actionIndex = i;
+  }
+
+  $scope.factionMod = function(props){
+    $scope.factions[props.faction] = $scope.factions[props.faction] + props.factionMod;
+    $scope.abort();
   }
 
   $scope.party = [];
@@ -165,13 +177,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.party.push(char);
     }
   }
-  
+
   $scope.inventory = {
     gold: 100,
     food: 10,
     artifacts: []
   }
-  
+
   $scope.boss = {
     desc: 'BOSS',
     ending: 'Wah wah',
@@ -188,6 +200,66 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   }
 
   $scope.scenarios = [
+    {
+      desc: 'A knight appear',
+      ending: 'He rides on',
+      actions: [
+        {
+          desc: '[Royal loyalty] Ask for his sword',
+          factionCheck: {
+            name: 'king',
+            limit: 1
+          },
+          action: $scope.abort,
+        },
+        {
+          desc: 'Bow',
+          action: $scope.factionMod,
+          actionProps: {
+            faction: 'king',
+            factionMod: 1
+          }
+        },
+        {
+          desc: 'Scoff',
+          action: $scope.factionMod,
+          actionProps: {
+            faction: 'king',
+            factionMod: -1
+          }
+        }
+      ],
+    },
+    {
+      desc: 'A knight appear',
+      ending: 'He rides on',
+      actions: [
+        {
+          desc: '[Royal loyalty] Ask for his sword',
+          factionCheck: {
+            name: 'king',
+            limit: 1
+          },
+          action: $scope.abort,
+        },
+        {
+          desc: 'Bow',
+          action: $scope.factionMod,
+          actionProps: {
+            faction: 'king',
+            factionMod: 1
+          }
+        },
+        {
+          desc: 'Scoff',
+          action: $scope.factionMod,
+          actionProps: {
+            faction: 'king',
+            factionMod: -1
+          }
+        }
+      ],
+    },
     {
       desc: 'A troll appears and tries to sell you a potion.',
       ending: '321',
@@ -342,7 +414,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   $scope.generateParty();
   $scope.watcher = $scope.party[0];
-  
+
   $scope.adventureIndex = 0;
   $scope.adventureDepth = -1;
   $scope.pickNewScenario();

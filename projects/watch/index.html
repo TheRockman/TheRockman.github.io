@@ -9,14 +9,14 @@
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
       <div ng-if="!currentScenario.done && !eventText">
         {{currentScenario.desc}}
         <br/>
-        <button type="button" ng-repeat="action in currentScenario.actions" ng-click="action.action(action.actionProps); setActionIndex($index)" name="button">{{action.desc}}</button>  
+        <button type="button" ng-if="factions[action.factionCheck.name] >= action.factionCheck.limit || action.factionCheck === undefined" ng-repeat="action in currentScenario.actions" ng-click="action.action(action.actionProps); setActionIndex($index)" name="button">{{action.desc}}</button>
       </div>
       <div ng-if="eventText">
         {{eventText}}
@@ -27,6 +27,8 @@
     {{watcher}}
     </br>
     {{inventory}}
+    <hr/>
+    {{factions}}
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>
