@@ -16,37 +16,71 @@
     <div class="wrap">
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
       <div class="talkbox" ng-if="eventText || currentScenario.text">
-        
+
         <div ng-if="!currentScenario.done && !eventText">
-          <p ng-if="currentScenario.text" class="description">{{currentScenario.text}}</p>
+          <p ng-if="currentScenario.text" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
           <br/>
           <div ng-repeat="option in currentScenario.actions">
-            <div tabindex="0" class="option pointer" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)"> * {{option.label}}</div> 
+            <div tabindex="0" class="option pointer align" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+              &nbsp;
+              {{option.label}}
+            </div>
           </div>
         </div>
-        
+
         <div ng-if="eventText">
           <!-- Ending -->
-          <p class="description">{{eventText}}</p>
+          <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
           <br/>
-          <div class="option pointer" ng-click="wrapUpAndPickNext()" name="button">* OK</div>
+          <div class="option pointer align" ng-click="wrapUpAndPickNext()" name="button">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+            &nbsp;
+            [Proceed]
+          </div>
         </div>
       </div>
     </div>
-      
+
     <div class="stats">
+      <p>Region: {{currentRegion}}</p>
       <details>
-        <summary><b>Stats</b></summary>
+        <summary>
+          <b>Stats</b>
+        </summary>
+        <hr/>
         <div class="align jsb">
-          <p>Dex: {{stats.dex}}</p>
-          <p>Str: {{stats.str}}</p>
-          <p>Int: {{stats.int}}</p>
-          <p>Wis: {{stats.wis}}</p>
-          <p>Con: {{stats.con}}</p>
-          <p>Cha: {{stats.cha}}</p>
+          <div class="center">
+            <p>{{stats.dex}}</p>
+            DEX
+          </div>
+          <div class="center">
+            <p>{{stats.str}}</p>
+            STR
+          </div>
+          <div class="center">
+            <p>{{stats.int}}</p>
+            INT
+          </div>
+          <div class="center">
+            <p>{{stats.wis}}</p>
+            WIS
+          </div>
+          <div class="center">
+            <p>{{stats.con}}</p>
+            CON
+          </div>
+          <div class="center">
+            <p>{{stats.cha}}</p>
+            CHA
+          </div>
         </div>
       </details>
-      
+
       <div ng-if="factions.crown + factions.mages > 0" >
         <br/>
         <details>
@@ -56,7 +90,7 @@
         </details>
       </div>
     </div>
-      
+
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>

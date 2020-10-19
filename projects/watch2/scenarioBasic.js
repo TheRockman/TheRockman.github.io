@@ -2,31 +2,32 @@ app.service('scenarioBasic', function(actionService) {
   this.scenarios = [
 //Scenario
     {
-      text: 'A knight appear',
+      text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       actions: [
         {
-          label: 'Bow',
+          label: 'Stand up and bow',
           action: actionService.modifyFactionRating,
           actionProps: {
             faction: 'crown',
             factionMod: 1,
-            epilog: 'She returns the bow with a smile and rides away.'
+            epilog: '<em>"Greetings adventurer"</em> She nods back at you but doesnt stop walking.'
           }
         },
         {
-          label: 'Scoff',
+          label: 'Do nothing',
           action: actionService.modifyFactionRating,
           actionProps: {
             faction: 'crown',
             factionMod: -1,
-            epilog: 'She rides away in a huff.'
+            epilog: '<em>"Where are your manners ratcatcher?"</em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.<em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"</em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.'
           }
         },
         {
-          label: 'Say nothing',
-          action: actionService.abort,
+          label: 'Go climb a mointain',
+          action: actionService.modifyRegion,
           actionProps: {
-            epilog: 'She rides away.'
+            region: 'Gorillion mountains',
+            epilog: 'You start climbing the Gorillion mountains.'
           }
         }
       ],
@@ -53,7 +54,7 @@ app.service('scenarioBasic', function(actionService) {
       ],
       path: [
         {
-          text: 'The stranger sits down and lights a pipe. The the two of you share stories of adventures you both have had.',
+          text: '<em>The stranger sits down and lights a pipe.</em>The the two of you share stories of adventures you both have had.',
           actions: [
             {
               label: 'Ask more about the stranger',

@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, scenarioBasic) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic) {
 
   $scope.scenarios = scenarioBasic.scenarios;
   $scope.currentScenario = $scope.scenarios[0];
@@ -8,13 +8,19 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureIndex = 0;
   $scope.adventureDepth = -1;
   $scope.toast = null;
-  
+
+  $scope.regions = [
+    'HerpDerp forest',
+    'Gorillion mountains'
+  ]
+
+  $scope.currentRegion = $scope.regions[0];
+
   $scope.factions = {
     crown: 0,
     mages: 0,
   }
-  
-  
+
   $scope.stats = {
     dex: 0,
     str: 0,
@@ -24,24 +30,28 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     cha: 0
   }
 
+  $scope.toTrustedHTML = function( html ){
+    return $sce.trustAsHtml( html );
+  }
+
   $scope.setScope = function(key, val){
     $scope[key] = val;
   }
   $scope.getScope = function(key){
     return $scope[key];
   }
-  
+
   $scope.wrapUpAndPickNext = function(){
     $scope.eventText = null;
     $scope.scenarios = $scope.scenarios.filter(function (el) {
       return !el.done;
     });
-  
+
     var roll = 0 + Math.floor(Math.random()*$scope.scenarios.length);
     $scope.adventureIndex = roll;
     $scope.currentScenario = $scope.scenarios[roll];
   }
-  
+
 
 });
 

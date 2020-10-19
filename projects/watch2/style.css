@@ -42,6 +42,12 @@ p{
   position: relative;
 }
 
+em{
+  color: #cacaca;
+  display: block;
+  font-style: normal;
+}
+
 .option{
   padding: 1rem;
   border: 1px solid #333;
@@ -61,11 +67,11 @@ p{
   padding: 1rem;
   border: 1px solid #cacaca;
   background: #222;
-  color: #cacaca;
+  color: #fff;
 }
 .stats{
   background: #222;
-  color: #cacaca;
+  color: #fff;
   padding: 1rem;
 }
 .description{
@@ -80,7 +86,7 @@ p{
 }
 .talkbox{
   background: #222;
-  color: #cacaca;
+  color: #fff;
   height: 40vh;
   overflow-y: auto;
   animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
