@@ -9,28 +9,28 @@
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
+      
       <div ng-if="!currentScenario.done && !eventText">
-        {{currentScenario.desc}}
-        <br/>
-        <button type="button" ng-if="factions[action.factionCheck.name] >= action.factionCheck.limit || action.factionCheck === undefined" ng-repeat="action in currentScenario.actions" ng-click="action.action(action.actionProps); setActionIndex($index)" name="button">{{action.desc}}</button>
+        {{currentScenario.text}}
+        <div ng-repeat="option in currentScenario.actions">
+          <button ng-click="option.action(option.actionProps, setScope, getScope)">{{option.label}}</button> 
+        </div>
       </div>
+      
       <div ng-if="eventText">
+        <!-- Ending -->
         {{eventText}}
         <br/>
-        <button type="button" ng-click="nextEvent(currentScenario.actions[actionIndex].actionProps)" name="button">OK</button>
+        <button type="button" ng-click="wrapUpAndPickNext()" name="button">OK</button>
       </div>
-    </br>
-    {{watcher}}
-    </br>
-    {{inventory}}
-    <hr/>
-    {{factions}}
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="actionService.js"></script>
+<script type="text/javascript" src="scenarioBasic.js"></script>
 
 </html>
