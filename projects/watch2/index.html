@@ -13,20 +13,50 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-      
-      <div ng-if="!currentScenario.done && !eventText">
-        {{currentScenario.text}}
-        <div ng-repeat="option in currentScenario.actions">
-          <button ng-click="option.action(option.actionProps, setScope, getScope)">{{option.label}}</button> 
+    <div class="wrap">
+      <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
+      <div class="talkbox" ng-if="eventText || currentScenario.text">
+        
+        <div ng-if="!currentScenario.done && !eventText">
+          <p ng-if="currentScenario.text" class="description">{{currentScenario.text}}</p>
+          <br/>
+          <div ng-repeat="option in currentScenario.actions">
+            <div tabindex="0" class="option pointer" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)"> * {{option.label}}</div> 
+          </div>
+        </div>
+        
+        <div ng-if="eventText">
+          <!-- Ending -->
+          <p class="description">{{eventText}}</p>
+          <br/>
+          <div class="option pointer" ng-click="wrapUpAndPickNext()" name="button">* OK</div>
         </div>
       </div>
+    </div>
       
-      <div ng-if="eventText">
-        <!-- Ending -->
-        {{eventText}}
+    <div class="stats">
+      <details>
+        <summary><b>Stats</b></summary>
+        <div class="align jsb">
+          <p>Dex: {{stats.dex}}</p>
+          <p>Str: {{stats.str}}</p>
+          <p>Int: {{stats.int}}</p>
+          <p>Wis: {{stats.wis}}</p>
+          <p>Con: {{stats.con}}</p>
+          <p>Cha: {{stats.cha}}</p>
+        </div>
+      </details>
+      
+      <div ng-if="factions.crown + factions.mages > 0" >
         <br/>
-        <button type="button" ng-click="wrapUpAndPickNext()" name="button">OK</button>
+        <details>
+          <summary><b>Factions</b></summary>
+            <p ng-if="factions.crown>0">The Crown: {{factions.crown}}</p>
+            <p ng-if="factions.mages>0">The Mages: {{factions.mages}}</p>
+        </details>
       </div>
+    </div>
+      
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>

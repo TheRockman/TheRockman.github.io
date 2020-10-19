@@ -7,9 +7,21 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.actionIndex;
   $scope.adventureIndex = 0;
   $scope.adventureDepth = -1;
+  $scope.toast = null;
   
   $scope.factions = {
-    king: 0
+    crown: 0,
+    mages: 0,
+  }
+  
+  
+  $scope.stats = {
+    dex: 0,
+    str: 0,
+    int: 0,
+    wis: 0,
+    con: 0,
+    cha: 0
   }
 
   $scope.setScope = function(key, val){

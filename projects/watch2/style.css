@@ -34,8 +34,76 @@ body{
 svg, svg path, img{
   user-select: none;
 }
+p{
+  margin: 0;
+  padding: 0;
+}
 .relative{
   position: relative;
+}
+
+.option{
+  padding: 1rem;
+  border: 1px solid #333;
+}
+.option:hover{
+  border-color: white;
+}
+.perkOption{
+  color: cyan;
+}
+
+.toast{
+  animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  position: absolute;
+  top: -66px;
+  right: 0;
+  padding: 1rem;
+  border: 1px solid #cacaca;
+  background: #222;
+  color: #cacaca;
+}
+.stats{
+  background: #222;
+  color: #cacaca;
+  padding: 1rem;
+}
+.description{
+  padding: 1rem;
+  white-space: pre-line;
+}
+.wrap{
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+}
+.talkbox{
+  background: #222;
+  color: #cacaca;
+  height: 40vh;
+  overflow-y: auto;
+  animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes fade-in-bck {
+  0% {
+    -webkit-transform: translateZ(80px);
+            transform: translateZ(80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrap{
+    left: 0;
+    right: 0;
+  }
 }
 
 /* ng-animate */
