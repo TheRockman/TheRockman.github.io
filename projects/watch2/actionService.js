@@ -98,6 +98,18 @@ app.service('actionService', function($timeout) {
       progress(props, setScope, getScope)
     }
   }
+  
+  this.modifyQuestFlags = function (props, setScope, getScope) {
+    var current = getScope('questFlags');
+    current[props.flag] = props.flagMod;
+    
+    setScope('questFlags', current);
+    if(props.epilog){
+      abort(props, setScope, getScope)
+    }else{
+      progress(props, setScope, getScope)
+    }
+  }
 
   this.modifyStat = function (props, setScope, getScope) {
     var current = getScope('stats');

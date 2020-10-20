@@ -47,13 +47,15 @@ em{
   display: block;
   font-style: normal;
 }
+ol{
+  margin: 0 0.5rem;
+}
 
 .option{
-  padding: 1rem;
-  border: 1px solid #333;
+  color: #999;
 }
 .option:hover{
-  border-color: white;
+  color: white;
 }
 .perkOption{
   color: cyan;
@@ -110,6 +112,36 @@ em{
     left: 0;
     right: 0;
   }
+}
+
+
+/* Tooltip container */
+aside {
+  cursor: pointer;
+  color: tomato;
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+aside i {
+  font-style: normal;
+  position: absolute;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  left: -3rem;
+  right: -3rem;
+  border-radius: 6px;
+  top: 100%;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+aside:hover i {
+  visibility: visible;
 }
 
 /* ng-animate */

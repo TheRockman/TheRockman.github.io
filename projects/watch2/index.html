@@ -20,28 +20,25 @@
         <div ng-if="!currentScenario.done && !eventText">
           <p ng-if="currentScenario.text" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
           <br/>
-          <div ng-repeat="option in currentScenario.actions">
-            <div tabindex="0" class="option pointer align" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
-              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-              </svg>
-              &nbsp;
-              {{option.label}}
-            </div>
-          </div>
+          <ol>
+            <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)">
+              <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
+                {{option.label}}
+              </div>
+            </li>
+          </ol>
+
         </div>
 
         <div ng-if="eventText">
           <!-- Ending -->
           <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
           <br/>
-          <div class="option pointer align" ng-click="wrapUpAndPickNext()" name="button">
-            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-            </svg>
-            &nbsp;
-            [Proceed]
-          </div>
+          <ol>
+            <li class="option pointer" ng-click="wrapUpAndPickNext()">
+              [Proceed]
+            </li>
+          </ol>
         </div>
       </div>
     </div>

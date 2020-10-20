@@ -1,33 +1,44 @@
 app.service('scenarioBasic', function(actionService) {
+  var ratcatchers = "A derogatory term for adventurers";
+  
   this.scenarios = [
 //Scenario
     {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       actions: [
         {
-          label: 'Stand up and bow',
+          label: '[Stand up and bow]',
           action: actionService.modifyFactionRating,
           actionProps: {
             faction: 'crown',
             factionMod: 1,
-            epilog: '<em>"Greetings adventurer"</em> She nods back at you but doesnt stop walking.'
+            epilog: '"Greetings adventurer"<em>She nods back at you but doesnt stop walking.</em>'
           }
         },
         {
-          label: 'Do nothing',
+          label: '[Glare silently]',
           action: actionService.modifyFactionRating,
           actionProps: {
             faction: 'crown',
             factionMod: -1,
-            epilog: '<em>"Where are your manners ratcatcher?"</em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.<em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"</em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.'
+            epilog: '"Where are your manners <aside>ratcatcher<i>'+ratcatchers+'</i></aside>?"<em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
           }
         },
         {
-          label: 'Go climb a mointain',
+          label: '"Hello"',
+          action: actionService.modifyQuestFlags,
+          actionProps: {
+            flag: 'knowGwen',
+            flagMod: true,
+            epilog: '<em>She looks at you with a confused look but then smiles.</em>"Hello there yourself, I am Syr Gwendolin"<em>She puts her hand on her chest and bows before quickly moving along.</em>'
+          }
+        },
+        {
+          label: '[Climb a mointain]',
           action: actionService.modifyRegion,
           actionProps: {
             region: 'Gorillion mountains',
-            epilog: 'You start climbing the Gorillion mountains.'
+            epilog: '<em>You start climbing the Gorillion mountains.</em>'
           }
         }
       ],
@@ -54,41 +65,50 @@ app.service('scenarioBasic', function(actionService) {
       ],
       path: [
         {
-          text: '<em>The stranger sits down and lights a pipe.</em>The the two of you share stories of adventures you both have had.',
+          text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had.',
           actions: [
             {
-              label: 'Ask more about the stranger',
-              action: actionService.progress
-            }
-          ],
-        },
-        {
-          text: 'The stranger tells you about far off lands where wild men fight dragons.',
-          actions: [
-            {
-              label: 'Listen',
+              label: '[Listen silently]',
               action: actionService.progress
             },
             {
-              label: 'Thats just skyrim',
-              action: actionService.modifyStat,
+              label: '[Know Gwendolin] "Do you know Syr Gwendolin? She is a good friend of mine."',
+              visibleWhen: 'questFlags.knowGwen',
+              action: actionService.modifyQuestFlags,
               actionProps: {
-                stat: 'wis',
-                statMod: 1,
-                epilog: '"Thats right..." he says.\nThe stranger shifts and shakes before running back into the woods.\nYou notice him dropping a pice of paper with the name "Bodd Howrad" on it.'
+                faction: 'crown',
+                factionMod: 1,
+                epilog: 'Even if you cant really see his face you feel the cold look he is giving you.<em>"No, im afraid i dont..."</em>The embers from his pipe flair up and illuminate his milky white eyes.\nAfter you look away for a moment he is gone.'
               }
             },
           ],
         },
         {
-          text: 'You listen to the strangers story but you must have fallen asleep at some point since you awake at dawn.',
-          ending: 'You look around but there is no trace of the stranger other than a faint smell of tobacco.',
+          text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
+          actions: [
+            {
+              label: '[Listen silently]',
+              action: actionService.progress
+            },
+            {
+              label: '"Thats just skyrim"',
+              action: actionService.modifyStat,
+              actionProps: {
+                stat: 'wis',
+                statMod: 1,
+                epilog: '"Thats right..." he says.<em>The stranger shifts and shakes before running back into the woods.\nYou notice him dropping a pice of paper with the name "Bodd Howrad" on it.</em>'
+              }
+            },
+          ],
+        },
+        {
+          text: '<em>You listen to the strangers story but you must have fallen asleep at some point since you awake at dawn.</em>',
           actions: [
             {
               label: 'OK',
               action: actionService.abort,
               actionProps: {
-                epilog: 'the stranger is gone.'
+                epilog: '<em>You look around but there is no trace of the stranger other than a faint smell of tobacco.</em>'
               }
             }
           ],
@@ -100,10 +120,10 @@ app.service('scenarioBasic', function(actionService) {
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       actions: [
         {
-          label: 'Ignore it',
+          label: '[Ignore it]',
           action: actionService.abort,
           actionProps: {
-            epilog: '"Its probably just a goblin" you think to yourself.'
+            epilog: '"Its probably just a <aside>gropper <i>A small furry creature with long tusks and wings</i></aside>" <em>you think to yourself.</em>'
           }
         },
         {
