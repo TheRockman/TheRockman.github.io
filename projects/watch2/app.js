@@ -21,9 +21,11 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.factions = {
     crown: 0,
     mages: 0,
+    steven: 0
   }
 
   $scope.stats = {
+    hp: 10,
     dex: 0,
     str: 0,
     int: 0,

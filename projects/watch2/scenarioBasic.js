@@ -1,6 +1,6 @@
 app.service('scenarioBasic', function(actionService) {
   var ratcatchers = "A derogatory term for adventurers";
-  
+
   this.scenarios = [
 //Scenario
     {
@@ -56,7 +56,7 @@ app.service('scenarioBasic', function(actionService) {
           },
           actions: [
             {
-              label: '"[Proceed]"',
+              label: '[Proceed]',
               action: actionService.abort,
               actionProps: {
                 epilog: '<em>You sit back down, happy to have made a new friend.</em>'
@@ -64,6 +64,75 @@ app.service('scenarioBasic', function(actionService) {
             }
           ],
         }
+      ]
+    },
+//scenario
+    {
+      text: '<em>A old man taps you on the shoulder</em> "Stay a while and listen" <em>He smiles a toothless smile</em>',
+      speaker: {
+        avatar: 'https://neverwintervault.org/sites/neverwintervault.org/files/project/23755/images/1171124639fullres.jpg',
+        name: '',
+        faction: ''
+      },
+      actions: [
+        {
+          label: '"Sure"',
+          action: actionService.progress,
+          actionProps: {
+            epilog: '"Exelent"'
+          }
+        },
+        {
+          label: '"Dont bother me with your sass old man!"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>He give you a sad look and slowly walks away.</em>'
+          }
+        },
+      ],
+      path: [
+        {
+          text: '<em>The old man look at you expectantly.</em>',
+          actions: [
+            {
+              label: '"So.. whats your name?"',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                smallTalkAction: actionService.modifyFactionRating,
+                faction: 'steven',
+                factionMod: 1,
+                epilog: '"Im Steven."'
+              }
+            },
+            {
+              label: '"Are you married?"',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                epilog: '"No.. no."'
+              }
+            },
+            {
+              label: '"So.. what do you do for a living?"',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                smallTalkAction: actionService.modifyStat,
+                stat: 'hp',
+                statMod: -5,
+                epilog: '<em>The old man suddenly become defensive.</em>"Now thats non of ya business, you hear me?!"<em>He smacks his walking stick over your head.</em>'
+              }
+            },
+            {
+              label: '"Nevermind, i have to go."',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>You sit back down.</em>'
+              }
+            }
+          ],
+        },
       ]
     },
 //Scenario

@@ -4,32 +4,6 @@ app.service('actionService', function($timeout) {
     return 1 + Math.floor(Math.random()*diceSize)
   }
 
-  // var pickNext = function(setScope, getScope){
-  //   var eventText = getScope('eventText');
-  //   var scenarios = getScope('scenarios');
-  //   var adventureIndex = getScope('adventureIndex');
-  //   var currentScenario = getScope('currentScenario');
-  //
-  //   eventText = null;
-  //   scenarios = scenarios.filter(function (el) {
-  //     return !el.done;
-  //   });
-  //
-  //   if(scenarios.length === 0){
-  //     adventureIndex = 0;
-  //     currentScenario = {};
-  //   }else{
-  //     var roll = dice(scenarios.length);
-  //     adventureIndex = roll;
-  //     currentScenario = scenarios[roll];
-  //   }
-  //
-  //   setScope('eventText', eventText);
-  //   setScope('scenarios', scenarios);
-  //   setScope('adventureIndex', adventureIndex);
-  //   setScope('currentScenario', currentScenario);
-  // }
-
   var displayToast = function(toast, setScope, getScope){
     setScope('toast', toast);
     $timeout( function(){
@@ -55,6 +29,22 @@ app.service('actionService', function($timeout) {
   }
   this.progress = progress;
 
+  var smallTalk = function(props, setScope, getScope){
+    var currentScenario = getScope('currentScenario');
+    currentScenario.text = props.epilog;
+
+    if(!props.smallTalkAction){
+      props.smallTalkActionTaken = true;
+    }
+    if(props.smallTalkAction && !props.smallTalkActionTaken){
+      props.smallTalkActionTaken = true;
+      props.smallTalkAction(props, setScope, getScope);
+    }
+
+    setScope('currentScenario', currentScenario);
+  }
+  this.smallTalk = smallTalk;
+
   var abort = function (props, setScope, getScope) {
     var scenarios = getScope('scenarios');
     var adventureIndex = getScope('adventureIndex');
@@ -76,11 +66,12 @@ app.service('actionService', function($timeout) {
     current[props.faction] = current[props.faction] + props.factionMod;
     setScope('factions', current);
 
-
-    if(props.epilog){
-      abort(props, setScope, getScope)
-    }else{
-      progress(props, setScope, getScope)
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
     }
 
     if(props.factionMod>0){
@@ -98,11 +89,11 @@ app.service('actionService', function($timeout) {
       progress(props, setScope, getScope)
     }
   }
-  
+
   this.modifyQuestFlags = function (props, setScope, getScope) {
     var current = getScope('questFlags');
     current[props.flag] = props.flagMod;
-    
+
     setScope('questFlags', current);
     if(props.epilog){
       abort(props, setScope, getScope)
@@ -113,6 +104,8 @@ app.service('actionService', function($timeout) {
 
   this.modifyStat = function (props, setScope, getScope) {
     var current = getScope('stats');
+    var invertedStatMod = Math.abs(props.statMod);
+
     current[props.stat] = current[props.stat] + props.statMod;
     setScope('stats', current);
 
@@ -122,17 +115,28 @@ app.service('actionService', function($timeout) {
       progress(props, setScope, getScope)
     }
 
-    if(props.statMod>0){
-      displayToast('You gained '+ props.statMod + ' ' +props.stat+'.', setScope, getScope)
-    }else{
-      displayToast('Your '+props.stat+' decreased.', setScope, getScope)
+    if(props.stat === 'hp'){
+      if(props.statMod>0){
+        displayToast('You regain ' +props.stat+' points of damage.', setScope, getScope)
+      }
+      else{
+        displayToast('You take '+invertedStatMod+' points of damage.', setScope, getScope)
+      }
+    }
+    else{
+      if(props.statMod>0){
+        displayToast('You gained '+ props.statMod + ' ' +props.stat+'.', setScope, getScope)
+      }
+      else{
+        displayToast('Your '+props.stat+' decreased.', setScope, getScope)
+      }
     }
   }
-  
+
   this.skillCheck = function (props, setScope, getScope) {
     var current = getScope('stats');
     var roll = dice(20);
-    
+
     if(roll === 20){
       displayToast('Roll: '+roll, setScope, getScope)
       props.epilog = props.critEpilog || props.passEpilog;
