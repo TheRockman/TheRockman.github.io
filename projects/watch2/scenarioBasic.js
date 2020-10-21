@@ -267,5 +267,18 @@ app.service('scenarioBasic', function(actionService) {
         }
       ]
     },
+//Scenario
+    {
+      text: '<em>A goblin starts shouting at you</em>'+actionService.gibberish('sex laxar i en laxask. Hard to say, isnt it', 'goblinSpeak'),
+      actions: [
+        {
+          label: '"Ok, whatever you say buddy."',
+          action: actionService.abort,
+          actionProps: {
+            epilog: 'Goblins are indeed strage creatures.'
+          }
+        },
+      ],
+    },
   ]
 });

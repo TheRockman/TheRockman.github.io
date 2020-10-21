@@ -9,7 +9,9 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureDepth = -1;
   $scope.toast = null;
 
-  $scope.questFlags = {};
+  $scope.questFlags = {
+    goblinSpeak: true
+  };
 
   $scope.regions = [
     'HerpDerp forest',
