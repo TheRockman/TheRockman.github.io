@@ -69,11 +69,6 @@ app.service('scenarioBasic', function(actionService) {
 //scenario
     {
       text: '<em>A old man taps you on the shoulder</em> "Stay a while and listen" <em>He smiles a toothless smile</em>',
-      speaker: {
-        avatar: 'https://neverwintervault.org/sites/neverwintervault.org/files/project/23755/images/1171124639fullres.jpg',
-        name: '',
-        faction: ''
-      },
       actions: [
         {
           label: '"Sure"',
