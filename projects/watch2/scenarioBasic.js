@@ -5,6 +5,11 @@ app.service('scenarioBasic', function(actionService) {
 //Scenario
     {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
+      speaker: {
+        avatar: 'https://neverwintervault.org/sites/neverwintervault.org/files/project/23755/images/1171124639fullres.jpg',
+        name: '',
+        faction: ''
+      },
       actions: [
         {
           label: '[Stand up and bow]',
@@ -29,8 +34,7 @@ app.service('scenarioBasic', function(actionService) {
           action: actionService.modifyQuestFlags,
           actionProps: {
             flag: 'knowGwen',
-            flagMod: true,
-            epilog: '<em>She looks at you with a confused look but then smiles.</em>"Hello there yourself, I am Syr Gwendolin"<em>She puts her hand on her chest and bows before quickly moving along.</em>'
+            flagMod: true
           }
         },
         {
@@ -42,10 +46,34 @@ app.service('scenarioBasic', function(actionService) {
           }
         }
       ],
+      path: [
+        {
+          text: '"Hello there yourself, I am Syr Gwendolin of the kingsguard"<em>She puts her hand on her chest and bows before quickly moving along.</em>',
+          speaker: {
+            avatar: 'https://neverwintervault.org/sites/neverwintervault.org/files/project/23755/images/1171124639fullres.jpg',
+            name: 'Syr Gwendolin',
+            faction: 'crown'
+          },
+          actions: [
+            {
+              label: '"[Proceed]"',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>You sit back down, happy to have made a new friend.</em>'
+              }
+            }
+          ],
+        }
+      ]
     },
 //Scenario
     {
       text: 'Around midnight a mysterious robed stranger comes to the camp and asks to stay the night.',
+      speaker: {
+        avatar: 'https://i.imgur.com/dSiTCwG.png',
+        name: '',
+        faction: ''
+      },
       actions: [
         {
           label: '"Take a seat by the fire"',
@@ -65,7 +93,12 @@ app.service('scenarioBasic', function(actionService) {
       ],
       path: [
         {
-          text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had.',
+          text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <aside>mages guild<i>The mages were recently ousted from the capital city and driven underground for researching illegal magic.</i></aside>.',
+          speaker: {
+            avatar: 'https://i.imgur.com/dSiTCwG.png',
+            name: '',
+            faction: 'mages'
+          },
           actions: [
             {
               label: '[Listen silently]',
@@ -85,6 +118,11 @@ app.service('scenarioBasic', function(actionService) {
         },
         {
           text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
+          speaker: {
+            avatar: 'https://i.imgur.com/dSiTCwG.png',
+            name: '',
+            faction: 'mages'
+          },
           actions: [
             {
               label: '[Listen silently]',
@@ -117,17 +155,17 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      text: '<em>A bush behind you suddenly shakes and you hear a low growling sound from behind it. It seem some kind of creature is hiding in it.</em>',
       actions: [
         {
           label: '[Ignore it]',
           action: actionService.abort,
           actionProps: {
-            epilog: '"Its probably just a <aside>gropper <i>A small furry creature with long tusks and wings</i></aside>" <em>you think to yourself.</em>'
+            epilog: '"Its probably just a <aside>bear<i>A large furry creature with long claws</i></aside>" <em>you think to yourself.</em>'
           }
         },
         {
-          label: '[Mages loyalty] It could be a dragon, better stay away.',
+          label: '[Mages loyalty] Its most likely a drake, better move if you dont want to get singed.',
           visibleWhen: 'factions.mages > 0',
           action: actionService.modifyFactionRating,
           actionProps: {
@@ -137,16 +175,33 @@ app.service('scenarioBasic', function(actionService) {
           }
         },
         {
-          label: '[Dex] Catch it',
-          visibleWhen: 'stats.dex > 5',
-          action: actionService.modifyFactionRating,
+          label: '[Dex check] [Try to catch it]',
+          action: actionService.skillCheck,
           actionProps: {
-            faction: 'mages',
-            factionMod: 1,
-            epilog: '"You jump into the grass but dont catch anything."'
+            skill: 'dex',
+            dc: 12,
+            passCheckAction: actionService.abort,
+            failCheckAction: actionService.abort,
+            critEpilog: '<em>You stand still for a moment before quickly reaching out. Your hand grasp around a scaley neck and you pull out a small drake.</em>',
+            passEpilog: '<em>You lunge headfirst into the bush and see a small drake coiled around a branch. You catch it in a sack.</em>',
+            failEpilog: '<em>You lunge headfirst into the bush and see a small drake coiled around a branch. Before you can do anything your vision is filled with blue fire and the head flash across your face.</em>'
           }
         },
       ],
+      path: [
+        {
+          text: '"Hello there yourself, I am Syr Gwendolin of the kingsguard"<em>She puts her hand on her chest and bows before quickly moving along.</em>',
+          actions: [
+            {
+              label: '"[Proceed]"',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>You sit back down, happy to have made a new friend.</em>'
+              }
+            }
+          ],
+        }
+      ]
     },
   ]
 });

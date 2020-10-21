@@ -1,7 +1,7 @@
 app.service('actionService', function($timeout) {
 
   var dice = function(diceSize){
-    return 0 + Math.floor(Math.random()*diceSize)
+    return 1 + Math.floor(Math.random()*diceSize)
   }
 
   // var pickNext = function(setScope, getScope){
@@ -126,6 +126,27 @@ app.service('actionService', function($timeout) {
       displayToast('You gained '+ props.statMod + ' ' +props.stat+'.', setScope, getScope)
     }else{
       displayToast('Your '+props.stat+' decreased.', setScope, getScope)
+    }
+  }
+  
+  this.skillCheck = function (props, setScope, getScope) {
+    var current = getScope('stats');
+    var roll = dice(20);
+    
+    if(roll === 20){
+      displayToast('Roll: '+roll, setScope, getScope)
+      props.epilog = props.critEpilog || props.passEpilog;
+      props.passCheckAction(props, setScope, getScope);
+    }
+    else if(current[props.skill] + roll >= props.dc ){
+      displayToast('Roll: '+roll, setScope, getScope)
+      props.epilog = props.passEpilog;
+      props.passCheckAction(props, setScope, getScope);
+    }
+    else{
+      displayToast('Roll: '+roll, setScope, getScope)
+      props.epilog = props.failEpilog;
+      props.failCheckAction(props, setScope, getScope);
     }
   }
 

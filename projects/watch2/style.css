@@ -77,7 +77,7 @@ ol{
   padding: 1rem;
 }
 .description{
-  padding: 1rem;
+  padding: 1rem 2rem;
   white-space: pre-line;
 }
 .wrap{
@@ -91,7 +91,24 @@ ol{
   color: #fff;
   height: 40vh;
   overflow-y: auto;
+  position: relative;
   animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.avatarbox{
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  animation: fade-in-bck 0.6s 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.avatarbox p{
+  background: #222;
+  color: #cacaca;
+  padding: 0.5rem;
+}
+.avatarbox img{
+  height: 15vh;
+  width: auto;
 }
 
 @keyframes fade-in-bck {
@@ -106,14 +123,6 @@ ol{
     opacity: 1;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .wrap{
-    left: 0;
-    right: 0;
-  }
-}
-
 
 /* Tooltip container */
 aside {
@@ -143,6 +152,14 @@ aside i {
 aside:hover i {
   visibility: visible;
 }
+
+@media screen and (max-width: 768px) {
+  .wrap{
+    left: 0;
+    right: 0;
+  }
+}
+
 
 /* ng-animate */
 /* .fade{
