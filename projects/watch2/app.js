@@ -10,7 +10,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.toast = null;
 
   $scope.questFlags = {
-    goblinSpeak: true
+    goblinSpeak: false
   };
 
   $scope.regions = [
@@ -47,6 +47,17 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     return $scope[key];
   }
 
+  var languageGenerator = function(lang){
+    var languages = {
+      goblinSpeak: ["zak`pleenk", "xoggoirt", "aark", "waaggusia", "nin", "og", "zotrert", "dract"],
+    }
+
+    var text = [];
+    var x = 10;
+    while(--x) text.push(languages[lang][Math.floor(Math.random() * languages[lang].length)]);
+    return text.join(" ");
+  }
+
   $scope.wrapUpAndPickNext = function(){
     $scope.eventText = null;
     $scope.scenarios = $scope.scenarios.filter(function (el) {
@@ -56,8 +67,19 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     var roll = 0 + Math.floor(Math.random()*$scope.scenarios.length);
     $scope.adventureIndex = roll;
     $scope.currentScenario = $scope.scenarios[roll];
-  }
 
+    // handle translation
+    if($scope.currentScenario && $scope.currentScenario.language) {
+      if(!$scope.questFlags[$scope.currentScenario.language]){
+        var str = $scope.currentScenario.text;
+        var regex = /"([^"]*)"/g;
+        var match = str.match(regex);
+        var gibberish = languageGenerator($scope.currentScenario.language);
+
+        $scope.currentScenario.text = str.replace(regex, '"'+gibberish+'"' );
+      }
+    }
+  }
 
 });
 

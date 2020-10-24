@@ -3,26 +3,6 @@ app.service('actionService', function($timeout) {
     return 1 + Math.floor(Math.random()*diceSize)
   }
 
-  var gibberish = function(str, key){
-    var breaker = ' ';
-    var a = str.split(""),
-    n = a.length;
-
-    for (var i = n - 1; i > 0; i--) {
-      if (a[i] != breaker) {
-        var j = Math.floor(Math.random() * (i + 1));
-        if (a[j] != breaker) {
-          var tmp = a[i];
-          a[i] = a[j];
-          a[j] = tmp;
-        }
-      }
-    }
-    var gibberish = a.join("")
-    return '"'+ gibberish.toLowerCase() + '"';
-  }
-  this.gibberish = gibberish;
-
   var displayToast = function(toast, setScope, getScope){
     setScope('toast', toast);
     $timeout( function(){

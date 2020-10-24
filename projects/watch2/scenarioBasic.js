@@ -193,6 +193,17 @@ app.service('scenarioBasic', function(actionService) {
               action: actionService.progress
             },
             {
+              label: '"Hey, can you teach me goblinspeak?"',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                smallTalkAction: actionService.modifyQuestFlags,
+                flag: 'goblinSpeak',
+                flagMod: true,
+                epilog: '<em>He nods and give you a smooth rock with a crude rune on it.</em>'
+              }
+            },
+            {
               label: '"Thats just skyrim"',
               action: actionService.modifyStat,
               actionProps: {
@@ -269,8 +280,19 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
-      text: '<em>A goblin starts shouting at you</em>'+actionService.gibberish('sex laxar i en laxask. Hard to say, isnt it', 'goblinSpeak'),
+      text: '<em>A goblin starts shouting at you</em> "Give Boblin a shiny coin?" ',
+      language: 'goblinSpeak',
       actions: [
+        {
+          label: '[Speak Goblin] "Sure thing, little friend" .',
+          visibleWhen: 'questFlags.goblinSpeak === true',
+          action: actionService.modifyFactionRating,
+          actionProps: {
+            faction: 'boblin',
+            factionMod: 1,
+            epilog: '<em>The goblin jumps with joy and skips away.</em>'
+          }
+        },
         {
           label: '"Ok, whatever you say buddy."',
           action: actionService.abort,
