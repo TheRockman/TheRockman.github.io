@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="card" ng-controller="mainCtrl">
+
+    <b for="age">Abc the 123</b>
+    <br/>
+    <form class="" ng-submit="add()">
+      <label for="name">Given name:</label>
+      <br/>
+      <input type="text" required id="name" ng-model="workObj.name" placeholder="Given name" name="" value="">
+      <br/>
+      <label for="lname">Family name:</label>
+      <br/>
+      <input type="text" required id="lname" ng-model="workObj.lastName" placeholder="Family name" name="" value="">
+      <br/>
+      <label for="hair">Hair color:</label>
+      <br/>
+      <select required id="hair" ng-model="workObj.hairColor" placeholder="Hair color">
+        <option value="blond">Blond</option>
+        <option value="brown">Brown</option>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="gray">Gray</option>
+      </select>
+      <br/>
+      <label for="ss">Shoe size:</label>
+      <br/>
+      <input max="70" required type="number" id="ss" ng-model="workObj.sSize" placeholder="Shoe size" name="" value="">
+      <br/>
+      <button type="submit" name="button">Add</button>
+    </form>
+
+    <ul>
+      <li ng-repeat="item in output track by $index">
+        <button type="button" ng-click="remove(item)" name="button">X</button>
+        {{item.name}}{{item.lastName}}
+        <p>Hair: {{item.hairColor}}</p>
+        <p>Shoe size: {{item.sSize}}</p>
+      </li>
+    </ul>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
