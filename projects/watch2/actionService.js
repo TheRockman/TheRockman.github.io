@@ -89,6 +89,30 @@ app.service('actionService', function($timeout) {
     }
   }
 
+  this.exchange = function (props, setScope, getScope) {
+    //exchange X of A for Y of B
+    var catergoryA = getScope(props.exchangeCatergoryA);
+    var catergoryB = getScope(props.exchangeCatergoryB);
+    
+    if(catergoryA[props.exchangeKeyA] >= props.exchangeAmountA){
+      
+      catergoryA[props.exchangeKeyA] = catergoryA[props.exchangeKeyA] - props.exchangeAmountA;
+      catergoryB[props.exchangeKeyB] = catergoryB[props.exchangeKeyB] + props.exchangeAmountB;
+      
+      setScope(props.exchangeCatergoryA, catergoryA);
+      setScope(props.exchangeCatergoryB, catergoryB);
+      
+    } else{
+      //you dont have enough
+    }
+    
+    if(props.epilog){
+      abort(props, setScope, getScope)
+    }else{
+      progress(props, setScope, getScope)
+    }
+  }
+
   this.modifyQuestFlags = function (props, setScope, getScope) {
     var current = getScope('questFlags');
     current[props.flag] = props.flagMod;

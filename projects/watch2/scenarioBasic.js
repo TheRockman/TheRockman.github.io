@@ -302,5 +302,31 @@ app.service('scenarioBasic', function(actionService) {
         },
       ],
     },
+//Scenario
+    {
+      text: '<em>A man shouts at you:</em> "Step right up, and i will teach you to be the strongest fighter in the land! only 999 gold coins." ',
+      actions: [
+        {
+          label: '[Buy a lesson] "Alright, show me what you got!" ',
+          action: actionService.exchange,
+          actionProps: {
+            exchangeCatergoryA: 'inventory',
+            exchangeKeyA: 'gold',
+            exchangeAmountA: 999,
+            exchangeCatergoryB: 'stats',
+            exchangeKeyB: 'str',
+            exchangeAmountB: 20,
+            epilog: '<em>You feel amazing!</em>'
+          }
+        },
+        {
+          label: '"No way"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: 'Thats some snakeoil if ever i saw it'
+          }
+        },
+      ],
+    },
   ]
 });

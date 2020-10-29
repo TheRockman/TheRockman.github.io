@@ -35,6 +35,10 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     con: 0,
     cha: 0
   }
+  
+  $scope.inventory = {
+    gold: 1000
+  }
 
   $scope.toTrustedHTML = function( html ){
     return $sce.trustAsHtml( html );
