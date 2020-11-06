@@ -17,14 +17,31 @@ app.service('actionService', function($timeout) {
     var currentScenario = getScope('currentScenario')
     var scenarios = getScope('scenarios')
     var adventureIndex = getScope('adventureIndex')
+    var fakeCurrentScenario = {};
 
-    eventText = null;
-    adventureDepth++;
-    currentScenario = scenarios[adventureIndex].path[adventureDepth];
+    if(props.epilog){
+      fakeCurrentScenario = {
+        text: props.epilog,
+        actions: [
+          {
+            label: '[Proceed]',
+            action: progress,
+            actionProps: {}
+          },
+        ],
+      }
+      
+      setScope('currentScenario', fakeCurrentScenario);
+    }
+    else{
+      eventText = null;
+      adventureDepth++;
+      currentScenario = scenarios[adventureIndex].path[adventureDepth];
 
-    setScope('eventText', eventText);
-    setScope('adventureDepth', adventureDepth);
-    setScope('currentScenario', currentScenario);
+      setScope('eventText', eventText);
+      setScope('adventureDepth', adventureDepth);
+      setScope('currentScenario', currentScenario);
+    }
   }
   this.progress = progress;
 
@@ -93,19 +110,19 @@ app.service('actionService', function($timeout) {
     //exchange X of A for Y of B
     var catergoryA = getScope(props.exchangeCatergoryA);
     var catergoryB = getScope(props.exchangeCatergoryB);
-    
+
     if(catergoryA[props.exchangeKeyA] >= props.exchangeAmountA){
-      
+
       catergoryA[props.exchangeKeyA] = catergoryA[props.exchangeKeyA] - props.exchangeAmountA;
       catergoryB[props.exchangeKeyB] = catergoryB[props.exchangeKeyB] + props.exchangeAmountB;
-      
+
       setScope(props.exchangeCatergoryA, catergoryA);
       setScope(props.exchangeCatergoryB, catergoryB);
-      
+
     } else{
       //you dont have enough
     }
-    
+
     if(props.epilog){
       abort(props, setScope, getScope)
     }else{

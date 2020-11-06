@@ -280,6 +280,113 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
+      text: '<em>You hear the sound of a ringing bell from beyond a hill.</em>',
+      actions: [
+        {
+          label: '[Ignore it]',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>The bell rings out 13 times and the fall silent.</em>'
+          }
+        },
+        {
+          label: '[Investigate]',
+          action: actionService.progress,
+          actionProps: {
+            epilog: '<em>You carefully climb the hill. On the other side you see a town half sunk into a swamp. In the middle of what used to be the town square is a decrepit belltower.</em>'
+          }
+        },
+      ],
+      path: [
+        {
+          text: '<em>You spot a man at the top of the tower, striking the bell with a mace.</em>',
+          actions: [
+            {
+              label: '[Silently watch]',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>You stay hidden as the man slam the bell over and over. After 13 strikes he stops and the ringing of the bell dies down.\nBut another sound fills the air. From the black water of the swamp screaming figures emerge. Dark creatures covered in vines and mud shamble around the base of the belltower. You decide to get out of ther before they spot you.</em>'
+              }
+            },
+            {
+              label: '"Hello there bell-ringer!"',
+              action: actionService.progress,
+              actionProps: {
+                epilog: '<em>The man pauses and turns to look at you, his eyes are wide and a look of panic flash across his face.</em>'
+              }
+            }
+          ],
+        },
+        {
+          text: '"GET OUT OF HERE YOU FOOL! THE BELL HAVE BEEN RUNG, IT WONT TAKE LONG UNTIL -"\n<em>Before he can finish a sloshing sound interrupt him and he just points toward you.</em>',
+          speaker: {
+            avatar: 'https://i.pinimg.com/236x/a1/51/44/a151443dadd6fee73bf8c460ebc2854d--character-portraits-character-ideas.jpg',
+            name: '',
+            faction: ''
+          },
+          actions: [
+            {
+              label: '[Proceed]',
+              action: actionService.progress,
+              actionProps: {
+                epilog: '<em>You turn around and come face-to-face with a mud-dripping corpse. Behind it you manage to spot several more making their way out of the swamp.</em>'
+              }
+            }
+          ],
+        },
+        {
+          text: '"GET UP HERE, QUICK! -"\n<em>The man calls to you.</em>',
+          speaker: {
+            avatar: 'https://i.pinimg.com/236x/a1/51/44/a151443dadd6fee73bf8c460ebc2854d--character-portraits-character-ideas.jpg',
+            name: '',
+            faction: ''
+          },
+          actions: [
+            {
+              label: '[Stay and fight]',
+              action: actionService.skillCheck,
+                actionProps: {
+                skill: 'str',
+                dc: 12,
+                stat: 'hp',
+                statMod: -5,
+                passCheckAction: actionService.proceed,
+                failCheckAction: actionService.modifyStat,
+                critEpilog: '<em>You act quickly and shove the closest shambler so hard that it falls over backwards and knock the others down. You wait a moment to see if they return but the surface of the swamp remain unbroken. You turn and walk over to the belltower.</em>',
+                passEpilog: '<em>Using your main weapon to keep them all at a fair distance, you use a small dagger to slice at their gripping hands and biting jaws. Like this you back up towards the belltower while picking the ghouls of one by one until when your back hits the belltower base they are all cut to pieces.</em>',
+                failEpilog: '<em>You Try to fend them off but one slimey but strong hand gets a hold of your boot and the ghoul starts crawling closer. You kick it with your other foot but before you can get if of you it takes a bite of your leg.\nYou get up and hobble over to the belltower for help.</em>',
+              }
+            },
+            {
+              label: '[Run to the tower]',
+              action: actionService.progress,
+              actionProps: {
+                epilog: '<em>You turn around and run as fast as you can towards the belltower. Your boots sinking into the mud and ponds around it slow you down but you make it.</em>'
+              }
+            }
+          ],
+        },
+        {
+          text: '"<em>TO BE CONTINUED</em>',
+          speaker: {
+            avatar: 'https://i.pinimg.com/236x/a1/51/44/a151443dadd6fee73bf8c460ebc2854d--character-portraits-character-ideas.jpg',
+            name: '',
+            faction: ''
+          },
+          actions: [
+            {
+              label: '[Proceed]',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>TO BE CONTINUED</em>'
+              }
+            }
+          ],
+        },
+      ]
+    },
+//Scenario
+    {
       text: '<em>A goblin starts shouting at you</em> "Give Boblin a shiny coin?" ',
       language: 'goblinSpeak',
       actions: [
