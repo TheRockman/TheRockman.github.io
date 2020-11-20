@@ -1,0 +1,222 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  background: url('https://i.imgur.com/qrSSM.gif') no-repeat bottom fixed;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  font-family: 'Khula', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+  overflow: hidden;
+}
+
+p, progress{
+  position: relative;
+  z-index: 10;
+}
+
+.align{
+  display: flex;
+  align-items: baseline;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.jsc{
+  justify-content: center;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+.stage{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+  z-index: 0;
+}
+.player img{
+  transform-origin: bottom right;
+  transform: scale(2);
+}
+.death{
+  animation-name: death;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+.p2{
+  margin-left: -1rem;
+  filter: hue-rotate(160deg);
+  transform: rotateY(180deg);
+}
+.UI{
+  padding: 1rem;
+}
+.inv{
+  animation-name: hit;
+  animation-iteration-count: 20;
+  animation-duration: 300ms;
+}
+/* transform: translateY(20px) scale(2); */
+
+@keyframes death {
+  0% { transform: rotate(90deg) translateY(200px) scale(2); }
+  100% { transform: rotate(0deg) translateY(20px) scale(2); }
+}
+@keyframes hit {
+  0% { opacity: 0}
+  100% { opacity: 1}
+}
+
+/*fluid layout*/
+/*
+.fluid-row {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+}
+.fluid-flex{
+  padding: 5px;
+}
+
+.dense{
+  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
+}
+
+@media screen and (max-width: 960px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fluid-row{
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
+  }
+}
+*/
+
+/*Card*/
+/*
+.card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+  background: #fff;
+  margin: var(--spacer);
+  padding: var(--spacer);
+}
+.card:hover {
+  box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+}
+*/
+
+/* Glow card */
+/* .glow-card-wrap {
+  margin:1rem;
+  width: 300px;
+  min-height: 230px;
+  position: relative;
+}
+.glow-card {
+  background-image: url('https://wallpaperaccess.com/full/898601.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.glow-card:before, .glow-card:after{
+  content: "";
+  background: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  border-radius: 15px;
+  z-index: 2;
+  box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+}
+.glow-card:before {
+  z-index: 1;
+  transform: translateY(20px) scale(0.9);
+  filter: blur(25px);
+  opacity: 0.9;
+} */
+
+/*Fab*/
+/*.fab{
+    background:dodgerblue;
+    width:18px;
+    height: 18px;
+    padding:15px;
+    border-radius:50%;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */

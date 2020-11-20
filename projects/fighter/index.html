@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="align jsb UI">
+      <div class="">
+        <progress value="{{p1.hp}}" max="10"></progress>
+        <br/>
+        <p>A - Block</p>
+        <p>S - Duck</p>
+        <p>D - Hit</p>
+      </div>
+      <div style="text-align:right;" class="">
+        <progress value="{{p2.hp}}" max="10"></progress>
+        <br/>
+        <p>→ - Block</p>
+        <p>↓ - Duck</p>
+        <p>← - Hit</p>
+      </div>
+    </div>
+    <div class="align jsc stage">
+      <div class="player p1" ng-class="{'inv':p1.inv}">
+        
+        <img ng-if="p1.up && !p1.act && !p1.blk && p1.hp > 0 && p2.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/stance/a2.gif" alt="">
+        
+        <img ng-if="!p1.up && !p1.blk && !p1.act && p1.hp > 0 && p2.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/kick/s01.png" alt="">
+        
+        <img ng-if="p1.up && p1.act && p1.hp > 0 && p2.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/kick/07.png" alt="">
+      
+        <img ng-if="!p1.up && p1.act && p1.hp > 0 && p2.hp > 0" src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/kick/d05.png" alt="">
+        
+        <img ng-if="p1.up && !p1.act && p1.blk && p1.hp > 0 && p2.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/block/03.png" alt="">
+        
+        <img ng-if="!p1.up && !p1.act && p1.blk && p1.hp > 0 && p2.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/block/d03.png" alt="">
+      
+        <img class="death" ng-if="p1.hp < 1" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/fall/f07.png" alt="">
+        
+        <!-- victory pose -->
+        <img ng-if="p2.hp < 1" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/fall/p06.png" alt="">
+      </div>
+      
+      <div class="player p2" ng-class="{'inv':p2.inv}">
+        
+        <img ng-if="p2.up && !p2.act && !p2.blk && p2.hp > 0 && p1.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/stance/a2.gif" alt="">
+        
+        <img ng-if="!p2.up && !p2.blk && !p2.act && p2.hp > 0 && p1.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/kick/s01.png" alt="">
+        
+        <img ng-if="p2.up && p2.act && p2.hp > 0 && p1.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/kick/r05.png" alt="">
+        
+        <img ng-if="!p2.up && p2.act && p2.hp > 0 && p1.hp > 0" src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/kick/s05.png" alt="">
+        
+        <img ng-if="p2.up && !p2.act && p2.blk && p2.hp > 0 && p1.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/block/03.png" alt="">
+        
+        <img ng-if="!p2.up && !p2.act && p2.blk && p2.hp > 0 && p1.hp > 0" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/block/d03.png" alt="">
+        
+        <img class="death" ng-if="p2.hp < 1" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/fall/f07.png" alt="">
+        
+        <!-- victory pose -->
+        <img ng-if="p1.hp < 1" ng-cloak src="http://www.mortalkombatwarehouse.com/mk2/scorpion/sprites/special/a601.png" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
