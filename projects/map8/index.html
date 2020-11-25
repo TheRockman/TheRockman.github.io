@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="camera">
+      <div class="origo">+</div>
+
+      <div class="player" ng-class="{'blocked':playerPos.blocked}" ng-style="player">
+        <svg  style="position:relative;z-index:100000;" width="2000px" height="2000px">
+         <circle cx="16px" cy="16px" r="{{cameraPos.maskRadius}}" stroke="black" stroke-width="3" fill="red" />
+       </svg>
+       <div class="viewport"></div>
+      </div>
+
+      <div class="stage" ng-style="camera">
+        <div class="wall" ng-class="{'appear':wall.appear}" style="left:{{wall.x}}px; top:{{wall.y}}px"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
