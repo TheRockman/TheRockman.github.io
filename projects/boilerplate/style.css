@@ -124,6 +124,14 @@ svg, svg path, img{
 }
 */
 
+/* sharp card */
+/* .sharp-card{
+  border-radius: 20px;
+  min-height: 60px;
+  background: #f0f0f0;
+  box-shadow:  0 0 0 #cccccc, 0 0 0 #ffffff, 10px 10px 10px #cccccc inset, -10px -10px 10px #ffffff inset;
+} */
+
 /* Glow card */
 /* .glow-card-wrap {
   margin:1rem;
