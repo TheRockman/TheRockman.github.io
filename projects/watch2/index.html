@@ -13,6 +13,33 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
+    <div class="toolbar align jsb">
+      <div class="align" ng-click="mapToggle = !mapToggle" style="cursor:pointer" >
+        <svg ng-cloak ng-if="!mapToggle" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+          <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
+        </svg>
+        <svg ng-cloak ng-if="mapToggle" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+          <path fill="#fff" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+        </svg>
+        &nbsp;
+        Map
+      </div>
+    </div>
+    <div class="map-back" ng-if="mapToggle"></div>
+    <div class="map-overlay" ng-if="mapToggle">
+      <div class="map-card">
+        <div class="map"></div>
+        <span class="map-marker" ng-repeat="region in regions" id="marker-{{region.short}}" ng-class="{'current-region': currentRegion === region}" ng-click="pickRegionFromMap(region)">
+          <img style="width:24px; height:24px;" src="https://static.wikia.nocookie.net/skyrim_gamepedia/images/8/8f/BluePalace.svg/revision/latest/scale-to-width-down/83?cb=20120228132544" alt="">
+        </span>
+      </div>
+      </br>
+      <div style="width:75vw;margin:0 auto;">
+        <p><b>{{currentRegion.name}}</b></p>
+        {{currentRegion.desc}}
+      </div>
+    </div>
+    
     <div class="wrap">
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
       <div class="avatarbox align" ng-if="currentScenario.speaker"  ng-cloak>

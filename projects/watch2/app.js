@@ -14,11 +14,23 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   };
 
   $scope.regions = [
-    'HerpDerp forest',
-    'Gorillion mountains'
+    {
+      name: 'HerpDerp forest',
+      short: 'hdf',
+      desc: 'yada ydaddda 1'
+    },
+    {
+      name: 'Gorillion mountains',
+      short: 'grm',
+      desc: 'yada ydaddda 2'
+    }
   ]
 
   $scope.currentRegion = $scope.regions[0];
+  
+  $scope.pickRegionFromMap = function(item){
+    $scope.currentRegion = item;
+  }
 
   $scope.factions = {
     crown: 0,
