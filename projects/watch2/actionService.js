@@ -69,7 +69,9 @@ app.service('actionService', function($timeout) {
     setScope('eventText', null);
     setScope('nextEvent', null);
 
-    scenarios[adventureIndex].done = true;
+    if(!scenarios[adventureIndex].everGreen){
+      scenarios[adventureIndex].done = true;
+    }
     setScope('scenarios', scenarios);
 
     setScope('eventText', props.epilog);
@@ -79,7 +81,7 @@ app.service('actionService', function($timeout) {
 
   this.modifyFactionRating = function (props, setScope, getScope) {
     var current = getScope('factions');
-    current[props.faction] = current[props.faction] + props.factionMod;
+    current[props.faction].rep = current[props.faction].rep + props.factionMod;
     setScope('factions', current);
 
     if(!props.smallTalkAction){
@@ -91,18 +93,20 @@ app.service('actionService', function($timeout) {
     }
 
     if(props.factionMod>0){
-      displayToast('You gained influence with the '+props.faction+'.', setScope, getScope)
+      displayToast('You gained influence with '+current[props.faction].title+'.', setScope, getScope)
     }else{
-      displayToast('You lost influence with the '+props.faction+'.', setScope, getScope)
+      displayToast('You lost influence with '+current[props.faction].title+'.', setScope, getScope)
     }
   }
 
   this.modifyRegion = function (props, setScope, getScope) {
-    setScope('currentRegion', props.region);
-    if(props.epilog){
-      abort(props, setScope, getScope)
-    }else{
-      progress(props, setScope, getScope)
+    var regions = getScope('regions');
+    for (var i = 0; i < regions.length; i++) {
+      if(regions[i].short === props.region){
+        setScope('currentRegion', regions[i]);
+        setScope('scenarios', regions[i].scenarios);
+        setScope('currentScenario', regions[i].scenarios[0]);
+      }
     }
   }
 

@@ -2,11 +2,24 @@ app.service('scenarioBasic', function(actionService) {
   var ratcatchers = "A derogatory term for adventurers";
 
   this.scenarios = [
+    {
+      text: 'The forest is silent.',
+      everGreen: true,
+      actions: [
+        {
+          label: '"[Proceed]"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>You follow the path before you</em>'
+          }
+        }
+      ],
+    },
 //Scenario
     {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       speaker: {
-        avatar: 'https://neverwintervault.org/sites/neverwintervault.org/files/project/23755/images/1171124639fullres.jpg',
+        avatar: 'https://static.wikia.nocookie.net/fireemblem/images/4/4e/Shamir_Portrait.png/revision/latest/scale-to-width-down/340?cb=20190705082422',
         name: '',
         faction: ''
       },
@@ -41,7 +54,7 @@ app.service('scenarioBasic', function(actionService) {
           label: '[Climb a mointain]',
           action: actionService.modifyRegion,
           actionProps: {
-            region: 'Gorillion mountains',
+            region: 'grm',
             epilog: '<em>You start climbing the Gorillion mountains.</em>'
           }
         }
@@ -50,7 +63,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '"Hello there yourself, I am Syr Gwendolin of the kingsguard"<em>She puts her hand on her chest and bows before quickly moving along.</em>',
           speaker: {
-            avatar: 'https://neverwintervault.org/sites/neverwintervault.org/files/project/23755/images/1171124639fullres.jpg',
+            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/4/4e/Shamir_Portrait.png/revision/latest/scale-to-width-down/340?cb=20190705082422',
             name: 'Syr Gwendolin',
             faction: 'crown'
           },
@@ -134,7 +147,7 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: 'Around midnight a mysterious robed stranger comes to the camp and asks to stay the night.',
       speaker: {
-        avatar: 'https://i.imgur.com/dSiTCwG.png',
+        avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
         name: '',
         faction: ''
       },
@@ -159,7 +172,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <aside>mages guild<i>The mages were recently ousted from the capital city and driven underground for researching illegal magic.</i></aside>.',
           speaker: {
-            avatar: 'https://i.imgur.com/dSiTCwG.png',
+            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
             name: '',
             faction: 'mages'
           },
@@ -174,10 +187,8 @@ app.service('scenarioBasic', function(actionService) {
             {
               label: '[Know Gwendolin] "Do you know Syr Gwendolin? She is a good friend of mine."',
               visibleWhen: 'questFlags.knowGwen.active',
-              action: actionService.modifyQuestFlags,
+              action: actionService.abort,
               actionProps: {
-                faction: 'crown',
-                factionMod: 1,
                 epilog: 'Even if you cant really see his face you feel the cold look he is giving you.<em>"No, im afraid i dont..."</em>The embers from his pipe flair up and illuminate his milky white eyes.\nAfter you look away for a moment he is gone.'
               }
             },
@@ -186,14 +197,17 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
           speaker: {
-            avatar: 'https://i.imgur.com/dSiTCwG.png',
+            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
             name: '',
             faction: 'mages'
           },
           actions: [
             {
               label: '[Listen silently]',
-              action: actionService.progress
+              action: actionService.progress,
+              actionProps: {
+                epilog: '<em>You gesture for him to keep talking</em>'
+              }
             },
             {
               label: '"Hey, can you teach me goblinspeak?"',
@@ -323,7 +337,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '"GET OUT OF HERE YOU FOOL! THE BELL HAVE BEEN RUNG, IT WONT TAKE LONG UNTIL -"\n<em>Before he can finish a sloshing sound interrupt him and he just points toward you.</em>',
           speaker: {
-            avatar: 'https://i.pinimg.com/236x/a1/51/44/a151443dadd6fee73bf8c460ebc2854d--character-portraits-character-ideas.jpg',
+            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/b/b3/Gunther_portrait.png/revision/latest?cb=20170120221619',
             name: '',
             faction: ''
           },
@@ -340,7 +354,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '"GET UP HERE, QUICK! -"\n<em>The man calls to you.</em>',
           speaker: {
-            avatar: 'https://i.pinimg.com/236x/a1/51/44/a151443dadd6fee73bf8c460ebc2854d--character-portraits-character-ideas.jpg',
+            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/b/b3/Gunther_portrait.png/revision/latest?cb=20170120221619',
             name: '',
             faction: ''
           },
@@ -372,7 +386,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '"<em>TO BE CONTINUED</em>',
           speaker: {
-            avatar: 'https://i.pinimg.com/236x/a1/51/44/a151443dadd6fee73bf8c460ebc2854d--character-portraits-character-ideas.jpg',
+            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/b/b3/Gunther_portrait.png/revision/latest?cb=20170120221619',
             name: '',
             faction: ''
           },
@@ -391,6 +405,11 @@ app.service('scenarioBasic', function(actionService) {
 //Scenario
     {
       text: '<em>A goblin starts shouting at you</em> "Give Boblin a shiny coin?" ',
+      speaker: {
+        avatar: 'https://wiki.dfo.world/images/e/e2/Portrait-Goblin_Thrower.png',
+        name: '',
+        faction: ''
+      },
       language: 'goblinSpeak',
       actions: [
         {
@@ -431,7 +450,7 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>A man shouts at you:</em> "Step right up, and i will teach you to be the strongest fighter in the land! only 999 gold coins." ',
       actions: [
         {
-          label: '[Buy a lesson] "Alright, show me what you got!" ',
+          label: '[Pay 999 Gold] "Alright, show me what you got!" ',
           action: actionService.exchange,
           actionProps: {
             exchangeCatergoryA: 'inventory',

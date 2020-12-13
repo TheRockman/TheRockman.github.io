@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic, questToggles) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic, scenarioMountain, questToggles) {
 
   $scope.scenarios = scenarioBasic.scenarios;
   $scope.questFlags = questToggles.all;
@@ -10,30 +10,61 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureDepth = -1;
   $scope.toast = null;
 
+  $scope.view = null;
 
   $scope.regions = [
     {
       name: 'HerpDerp forest',
       short: 'hdf',
-      desc: 'yada ydaddda 1'
+      desc: 'yada ydaddda 1',
+      position: "{'top':'20rem','left':'10rem'}",
+      background: 'https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2c/The_Great_Forest.jpg/revision/latest?cb=20090902120435',
+      scenarios: scenarioBasic.scenarios
     },
     {
       name: 'Gorillion mountains',
       short: 'grm',
-      desc: 'yada ydaddda 2'
+      desc: 'yada ydaddda 2',
+      position: "{'top':'16rem','left':'13rem'}",
+      background: 'https://cdna.artstation.com/p/assets/images/images/018/870/270/large/piotr-dura-mountain.jpg?1561042583',
+      scenarios: scenarioMountain.scenarios
     }
   ]
 
   $scope.currentRegion = $scope.regions[0];
-  
+
   $scope.pickRegionFromMap = function(item){
     $scope.currentRegion = item;
+    $scope.view = null;
+    $scope.scenarios = item.scenarios;
+    $scope.currentScenario = item.scenarios[0];
   }
 
   $scope.factions = {
-    crown: 0,
-    mages: 0,
-    steven: 0
+    crown: {
+      rep: 0,
+      icon: 'https://1d4chan.org/images/3/37/Azorius_Logo.png',
+      desc: 'The court of silver, so named because of the silver crown worn by its leader - the king, values glory and truth above all.',
+      title: 'The court of silver'
+    },
+    mages: {
+      rep: 0,
+      icon: 'https://i.pinimg.com/originals/68/d2/bc/68d2bc7141af65942600d4390c10060e.png',
+      desc: 'The mages were recently ousted from the capital city and driven underground for researching illegal magics.',
+      title: 'The mages guild'
+    },
+    steven: {
+      rep: 0,
+      icon: 'https://1d4chan.org/images/3/37/Azorius_Logo.png',
+      desc: 'Steven is a old man in the woods',
+      title: 'Steven'
+    },
+    boblin: {
+      rep: 0,
+      icon: '',
+      desc: 'Inknose goblins are common and easy to spot by their long black noses.',
+      title: 'Inknose tribe'
+    },
   }
 
   $scope.stats = {
@@ -76,8 +107,17 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.wrapUpAndPickNext = function(){
     $scope.eventText = null;
     $scope.scenarios = $scope.scenarios.filter(function (el) {
-      return !el.done;
+      return !el.done && !el.everGreen;
     });
+
+    if ($scope.scenarios.length<1) {
+      //region depleted
+      $scope.currentScenario = {
+        text: '<em>This area holds no more adventures, open the map and explore somewhere else.</em>',
+        everGreen: true,
+      };
+      return;
+    }
 
     var roll = 0 + Math.floor(Math.random()*$scope.scenarios.length);
     $scope.adventureIndex = roll;
@@ -93,6 +133,14 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
         $scope.currentScenario.text = str.replace(regex, '"'+gibberish+'"' );
       }
+    }
+  }
+
+  $scope.viewManager = function(newView){
+    if ($scope.view === newView) {
+      $scope.view = null
+    } else{
+      $scope.view = newView;
     }
   }
 

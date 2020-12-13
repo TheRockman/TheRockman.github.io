@@ -1,5 +1,6 @@
 app.service('questToggles', function() {
   this.all = {
+    keyList: ['goblinSpeak','elfSpeak','knowGwen'],
     goblinSpeak: {
       active: false,
       title: 'Language: Goblin',
