@@ -166,11 +166,14 @@ app.service('scenarioBasic', function(actionService) {
           actions: [
             {
               label: '[Listen silently]',
-              action: actionService.progress
+              action: actionService.progress,
+              actionProps: {
+                epilog: '<em>You gesture for him to keep talking</em>'
+              }
             },
             {
               label: '[Know Gwendolin] "Do you know Syr Gwendolin? She is a good friend of mine."',
-              visibleWhen: 'questFlags.knowGwen',
+              visibleWhen: 'questFlags.knowGwen.active',
               action: actionService.modifyQuestFlags,
               actionProps: {
                 faction: 'crown',
@@ -392,7 +395,7 @@ app.service('scenarioBasic', function(actionService) {
       actions: [
         {
           label: '[Speak Goblin] "Sure thing, little friend" .',
-          visibleWhen: 'questFlags.goblinSpeak === true',
+          visibleWhen: 'questFlags.goblinSpeak.active',
           action: actionService.modifyFactionRating,
           actionProps: {
             faction: 'boblin',
@@ -405,6 +408,20 @@ app.service('scenarioBasic', function(actionService) {
           action: actionService.abort,
           actionProps: {
             epilog: 'Goblins are indeed strage creatures.'
+          }
+        },
+      ],
+    },
+//Scenario
+    {
+      text: '<em>You hear a womans voice whisper in your ear, or maybe its in your mind: </em> "Dont trust the squid, his venom is slow but deadly" ',
+      language: 'elfSpeak',
+      actions: [
+        {
+          label: '"What?"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>You turn around, but nobody is there.</em>'
           }
         },
       ],

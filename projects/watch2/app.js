@@ -1,6 +1,7 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic, questToggles) {
 
   $scope.scenarios = scenarioBasic.scenarios;
+  $scope.questFlags = questToggles.all;
   $scope.currentScenario = $scope.scenarios[0];
   $scope.eventText;
   $scope.nextEvent;
@@ -9,9 +10,6 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureDepth = -1;
   $scope.toast = null;
 
-  $scope.questFlags = {
-    goblinSpeak: false
-  };
 
   $scope.regions = [
     {
@@ -47,7 +45,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     con: 0,
     cha: 0
   }
-  
+
   $scope.inventory = {
     gold: 1000
   }
@@ -66,6 +64,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   var languageGenerator = function(lang){
     var languages = {
       goblinSpeak: ["zak`pleenk", "xoggoirt", "aark", "waaggusia", "nin", "og", "zotrert", "dract"],
+      elfSpeak: ["ala", "lordaa", "do", "sindram", "di´", "meliral", "uriam", "dract"],
     }
 
     var text = [];
@@ -86,7 +85,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
     // handle translation
     if($scope.currentScenario && $scope.currentScenario.language) {
-      if(!$scope.questFlags[$scope.currentScenario.language]){
+      if(!$scope.questFlags[$scope.currentScenario.language].active){
         var str = $scope.currentScenario.text;
         var regex = /"([^"]*)"/g;
         var match = str.match(regex);

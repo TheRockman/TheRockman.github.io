@@ -30,7 +30,7 @@ app.service('actionService', function($timeout) {
           },
         ],
       }
-      
+
       setScope('currentScenario', fakeCurrentScenario);
     }
     else{
@@ -132,7 +132,7 @@ app.service('actionService', function($timeout) {
 
   this.modifyQuestFlags = function (props, setScope, getScope) {
     var current = getScope('questFlags');
-    current[props.flag] = props.flagMod;
+    current[props.flag].active = props.flagMod;
 
     setScope('questFlags', current);
     if(props.epilog){
