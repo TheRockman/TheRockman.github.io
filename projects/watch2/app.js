@@ -1,8 +1,6 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic, scenarioMountain, questToggles, wikiSercive) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, questToggles, wikiSercive, mapMarkers) {
 
-  $scope.scenarios = scenarioBasic.scenarios;
   $scope.questFlags = questToggles.all;
-  $scope.currentScenario = $scope.scenarios[0];
   $scope.wiki = wikiSercive.wiki;
   $scope.eventText;
   $scope.nextEvent;
@@ -13,26 +11,11 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   $scope.view = null;
 
-  $scope.regions = [
-    {
-      name: 'HerpDerp forest',
-      short: 'hdf',
-      desc: 'yada ydaddda 1',
-      position: "{'top':'20rem','left':'10rem'}",
-      background: 'https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2c/The_Great_Forest.jpg/revision/latest?cb=20090902120435',
-      scenarios: scenarioBasic.scenarios
-    },
-    {
-      name: 'Gorillion mountains',
-      short: 'grm',
-      desc: 'yada ydaddda 2',
-      position: "{'top':'16rem','left':'13rem'}",
-      background: 'https://cdna.artstation.com/p/assets/images/images/018/870/270/large/piotr-dura-mountain.jpg?1561042583',
-      scenarios: scenarioMountain.scenarios
-    }
-  ]
+  $scope.regions = mapMarkers.markers;
 
   $scope.currentRegion = $scope.regions[0];
+  $scope.scenarios = $scope.currentRegion.scenarios;
+  $scope.currentScenario = $scope.scenarios[0];
 
   $scope.pickRegionFromMap = function(item){
     $scope.currentRegion = item;
@@ -97,7 +80,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   window.addEventListener("hashchange", function(){
     var term = window.location.hash.replace('#', '');
     $scope.wikiModal = $scope.wiki[term];
-    
+
     // cleanup
     history.replaceState(null, null, ' ');
     $scope.$apply();
