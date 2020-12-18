@@ -1,4 +1,5 @@
-app.service('actionService', function($timeout) {
+app.service('actionService', function($timeout, wikiSercive) {
+
   var dice = function(diceSize){
     return 1 + Math.floor(Math.random()*diceSize)
   }

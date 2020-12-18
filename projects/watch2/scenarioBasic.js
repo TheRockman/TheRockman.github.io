@@ -1,9 +1,8 @@
 app.service('scenarioBasic', function(actionService) {
-  var ratcatchers = "A derogatory term for adventurers";
 
   this.scenarios = [
     {
-      text: 'The forest is silent.',
+      text: 'The <a href="#forest" class="info">forest</a> is silent.',
       everGreen: true,
       actions: [
         {
@@ -39,7 +38,7 @@ app.service('scenarioBasic', function(actionService) {
           actionProps: {
             faction: 'crown',
             factionMod: -1,
-            epilog: '"Where are your manners <aside>ratcatcher<i>'+ratcatchers+'</i></aside>?"<em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
+            epilog: '"Where are your manners ratcatcher!"<em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
           }
         },
         {
@@ -170,7 +169,7 @@ app.service('scenarioBasic', function(actionService) {
       ],
       path: [
         {
-          text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <aside>mages guild<i>The mages were recently ousted from the capital city and driven underground for researching illegal magic.</i></aside>.',
+          text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <a href="#mageGuild" class="info">mages guild</a>.',
           speaker: {
             avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
             name: '',
@@ -253,7 +252,7 @@ app.service('scenarioBasic', function(actionService) {
           label: '[Ignore it]',
           action: actionService.abort,
           actionProps: {
-            epilog: '"Its probably just a <aside>bear<i>A large furry creature with long claws</i></aside>" <em>you think to yourself.</em>'
+            epilog: '"Its probably just a cat" <em>you think to yourself.</em>'
           }
         },
         {

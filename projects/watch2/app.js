@@ -1,8 +1,9 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic, scenarioMountain, questToggles) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, scenarioBasic, scenarioMountain, questToggles, wikiSercive) {
 
   $scope.scenarios = scenarioBasic.scenarios;
   $scope.questFlags = questToggles.all;
   $scope.currentScenario = $scope.scenarios[0];
+  $scope.wiki = wikiSercive.wiki;
   $scope.eventText;
   $scope.nextEvent;
   $scope.actionIndex;
@@ -91,6 +92,17 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.getScope = function(key){
     return $scope[key];
   }
+
+  $scope.wikiModal = '';
+  window.addEventListener("hashchange", function(){
+    var term = window.location.hash.replace('#', '');
+    $scope.wikiModal = $scope.wiki[term];
+    
+    // cleanup
+    history.replaceState(null, null, ' ');
+    $scope.$apply();
+  }, false);
+
 
   var languageGenerator = function(lang){
     var languages = {

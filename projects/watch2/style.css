@@ -161,33 +161,45 @@ ol{
   }
 }
 
-/* Tooltip container */
-aside {
-  cursor: pointer;
+.wiki-modal{
+  text-align: left;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  padding-top: 0;
+  z-index: 20;
+  background: black;
+  color: white;
+  overflow-y: auto;
+  white-space: pre-line;
+  animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+.wiki-modal h1,
+.wiki-modal h2,
+.wiki-modal h3{
+  margin: 0;
+}
+.wiki-modal img{
+  width: 100%;
+  height: auto;
+}
+.wiki-modal button{
+  width: 100%;
+  margin: 2rem 0;
+  background: #666;
+  padding: 1rem;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.info{
   color: tomato;
-  position: relative;
-  display: inline-block;
-}
-
-/* Tooltip text */
-aside i {
-  font-style: normal;
-  position: absolute;
-  visibility: hidden;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-  left: -3rem;
-  right: -3rem;
-  border-radius: 6px;
-  top: 100%;
-  z-index: 1;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-aside:hover i {
-  visibility: visible;
+  display: inline;
 }
 
 .toolbar{
