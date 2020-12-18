@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, questToggles, wikiSercive, mapMarkers) {
 
   $scope.questFlags = questToggles.all;
+  $scope.secretquestFlags = questToggles.secret;
   $scope.wiki = wikiSercive.wiki;
   $scope.eventText;
   $scope.nextEvent;
@@ -20,6 +21,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.currentRegion = item;
     $scope.view = null;
     $scope.scenarios = item.scenarios;
+    $scope.adventureIndex = 0;
+    $scope.adventureDepth = -1;
     $scope.currentScenario = item.scenarios[0];
   }
 

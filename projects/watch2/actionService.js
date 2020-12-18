@@ -147,6 +147,34 @@ app.service('actionService', function($timeout, wikiSercive) {
     }
   }
 
+  this.modifySecretQuestFlags = function (props, setScope, getScope) {
+    var current = getScope('secretquestFlags');
+    current[props.flag] = props.flagMod;
+
+    setScope('secretquestFlags', current);
+    if(props.epilog){
+      abort(props, setScope, getScope)
+    }else{
+      progress(props, setScope, getScope)
+    }
+  }
+
+  this.abortEntireScenario = function (props, setScope, getScope) {
+    var currentRegion = getScope('currentRegion');
+    console.log(currentRegion);
+    for (var i = 0; i < currentRegion.scenarios.length; i++) {
+      if(!currentRegion.scenarios[i].everGreen){
+        currentRegion.scenarios[i].done = true;
+      }
+    }
+
+    if(props.epilog){
+      abort(props, setScope, getScope)
+    }else{
+      progress(props, setScope, getScope)
+    }
+  }
+
   this.modifyStat = function (props, setScope, getScope) {
     var current = getScope('stats');
     var invertedStatMod = Math.abs(props.statMod);

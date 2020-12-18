@@ -17,4 +17,8 @@ app.service('questToggles', function() {
       desc: 'You are friends with Syr Gwendolin of the kingsguard'
     }
   }
+
+  this.secret = {
+    MugNoOrder: false,
+  }
 });

@@ -1,4 +1,4 @@
-app.service('mapMarkers', function(scenarioBasic, scenarioMountain) {
+app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug) {
   this.markers = [
     {
       name: 'HerpDerp forest',
@@ -33,8 +33,8 @@ app.service('mapMarkers', function(scenarioBasic, scenarioMountain) {
       mapNodes: [
         'trm'
       ],
-      background: 'https://cdna.artstation.com/p/assets/images/images/018/870/270/large/piotr-dura-mountain.jpg?1561042583',
-      scenarios: scenarioMountain.scenarios
+      background: 'https://images.squarespace-cdn.com/content/v1/5b0ec7364cde7a026389229d/1543236215840-8LF42ZGMDRBEVBWWIY1C/ke17ZwdGBToddI8pDm48kOe3pVUqKMd5KN3yEKeTopR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UfKHgxnLBolXN58CNzl85lmCnq-U5I0xrxs37tubmDTwQgjrRz2rsJDcRBKrW28ULA/Chaturvedi_YawningPortal.jpg',
+      scenarios: scenarioMug.scenarios
     }
   ]
 });

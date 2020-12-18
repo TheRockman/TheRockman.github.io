@@ -4,6 +4,8 @@ app.service('wikiSercive', function() {
     ,
     mageGuild: '<h1>Mages guild</h1> <img src="https://i.pinimg.com/originals/04/bc/1f/04bc1f2c2963a6a86fc3dfdf0f7584c0.jpg" /> The mages were recently exiled from the capital city after the event known as the sigularity.'
     ,
+    ratcatcher: '<h1>Ratcatchers</h1> <img src="https://scentofagamer.files.wordpress.com/2020/09/znr_adventureawaits_billychristian.jpg" /> The ratcatchers used to be a respected guild of adventurers but these days its name is most commonly used as a derogatory term for unemployed mercenaries.'
+    ,
     silverCourt: '<h1>The court of silver</h1> <img src="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f7/Tajic.jpg/revision/latest?cb=20130708072730" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }
 });
