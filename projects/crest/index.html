@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+
+    <canvas height="100" width="100" id="canvas"></canvas>
+
+    <div class="wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100" height="100" viewBox="0 0 100 100">
+        <g width="70" height="70" transform="translate(50,0) rotate(45)">
+          <rect width="10" height="10" x="{{$index*10}}" y="0" ng-repeat="item1 in fulllGridlist.row1 track by $index" fill="{{item1 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="10" ng-repeat="item2 in fulllGridlist.row2 track by $index" fill="{{item2 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="20" ng-repeat="item3 in fulllGridlist.row3 track by $index" fill="{{item3 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="30" ng-repeat="item4 in fulllGridlist.row4 track by $index" fill="{{item4 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="40" ng-repeat="item5 in fulllGridlist.row5 track by $index" fill="{{item5 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="50" ng-repeat="item6 in fulllGridlist.row6 track by $index" fill="{{item6 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="60" ng-repeat="item7 in fulllGridlist.row7 track by $index" fill="{{item7 === 1 ? color : 'transparent'}}" />
+        </g>
+        <g width="70" height="70" transform="translate(50, 0) scale(-1, 1) rotate(45)">
+          <rect width="10" height="10" x="{{$index*10}}" y="0" ng-repeat="item8 in fulllGridlist.row1 track by $index" fill="{{item8 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="10" ng-repeat="item9 in fulllGridlist.row2 track by $index" fill="{{item9 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="20" ng-repeat="item10 in fulllGridlist.row3 track by $index" fill="{{item10 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="30" ng-repeat="item11 in fulllGridlist.row4 track by $index" fill="{{item11 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="40" ng-repeat="item12 in fulllGridlist.row5 track by $index" fill="{{item12 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="50" ng-repeat="item13 in fulllGridlist.row6 track by $index" fill="{{item13 === 1 ? color : 'transparent'}}" />
+          <rect width="10" height="10" x="{{$index*10}}" y="60" ng-repeat="item14 in fulllGridlist.row7 track by $index" fill="{{item14 === 1 ? color : 'transparent'}}" />
+        </g>
+      </svg>
+
+    </br>
+    </br>
+    </br>
+
+    <div class="center">
+      <span>Color</span>
+      <select class="" name="" ng-model="color">
+        <option value="black">black</option>
+        <option value="white">white</option>
+        <option value="red">tomato</option>
+        <option value="dodgerblue">blue</option>
+      </select>
+
+      </br>
+      <span>Density</span>
+      <select class="" name="" ng-model="density">
+        <option value="0.1">1</option>
+        <option value="0.2">2</option>
+        <option value="0.3">3</option>
+        <option value="0.4">4</option>
+        <option value="0.5">5</option>
+        <option value="0.6">6</option>
+        <option value="0.7">7</option>
+        <option value="0.8">8</option>
+        <option value="0.9">9</option>
+      </select>
+
+      </br>
+      <button type="button" class="generate" style="background:dodgerblue" ng-click="generate()" name="button">Generate</button>
+      </br>
+      </br>
+      </br>
+      </br>
+      <button class="save">Save to png</button>
+    </div>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
