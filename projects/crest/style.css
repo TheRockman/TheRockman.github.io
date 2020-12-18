@@ -43,6 +43,7 @@ body {
   height: 100vh;
   background: #333;
 }
+/* dont touch .container at all, for some reason */
 .container {
   position: absolute;
   left: 0;
