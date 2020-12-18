@@ -8,7 +8,6 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureIndex = 0;
   $scope.adventureDepth = -1;
   $scope.toast = null;
-
   $scope.view = null;
 
   $scope.regions = mapMarkers.markers;
@@ -28,19 +27,19 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     crown: {
       rep: 0,
       icon: 'https://1d4chan.org/images/3/37/Azorius_Logo.png',
-      desc: 'The court of silver, so named because of the silver crown worn by its leader - the king, values glory and truth above all.',
+      desc: '<a href="#silverCourt" class="info"> [wiki] The court of silver',
       title: 'The court of silver'
     },
     mages: {
       rep: 0,
       icon: 'https://i.pinimg.com/originals/68/d2/bc/68d2bc7141af65942600d4390c10060e.png',
-      desc: 'The mages were recently ousted from the capital city and driven underground for researching illegal magics.',
+      desc: '<a href="#mageGuild" class="info"> [wiki] The mages guild',
       title: 'The mages guild'
     },
     steven: {
       rep: 0,
       icon: 'https://1d4chan.org/images/3/37/Azorius_Logo.png',
-      desc: 'Steven is a old man in the woods',
+      desc: 'Steven is talkative old man in the woods',
       title: 'Steven'
     },
     boblin: {
@@ -53,12 +52,12 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   $scope.stats = {
     hp: 10,
-    dex: 0,
-    str: 0,
-    int: 0,
-    wis: 0,
-    con: 0,
-    cha: 0
+    dex: 5,
+    str: 10,
+    int: 5,
+    wis: 4,
+    con: 3,
+    cha: 2
   }
 
   $scope.inventory = {
@@ -110,6 +109,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.currentScenario = {
         text: '<em>This area holds no more adventures, open the map and explore somewhere else.</em>',
         everGreen: true,
+        mapHint: true
       };
       return;
     }

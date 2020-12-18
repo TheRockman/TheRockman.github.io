@@ -67,8 +67,6 @@ ol{
 .faction-icon{
   width: 25px!important;
   height: auto!important;
-  float: left;
-  margin: 32px 10px;
 }
 
 .option{
@@ -161,6 +159,16 @@ ol{
   }
 }
 
+.info{
+  color: tomato;
+  opacity: 0.8;
+  display: inline;
+  text-decoration: none;
+}
+.info:hover{
+  opacity: 1;
+}
+
 .wiki-modal{
   text-align: left;
   position: fixed;
@@ -170,7 +178,7 @@ ol{
   bottom: 0;
   padding: 1rem;
   padding-top: 0;
-  z-index: 20;
+  z-index: 110;
   background: black;
   color: white;
   overflow-y: auto;
@@ -187,7 +195,7 @@ ol{
   width: 100%;
   height: auto;
 }
-.wiki-modal button{
+.wide-btn{
   width: 100%;
   margin: 2rem 0;
   background: #666;
@@ -195,11 +203,9 @@ ol{
   color: white;
   border: none;
   outline: none;
-}
-
-.info{
-  color: tomato;
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .toolbar{
@@ -216,7 +222,7 @@ ol{
   right: 0;
   background: black;
   height: 100vh;
-  z-index: 10000;
+  z-index: 100;
   color: white;
   margin: 0 auto;
 }
@@ -319,6 +325,11 @@ ol{
     flex: 1;
         -ms-flex: 1;
   }
+  .wiki-modal img{
+    float: right;
+    width: 20vw;
+    padding-right: 1rem;
+  }
 
 }
 @media screen and (max-width: 768px) {
@@ -336,6 +347,7 @@ ol{
     right: 0;
     width: 100vw;
   }
+
 }
 
 /*fluid layout*/

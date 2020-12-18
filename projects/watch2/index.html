@@ -85,7 +85,8 @@
         </div>
         <div class="row">
           <div class="flex card invisi-card">
-            <h3>Perks</h3>
+            <h3>Quests</h3>
+            <span>Whenever you learn a skill or something important happens its noted here.</span>
             <div class="card" ng-repeat="key in questFlags.keyList | orderBy:'title'" ng-if="questFlags[key].active && questFlags[key].desc">
               <h2>{{questFlags[key].title}}</h2>
               <p>{{questFlags[key].desc}}</p>
@@ -93,15 +94,17 @@
           </div>
           <div class="flex card invisi-card">
             <h3>Factions</h3>
-
-            <details class="card" ng-repeat="faction in factions" ng-if="faction.rep > 0">
-              <summary><span>Rep: {{faction.rep}}</span> - <b>{{faction.title}}</b></summary>
-              <img class="faction-icon" ng-if="faction.icon" ng-src="{{faction.icon}}" title="{{faction.title}}">
-
-              <br/>
-              {{faction.desc}}
+            <span>Shows the rating you have with factions you helped or hindered.</span>
+            <details class="card pointer" ng-repeat="faction in factions" ng-if="faction.rep > 0">
+              <summary class="align jsb">
+                <span>Rep: {{faction.rep}} </span>
+                <b class="align">
+                  <img class="faction-icon" ng-if="faction.icon" ng-src="{{faction.icon}}" title="{{faction.title}}">
+                  {{faction.title}}
+                </b>
+              </summary>
+              <span ng-bind-html='toTrustedHTML( faction.desc )'></span>
             </details>
-
           </div>
         </div>
       </div>
@@ -117,7 +120,7 @@
           <span>Wiki</span>
         </div>
         <span ng-bind-html='toTrustedHTML( wikiModal )'></span>
-        <button type="button" ng-click="wikiModal = ''" name="button">Close</button>
+        <button class="wide-btn" type="button" ng-click="wikiModal = ''" name="button">Close</button>
       </div>
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
       <div class="avatarbox" ng-if="currentScenario.speaker" ng-cloak>
@@ -130,6 +133,13 @@
       <div class="talkbox" ng-if="eventText || currentScenario.text">
         <div ng-if="!currentScenario.done && !eventText">
           <p ng-if="currentScenario.text" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
+          <button class="wide-btn" ng-if="currentScenario.mapHint"  ng-click="viewManager('mapView')">
+            <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+              <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
+            </svg>
+            &nbsp;
+            Open map screen
+          </button>
           <br/>
           <ol>
             <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
