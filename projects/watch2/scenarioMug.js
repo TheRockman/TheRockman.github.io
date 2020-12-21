@@ -123,7 +123,7 @@ app.service('scenarioMug', function(actionService) {
           label: '"How nice for them"',
           action: actionService.abortEntireScenario,
           actionProps: {
-            epilog: 'TEST: no more scenarios after this one'
+            epilog: '{TEST: no more scenarios after this one}'
           }
         },
       ],

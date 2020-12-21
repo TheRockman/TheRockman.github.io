@@ -12,14 +12,6 @@ app.service('scenarioMountain', function(actionService) {
           actionProps: {
             epilog: '<em>Each solid foothold and each sturdy grip you get is a victory hard won.</em>'
           }
-        },
-        {
-          label: '[Turn back to the forest]',
-          action: actionService.modifyRegion,
-          actionProps: {
-            region: 'hdf',
-            epilog: '<em>If there is anything mountains can it wait for another day.</em>'
-          }
         }
       ],
     },

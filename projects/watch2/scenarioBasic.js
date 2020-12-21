@@ -33,16 +33,7 @@ app.service('scenarioBasic', function(actionService) {
           }
         },
         {
-          label: '[Glare silently]',
-          action: actionService.modifyFactionRating,
-          actionProps: {
-            faction: 'crown',
-            factionMod: -1,
-            epilog: '"Where are your manners <a href="#ratcatcher" title="Open wiki" class="info">ratcatcher</a>!"<em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
-          }
-        },
-        {
-          label: '"Hello"',
+          label: '[Wave] "Hello there!"',
           action: actionService.modifyQuestFlags,
           actionProps: {
             flag: 'knowGwen',
@@ -50,13 +41,14 @@ app.service('scenarioBasic', function(actionService) {
           }
         },
         {
-          label: '[Climb a mointain]',
-          action: actionService.modifyRegion,
+          label: '[Say nothing]',
+          action: actionService.modifyFactionRating,
           actionProps: {
-            region: 'grm',
-            epilog: '<em>You start climbing the Gorillion mountains.</em>'
+            faction: 'crown',
+            factionMod: -1,
+            epilog: '"Where are your manners <a href="#ratcatcher" title="Open wiki" class="info">ratcatcher</a>!"<em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
           }
-        }
+        },
       ],
       path: [
         {
@@ -366,7 +358,7 @@ app.service('scenarioBasic', function(actionService) {
                 dc: 12,
                 stat: 'hp',
                 statMod: -5,
-                passCheckAction: actionService.proceed,
+                passCheckAction: actionService.progress,
                 failCheckAction: actionService.modifyStat,
                 critEpilog: '<em>You act quickly and shove the closest shambler so hard that it falls over backwards and knock the others down. You wait a moment to see if they return but the surface of the swamp remain unbroken. You turn and walk over to the belltower.</em>',
                 passEpilog: '<em>Using your main weapon to keep them all at a fair distance, you use a small dagger to slice at their gripping hands and biting jaws. Like this you back up towards the belltower while picking the ghouls of one by one until when your back hits the belltower base they are all cut to pieces.</em>',

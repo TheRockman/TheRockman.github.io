@@ -29,25 +29,25 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.factions = {
     crown: {
       rep: 0,
-      icon: 'https://1d4chan.org/images/3/37/Azorius_Logo.png',
+      icon: './img/silver.png',
       desc: '<a href="#silverCourt" class="info"> [wiki] The court of silver',
       title: 'The court of silver'
     },
     mages: {
       rep: 0,
-      icon: 'https://i.pinimg.com/originals/68/d2/bc/68d2bc7141af65942600d4390c10060e.png',
+      icon: './img/mages.png',
       desc: '<a href="#mageGuild" class="info"> [wiki] The mages guild',
       title: 'The mages guild'
     },
     steven: {
       rep: 0,
-      icon: 'https://1d4chan.org/images/3/37/Azorius_Logo.png',
+      icon: '',
       desc: 'Steven is talkative old man in the woods',
       title: 'Steven'
     },
     boblin: {
       rep: 0,
-      icon: '',
+      icon: './img/gobbo.png',
       desc: 'Inknose goblins are common and easy to spot by their long black noses.',
       title: 'Inknose tribe'
     },
