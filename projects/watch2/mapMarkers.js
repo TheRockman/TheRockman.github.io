@@ -9,7 +9,7 @@ app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug)
         'hdf',
         'grm'
       ],
-      background: 'https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2c/The_Great_Forest.jpg/revision/latest?cb=20090902120435',
+      background: './img/places/forest.webp',
       scenarios: scenarioBasic.scenarios
     },
     {
@@ -22,7 +22,7 @@ app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug)
         'hdf',
         'trm'
       ],
-      background: 'https://cdna.artstation.com/p/assets/images/images/018/870/270/large/piotr-dura-mountain.jpg?1561042583',
+      background: './img/places/mountain.jpg',
       scenarios: scenarioMountain.scenarios
     },
     {
@@ -33,7 +33,7 @@ app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug)
       mapNodes: [
         'trm'
       ],
-      background: 'https://images.squarespace-cdn.com/content/v1/5b0ec7364cde7a026389229d/1543236215840-8LF42ZGMDRBEVBWWIY1C/ke17ZwdGBToddI8pDm48kOe3pVUqKMd5KN3yEKeTopR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UfKHgxnLBolXN58CNzl85lmCnq-U5I0xrxs37tubmDTwQgjrRz2rsJDcRBKrW28ULA/Chaturvedi_YawningPortal.jpg',
+      background: './img/places/mug.jpg',
       scenarios: scenarioMug.scenarios
     }
   ]

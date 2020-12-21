@@ -19,7 +19,7 @@ app.service('scenarioMountain', function(actionService) {
     {
       text: '<em>From a crevice in the rock wall a mountain goblin shouts at you</em> "Hey there man-thing, watch out for falling rocks, yes!" ',
       speaker: {
-        avatar: 'https://wiki.dfo.world/images/e/e2/Portrait-Goblin_Thrower.png',
+        avatar: './img/characters/goblin.png',
         name: '',
         faction: ''
       },
@@ -50,7 +50,15 @@ app.service('scenarioMountain', function(actionService) {
       text: '<em>Two dwarves are shouting at each other, one screams;</em> "My axes are the best!" <em>The other snorts;</em> "Nah my swords are better!"',
       actions: [
         {
+          label: '"Hello master dwarves, what seems to be the issue?"',
+          action: actionService.smallTalk,
+          actionProps: {
+            epilog: '<em>They both turn to look at you.</em>"Well my rotworm of a brother here claims he can make swords that are better than my axes, can you belive it?"<em>The other dwarf snorts</em>"Better? I dont see how anyone could make anything worse than those blunt lumps of bronze"\n<em>They lock eyes again and start shouting.</em>'
+          }
+        },
+        {
           label: '[Pay 20 Gold] "Sell me the axe" ',
+          visibleWhen: 'inventory.gold >= 20',
           action: actionService.exchange,
           actionProps: {
             exchangeCatergoryA: 'inventory',
@@ -64,6 +72,7 @@ app.service('scenarioMountain', function(actionService) {
         },
         {
           label: '[Pay 20 Gold] "Sell me the sword" ',
+          visibleWhen: 'inventory.gold >= 20',
           action: actionService.exchange,
           actionProps: {
             exchangeCatergoryA: 'inventory',

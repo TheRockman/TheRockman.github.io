@@ -18,7 +18,7 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       speaker: {
-        avatar: 'https://static.wikia.nocookie.net/fireemblem/images/4/4e/Shamir_Portrait.png/revision/latest/scale-to-width-down/340?cb=20190705082422',
+        avatar: './img/characters/gwen.webp',
         name: '',
         faction: ''
       },
@@ -46,7 +46,7 @@ app.service('scenarioBasic', function(actionService) {
           actionProps: {
             faction: 'crown',
             factionMod: -1,
-            epilog: '"Where are your manners <a href="#ratcatcher" title="Open wiki" class="info">ratcatcher</a>!"<em>She sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
+            epilog: '"Where are your manners <a href="#ratcatcher" title="Open wiki" class="info">ratcatcher</a>!"<em>The knight sneer at you and puts her hand on the hilt of her sword, but then relaxes.</em>"Forget it, but my lord will know what lowlife his subjects are, be sure of that"<em>She keeps walking and evenentually even the shimmer of her armour cant be seen between the trees anymore.</em>'
           }
         },
       ],
@@ -54,7 +54,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '"Hello there yourself, I am Syr Gwendolin of the kingsguard"<em>She puts her hand on her chest and bows before quickly moving along.</em>',
           speaker: {
-            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/4/4e/Shamir_Portrait.png/revision/latest/scale-to-width-down/340?cb=20190705082422',
+            avatar: './img/characters/gwen.webp',
             name: 'Syr Gwendolin',
             faction: 'crown'
           },
@@ -138,7 +138,7 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: 'Around midnight a mysterious robed stranger comes to the camp and asks to stay the night.',
       speaker: {
-        avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
+        avatar: './img/characters/todd.webp',
         name: '',
         faction: ''
       },
@@ -163,7 +163,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <a title="Open wiki" href="#mageGuild" class="info">mages guild</a>.',
           speaker: {
-            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
+            avatar: './img/characters/todd.webp',
             name: '',
             faction: 'mages'
           },
@@ -188,7 +188,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
           speaker: {
-            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/c/c6/Tomas_Portrait.png/revision/latest?cb=20190703070028',
+            avatar: './img/characters/todd.webp',
             name: '',
             faction: 'mages'
           },
@@ -327,11 +327,6 @@ app.service('scenarioBasic', function(actionService) {
         },
         {
           text: '"GET OUT OF HERE YOU FOOL! THE BELL HAVE BEEN RUNG, IT WONT TAKE LONG UNTIL -"\n<em>Before he can finish a sloshing sound interrupt him and he just points toward you.</em>',
-          speaker: {
-            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/b/b3/Gunther_portrait.png/revision/latest?cb=20170120221619',
-            name: '',
-            faction: ''
-          },
           actions: [
             {
               label: '[Proceed]',
@@ -344,11 +339,6 @@ app.service('scenarioBasic', function(actionService) {
         },
         {
           text: '"GET UP HERE, QUICK! -"\n<em>The man calls to you.</em>',
-          speaker: {
-            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/b/b3/Gunther_portrait.png/revision/latest?cb=20170120221619',
-            name: '',
-            faction: ''
-          },
           actions: [
             {
               label: '[Stay and fight]',
@@ -375,18 +365,13 @@ app.service('scenarioBasic', function(actionService) {
           ],
         },
         {
-          text: '"<em>TO BE CONTINUED</em>',
-          speaker: {
-            avatar: 'https://static.wikia.nocookie.net/fireemblem/images/b/b3/Gunther_portrait.png/revision/latest?cb=20170120221619',
-            name: '',
-            faction: ''
-          },
+          text: '{TO BE CONTINUED}',
           actions: [
             {
               label: '[Proceed]',
               action: actionService.abort,
               actionProps: {
-                epilog: '<em>TO BE CONTINUED</em>'
+                epilog: '{TO BE CONTINUED}'
               }
             }
           ],
@@ -397,7 +382,7 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: '<em>A goblin starts shouting at you</em> "Give Boblin a shiny coin?" ',
       speaker: {
-        avatar: 'https://wiki.dfo.world/images/e/e2/Portrait-Goblin_Thrower.png',
+        avatar: './img/characters/goblin.png',
         name: '',
         faction: ''
       },
@@ -442,6 +427,7 @@ app.service('scenarioBasic', function(actionService) {
       actions: [
         {
           label: '[Pay 999 Gold] "Alright, show me what you got!" ',
+          visibleWhen: 'inventory.gold >= 999',
           action: actionService.exchange,
           actionProps: {
             exchangeCatergoryA: 'inventory',

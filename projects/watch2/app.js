@@ -29,13 +29,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.factions = {
     crown: {
       rep: 0,
-      icon: './img/silver.png',
+      icon: './img/factions/silver.png',
       desc: '<a href="#silverCourt" class="info"> [wiki] The court of silver',
       title: 'The court of silver'
     },
     mages: {
       rep: 0,
-      icon: './img/mages.png',
+      icon: './img/factions/mages.png',
       desc: '<a href="#mageGuild" class="info"> [wiki] The mages guild',
       title: 'The mages guild'
     },
@@ -47,7 +47,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     },
     boblin: {
       rep: 0,
-      icon: './img/gobbo.png',
+      icon: './img/factions/gobbo.png',
       desc: 'Inknose goblins are common and easy to spot by their long black noses.',
       title: 'Inknose tribe'
     },
