@@ -9,6 +9,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureIndex = 0;
   $scope.adventureDepth = -1;
   $scope.toast = null;
+  $scope.diceRollToast = null;
+  $scope.diceRollResult = null;
   $scope.view = null;
 
   $scope.regions = mapMarkers.markers;
@@ -116,6 +118,10 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       };
       return;
     }
+
+    $scope.toast = null;
+    $scope.diceRollToast = null;
+    $scope.diceRollResult = null;
 
     var roll = 0 + Math.floor(Math.random()*$scope.scenarios.length);
     $scope.adventureIndex = roll;

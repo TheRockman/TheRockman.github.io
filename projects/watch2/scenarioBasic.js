@@ -2,11 +2,11 @@ app.service('scenarioBasic', function(actionService) {
 
   this.scenarios = [
     {
-      text: 'The <a href="#forest" title="Open wiki" class="info">forest</a> is silent.',
+      text: '<em>The <a href="#forest" title="Open wiki" class="info">forest</a> is silent.</em>',
       everGreen: true,
       actions: [
         {
-          label: '"[Proceed]"',
+          label: '[Proceed]',
           action: actionService.abort,
           actionProps: {
             epilog: '<em>You follow the path before you</em>'
@@ -72,17 +72,17 @@ app.service('scenarioBasic', function(actionService) {
     },
 //scenario
     {
-      text: '<em>A old man taps you on the shoulder</em> "Stay a while and listen" <em>He smiles a toothless smile</em>',
+      text: '<em>An old man taps you on the shoulder</em> "Stay a while and listen" <em>He smiles a toothless smile</em>',
       actions: [
         {
           label: '"Sure"',
           action: actionService.progress,
           actionProps: {
-            epilog: '"Exelent"'
+            epilog: '"Exelent"<em>He looks at you expectantly.</em>'
           }
         },
         {
-          label: '"Dont bother me with your sass old man!"',
+          label: '"Dont bother me old man!"',
           action: actionService.abort,
           actionProps: {
             epilog: '<em>He give you a sad look and slowly walks away.</em>'
@@ -91,7 +91,7 @@ app.service('scenarioBasic', function(actionService) {
       ],
       path: [
         {
-          text: '<em>The old man look at you expectantly.</em>',
+          text: '<em>The silence is deafening.</em>',
           actions: [
             {
               label: '"So.. whats your name?"',
@@ -136,7 +136,7 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
-      text: 'Around midnight a mysterious robed stranger comes to the camp and asks to stay the night.',
+      text: '<em>After a long days journey you make camp a few yards off the road. Just as you get your fire started a robed stranger appear at the edge of the clearing.</em>',
       speaker: {
         avatar: './img/characters/todd.webp',
         name: '',
@@ -144,7 +144,7 @@ app.service('scenarioBasic', function(actionService) {
       },
       actions: [
         {
-          label: '"Take a seat by the fire"',
+          label: '"Well met, take a seat by the fire friend"',
           action: actionService.modifyFactionRating,
           actionProps: {
             faction: 'mages',
@@ -152,7 +152,7 @@ app.service('scenarioBasic', function(actionService) {
           }
         },
         {
-          label: '"Leave"',
+          label: '"Leave this place"',
           action: actionService.abort,
           actionProps: {
             epilog: 'he walks away.'
@@ -180,7 +180,7 @@ app.service('scenarioBasic', function(actionService) {
               visibleWhen: 'questFlags.knowGwen.active',
               action: actionService.abort,
               actionProps: {
-                epilog: 'Even if you cant really see his face you feel the cold look he is giving you.<em>"No, im afraid i dont..."</em>The embers from his pipe flair up and illuminate his milky white eyes.\nAfter you look away for a moment he is gone.'
+                epilog: '<em>Even if you cant really see his face you feel the cold look he is giving you.</em>"No, im afraid i dont..."<em>The embers from his pipe flair up and illuminate his milky white eyes.\nAfter you look away for a moment he is gone.</em>'
               }
             },
           ],
@@ -208,16 +208,20 @@ app.service('scenarioBasic', function(actionService) {
                 smallTalkAction: actionService.modifyQuestFlags,
                 flag: 'goblinSpeak',
                 flagMod: true,
-                epilog: '<em>He nods and give you a smooth rock with a crude rune on it.</em>'
+                epilog: '<em>He nods and give you a smooth rock with a crude rune on it.</em>"I found this stone in a goblin lair, i belive it will allow whoever holds it to speak as they do. But I dont think goblins have anything useful to say, so you can have it"<em>You keep talking and in the morning he walks off in the direction you came from.</em>'
               }
             },
             {
-              label: '"Thats just skyrim"',
-              action: actionService.modifyStat,
+              label: '[INT Check] "That sounds implausible"',
+              action: actionService.skillCheck,
               actionProps: {
-                stat: 'wis',
-                statMod: 1,
-                epilog: '"Thats right..." he says.<em>The stranger shifts and shakes before running back into the woods.\nYou notice him dropping a pice of paper with the name "Bodd Howrad" on it.</em>'
+                skill: 'int',
+                dc: 12,
+                passCheckAction: actionService.abort,
+                failCheckAction: actionService.abort,
+                critEpilog: '"Alright, you got me - thats just Skyrim"<em>The stranger says.</em>"I´ll get out of here now, sorry."<em>He gets up and walks away into the bushes.</em>',
+                passEpilog: '<em>You glare at him and without a word he dissapear in a puff of smoke.</em>',
+                failEpilog: '"Oh i assure you, its true. Huge dragons fighting with half-human half-dragon warrios using their voices to rip time and space apart"<em>You are enchanted by his tale but you must have fallen asleep at some point since you awake at dawn and the stranger i nowhere to be seen.</em>'
               }
             },
           ],
@@ -226,7 +230,7 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>You listen to the strangers story but you must have fallen asleep at some point since you awake at dawn.</em>',
           actions: [
             {
-              label: 'OK',
+              label: '[Proceed]',
               action: actionService.abort,
               actionProps: {
                 epilog: '<em>You look around but there is no trace of the stranger other than a faint smell of tobacco.</em>'
@@ -380,7 +384,7 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
-      text: '<em>A goblin starts shouting at you</em> "Give Boblin a shiny coin?" ',
+      text: '<em>A goblin starts shouting at you</em> "Pat Boblins head?" ',
       speaker: {
         avatar: './img/characters/goblin.png',
         name: '',
@@ -395,14 +399,14 @@ app.service('scenarioBasic', function(actionService) {
           actionProps: {
             faction: 'boblin',
             factionMod: 1,
-            epilog: '<em>The goblin jumps with joy and skips away.</em>'
+            epilog: '<em>You pat his green rubbery head and the goblin jumps with joy and skips away.</em>'
           }
         },
         {
           label: '"Ok, whatever you say buddy."',
           action: actionService.abort,
           actionProps: {
-            epilog: 'Goblins are indeed strage creatures.'
+            epilog: '<em>Goblins are indeed strage creatures.</em>'
           }
         },
       ],
@@ -423,10 +427,10 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
-      text: '<em>A man shouts at you:</em> "Step right up, and i will teach you to be the strongest fighter in the land! only 999 gold coins." ',
+      text: '<em>A small crowd of folk are gathered around a cart. A ragged man wearing a tophat and a bright red coat shouts at you.</em> "You there! May i perhaps interest you this miracle potion? Guaranteed to make you the strongest fighter in the land! only 999 gold coins." ',
       actions: [
         {
-          label: '[Pay 999 Gold] "Alright, show me what you got!" ',
+          label: '[Pay 999 Gold] "Deal!" ',
           visibleWhen: 'inventory.gold >= 999',
           action: actionService.exchange,
           actionProps: {
@@ -436,14 +440,14 @@ app.service('scenarioBasic', function(actionService) {
             exchangeCatergoryB: 'stats',
             exchangeKeyB: 'str',
             exchangeAmountB: 20,
-            epilog: '<em>You feel amazing!</em>'
+            epilog: '<em>You take the small vial in your hands and your fingertips buzz with power. You open it and down the murky liquid. A moment later your body starts to glow and you feel invincible.</em>"See that ladies and gentlemen?"<em>the ragged man exclaim.</em> "Didn´t I tell you?, didn´t I?"'
           }
         },
         {
-          label: '"No way"',
+          label: '"No way, thats some snakeoil if i ever saw it."',
           action: actionService.abort,
           actionProps: {
-            epilog: 'Thats some snakeoil if ever i saw it'
+            epilog: '<em>The crowd nods and disperse. The man gives you a sharp glare and shuts the door to his cart.</em>'
           }
         },
       ],

@@ -4,11 +4,20 @@ app.service('actionService', function($timeout, wikiSercive) {
     return 1 + Math.floor(Math.random()*diceSize)
   }
 
-  var displayToast = function(toast, setScope, getScope){
-    setScope('toast', toast);
-    $timeout( function(){
-      setScope('toast', null);
-    }, 3500 );
+  var displayToast = function(toast, setScope, getScope, diceroll){
+    if(diceroll){
+      setScope('diceRollToast', toast);
+      setScope('diceRollResult', diceroll);
+      var dice = $timeout( function(){
+        setScope('diceRollToast', null);
+        setScope('diceRollResult', null);
+      }, 4000 );
+    }else{
+      setScope('toast', toast);
+      var toast = $timeout( function(){
+        setScope('toast', null);
+      }, 3500 );
+    }
   }
   this.displayToast = displayToast;
 
@@ -211,17 +220,17 @@ app.service('actionService', function($timeout, wikiSercive) {
     var roll = dice(20);
 
     if(roll === 20){
-      displayToast('Roll: '+roll, setScope, getScope)
+      displayToast(roll, setScope, getScope, 'crit')
       props.epilog = props.critEpilog || props.passEpilog;
       props.passCheckAction(props, setScope, getScope);
     }
     else if(current[props.skill] + roll >= props.dc ){
-      displayToast('Roll: '+roll, setScope, getScope)
+      displayToast(roll, setScope, getScope, 'pass')
       props.epilog = props.passEpilog;
       props.passCheckAction(props, setScope, getScope);
     }
     else{
-      displayToast('Roll: '+roll, setScope, getScope)
+      displayToast(roll, setScope, getScope, 'fail')
       props.epilog = props.failEpilog;
       props.failCheckAction(props, setScope, getScope);
     }

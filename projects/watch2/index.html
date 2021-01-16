@@ -124,6 +124,13 @@
         <button class="wide-btn" type="button" ng-click="wikiModal = ''" name="button">Close</button>
       </div>
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
+      <div class="dice-overlay" ng-if="diceRollToast">
+        <div class="dice {{diceRollResult}}">
+          <span>{{diceRollToast}}</span>
+          <img src="img/ui/dice.svg" alt="">
+          <p>{{diceRollResult}}</p>
+        </div>
+      </div>
       <div class="avatarbox" ng-if="currentScenario.speaker" ng-cloak>
         <img class="avatar" ng-class="{'scuteAvatar':currentScenario.speaker.name}" src="{{currentScenario.speaker.avatar}}" alt="">
         <p ng-cloak class="align" ng-if="currentScenario.speaker.name">

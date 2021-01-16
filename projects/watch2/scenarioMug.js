@@ -3,7 +3,7 @@ app.service('scenarioMug', function(actionService) {
   this.scenarios = [
 //Scenario
     {
-      text: 'In a quiet valley between the mountains stands the town of Grimdale. A few small houses are scattered around a larger townhouse. Above the door of the larger house hangs a crude tavern sign: "The rusty mug". You enter and take a seat by one of the tables.',
+      text: '<em>In a quiet valley between the mountains stands the town of Grimdale. A few small houses are scattered around a larger townhouse. Above the door of the larger house hangs a crude tavern sign: "The rusty mug". You enter and take a seat by one of the tables.</em>',
       everGreen: true,
       actions: [
         {

@@ -3,7 +3,7 @@ app.service('scenarioMountain', function(actionService) {
   this.scenarios = [
 //Scenario
     {
-      text: 'In front of you the peaks of the Gorillion mountains tower towards the shredded skies.',
+      text: '<em>In front of you the peaks of the Gorillion mountains tower towards the shredded skies.</em>',
       everGreen: true,
       actions: [
         {
