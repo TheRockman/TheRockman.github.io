@@ -1,0 +1,42 @@
+:root {
+  --x: 0;
+  --y: 0;
+}
+
+.shadow-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* background: red; */
+}
+.shadow-box *{
+  transform-style: preserve-3d;
+}
+.threedee{
+  transform-origin: center;
+  transform: rotateX(var(--y)) rotateY(var(--x));
+}
+
+.bg-layer{
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+}
+
+.md-layer{
+  position: absolute;
+  bottom: 0px;
+  top: 135px;
+  left: 10%;
+  right: 10%;
+  transform: translateZ(10rem);
+}
+
+.fg-layer{
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 10%;
+  transform: translateZ(20rem);
+}

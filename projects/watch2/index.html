@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="parallax.css" media="screen" title="no title" charset="utf-8">
   <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
@@ -12,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div ng-controller="mainCtrl">
-    <img class="regionBG" ng-src="{{currentRegion.background}}" alt="">
+  <div class="mainC" ng-controller="mainCtrl">
+
     <div class="toolbar align">
       <div class="align" ng-click="viewManager('mapView')" style="cursor:pointer" >
         <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
@@ -112,6 +113,7 @@
     </div>
 
     <div class="wrap">
+
       <div ng-cloak class="wiki-modal" ng-show="wikiModal">
         <div class="align pointer" ng-click="wikiModal = ''">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -123,7 +125,9 @@
         <span ng-bind-html='toTrustedHTML( wikiModal )'></span>
         <button class="wide-btn" type="button" ng-click="wikiModal = ''" name="button">Close</button>
       </div>
+
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
+
       <div class="dice-overlay" ng-if="diceRollToast">
         <div class="dice {{diceRollResult}}">
           <span>{{diceRollToast}}</span>
@@ -131,45 +135,54 @@
           <p>{{diceRollResult}}</p>
         </div>
       </div>
-      <div class="avatarbox" ng-if="currentScenario.speaker" ng-cloak>
-        <img class="avatar" ng-class="{'scuteAvatar':currentScenario.speaker.name}" src="{{currentScenario.speaker.avatar}}" alt="">
-        <p ng-cloak class="align" ng-if="currentScenario.speaker.name">
-          <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
-          {{currentScenario.speaker.name}}
-        </p>
-      </div>
-      <div class="talkbox" ng-if="eventText || currentScenario.text">
-        <div ng-if="!currentScenario.done && !eventText">
-          <p ng-if="currentScenario.text" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
-          <button class="wide-btn" ng-if="currentScenario.mapHint"  ng-click="viewManager('mapView')">
-            <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
-              <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
-            </svg>
-            &nbsp;
-            Open map screen
-          </button>
-          <br/>
-          <ol>
-            <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
-              <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
-                {{option.label}}
-              </div>
-            </li>
-          </ol>
 
-        </div>
+      <div class="shadow-box">
+        <div class="threedee">
+          <img class="bg-layer" ng-src="{{currentRegion.background}}" alt="">
 
-        <div ng-if="eventText">
-          <!-- Ending -->
-          <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
-          <br/>
-          <ol>
-            <li class="option pointer" ng-click="wrapUpAndPickNext()">
-              [Proceed]
-            </li>
-          </ol>
+          <div class="avatarbox md-layer" ng-if="currentScenario.speaker" ng-cloak>
+            <img class="avatar" src="{{currentScenario.speaker.avatar}}" alt="">
+            <p ng-cloak class="align" ng-if="currentScenario.speaker.name">
+              <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
+              {{currentScenario.speaker.name}}
+            </p>
+          </div>
+
+          <div class="talkbox fg-layer" ng-if="eventText || currentScenario.text">
+            <div ng-if="!currentScenario.done && !eventText">
+              <p ng-if="currentScenario.text" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
+              <button class="wide-btn" ng-if="currentScenario.mapHint"  ng-click="viewManager('mapView')">
+                <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+                  <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
+                </svg>
+                &nbsp;
+                Open map screen
+              </button>
+              <br/>
+              <ol>
+                <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
+                  <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
+                    {{option.label}}
+                  </div>
+                </li>
+              </ol>
+
+            </div>
+
+            <div ng-if="eventText">
+              <!-- Ending -->
+              <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
+              <br/>
+              <ol>
+                <li class="option pointer" ng-click="wrapUpAndPickNext()">
+                  [Proceed]
+                </li>
+              </ol>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
 
     <div class="stats">
