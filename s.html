@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="description" content="Portfolio and sandbox">
+  <title>Rockman</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+  <style media="screen">
+    html, body{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background: black;
+      text-align: center;
+      overflow: hidden;
+      font-family: 'Raleway', sans-serif;
+    }
+    img{
+      height: 100vh;
+      width: auto;
+      margin: 0 auto;
+    }
+    h1, h2, h3{
+      font-style: italic;
+    }
+    .wrap{
+      text-align: left;
+      font-weight: bold;
+      position: fixed;
+      overflow-y: auto;
+      left: 1rem;
+      top: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 10;
+      color: #999!important;
+    }
+    a{
+      color: white!important;
+      text-decoration: none;
+      margin: 0;
+      line-height: 1rem;
+      padding: 1rem 0;
+    }
+    /* scrollbar */
+    .scroll::-webkit-scrollbar {
+      width: 10px;
+    }
+    .scroll::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    .scroll::-webkit-scrollbar-thumb {
+      border-radius: 1px;
+      background: rgba(255,255,255,0.4);
+      -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+      -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+    }
+
+    @keyframes animation {
+     from {
+       transform: translateX(-100%);
+     }
+     to {
+       transform: translateX(0%);
+     }
+    }
+
+    .wrap h1, .wrap p, .wrap a{
+      animation-name: animation;
+      animation-duration: 0.2s;
+    }
+
+  </style>
+  <img src="img/bg.gif" alt="">
+  <div class="wrap scroll">
+    <!-- <h1>1233</h1>
+    <a href="#">123</a> -->
+  </div>
+</body>
+</html>
