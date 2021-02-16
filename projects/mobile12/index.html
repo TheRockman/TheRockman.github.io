@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="stage">
+      <div class="content">
+        <div ng-click="setView(1)" class="center">
+          <img class="backdrop" src="https://wallpapercave.com/wp/wp7150761.jpg" alt="">
+        </div>
+        <div class="tray" ng-class="{'expanded': view === 2}" >
+          <img class="logo" src="https://www.pngkit.com/png/full/2-24817_spider-man-logo-png-marvel-spiderman-game-logo.png"/>
+          <div class="pointer" ng-click="setView(2)">
+            <div class="center drag">
+              _
+            </div>
+            <div class="align">
+              <img class="app-logo" src="https://apprecs.org/ios/images/app-icons/256/8b/1244334475.jpg" alt="">
+              <div class="">
+                <b>Spider-man</b>
+                <br/>
+                <span>Adventure</span>
+                </br>
+                <div class="align">
+                  <span>★ <strong>4.3</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </br>
+          </br>
+          <img class="screenshot" src="https://cdn.vox-cdn.com/thumbor/6mS6oaRS2p2X0Su9AoID4nxPP9s=/0x0:2048x1152/1200x800/filters:focal(694x0:1020x326)/cdn.vox-cdn.com/uploads/chorus_image/image/67564348/spider_man.0.jpg" alt="">
+            &nbsp;
+          <img class="screenshot" src="https://i1.wp.com/media.criticalhit.net//2020/09/Spider-Dawson.jpg?resize=850%2C478&ssl=1" alt="">
+          <p><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></p>
+          </br>
+          <div class="align jsb">
+            <strong>Ratings and reviews</strong>
+            <span class="pointer">View</span>
+          </div>
+          <div class="align">
+            <b style="font-size:32px;">4.3</b>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <div>
+              <div><span style="opacity:1;color:goldenrod;">★ ★ ★ ★</span> ★</div>
+              <div>1192 reviews</div>
+            </div>
+          </div>
+          </br>
+          <button class="cta" type="button" name="button">Install</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
