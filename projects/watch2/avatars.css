@@ -230,7 +230,7 @@
 
 /* gwen */
 .gwen .hat{
-  background: url('https://static.wikia.nocookie.net/clubpenguin/images/4/47/Puffle_Care_icons_Head_knighthelmet.png/revision/latest?cb=20140716165842') center;
+  background: url('img/characters/helmet.png') center;
   background-size: contain;
   background-repeat: no-repeat;
   height: 32rem;
@@ -243,7 +243,7 @@
 }
 
 .mage .hat{
-  background: url('https://static.wikia.nocookie.net/runescape2/images/0/0a/Wizard_hat_%28t%29_detail.png/revision/latest/scale-to-width-down/903?cb=20180619153723') center;
+  background: url('img/characters/hat1.png') center;
   background-size: contain;
   background-repeat: no-repeat;
 }
