@@ -145,7 +145,7 @@
             <!-- <img class="avatar" src="{{currentScenario.speaker.avatar}}" alt=""> -->
 
             <!-- avatar -->
-            <div class="stage avatar" ng-class="currentScenario.speaker.char" ng-if="pose(currentScenario.speaker)">
+            <div class="stage avatar {{currentScenario.speaker.char}} {{currentScenario.speaker.mood}}" ng-if="pose(currentScenario.speaker)">
                 <div class="head" ng-style="sway2">
                   <div class="brow align-b jsb" ng-style="IYsway2"></div>
                   <div class="eye-wrap align jsb" ng-style="sway1">

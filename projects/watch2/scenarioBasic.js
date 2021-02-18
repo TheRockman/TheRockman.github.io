@@ -140,7 +140,7 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>After a long days journey you make camp a few yards off the road. Just as you get your fire started a robed stranger appear at the edge of the clearing.</em>',
       speaker: {
         char: 'mage',
-        mood: 'sad',
+        mood: 'mad',
         name: '',
         faction: ''
       },
@@ -284,7 +284,7 @@ app.service('scenarioBasic', function(actionService) {
           text: '"Hello there yourself, I am Syr Gwendolin of the kingsguard"<em>She puts her hand on her chest and bows before quickly moving along.</em>',
           actions: [
             {
-              label: '"[Proceed]"',
+              label: '[Proceed]',
               action: actionService.abort,
               actionProps: {
                 epilog: '<em>You sit back down, happy to have made a new friend.</em>'
@@ -393,6 +393,7 @@ app.service('scenarioBasic', function(actionService) {
         char: 'goblin',
         x: 150,
         y: 300,
+        mood: 'sad',
         name: '',
         faction: ''
       },
@@ -401,11 +402,9 @@ app.service('scenarioBasic', function(actionService) {
         {
           label: '[Speak Goblin] "Sure thing, little friend" .',
           visibleWhen: 'questFlags.goblinSpeak.active',
-          action: actionService.modifyFactionRating,
+          action: actionService.progress,
           actionProps: {
-            faction: 'boblin',
-            factionMod: 1,
-            epilog: '<em>You pat his green rubbery head and the goblin jumps with joy and skips away.</em>'
+            epilog: '<em>You pat his green rubbery head.</em>'
           }
         },
         {
@@ -416,6 +415,28 @@ app.service('scenarioBasic', function(actionService) {
           }
         },
       ],
+      path: [
+        {
+          text: '<em>The goblin looks at you, jumps with joy and skips away.</em>',
+          speaker: {
+            char: 'goblin',
+            mood: 'glad',
+            name: '',
+            faction: ''
+          },
+          actions: [
+            {
+              label: '[Proceed]',
+              action: actionService.modifyFactionRating,
+              actionProps: {
+                faction: 'boblin',
+                factionMod: 1,
+                epilog: '<em>Goblins are indeed strage creatures.</em>'
+              }
+            },
+          ],
+        },
+      ]
     },
 //Scenario
     {

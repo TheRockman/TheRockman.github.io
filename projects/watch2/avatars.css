@@ -186,6 +186,20 @@
   }
 }
 
+/* moods */
+.sad .bro:first-of-type{
+  transform: rotate(-16deg);
+}
+.sad .bro:last-of-type{
+  transform: rotate(16deg);
+}
+
+.mad .bro:first-of-type{
+  transform: rotate(16deg);
+}
+.mad .bro:last-of-type{
+  transform: rotate(-16deg);
+}
 
 /* goblin */
 .goblin .brow, .goblin .head, .goblin .cheeks, .goblin .l-ear, .goblin .r-ear, .goblin .body{
