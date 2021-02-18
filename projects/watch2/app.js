@@ -156,6 +156,25 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.pose = function(speaker){
     $scope.pos.x = speaker.x || 150;
     $scope.pos.y = speaker.y || 150;
+
+    // moods
+    switch (speaker.mood) {
+      case 'sad':
+        $scope.pos = {x: 250, y: 400};
+        break;
+      case 'glad':
+        $scope.pos = {x: 250, y: 0};
+        break;
+      case 'mad':
+        $scope.pos = {x: 150, y: 150};
+        break;
+      case 'determination':
+        $scope.pos = {x: 500, y: 0};
+        break;
+      default:
+        $scope.pos = {x: 150, y: 150};
+    }
+
     $scope.xStyle={'top': 20 + 'px', 'left': $scope.pos.x/10 + 'px'};
     $scope.yStyle={'top': $scope.pos.y/10 + 'px', 'left': 20 + 'px'};
     $scope.zStyle={'top': $scope.pos.y/10 + 'px', 'left': $scope.pos.x/10 + 'px'};

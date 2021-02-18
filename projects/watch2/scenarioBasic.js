@@ -56,6 +56,7 @@ app.service('scenarioBasic', function(actionService) {
           speaker: {
             char: 'gwen',
             name: 'Syr Gwendolin',
+            mood: 'glad',
             faction: 'crown'
           },
           actions: [
@@ -139,8 +140,7 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>After a long days journey you make camp a few yards off the road. Just as you get your fire started a robed stranger appear at the edge of the clearing.</em>',
       speaker: {
         char: 'mage',
-        x: 250,
-        y: 0,
+        mood: 'sad',
         name: '',
         faction: ''
       },
@@ -167,6 +167,7 @@ app.service('scenarioBasic', function(actionService) {
           speaker: {
             char: 'mage',
             name: '',
+            mood: 'glad',
             faction: 'mages'
           },
           actions: [
@@ -192,6 +193,7 @@ app.service('scenarioBasic', function(actionService) {
           speaker: {
             char: 'mage',
             name: '',
+            mood: 'glad',
             faction: 'mages'
           },
           actions: [

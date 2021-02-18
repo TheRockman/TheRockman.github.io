@@ -4,6 +4,9 @@
   height: 500px;
   transform-origin: bottom;
 }
+.stage *{
+  transition: 0.3s all ease;
+}
 
 .brow, .head, .cheeks, .l-ear, .r-ear{
   background: tomato;
