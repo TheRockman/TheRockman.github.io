@@ -148,6 +148,25 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     }
   }
 
+// rigging avatar
+  $scope.pos = {
+    x: 150,
+    y: 150
+  };
+  $scope.pose = function(speaker){
+    $scope.pos.x = speaker.x || 150;
+    $scope.pos.y = speaker.y || 150;
+    $scope.xStyle={'top': 20 + 'px', 'left': $scope.pos.x/10 + 'px'};
+    $scope.yStyle={'top': $scope.pos.y/10 + 'px', 'left': 20 + 'px'};
+    $scope.zStyle={'top': $scope.pos.y/10 + 'px', 'left': $scope.pos.x/10 + 'px'};
+    $scope.sway1={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
+    $scope.sway2={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
+    $scope.IYsway2={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/6 - 25) + 'px)'};
+    $scope.IXsway2={'transform': 'translateX(' +  ($scope.pos.x/6 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
+    $scope.IXsway3={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
+    return true;
+  }
+
 //parallax
   var root = document.documentElement;
   root.addEventListener("mousemove", e => {
@@ -166,6 +185,8 @@ if(vw>768){
   });
 
 });
+
+
 
 // Extra modules
 // var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope) {

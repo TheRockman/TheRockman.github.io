@@ -1,0 +1,235 @@
+.stage{
+  position: relative;
+  width: 500px;
+  height: 500px;
+  transform-origin: bottom;
+}
+
+.brow, .head, .cheeks, .l-ear, .r-ear{
+  background: tomato;
+}
+.cheeks{
+  position:absolute;
+  top: 185px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 2;
+}
+.brow{
+  position:absolute;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 3;
+}
+.brow2{
+  position:absolute;
+  pointer-events: none;
+  top: 120px;
+  left: 125px;
+  width: 100%;
+  height: 50px;
+  z-index: 3;
+}
+.bro{
+  width: 75px;
+  height: 25px;
+  margin: 1.3rem 1rem;
+  border-radius: 100px;
+  background: brown;
+}
+.head{
+  overflow: hidden;
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  pointer-events: none;
+  margin-top: 2rem;
+  z-index: 1;
+  border-radius: 200px;
+  position: relative;
+}
+.body{
+  height: 400px;
+  width: 50%;
+  left: 0;
+  right: 0;
+  top: 250px;
+  background: purple;
+  margin: 0 auto;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 200px;
+  position: absolute;
+  border-top: 40px solid rgba(255, 255, 255, 0.25);
+}
+.brow-wrap{
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.hair{
+  background: #333;
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  top: 0;
+  left: 125px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 200px;
+  position: absolute;
+}
+
+.nose{
+  position: absolute;
+  top: 160px;
+  left: 95px;
+  background: brown;
+  width: 3rem;
+  height: 3rem;
+  clip-path: polygon(50% 0%, 67% 14%, 75% 36%, 89% 64%, 80% 90%, 50% 100%, 20% 90%, 13% 65%, 22% 41%, 33% 15%);
+  z-index: 3;
+}
+.mouth{
+  position: absolute;
+  width: 50px;
+  left: 95px;
+  top: 220px;
+  height: 3px;
+  background: #333;
+  z-index: 3;
+}
+.eye{
+  width: 40px;
+  height: 45px;
+  background: #333;
+  border-radius: 1000px;
+  display: inline-block;
+  animation: blink-1 3.5s both;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+}
+.eye-wrap{
+  position: absolute;
+  top: 150px;
+  left: 40px;
+  right: 40px;
+}
+
+@keyframes blink-1 {
+  0% {
+    transform: rotateX(90deg);
+  }
+  10% {
+    transform: rotateX(0deg);
+  }
+}
+.align-b{
+  align-items: baseline;
+  display: flex;
+}
+.l-ear{
+  height: 75px;
+  width: 45px;
+  filter: brightness(0.9);
+  margin: 0 auto;
+  top: 150px;
+  left: 100px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 200px;
+  position: absolute;
+  transition: 0.5s background ease;
+}
+.r-ear{
+  height: 75px;
+  width: 45px;
+  filter: brightness(0.9);
+  margin: 0 auto;
+  top: 150px;
+  left: 350px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 200px;
+  position: absolute;
+  transition: 0.5s background ease;
+}
+.facing{
+  filter: brightness(1);
+}
+.hat{
+  height: 23rem;
+  width: 19rem;
+  /* background: red; */
+  z-index: 1;
+  position: absolute;
+  top: -15rem;
+  left: 6rem;
+  right: 0;
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .stage{
+    transform: scale(0.5);
+  }
+}
+
+
+/* goblin */
+.goblin .brow, .goblin .head, .goblin .cheeks, .goblin .l-ear, .goblin .r-ear, .goblin .body{
+  background: #5dce4f;
+}
+.goblin .hair{
+  background: #6ce85d;
+}
+.goblin .l-ear{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+  border-radius: 0;
+  left: 5.5rem;
+}
+.goblin .r-ear{
+  clip-path: polygon(0 0, 0 100%, 0 100%, 100% 0);
+  border-radius: 0;
+  right: 5.5rem;
+}
+.goblin .head{
+  height: 270px;
+}
+.goblin .nose{
+  clip-path: polygon(100% 0, 0 54%, 100% 52%);
+  background: #00770f;
+  top: 175px;
+  left: 70px;
+}
+
+/* gwen */
+.gwen .hat{
+  background: url('https://static.wikia.nocookie.net/clubpenguin/images/4/47/Puffle_Care_icons_Head_knighthelmet.png/revision/latest?cb=20140716165842') center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 32rem;
+  width: 22rem;
+  top: -11.5rem;
+  left: 6rem;
+}
+.gwen .body{
+  background: #a4c1d0;
+}
+
+.mage .hat{
+  background: url('https://static.wikia.nocookie.net/runescape2/images/0/0a/Wizard_hat_%28t%29_detail.png/revision/latest/scale-to-width-down/903?cb=20180619153723') center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.mage .brow, .mage .head, .mage .cheeks, .mage .l-ear, .mage .r-ear{
+  background: #f3a293;
+}

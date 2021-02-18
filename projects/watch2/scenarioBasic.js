@@ -18,7 +18,7 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       speaker: {
-        avatar: './img/characters/gwen.webp',
+        char: 'gwen',
         name: '',
         faction: ''
       },
@@ -54,7 +54,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '"Hello there yourself, I am Syr Gwendolin of the kingsguard"<em>She puts her hand on her chest and bows before quickly moving along.</em>',
           speaker: {
-            avatar: './img/characters/gwen.webp',
+            char: 'gwen',
             name: 'Syr Gwendolin',
             faction: 'crown'
           },
@@ -138,7 +138,9 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: '<em>After a long days journey you make camp a few yards off the road. Just as you get your fire started a robed stranger appear at the edge of the clearing.</em>',
       speaker: {
-        avatar: './img/characters/todd.webp',
+        char: 'mage',
+        x: 250,
+        y: 0,
         name: '',
         faction: ''
       },
@@ -163,7 +165,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <a title="Open wiki" href="#mageGuild" class="info">mages guild</a>.',
           speaker: {
-            avatar: './img/characters/todd.webp',
+            char: 'mage',
             name: '',
             faction: 'mages'
           },
@@ -188,7 +190,7 @@ app.service('scenarioBasic', function(actionService) {
         {
           text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
           speaker: {
-            avatar: './img/characters/todd.webp',
+            char: 'mage',
             name: '',
             faction: 'mages'
           },
@@ -386,7 +388,9 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: '<em>A goblin starts shouting at you</em> "Pat Boblins head?" ',
       speaker: {
-        avatar: './img/characters/goblin.png',
+        char: 'goblin',
+        x: 150,
+        y: 300,
         name: '',
         faction: ''
       },
