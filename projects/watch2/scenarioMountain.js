@@ -19,7 +19,8 @@ app.service('scenarioMountain', function(actionService) {
     {
       text: '<em>From a crevice in the rock wall a mountain goblin shouts at you</em> "Hey there man-thing, watch out for falling rocks, yes!" ',
       speaker: {
-        avatar: './img/characters/goblin.png',
+        char: 'goblin',
+        mood: 'mad',
         name: '',
         faction: ''
       },
