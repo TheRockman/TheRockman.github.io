@@ -4,6 +4,12 @@ app.service('scenarioBasic', function(actionService) {
     {
       text: '<em>The <a href="#forest" title="Open wiki" class="info">forest</a> is silent.</em>',
       everGreen: true,
+      speaker: {
+        char: '',
+        mood: 'glad',
+        name: '',
+        faction: ''
+      },
       actions: [
         {
           label: '[Proceed]',
@@ -420,7 +426,7 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The goblin looks at you, jumps with joy and skips away.</em>',
           speaker: {
             char: 'goblin',
-            mood: 'glad',
+            mood: 'joy',
             name: '',
             faction: ''
           },

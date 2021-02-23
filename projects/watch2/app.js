@@ -160,10 +160,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     // moods
     switch (speaker.mood) {
       case 'sad':
-        $scope.pos = {x: 250, y: 400};
+        $scope.pos = {x: 250, y: 200};
         break;
       case 'glad':
-        $scope.pos = {x: 250, y: 0};
+        $scope.pos = {x: 250, y: -100};
+        break;
+      case 'joy':
+        $scope.pos = {x: 250, y: -200};
         break;
       case 'mad':
         $scope.pos = {x: 150, y: 150};
