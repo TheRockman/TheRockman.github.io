@@ -20,13 +20,13 @@
 
 .head{
   overflow: hidden;
-  height: 230px;
+  height: 250px;
   width: 250px;
   margin: 0 auto;
   pointer-events: none;
   margin-top: 2rem;
   z-index: 1;
-  border-top: 40px solid rgba(255, 255, 255, 0.25);
+  /* border-top: 40px solid rgba(255, 255, 255, 0.25); */
   border-radius: 200px;
   position: relative;
 }
@@ -35,21 +35,21 @@
   width: 50%;
   left: 0;
   right: 0;
-  top: 250px;
-  background: purple;
+  top: 230px;
+  /* background: purple; */
   margin: 0 auto;
   pointer-events: none;
   z-index: -1;
   border-radius: 200px;
   position: absolute;
-  border-top: 40px solid rgba(255, 255, 255, 0.25);
+  /* border-top: 40px solid rgba(255, 255, 255, 0.25); */
 }
 .body::after{
   content: "_";
   height: 200px;
   width: 90px;
   position: absolute;
-  top: -170px;
+  top: -140px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -61,7 +61,7 @@
   height: 146px;
   width: 90px;
   position: absolute;
-  top: -155px;
+  top: -125px;
   background: rgba(0, 0, 0, 0.6);
   left: 0;
   right: 0;
@@ -122,11 +122,10 @@
   filter: brightness(0.9);
   margin: 0 auto;
   z-index: -1;
-  top: 150px;
+  top: 6rem;
   pointer-events: none;
   border-radius: 200px;
   position: absolute;
-  transition: 0.5s background ease;
 }
 .l-ear{
   left: 85px;
@@ -145,10 +144,6 @@
   top: -15rem;
   left: 6rem;
   right: 0;
-}
-
-.head, .l-ear, .r-ear, .body::after{
-  background: tomato;
 }
 
 /* mobile */
@@ -218,8 +213,11 @@
   background-repeat: no-repeat;
   height: 32rem;
   width: 22rem;
-  top: -11.5rem;
+  top: -14.5rem;
   left: 6rem;
+}
+.gwen .brow, .gwen .head, .gwen .cheeks, .gwen .l-ear, .gwen .r-ear, .gwen .body::after{
+  background: #f3a293;
 }
 .gwen .body{
   background: #a4c1d0;
@@ -230,6 +228,9 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
-.mage .brow, .mage .head, .mage .cheeks, .mage .l-ear, .mage .r-ear{
+.mage .brow, .mage .head, .mage .cheeks, .mage .l-ear, .mage .r-ear, .mage .body::after{
   background: #f3a293;
+}
+.mage .body{
+  background: #2264d1;
 }

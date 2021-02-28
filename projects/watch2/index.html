@@ -141,11 +141,16 @@
         <div class="threedee">
           <img class="bg-layer" ng-src="{{currentRegion.background}}" alt="">
 
-          <div class="avatarbox md-layer" ng-if="currentScenario.speaker && !eventText" ng-cloak>
-            <!-- <img class="avatar" src="{{currentScenario.speaker.avatar}}" alt=""> -->
-
+          <div class="avatarbox md-layer" ng-if="currentScenario.speaker && applyFace() && !eventText" ng-cloak>
+            <details>
+              <summary>Rig</summary>
+              <input type="number" ng-model="pos.x" step="10" ng-change="applyFace()" ><br/>
+              <input type="number" ng-model="pos.y" step="10"  ng-change="applyFace()" ><br/>
+              <input type="number" ng-model="pos.rot" step="10" ng-change="applyFace()" ><br/>
+            </details>
             <!-- avatar -->
-            <div class="stage avatar {{currentScenario.speaker.char}} {{currentScenario.speaker.mood}}" ng-if="pose(currentScenario.speaker)">
+            <div class="stage avatar {{currentScenario.speaker.char}} {{currentScenario.speaker.mood}}">
+              <div ng-style="headTilt">
                 <div class="head" ng-style="sway2">
                   <div class="eye-wrap align jsb" ng-style="sway1">
                     <div class="eye"></div>
@@ -157,6 +162,8 @@
                 <div class="hat" ng-style="sway1"></div>
                 <div class="l-ear" ng-class="{'facing': pos.x > 250}" ng-style="IXsway3"></div>
                 <div class="r-ear" ng-class="{'facing': pos.x < 250}" ng-style="IXsway3"></div>
+              </div>
+
                 <div class="body"></div>
             </div>
             <!-- avatar -->

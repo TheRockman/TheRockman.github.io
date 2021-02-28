@@ -150,60 +150,71 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
 // rigging avatar
   $scope.pos = {
-    x: 150,
-    y: 150
+    x: 150 || $scope.currentScenario.speaker.x,
+    y: 150 || $scope.currentScenario.speaker.y,
+    rot: 1 || $scope.currentScenario.speaker.rot
   };
-  $scope.pose = function(speaker){
-    $scope.pos.x = speaker.x || 150;
-    $scope.pos.y = speaker.y || 150;
 
-    // moods
-    switch (speaker.mood) {
-      case 'sad':
-        $scope.pos = {x: 250, y: 200};
-        break;
-      case 'glad':
-        $scope.pos = {x: 250, y: -100};
-        break;
-      case 'joy':
-        $scope.pos = {x: 250, y: -200};
-        break;
-      case 'mad':
-        $scope.pos = {x: 150, y: 150};
-        break;
-      case 'determination':
-        $scope.pos = {x: 500, y: 0};
-        break;
-      default:
-        $scope.pos = {x: 150, y: 150};
+  $scope.applyFace = function(){
+    if ($scope.currentScenario.speaker) {
+      $scope.pos = {
+        x: 150 || $scope.currentScenario.speaker.x,
+        y: 150 || $scope.currentScenario.speaker.y,
+        rot: 0 || $scope.currentScenario.speaker.rot
+      };
+      // moods
+      switch ($scope.currentScenario.speaker.mood) {
+        case 'sad':
+          $scope.pos.x = 250;
+          $scope.pos.y = 200;
+          break;
+        case 'glad':
+          $scope.pos.x = 250;
+          $scope.pos.y = -100;
+          break;
+        case 'joy':
+          $scope.pos.x = 250;
+          $scope.pos.y = -200;
+          break;
+        case 'mad':
+          $scope.pos.x = 150;
+          $scope.pos.y = 150;
+          break;
+        case 'determination':
+          $scope.pos.x = 500;
+          $scope.pos.y = 0;
+          break;
+        default:
+          $scope.pos.x = 150;
+          $scope.pos.y = 150;
+      }
     }
 
+    // apply
     $scope.xStyle={'top': 20 + 'px', 'left': $scope.pos.x/10 + 'px'};
     $scope.yStyle={'top': $scope.pos.y/10 + 'px', 'left': 20 + 'px'};
     $scope.zStyle={'top': $scope.pos.y/10 + 'px', 'left': $scope.pos.x/10 + 'px'};
     $scope.sway1={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
     $scope.sway2={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
+    $scope.headTilt={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) rotate(' + $scope.pos.rot + 'deg) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
     $scope.IYsway2={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/6 - 25) + 'px)'};
     $scope.IXsway2={'transform': 'translateX(' +  ($scope.pos.x/6 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
     $scope.IXsway3={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
     return true;
   }
+  $scope.applyFace();
 
 //parallax
   var root = document.documentElement;
   root.addEventListener("mousemove", e => {
     var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-
-if(vw>768){
-  var mx = e.clientX;
-  var my = e.clientY;
-
-
-  root.style.setProperty('--x', mx/180 + "deg");
-  root.style.setProperty('--y', my/180 + "deg");
-}
-
+    if(vw>768){
+      var mx = e.clientX;
+      var my = e.clientY;
+      root.style.setProperty('--x', mx/180 + "deg");
+      root.style.setProperty('--y', my/180 + "deg");
+    }
   });
 
 });
