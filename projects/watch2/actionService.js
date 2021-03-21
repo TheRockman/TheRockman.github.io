@@ -89,6 +89,19 @@ app.service('actionService', function($timeout, wikiSercive) {
   }
   this.abort = abort;
 
+  this.multiAction = function (props, setScope, getScope) {
+    for (var i = 0; i < props.multiActionChain.length; i++) {
+      if(i+1 !== props.multiActionChain.length){
+        props.multiActionChain[i].actionProps.smallTalkAction = true;
+      }
+      (function (i) {
+        $timeout(function () {
+          props.multiActionChain[i].action(props.multiActionChain[i].actionProps, setScope, getScope);
+        }, i*1500)
+      }(i))
+    }
+  }
+
   this.modifyFactionRating = function (props, setScope, getScope) {
     var current = getScope('factions');
     current[props.faction].rep = current[props.faction].rep + props.factionMod;
@@ -137,10 +150,12 @@ app.service('actionService', function($timeout, wikiSercive) {
       //you dont have enough
     }
 
-    if(props.epilog){
-      abort(props, setScope, getScope)
-    }else{
-      progress(props, setScope, getScope)
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
     }
   }
 
@@ -149,10 +164,13 @@ app.service('actionService', function($timeout, wikiSercive) {
     current[props.flag].active = props.flagMod;
 
     setScope('questFlags', current);
-    if(props.epilog){
-      abort(props, setScope, getScope)
-    }else{
-      progress(props, setScope, getScope)
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
     }
   }
 
@@ -161,10 +179,13 @@ app.service('actionService', function($timeout, wikiSercive) {
     current[props.flag] = props.flagMod;
 
     setScope('secretquestFlags', current);
-    if(props.epilog){
-      abort(props, setScope, getScope)
-    }else{
-      progress(props, setScope, getScope)
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
     }
   }
 
@@ -191,10 +212,12 @@ app.service('actionService', function($timeout, wikiSercive) {
     current[props.stat] = current[props.stat] + props.statMod;
     setScope('stats', current);
 
-    if(props.epilog){
-      abort(props, setScope, getScope)
-    }else{
-      progress(props, setScope, getScope)
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
     }
 
     if(props.stat === 'hp'){

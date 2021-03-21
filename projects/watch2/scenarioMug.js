@@ -17,6 +17,126 @@ app.service('scenarioMug', function(actionService) {
     },
 //Scenario
     {
+      text: '<em>You overhear a heated discussion between a drunken elf and a furious dwarf at the bar</em> "You and your kin are the reason im drinking yá know, im out of a job because of that cursed forest you all call a home".<em>The elf looks up from his drink.</em>"Well if you greedy mayflies didnt cut it down in the first place it wouldnt fight back, hows that?"',
+      actions: [
+        {
+          label: '"By Tyr, the dwarf is right. People are suffering because of the cursed woods and the elves do nothing to stop it."',
+          action: actionService.multiAction,
+          actionProps: {
+            multiActionChain: [
+              {
+                action: actionService.modifyFactionRating,
+                actionProps:{
+                  faction: 'dwarf',
+                  factionMod: 5,
+                }
+              },
+              {
+                action: actionService.modifyFactionRating,
+                actionProps:{
+                  faction: 'elf',
+                  factionMod: -5,
+                }
+              },
+              {
+                action: actionService.modifyQuestFlags,
+                actionProps:{
+                  flag: 'test',
+                  flagMod: true
+                }
+              },
+              {
+                action: actionService.progress,
+                actionProps:{},
+              },
+            ],
+          }
+        },
+        {
+          label: '"Well spoken master elf, the woods have done nothing wrong in protecting itself. We should help it drive the dwarves out."',
+          action: actionService.multiAction,
+          actionProps: {
+            multiActionChain: [
+              {
+                action: actionService.modifyFactionRating,
+                actionProps:{
+                  faction: 'dwarf',
+                  factionMod: -5,
+                }
+              },
+              {
+                action: actionService.modifyFactionRating,
+                actionProps:{
+                  faction: 'elf',
+                  factionMod: 5,
+                }
+              },
+              {
+                action: actionService.modifyQuestFlags,
+                actionProps:{
+                  flag: 'test',
+                  flagMod: false
+                }
+              },
+              {
+                action: actionService.progress,
+                actionProps:{},
+              },
+            ],
+          }
+        },
+        {
+          label: '[Look around]',
+          action: actionService.smallTalk,
+          actionProps: {
+            smallTalkActionTaken: false,
+            epilog: 'You dont see any other elves or dwarves around.'
+          }
+        },
+        {
+          label: '[Dont get involved]',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '"Better not pick a fight in a place like this" <em>you think to yourself.</em>'
+          }
+        },
+      ],
+      path: [
+        {
+          text: '<em>They both look at you, and then at eachother</em>',
+          actions: [
+            {
+              label: '[Cha check] "Now sirs, calm down, i didnt mean to butt in, the ale must be getting to me"',
+              action: actionService.skillCheck,
+              actionProps: {
+                skill: 'cha',
+                dc: 12,
+                passCheckAction: actionService.abort,
+                failCheckAction: actionService.abort,
+                critEpilog: '<em>They both start laughing and slap your shoulders before returning to their drinks</em>',
+                passEpilog: '<em>They both just shade their heads before silently raising their glasses again</em>',
+                failEpilog: '<em>They both look ready to fight, but luckily the barkeeper appear behind them.</em>"Hey! If you dont simmer down i´ll have you thrown out. That goes for all three of you. Now go back to your drinks."'
+              }
+            },
+            {
+              label: '[Str check] "What? You want a go?"',
+              action: actionService.skillCheck,
+              actionProps: {
+                skill: 'str',
+                dc: 12,
+                passCheckAction: actionService.abort,
+                failCheckAction: actionService.abort,
+                critEpilog: '<em>You quickly knock them both out with their own tankards.</em>',
+                passEpilog: '<em>The three of you fly into a pile on the sticky tavern floor, fists and kicks fly but after a moment you emerge victorious</em>',
+                failEpilog: '<em>You barely utter question before two fists plant themselves in you face and everything goes black. When you come to they are both gone.'
+              }
+            },
+          ],
+        }
+      ]
+    },
+//Scenario
+    {
       text: '<em>A young dragonborn waitress hurries to your table.</em>"Welcome to The rusty mug, can i get you anything?"',
       actions: [
         {
@@ -46,7 +166,7 @@ app.service('scenarioMug', function(actionService) {
           }
         },
         {
-          label: '"1 Not right now"',
+          label: '"Nothing right now"',
           action: actionService.modifySecretQuestFlags,
           visibleWhen: '!secretquestFlags.MugNoOrder',
           actionProps: {
@@ -56,11 +176,19 @@ app.service('scenarioMug', function(actionService) {
           }
         },
         {
-          label: '"2 Not right now"',
+          label: '"Nothing right now"',
           action: actionService.abortEntireScenario,
           visibleWhen: 'secretquestFlags.MugNoOrder',
           actionProps: {
             epilog: '<em>She tighten her lips</em>"I did warn ya about wasting time and space good sir, now get out!"'
+          }
+        },
+        {
+          label: '"No but tell me; how does a mighty dragonborn like you end up in a place like this?"',
+          action: actionService.smallTalk,
+          actionProps: {
+            smallTalkActionTaken: false,
+            epilog: '<em>If scales could blush you are sure hers would right now</em>"Well, hording gold isnt viable in this day and age, so even we have to work for our daily meat"'
           }
         },
       ],
@@ -96,7 +224,7 @@ app.service('scenarioMug', function(actionService) {
           }
         },
         {
-          label: '"3 Not right now"',
+          label: '"Nothing right now"',
           action: actionService.modifySecretQuestFlags,
           visibleWhen: '!secretquestFlags.MugNoOrder',
           actionProps: {
@@ -106,11 +234,19 @@ app.service('scenarioMug', function(actionService) {
           }
         },
         {
-          label: '"4 Not right now"',
+          label: '"Nothing right now"',
           action: actionService.abortEntireScenario,
           visibleWhen: 'secretquestFlags.MugNoOrder',
           actionProps: {
             epilog: '<em>She tighten her lips</em>"I did warn ya about wasting time and space good sir, now get out!"'
+          }
+        },
+        {
+          label: '"No but tell me; how does a mighty dragonborn like you end up in a place like this?"',
+          action: actionService.smallTalk,
+          actionProps: {
+            smallTalkActionTaken: false,
+            epilog: '<em>If scales could blush you are sure hers would right now</em>"Well, hording gold isnt viable in this day and age, so even we have to work for our daily meat"'
           }
         },
       ],

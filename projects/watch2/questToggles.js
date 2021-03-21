@@ -1,6 +1,10 @@
 app.service('questToggles', function() {
   this.all = {
-    keyList: ['goblinSpeak','elfSpeak','knowGwen'],
+    test: {
+      active: false,
+      title: 'TEST',
+      desc: 'This shouldnt be seen'
+    },
     goblinSpeak: {
       active: false,
       title: 'Language: Goblin',
@@ -15,8 +19,10 @@ app.service('questToggles', function() {
       active: false,
       title: 'Friend: Syr Gwendolin',
       desc: 'You are friends with Syr Gwendolin of the kingsguard'
-    }
+    },
   }
+
+  this.all.keyList = Object.keys(this.all);
 
   this.secret = {
     MugNoOrder: false,

@@ -46,7 +46,7 @@
       <div class="map-view" ng-if="view === 'mapView'">
         <img src="https://i.pinimg.com/originals/15/31/23/15312378a425bfe3a63620f083fb9fdd.jpg" alt="">
         <span class="map-marker align" ng-if="currentRegion.mapNodes.includes(region.short)" ng-repeat="region in regions" ng-style="{{region.position}}" id="marker-{{region.short}}" ng-class="{'current-region': currentRegion === region}" ng-click="pickRegionFromMap(region)">
-          <img style="width:24px; height:24px;" src="https://static.wikia.nocookie.net/skyrim_gamepedia/images/8/8f/BluePalace.svg/revision/latest/scale-to-width-down/83?cb=20120228132544" alt="">
+          <img style="width:24px; height:24px;" src="{{region.mapIcon}}" alt="">
           <aside>{{region.name}}</aside>
         </span>
       </div>

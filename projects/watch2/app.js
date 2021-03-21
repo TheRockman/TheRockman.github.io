@@ -53,6 +53,18 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       desc: 'Inknose goblins are common and easy to spot by their long black noses.',
       title: 'Inknose tribe'
     },
+    elf: {
+      rep: 0,
+      icon: './img/factions/gobbo.png',
+      desc: 'Knifeears',
+      title: 'House Glittergreen'
+    },
+    dwarf: {
+      rep: 0,
+      icon: './img/factions/gobbo.png',
+      desc: 'Lumberfeet',
+      title: 'Forged brotherhood'
+    },
   }
 
   $scope.stats = {
