@@ -90,6 +90,8 @@ app.service('actionService', function($timeout, wikiSercive) {
   this.abort = abort;
 
   this.multiAction = function (props, setScope, getScope) {
+    setScope('optionLock', true);
+
     for (var i = 0; i < props.multiActionChain.length; i++) {
       if(i+1 !== props.multiActionChain.length){
         props.multiActionChain[i].actionProps.smallTalkAction = true;
@@ -97,9 +99,34 @@ app.service('actionService', function($timeout, wikiSercive) {
       (function (i) {
         $timeout(function () {
           props.multiActionChain[i].action(props.multiActionChain[i].actionProps, setScope, getScope);
+          if(i+1 === props.multiActionChain.length){
+            setScope('optionLock', false);
+          }
         }, i*1500)
       }(i))
     }
+  }
+
+  this.toggleFollower = function (props, setScope, getScope) {
+    var followers = getScope('followers');
+
+    followers[props.follower].following = !followers[props.follower].following;
+    setScope('followers', followers);
+
+    if(followers[props.follower].following){
+      displayToast(followers[props.follower].name + ' joined your party.', setScope, getScope)
+    }else{
+      displayToast(followers[props.follower].name + ' left your party.', setScope, getScope)
+    }
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
+    }
+
   }
 
   this.modifyFactionRating = function (props, setScope, getScope) {

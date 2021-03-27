@@ -42,6 +42,13 @@
       </div>
     </div>
 
+    <div ng-if="currentScenario.mapHint" class="follower-box">
+      <div class="align follower" ng-repeat="follower in followers" ng-if="follower.following" ng-click="talkToFollower(follower)">
+        <img class="follower-avatar" src="{{follower.portrait}}" alt="">
+        {{follower.name}}
+      </div>
+    </div>
+
     <div class="viewBox" ng-if="view !== null">
       <div class="map-view" ng-if="view === 'mapView'">
         <img src="https://i.pinimg.com/originals/15/31/23/15312378a425bfe3a63620f083fb9fdd.jpg" alt="">
@@ -186,7 +193,8 @@
                 Open map screen
               </button>
               <br/>
-              <ol>
+              <ol ng-class="{'optionLock': optionLock }">
+                {{optionLock}}
                 <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
                   <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
                     {{option.label}}
@@ -233,8 +241,10 @@
 <script type="text/javascript" src="mapMarkers.js"></script>
 <script type="text/javascript" src="actionService.js"></script>
 <script type="text/javascript" src="wikiSercive.js"></script>
-<script type="text/javascript" src="scenarioBasic.js"></script>
-<script type="text/javascript" src="scenarioMountain.js"></script>
-<script type="text/javascript" src="scenarioMug.js"></script>
+<script type="text/javascript" src="scenarios/followers/scenarioHenry.js"></script>
+<script type="text/javascript" src="scenarios/followers/scenarioBoblin.js"></script>
+<script type="text/javascript" src="scenarios/scenarioBasic.js"></script>
+<script type="text/javascript" src="scenarios/scenarioMountain.js"></script>
+<script type="text/javascript" src="scenarios/scenarioMug.js"></script>
 
 </html>

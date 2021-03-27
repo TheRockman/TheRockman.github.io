@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, questToggles, wikiSercive, mapMarkers) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, questToggles, wikiSercive, mapMarkers, scenarioHenry, scenarioBoblin) {
 
   $scope.questFlags = questToggles.all;
   $scope.secretquestFlags = questToggles.secret;
@@ -9,6 +9,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.adventureIndex = 0;
   $scope.adventureDepth = -1;
   $scope.toast = null;
+  $scope.optionLock = false;
   $scope.diceRollToast = null;
   $scope.diceRollResult = null;
   $scope.view = null;
@@ -16,11 +17,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.regions = mapMarkers.markers;
 
   $scope.currentRegion = $scope.regions[0];
+  $scope.currentRegionBackup = $scope.currentRegion;
   $scope.scenarios = $scope.currentRegion.scenarios;
   $scope.currentScenario = $scope.scenarios[0];
 
   $scope.pickRegionFromMap = function(item){
     $scope.currentRegion = item;
+    $scope.currentRegionBackup = $scope.currentRegion;
     $scope.view = null;
     $scope.scenarios = item.scenarios;
     $scope.adventureIndex = 0;
@@ -77,6 +80,21 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     cha: 2
   }
 
+  $scope.followers = {
+    henry: {
+      following: false,
+      name: 'Henry Slingerman',
+      scenarios: scenarioHenry.scenarios,
+      portrait: 'https://uninvisitedisle.files.wordpress.com/2018/01/2018-01-31.png?w=1200',
+    },
+    boblin: {
+      following: false,
+      name: 'Boblin',
+      scenarios: scenarioBoblin.scenarios,
+      portrait: 'https://styles.redditmedia.com/t5_10kt1w/styles/communityIcon_8fpdzqdg49v21.png?width=256&s=5c0fc4ce8a09c0d74da267582bde592611edbd89',
+    }
+  }
+
   $scope.inventory = {
     gold: 1000
   }
@@ -118,7 +136,11 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.wrapUpAndPickNext = function(){
     $scope.eventText = null;
     $scope.scenarios = $scope.scenarios.filter(function (el) {
-      return !el.done && !el.everGreen;
+      var passesCondition = true;
+      if(el.visibleWhen){
+        passesCondition = eval(el.visibleWhen)
+      }
+      return !el.done && !el.everGreen && passesCondition;
     });
 
     if ($scope.scenarios.length<1) {
@@ -158,6 +180,18 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     } else{
       $scope.view = newView;
     }
+  }
+
+  $scope.talkToFollower = function(follower){
+    console.log(follower);
+
+      $scope.currentRegionBackup = $scope.currentRegion;
+
+      $scope.view = null;
+      $scope.scenarios = follower.scenarios;
+      $scope.adventureIndex = 0;
+      $scope.adventureDepth = -1;
+      $scope.currentScenario = follower.scenarios[0];
   }
 
 // rigging avatar

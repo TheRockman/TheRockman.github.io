@@ -67,6 +67,10 @@ ol{
 /* .perkOption{
   color: cyan;
 } */
+.optionLock{
+  cursor: not-allowed;
+  pointer-events: none;
+}
 .alreadyTakenOption{
   pointer-events: none;
   opacity: 0.6;
@@ -188,6 +192,25 @@ ol{
   100% {
     opacity: 1;
   }
+}
+
+.follower-box{
+  position: absolute;
+  animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  top: 6rem;
+  z-index: 100;
+}
+.follower{
+  background: white;
+  margin-top: 0.5rem;
+  color: black;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border-radius: 1000px;
+}
+.follower-avatar{
+  height: 45px;
+  width: 45px;
 }
 
 .info{

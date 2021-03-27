@@ -424,7 +424,7 @@ app.service('scenarioBasic', function(actionService) {
       ],
       path: [
         {
-          text: '<em>The goblin looks at you, jumps with joy and skips away.</em>',
+          text: '<em>The goblin looks at you, jumps with joy.</em>',
           speaker: {
             char: 'goblin',
             mood: 'joy',
@@ -432,6 +432,14 @@ app.service('scenarioBasic', function(actionService) {
             faction: ''
           },
           actions: [
+            {
+              label: '"How would you like to come with me?"',
+              action: actionService.toggleFollower,
+              actionProps: {
+                follower: 'boblin',
+                epilog: '<em>The goblin does a little dance around your feet.</em>'
+              }
+            },
             {
               label: '[Proceed]',
               action: actionService.modifyFactionRating,
@@ -455,6 +463,20 @@ app.service('scenarioBasic', function(actionService) {
           action: actionService.abort,
           actionProps: {
             epilog: '<em>You turn around, but nobody is there.</em>'
+          }
+        },
+      ],
+    },
+//Scenario
+    {
+      text: '"Hello Im Henry."',
+      actions: [
+        {
+          label: '"Hi Henry, join me"',
+          action: actionService.toggleFollower,
+          actionProps: {
+            follower: 'henry',
+            epilog: '<em>Henry joined your party.</em>'
           }
         },
       ],
