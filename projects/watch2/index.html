@@ -43,7 +43,7 @@
     </div>
 
     <div ng-if="currentScenario.mapHint" class="follower-box">
-      <div class="align follower" ng-repeat="follower in followers" ng-if="follower.following" ng-click="talkToFollower(follower)">
+      <div class="align follower" ng-repeat="follower in followers" ng-if="follower.following && follower.canSpeak" ng-click="talkToFollower(follower)">
         <img class="follower-avatar" src="{{follower.portrait}}" alt="">
         {{follower.name}}
       </div>
@@ -194,7 +194,6 @@
               </button>
               <br/>
               <ol ng-class="{'optionLock': optionLock }">
-                {{optionLock}}
                 <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
                   <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
                     {{option.label}}

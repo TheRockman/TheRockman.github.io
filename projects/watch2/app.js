@@ -21,16 +21,6 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.scenarios = $scope.currentRegion.scenarios;
   $scope.currentScenario = $scope.scenarios[0];
 
-  $scope.pickRegionFromMap = function(item){
-    $scope.currentRegion = item;
-    $scope.currentRegionBackup = $scope.currentRegion;
-    $scope.view = null;
-    $scope.scenarios = item.scenarios;
-    $scope.adventureIndex = 0;
-    $scope.adventureDepth = -1;
-    $scope.currentScenario = item.scenarios[0];
-  }
-
   $scope.factions = {
     crown: {
       rep: 0,
@@ -83,12 +73,14 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.followers = {
     henry: {
       following: false,
+      canSpeak: true,
       name: 'Henry Slingerman',
       scenarios: scenarioHenry.scenarios,
       portrait: 'https://uninvisitedisle.files.wordpress.com/2018/01/2018-01-31.png?w=1200',
     },
     boblin: {
       following: false,
+      canSpeak: true,
       name: 'Boblin',
       scenarios: scenarioBoblin.scenarios,
       portrait: 'https://styles.redditmedia.com/t5_10kt1w/styles/communityIcon_8fpdzqdg49v21.png?width=256&s=5c0fc4ce8a09c0d74da267582bde592611edbd89',
@@ -120,6 +112,24 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.$apply();
   }, false);
 
+  $scope.resetFollowerCanSpeak = function(){
+    var keys = Object.keys($scope.followers);
+    for (var i = 0; i < keys.length; i++) {
+      $scope.followers[keys[i]].canSpeak = true;
+    }
+  }
+
+  $scope.pickRegionFromMap = function(item){
+    $scope.resetFollowerCanSpeak();
+
+    $scope.currentRegion = item;
+    $scope.currentRegionBackup = $scope.currentRegion;
+    $scope.view = null;
+    $scope.scenarios = item.scenarios;
+    $scope.adventureIndex = 0;
+    $scope.adventureDepth = -1;
+    $scope.currentScenario = item.scenarios[0];
+  }
 
   var languageGenerator = function(lang){
     var languages = {
@@ -183,10 +193,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   }
 
   $scope.talkToFollower = function(follower){
-    console.log(follower);
-
+      follower.canSpeak = false;
       $scope.currentRegionBackup = $scope.currentRegion;
-
       $scope.view = null;
       $scope.scenarios = follower.scenarios;
       $scope.adventureIndex = 0;

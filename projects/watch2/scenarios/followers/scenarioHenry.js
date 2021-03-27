@@ -7,36 +7,33 @@ app.service('scenarioHenry', function(actionService) {
       everGreen: true,
       actions: [
         {
-          label: '"[Proceed]"',
+          label: '"You -eh- doing ok there Henry?"',
+          visibleWhen: "currentRegion.short === 'trm'",
           action: actionService.abort,
           actionProps: {
-            epilog: '<em></em>'
+            epilog: '<em>Henry is looking pale and holding his pint of milk with both hands</em>"Frankly, no. These places gives me the willies, so many drunks and ruffians in one place at once."'
           }
-        }
-      ],
-    },
-    {
-      text: '<em>Henry holds a mug of ale and looks nervous</em>',
-      visibleWhen: "$scope.currentRegion.short === 'trm'",
-      actions: [
+        },
         {
-          label: '"You ok Henry?"',
+          label: '"Who are you again?"',
           action: actionService.abort,
           actionProps: {
-            epilog: '"Frankly, no. These places gives me the willies, all these drunks and ruffians."'
+            epilog: '<em>Henry looks sad and annoyed at the same time.</em>"Im Henry"'
           }
-        }
-      ],
-    },
-    {
-      text: '"I think its time i left"',
-      actions: [
+        },
         {
-          label: '"OK, bye Henry"',
+          label: '"I think its time we part ways"',
           action: actionService.toggleFollower,
           actionProps: {
             follower: 'henry',
-            epilog: '<em>Henry left your party.</em>'
+            epilog: '<em>Henry leaves</em>'
+          }
+        },
+        {
+          label: '"Let get going"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>Henry nods and grabs his backpack.</em>'
           }
         },
       ],

@@ -7,48 +7,42 @@ app.service('scenarioBoblin', function(actionService) {
       everGreen: true,
       actions: [
         {
-          label: '"[Proceed]"',
+          label: '[Pat Boblins head]',
+          action: actionService.modifyFactionRating,
+          actionProps: {
+            faction: 'boblin',
+            factionMod: 1,
+            epilog: '<em>Goblins are indeed strage creatures.</em>'
+          }
+        },
+        {
+          label: '"Do you know these mountain goblins?"',
+          visibleWhen: 'currentRegion.short === "grm"',
           action: actionService.abort,
           actionProps: {
-            epilog: '<em></em>'
+            epilog: '<em>Boblin nods</em>"Big-rock goblins and tree-goblins had big fight long-long ago. Careful."'
           }
-        }
-      ],
-    },
-    {
-      text: '<em>Boblin looks out over a ledge</em>"Long drop, skyspire goblins brave"',
-      visibleWhen: "$scope.currentRegion.short === 'trm'",
-      actions: [
+        },
         {
-          label: '"You ok Boblin?"',
+          label: '"Had any good hunts lately?"',
           action: actionService.abort,
           actionProps: {
-            epilog: '"Boblin also brave, climbs tall trees all day"'
+            epilog: '<em>Boblin nods</em>"Big bundle of yummy eggs in tree. Boblin throw spear. Hit fether-snacks, then climb quickly up tree. Good."'
           }
-        }
-      ],
-    },
-    {
-      text: '"Boblin hunt, find nice fether snack"',
-      actions: [
+        },
         {
-          label: '"Great..."',
-          action: actionService.abort,
-          actionProps: {
-            epilog: '<em>You look away as the goblin chomps down a dead bird in one bite</em>'
-          }
-        }
-      ],
-    },
-    {
-      text: '"Boblin go away, tribe need Boblin"',
-      actions: [
-        {
-          label: '"OK, bye Boblin"',
+          label: '"I think its time we part ways"',
           action: actionService.toggleFollower,
           actionProps: {
-            follower: 'henry',
-            epilog: '<em>Henry left your party.</em>'
+            follower: 'boblin',
+            epilog: '<em>Boblin nods slowly and scurries away</em>'
+          }
+        },
+        {
+          label: '"Let get going"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>Boblin nods, yawns and crawls into your backpack. A few moments later you hear him snoring.</em>'
           }
         },
       ],

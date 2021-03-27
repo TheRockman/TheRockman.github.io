@@ -218,11 +218,11 @@ app.service('scenarioBasic', function(actionService) {
                 smallTalkAction: actionService.modifyQuestFlags,
                 flag: 'goblinSpeak',
                 flagMod: true,
-                epilog: '<em>He nods and give you a smooth rock with a crude rune on it.</em>"I found this stone in a goblin lair, i belive it will allow whoever holds it to speak as they do. But I dont think goblins have anything useful to say, so you can have it"<em>You keep talking and in the morning he walks off in the direction you came from.</em>'
+                epilog: '<em>He nods and give you a smooth rock with a crude rune on it.</em>"I found this stone in a goblin lair, i belive it will allow whoever holds it to speak as they do. But I dont think goblins have anything useful to say, so you can have it"'
               }
             },
             {
-              label: '[INT Check] "That sounds implausible"',
+              label: '[INT Check] "Did you say dragons? That sounds implausible"',
               action: actionService.skillCheck,
               actionProps: {
                 skill: 'int',
