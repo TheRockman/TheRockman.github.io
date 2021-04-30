@@ -15,6 +15,11 @@ app.service('questToggles', function() {
       title: 'Language: Elvish',
       desc: 'You understand elves'
     },
+    abyssal: {
+      active: false,
+      title: 'Language: Abyssal',
+      desc: 'You understand the dark tongue'
+    },
     knowGwen: {
       active: false,
       title: 'Friend: Syr Gwendolin',

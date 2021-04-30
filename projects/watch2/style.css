@@ -300,6 +300,9 @@ ol{
   padding: 1rem;
   margin: 1rem;
 }
+.invisi{
+  opacity: 0;
+}
 .invisi-card{
   border: none;
   background: none;

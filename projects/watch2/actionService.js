@@ -27,6 +27,7 @@ app.service('actionService', function($timeout, wikiSercive) {
     var currentScenario = getScope('currentScenario')
     var scenarios = getScope('scenarios')
     var adventureIndex = getScope('adventureIndex')
+    var pos = getScope('pos')
     var fakeCurrentScenario = {};
 
     if(props.epilog){
@@ -47,6 +48,15 @@ app.service('actionService', function($timeout, wikiSercive) {
       eventText = null;
       adventureDepth++;
       currentScenario = scenarios[adventureIndex].path[adventureDepth];
+
+      if(currentScenario.speaker){
+        var tempPos = {
+          x: currentScenario.speaker.x,
+          y: currentScenario.speaker.y
+        }
+        console.log('ding');
+        setScope('pos', tempPos);
+      }
 
       setScope('eventText', eventText);
       setScope('adventureDepth', adventureDepth);

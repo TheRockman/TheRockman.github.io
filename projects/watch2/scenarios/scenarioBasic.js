@@ -6,7 +6,6 @@ app.service('scenarioBasic', function(actionService) {
       everGreen: true,
       // speaker: {
       //   char: 'mage',
-      //   mood: 'glad',
       //   name: '',
       //   faction: ''
       // },
@@ -25,6 +24,8 @@ app.service('scenarioBasic', function(actionService) {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       speaker: {
         char: 'gwen',
+        x: -1,
+        y: -1,
         name: '',
         faction: ''
       },
@@ -62,7 +63,8 @@ app.service('scenarioBasic', function(actionService) {
           speaker: {
             char: 'gwen',
             name: 'Syr Gwendolin',
-            mood: 'glad',
+            x: 0,
+            y: 0,
             faction: 'crown'
           },
           actions: [
@@ -146,7 +148,8 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>After a long days journey you make camp a few yards off the road. Just as you get your fire started a robed stranger appear at the edge of the clearing.</em>',
       speaker: {
         char: 'mage',
-        mood: 'mad',
+        x: 0,
+        y: -1,
         name: '',
         faction: ''
       },
@@ -172,8 +175,9 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <a title="Open wiki" href="#mageGuild" class="info">mages guild</a>.',
           speaker: {
             char: 'mage',
+            x: 0,
+            y: -2,
             name: '',
-            mood: 'glad',
             faction: 'mages'
           },
           actions: [
@@ -198,8 +202,9 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
           speaker: {
             char: 'mage',
+            x: 1,
+            y: -1,
             name: '',
-            mood: 'glad',
             faction: 'mages'
           },
           actions: [
@@ -397,10 +402,8 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>A goblin starts shouting at you</em> "Pat Boblins head?" ',
       speaker: {
         char: 'goblin',
-        x: 150,
-        y: 300,
-        rot: 10,
-        mood: 'sad',
+        x: 0,
+        y: -1,
         name: '',
         faction: ''
       },
@@ -427,7 +430,8 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The goblin looks at you, jumps with joy.</em>',
           speaker: {
             char: 'goblin',
-            mood: 'joy',
+            x: 0,
+            y: 1,
             name: '',
             faction: ''
           },
@@ -456,7 +460,7 @@ app.service('scenarioBasic', function(actionService) {
 //Scenario
     {
       text: '<em>You hear a womans voice whisper in your ear, or maybe its in your mind: </em> "Dont trust the squid, his venom is slow but deadly" ',
-      language: 'elfSpeak',
+      language: 'abyssal',
       actions: [
         {
           label: '"What?"',

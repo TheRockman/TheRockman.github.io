@@ -12,6 +12,7 @@
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js'></script>
 </head>
 <body>
   <div class="mainC" ng-controller="mainCtrl">
@@ -146,41 +147,18 @@
 
       <div class="shadow-box">
         <div class="threedee">
-          <img class="bg-layer" ng-src="{{currentRegion.background}}" alt="">
-
-          <div class="avatarbox md-layer" ng-if="currentScenario.speaker && applyFace() && !eventText" ng-cloak>
-            <details>
-              <summary>Rig</summary>
-              <input type="number" ng-model="pos.x" step="10" ng-change="applyFace()" ><br/>
-              <input type="number" ng-model="pos.y" step="10"  ng-change="applyFace()" ><br/>
-              <input type="number" ng-model="pos.rot" step="10" ng-change="applyFace()" ><br/>
-            </details>
-            <!-- avatar -->
-            <div class="stage avatar {{currentScenario.speaker.char}} {{currentScenario.speaker.mood}}">
-              <div ng-style="headTilt">
-                <div class="head" ng-style="sway2">
-                  <div class="eye-wrap align jsb" ng-style="sway1">
-                    <div class="eye"></div>
-                    <div class="eye"></div>
-                  </div>
-                  <div class="nose" ng-style="sway2"></div>
-                  <div class="mouth" ng-style="sway2"></div>
-                </div>
-                <div class="hat" ng-style="sway1"></div>
-                <div class="l-ear" ng-class="{'facing': pos.x > 250}" ng-style="IXsway3"></div>
-                <div class="r-ear" ng-class="{'facing': pos.x < 250}" ng-style="IXsway3"></div>
-              </div>
-
-                <div class="body"></div>
-            </div>
-            <!-- avatar -->
-
-
+          <div class="md-layer">
+            <!-- <input type="number" ng-model="pos.x" steps="1">
+            <input type="number" ng-model="pos.y" steps="1"> -->
+            <div id="pupeteer"></div>
+            <div ng-class="{'invisi': !currentScenario.speaker || eventText}" ng-cloak id="avatar"></div>
             <p ng-cloak class="align" ng-if="currentScenario.speaker.name">
               <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
               {{currentScenario.speaker.name}}
             </p>
           </div>
+
+          <img class="bg-layer" ng-src="{{currentRegion.background}}" alt="">
 
           <div class="talkbox fg-layer" ng-if="eventText || currentScenario.text">
             <div ng-if="!currentScenario.done && !eventText">
@@ -245,5 +223,7 @@
 <script type="text/javascript" src="scenarios/scenarioBasic.js"></script>
 <script type="text/javascript" src="scenarios/scenarioMountain.js"></script>
 <script type="text/javascript" src="scenarios/scenarioMug.js"></script>
+
+<script  src="3DHead.js"></script>
 
 </html>

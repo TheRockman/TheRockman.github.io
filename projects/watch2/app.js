@@ -135,12 +135,24 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     var languages = {
       goblinSpeak: ["zak`pleenk", "xoggoirt", "aark", "waaggusia", "nin", "og", "zotrert", "dract"],
       elfSpeak: ["ala", "lordaa", "do", "sindram", "di´", "meliral", "uriam", "dract"],
+      abyssal: ["g̷̮̘o̥̰̠̹̩͕k̸̛͕͔̜̤̲̩͡a̷̷̻̭̯ͅ ̤͖̩̤̯̩̜͉͠ạ̷̮̪̠̥̺̭͈h̢̗̠͚̖̭͈͍̕ ͏͔̬͕̬","̞̩̼g̶̗̣̹͇̗̬̜͘o̶̧̬̲̺ͅf̨̬'̧͎͔̹͉͈̰̝͙ͅn̪̙̭̺͜ņ́","̜̦̻͖͈͖ ̷͏͔a͏̸͔̳͔̺̗̗̼͍h̳̭̩̣̬̦̯͢ͅ ̪͈̫n̸̸̷̰i̛̫͢l̴̨̙g̵̮͈̯h̶̠̱̥̞̼̫̯̞'͡͏̗͍̫̖̘r͎̠̠̞̙̺̰͔i͇͉","̳,̪͖͕͚̝a̸͖̫̯f̷̠͚̯͘l̡̨̨̤͔͈̞̟͍̻̭s҉̛͓̠̮͙͢l̫̺͎̕l̨͉͎͇͍̣͞'͏͍̞͓͖͈̼̬͍͈͡h̡̜̺̬͖̕a̦̫͉̟̯̦̜,̬̞̕͠ ̡̫̳̗̟̤̣̞̩͡͡n҉͚̫̫͉̙̮n̫͎͕̝̗̹͜͜ͅn̻̩y͏̞","̙͔̰͕͈̰̩̞̩ḩ̻̤a̸̪͖̺͢͞h͇̗̭̝͓͇"],
     }
 
     var text = [];
     var x = 10;
     while(--x) text.push(languages[lang][Math.floor(Math.random() * languages[lang].length)]);
     return text.join(" ");
+  }
+
+  //pupeteer avatar
+  $scope.pos = {
+    x: 0,
+    y: 0
+  }
+  $scope.setPupeteerAttrb = function(pos){
+    var myEl = angular.element(document.querySelector('#pupeteer'));
+    myEl.attr('x', pos.x);
+    myEl.attr('y', pos.y);
   }
 
   $scope.wrapUpAndPickNext = function(){
@@ -171,6 +183,11 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.adventureIndex = roll;
     $scope.currentScenario = $scope.scenarios[roll];
 
+    if($scope.currentScenario && $scope.currentScenario.speaker){
+      $scope.pos.x = $scope.currentScenario.speaker.x;
+      $scope.pos.y = $scope.currentScenario.speaker.y;
+      $scope.setPupeteerAttrb($scope.pos)
+    }
     // handle translation
     if($scope.currentScenario && $scope.currentScenario.language) {
       if(!$scope.questFlags[$scope.currentScenario.language].active){
@@ -201,62 +218,6 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.adventureDepth = -1;
       $scope.currentScenario = follower.scenarios[0];
   }
-
-// rigging avatar
-  $scope.pos = {
-    x: 150 || $scope.currentScenario.speaker.x,
-    y: 150 || $scope.currentScenario.speaker.y,
-    rot: 1 || $scope.currentScenario.speaker.rot
-  };
-
-  $scope.applyFace = function(){
-    if ($scope.currentScenario.speaker) {
-      $scope.pos = {
-        x: 150 || $scope.currentScenario.speaker.x,
-        y: 150 || $scope.currentScenario.speaker.y,
-        rot: 0 || $scope.currentScenario.speaker.rot
-      };
-      // moods
-      switch ($scope.currentScenario.speaker.mood) {
-        case 'sad':
-          $scope.pos.x = 250;
-          $scope.pos.y = 200;
-          break;
-        case 'glad':
-          $scope.pos.x = 250;
-          $scope.pos.y = -100;
-          break;
-        case 'joy':
-          $scope.pos.x = 250;
-          $scope.pos.y = -200;
-          break;
-        case 'mad':
-          $scope.pos.x = 150;
-          $scope.pos.y = 150;
-          break;
-        case 'determination':
-          $scope.pos.x = 500;
-          $scope.pos.y = 0;
-          break;
-        default:
-          $scope.pos.x = 150;
-          $scope.pos.y = 150;
-      }
-    }
-
-    // apply
-    $scope.xStyle={'top': 20 + 'px', 'left': $scope.pos.x/10 + 'px'};
-    $scope.yStyle={'top': $scope.pos.y/10 + 'px', 'left': 20 + 'px'};
-    $scope.zStyle={'top': $scope.pos.y/10 + 'px', 'left': $scope.pos.x/10 + 'px'};
-    $scope.sway1={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
-    $scope.sway2={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
-    $scope.headTilt={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) rotate(' + $scope.pos.rot + 'deg) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
-    $scope.IYsway2={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/6 - 25) + 'px)'};
-    $scope.IXsway2={'transform': 'translateX(' +  ($scope.pos.x/6 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
-    $scope.IXsway3={'transform': 'translateX(' +  ($scope.pos.x/10 - 25) + 'px) translateY(' +  ($scope.pos.y/10 - 25) + 'px)'};
-    return true;
-  }
-  $scope.applyFace();
 
 //parallax
   var root = document.documentElement;
