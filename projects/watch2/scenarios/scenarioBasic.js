@@ -24,8 +24,8 @@ app.service('scenarioBasic', function(actionService) {
       text: 'The sound of plate against plate pierce the silence. From around the bend in the path a knight emerge.',
       speaker: {
         char: 'gwen',
-        x: -1,
-        y: -1,
+        baseActions: 'walk',
+        additiveActions: 'agree',
         name: '',
         faction: ''
       },
@@ -63,8 +63,8 @@ app.service('scenarioBasic', function(actionService) {
           speaker: {
             char: 'gwen',
             name: 'Syr Gwendolin',
-            x: 0,
-            y: 0,
+            baseActions: 'idle',
+            additiveActions: 'agree',
             faction: 'crown'
           },
           actions: [
@@ -148,8 +148,8 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>After a long days journey you make camp a few yards off the road. Just as you get your fire started a robed stranger appear at the edge of the clearing.</em>',
       speaker: {
         char: 'mage',
-        x: 0,
-        y: -1,
+        baseActions: 'idle',
+        additiveActions: 'sad_pose',
         name: '',
         faction: ''
       },
@@ -175,8 +175,8 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The stranger sits down and lights a pipe and the the two of you share stories of adventures you both have had. You understand from the way he speaks that he works for the <a title="Open wiki" href="#mageGuild" class="info">mages guild</a>.',
           speaker: {
             char: 'mage',
-            x: 0,
-            y: -2,
+            baseActions: 'idle',
+            additiveActions: 'headShake',
             name: '',
             faction: 'mages'
           },
@@ -202,8 +202,8 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The stranger tells you about far off lands where wild men fight dragons.</em>',
           speaker: {
             char: 'mage',
-            x: 1,
-            y: -1,
+            baseActions: 'run',
+            additiveActions: 'sad_pose',
             name: '',
             faction: 'mages'
           },
@@ -402,8 +402,8 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>A goblin starts shouting at you</em> "Pat Boblins head?" ',
       speaker: {
         char: 'goblin',
-        x: 0,
-        y: -1,
+        baseActions: 'idle',
+        additiveActions: 'sneak_pose',
         name: '',
         faction: ''
       },
@@ -430,8 +430,8 @@ app.service('scenarioBasic', function(actionService) {
           text: '<em>The goblin looks at you, jumps with joy.</em>',
           speaker: {
             char: 'goblin',
-            x: 0,
-            y: 1,
+            baseActions: 'idle',
+            additiveActions: 'agree',
             name: '',
             faction: ''
           },

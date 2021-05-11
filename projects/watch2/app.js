@@ -146,13 +146,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   //pupeteer avatar
   $scope.pos = {
-    x: 0,
-    y: 0
+    baseActions: null,
+    additiveActions: null
   }
   $scope.setPupeteerAttrb = function(pos){
     var myEl = angular.element(document.querySelector('#pupeteer'));
-    myEl.attr('x', pos.x);
-    myEl.attr('y', pos.y);
+    myEl.attr('baseActions', pos.baseActions);
+    myEl.attr('additiveActions', pos.additiveActions);
   }
 
   $scope.wrapUpAndPickNext = function(){
@@ -184,10 +184,15 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.currentScenario = $scope.scenarios[roll];
 
     if($scope.currentScenario && $scope.currentScenario.speaker){
-      $scope.pos.x = $scope.currentScenario.speaker.x;
-      $scope.pos.y = $scope.currentScenario.speaker.y;
-      $scope.setPupeteerAttrb($scope.pos)
+      $scope.pos.baseActions = $scope.currentScenario.speaker.baseActions;
+      $scope.pos.additiveActions = $scope.currentScenario.speaker.additiveActions;
+    } else{
+      $scope.pos = {
+        baseActions: null,
+        additiveActions: null
+      }
     }
+    $scope.setPupeteerAttrb($scope.pos)
     // handle translation
     if($scope.currentScenario && $scope.currentScenario.language) {
       if(!$scope.questFlags[$scope.currentScenario.language].active){

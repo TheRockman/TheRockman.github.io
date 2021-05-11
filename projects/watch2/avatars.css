@@ -1,35 +1,25 @@
-#avatar {
+#container canvas {
   height: 300px;
   width: 300px;
   position: absolute;
   /* outline: 3px solid magenta; */
   z-index: 100;
-  right: 0;
+  right: -5rem;
   top: 0px;
+  pointer-events: none;
 }
-canvas{
-  width: 300px!important;
-  height: 300px!important;
-  position: absolute;
-  top: 0;
-}
-
 /* mobile */
 @media screen and (max-width: 768px) {
   .stage{
     transform: scale(0.5);
   }
 
-  #avatar {
-    height: 150px;
-    width: 150px;
-    position: absolute;
-    z-index: 100;
-  }
-  canvas{
-    width: 150px!important;
-    height: 150px!important;
+#container canvas{
+    width: 50vw!important;
+    height: 100vh!important;
     position: absolute;
     top: 0;
+    left: 0;
+    margin: 0 auto;
   }
 }
