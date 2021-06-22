@@ -1,25 +1,473 @@
-#container canvas {
-  height: 300px;
-  width: 300px;
+.goblin .face{
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/16/goblin-orc-hermit-18143417.png?v401")!important;
+}
+.gwen .face{
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/16/knight-18143696.png?v401")!important;
+}
+.mage .face{
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/14/ender-mage-18117041.png?v401")!important;
+}
+.merchant .face{
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/02/26/merchant-patrik-16918554.png?v401")!important;
+}
+.henry .face{
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/05/19/fur-coat-chief-17854732.png?v401")!important;
+}
+
+#character, #character .wrap, #character .shape, #character .face {
   position: absolute;
-  /* outline: 3px solid magenta; */
-  z-index: 100;
-  right: -5rem;
-  top: 0px;
+  transform-style: preserve-3d;
+}
+
+#character {
+  width: 16em;
+  height: 32em;
+  font-size: 0.9em;
+  top: 50%;
+  right: 2em;
+  transform: translate(-50%, -30%);
+}
+#character .wrap {
+  width: 100%;
+  height: 100%;
+  transform: rotateX(0deg) rotateY(-15deg);
+  transition: 0.25s ease-out;
   pointer-events: none;
 }
-/* mobile */
-@media screen and (max-width: 768px) {
-  .stage{
-    transform: scale(0.5);
-  }
 
-#container canvas{
-    width: 50vw!important;
-    height: 100vh!important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0 auto;
+@keyframes pose1 {
+  from {
+    transform: rotateY(-16deg);
   }
+  to {
+    transform: rotateY(16deg);
+  }
+}
+.pose1 .wrap{
+  animation: pose1 4s ease-in-out infinite alternate;
+}
+
+#character .shape {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: center;
+}
+#character .shape .ft {
+  width: 100%;
+  height: 100%;
+  background-color: #FAFAFA;
+}
+#character .shape .bk {
+  width: 100%;
+  height: 100%;
+  background-color: #EEE;
+  left: 100%;
+}
+#character .shape .rt {
+  background-color: #EEE;
+  transform: rotateY(-90deg) translateX(-50%);
+  filter: brightness(0.95);
+}
+#character .shape .lt {
+  left: 100%;
+  background-color: #E0E0E0;
+  transform: rotateY(90deg) translateX(-50%);
+  filter: brightness(0.95);
+}
+#character .shape .tp {
+  background-color: #FFF;
+  transform: rotateX(90deg) translateY(-50%);
+}
+#character .shape .bm {
+  top: 100%;
+  background-color: #BDBDBD;
+  transform: rotateZ(180deg) rotateX(90deg) translateY(-50%) translateX(-100%);
+  filter: brightness(0.9);
+}
+#character .face {
+  overflow: hidden;
+  background: no-repeat;
+  background-size: 64em auto;
+  /* background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/21/steampunk-18183373.png?v401"); */
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
+  transform-origin: 0 0;
+}
+@keyframes head {
+  from {
+    transform: rotateX(16deg);
+  }
+  to {
+    transform: rotateZ(-8deg);
+  }
+}
+#character .head {
+  width: 8em;
+  height: 8em;
+  margin: -16em 0 0 -4em;
+  animation: head 4s ease-in-out infinite alternate;
+  transform-origin: 50% 100%;
+}
+#character .head .ft {
+  transform: translateZ(4em);
+  background-position: -8em -8em;
+}
+#character .head .bk {
+  transform: translateZ(-4em) rotateY(180deg);
+  background-position: -24em -8em;
+}
+#character .head .rt, #character .head .lt, #character .head .tp, #character .head .bm {
+  width: 8em;
+  height: 8em;
+}
+#character .head .tp {
+  background-position: -8em 0;
+}
+#character .head .bm {
+  background-position: -16em 0;
+}
+#character .head .rt {
+  background-position: 0 -8em;
+}
+#character .head .lt {
+  background-position: -16em -8em;
+}
+#character .torso {
+  width: 8em;
+  height: 12em;
+  margin: -18em 0 0 -4em;
+  transform: translate(0em, 10em);
+}
+#character .torso .ft {
+  transform: translateZ(2em);
+  background-position: -20em -20em;
+}
+#character .torso .bk {
+  transform: translateZ(-2em) rotateY(180deg);
+  background-position: -32em -20em;
+}
+#character .torso .rt, #character .torso .lt {
+  width: 4em;
+  height: 12em;
+}
+#character .torso .rt {
+  background-position: -16em -20em;
+}
+#character .torso .lt {
+  background-position: -28em -20em;
+}
+#character .torso .tp, #character .torso .bm {
+  width: 8em;
+  height: 4em;
+}
+#character .torso .tp {
+  background-position: -20em -16em;
+}
+#character .torso .bm {
+  background-position: -28em -16em;
+}
+#character .legLeft {
+  width: 4em;
+  height: 12em;
+  margin: -18em 0 0 -2em;
+  transform: translate(-2em, 22em);
+}
+#character .legLeft .ft {
+  transform: translateZ(2em);
+  background-position: -4em -20em;
+}
+#character .legLeft .bk {
+  transform: translateZ(-2em) rotateY(180deg);
+  background-position: -12em -20em;
+}
+#character .legLeft .rt, #character .legLeft .lt {
+  width: 4em;
+  height: 12em;
+}
+#character .legLeft .rt {
+  background-position: 0 -20em;
+}
+#character .legLeft .lt {
+  background-position: -8em -20em;
+}
+#character .legLeft .tp, #character .legLeft .bm {
+  width: 4em;
+  height: 4em;
+}
+#character .legLeft .tp {
+  background-position: -4em -16em;
+}
+#character .legLeft .bm {
+  background-position: -8em -16em;
+}
+#character .legRight {
+  width: 4em;
+  height: 12em;
+  margin: -18em 0 0 -2em;
+  transform: translate3D(2em, 22em, 0);
+}
+#character .legRight .ft {
+  transform: translateZ(2em);
+  background-position: -20em -52em;
+}
+#character .legRight .bk {
+  transform: translateZ(-2em) rotateY(180deg);
+  background-position: -28em -52em;
+}
+#character .legRight .rt, #character .legRight .lt {
+  width: 4em;
+  height: 12em;
+}
+#character .legRight .rt {
+  background-position: -16em -52em;
+}
+#character .legRight .lt {
+  background-position: -24em -52em;
+}
+#character .legRight .tp, #character .legRight .bm {
+  width: 4em;
+  height: 4em;
+}
+#character .legRight .tp {
+  background-position: -36em -48em;
+}
+#character .legRight .bm {
+  background-position: -24em -48em;
+}
+@-webkit-keyframes armRight {
+  from {
+    transform: translate3D(6em, 10em, 0em) rotateX(-5deg);
+  }
+  to {
+    transform: translate3D(6em, 10em, 1em) rotateX(5deg);
+  }
+}
+@keyframes armRight {
+  from {
+    transform: translate3D(6em, 10em, 0em) rotateX(-5deg);
+  }
+  to {
+    transform: translate3D(6em, 10em, 1em) rotateX(5deg);
+  }
+}
+#character .armRight {
+  width: 4em;
+  height: 12em;
+  margin: -18em 0 0 -2em;
+  -webkit-animation: armRight 2s ease-in-out infinite alternate;
+          animation: armRight 2s ease-in-out infinite alternate;
+  transform-origin: auto 4em;
+}
+#character .armRight .ft {
+  transform: translateZ(2em);
+  background-position: -36em -52em;
+}
+#character .armRight .bk {
+  transform: translateZ(-2em) rotateY(180deg);
+  background-position: -44em -52em;
+}
+#character .armRight .rt, #character .armRight .lt {
+  width: 4em;
+  height: 12em;
+}
+#character .armRight .rt {
+  background-position: -32em -52em;
+}
+#character .armRight .lt {
+  background-position: -40em -52em;
+}
+#character .armRight .tp, #character .armRight .bm {
+  width: 4em;
+  height: 4em;
+}
+#character .armRight .tp {
+  background-position: -36em -48em;
+}
+#character .armRight .bm {
+  background-position: -40em -48em;
+}
+@-webkit-keyframes armLeft {
+  from {
+    transform: translate3D(-6em, 10em, 0em) rotateX(5deg);
+  }
+  to {
+    transform: translate3D(-6em, 10em, -1em) rotateX(-5deg);
+  }
+}
+@keyframes armLeft {
+  from {
+    transform: translate3D(-6em, 10em, 0em) rotateX(5deg);
+  }
+  to {
+    transform: translate3D(-6em, 10em, -1em) rotateX(-5deg);
+  }
+}
+#character .armLeft {
+  width: 4em;
+  height: 12em;
+  margin: -18em 0 0 -2em;
+  -webkit-animation: armLeft 2s ease-in-out infinite alternate;
+          animation: armLeft 2s ease-in-out infinite alternate;
+  transform-origin: auto 4em;
+}
+#character .armLeft .ft {
+  transform: translateZ(2em);
+  background-position: -44em -20em;
+}
+#character .armLeft .bk {
+  transform: translateZ(-2em) rotateY(180deg);
+  background-position: -52em -20em;
+}
+#character .armLeft .rt, #character .armLeft .lt {
+  width: 4em;
+  height: 12em;
+}
+#character .armLeft .rt {
+  background-position: -40em -20em;
+}
+#character .armLeft .lt {
+  background-position: -48em -20em;
+}
+#character .armLeft .tp, #character .armLeft .bm {
+  width: 4em;
+  height: 4em;
+}
+#character .armLeft .tp {
+  background-position: -44em -16em;
+}
+#character .armLeft .bm {
+  background-position: -48em -16em;
+}
+#character .shape.layer2 .face {
+  background-color: transparent;
+}
+#character .shape.layer2.head {
+  /* transform: scale3D(1.05, 1.05, 1.05) rotateX(-15deg) rotateY(0deg); */
+  
+}
+#character .shape.layer2.head .ft {
+  background-position: -40em -8em;
+}
+#character .shape.layer2.head .bk {
+  background-position: -56em -8em;
+}
+#character .shape.layer2.head .rt {
+  background-position: -32em -8em;
+}
+#character .shape.layer2.head .lt {
+  background-position: -48em -8em;
+}
+#character .shape.layer2.head .tp {
+  background-position: -40em 0em;
+}
+#character .shape.layer2.head .bm {
+  background-position: -48em 0em;
+}
+#character .shape.layer2.torso {
+  transform: translate(0em, 10em) scale3D(1.05, 1.05, 1.05);
+}
+#character .shape.layer2.torso .ft {
+  background-position: -20em -36em;
+}
+#character .shape.layer2.torso .bk {
+  background-position: -32em -36em;
+}
+#character .shape.layer2.torso .rt {
+  background-position: -16em -36em;
+}
+#character .shape.layer2.torso .lt {
+  background-position: -28em -36em;
+}
+#character .shape.layer2.torso .tp {
+  background-position: -20em -32em;
+}
+#character .shape.layer2.torso .bm {
+  background-position: -28em -32em;
+}
+#character .shape.layer2.legLeft {
+  transform: translate(-2em, 22em) scale3D(1.05, 1.05, 1.05);
+}
+#character .shape.layer2.legLeft .ft {
+  background-position: -4em -36em;
+}
+#character .shape.layer2.legLeft .bk {
+  background-position: -12em -36em;
+}
+#character .shape.layer2.legLeft .rt {
+  background-position: 0em -36em;
+}
+#character .shape.layer2.legLeft .lt {
+  background-position: -8em -36em;
+}
+#character .shape.layer2.legLeft .tp {
+  background-position: -4em -32em;
+}
+#character .shape.layer2.legLeft .bm {
+  background-position: -8em -32em;
+}
+#character .shape.layer2.legRight {
+  transform: translate(2em, 22em) scale3D(1.05, 1.05, 1.05);
+}
+#character .shape.layer2.legRight .ft {
+  background-position: -4em -20em;
+}
+#character .shape.layer2.legRight .bk {
+  background-position: -12em -20em;
+}
+#character .shape.layer2.legRight .rt {
+  background-position: 0em -20em;
+}
+#character .shape.layer2.legRight .lt {
+  background-position: -8em -20em;
+}
+#character .shape.layer2.legRight .tp {
+  background-position: -4em -48em;
+}
+#character .shape.layer2.legRight .bm {
+  background-position: -8em -48em;
+}
+#character .shape.layer2.armRight {
+  transform: translate3D(6em, 10em, -2em) scale3D(1.05, 1.05, 1.05) rotateX(-30deg);
+}
+#character .shape.layer2.armRight .ft {
+  background-position: -40em -20em;
+}
+#character .shape.layer2.armRight .bk {
+  background-position: -52em -20em;
+}
+#character .shape.layer2.armRight .rt {
+  background-position: -40em -20em;
+}
+#character .shape.layer2.armRight .lt {
+  background-position: -48em -20em;
+}
+#character .shape.layer2.armRight .tp {
+  background-position: -44em -20em;
+}
+#character .shape.layer2.armRight .bm {
+  background-position: -48em -32em;
+}
+#character .shape.layer2.armLeft {
+  transform: translate3D(-6em, 10em, 2em) scale3D(1.05, 1.05, 1.05) rotateX(30deg);
+}
+#character .shape.layer2.armLeft .ft {
+  background-position: -52em -52em;
+}
+#character .shape.layer2.armLeft .bk {
+  background-position: -60em -52em;
+}
+#character .shape.layer2.armLeft .rt {
+  background-position: -48em -52em;
+}
+#character .shape.layer2.armLeft .lt {
+  background-position: -56em -52em;
+}
+#character .shape.layer2.armLeft .tp {
+  background-position: -52em -48em;
+}
+#character .shape.layer2.armLeft .bm {
+  background-position: -56em -48em;
 }
