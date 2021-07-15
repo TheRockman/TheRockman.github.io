@@ -85,6 +85,11 @@ app.service('actionService', function($timeout, wikiSercive) {
     var scenarios = getScope('scenarios');
     var adventureIndex = getScope('adventureIndex');
     var currentScenario = getScope('currentScenario');
+    var currentLockpickPuzzle = getScope('currentLockpickPuzzle');
+    var lockpickSuccess = getScope('lockpickSuccess');
+
+    setScope('currentLockpickPuzzle', []);
+    setScope('lockpickSuccess', false);
 
     setScope('eventText', null);
     setScope('nextEvent', null);
@@ -98,6 +103,15 @@ app.service('actionService', function($timeout, wikiSercive) {
     setScope('adventureDepth', -1);
   }
   this.abort = abort;
+
+  var lockpick = function (props, setScope, getScope) {
+    var currentLockpickPuzzle = getScope('currentLockpickPuzzle');
+    var generateLockPickingPuzzle = getScope('generateLockPickingPuzzle');
+
+    setScope('currentLockpickPuzzle', generateLockPickingPuzzle(props.level));
+    progress(props, setScope, getScope);
+  }
+  this.lockpick = lockpick;
 
   this.multiAction = function (props, setScope, getScope) {
     setScope('optionLock', true);

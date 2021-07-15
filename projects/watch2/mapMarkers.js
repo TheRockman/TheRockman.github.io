@@ -10,7 +10,7 @@ app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug)
         'hdf',
         'grm'
       ],
-      background: './img/places/forest.webp',
+      background: './img/places/template.jpg',
       scenarios: scenarioBasic.scenarios
     },
     {

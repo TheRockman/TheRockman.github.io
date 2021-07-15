@@ -6,7 +6,7 @@ app.service('scenarioHenry', function(actionService) {
       text: '<em>You look over to Henry</em>',
       speaker: {
         char: 'henry',
-        name: '',
+        name: 'Henry',
         faction: ''
       },
       everGreen: true,

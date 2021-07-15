@@ -508,5 +508,47 @@ app.service('scenarioBasic', function(actionService) {
         },
       ],
     },
+//Scenario
+    {
+      text: 'LOCKPICK TEST',
+      actions: [
+        {
+          label: 'START',
+          action: actionService.lockpick,
+          actionProps: {
+            level: 2
+          }
+        },
+        {
+          label: 'ABORT',
+          action: actionService.abort,
+          actionProps: {
+            epilog: 'END'
+          }
+        },
+      ],
+      path: [
+        {
+          text: '<em>Picking instructions...</em>',
+          actions: [
+            {
+              label: '[Open lock]',
+              visibleWhen: 'lockpickSuccess',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '"Sweet, a bun!"'
+              }
+            },
+            {
+              label: '[Give up]',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '"Im Steven."'
+              }
+            },
+          ],
+        },
+      ]
+    },
   ]
 });

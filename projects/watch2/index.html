@@ -135,6 +135,22 @@
         <button class="wide-btn" type="button" ng-click="wikiModal = ''" name="button">Close</button>
       </div>
 
+      <div class="lockpick-modal" ng-if="currentLockpickPuzzle.length > 0">
+        <form ng-submit="evaluateLockPicking()">
+          <div class="align jsb" >
+            <div ng-repeat="item in currentLockpickPuzzle">
+              <div>
+                <label for="{{box+$index}}">{{item.a}}</label>
+                <br/>
+                <input id="{{box+$index}}" ng-model="item.guess" type="checkbox" />
+              </div>
+            </div>
+          </div>
+          <br/>
+          <button style="width:100%;" type="submit" name="button">Go</button>
+        </form>
+      </div>
+
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
 
       <div class="dice-overlay" ng-if="diceRollToast">
@@ -149,6 +165,10 @@
         <div class="threedee">
           <div class="md-layer">
             <div id="character" ng-class="{'invisi': !currentScenario.speaker || eventText, 'pose1':true}" class="{{currentScenario.speaker.char}}" ng-cloak >
+              <p ng-cloak class="align speaker-name-tag" ng-if="currentScenario.speaker.name">
+                <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
+                {{currentScenario.speaker.name}}
+              </p>
               <div class="wrap">
                 <div class="shape head">
                       <div class="face ft"></div>
@@ -248,10 +268,6 @@
                 </div>
               </div>
             </div>
-            <p ng-cloak class="align" ng-if="currentScenario.speaker.name">
-              <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
-              {{currentScenario.speaker.name}}
-            </p>
           </div>
 
           <img class="bg-layer" ng-src="{{currentRegion.background}}" alt="">

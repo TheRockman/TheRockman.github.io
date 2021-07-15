@@ -6,7 +6,7 @@ app.service('scenarioBoblin', function(actionService) {
       text: '<em>Boblin turns to look at you, his long ears flopping about</em>',
       speaker: {
         char: 'goblin',
-        name: '',
+        name: 'Boblin the goblin',
         faction: ''
       },
       everGreen: true,

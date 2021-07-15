@@ -53,9 +53,34 @@ ol{
   margin: 0 0.5rem;
 }
 
+.speaker-name-tag{
+  color: white;
+  position: absolute;
+  padding: 1rem;
+  z-index: 100;
+  top: 1rem;
+  left: 100%;
+  right: -12rem;
+  margin: 0 auto;
+  font-size: 18px;
+  /* filter: drop-shadow(-2px 2px 0px #000); */
+  animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.speaker-name-tag::before{
+  content: " ";
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #333 16%, #333 60%, rgba(148,187,233,0) 100%);
+  position: absolute;
+  left: -1rem;
+  right: 0;
+  top: 10px;
+  bottom: 10px;
+  z-index: -1;
+  /* transform: skewX(20deg); */
+}
 .faction-icon{
-  width: 25px!important;
+  width: 32px!important;
   height: auto!important;
+  margin-right: 0.5rem;
 }
 
 .option{
@@ -274,6 +299,19 @@ ol{
 .perk-view{
   overflow-y: auto;
   max-height: 90vh;
+}
+
+.lockpick-modal{
+  padding: 1rem;
+  min-height: 20vw;
+  position: absolute;
+  background: black;
+  color: white;
+  top: 25vh;
+  right: 1rem;
+  left: 1rem;
+  margin: 0 auto;
+  z-index: 10;
 }
 
 .card{

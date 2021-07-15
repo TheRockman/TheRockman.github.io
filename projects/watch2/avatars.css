@@ -23,9 +23,10 @@
   width: 16em;
   height: 32em;
   font-size: 0.9em;
-  top: 50%;
+  top: 28vh;
   right: 2em;
-  transform: translate(-50%, -30%);
+  transform-origin: 0 top;
+  transform: translate(-50%, 0) scale(1);
 }
 #character .wrap {
   width: 100%;
@@ -346,7 +347,7 @@
 }
 #character .shape.layer2.head {
   /* transform: scale3D(1.05, 1.05, 1.05) rotateX(-15deg) rotateY(0deg); */
-  
+
 }
 #character .shape.layer2.head .ft {
   background-position: -40em -8em;

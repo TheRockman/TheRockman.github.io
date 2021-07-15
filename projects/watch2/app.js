@@ -13,8 +13,9 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.diceRollToast = null;
   $scope.diceRollResult = null;
   $scope.view = null;
-
   $scope.regions = mapMarkers.markers;
+  $scope.currentLockpickPuzzle = [];
+  $scope.lockpickSuccess = false;
 
   $scope.currentRegion = $scope.regions[0];
   $scope.currentRegionBackup = $scope.currentRegion;
@@ -129,6 +130,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.adventureIndex = 0;
     $scope.adventureDepth = -1;
     $scope.currentScenario = item.scenarios[0];
+    $scope.lockpickSuccess = false;
+    $scope.currentLockpickPuzzle = [];
   }
 
   var languageGenerator = function(lang){
@@ -222,6 +225,31 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.adventureIndex = 0;
       $scope.adventureDepth = -1;
       $scope.currentScenario = follower.scenarios[0];
+  }
+
+  $scope.generateLockPickingPuzzle = function(level){
+    $scope.lockpickSuccess = false;
+    var outputPuzzle = [];
+    var lpLevel = 3 + level;
+    for (var i = 0; i < lpLevel; i++) {
+      if(Math.random() < 0.5){
+        outputPuzzle.push({a:true, guess: false});
+      }else{
+        outputPuzzle.push({a:false, guess: false});
+      }
+    }
+    return outputPuzzle;
+  }
+  $scope.evaluateLockPicking = function(){
+    for (var i = 0; i < $scope.currentLockpickPuzzle.length; i++) {
+      if($scope.currentLockpickPuzzle[i].a !== $scope.currentLockpickPuzzle[i].guess){
+        return;
+      }
+    }
+    $scope.lockpickSuccess = true;
+    $scope.currentLockpickPuzzle = [];
+    // $scope.scenarios[$scope.adventureIndex].done = true;
+    // $scope.wrapUpAndPickNext();
   }
 
 //parallax

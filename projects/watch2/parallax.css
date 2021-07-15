@@ -19,8 +19,11 @@
 }
 
 .bg-layer{
-  width: 100%;
+  width: auto;
+  margin-top: 30px;
   height: 100vh;
+  background-position: center;
+  /* min-height: 100vh; */
   z-index: -1;
   background-size: cover;
 }
