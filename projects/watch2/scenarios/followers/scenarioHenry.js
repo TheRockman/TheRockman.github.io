@@ -29,8 +29,9 @@ app.service('scenarioHenry', function(actionService) {
         },
         {
           label: '"Who are you again?"',
-          action: actionService.abort,
+          action: actionService.smallTalk,
           actionProps: {
+            smallTalkActionTaken: false,
             epilog: '<em>Henry looks sad and annoyed at the same time.</em>"Im Henry"'
           }
         },

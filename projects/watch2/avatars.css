@@ -14,7 +14,7 @@
   background-image: url("https://www.minecraftskins.com/uploads/skins/2021/05/19/fur-coat-chief-17854732.png?v401")!important;
 }
 
-#character, #character .wrap, #character .shape, #character .face {
+#character, #character .awrap, #character .shape, #character .face {
   position: absolute;
   transform-style: preserve-3d;
 }
@@ -22,13 +22,14 @@
 #character {
   width: 16em;
   height: 32em;
+  position: fixed;
+  left: 6rem;
+  bottom: 2rem;
   font-size: 0.9em;
-  top: 28vh;
-  right: 2em;
   transform-origin: 0 top;
   transform: translate(-50%, 0) scale(1);
 }
-#character .wrap {
+#character .awrap {
   width: 100%;
   height: 100%;
   transform: rotateX(0deg) rotateY(-15deg);
@@ -44,8 +45,20 @@
     transform: rotateY(16deg);
   }
 }
-.pose1 .wrap{
+.pose1 .awrap{
   animation: pose1 4s ease-in-out infinite alternate;
+}
+
+@keyframes pose2 {
+  from {
+    transform: rotateX(-16deg);
+  }
+  to {
+    transform: rotateX(16deg);
+  }
+}
+.pose2 .awrap{
+  animation: pose2 4s ease-in-out infinite alternate;
 }
 
 #character .shape {

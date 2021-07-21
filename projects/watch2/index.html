@@ -61,6 +61,9 @@
       <div class="perk-view" ng-if="view === 'perkView'">
         <div class="row">
           <div class="flex">
+
+          </div>
+          <div class="flex">
             <div class="card invisi-card">
               <h3>Stats</h3>
               <hr/>
@@ -91,6 +94,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="flex">
+
           </div>
         </div>
         <div class="row">
@@ -164,12 +170,12 @@
       <div class="shadow-box">
         <div class="threedee">
           <div class="md-layer">
-            <div id="character" ng-class="{'invisi': !currentScenario.speaker || eventText, 'pose1':true}" class="{{currentScenario.speaker.char}}" ng-cloak >
+            <div id="character" ng-class="{'invisi': !currentScenario.speaker || eventText, 'pose2':true}" class="{{currentScenario.speaker.char}}" ng-cloak >
               <p ng-cloak class="align speaker-name-tag" ng-if="currentScenario.speaker.name">
                 <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
                 {{currentScenario.speaker.name}}
               </p>
-              <div class="wrap">
+              <div class="awrap">
                 <div class="shape head">
                       <div class="face ft"></div>
                       <div class="face bk"></div>
@@ -271,6 +277,9 @@
           </div>
 
           <img class="bg-layer" ng-src="{{currentRegion.background}}" alt="">
+          <div class="fl-layer">
+
+          </div>
 
           <div class="talkbox fg-layer" ng-if="eventText || currentScenario.text">
             <div ng-if="!currentScenario.done && !eventText">

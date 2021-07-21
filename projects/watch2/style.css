@@ -182,9 +182,11 @@ ol{
 }
 .talkbox{
   background: #222;
+  outline: 1px solid #cacaca;
   color: #fff;
-  min-height: 30vh;
-  width: 50%;
+  height: 30vh;
+  width: 66vw;
+  margin: 0 auto;
   overflow-y: auto;
   position: relative;
 }
@@ -433,14 +435,6 @@ ol{
   }
   .flex {
     flex: 1 1 auto;
-  }
-  .wrap{
-    left: 0;
-    right: 0;
-    width: 100vw;
-  }
-  .avatarbox{
-    bottom: 33vh!important;
   }
   .talkbox{
     border-top: 1px solid white;
