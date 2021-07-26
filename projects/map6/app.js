@@ -1,147 +1,148 @@
-var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controller("mainCtrl", function($scope, $timeout) {
-  
-  $scope.grid = [];
-  $scope.playerPos = {'transform': 'translate(0px, 0px) translateZ(4px) scale(1) rotateZ(-45deg) rotateX(16deg)'};
-  $scope.playerCord = {x:0, y:0};
-  $scope.prevDir;
-  
-  generateTiles = function(){
-    var gridSize = 12;
-    var tileSize = 16;
-    
-    $scope.gridStyle = {
-      "width" : gridSize*tileSize+tileSize+"px",
-      "height" : gridSize*tileSize+tileSize+"px"
+var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope, $window, $timeout) {
+
+    const tz = 16;
+    const gridSize = 30*tz;
+    $scope.gridStyle= {
+        'width': gridSize+'px',
+        'height': gridSize+'px'
+    }
+    $scope.char = {
+        facing: 'down',
+        x: 0,
+        y: 0
     }
 
-    var x,y;
-    for (y = 0; y <= gridSize; y++) {
-      for (x = 0; x <= gridSize; x++) {
-        
-        $scope.grid.push({
-          x: x,
-          y: y,
-          status: null,
-        })
-        
+    $scope.mapTiles = [
+        {
+            tile: 'block',
+            solid: true,
+            x: 2*tz,
+            y: 2*tz
+        },
+        {
+            tile: 'block',
+            solid: true,
+            x: 2*tz,
+            y: 3*tz
+        },
+        {
+            tile: 'block',
+            solid: true,
+            x: 6*tz,
+            y: 5*tz
+        },
+        {
+            tile: 'block',
+            solid: true,
+            x: 6*tz,
+            y: 6*tz
+        },
+        {
+            tile: 'block',
+            solid: true,
+            x: 6*tz,
+            y: 7*tz
+        },
+        {
+            tile: 'block',
+            solid: true,
+            x: 6*tz,
+            y: 8*tz
+        },
+        {
+            tile: 'block',
+            solid: true,
+            x: 6*tz,
+            y: 9*tz
+        },
+        {
+            tile: 'ai-bug',
+            ai: true,
+            solid: true,
+            x: 5*tz,
+            y: 5*tz
+        }
+    ]
+
+    $scope.applyStyle = function(){
+        $scope.cameraStyle = {
+            'width': gridSize/2+"px",
+            'height': gridSize/2.5+"px",
+        };
+        $scope.charStyle = {
+            'top': $scope.char.y+"px",
+            'left': $scope.char.x+"px"
+        };
+        $scope.gridStyle = {
+            'width': gridSize+'px',
+            'height': gridSize+'px',
+            'top': -$scope.char.y+"px",
+            'left': -$scope.char.x+"px",
+            'margin-left': (gridSize/4)-8+"px",
+            'margin-right': (gridSize/4)-8+"px",
+            'margin-top': (gridSize/5)-8+"px",
+            'margin-bottom': (gridSize/5)-8+"px",
+        }
+    }
+    $scope.applyStyle();
+
+    $scope.tileStyle = function(x, y){
+        return {
+            'top': y+"px",
+            'left': x+"px"
+        };
+    }
+
+    $scope.targetTile = function(x, y){
+        let obj = $scope.mapTiles.filter(function(item) { return item.x == x && item.y == y; });
+        return obj[0];
+    }
+
+    function throttle(func, delay=500) {
+      let timeout = null
+      return function(...args) {
+        if (!timeout) {
+          timeout = setTimeout(() => {
+            func.call(this, ...args)
+            timeout = null
+          }, delay)
+        }
       }
     }
-  }
-  generateTiles();
-  
-  $scope.grid[100].status = 'blocked';
-  $scope.grid[88].status = 'blocked';
-  
-  $scope.moveToTile = function(target){
-    explore(target);
-  };
-  
-  $scope.exploreFailedSoTry;
-  
-  var explore = function(target, failed){
-    var west = {x: $scope.playerCord.x-1, y: $scope.playerCord.y};
-    var north = {x: $scope.playerCord.x, y: $scope.playerCord.y-1};
-    var east = {x: $scope.playerCord.x+1, y: $scope.playerCord.y};
-    var south = {x: $scope.playerCord.x, y: $scope.playerCord.y+1};
-    
-    if ($scope.exploreFailedSoTry) {
-      $scope.exploreFailedSoTry = null;
-      
-        if(target.y < $scope.playerCord.y){
-          if(checkLocation(west)){
-            $scope.walk(west);
-            $scope.dir = 'south';
-          } 
-        } else if(target.y > $scope.playerCord.y){
-          if(checkLocation(east)){
-            $scope.walk(east);
-            $scope.dir = 'north';
-          }
-        } else if(target.x < $scope.playerCord.x){
-          if(checkLocation(north)){
-            $scope.walk(north);
-            $scope.dir = 'east';
-          }
-        } else if(target.x > $scope.playerCord.x){
-          if(checkLocation(south)){
-            $scope.walk(south);
-            $scope.dir = 'west';
-          }
+
+    document.body.addEventListener("keypress", throttle(function(e){
+        if (e.key === "ArrowRight" || e.key === "d") {
+            $scope.char.facing = 'right';
+            let moveTry = $scope.char.x+16;
+            let targetTile = $scope.targetTile(moveTry, $scope.char.y);
+            if(moveTry > gridSize-tz || (targetTile && targetTile.solid) ){$scope.$digest();return;}
+            $scope.char.x = moveTry;
         }
-        if(target.x != $scope.playerCord.x || target.y != $scope.playerCord.y){
-          $timeout( function(){
-            explore(target)
-          }, 500 );
+        if (e.key === "ArrowLeft" || e.key === "a") {
+            $scope.char.facing = 'left';
+            let moveTry = $scope.char.x-16;
+            let targetTile = $scope.targetTile(moveTry, $scope.char.y);
+            if(moveTry < 0 || (targetTile && targetTile.solid) ){$scope.$digest();return;}
+            $scope.char.x = moveTry;
         }
-        return;
-    }
-    
-      if(target.x < $scope.playerCord.x){
-        if(checkLocation(west)){
-          $scope.walk(west);
-          $scope.dir = 'west';
-        } else{
-          $scope.exploreFailedSoTry = east;
+        if (e.key === "ArrowUp" || e.key === "w") {
+            $scope.char.facing = 'up';
+            let moveTry = $scope.char.y-16;
+            let targetTile = $scope.targetTile($scope.char.x, moveTry);
+            if(moveTry < 0 || (targetTile && targetTile.solid) ){$scope.$digest();return;}
+            $scope.char.y = moveTry;
         }
-      } else if(target.x > $scope.playerCord.x){
-        if(checkLocation(east)){
-          $scope.walk(east);
-          $scope.dir = 'east';
-        } else {
-          $scope.exploreFailedSoTry = west;
+        if (e.key === "ArrowDown" || e.key === "s") {
+            $scope.char.facing = 'down';
+            let moveTry = $scope.char.y+16;
+            let targetTile = $scope.targetTile($scope.char.x, moveTry);
+            if(moveTry > gridSize-tz || (targetTile && targetTile.solid) ){$scope.$digest();return;}
+            $scope.char.y = moveTry;
         }
-      } else if(target.y > $scope.playerCord.y){
-        if(checkLocation(south)){
-          $scope.walk(south);
-          $scope.dir = 'south';
-        } else{
-          $scope.exploreFailedSoTry = north;
-        }
-      } else if(target.y < $scope.playerCord.y){
-        if(checkLocation(north)){
-          $scope.walk(north);
-          $scope.dir = 'north';
-        } else{
-          $scope.exploreFailedSoTry = south;
-        }
-      }
-      
-      if(target.x != $scope.playerCord.x || target.y != $scope.playerCord.y){
-        $timeout( function(){
-          explore(target)
-        }, 500 );
-      }
-    
-    
-  }
-  
-  var checkLocation = function(location){
-    var targetTile;
-    
-    for (i = 0; i < $scope.grid.length; i++) {
-      if(location.x === $scope.grid[i].x && location.y === $scope.grid[i].y){
-        var targetTile = $scope.grid[i];
-      }
-    }
-    
-    if(targetTile.status === 'blocked'){
-      return false;
-    }
-    if(targetTile.x < 0 && targetTile.x > gridSize){
-      return false;
-    }
-    if(targetTile.y < 0 && targetTile.y > gridSize){
-      return false;
-    }
-    return true;
-  }
-  
-  $scope.walk = function(dir){
-    console.log('dir',dir);
-    $scope.playerPos = {
-      'transform': 'translate(' + dir.x*16 + 'px, ' + dir.y*16 + 'px) translateZ(4px) scale(1) rotateZ(-45deg) rotateX(16deg)'
-    }
-    $scope.playerCord = {x:dir.x, y:dir.y};
-  }
-  
+
+        // console.log('new pos', $scope.char);
+        $scope.applyStyle();
+        $scope.$digest();
+    },150));
+
 });

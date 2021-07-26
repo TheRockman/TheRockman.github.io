@@ -5,24 +5,21 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="../../angularJs.js"></script>
-  <script type="text/javascript" src="../../ngTouch.js"></script>
-  <script type="text/javascript" src="../../carousel.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <div class="row">
-      <div class="flex">
+    <div class="wrap">
+      <div class="camera" ng-style="cameraStyle">
         <div class="grid" ng-style="gridStyle">
-          <div class="player" ng-style="playerPos">
-            123
-          </div>
-          <div class="tile" ng-click="moveToTile(tile)" ng-class="{'blocked':tile.status === 'blocked'}" ng-repeat="tile in grid"></div>
+          <div class="tile" ng-repeat="tile in mapTiles" ng-class="tile.tile" ng-style="tileStyle(tile.x, tile.y)"></div>
+          <div class="char tile" ng-class="char.facing" ng-style="charStyle"></div>
         </div>
       </div>
     </div>
+
+    X:{{char.x}}, Y:{{char.y}}
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>

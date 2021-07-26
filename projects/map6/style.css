@@ -13,8 +13,7 @@
 body{
   margin: 0;
   background: #f5f5f5;
-  color: black:
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Khula', sans-serif;
   font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
   font-size: 16px;
 }
@@ -38,188 +37,69 @@ svg, svg path, img{
 .relative{
   position: relative;
 }
-.grid{
-  transform-style: preserve-3d;
-  font-size: 0;
-  transform: rotateZ(25deg) rotateY(40deg) rotateX(-50deg);
-  margin: 0 auto;
-}
-.tile{
-  width: 16px;
-  height: 16px;
-  outline: 0.5px solid black;
-  display: inline-grid;
+
+/* .map-base{
   position: relative;
-  z-index: 0;
+  width: 2032px;
+  height: 2032px;
+  outline: 1px solid black;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+  background: url("tile.png")
+} */
+.wrap{
+  position: relative;
+  min-height: 16px;
   background: green;
 }
-.cord{
-  font-size: 18px;
-  position: absolute;
+.camera{
   left: 0;
-  top: 16px;
-  background: white;
-  opacity: 0;
+  right: 0;
+  top: 4rem;
+  margin: 0 auto;
+  position: absolute;
+  outline: 1px solid blue;
+  transform-origin: top;
+  transform: scale(3);
+  overflow: hidden;
 }
-.tile:hover{
-  background: red;
+.grid{
+  position: absolute;
+  margin: 0 auto;
+  outline: 1px solid red;
+  transition: 0.2s all linear;
 }
-.tile:hover > .cord{
-  opacity: 1;
-}
-
-.player{
-  transition: 0.5s;
-  background: url('https://gamepedia.cursecdn.com/zelda_gamepedia_en/thumb/f/f6/CoH_Cadence_Sprite.gif/271px-CoH_Cadence_Sprite.gif?version=45e9c0ee1bf122e203df658730cacfa7');
-  background-size: contain;
-  background-repeat: no-repeat;
+.tile{
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 16px;
   height: 16px;
-  position: absolute;
-  margin-top: -10px;
-  margin-left: -10px;
+}
+.char{
+  transition: 0.2s all linear;
+  background: blue;
+  border-radius: 10000px;
+}
+.up{
+  border-top:1px solid red;
+}
+.down{
+  border-bottom: 1px solid red;
+}
+.left{
+  border-left: 1px solid red;
+}
+.right{
+  border-right: 1px solid red;
 }
 
-.blocked{
-  background: black;
+.block{
+  background: red;
 }
-
-/* ng-animate */
-/* .fade{
-  transition:0.5s linear opacity;
+.ai-bug{
+  transition: 0.5s all linear;
+  background: green;
+  border-radius: 10000px;
 }
-.fade.ng-hide {
-  opacity:0;
-} */
-
-/*flex*/
-/*.flex{
-  flex-basis: 100%;
-}
-.x3{
-  flex-basis: 50%!important;
-}
-.x2{
-  flex-basis: 25%!important;
-}
-@media screen and (min-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1;
-        -ms-flex: 1;
-  }
-}
-@media screen and (max-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1 1 auto;
-  }
-}*/
-
-/*fluid layout*/
-/*
-.fluid-row {
-  display: grid;
-  grid-gap: 0px;
-  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
-}
-.fluid-flex{
-  padding: 5px;
-}
-
-.dense{
-  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
-}
-
-@media screen and (max-width: 960px) {
-  .fluid-row{
-    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .fluid-row{
-    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
-  }
-}
-*/
-
-/*Card*/
-/*
-.card {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
-  border-radius: 5px;
-  position: relative;
-  transition: all 150ms ease-in-out;
-  background: #fff;
-  margin: var(--spacer);
-  padding: var(--spacer);
-}
-.card:hover {
-  box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
-}
-*/
-
-/*Fab*/
-/*.fab{
-    background:dodgerblue;
-    width:18px;
-    height: 18px;
-    padding:15px;
-    border-radius:50%;
-    font-size: 18px;
-    line-height: 18px;
-    text-align: center;
-    box-shadow: var(--level1);
-}*/
-
-/*Animation*/
-/*@keyframes animation {
-from {}
-to {}
-}
-div {
-animation-name: animation;
-animation-duration: 4s;
-} */
-
- /*warm gradiend*/
- /*
- background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
- */
-
-/*Slant*/
-/*
-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-*/
-
-/*random image + background*/
-/*
-background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
-background-size: cover;
-*/
-
-/* scrollbar */
-/* .scroll::-webkit-scrollbar {
-  width: 10px;
-}
-.scroll::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-.scroll::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
-} */
