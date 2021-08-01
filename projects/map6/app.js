@@ -13,57 +13,60 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         x: 0,
         y: 0,
     }
+    var gp = function(n){
+        return n*tz;
+    }
 
     $scope.mapTiles = [
         {
             tile: 'block',
             solid: true,
-            x: 2*tz,
-            y: 2*tz
+            x: gp(2),
+            y: gp(2)
         },
         {
             tile: 'block',
             solid: true,
-            x: 2*tz,
-            y: 3*tz
+            x: gp(2),
+            y: gp(3)
         },
         {
             tile: 'block',
             solid: true,
-            x: 6*tz,
-            y: 5*tz
+            x: gp(6),
+            y: gp(5)
         },
         {
             tile: 'block',
             solid: true,
-            x: 6*tz,
-            y: 6*tz
+            x: gp(6),
+            y: gp(6)
         },
         {
             tile: 'block',
             solid: true,
-            x: 6*tz,
-            y: 7*tz
+            x: gp(6),
+            y: gp(7)
         },
         {
             tile: 'block',
             solid: true,
-            x: 6*tz,
-            y: 8*tz
+            x: gp(6),
+            y: gp(8)
         },
         {
             tile: 'block',
             solid: true,
-            x: 6*tz,
-            y: 9*tz
+            x: gp(6),
+            y: gp(9)
         },
         {
             tile: 'ai-bug',
             id: 'idleAi',
             ai: true,
             solid: true,
-            x: 5*tz,
-            y: 5*tz
+            x: gp(5),
+            y: gp(5)
         },
         {
             tile: 'ai-bug',
@@ -71,8 +74,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
             ai: true,
             shoots: true,
             solid: true,
-            x: 10*tz,
-            y: 10*tz
+            x: gp(10),
+            y: gp(10)
         }
     ]
 
@@ -125,37 +128,37 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
             let aiItem = $scope.targetTileID(id);
             let action = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
             if(action === 1){
-                let moveTry = aiItem.x+1*tz;
+                let moveTry = aiItem.x+gp(1);
                 let targetTile = $scope.targetTile(moveTry, aiItem.y);
                 if(
-                    (!targetTile && moveTry < gridSize && !$scope.tileIsPlayer({x: aiItem.x+1*tz, y:aiItem.y})) ||
+                    (!targetTile && moveTry < gridSize && !$scope.tileIsPlayer({x: aiItem.x+gp(1), y:aiItem.y})) ||
                     (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile) )
                 ){
                     aiItem.x = moveTry;
                 }
             } else if(action === 2){
-                let moveTry = aiItem.x-1*tz;
+                let moveTry = aiItem.x-gp(1);
                 let targetTile = $scope.targetTile(moveTry, aiItem.y);
                 if(
-                    (!targetTile && moveTry > 0 && !$scope.tileIsPlayer({x: aiItem.x-1*tz, y:aiItem.y})) ||
+                    (!targetTile && moveTry > 0 && !$scope.tileIsPlayer({x: aiItem.x-gp(1), y:aiItem.y})) ||
                     (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile))
                 ){
                     aiItem.x = moveTry;
                 }
             } else if(action === 3){
-                let moveTry = aiItem.y+1*tz;
+                let moveTry = aiItem.y+gp(1);
                 let targetTile = $scope.targetTile(aiItem.x, moveTry);
                 if(
-                    (!targetTile && moveTry < gridSize && !$scope.tileIsPlayer({x: aiItem.x, y:aiItem.y+1*tz})) ||
+                    (!targetTile && moveTry < gridSize && !$scope.tileIsPlayer({x: aiItem.x, y:aiItem.y+gp(1)})) ||
                     (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile))
                 ){
                     aiItem.y = moveTry;
                 }
             } else if(action === 4){
-                let moveTry = aiItem.y-1*tz;
+                let moveTry = aiItem.y-gp(1);
                 let targetTile = $scope.targetTile(aiItem.x, moveTry);
                 if(
-                    (!targetTile && moveTry > 0 && !$scope.tileIsPlayer({x: aiItem.x, y:aiItem.y-1*tz})) ||
+                    (!targetTile && moveTry > 0 && !$scope.tileIsPlayer({x: aiItem.x, y:aiItem.y-gp(1)})) ||
                     (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile))
                 ){
                     aiItem.y = moveTry;
@@ -185,34 +188,33 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         $scope.char.walking = 'walking';
         if (e.key === "d") {
             $scope.char.facing = 'right';
-            let moveTry = $scope.char.x+16;
+            let moveTry = $scope.char.x+gp(1);
             let targetTile = $scope.targetTile(moveTry, $scope.char.y);
             if(moveTry > gridSize-tz || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.x = moveTry;
         }
         if (e.key === "a") {
             $scope.char.facing = 'left';
-            let moveTry = $scope.char.x-16;
+            let moveTry = $scope.char.x-gp(1);
             let targetTile = $scope.targetTile(moveTry, $scope.char.y);
             if(moveTry < 0 || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.x = moveTry;
         }
         if (e.key === "w") {
             $scope.char.facing = 'up';
-            let moveTry = $scope.char.y-16;
+            let moveTry = $scope.char.y-gp(1);
             let targetTile = $scope.targetTile($scope.char.x, moveTry);
             if(moveTry < 0 || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.y = moveTry;
         }
         if (e.key === "s") {
             $scope.char.facing = 'down';
-            let moveTry = $scope.char.y+16;
+            let moveTry = $scope.char.y+gp(1);
             let targetTile = $scope.targetTile($scope.char.x, moveTry);
             if(moveTry > gridSize-tz || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.y = moveTry;
         }
 
-        // console.log('new pos', $scope.char);
         $scope.applyStyle();
         $scope.$digest();
     }, debounce));
