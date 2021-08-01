@@ -8,8 +8,10 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     }
     $scope.char = {
         facing: 'down',
+        solid: true,
+        walking: 'idle',
         x: 0,
-        y: 0
+        y: 0,
     }
 
     $scope.mapTiles = [
@@ -57,10 +59,20 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         },
         {
             tile: 'ai-bug',
+            id: 'idleAi',
             ai: true,
             solid: true,
             x: 5*tz,
             y: 5*tz
+        },
+        {
+            tile: 'ai-bug',
+            id: 'hostileAI',
+            ai: true,
+            shoots: true,
+            solid: true,
+            x: 10*tz,
+            y: 10*tz
         }
     ]
 
@@ -71,7 +83,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         };
         $scope.charStyle = {
             'top': $scope.char.y+"px",
-            'left': $scope.char.x+"px"
+            'left': $scope.char.x+"px",
+            'z-index': $scope.char.y
         };
         $scope.gridStyle = {
             'width': gridSize+'px',
@@ -89,7 +102,8 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
     $scope.tileStyle = function(x, y){
         return {
             'top': y+"px",
-            'left': x+"px"
+            'left': x+"px",
+            'z-index': y
         };
     }
 
@@ -97,6 +111,62 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         let obj = $scope.mapTiles.filter(function(item) { return item.x == x && item.y == y; });
         return obj[0];
     }
+    $scope.targetTileID = function(id){
+        let obj = $scope.mapTiles.filter(function(item) { return item.id == id; });
+        return obj[0];
+    }
+    $scope.tileIsPlayer = function(tile){
+        return (tile.x == $scope.char.x && tile.y == $scope.char.y);
+    }
+
+    $scope.ai = function(id){
+        let timing = Math.floor(Math.random() * (1000 - 2000 + 1)) + 1000;
+        $timeout( function(){
+            let aiItem = $scope.targetTileID(id);
+            let action = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+            if(action === 1){
+                let moveTry = aiItem.x+1*tz;
+                let targetTile = $scope.targetTile(moveTry, aiItem.y);
+                if(
+                    (!targetTile && moveTry < gridSize && !$scope.tileIsPlayer({x: aiItem.x+1*tz, y:aiItem.y})) ||
+                    (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile) )
+                ){
+                    aiItem.x = moveTry;
+                }
+            } else if(action === 2){
+                let moveTry = aiItem.x-1*tz;
+                let targetTile = $scope.targetTile(moveTry, aiItem.y);
+                if(
+                    (!targetTile && moveTry > 0 && !$scope.tileIsPlayer({x: aiItem.x-1*tz, y:aiItem.y})) ||
+                    (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile))
+                ){
+                    aiItem.x = moveTry;
+                }
+            } else if(action === 3){
+                let moveTry = aiItem.y+1*tz;
+                let targetTile = $scope.targetTile(aiItem.x, moveTry);
+                if(
+                    (!targetTile && moveTry < gridSize && !$scope.tileIsPlayer({x: aiItem.x, y:aiItem.y+1*tz})) ||
+                    (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile))
+                ){
+                    aiItem.y = moveTry;
+                }
+            } else if(action === 4){
+                let moveTry = aiItem.y-1*tz;
+                let targetTile = $scope.targetTile(aiItem.x, moveTry);
+                if(
+                    (!targetTile && moveTry > 0 && !$scope.tileIsPlayer({x: aiItem.x, y:aiItem.y-1*tz})) ||
+                    (targetTile && !targetTile.solid && !$scope.tileIsPlayer(targetTile))
+                ){
+                    aiItem.y = moveTry;
+                }
+            }
+            $scope.ai(id);
+        }, timing );
+    }
+
+    $scope.ai('idleAi');
+    $scope.ai('hostileAI');
 
     function throttle(func, delay=500) {
       let timeout = null
@@ -110,29 +180,31 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       }
     }
 
+    var debounce = 120;
     document.body.addEventListener("keypress", throttle(function(e){
-        if (e.key === "ArrowRight" || e.key === "d") {
+        $scope.char.walking = 'walking';
+        if (e.key === "d") {
             $scope.char.facing = 'right';
             let moveTry = $scope.char.x+16;
             let targetTile = $scope.targetTile(moveTry, $scope.char.y);
             if(moveTry > gridSize-tz || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.x = moveTry;
         }
-        if (e.key === "ArrowLeft" || e.key === "a") {
+        if (e.key === "a") {
             $scope.char.facing = 'left';
             let moveTry = $scope.char.x-16;
             let targetTile = $scope.targetTile(moveTry, $scope.char.y);
             if(moveTry < 0 || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.x = moveTry;
         }
-        if (e.key === "ArrowUp" || e.key === "w") {
+        if (e.key === "w") {
             $scope.char.facing = 'up';
             let moveTry = $scope.char.y-16;
             let targetTile = $scope.targetTile($scope.char.x, moveTry);
             if(moveTry < 0 || (targetTile && targetTile.solid) ){$scope.$digest();return;}
             $scope.char.y = moveTry;
         }
-        if (e.key === "ArrowDown" || e.key === "s") {
+        if (e.key === "s") {
             $scope.char.facing = 'down';
             let moveTry = $scope.char.y+16;
             let targetTile = $scope.targetTile($scope.char.x, moveTry);
@@ -143,6 +215,13 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
         // console.log('new pos', $scope.char);
         $scope.applyStyle();
         $scope.$digest();
-    },150));
+    }, debounce));
 
+    document.body.addEventListener("keyup", function(e){
+        $timeout( function(){
+            $scope.char.walking = 'idle';
+            $scope.applyStyle();
+            $scope.$digest();
+        }, 200 );
+    });
 });

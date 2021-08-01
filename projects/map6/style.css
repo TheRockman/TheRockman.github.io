@@ -59,16 +59,16 @@ svg, svg path, img{
   top: 4rem;
   margin: 0 auto;
   position: absolute;
-  outline: 1px solid blue;
   transform-origin: top;
   transform: scale(3);
   overflow: hidden;
+  background: black;
 }
 .grid{
   position: absolute;
   margin: 0 auto;
-  outline: 1px solid red;
   transition: 0.2s all linear;
+  background: url('img/tile.png');
 }
 .tile{
   position: absolute;
@@ -77,26 +77,71 @@ svg, svg path, img{
   width: 16px;
   height: 16px;
 }
-.char{
-  transition: 0.2s all linear;
-  background: blue;
-  border-radius: 10000px;
-}
 .up{
-  border-top:1px solid red;
+  background: url('img/up.png') center center;
+  background-size: cover;
 }
 .down{
-  border-bottom: 1px solid red;
+  background: url('img/down.png') center center;
+  background-size: cover;
 }
 .left{
-  border-left: 1px solid red;
+  background: url('img/left.png') center center;
+  background-size: cover;
 }
 .right{
-  border-right: 1px solid red;
+  background: url('img/right.png') center center;
+  background-size: cover;
+}
+
+
+@keyframes walkLeft {
+  0%   { background: url('img/left.png') center center; background-size: contain; background-repeat: no-repeat;}
+  100%   { background: url('img/leftStep.png') center center; background-size: contain; background-repeat: no-repeat;}
+}
+@keyframes walkRight {
+  0%   { background: url('img/right.png') center center; background-size: contain; background-repeat: no-repeat;}
+  100%   { background: url('img/rightStep.png') center center; background-size: contain; background-repeat: no-repeat;}
+}
+@keyframes walkUp {
+  0%   { background: url('img/up.png') center center; background-size: contain; background-repeat: no-repeat;}
+  100%   { background: url('img/upStep.png') center center; background-size: contain; background-repeat: no-repeat;}
+}
+@keyframes walkDown {
+  0%   { background: url('img/down.png') center center; background-size: contain; background-repeat: no-repeat;}
+  100%   { background: url('img/downStep.png') center center; background-size: contain; background-repeat: no-repeat;}
+}
+
+.walking .left{
+  animation: walkLeft 400ms infinite;
+}
+.walking .up{
+  animation: walkUp 400ms infinite;
+}
+.walking .down{
+  animation: walkDown 400ms infinite;
+}
+.walking .right{
+  animation: walkRight 400ms infinite;
+}
+
+.char{
+  transition: 60ms all linear;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .block{
   background: red;
+}
+.block::after{
+  box-shadow: 8px 8px 4px 8px rgba(0,0,0,0.3);
+  position: absolute;
+  content: "";
+  height: 32px;
+  top: -8px;
+  width: 16px;
+  background: url('img/pillar.png');
 }
 .ai-bug{
   transition: 0.5s all linear;

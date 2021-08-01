@@ -14,12 +14,12 @@
       <div class="camera" ng-style="cameraStyle">
         <div class="grid" ng-style="gridStyle">
           <div class="tile" ng-repeat="tile in mapTiles" ng-class="tile.tile" ng-style="tileStyle(tile.x, tile.y)"></div>
-          <div class="char tile" ng-class="char.facing" ng-style="charStyle"></div>
+          <div ng-class="char.walking">
+            <div class="char tile" ng-class="char.facing " ng-style="charStyle"></div>
+          </div>
         </div>
       </div>
     </div>
-
-    X:{{char.x}}, Y:{{char.y}}
   </div>
 </body>
 <script type="text/javascript" src="app.js"></script>
