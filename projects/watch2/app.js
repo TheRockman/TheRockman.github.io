@@ -88,6 +88,20 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     }
   }
 
+  $scope.customScenarioIntro = function(scenario){
+    if(scenario.specialIntros){
+      for (var i = 0; i < scenario.specialIntros.length; i++) {;
+        if(eval(scenario.specialIntros[i].visibleWhen)) {
+          return scenario.specialIntros[i].text;
+        }
+      }
+      return false;
+    } else{
+      return false;
+    }
+
+  }
+
   $scope.inventory = {
     gold: 1000
   }

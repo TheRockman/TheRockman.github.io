@@ -4,6 +4,16 @@ app.service('scenarioHenry', function(actionService) {
 //Scenario
     {
       text: '<em>You look over to Henry</em>',
+      specialIntros: [
+        {
+          visibleWhen: "$scope.currentRegion.short === 'trm'",
+          text: '<em>You look over to Henry, he is pale and holding a pint of milk with both hands.</em>'
+        },
+        {
+          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
+          text: '<em>Henry is walking behing you, looking over your shoulder at Boblin skipping along ahead of you.</em> "Are you sure he wont just lead us into an ambush?"'
+        }
+      ],
       speaker: {
         char: 'henry',
         name: 'Henry',
@@ -12,11 +22,27 @@ app.service('scenarioHenry', function(actionService) {
       everGreen: true,
       actions: [
         {
+          label: '"Im not worried about any ambush, Boblin isnt like these mountain goblins."',
+          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>Henry mumble something under his breath and keeps walking.</em>'
+          }
+        },
+        {
+          label: '"An ambush? You might be right. I`ll keep Boblin on a short leash just in case."',
+          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>Henry looks a bit more confident and nods.</em>'
+          }
+        },
+        {
           label: '"You -eh- doing ok there Henry?"',
           visibleWhen: "currentRegion.short === 'trm'",
           action: actionService.abort,
           actionProps: {
-            epilog: '<em>Henry is looking pale and holding his pint of milk with both hands</em>"Frankly, no. These places gives me the willies, so many drunks and ruffians in one place at once."'
+            epilog: '<em>He looks at you and you notice the fear in his eyes.</em>"Frankly, no. These places gives me the willies, so many drunks and ruffians in one place at once."'
           }
         },
         {

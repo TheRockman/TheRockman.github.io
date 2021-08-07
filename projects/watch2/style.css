@@ -209,6 +209,11 @@ ol{
   top: 6rem;
   z-index: 100;
 }
+.specialEvent{
+  background: red;
+  color: white;
+  padding: 1rem;
+}
 .follower{
   background: white;
   margin-top: 0.5rem;
