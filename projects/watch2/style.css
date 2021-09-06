@@ -85,6 +85,7 @@ ol{
 
 .option{
   color: #999;
+  line-height: 2rem;
 }
 .option:hover{
   color: white;

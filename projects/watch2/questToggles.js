@@ -31,5 +31,6 @@ app.service('questToggles', function() {
 
   this.secret = {
     MugNoOrder: false,
+    WagonInvestigation: false
   }
 });

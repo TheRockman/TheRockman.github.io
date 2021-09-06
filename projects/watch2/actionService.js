@@ -77,6 +77,9 @@ app.service('actionService', function($timeout, wikiSercive) {
       props.smallTalkAction(props, setScope, getScope);
     }
 
+    var myDiv = document.getElementById('talkboxTop');
+    myDiv.scrollTop = -1000;
+
     setScope('currentScenario', currentScenario);
   }
   this.smallTalk = smallTalk;

@@ -15,6 +15,114 @@ app.service('scenarioMountain', function(actionService) {
         }
       ],
     },
+//scenario
+    {
+      text: '<em>You notice some wagon tracks in the gravel road ahead of you. I looks like an accident happend.</em>',
+      actions: [
+        {
+          label: '[Investigate]',
+          action: actionService.progress,
+          actionProps: {
+            epilog: '<em>You walk closer, finding the wagon and the remains of its driver in a ravine.</em>'
+          }
+        },
+        {
+          label: '"Not my problem."',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>END</em>'
+          }
+        },
+      ],
+      path: [
+        {
+          text: '<em>Was this an accident?</em>',
+          actions: [
+            {
+              label: '[Investigate the ground]',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                epilog: '<em>The road is covered in blood and splinters.</em>'
+              }
+            },
+            {
+              label: '[Investigate the wheels]',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                epilog: '<em>The axel is broken and the left wheel is covered in blood.</em>'
+              }
+            },
+            {
+              label: '[Investigate the drivers body]',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                epilog: '<em>The driver has a deep gash over his face and rope burns on his hands.</em>'
+              }
+            },
+            {
+              label: '[Investigate the cargo]',
+              action: actionService.smallTalk,
+              actionProps: {
+                smallTalkActionTaken: false,
+                epilog: '<em>The cargo is unharmed and consists of empty bottles and vials.</em>'
+              }
+            },
+            {
+              label: '"I know what happend"',
+              action: actionService.progress,
+              actionProps: {
+                epilog: 'PROGRESS'
+              }
+            },
+            {
+              label: '"I have no idea"',
+              action: actionService.abort,
+              actionProps: {
+                epilog: 'END'
+              }
+            },
+          ],
+        },
+        {
+          text: 'CONCLUTION',
+          actions: [
+            {
+              label: 'The driver was ambushed',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>END</em>'
+              }
+            },
+            {
+              label: 'The cargo caused the crash',
+              action: actionService.modifySecretQuestFlags,
+              actionProps: {
+                flag: 'WagonInvestigation',
+                flagMod: true,
+                epilog: '<em>END</em>'
+              }
+            },
+            {
+              label: 'The wagon breaking caused the crash',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>END</em>'
+              }
+            },
+            {
+              label: 'The driver caused the crash',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>END</em>'
+              }
+            }
+          ],
+        },
+      ]
+    },
 //Scenario
     {
       text: '<em>From a crevice in the rock wall a mountain goblin shouts at you</em> "Hey there man-thing, watch out for falling rocks, yes!" ',

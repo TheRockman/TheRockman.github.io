@@ -23,11 +23,12 @@
   width: 16em;
   height: 32em;
   position: fixed;
-  left: 6rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   bottom: 2rem;
   font-size: 0.9em;
   transform-origin: 0 top;
-  transform: translate(-50%, 0) scale(1);
 }
 #character .awrap {
   width: 100%;
