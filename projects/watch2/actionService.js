@@ -1,5 +1,10 @@
 app.service('actionService', function($timeout, wikiSercive) {
 
+  function toTop(){
+    var myDiv = document.getElementById('talkboxTop');
+    myDiv.scrollTop = -1000;
+  }
+
   var dice = function(diceSize){
     return 1 + Math.floor(Math.random()*diceSize)
   }
@@ -29,6 +34,7 @@ app.service('actionService', function($timeout, wikiSercive) {
     var adventureIndex = getScope('adventureIndex')
     var pos = getScope('pos')
     var fakeCurrentScenario = {};
+    toTop();
 
     if(props.epilog){
       fakeCurrentScenario = {
@@ -77,10 +83,8 @@ app.service('actionService', function($timeout, wikiSercive) {
       props.smallTalkAction(props, setScope, getScope);
     }
 
-    var myDiv = document.getElementById('talkboxTop');
-    myDiv.scrollTop = -1000;
-
     setScope('currentScenario', currentScenario);
+    toTop();
   }
   this.smallTalk = smallTalk;
 
@@ -104,6 +108,7 @@ app.service('actionService', function($timeout, wikiSercive) {
 
     setScope('eventText', props.epilog);
     setScope('adventureDepth', -1);
+    toTop();
   }
   this.abort = abort;
 
@@ -153,7 +158,7 @@ app.service('actionService', function($timeout, wikiSercive) {
         progress(props, setScope, getScope)
       }
     }
-
+    toTop();
   }
 
   this.modifyFactionRating = function (props, setScope, getScope) {
@@ -174,6 +179,7 @@ app.service('actionService', function($timeout, wikiSercive) {
     }else{
       displayToast('You lost influence with '+current[props.faction].title+'.', setScope, getScope)
     }
+    toTop();
   }
 
   this.modifyRegion = function (props, setScope, getScope) {
@@ -211,6 +217,7 @@ app.service('actionService', function($timeout, wikiSercive) {
         progress(props, setScope, getScope)
       }
     }
+    toTop();
   }
 
   this.modifyQuestFlags = function (props, setScope, getScope) {
@@ -257,6 +264,7 @@ app.service('actionService', function($timeout, wikiSercive) {
     }else{
       progress(props, setScope, getScope)
     }
+    toTop();
   }
 
   this.modifyStat = function (props, setScope, getScope) {
@@ -311,6 +319,8 @@ app.service('actionService', function($timeout, wikiSercive) {
       props.epilog = props.failEpilog;
       props.failCheckAction(props, setScope, getScope);
     }
+
+    toTop();
   }
 
 });

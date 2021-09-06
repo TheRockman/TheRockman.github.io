@@ -7,7 +7,7 @@ app.service('scenarioMug', function(actionService) {
       everGreen: true,
       actions: [
         {
-          label: '"[Proceed]"',
+          label: '[Proceed]',
           action: actionService.abort,
           actionProps: {
             epilog: '<em>There are alot more folks here than you would have expected, to the point that the staff looks somewhat overwhelmed.</em>'
@@ -39,13 +39,6 @@ app.service('scenarioMug', function(actionService) {
                 }
               },
               {
-                action: actionService.modifyQuestFlags,
-                actionProps:{
-                  flag: 'test',
-                  flagMod: true
-                }
-              },
-              {
                 action: actionService.progress,
                 actionProps:{},
               },
@@ -69,13 +62,6 @@ app.service('scenarioMug', function(actionService) {
                 actionProps:{
                   faction: 'elf',
                   factionMod: 5,
-                }
-              },
-              {
-                action: actionService.modifyQuestFlags,
-                actionProps:{
-                  flag: 'test',
-                  flagMod: false
                 }
               },
               {

@@ -1,10 +1,5 @@
 app.service('questToggles', function() {
   this.all = {
-    test: {
-      active: false,
-      title: 'TEST',
-      desc: 'This shouldnt be seen'
-    },
     goblinSpeak: {
       active: false,
       title: 'Language: Goblin',

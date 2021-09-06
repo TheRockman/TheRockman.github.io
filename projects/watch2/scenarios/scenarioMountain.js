@@ -7,7 +7,7 @@ app.service('scenarioMountain', function(actionService) {
       everGreen: true,
       actions: [
         {
-          label: '"[Proceed]"',
+          label: '[Proceed]',
           action: actionService.abort,
           actionProps: {
             epilog: '<em>Each solid foothold and each sturdy grip you get is a victory hard won.</em>'

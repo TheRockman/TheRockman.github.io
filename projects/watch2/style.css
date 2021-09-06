@@ -83,6 +83,11 @@ ol{
   margin-right: 0.5rem;
 }
 
+.bgImg{
+  z-index: -1;
+  width: 100%;
+}
+
 .option{
   color: #999;
   line-height: 2rem;
@@ -171,7 +176,7 @@ ol{
   padding: 1rem;
 }
 .description{
-  padding: 1rem 2rem;
+  padding: 1.2rem;
   line-height: 1.8rem;
   white-space: pre-line;
 }
@@ -182,7 +187,7 @@ ol{
   right: 1rem;
 }
 .talkbox{
-  background: #222;
+  background: #111;
   outline: 1px solid #cacaca;
   color: #fff;
   height: 30vh;
