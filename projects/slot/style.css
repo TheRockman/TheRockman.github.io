@@ -65,7 +65,7 @@ svg, svg path, img{
   overflow: hidden;
 }
 .bg{
-  background: url('imgx/bg.png') no-repeat center center fixed;
+  background: url('https://therockman.github.io/projects/slot/imgx/bg.PNG') no-repeat center center fixed;
   background-size: cover;
   position: fixed;
   top: 0;
