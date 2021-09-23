@@ -38,6 +38,13 @@ svg, svg path, img{
   position: relative;
 }
 
+.one:hover, .two:hover, .three:hover{
+  transition: 0.3s all ease;
+  outline: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px 13px #5AF5FF;
+}
+
 .wrap{
   position: relative;
   width: 300px;
@@ -58,7 +65,7 @@ svg, svg path, img{
   overflow: hidden;
 }
 .bg{
-  background: url('img/bg.png') no-repeat center center fixed;
+  background: url('imgx/bg.png') no-repeat center center fixed;
   background-size: cover;
   position: fixed;
   top: 0;
@@ -96,7 +103,7 @@ svg, svg path, img{
 .border{
   border: 20px solid transparent;
   min-height: 200px;
-  border-image: url("img/frame.png") 27;
+  border-image: url("imgx/frame.png") 27;
   border-image-slice: 40;
   color:#f5f5f5;
 }
@@ -129,6 +136,17 @@ svg, svg path, img{
   background-size: contain;
   background-color: rgba(14, 182, 255, 0.35);
   z-index: 110;
+  animation: fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+@keyframes fade-in {
+  0% {
+    filter: brightness(1000);
+    opacity: 0;
+  }
+  100% {
+    filter: brightness(1);
+    opacity: 1;
+  }
 }
 
 .spin{

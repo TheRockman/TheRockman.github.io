@@ -13,11 +13,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     return array;
   };
   
+  $scope.bet = 10;
   $scope.wheels = {
     one: [1,2,3,4,5,6],
     two: [6,5,4,3,2,1],
     three: [6,1,2,3,4,5]
   }
+  
   $scope.wheels.one = $scope.shuffle($scope.wheels.one);
   $scope.wheels.two = $scope.shuffle($scope.wheels.two);
   $scope.wheels.three = $scope.shuffle($scope.wheels.three);
@@ -112,8 +114,10 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     }
   }
   
-  $scope.spin = function(){
+  $scope.spin = function(){  
     if(
+      ($scope.bet < 1) ||
+      ($scope.wheels.one.locked && $scope.wheels.two.locked && $scope.wheels.three.locked) ||
       ($scope.bet > $scope.score || !$scope.bet) ||
       ($scope.wheels.one.spinning || $scope.wheels.two.spinning || $scope.wheels.three.spinning)
     ){
