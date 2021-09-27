@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="row">
+      <div class="flex">
+        <div class="phone-wrap scroll">
+          <div class="content">
+            <div ng-cloak ng-if="view === 'today'">
+              <div class="align jsb">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M18 2C17.1 2 16 3 16 4H8C8 3 6.9 2 6 2H2V11C2 12 3 13 4 13H6.2C6.6 15 7.9 16.7 11 17V19.08C8 19.54 8 22 8 22H16C16 22 16 19.54 13 19.08V17C16.1 16.7 17.4 15 17.8 13H20C21 13 22 12 22 11V2H18M6 11H4V4H6V11M16 11.5C16 13.43 15.42 15 12 15C8.59 15 8 13.43 8 11.5V6H16V11.5M20 11H18V4H20V11Z" />
+                </svg>
+                Ongoing games
+                <p></p>
+              </div>
+              <div class="align jsb panel viewSlide" ng-repeat="match in games">
+                <div class="pointer center matcho mach-sliant" ng-click="setView('team', match.team1, null)">
+                  <img ng-cloak class="matchup-logo" src="{{match.team1.url}}" alt="">
+                  </br>
+                  <small>{{match.team1.name}}</small>
+                </div>
+                <div class="align jsb">
+                  <div class="center">
+                    <small style="color:transparent;">-</small>
+                    <h2>{{match.score1}}</h2>
+                  </div> 
+                  <div class="center">
+                    <small>{{match.gameType}}</small>
+                    <h2>-</h2>
+                  </div>
+                  <div class="center">
+                    <small style="color:transparent;">-</small>
+                    <h2>{{match.score2}}</h2>
+                  </div> 
+                </div>
+                <div class="pointer center matcho" ng-click="setView('team', match.team2, null)">
+                  <img ng-cloak class="matchup-logo" src="{{match.team2.url}}" alt="">
+                  </br>
+                  <small>{{match.team2.name}}</small>
+                </div>
+              </div>
+              <p class="center">Concluded</p>
+              <div class="align jsb bw panel viewSlide" ng-repeat="match in games">
+                <div class="pointer center matcho mach-sliant" ng-click="setView('team', match.team1, null)">
+                  <img ng-cloak class="matchup-logo" src="{{match.team1.url}}" alt="">
+                  </br>
+                  <small>{{match.team1.name}}</small>
+                </div>
+                <div class="align jsb">
+                  <div class="center">
+                    <small style="color:transparent;">-</small>
+                    <h2>{{match.score1-1}}</h2>
+                  </div> 
+                  <div class="center">
+                    <small>{{match.gameType}}</small>
+                    <h2>-</h2>
+                  </div>
+                  <div class="center">
+                    <small style="color:transparent;">-</small>
+                    <h2>{{match.score2+1}}</h2>
+                  </div> 
+                </div>
+                <div class="pointer center matcho" ng-click="setView('team', match.team2, null)">
+                  <img ng-cloak class="matchup-logo" src="{{match.team2.url}}" alt="">
+                  </br>
+                  <small>{{match.team2.name}}</small>
+                </div>
+              </div>
+            </div>
+            <div class="" ng-cloak ng-if="view === 'team' && currentTeam">
+              <div class="align jsb">
+                <svg class="pointer" ng-click="setView('today', null, null)" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </svg>
+                {{currentTeam.name}}
+                <p></p>
+              </div>
+              <div class="viewSlide">
+                <div class="center">
+                  </br>
+                  <img class="reverseViewSlide team-logo" src="{{currentTeam.url}}" alt="">
+                </div>
+                <p class="center">Members</p>
+                <div class="panel align jsb pointer" ng-repeat="player in currentTeam.players" ng-click="setView('player', currentTeam, player)">
+                  <span>{{player.name}}</span>
+                  {{player.role}}
+                </div>
+              </div>
+            </div>
+            
+            <div class="" ng-cloak ng-if="view === 'player' && currentPlayer">
+              <img class="bg-slide spalsh-bg" src="{{currentTeam.url}}" alt="">
+              <div class="align jsb">
+                <svg class="pointer" ng-click="setView('team', currentTeam, null)" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </svg>
+                {{currentPlayer.name}}
+                <p></p>
+              </div>
+              <div class="reverseViewSlide">
+                <img class="player-portrait" src="{{currentPlayer.url}}" alt="">
+                <div class="panel">
+                  <div class="align jsb">
+                    <h2>{{currentPlayer.name}}</h2>
+                    <p>{{currentPlayer.role}}</p>
+                  </div>
+                  <div class="align jsb">
+                    <div class="">
+                      <p>Kills: 144</p>
+                      <p>Deaths: 500</p>
+                      <p>Assists: 1</p>
+                    </div>
+                    <img class="rank" src="https://support-legendsofruneterra.riotgames.com/hc/article_attachments/360093671914/RankedModal_Icon_Call_of_the_Mountain_gold.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
