@@ -245,16 +245,29 @@ svg, svg path, img{
     left: 0;
     right: 0;
     top: 0;
+    padding: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
+    box-shadow: none;
   }
   .sidebar p{
     margin-right: 1rem;
   }
   .toggle{
     display: none;
+  }
+  .wrap {
+    margin: 0;
+  }
+  .remindo{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  .remember-wrap{
+    display: block;
   }
   .grid{
     display: grid; 
