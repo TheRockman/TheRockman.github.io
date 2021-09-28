@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="content card">
+      <div class="row full-height">
+        <div class="flex full-height sidebar" ng-class="{'openNav':openNav}">
+          <p class="pointer" >Dashboard</p>
+          <p class="pointer" >Classes</p>
+          <p class="pointer" >Resources</p>
+          <p class="pointer" >Learning plan</p>
+          <p class="pointer" >Chat</p>
+          <p class="pointer" >Settings</p>
+          <div class="toggle pointer" ng-click="openNav = !openNav">
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+            </svg>
+          </div>
+        </div>
+        <div class="flex wrap x3">
+          <div class="banner">
+            <div class="align">
+              <img class="head-img" src="https://lh3.googleusercontent.com/proxy/_psKonsxVXGtQHSrDAaTJsoo30GNKrHVvaKorLPYa9lz-zp_QVQN9S63VZDm9CvuVM_uYrqtgrrDnSuKND1yocKJE0r1hf0" alt="">
+              <div class="">
+                <h1>Good morning class!</h1>
+                <small><i>"I can't change the direction of the wind, but I can adjust my sails to always reach my destination."</i></small>
+              </div>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="a card" style="margin-left:0;">
+              <div class="align jsb">
+                <h3>Latest</h3>
+                <small>6th of june</small>
+              </div>
+              <hr/>
+              <div class="dg">
+                <div class="align jsb">
+                  <b>Math</b>
+                  <b class="percent">75%</b>
+                </div>
+                <progress value="75" max="100"></progress>
+                <div class="align jsb">
+                  <small>Level 5 of 20</small>
+                  <b>9011 points</b>
+                </div>
+              </div>
+              <hr/>
+              <div class="dg blueShift">
+                <div class="align jsb">
+                  <b>Philosophy</b>
+                  <b class="percent">33%</b>
+                </div>
+                <progress value="33" max="100"></progress>
+                <div class="align jsb">
+                  <small>Level 1 of 20</small>
+                  <b>10 points</b>
+                </div>
+              </div>
+              <hr/>
+              <div class="dg">
+                <div class="align jsb">
+                  <b class="align">
+                    <span>Science</span>
+                    &nbsp;
+                    <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                      <path fill="#ff808b" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                    </svg>
+                  </b>
+                  <b class="percent">100%</b>
+                </div>
+                <progress value="100" max="100"></progress>
+                <div class="align jsb">
+                  <small>Level 10 of 10</small>
+                  <b>10000 points</b>
+                </div>
+              </div>
+            </div>
+          <div class="b card" style="margin-right: 0;">
+            <div class="align jsb">
+              <h3>Pace</h3>
+              <small>For jan - june</small>
+            </div>
+          </div>
+          <div class="c card" style="margin-right: 0; background:transparent; box-shadow: none; padding:0;">
+            <div class="">
+              <h3>Reminders</h3>
+              <div class="align jsb">
+                <div class="remindo" style="margin-left: 0;">
+                  <b class="align">
+                    <svg style="width:14px;height:14px" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                    </svg>
+                    &nbsp;
+                    Test
+                  </b>
+                  <span>1233</span>
+                </div>
+                <div class="remindo blueShift">
+                  <b class="align">
+                    <svg style="width:14px;height:14px" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                    </svg>
+                    &nbsp;
+                    Test
+                  </b>
+                  <span>1233</span>
+                </div>
+                <div class="remindo" style="margin-right: 0;">
+                  <b class="align">
+                    <svg style="width:14px;height:14px" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                    </svg>
+                    &nbsp;
+                    Test
+                  </b>
+                  <span>1233</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
