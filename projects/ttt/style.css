@@ -1,0 +1,68 @@
+body{
+  margin: 0;
+  background: #17192e;
+  font-family: monospace;
+  font-size: 16px;
+  color: white;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+.container {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . .";
+}
+
+.tile{
+  background: #21243f;
+  font-size: 50px;
+  user-select: none;
+  text-align: center;
+  line-height: 100px;
+  height: 100px;
+  outline: 1px solid #444;
+}
+.x{
+  cursor: unset;
+  background: #1ed69e;
+}
+.o{
+  cursor: unset;
+  background: #4211d0;
+}
+.block{
+  background: transparent;
+  cursor: unset;
+  outline: none;
+}
