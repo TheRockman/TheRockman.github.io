@@ -13,36 +13,47 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <button type="button" ng-click="setDisplayYear(-1)" name="button">-</button>
-    {{displayYear}}
-    <button type="button" ng-click="setDisplayYear(+1)" name="button">+</button>
+<div class="card">
+  <div class="align jsb">
+    <div>
+      <button type="button" ng-click="setDisplayYear(-1)" name="button"><</button>
+        {{displayYear}}
+      <button type="button" ng-click="setDisplayYear(+1)" name="button">></button>
+    </div>
+    <div>
+      <button type="button" ng-click="setDisplayMonth(-1)" name="button"><</button>
+        {{m[displayMonth]}}
+      <button type="button" ng-click="setDisplayMonth(+1)" name="button">></button>
+    </div>
+  </div>
 
-    <button type="button" ng-click="setDisplayMonth(-1)" name="button">-</button>
-    {{displayMonth}}
-    <button type="button" ng-click="setDisplayMonth(+1)" name="button">+</button>
 
-      <div class="parent">
-        <span class="dayShort center">M</span>
-        <span class="dayShort center">T</span>
-        <span class="dayShort center">W</span>
-        <span class="dayShort center">T</span>
-        <span class="dayShort center">F</span>
-        <span class="dayShort center">S</span>
-        <span class="dayShort center">S</span>
 
-        <div class="tile center pointer" ng-click="selectDay(calendar);" ng-class="{'day':calendar.dayName,'event':calendar.events.length>0}" ng-repeat="calendar in cal[displayMonth]">
-          </br>
-          <h3>{{calendar.day}}</h3>
-        </div>
-      </div>
-      <div class="card" ng-if="selectedDay">
-        <h3>{{selectedDay.dayName}}</h3>
-        <span>{{selectedDay.day}}/{{selectedDay.month}}/{{selectedDay.year}}</span>
-        <div ng-repeat="event in selectedDay.events">
-          <h2>{{event.title}}</h2>
-          <p>{{event.desc}}</p>
-        </div>
-      </div>
+  <hr/>
+  <div class="parent">
+    <span class="dayShort center">MON</span>
+    <span class="dayShort center">TUE</span>
+    <span class="dayShort center">WED</span>
+    <span class="dayShort center">THU</span>
+    <span class="dayShort center">FRI</span>
+    <span class="dayShort center">SAT</span>
+    <span class="dayShort center">SUN</span>
+
+    <div tabindex="0" class="tile center pointer" ng-focus="selectDay(calendar);" ng-click="selectDay(calendar);" ng-class="{'day':calendar.dayName,'event':calendar.events.length>0}" ng-repeat="calendar in cal[displayMonth]">
+      <h3>{{calendar.day}}</h3>
+    </div>
+  </div>
+  <div ng-if="selectedDay">
+    <br/>
+    <br/>
+    <h3>{{selectedDay.dayName}}</h3>
+    <span>{{selectedDay.day}}/{{selectedDay.month}}/{{selectedDay.year}}</span>
+    <div class="agenda" ng-repeat="event in selectedDay.events">
+      <h2>{{event.title}}</h2>
+      <p>{{event.desc}}</p>
+    </div>
+  </div>
+</div>
 
   </div>
 </body>

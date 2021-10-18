@@ -67,8 +67,7 @@ svg, svg path, img{
   position: relative;
 }
 .parent {
-  width: 50vw;
-  height: 45vw;
+  width: 300px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -77,51 +76,61 @@ svg, svg path, img{
   grid-row-gap: 0;
 }
 .parent .dayShort{
-  line-height: 10vw;
+  line-height: 10px;
 }
 .tile{
-  width: 7vw;
-  height: 7vw;
+  font-size: 14px;
+  width: 42px;
+  height: 42px;
   margin: 0 auto;
+  line-height: 2.5rem;
   position: relative;
+  border-radius: 8px;
 }
-.day{
-  background: white;
-  outline: 1px solid black;
+h3{
+  margin-top: 3px;
+}
+.tile:focus{
+  outline: none;
+  background: #f5f5f5;
+}
+.agenda{
+  color: white;
+  padding: 1rem;
+  border-radius: 16px;
+  background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
 }
 .event::after{
   content: ".";
-  top: 10px;
   clip-path: circle(10% at 50% 50%);
+  transform: scale(3.5);
+  z-index: 0;
   color: transparent;
-  padding: 1rem;
-  background: red;
+  background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  mix-blend-mode: darken;
+}
+button{
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
 }
 .card{
   padding: 1rem;
-  margin: 1rem auto;;
-  margin-top: 3rem;
+  margin: 0 auto;
+  width: 350px;
   background: white;
   box-shadow: var(--level3);
-  min-width: 300px;
-  width: 50vw;
 }
 
 @media screen and (max-width: 1200px) {
 /* mobile   */
   .align{
     flex-wrap: wrap;
-  }
-  .parent{
-    margin: 0 auto;
-    margin-bottom: 1rem;
-  }
-  .tile{
-    line-height: 10px;
-  }
-  h3{
-    margin: 0;
-    font-size: 14px;
   }
 }
 
@@ -148,10 +157,6 @@ animation-name: animation;
 animation-duration: 4s;
 } */
 
- /*warm gradiend*/
- /*
- background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
- */
 
 /*Slant*/
 /*
