@@ -46,16 +46,15 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
               calendarArr[month] = ['a','b','c','d','e','f',];
             break;
             default:
-            // code block
           }
         }
-
-
         calendarArr[month].push(
           {
             date: day,
+            year: year,
             month: month,
             day: i,
+            events: [],
             dayName: dayName
           }
         )
@@ -64,8 +63,31 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     return calendarArr;
   }
 
-  $scope.cal = $scope.generateCalendar(2021);
-  console.log($scope.cal);
+  $scope.displayYear = 2021;
+  $scope.setDisplayYear = function(mod){
+    $scope.displayYear = $scope.displayYear + mod;
+    $scope.cal = $scope.generateCalendar($scope.displayYear);
+  }
+
   $scope.displayMonth = 1;
+  $scope.setDisplayMonth = function(mod){
+    $scope.displayMonth = $scope.displayMonth + mod;
+    if($scope.displayMonth + mod > 12){
+      $scope.setDisplayYear(+1);
+      $scope.displayMonth = 1;
+    } else if($scope.displayMonth + mod < 1){
+      $scope.setDisplayYear(-1);
+      $scope.displayMonth = 12;
+    }
+  }
+
+  $scope.selectedDay = null;
+  $scope.selectDay = function(day){
+    $scope.selectedDay = day;
+  }
+
+  $scope.cal = $scope.generateCalendar($scope.displayYear);
+
+  $scope.cal[1][20].events = [{title: 'Mikes birthday', desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
 
 });
