@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <button type="button" ng-click="displayMonth = displayMonth -1;" name="button">-</button>
+    {{displayMonth}}
+    <button type="button" ng-click="displayMonth = displayMonth +1;" name="button">+</button>
+
+    <div class="parent">
+      <span class="center">M</span>
+      <span class="center">T</span>
+      <span class="center">W</span>
+      <span class="center">T</span>
+      <span class="center">F</span>
+      <span class="center">S</span>
+      <span class="center">S</span>
+      <div ng-class="{'day':calendar.dayName}" ng-repeat="calendar in cal[displayMonth]">
+        {{calendar.dayName}}
+        {{calendar.day}}
+      </div>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
