@@ -9,71 +9,92 @@
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <script type="text/javascript" src="../../carousel.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    
-      
-      <div class="card row">
-        <nav class="align jsb">
-          <b>BRAND</b>
-          <small style="color:white;" class="align">
-            <span>SHOP</span>
-            &nbsp;
-            |
-            &nbsp;
-            <span>ABOUT</span>
-            &nbsp;
-            |
-            &nbsp;
-            <svg style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path fill="#fff" d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z" />
-            </svg>
-          </small>
-        </nav>
-        <div class="flex info">
-          <small>ababakdas</small>
-          <h2>Lorem ipsum dolor sit</h2>
-          <hr/>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <br/>
-          <h3>Colors:</h3>
-          <br/>
-          <div class="align">
-            <div class="swatch" style="background:#0695a5;" ng-click="theme(0);" title="Sea blue"></div>
-            &nbsp;
-            &nbsp;
-            <div class="swatch"  style="background:#e4633a;" ng-click="theme(190);" title="Campfire red"></div>
-            &nbsp;
-            &nbsp;
-            <div class="swatch"  style="background:#1ca32f;" ng-click="theme(300);"  title="Woodland green"></div>
-          </div>
-        </div>
-        <div class="flex x2 display relative">
+    <div class="wrap">
+      <div class="row">
+        <div class="flex pad">
           <ul rn-carousel rn-carousel-controls rn-carousel-index="index">
-            <li>
-              <img src="https://redlandlondon.com/wp-content/uploads/2015/10/b1.png" alt="">
-            </li>
-            <li>
-              <img src="https://redlandlondon.com/wp-content/uploads/2015/10/b2.png" alt="">
-            </li>
-            <li>
-              <img src="https://redlandlondon.com/wp-content/uploads/2015/10/b3.png" alt="">
+            <li ng-repeat="image in images">
+              <img ng-src="{{image}}" alt="">
             </li>
           </ul>
-          <div class="buttonbar">
-            <p class="cta">
-              <span>Add to wishlist</span>
-              <svg style="width:14px;height:14px" viewBox="0 0 24 24">
-                  <path fill="#333" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-              </svg>
-            </p>
+          <br/>
+          <div class="align jsb">
+            <div class="thumb" ng-repeat="image in images">
+              <img ng-click="applyIndex($index)" ng-src="{{image}}" alt="">
+            </div>
           </div>
         </div>
+        <div class="flex pad">
+          <h1>Dolore: magna aliqua</h1>
+          <div class="align" style="font-size:18px;">
+            <p style="opacity: 0.5;text-decoration: line-through;">$49.99</p>
+            &nbsp;
+            <p>$59.99</p>
+          </div>
+          <br/>
+          <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</small>
+          <br/>
+          <br/>
+          <div class="align">
+            <input class="quantity" type="text" name="" value="1">
+            <button class="cta" type="button" name="button">Add to cart</button>
+          </div>
+          <br/>
+          <br/>
+          <small>Category: <a href="#">Poster</a>, <a href="#">Print</a>, <a href="#">Artwork</a></small>
+        </div>
       </div>
-      
-  </div>
+      <br/>
+
+      <div class="row">
+        <div class="flex x3 pad">
+          <h4>Reviews</h4>
+          <div class="rw" ng-repeat="rw in reviews">
+            <b>{{rw.name}}</b>
+            <br/>
+            <small>{{rw.date}}</small>
+            <p>{{rw.stars}}</p>
+            <p>{{rw.desc}}</p>
+          </div>
+        </div>
+        <aside class="flex pad">
+          <h4>Similar</h4>
+          <div class="rw prew align">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsSa9TrFdyqIFceDGtnVG-NTWkVvVWWumb5w&usqp=CAU" alt="">
+            <div>
+              <b>Globboglob</b>
+              <br/>
+              <small>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</small>
+            </div>
+          </div>
+          <div class="rw prew align">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsSa9TrFdyqIFceDGtnVG-NTWkVvVWWumb5w&usqp=CAU" alt="">
+            <div>
+              <b>Blip blip-y</b>
+              <br/>
+              <small>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</small>
+            </div>
+          </div>
+          <div class="rw prew align">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsSa9TrFdyqIFceDGtnVG-NTWkVvVWWumb5w&usqp=CAU" alt="">
+            <div>
+              <b>Salamander</b>
+              <br/>
+              <small>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+
+
+
+
 </body>
 <script type="text/javascript" src="app.js"></script>
 
