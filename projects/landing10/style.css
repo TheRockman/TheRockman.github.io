@@ -26,7 +26,7 @@ body{
   text-align: center;
 }
 .m-center{
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 .jfe{
   justify-content: flex-end;
@@ -64,8 +64,7 @@ svg, svg path, img{
 }
 .feature{
   max-width: 140px;
-  /* margin: 0 auto; */
-  margin-bottom: 2rem;
+  margin: 1rem;
   padding: 1rem;
   background: white;
   box-shadow: var(--level2);
@@ -140,14 +139,18 @@ input{
   .stock{
     width: 75vw;
     height: auto;
-    position: relative;
+    margin: 0 auto;
+    position: unset;
+    left: 0;
+    right: 0;
     bottom: unset;
     border-bottom: 1px solid #e0e0e0;
   }
+  .flex.relative{
+    text-align: center;
+  }
   .feature{
-    float: none;
-    margin: 0 auto;
-    margin-top: 2rem;
+    float:left;
   }
   .actions{
     order: -1;
