@@ -47,7 +47,7 @@ app.service('scenarioHenry', function(actionService) {
         },
         {
           label: '"What do you think about Boblin?"',
-          visibleWhen: "followers.boblin.following",
+          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
           action: actionService.abort,
           actionProps: {
             epilog: '<em>Henry looks like he ate something sour.</em>"Goblins are indeed not my prefered company, they have a habit of... making a mess"\n\n<em>Boblin tilts his head while you talk but suddenly leaps into a bush and emerge with a dead bird in his mouth that he violently shakes throwing feathers everywhere nearby.</em>'

@@ -212,8 +212,11 @@ ol{
 .follower-box{
   position: absolute;
   animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  top: 6rem;
+  top: 7rem;
+  left: 3rem;
+  right: 3rem;
   z-index: 100;
+  color: white;
 }
 .specialEvent{
   background: red;
@@ -231,6 +234,13 @@ ol{
 .follower-avatar{
   height: 45px;
   width: 45px;
+}
+.followerDisabled{
+  pointer-events: none;
+  background: #333;
+  color: #999;
+  text-decoration: line-through;
+  filter: grayscale(100%);
 }
 
 .info{

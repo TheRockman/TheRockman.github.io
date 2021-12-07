@@ -1,4 +1,5 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $sce, questToggles, wikiSercive, mapMarkers, scenarioHenry, scenarioBoblin) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl",
+function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex) {
 
   $scope.questFlags = questToggles.all;
   $scope.secretquestFlags = questToggles.secret;
@@ -19,6 +20,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   $scope.currentRegion = $scope.regions[0];
   $scope.currentRegionBackup = $scope.currentRegion;
+  $scope.visitedRegions = [$scope.regions[0].short];
   $scope.scenarios = $scope.currentRegion.scenarios;
   $scope.currentScenario = $scope.scenarios[0];
 
@@ -71,22 +73,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     cha: 2
   }
 
-  $scope.followers = {
-    henry: {
-      following: false,
-      canSpeak: true,
-      name: 'Henry Slingerman',
-      scenarios: scenarioHenry.scenarios,
-      portrait: 'https://uninvisitedisle.files.wordpress.com/2018/01/2018-01-31.png?w=1200',
-    },
-    boblin: {
-      following: false,
-      canSpeak: true,
-      name: 'Boblin',
-      scenarios: scenarioBoblin.scenarios,
-      portrait: 'https://styles.redditmedia.com/t5_10kt1w/styles/communityIcon_8fpdzqdg49v21.png?width=256&s=5c0fc4ce8a09c0d74da267582bde592611edbd89',
-    }
-  }
+  $scope.followers = followerIndex.all;
 
   $scope.customScenarioIntro = function(scenario){
     if(scenario.specialIntros){
@@ -135,7 +122,13 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   }
 
   $scope.pickRegionFromMap = function(item){
-    $scope.resetFollowerCanSpeak();
+    console.log($scope.visitedRegions, item);
+
+    if(!$scope.visitedRegions.includes(item.short) ){
+      $scope.resetFollowerCanSpeak();
+    } else{
+      $scope.visitedRegions.push(item.short);
+    }
 
     $scope.currentRegion = item;
     $scope.currentRegionBackup = $scope.currentRegion;
@@ -187,8 +180,9 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       $scope.currentScenario = {
         text: '<em>This area holds no more adventures, open the map and explore somewhere else.</em>',
         everGreen: true,
-        mapHint: true
+        mapHint: true,
       };
+      $scope.currentRegion.background = './img/places/resting.jpeg';
       return;
     }
 
