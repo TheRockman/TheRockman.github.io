@@ -1,5 +1,5 @@
 app.service('scenarioBasic', function(actionService) {
-
+  
   this.scenarios = [
     {
       text: '<em>The <a href="#forest" title="Open wiki" class="info">forest</a> is silent.</em>',

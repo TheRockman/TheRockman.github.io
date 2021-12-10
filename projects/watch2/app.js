@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl",
-function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex) {
+function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex) {
 
   $scope.questFlags = questToggles.all;
   $scope.secretquestFlags = questToggles.secret;
@@ -23,54 +23,29 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex) {
   $scope.visitedRegions = [$scope.regions[0].short];
   $scope.scenarios = $scope.currentRegion.scenarios;
   $scope.currentScenario = $scope.scenarios[0];
+  $scope.factions = factionIndex.factions;
 
-  $scope.factions = {
-    crown: {
-      rep: 0,
-      icon: './img/factions/silver.png',
-      desc: '<a href="#silverCourt" class="info"> [wiki] The court of silver',
-      title: 'The court of silver'
-    },
-    mages: {
-      rep: 0,
-      icon: './img/factions/mages.png',
-      desc: '<a href="#mageGuild" class="info"> [wiki] The mages guild',
-      title: 'The mages guild'
-    },
-    steven: {
-      rep: 0,
-      icon: '',
-      desc: 'Steven is talkative old man in the woods',
-      title: 'Steven'
-    },
-    boblin: {
-      rep: 0,
-      icon: './img/factions/gobbo.png',
-      desc: 'Inknose goblins are common and easy to spot by their long black noses.',
-      title: 'Inknose tribe'
-    },
-    elf: {
-      rep: 0,
-      icon: './img/factions/gobbo.png',
-      desc: 'Knifeears',
-      title: 'House Glittergreen'
-    },
-    dwarf: {
-      rep: 0,
-      icon: './img/factions/gobbo.png',
-      desc: 'Lumberfeet',
-      title: 'Forged brotherhood'
-    },
+  let rollForStat = function(){
+    let roll1 = 1 + Math.floor(Math.random()*6);
+    let roll2 = 1 + Math.floor(Math.random()*6);
+    let roll3 = 1 + Math.floor(Math.random()*6);
+
+    if(roll1 + roll2 + roll3 > 8){
+      return roll1 + roll2 + roll3;
+    }else{
+      return 8;
+    }
   }
+  // Math.round(0.8);
 
   $scope.stats = {
-    hp: 10,
-    dex: 5,
-    str: 10,
-    int: 5,
-    wis: 4,
-    con: 3,
-    cha: 2
+    hp: rollForStat(),
+    dex: rollForStat(),
+    str: rollForStat(),
+    int: rollForStat(),
+    wis: rollForStat(),
+    con: rollForStat(),
+    cha: rollForStat()
   }
 
   $scope.followers = followerIndex.all;
@@ -86,7 +61,6 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex) {
     } else{
       return false;
     }
-
   }
 
   $scope.inventory = {
@@ -235,29 +209,29 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex) {
       $scope.currentScenario = follower.scenarios[0];
   }
 
+  let shuffle = function(array) {
+    let currentIndex = array.length,  randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]
+      ];
+    }
+    return array;
+  }
+
+//Lockpicking
   $scope.generateLockPickingPuzzle = function(level){
     $scope.lockpickSuccess = false;
-    var outputPuzzle = [];
-    var lpLevel = 3 + level;
-    for (var i = 0; i < lpLevel; i++) {
-      if(Math.random() < 0.5){
-        outputPuzzle.push({a:true, guess: false});
-      }else{
-        outputPuzzle.push({a:false, guess: false});
-      }
-    }
-    return outputPuzzle;
+    let outputPuzzle = [1,2,3];
+
+    return shuffle(outputPuzzle);
   }
-  $scope.evaluateLockPicking = function(){
-    for (var i = 0; i < $scope.currentLockpickPuzzle.length; i++) {
-      if($scope.currentLockpickPuzzle[i].a !== $scope.currentLockpickPuzzle[i].guess){
-        return;
-      }
-    }
-    $scope.lockpickSuccess = true;
+
+  $scope.lockPickingAtempt = function(lock){
+    $scope.lockpickSuccess = lock;
     $scope.currentLockpickPuzzle = [];
-    // $scope.scenarios[$scope.adventureIndex].done = true;
-    // $scope.wrapUpAndPickNext();
   }
 
 //parallax

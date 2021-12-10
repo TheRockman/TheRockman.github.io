@@ -82,6 +82,10 @@ ol{
   height: auto!important;
   margin-right: 0.5rem;
 }
+.correctPick{
+  background: teal;
+  color: white;
+}
 
 .bgImg{
   z-index: -1;
