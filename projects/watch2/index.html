@@ -43,20 +43,6 @@
       </div>
     </div>
 
-    <div ng-cloak ng-if="currentScenario.mapHint" class="follower-box">
-      <div class="align" style="align-items: flex-start;">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-          <path fill="#fff" d="M15.9,18.5L21.9,20.1L21.5,22L12.1,19.5L2.7,22L2.2,20.1L8.2,18.5L2.1,16.9L2.6,15L12,17.5L21.4,15L21.9,16.9L15.9,18.5M16.07,7.92C15.91,7.7 15.71,7.5 15.5,7.33C15.05,6.9 14.5,6.59 14.06,6.13C13,5.08 12.79,3.34 13.44,2C12.79,2.17 12.18,2.54 11.67,2.95C9.84,4.46 9.11,7.1 10,9.38C10,9.45 10.04,9.53 10.04,9.62C10.04,9.78 9.93,9.92 9.79,10C9.63,10.05 9.46,10 9.33,9.9C9.28,9.86 9.25,9.82 9.22,9.77C8.42,8.74 8.29,7.26 8.84,6.07C7.65,7.06 7,8.72 7.11,10.29C7.13,10.65 7.18,11 7.3,11.36C7.41,11.8 7.59,12.23 7.82,12.61C8.57,13.86 9.9,14.76 11.32,14.94C12.84,15.14 14.46,14.85 15.63,13.79C16.93,12.59 17.4,10.67 16.71,9L16.61,8.83C16.47,8.5 16.28,8.2 16.04,7.93L16.07,7.92M13.83,12.47C13.63,12.65 13.31,12.83 13.05,12.91C12.26,13.19 11.46,12.79 11,12.31C11.84,12.11 12.34,11.47 12.5,10.83C12.61,10.25 12.39,9.78 12.29,9.22C12.21,8.69 12.22,8.23 12.42,7.73C12.55,8 12.69,8.28 12.86,8.5C13.41,9.22 14.27,9.54 14.45,10.5C14.47,10.63 14.5,10.72 14.5,10.83C14.5,11.43 14.26,12.07 13.82,12.47" />
-        </svg>
-        &nbsp;
-        You rest, reflecting on the adventures you've had in the {{currentRegion.name}}.
-      </div>
-      <div class="align follower" ng-repeat="follower in followers" ng-if="follower.following" ng-class="{'followerDisabled': !follower.canSpeak}" ng-click="talkToFollower(follower)">
-        <img class="follower-avatar" src="{{follower.portrait}}" alt="">
-        {{follower.name}}
-      </div>
-    </div>
-
     <div ng-cloak class="viewBox" ng-if="view !== null">
       <div class="map-view" ng-if="view === 'mapView'">
         <img src="img/places/map.jpg" alt="">
@@ -148,163 +134,190 @@
         <button class="wide-btn" type="button" ng-click="wikiModal = ''" name="button">Close</button>
       </div>
 
-      <div class="lockpick-modal" ng-if="currentLockpickPuzzle.length > 0">
-        LOCKPICK TEST
-        <button type="button" ng-click="lockPickingAtempt(true)" name="button">Click to solve</button>
-        <button type="button" ng-click="lockPickingAtempt(false)" name="button">Click to fail</button>
-      </div>
-
       <p ng-if="toast" ng-cloak class="toast">{{toast}}</p>
-
-      <div class="dice-overlay" ng-if="diceRollToast">
-        <div class="dice {{diceRollResult}}">
-          <span>{{diceRollToast}}</span>
-          <img src="img/ui/dice.svg" alt="">
-          <p>{{diceRollResult}}</p>
-        </div>
-      </div>
-
-      <div id="character" ng-cloak ng-if="currentScenario.speaker" ng-class="{'invisi': !currentScenario.speaker || eventText, 'pose2':true}" class="{{currentScenario.speaker.char}}" ng-cloak >
-        <p ng-cloak class="align speaker-name-tag" ng-if="currentScenario.speaker.name">
-          <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
-          {{currentScenario.speaker.name}}
-        </p>
-        <div class="awrap">
-                <div class="shape head">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape torso">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape legLeft">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape legRight">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape armLeft">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape armRight">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape layer2 head">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape layer2 torso">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape layer2 legLeft">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape layer2 legRight">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape layer2 armLeft">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-                <div class="shape layer2 armRight">
-                      <div class="face ft"></div>
-                      <div class="face bk"></div>
-                      <div class="face rt"></div>
-                      <div class="face lt"></div>
-                      <div class="face bm"></div>
-                      <div class="face tp"></div>
-                </div>
-              </div>
-      </div>
-
       <img class="bgImg" ng-src="{{currentRegion.background}}" alt="">
 
-      <div class="talkbox" ng-if="eventText || currentScenario.text" id="talkboxTop">
-        <div ng-if="!currentScenario.done && !eventText">
+      <div class="aside-container">
+        <!-- char -->
+        <div id="character" ng-cloak ng-if="currentScenario.speaker" ng-class="{'invisi': !currentScenario.speaker || eventText, 'pose2':true}" class="{{currentScenario.speaker.char}}" ng-cloak >
+          <p ng-cloak class="align speaker-name-tag" ng-if="currentScenario.speaker.name">
+            <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
+            {{currentScenario.speaker.name}}
+          </p>
+          <div class="awrap">
+                  <div class="shape head">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape torso">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape legLeft">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape legRight">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape armLeft">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape armRight">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape layer2 head">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape layer2 torso">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape layer2 legLeft">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape layer2 legRight">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape layer2 armLeft">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                  <div class="shape layer2 armRight">
+                        <div class="face ft"></div>
+                        <div class="face bk"></div>
+                        <div class="face rt"></div>
+                        <div class="face lt"></div>
+                        <div class="face bm"></div>
+                        <div class="face tp"></div>
+                  </div>
+                </div>
+        </div>
+        <!-- end aside container -->
+      </div>
 
-          <p ng-if="currentScenario.text && !customScenarioIntro(currentScenario)" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
-          <p ng-if="currentScenario.text && customScenarioIntro(currentScenario)" class="description" ng-bind-html='toTrustedHTML( customScenarioIntro(currentScenario) )'></p>
+      <div class="responsive-container">
+        <!-- lockpick -->
+        <div class="responsive-panel lockpick-modal" ng-if="currentLockpickPuzzle.length > 0">
+          LOCKPICK TEST
+          <button type="button" ng-click="lockPickingAtempt(true)" name="button">Click to solve</button>
+          <button type="button" ng-click="lockPickingAtempt(false)" name="button">Click to fail</button>
+        </div>
 
-          <button class="wide-btn" ng-if="currentScenario.mapHint"  ng-click="viewManager('mapView')">
-            <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
-              <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
+        <!-- dice roll -->
+        <div class="dice-overlay" ng-if="diceRollToast">
+          <div class="dice {{diceRollResult}}">
+            <span>{{diceRollToast}}</span>
+            <img src="img/ui/dice.svg" alt="">
+            <p>{{diceRollResult}}</p>
+          </div>
+        </div>
+
+        <!-- resting -->
+        <div ng-cloak ng-if="currentScenario.mapHint" class="responsive-panel follower-box">
+          <div class="align" style="align-items: flex-start;">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="#fff" d="M15.9,18.5L21.9,20.1L21.5,22L12.1,19.5L2.7,22L2.2,20.1L8.2,18.5L2.1,16.9L2.6,15L12,17.5L21.4,15L21.9,16.9L15.9,18.5M16.07,7.92C15.91,7.7 15.71,7.5 15.5,7.33C15.05,6.9 14.5,6.59 14.06,6.13C13,5.08 12.79,3.34 13.44,2C12.79,2.17 12.18,2.54 11.67,2.95C9.84,4.46 9.11,7.1 10,9.38C10,9.45 10.04,9.53 10.04,9.62C10.04,9.78 9.93,9.92 9.79,10C9.63,10.05 9.46,10 9.33,9.9C9.28,9.86 9.25,9.82 9.22,9.77C8.42,8.74 8.29,7.26 8.84,6.07C7.65,7.06 7,8.72 7.11,10.29C7.13,10.65 7.18,11 7.3,11.36C7.41,11.8 7.59,12.23 7.82,12.61C8.57,13.86 9.9,14.76 11.32,14.94C12.84,15.14 14.46,14.85 15.63,13.79C16.93,12.59 17.4,10.67 16.71,9L16.61,8.83C16.47,8.5 16.28,8.2 16.04,7.93L16.07,7.92M13.83,12.47C13.63,12.65 13.31,12.83 13.05,12.91C12.26,13.19 11.46,12.79 11,12.31C11.84,12.11 12.34,11.47 12.5,10.83C12.61,10.25 12.39,9.78 12.29,9.22C12.21,8.69 12.22,8.23 12.42,7.73C12.55,8 12.69,8.28 12.86,8.5C13.41,9.22 14.27,9.54 14.45,10.5C14.47,10.63 14.5,10.72 14.5,10.83C14.5,11.43 14.26,12.07 13.82,12.47" />
             </svg>
             &nbsp;
-            Open map screen
-          </button>
+            You rest, reflecting on the adventures you've had in the {{currentRegion.name}}.
+          </div>
           <br/>
-          <ol ng-class="{'optionLock': optionLock }">
-            <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
-              <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
-                {{option.label}}
-              </div>
-            </li>
-          </ol>
-
+          <div class="follower">
+            <div class="follower-tile" ng-repeat="follower in followers" ng-if="follower.following" ng-class="{'followerDisabled': !follower.canSpeak}" ng-click="talkToFollower(follower)">
+              <img class="follower-avatar" src="{{follower.portrait}}" alt="">
+              {{follower.name}}
+            </div>
+          </div>
         </div>
 
-        <div ng-if="eventText">
-          <!-- Ending -->
-          <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
-          <br/>
-          <ol>
-            <li class="option pointer" ng-click="wrapUpAndPickNext()">
-              [Proceed]
-            </li>
-          </ol>
+        <!-- talkbox -->
+        <div class="talkbox" ng-if="eventText || currentScenario.text" id="talkboxTop">
+          <div ng-if="!currentScenario.done && !eventText">
+
+            <p ng-if="currentScenario.text && !customScenarioIntro(currentScenario)" class="description" ng-bind-html='toTrustedHTML( currentScenario.text )'></p>
+            <p ng-if="currentScenario.text && customScenarioIntro(currentScenario)" class="description" ng-bind-html='toTrustedHTML( customScenarioIntro(currentScenario) )'></p>
+
+            <button class="wide-btn" ng-if="currentScenario.mapHint"  ng-click="viewManager('mapView')">
+              <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+                <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
+              </svg>
+              &nbsp;
+              Open map screen
+            </button>
+            <br/>
+            <ol ng-class="{'optionLock': optionLock }">
+              <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
+                <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
+                  {{option.label}}
+                </div>
+              </li>
+            </ol>
+
+          </div>
+
+          <div ng-if="eventText">
+            <!-- Ending -->
+            <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
+            <br/>
+            <ol>
+              <li class="option pointer" ng-click="wrapUpAndPickNext()">
+                [Proceed]
+              </li>
+            </ol>
+          </div>
         </div>
+        <!-- end responsive container -->
       </div>
 
     </div>

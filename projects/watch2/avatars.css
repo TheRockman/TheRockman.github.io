@@ -22,13 +22,14 @@
 #character {
   width: 16em;
   height: 32em;
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
+  bottom: -9rem;
   margin: 0 auto;
-  bottom: 2rem;
   font-size: 0.9em;
-  transform-origin: 0 top;
+  transform-origin: center bottom;
+  transform: scale(1.5);
 }
 #character .awrap {
   width: 100%;

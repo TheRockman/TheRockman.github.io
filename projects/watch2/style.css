@@ -58,13 +58,12 @@ ol{
   position: absolute;
   padding: 1rem;
   z-index: 100;
-  top: 1rem;
-  left: 100%;
-  right: -12rem;
+  top: -4rem;
+  left: -2rem;
   margin: 0 auto;
   font-size: 18px;
   /* filter: drop-shadow(-2px 2px 0px #000); */
-  animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: fade-in-bck 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 .speaker-name-tag::before{
   content: " ";
@@ -89,7 +88,8 @@ ol{
 
 .bgImg{
   z-index: -1;
-  width: 100%;
+  width: 100vw;
+  height: 100vh
 }
 
 .option{
@@ -190,15 +190,38 @@ ol{
   left: 1rem;
   right: 1rem;
 }
+.responsive-panel{
+  color: white;
+  padding: 1rem;
+  position: absolute;
+  bottom: 33vh;
+  background: rgba(25,32,40,0.9);
+}
+.aside-container, .responsive-container{
+  position: absolute;
+  top: 0;
+  height: 100vh;
+}
+
+.responsive-container{
+  right: 0;
+  width: 66vw;
+}
+.aside-container{
+  left: 0;
+  width: 33vw;
+  overflow: hidden;
+}
 .talkbox{
-  background: #111;
-  outline: 1px solid #cacaca;
+  background: rgba(25,32,40,0.9);
   color: #fff;
   height: 30vh;
-  width: 66vw;
+  width: 100%;
+  padding-bottom: 1rem;
   margin: 0 auto;
   overflow-y: auto;
-  position: relative;
+  position: absolute;
+  bottom: 0;
 }
 .talkbox ol{
   margin-bottom: 2rem;
@@ -214,13 +237,7 @@ ol{
 }
 
 .follower-box{
-  position: absolute;
-  animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  top: 7rem;
-  left: 3rem;
-  right: 3rem;
-  z-index: 100;
-  color: white;
+  animation: fade-in-bck 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 .specialEvent{
   background: red;
@@ -228,16 +245,21 @@ ol{
   padding: 1rem;
 }
 .follower{
-  background: white;
-  margin-top: 0.5rem;
-  color: black;
-  cursor: pointer;
-  padding: 0 0.5rem;
-  border-radius: 1000px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.follower-tile{
+  color: #fff;
+  text-align: center;
 }
 .follower-avatar{
-  height: 45px;
-  width: 45px;
+  height: 4rem;
+  width: auto;
+  margin: 0 auto;
+  display: block;
 }
 .followerDisabled{
   pointer-events: none;
@@ -329,16 +351,6 @@ ol{
 }
 
 .lockpick-modal{
-  padding: 1rem;
-  min-height: 20vw;
-  position: absolute;
-  background: black;
-  color: white;
-  top: 25vh;
-  right: 1rem;
-  left: 1rem;
-  margin: 0 auto;
-  z-index: 10;
 }
 
 .card{
@@ -461,13 +473,30 @@ ol{
   .flex {
     flex: 1 1 auto;
   }
-  .talkbox{
-    border-top: 1px solid white;
-    width: 100%;
-    left: 0!important;
-    right: 0!important;
-    bottom: -5px!important;
-    height: 33vh;
-  }
 
+  .aside-container, .responsive-container{
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100vw;
+  }
+  .wrap{
+    left: 0;
+    right: 0;
+  }
+  .bgImg{
+    display: none;
+  }
+  .responsive-container{
+    height: unset;
+  }
+  .follower-box{
+    top: -38rem;
+    margin: 1rem;
+  }
+  .speaker-name-tag{
+    top: -4rem;
+    left: 0;
+    right: 0;
+  }
 }
