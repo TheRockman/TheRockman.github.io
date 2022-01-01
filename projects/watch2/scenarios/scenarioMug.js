@@ -126,29 +126,36 @@ app.service('scenarioMug', function(actionService) {
       text: '<em>A young dragonborn waitress hurries to your table.</em>"Welcome to The rusty mug, can i get you anything?"',
       actions: [
         {
-          label: '[Pay 1 Gold] "Ale please." ',
-          action: actionService.exchange,
+          label: '"Let me see the menue." ',
+          action: actionService.shop,
           actionProps: {
-            exchangeCatergoryA: 'inventory',
-            exchangeKeyA: 'gold',
-            exchangeAmountA: 1,
-            exchangeCatergoryB: 'inventory',
-            exchangeKeyB: '123',
-            exchangeAmountB: 1,
-            epilog: '<em>She winks and disappear for a moment before returning with a flagon.</em>"There ya go, enjoy!"'
-          }
-        },
-        {
-          label: '[Pay 1 Gold] "Got anything to eat?" ',
-          action: actionService.exchange,
-          actionProps: {
-            exchangeCatergoryA: 'inventory',
-            exchangeKeyA: 'gold',
-            exchangeAmountA: 1,
-            exchangeCatergoryB: 'inventory',
-            exchangeKeyB: '123',
-            exchangeAmountB: 1,
-            epilog: '<em>She nods</em>"Hold on just a moment, i´ll be back with todays special"<em>She disappear for a moment before returning with a bowl of stew.</em> "There ya go, enjoy!"'
+            forSale: [
+              {
+                name: 'Ale',
+                img: 'img/items/pot.png',
+                desc: 'Restores 2HP',
+                use: function(){console.log('do the thing');},
+                price: '5',
+                quantity: 10,
+              },
+              {
+                name: 'Wine',
+                img: 'img/items/pot.png',
+                desc: 'Restores 2HP',
+                use: function(){console.log('do the thing');},
+                price: '5',
+                quantity: 10,
+              },
+              {
+                name: 'Stew',
+                img: 'img/items/boot.png',
+                desc: 'Restores 3HP',
+                use: '',
+                price: '10',
+                quantity: 10,
+              },
+            ],
+            epilog: '<em>She points to a sign above the bar.</em>'
           }
         },
         {
@@ -184,29 +191,36 @@ app.service('scenarioMug', function(actionService) {
       text: '<em>A young dragonborn waitress hurries to your table.</em>"Welcome to The rusty mug, can i get you anything?"',
       actions: [
         {
-          label: '[Pay 1 Gold] "Ale please." ',
-          action: actionService.exchange,
+          label: '"Let me see the menue." ',
+          action: actionService.shop,
           actionProps: {
-            exchangeCatergoryA: 'inventory',
-            exchangeKeyA: 'gold',
-            exchangeAmountA: 1,
-            exchangeCatergoryB: 'inventory',
-            exchangeKeyB: '123',
-            exchangeAmountB: 1,
-            epilog: '<em>She winks and disappear for a moment before returning with a flagon.</em>"There ya go, enjoy!"'
-          }
-        },
-        {
-          label: '[Pay 1 Gold] "Got anything to eat?" ',
-          action: actionService.exchange,
-          actionProps: {
-            exchangeCatergoryA: 'inventory',
-            exchangeKeyA: 'gold',
-            exchangeAmountA: 1,
-            exchangeCatergoryB: 'inventory',
-            exchangeKeyB: '123',
-            exchangeAmountB: 1,
-            epilog: '<em>She nods</em>"Hold on just a moment, i´ll be back with todays special"<em>She disappear for a moment before returning with a bowl of stew.</em> "There ya go, enjoy!"'
+            forSale: [
+              {
+                name: 'Ale',
+                img: 'img/items/pot.png',
+                desc: 'Restores 2HP',
+                use: function(){console.log('do the thing');},
+                price: '5',
+                quantity: 10,
+              },
+              {
+                name: 'Wine',
+                img: 'img/items/pot.png',
+                desc: 'Restores 2HP',
+                use: function(){console.log('do the thing');},
+                price: '5',
+                quantity: 10,
+              },
+              {
+                name: 'Stew',
+                img: 'img/items/boot.png',
+                desc: 'Restores 3HP',
+                use: '',
+                price: '10',
+                quantity: 10,
+              },
+            ],
+            epilog: '<em>She points to a sign above the bar.</em>'
           }
         },
         {

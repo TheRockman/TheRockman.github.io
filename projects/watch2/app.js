@@ -17,6 +17,7 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   $scope.regions = mapMarkers.markers;
   $scope.currentLockpickPuzzle = [];
   $scope.lockpickSuccess = false;
+  $scope.currentShop = null;
 
   $scope.currentRegion = $scope.regions[0];
   $scope.currentRegionBackup = $scope.currentRegion;
@@ -37,9 +38,9 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     }
   }
   // Math.round(0.8);
-
+  $scope.maxHP = rollForStat();
   $scope.stats = {
-    hp: rollForStat(),
+    hp: JSON.parse(JSON.stringify($scope.maxHP)),
     dex: rollForStat(),
     str: rollForStat(),
     int: rollForStat(),
@@ -64,7 +65,25 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   }
 
   $scope.inventory = {
-    gold: 1000
+    gold: 1000,
+    apple: {
+      quantity: 1,
+      img: '',
+      desc: 'Restores 1 HP',
+      use: function(){
+        if($scope.stats.hp+1 < $scope.maxHP){
+          this.quantity--;
+          $scope.stats.hp = $scope.stats.hp +1;
+        }
+      }
+    },
+  }
+
+  $scope.getInventoryKeys = function(){
+    return Object.keys($scope.inventory);
+  }
+  $scope.parseInvName = function(inv){
+    return inv.replace(/_/g, ' ');
   }
 
   $scope.toTrustedHTML = function( html ){
@@ -199,6 +218,32 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     }
   }
 
+  $scope.validateVisibleWhen = function(option) {
+    if(!option.visibleWhen && !option.visibleWhenAND){
+      return true;
+    } else if(option.visibleWhen && $scope.$eval(option.visibleWhen)){
+      return true;
+    } else if (option.visibleWhenOR) {
+      let condA = $scope.$eval(option.visibleWhenAND.a);
+      let condB = $scope.$eval(option.visibleWhenAND.b);
+      if(condA || condB){
+        return true;
+      } else {
+        return false;
+      }
+    } else if (option.visibleWhenAND) {
+      let condA = $scope.$eval(option.visibleWhenAND.a);
+      let condB = $scope.$eval(option.visibleWhenAND.b);
+      if(condA && condB){
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   $scope.talkToFollower = function(follower){
       follower.canSpeak = false;
       $scope.currentRegionBackup = $scope.currentRegion;
@@ -233,6 +278,25 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     $scope.lockpickSuccess = lock;
     $scope.currentLockpickPuzzle = [];
   }
+
+//buy shop item
+$scope.buyItem = function(item){
+  if($scope.inventory.gold >= item.price){
+    $scope.inventory.gold = $scope.inventory.gold - item.price;
+
+    if(!$scope.inventory[item.name]){
+      $scope.inventory[item.name] = {
+        quantity: 0,
+      };
+    }
+    $scope.inventory[item.name].quantity = $scope.inventory[item.name].quantity+1;
+    $scope.inventory[item.name].img = item.img;
+    $scope.inventory[item.name].use = item.use;
+    $scope.inventory[item.name].desc = item.desc;
+
+    item.quantity--;
+  }
+}
 
 //parallax
   var root = document.documentElement;

@@ -94,6 +94,9 @@ app.service('actionService', function($timeout, wikiSercive) {
     var currentScenario = getScope('currentScenario');
     var currentLockpickPuzzle = getScope('currentLockpickPuzzle');
     var lockpickSuccess = getScope('lockpickSuccess');
+    var currentShop = getScope('currentShop');
+
+    setScope('currentShop', null);
 
     setScope('currentLockpickPuzzle', []);
     setScope('lockpickSuccess', false);
@@ -120,6 +123,14 @@ app.service('actionService', function($timeout, wikiSercive) {
     progress(props, setScope, getScope);
   }
   this.lockpick = lockpick;
+
+  var shop = function (props, setScope, getScope) {
+    var currentShop = getScope('currentShop');
+
+    setScope('currentShop', props.forSale);
+    smallTalk(props, setScope, getScope);
+  }
+  this.shop = shop;
 
   this.multiAction = function (props, setScope, getScope) {
     setScope('optionLock', true);

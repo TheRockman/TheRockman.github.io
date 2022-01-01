@@ -51,12 +51,15 @@
           <aside>{{region.name}}</aside>
         </span>
       </div>
+
       <div class="perk-view" ng-if="view === 'perkView'">
         <div class="row">
-          <div class="flex">
-
-          </div>
-          <div class="flex">
+          <div class="flex" style="border-right: 1px solid #999; padding: 1rem">
+            <div class="align jsb">
+              <h1>Character</h1>
+              <span>HP: {{stats.hp}}/{{maxHP}}</span>
+            </div>
+            <!-- stats -->
             <div class="card invisi-card">
               <h3>Stats</h3>
               <hr/>
@@ -87,21 +90,18 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="flex">
-
-          </div>
-        </div>
-        <div class="row">
-          <div class="flex card invisi-card">
+            <br/>
+            <br/>
+            <!-- perks -->
             <h3>Quests</h3>
             <span>Whenever you learn a skill or something important happens its noted here.</span>
             <div class="card" ng-repeat="key in questFlags.keyList | orderBy:'title'" ng-if="questFlags[key].active && questFlags[key].desc">
               <h2>{{questFlags[key].title}}</h2>
               <p>{{questFlags[key].desc}}</p>
             </div>
-          </div>
-          <div class="flex card invisi-card">
+            <br/>
+            <br/>
+            <!-- factions -->
             <h3>Factions</h3>
             <span>Shows the rating you have with factions you helped or hindered.</span>
             <details class="card pointer" ng-repeat="faction in factions" ng-if="faction.rep > 0">
@@ -115,6 +115,28 @@
               <br/>
               <span ng-bind-html='toTrustedHTML( faction.desc )'></span>
             </details>
+          </div>
+          <div class="flex" style="border-right: 1px solid #999; padding: 1rem">
+            <div class="align jsb">
+              <h1>inventory</h1>
+              <span>Gold: {{inventory.gold}}</span>
+            </div>
+            <ul>
+              <li class="inventory-list" ng-if="inv !== 'gold' && inventory[inv].quantity > 0" ng-repeat="inv in getInventoryKeys()">
+                <div class="align jsb">
+                  <span class="align">
+                    <img ng-if="inventory[inv].img" src="{{inventory[inv].img}}" alt="">
+                    x{{inventory[inv].quantity}} {{parseInvName(inv)}}
+                  </span>
+                  <button type="button" ng-click="inventory[inv].use()" name="button">Use</button>
+                </div>
+                <small>{{inventory[inv].desc}}</small>
+              </li>
+            </ul>
+
+          </div>
+          <div class="flex" style="padding: 1rem;">
+
           </div>
         </div>
       </div>
@@ -273,10 +295,30 @@
             You rest, reflecting on the adventures you've had in the {{currentRegion.name}}.
           </div>
           <br/>
-          <div class="follower">
+          <div class="panel-grid-3 full">
             <div class="follower-tile" ng-repeat="follower in followers" ng-if="follower.following" ng-class="{'followerDisabled': !follower.canSpeak}" ng-click="talkToFollower(follower)">
               <img class="follower-avatar" src="{{follower.portrait}}" alt="">
               {{follower.name}}
+            </div>
+          </div>
+        </div>
+
+        <!-- shop -->
+        <div class="full responsive-panel" ng-if="currentShop">
+          <div class="panel-grid-3">
+            <div ng-repeat="item in currentShop" ng-if="item.quantity > 0" ng-click="buyItem(item)">
+              <div class="align jsb">
+                <div class="align">
+                  <img src="{{item.img}}" alt="">
+                  &nbsp;
+                  <span>
+                    <p>{{parseInvName(item.name)}}</p>
+                    <p>{{item.price}} gold</p>
+                  </span>
+                </div>
+              </div>
+              <small>{{item.desc}}</small>
+              <p>{{item.quantity}} in stock</p>
             </div>
           </div>
         </div>
@@ -297,7 +339,7 @@
             </button>
             <br/>
             <ol ng-class="{'optionLock': optionLock }">
-              <li ng-repeat="option in currentScenario.actions" ng-if="!option.visibleWhen || $eval(option.visibleWhen)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
+              <li ng-repeat="option in currentScenario.actions" ng-if="validateVisibleWhen(option)" ng-class="{'alreadyTakenOption': option.actionProps.smallTalkActionTaken}">
                 <div tabindex="0" class="option pointer align" ng-class="{'perkOption': $eval(option.visibleWhen)}" ng-click="option.action(option.actionProps, setScope, getScope)">
                   {{option.label}}
                 </div>

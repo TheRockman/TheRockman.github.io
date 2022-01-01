@@ -52,6 +52,9 @@ em{
 ol{
   margin: 0 0.5rem;
 }
+ul{
+  padding: 0;
+}
 
 .speaker-name-tag{
   color: white;
@@ -197,6 +200,29 @@ ol{
   bottom: 33vh;
   background: rgba(25,32,40,0.9);
 }
+.full{
+  left: 0;
+  right: 0;
+}
+.panel-grid{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+.panel-grid-3{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+.panel-grid > *:hover,
+.panel-grid-3 > *:hover{
+  outline: 1px solid white;
+  cursor: pointer;
+}
 .aside-container, .responsive-container{
   position: absolute;
   top: 0;
@@ -244,13 +270,6 @@ ol{
   color: white;
   padding: 1rem;
 }
-.follower{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
 .follower-tile{
   color: #fff;
   text-align: center;
@@ -279,6 +298,18 @@ ol{
   opacity: 1;
 }
 
+.inventory-list{
+  list-style: none;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #333 16%, #333 60%, rgba(148,187,233,0) 100%);
+  padding: 1rem;
+  border-top:3px solid black;
+}
+.panel-grid img,
+.panel-grid-3 img,
+.inventory-list img{
+  width: 3rem;
+  height: auto;
+}
 .wiki-modal{
   text-align: left;
   position: fixed;
@@ -473,7 +504,9 @@ ol{
   .flex {
     flex: 1 1 auto;
   }
-
+  .panel-grid, .panel-grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
   .aside-container, .responsive-container{
     position: relative;
     left: 0;

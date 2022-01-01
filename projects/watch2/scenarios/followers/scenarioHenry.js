@@ -6,12 +6,16 @@ app.service('scenarioHenry', function(actionService) {
       text: '<em>You look over to Henry</em>',
       specialIntros: [
         {
+          visibleWhen: "$scope.currentRegion.short === 'hdf'",
+          text: '<em>You look over to Henry, as he struggles to set up a small tent.</em>'
+        },
+        {
           visibleWhen: "$scope.currentRegion.short === 'trm'",
           text: '<em>You look over to Henry, he is pale and holding a pint of milk with both hands.</em>'
         },
         {
           visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
-          text: '<em>Henry is walking behing you, looking over your shoulder at Boblin skipping along ahead of you.</em> "Are you sure he wont just lead us into an ambush?"'
+          text: '<em>Henry is sitting beside you, looking over your shoulder at Boblin skipping among the rocks before you.</em> "Are you sure he wont just lead us into an ambush?"'
         }
       ],
       speaker: {
@@ -23,7 +27,10 @@ app.service('scenarioHenry', function(actionService) {
       actions: [
         {
           label: '"Im not worried about any ambush, Boblin isnt like these mountain goblins."',
-          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
+          visibleWhenAND: {
+            a: "currentRegion.short === 'grm'",
+            b: "followers.boblin.following"
+          },
           action: actionService.abort,
           actionProps: {
             epilog: '<em>Henry mumble something under his breath and keeps walking.</em>'
@@ -31,7 +38,10 @@ app.service('scenarioHenry', function(actionService) {
         },
         {
           label: '"An ambush? You might be right. I`ll keep Boblin on a short leash just in case."',
-          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
+          visibleWhenAND: {
+            a: "currentRegion.short === 'grm'",
+            b: "followers.boblin.following"
+          },
           action: actionService.abort,
           actionProps: {
             epilog: '<em>Henry looks a bit more confident and nods.</em>'
@@ -47,7 +57,10 @@ app.service('scenarioHenry', function(actionService) {
         },
         {
           label: '"What do you think about Boblin?"',
-          visibleWhen: "$scope.currentRegion.short === 'grm' && $scope.followers.boblin.following",
+          visibleWhenAND: {
+            a: "currentRegion.short === 'hdf'",
+            b: "followers.boblin.following"
+          },
           action: actionService.abort,
           actionProps: {
             epilog: '<em>Henry looks like he ate something sour.</em>"Goblins are indeed not my prefered company, they have a habit of... making a mess"\n\n<em>Boblin tilts his head while you talk but suddenly leaps into a bush and emerge with a dead bird in his mouth that he violently shakes throwing feathers everywhere nearby.</em>'

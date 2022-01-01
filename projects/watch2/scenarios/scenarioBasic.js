@@ -1,5 +1,5 @@
 app.service('scenarioBasic', function(actionService) {
-  
+
   this.scenarios = [
     {
       text: '<em>The <a href="#forest" title="Open wiki" class="info">forest</a> is silent.</em>',
@@ -486,24 +486,52 @@ app.service('scenarioBasic', function(actionService) {
       },
       actions: [
         {
-          label: '[Pay 999 Gold] "Deal!" ',
-          visibleWhen: 'inventory.gold >= 999',
-          action: actionService.exchange,
+          label: '"Let me see what you got" ',
+          action: actionService.shop,
           actionProps: {
-            exchangeCatergoryA: 'inventory',
-            exchangeKeyA: 'gold',
-            exchangeAmountA: 999,
-            exchangeCatergoryB: 'stats',
-            exchangeKeyB: 'str',
-            exchangeAmountB: 20,
-            epilog: '<em>You take the small vial in your hands and your fingertips buzz with power. You open it and down the murky liquid. A moment later your body starts to glow and you feel invincible.</em>"See that ladies and gentlemen?"<em>the ragged man exclaim.</em> "Didn´t I tell you?, didn´t I?"'
+            forSale: [
+              {
+                name: 'potion_of_unlimited_might',
+                img: 'img/items/pot.png',
+                desc: 'A dubious potion that supposedly grants strength.',
+                use: function(){console.log('do the thing');},
+                price: '999',
+                quantity: 1,
+              },
+              {
+                name: 'lether_boots',
+                img: 'img/items/boot.png',
+                desc: 'An old boot not fit to use.',
+                use: '',
+                price: '5',
+                quantity: 12,
+              },
+              {
+                name: 'small_shield',
+                img: 'img/items/shield.png',
+                desc: 'A small wooden shield.',
+                use: '',
+                price: '10',
+                quantity: 2,
+              }
+            ],
+            epilog: '<em>He flings open the door to the cart and shows you the inside with a bow and a flourish.</em>'
           }
         },
         {
           label: '"No way, thats some snakeoil if i ever saw it."',
+          visibleWhen: '!currentShop',
           action: actionService.abort,
           actionProps: {
-            epilog: '<em>The crowd nods and disperse. The man gives you a sharp glare and shuts the door to his cart.</em>'
+            epilog: '<em>The crowd nods and disperse. The man gives you a wink and shuts the door to his cart.</em>'
+          }
+        },
+        {
+          label: '"Thanks, that will be all."',
+          visibleWhen: 'currentShop',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>The man gives you a wink and shuts the door to his cart.</em>'
           }
         },
       ],
