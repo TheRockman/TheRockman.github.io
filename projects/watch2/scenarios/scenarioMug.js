@@ -1,4 +1,5 @@
-app.service('scenarioMug', function(actionService) {
+app.service('scenarioMug', function(actionService, itemIndex) {
+let item = itemIndex.items;
 
   this.scenarios = [
 //Scenario
@@ -131,29 +132,20 @@ app.service('scenarioMug', function(actionService) {
           actionProps: {
             forSale: [
               {
-                name: 'Ale',
-                img: 'img/items/pot.png',
-                desc: 'Restores 2HP',
-                use: function(){console.log('do the thing');},
+                item: item['ale'],
                 price: '5',
-                quantity: 10,
+                quantity: 5,
               },
               {
-                name: 'Wine',
-                img: 'img/items/pot.png',
-                desc: 'Restores 2HP',
-                use: function(){console.log('do the thing');},
+                item: item['wine'],
                 price: '5',
-                quantity: 10,
+                quantity: 5,
               },
               {
-                name: 'Stew',
-                img: 'img/items/boot.png',
-                desc: 'Restores 3HP',
-                use: '',
-                price: '10',
-                quantity: 10,
-              },
+                item: item['stew'],
+                price: '8',
+                quantity: 2,
+              }
             ],
             epilog: '<em>She points to a sign above the bar.</em>'
           }
@@ -161,7 +153,10 @@ app.service('scenarioMug', function(actionService) {
         {
           label: '"Nothing right now"',
           action: actionService.modifySecretQuestFlags,
-          visibleWhen: '!secretquestFlags.MugNoOrder',
+          visibleWhenAND: {
+            a: '!secretquestFlags.MugNoOrder',
+            b: '!currentShop'
+          },
           actionProps: {
             flag: 'MugNoOrder',
             flagMod: true,
@@ -171,7 +166,10 @@ app.service('scenarioMug', function(actionService) {
         {
           label: '"Nothing right now"',
           action: actionService.abortEntireScenario,
-          visibleWhen: 'secretquestFlags.MugNoOrder',
+          visibleWhenAND: {
+            a: 'secretquestFlags.MugNoOrder',
+            b: '!currentShop'
+          },
           actionProps: {
             epilog: '<em>She tighten her lips</em>"I did warn ya about wasting time and space good sir, now get out!"'
           }
@@ -182,6 +180,14 @@ app.service('scenarioMug', function(actionService) {
           actionProps: {
             smallTalkActionTaken: false,
             epilog: '<em>If scales could blush you are sure hers would right now</em>"Well, hording gold isnt viable in this day and age, so even we have to work for our daily meat"'
+          }
+        },
+        {
+          label: '"Thanks, that will be all."',
+          action: actionService.abort,
+          visibleWhen: 'currentShop',
+          actionProps: {
+            epilog: '<em>She tends to the other tables."'
           }
         },
       ],
@@ -196,29 +202,20 @@ app.service('scenarioMug', function(actionService) {
           actionProps: {
             forSale: [
               {
-                name: 'Ale',
-                img: 'img/items/pot.png',
-                desc: 'Restores 2HP',
-                use: function(){console.log('do the thing');},
+                item: item['ale'],
                 price: '5',
-                quantity: 10,
+                quantity: 5,
               },
               {
-                name: 'Wine',
-                img: 'img/items/pot.png',
-                desc: 'Restores 2HP',
-                use: function(){console.log('do the thing');},
+                item: item['wine'],
                 price: '5',
-                quantity: 10,
+                quantity: 5,
               },
               {
-                name: 'Stew',
-                img: 'img/items/boot.png',
-                desc: 'Restores 3HP',
-                use: '',
-                price: '10',
-                quantity: 10,
-              },
+                item: item['stew'],
+                price: '8',
+                quantity: 2,
+              }
             ],
             epilog: '<em>She points to a sign above the bar.</em>'
           }
@@ -226,7 +223,10 @@ app.service('scenarioMug', function(actionService) {
         {
           label: '"Nothing right now"',
           action: actionService.modifySecretQuestFlags,
-          visibleWhen: '!secretquestFlags.MugNoOrder',
+          visibleWhenAND: {
+            a: '!secretquestFlags.MugNoOrder',
+            b: '!currentShop'
+          },
           actionProps: {
             flag: 'MugNoOrder',
             flagMod: true,
@@ -236,7 +236,10 @@ app.service('scenarioMug', function(actionService) {
         {
           label: '"Nothing right now"',
           action: actionService.abortEntireScenario,
-          visibleWhen: 'secretquestFlags.MugNoOrder',
+          visibleWhenAND: {
+            a: 'secretquestFlags.MugNoOrder',
+            b: '!currentShop'
+          },
           actionProps: {
             epilog: '<em>She tighten her lips</em>"I did warn ya about wasting time and space good sir, now get out!"'
           }
@@ -247,6 +250,14 @@ app.service('scenarioMug', function(actionService) {
           actionProps: {
             smallTalkActionTaken: false,
             epilog: '<em>If scales could blush you are sure hers would right now</em>"Well, hording gold isnt viable in this day and age, so even we have to work for our daily meat"'
+          }
+        },
+        {
+          label: '"Thanks, that will be all."',
+          action: actionService.abort,
+          visibleWhen: 'currentShop',
+          actionProps: {
+            epilog: '<em>She tends to the other tables."'
           }
         },
       ],

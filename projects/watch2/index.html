@@ -60,7 +60,7 @@
               <span>HP: {{stats.hp}}/{{maxHP}}</span>
             </div>
             <!-- stats -->
-            <div class="card invisi-card">
+            <div>
               <h3>Stats</h3>
               <hr/>
               <div class="align jsb">
@@ -128,7 +128,7 @@
             <ul>
               <li class="inventory-list" ng-if="inv !== 'gold' && inventory[inv].quantity > 0" ng-repeat="inv in getInventoryKeys()">
                 <details>
-                  <summary class="align jsb">
+                  <summary class="align jsb pointer">
                     <span class="align">
                       <img ng-if="inventory[inv].item.img" src="{{inventory[inv].item.img}}" alt="">
                       x{{inventory[inv].quantity}} {{inventory[inv].item.name}}
@@ -137,7 +137,7 @@
                   <br/>
                   <span style="white-space: pre-wrap;" ng-bind-html='toTrustedHTML( inventory[inv].item.desc )'></span>
                   <br/>
-                  <button type="button" ng-click="useInventoryItem(inventory[inv].item.use)" name="button">Use</button>
+                  <button type="button" ng-if="inventory[inv].item.use" ng-click="useInventoryItem(inventory[inv].item.use)" name="button">Use</button>
                 </details>
               </li>
             </ul>
@@ -332,7 +332,7 @@
                   </span>
                 </div>
               </div>
-              <small>{{product.item.desc}}</small>
+              <small style="white-space: pre-wrap;">{{product.item.desc}}</small>
               <p>{{product.quantity}} in stock</p>
             </div>
           </div>

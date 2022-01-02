@@ -126,6 +126,8 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     $scope.currentScenario = item.scenarios[0];
     $scope.lockpickSuccess = false;
     $scope.currentLockpickPuzzle = [];
+    $scope.currentNote = null;
+    $scope.currentShop = null;
   }
 
   var languageGenerator = function(lang){
@@ -274,19 +276,21 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   }
 
 //buy shop item
-$scope.buyItem = function(item){
-  if($scope.inventory.gold >= item.price){
-    $scope.inventory.gold = $scope.inventory.gold - item.price;
+$scope.buyItem = function(product){
+  if($scope.inventory.gold >= product.price){
+    $scope.inventory.gold = $scope.inventory.gold - product.price;
 
-    if(!$scope.inventory[item.name]){
-      $scope.inventory[item.name] = {
+    if(!$scope.inventory[product.item.id]){
+      $scope.inventory[product.item.id] = {
         quantity: 0,
       };
     }
-    $scope.inventory[item.name].quantity = $scope.inventory[item.name].quantity+1;
-    $scope.inventory[item.name].item = item.item;
 
-    item.quantity--;
+    $scope.inventory[product.item.id].quantity = $scope.inventory[product.item.id].quantity+1;
+    $scope.inventory[product.item.id].item = product.item;
+    console.log($scope.inventory, product);
+
+    product.quantity--;
   }
 }
 

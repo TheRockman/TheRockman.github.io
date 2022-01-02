@@ -1,4 +1,5 @@
-app.service('scenarioMountain', function(actionService) {
+app.service('scenarioMountain', function(actionService, itemIndex) {
+let item = itemIndex.items;
 
   this.scenarios = [
 //Scenario
