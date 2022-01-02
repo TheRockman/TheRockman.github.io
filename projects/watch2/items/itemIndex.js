@@ -1,7 +1,4 @@
 app.service('itemIndex', function() {
-
-  let dynamicJS = "console.log(inventory, $scope); ";
-
   this.items = {
     potionOfMight: {
       id: 'potionOfMight',
@@ -54,12 +51,3 @@ app.service('itemIndex', function() {
     }
   }
 });
-
-
-
-// use: function(){
-//   if($scope.stats.hp+1 < $scope.maxHP){
-//     this.quantity--;
-//     $scope.stats.hp = $scope.stats.hp +1;
-//   }
-// },

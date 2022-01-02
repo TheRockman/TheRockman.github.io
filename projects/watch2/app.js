@@ -109,8 +109,6 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   }
 
   $scope.pickRegionFromMap = function(item){
-    console.log($scope.visitedRegions, item);
-
     if(!$scope.visitedRegions.includes(item.short) ){
       $scope.resetFollowerCanSpeak();
     } else{
@@ -288,8 +286,7 @@ $scope.buyItem = function(product){
 
     $scope.inventory[product.item.id].quantity = $scope.inventory[product.item.id].quantity+1;
     $scope.inventory[product.item.id].item = product.item;
-    console.log($scope.inventory, product);
-
+    
     product.quantity--;
   }
 }

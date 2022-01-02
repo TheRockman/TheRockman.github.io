@@ -60,7 +60,6 @@ app.service('actionService', function($timeout, wikiSercive) {
           x: currentScenario.speaker.x,
           y: currentScenario.speaker.y
         }
-        console.log('ding');
         setScope('pos', tempPos);
       }
 
@@ -273,7 +272,6 @@ app.service('actionService', function($timeout, wikiSercive) {
 
   this.abortEntireScenario = function (props, setScope, getScope) {
     var currentRegion = getScope('currentRegion');
-    console.log(currentRegion);
     for (var i = 0; i < currentRegion.scenarios.length; i++) {
       if(!currentRegion.scenarios[i].everGreen){
         currentRegion.scenarios[i].done = true;

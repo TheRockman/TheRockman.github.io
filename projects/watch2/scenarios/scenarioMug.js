@@ -18,6 +18,31 @@ let item = itemIndex.items;
     },
 //Scenario
     {
+      text: '<em>In a booth in a darker corner of the tavern you spot the glint of yellow lidless eyes fixed on you.</em>',
+      speaker: {
+        char: 'zix',
+        name: '',
+        faction: ''
+      },
+      actions: [
+        {
+          label: '"Hello there"',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>The dragon lizard twitches a bit but you cant tell if its natural or because you called out to them.</em>'
+          }
+        },
+        {
+          label: '[ignore her]',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '<em>Best to avoid getting mixed up in anything here.</em>'
+          }
+        },
+      ],
+    },
+//Scenario
+    {
       text: '<em>You overhear a heated discussion between a drunken elf and a furious dwarf at the bar</em> "You and your kin are the reason im drinking yá know, im out of a job because of that cursed forest you all call a home".<em>The elf looks up from his drink.</em>"Well if you greedy mayflies didnt cut it down in the first place it wouldnt fight back, hows that?"',
       actions: [
         {
@@ -125,9 +150,14 @@ let item = itemIndex.items;
 //Scenario
     {
       text: '<em>A young dragonborn waitress hurries to your table.</em>"Welcome to The rusty mug, can i get you anything?"',
+      speaker: {
+        char: 'dragonLizard',
+        name: '',
+        faction: ''
+      },
       actions: [
         {
-          label: '"Let me see the menue." ',
+          label: '"Let me see the menu." ',
           action: actionService.shop,
           actionProps: {
             forSale: [
@@ -195,9 +225,14 @@ let item = itemIndex.items;
 //Scenario
     {
       text: '<em>A young dragonborn waitress hurries to your table.</em>"Welcome to The rusty mug, can i get you anything?"',
+      speaker: {
+        char: 'dragonLizard',
+        name: '',
+        faction: ''
+      },
       actions: [
         {
-          label: '"Let me see the menue." ',
+          label: '"Let me see the menu." ',
           action: actionService.shop,
           actionProps: {
             forSale: [

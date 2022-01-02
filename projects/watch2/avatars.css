@@ -2,16 +2,23 @@
   background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/16/goblin-orc-hermit-18143417.png?v401")!important;
 }
 .gwen .face{
-  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/16/knight-18143696.png?v401")!important;
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/12/01/knight-alternate-19438943.png?v437")!important;
 }
 .mage .face{
-  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/14/ender-mage-18117041.png?v401")!important;
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/26/khaos-initiate-18231765.png?v437")!important;
 }
 .merchant .face{
   background-image: url("https://www.minecraftskins.com/uploads/skins/2021/12/16/new-vanton-dragoon-with-mustache-19532038.png?v437")!important;
 }
 .henry .face{
   background-image: url("https://www.minecraftskins.com/uploads/skins/2021/05/19/fur-coat-chief-17854732.png?v401")!important;
+}
+.zix .face{
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2020/04/20/kobold-1-14170302.png?v437")!important;
+}
+.dragonLizard .face{
+  /* background-image: url("https://www.minecraftskins.com/uploads/skins/2021/10/01/bearded-dragon-lizard-19029527.png?v437")!important; */
+  background-image: url("https://www.minecraftskins.com/uploads/skins/2021/06/18/naga-girl-18154562.png?v437")!important;
 }
 
 #character, #character .awrap, #character .shape, #character .face {
@@ -112,6 +119,7 @@
       image-rendering: pixelated;
   transform-origin: 0 0;
 }
+
 @keyframes head {
   from {
     transform: rotateX(16deg);
