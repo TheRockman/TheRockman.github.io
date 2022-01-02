@@ -310,6 +310,14 @@ ul{
   width: 3rem;
   height: auto;
 }
+
+.note-panel {
+  overflow: auto;
+  max-height: 350px;
+  font-weight: bold;
+  white-space: pre-line;
+}
+
 .wiki-modal{
   text-align: left;
   position: fixed;

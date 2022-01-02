@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl",
-function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex) {
+function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex, itemIndex) {
 
   $scope.questFlags = questToggles.all;
   $scope.secretquestFlags = questToggles.secret;
@@ -18,6 +18,7 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   $scope.currentLockpickPuzzle = [];
   $scope.lockpickSuccess = false;
   $scope.currentShop = null;
+  $scope.currentNote = null;
 
   $scope.currentRegion = $scope.regions[0];
   $scope.currentRegionBackup = $scope.currentRegion;
@@ -67,23 +68,16 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   $scope.inventory = {
     gold: 1000,
     apple: {
-      quantity: 1,
-      img: '',
-      desc: 'Restores 1 HP',
-      use: function(){
-        if($scope.stats.hp+1 < $scope.maxHP){
-          this.quantity--;
-          $scope.stats.hp = $scope.stats.hp +1;
-        }
-      }
+      item: itemIndex.items['apple'],
+      quantity: 1
     },
+  }
+  $scope.useInventoryItem = function(use){
+    eval(use);
   }
 
   $scope.getInventoryKeys = function(){
     return Object.keys($scope.inventory);
-  }
-  $scope.parseInvName = function(inv){
-    return inv.replace(/_/g, ' ');
   }
 
   $scope.toTrustedHTML = function( html ){
@@ -290,9 +284,7 @@ $scope.buyItem = function(item){
       };
     }
     $scope.inventory[item.name].quantity = $scope.inventory[item.name].quantity+1;
-    $scope.inventory[item.name].img = item.img;
-    $scope.inventory[item.name].use = item.use;
-    $scope.inventory[item.name].desc = item.desc;
+    $scope.inventory[item.name].item = item.item;
 
     item.quantity--;
   }

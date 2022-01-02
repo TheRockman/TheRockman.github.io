@@ -95,10 +95,14 @@
             <!-- perks -->
             <h3>Quests</h3>
             <span>Whenever you learn a skill or something important happens its noted here.</span>
-            <div class="card" ng-repeat="key in questFlags.keyList | orderBy:'title'" ng-if="questFlags[key].active && questFlags[key].desc">
-              <h2>{{questFlags[key].title}}</h2>
-              <p>{{questFlags[key].desc}}</p>
-            </div>
+            <details class="card pointer" ng-repeat="key in questFlags.keyList | orderBy:'title'" ng-if="questFlags[key].active && questFlags[key].desc">
+              <summary class="align jsb">
+                <span>{{questFlags[key].title}} </span>
+              </summary>
+              <br/>
+              <span ng-bind-html='toTrustedHTML( questFlags[key].desc )'></span>
+            </details>
+
             <br/>
             <br/>
             <!-- factions -->
@@ -123,14 +127,18 @@
             </div>
             <ul>
               <li class="inventory-list" ng-if="inv !== 'gold' && inventory[inv].quantity > 0" ng-repeat="inv in getInventoryKeys()">
-                <div class="align jsb">
-                  <span class="align">
-                    <img ng-if="inventory[inv].img" src="{{inventory[inv].img}}" alt="">
-                    x{{inventory[inv].quantity}} {{parseInvName(inv)}}
-                  </span>
-                  <button type="button" ng-click="inventory[inv].use()" name="button">Use</button>
-                </div>
-                <small>{{inventory[inv].desc}}</small>
+                <details>
+                  <summary class="align jsb">
+                    <span class="align">
+                      <img ng-if="inventory[inv].item.img" src="{{inventory[inv].item.img}}" alt="">
+                      x{{inventory[inv].quantity}} {{inventory[inv].item.name}}
+                    </span>
+                  </summary>
+                  <br/>
+                  <span style="white-space: pre-wrap;" ng-bind-html='toTrustedHTML( inventory[inv].item.desc )'></span>
+                  <br/>
+                  <button type="button" ng-click="useInventoryItem(inventory[inv].item.use)" name="button">Use</button>
+                </details>
               </li>
             </ul>
 
@@ -303,22 +311,29 @@
           </div>
         </div>
 
+        <!-- note -->
+        <div class="full responsive-panel" ng-if="currentNote">
+          <div class="note-panel">
+            <i>{{currentNote}}</i>
+          </div>
+        </div>
+
         <!-- shop -->
         <div class="full responsive-panel" ng-if="currentShop">
           <div class="panel-grid-3">
-            <div ng-repeat="item in currentShop" ng-if="item.quantity > 0" ng-click="buyItem(item)">
+            <div ng-repeat="product in currentShop" ng-if="product.quantity > 0" ng-click="buyItem(product)">
               <div class="align jsb">
                 <div class="align">
-                  <img src="{{item.img}}" alt="">
+                  <img src="{{product.item.img}}" alt="">
                   &nbsp;
                   <span>
-                    <p>{{parseInvName(item.name)}}</p>
-                    <p>{{item.price}} gold</p>
+                    <p>{{product.item.name}}</p>
+                    <p>{{product.price}} gold</p>
                   </span>
                 </div>
               </div>
-              <small>{{item.desc}}</small>
-              <p>{{item.quantity}} in stock</p>
+              <small>{{product.item.desc}}</small>
+              <p>{{product.quantity}} in stock</p>
             </div>
           </div>
         </div>
@@ -386,6 +401,7 @@
 <script type="text/javascript" src="actionService.js"></script>
 <script type="text/javascript" src="wikiSercive.js"></script>
 <script type="text/javascript" src="factions/factionIndex.js"></script>
+<script type="text/javascript" src="items/itemIndex.js"></script>
 <script type="text/javascript" src="scenarios/followers/followerIndex.js"></script>
 <script type="text/javascript" src="scenarios/followers/scenarioHenry.js"></script>
 <script type="text/javascript" src="scenarios/followers/scenarioBoblin.js"></script>

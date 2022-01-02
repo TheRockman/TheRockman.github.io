@@ -1,4 +1,5 @@
-app.service('scenarioBasic', function(actionService) {
+app.service('scenarioBasic', function(actionService, itemIndex) {
+let item = itemIndex.items;
 
   this.scenarios = [
     {
@@ -250,13 +251,6 @@ app.service('scenarioBasic', function(actionService) {
       text: '<em>A bush behind you suddenly shakes and you hear a low growling sound from behind it. It seem some kind of creature is hiding in it.</em>',
       actions: [
         {
-          label: '[Ignore it]',
-          action: actionService.abort,
-          actionProps: {
-            epilog: '"Its probably just a cat" <em>you think to yourself.</em>'
-          }
-        },
-        {
           label: '[Mages loyalty] Its most likely a drake, better move if you dont want to get singed.',
           visibleWhen: 'factions.mages > 0',
           action: actionService.modifyFactionRating,
@@ -277,6 +271,13 @@ app.service('scenarioBasic', function(actionService) {
             critEpilog: '<em>You stand still for a moment before quickly reaching out. Your hand grasp around a scaley neck and you pull out a small drake.</em>',
             passEpilog: '<em>You lunge headfirst into the bush and see a small drake coiled around a branch. You catch it in a sack.</em>',
             failEpilog: '<em>You lunge headfirst into the bush and see a small drake coiled around a branch. Before you can do anything your vision is filled with blue fire and the head flash across your face.</em>'
+          }
+        },
+        {
+          label: '[Ignore it]',
+          action: actionService.abort,
+          actionProps: {
+            epilog: '"Its probably just a cat" <em>you think to yourself.</em>'
           }
         },
       ],
@@ -459,6 +460,44 @@ app.service('scenarioBasic', function(actionService) {
     },
 //Scenario
     {
+      text: '<em>You notice a pice of paper nailed to a tree by the side of the road.</em>',
+      actions: [
+        {
+          label: '[Read it]',
+          action: actionService.showNote,
+          actionProps: {
+            note: 'We cannot get out.\nThey have taken the bridge and Second Hall. Frar and Loni and Náli fell there bravely while the rest retreated to the Chamber of…Mazarbul.\n\nWe are still ho....g ...but hope ...Oins party went five days ago but today only four returned.\n\nThe pool is up to the wall at West-gate. The Watcher in the Water took Oin--\n\nwe cannot get out. The end comes soon. We hear drums, drums in the deep.\n\nThey are coming.',
+            epilog: '<em>On the torn pice of paper you read what seems to be a poem or some fable.</em>'
+          }
+        },
+        {
+          label: '"Well thats not ominous at all."',
+          action: actionService.abort,
+          visibleWhen: 'currentNote',
+          actionProps: {
+            epilog: '<em>You tread on with an uneasy feeling.</em>'
+          }
+        },
+        {
+          label: '"I seem to recall redaing that in a book somewhere."',
+          action: actionService.abort,
+          visibleWhen: 'currentNote',
+          actionProps: {
+            epilog: '<em>You shrug and move on, after all reading is its own reward.</em>'
+          }
+        },
+        {
+          label: '[Ignore it]',
+          action: actionService.abort,
+          visibleWhen: '!currentNote',
+          actionProps: {
+            epilog: '<em>You never had the head for booksmarts anyway.</em>'
+          }
+        },
+      ],
+    },
+//Scenario
+    {
       text: '"Hello Im Henry."',
       speaker: {
         char: 'henry',
@@ -491,26 +530,17 @@ app.service('scenarioBasic', function(actionService) {
           actionProps: {
             forSale: [
               {
-                name: 'potion_of_unlimited_might',
-                img: 'img/items/pot.png',
-                desc: 'A dubious potion that supposedly grants strength.',
-                use: function(){console.log('do the thing');},
+                item: item['potionOfMight'],
                 price: '999',
                 quantity: 1,
               },
               {
-                name: 'lether_boots',
-                img: 'img/items/boot.png',
-                desc: 'An old boot not fit to use.',
-                use: '',
+                item: item['oldBoot'],
                 price: '5',
                 quantity: 12,
               },
               {
-                name: 'small_shield',
-                img: 'img/items/shield.png',
-                desc: 'A small wooden shield.',
-                use: '',
+                item: item['smallShield'],
                 price: '10',
                 quantity: 2,
               }
