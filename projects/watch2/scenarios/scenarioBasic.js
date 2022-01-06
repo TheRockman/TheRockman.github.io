@@ -540,7 +540,7 @@ let item = itemIndex.items;
                 quantity: 12,
               },
               {
-                item: item['smallShield'],
+                item: item['crowbar'],
                 price: '10',
                 quantity: 2,
               }

@@ -1,4 +1,4 @@
-app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug) {
+app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug, dungeonSwamp) {
   this.markers = [
     {
       name: 'HerpDerp forest',
@@ -34,10 +34,24 @@ app.service('mapMarkers', function(scenarioBasic, scenarioMountain, scenarioMug)
       mapIcon: './img/places/map-shack.png',
       position: "{'top':'18rem','left':'15rem'}",
       mapNodes: [
-        'trm'
+        'trm',
+        'ddsw'
       ],
       background: './img/places/mug.jpg',
       scenarios: scenarioMug.scenarios
+    },
+    {
+      name: 'The sunken forest',
+      short: 'ddsw',
+      desc: 'yada ydaddda 3',
+      linear: true,
+      mapIcon: './img/places/map-dungeon.png',
+      position: "{'top':'20rem','left':'14rem'}",
+      mapNodes: [
+        'trm'
+      ],
+      background: './img/places/swamp.jpg',
+      scenarios: dungeonSwamp.scenarios
     }
   ]
 });

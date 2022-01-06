@@ -318,6 +318,21 @@ ul{
   white-space: pre-line;
 }
 
+.warning-modal{
+  white-space: pre-line;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 2rem;
+  bottom: unset;
+  padding: 1rem;
+  margin: 0 auto;
+  z-index: 10;
+  width: 33vw;
+  min-height: 3rem;
+  max-height: 66vh;
+}
+
 .wiki-modal{
   text-align: left;
   position: fixed;
@@ -511,6 +526,9 @@ ul{
   }
   .flex {
     flex: 1 1 auto;
+  }
+  .warning-modal{
+    width: 75vw;
   }
   .panel-grid, .panel-grid-3 {
     grid-template-columns: repeat(1, 1fr);

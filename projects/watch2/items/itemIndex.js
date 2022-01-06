@@ -1,4 +1,9 @@
 app.service('itemIndex', function() {
+  this.getInventoryService;
+  this.setInventoryService = function(item){
+    this.getInventoryService = item;
+  }
+
   this.items = {
     potionOfMight: {
       id: 'potionOfMight',
@@ -14,11 +19,11 @@ app.service('itemIndex', function() {
       desc: 'An old boot not fit to use.',
       use: '',
     },
-    smallShield: {
-      id: 'smallShield',
-      name: 'Small shield',
+    crowbar: {
+      id: 'crowbar',
+      name: 'Crowbar',
       img: 'img/items/shield.png',
-      desc: 'A small wooden shield.',
+      desc: 'A metal rod used to force stuff open.',
       use: '',
     },
     apple: {

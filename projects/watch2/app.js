@@ -74,6 +74,7 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   }
   $scope.useInventoryItem = function(use){
     eval(use);
+    itemIndex.setInventoryService($scope.inventory);
   }
 
   $scope.getInventoryKeys = function(){
@@ -108,7 +109,29 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     }
   }
 
-  $scope.pickRegionFromMap = function(item){
+  $scope.showDungeonWarning = null;
+  $scope.dungeonFailureRestorePoint = null;
+
+  $scope.pickRegionFromMap = function(item, warningConfirmed){
+    //confirm enter the dungeon
+    if(item.linear && !warningConfirmed){
+      $scope.dungeonFailureRestorePoint = JSON.parse(JSON.stringify($scope.currentScenario));
+      $scope.showDungeonWarning = item.name +`
+      ----------------
+      Hold on! This is a dungeon!
+
+      Once entered you wont be able to leave using the map screen.
+      The only way out it by failing or succeding in the dungeons challanges.
+      Are you ready to enter?
+
+      `;
+      return;
+    }
+    //cant leave a dungeon
+    if($scope.currentRegion.linear && !$scope.currentScenario.mapHint){
+      return;
+    }
+
     if(!$scope.visitedRegions.includes(item.short) ){
       $scope.resetFollowerCanSpeak();
     } else{
@@ -176,10 +199,14 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     $scope.toast = null;
     $scope.diceRollToast = null;
     $scope.diceRollResult = null;
-
-    var roll = 0 + Math.floor(Math.random()*$scope.scenarios.length);
+    let roll = 0 + Math.floor(Math.random()*$scope.scenarios.length);
     $scope.adventureIndex = roll;
-    $scope.currentScenario = $scope.scenarios[roll];
+
+    if($scope.currentRegion.linear){
+      $scope.adventureIndex = 0;
+    }
+
+    $scope.currentScenario = $scope.scenarios[$scope.adventureIndex];
 
     if($scope.currentScenario && $scope.currentScenario.speaker){
       $scope.pos.baseActions = $scope.currentScenario.speaker.baseActions;
@@ -190,6 +217,7 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
         additiveActions: null
       }
     }
+
     $scope.setPupeteerAttrb($scope.pos)
     // handle translation
     if($scope.currentScenario && $scope.currentScenario.language) {
@@ -207,8 +235,12 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   $scope.viewManager = function(newView){
     if ($scope.view === newView) {
       $scope.view = null
-    } else{
+    } else if(newView === 'mapView' && $scope.currentRegion.linear && !$scope.currentScenario.mapHint ) {
+      //cant open map if in a dungeon
+      return;
+    }{
       $scope.view = newView;
+      $scope.showDungeonWarning = null;
     }
   }
 
@@ -286,7 +318,8 @@ $scope.buyItem = function(product){
 
     $scope.inventory[product.item.id].quantity = $scope.inventory[product.item.id].quantity+1;
     $scope.inventory[product.item.id].item = product.item;
-    
+    itemIndex.setInventoryService($scope.inventory);
+
     product.quantity--;
   }
 }
