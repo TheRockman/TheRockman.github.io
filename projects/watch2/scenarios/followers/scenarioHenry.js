@@ -67,11 +67,10 @@ app.service('scenarioHenry', function(actionService) {
           }
         },
         {
-          label: '"Who are you again?"',
-          action: actionService.smallTalk,
+          label: '"So.. whats your name?"',
+          action: actionService.abort,
           actionProps: {
-            smallTalkActionTaken: false,
-            epilog: '<em>Henry looks sad and annoyed at the same time.</em>"Im Henry"'
+            epilog: '"Im Henry."'
           }
         },
         {
