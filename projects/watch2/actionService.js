@@ -321,10 +321,10 @@ app.service('actionService', function($timeout, wikiSercive) {
 
     if(props.stat === 'hp'){
       if(props.statMod>0){
-        displayToast('You regain ' +props.stat+' points of damage.', setScope, getScope)
+        displayToast('You regain ' +props.stat+' point(s) of damage.', setScope, getScope)
       }
       else{
-        displayToast('You take '+invertedStatMod+' points of damage.', setScope, getScope)
+        displayToast('You take '+invertedStatMod+' point(s) of damage.', setScope, getScope)
       }
     }
     else{

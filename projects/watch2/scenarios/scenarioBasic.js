@@ -133,7 +133,7 @@ let item = itemIndex.items;
                 smallTalkActionTaken: false,
                 smallTalkAction: actionService.modifyStat,
                 stat: 'hp',
-                statMod: -5,
+                statMod: -1,
                 epilog: '<em>The old man suddenly become defensive.</em>"Now thats non of ya business, you hear me?!"<em>He smacks his walking stick over your head.</em>'
               }
             },

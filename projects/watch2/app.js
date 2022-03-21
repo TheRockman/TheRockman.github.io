@@ -43,9 +43,7 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     }
   }
   // Math.round(0.8);
-  $scope.maxHP = rollForStat();
   $scope.stats = {
-    hp: JSON.parse(JSON.stringify($scope.maxHP)),
     dex: rollForStat(),
     str: rollForStat(),
     int: rollForStat(),
@@ -53,6 +51,8 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
     con: rollForStat(),
     cha: rollForStat()
   }
+  $scope.maxHP = Math.round( $scope.stats.con / 2);
+  $scope.stats.hp = JSON.parse(JSON.stringify($scope.maxHP));
 
   $scope.followers = followerIndex.all;
 
