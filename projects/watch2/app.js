@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl",
-function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex, itemIndex) {
+function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex, itemIndex, playerService) {
 
   $scope.questFlags = questToggles.all;
   $scope.secretquestFlags = questToggles.secret;
@@ -19,6 +19,10 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
   $scope.lockpickSuccess = false;
   $scope.currentShop = null;
   $scope.currentNote = null;
+
+  $scope.exp = 10;
+  $scope.improveStat = playerService.improveStat;
+  $scope.reduceStat = playerService.reduceStat;
 
   $scope.currentRegion = $scope.regions[0];
   $scope.currentRegionBackup = $scope.currentRegion;

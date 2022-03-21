@@ -12,12 +12,20 @@ let item = itemIndex.items;
       // },
       actions: [
         {
+          label: '[Take in the moment]',
+          action: actionService.awardExp,
+          actionProps: {
+            expMod: 1,
+            epilog: '<em>The sunlight fills you with wanderlust</em>'
+          }
+        },
+        {
           label: '[Proceed]',
           action: actionService.abort,
           actionProps: {
             epilog: '<em>You follow the path before you</em>'
           }
-        }
+        },
       ],
     },
 //Scenario

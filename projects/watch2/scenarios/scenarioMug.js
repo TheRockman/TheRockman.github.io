@@ -297,18 +297,5 @@ let item = itemIndex.items;
         },
       ],
     },
-//Scenario
-    {
-      text: '<em>At the table next to yours two orks are playing poker</em>',
-      actions: [
-        {
-          label: '"How nice for them"',
-          action: actionService.abortEntireScenario,
-          actionProps: {
-            epilog: '{TEST: no more scenarios after this one}'
-          }
-        },
-      ],
-    },
   ]
 });

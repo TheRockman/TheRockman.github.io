@@ -18,25 +18,31 @@
   <div class="mainC" ng-controller="mainCtrl" ng-cloak>
 
     <div ng-cloak class="toolbar align">
-      <div class="align" ng-click="viewManager('mapView')" style="cursor:pointer" >
-        <svg ng-cloak ng-if="view !== 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
-          <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
-        </svg>
-        <svg ng-cloak ng-if="view === 'mapView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+      <div class="align" ng-if="view !== null" ng-click="viewManager(null)" style="cursor:pointer" >
+        <svg ng-cloak  style="width:1rem;height:1rem" viewBox="0 0 24 24">
           <path fill="#fff" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
         </svg>
         &nbsp;
-        Map
+        Close
+        &nbsp;
+        |
+        &nbsp;
       </div>
-      &nbsp;
-      |
-      &nbsp;
-      <div class="align" ng-click="viewManager('perkView')" style="cursor:pointer" >
-        <svg ng-cloak ng-if="view !== 'perkView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
+
+      <div class="align" ng-click="viewManager('mapView')" style="cursor:pointer" >
+        <svg ng-cloak style="width:1rem;height:1rem" viewBox="0 0 24 24">
           <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
         </svg>
-        <svg ng-cloak ng-if="view === 'perkView'" style="width:1rem;height:1rem" viewBox="0 0 24 24">
-          <path fill="#fff" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+        &nbsp;
+        Map
+        &nbsp;
+        |
+        &nbsp;
+      </div>
+
+      <div class="align" ng-click="viewManager('perkView')" style="cursor:pointer" >
+        <svg ng-cloak style="width:1rem;height:1rem" viewBox="0 0 24 24">
+          <path fill="#fff" d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" />
         </svg>
         &nbsp;
         Stats
@@ -72,32 +78,47 @@
             </div>
             <!-- stats -->
             <div>
-              <h3>Stats</h3>
+              <div class="align jsb">
+                <h3>Stats</h3>
+                <span>EXP: {{exp}}</span>
+              </div>
               <hr/>
               <div class="align jsb">
                 <div class="center">
-                  <p>{{stats.dex}}</p>
                   DEX
+                  <p class="btn" ng-click="improveStat('dex', setScope, getScope)">+</p>
+                  <p>{{stats.dex}}</p>
+                  <p class="btn" ng-click="reduceStat('dex', setScope, getScope)">-</p>
                 </div>
                 <div class="center">
-                  <p>{{stats.str}}</p>
                   STR
+                  <p class="btn" ng-click="improveStat('str', setScope, getScope)">+</p>
+                  <p>{{stats.str}}</p>
+                  <p class="btn" ng-click="reduceStat('str', setScope, getScope)">-</p>
                 </div>
                 <div class="center">
-                  <p>{{stats.int}}</p>
                   INT
+                  <p class="btn" ng-click="improveStat('int', setScope, getScope)">+</p>
+                  <p>{{stats.int}}</p>
+                  <p class="btn" ng-click="reduceStat('int', setScope, getScope)">-</p>
                 </div>
                 <div class="center">
-                  <p>{{stats.wis}}</p>
                   WIS
+                  <p class="btn" ng-click="improveStat('wis', setScope, getScope)">+</p>
+                  <p>{{stats.wis}}</p>
+                  <p class="btn" ng-click="reduceStat('wis', setScope, getScope)">-</p>
                 </div>
                 <div class="center">
-                  <p>{{stats.con}}</p>
                   CON
+                  <p class="btn" ng-click="improveStat('con', setScope, getScope)">+</p>
+                  <p>{{stats.con}}</p>
+                  <p class="btn" ng-click="reduceStat('con', setScope, getScope)">-</p>
                 </div>
                 <div class="center">
-                  <p>{{stats.cha}}</p>
                   CHA
+                  <p class="btn" ng-click="improveStat('cha', setScope, getScope )">+</p>
+                  <p>{{stats.cha}}</p>
+                  <p class="btn" ng-click="reduceStat('cha', setScope, getScope)">-</p>
                 </div>
               </div>
             </div>
@@ -411,6 +432,7 @@
 <script type="text/javascript" src="mapMarkers.js"></script>
 <script type="text/javascript" src="actionService.js"></script>
 <script type="text/javascript" src="wikiSercive.js"></script>
+<script type="text/javascript" src="playerService.js"></script>
 <script type="text/javascript" src="factions/factionIndex.js"></script>
 <script type="text/javascript" src="items/itemIndex.js"></script>
 <script type="text/javascript" src="scenarios/followers/followerIndex.js"></script>

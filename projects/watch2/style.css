@@ -56,6 +56,18 @@ ul{
   padding: 0;
 }
 
+.btn{
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #cacaca;
+  line-height: 1rem;
+  user-select: none;
+}
+.btn:hover{
+  background: #333;
+}
+
 .speaker-name-tag{
   color: white;
   position: absolute;

@@ -151,6 +151,7 @@ app.service('actionService', function($timeout, wikiSercive) {
       (function (i) {
         $timeout(function () {
           props.multiActionChain[i].action(props.multiActionChain[i].actionProps, setScope, getScope);
+          toTop();
           if(i+1 === props.multiActionChain.length){
             setScope('optionLock', false);
           }
@@ -253,6 +254,7 @@ app.service('actionService', function($timeout, wikiSercive) {
         progress(props, setScope, getScope)
       }
     }
+    toTop();
   }
 
   this.modifySecretQuestFlags = function (props, setScope, getScope) {
@@ -268,6 +270,22 @@ app.service('actionService', function($timeout, wikiSercive) {
         progress(props, setScope, getScope)
       }
     }
+  }
+
+  this.awardExp = function (props, setScope, getScope) {
+    var current = getScope('exp');
+    var calculatedExp = 10*props.expMod;
+    setScope('exp', current + calculatedExp);
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
+    }
+    displayToast('You gained '+ calculatedExp + ' Exp.', setScope, getScope);
+    toTop();
   }
 
   this.abortEntireScenario = function (props, setScope, getScope) {
