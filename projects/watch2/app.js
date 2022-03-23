@@ -329,17 +329,17 @@ $scope.buyItem = function(product){
 }
 
 //parallax
-  var root = document.documentElement;
-  root.addEventListener("mousemove", e => {
-    var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-    var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    if(vw>768){
-      var mx = e.clientX;
-      var my = e.clientY;
-      root.style.setProperty('--x', mx/180 + "deg");
-      root.style.setProperty('--y', my/180 + "deg");
-    }
-  });
+  // var root = document.documentElement;
+  // root.addEventListener("mousemove", e => {
+  //   var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  //   var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+  //   if(vw>768){
+  //     var mx = e.clientX;
+  //     var my = e.clientY;
+  //     root.style.setProperty('--x', mx/180 + "deg");
+  //     root.style.setProperty('--y', my/180 + "deg");
+  //   }
+  // });
 
 });
 

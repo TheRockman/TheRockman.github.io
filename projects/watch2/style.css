@@ -318,9 +318,8 @@ summary{
 
 .inventory-list{
   list-style: none;
-  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #333 16%, #333 60%, rgba(148,187,233,0) 100%);
-  padding: 1rem;
-  border-top:3px solid black;
+  /* background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #333 16%, #333 60%, rgba(148,187,233,0) 100%); */
+  border-bottom:2px solid black;
 }
 .responsive-panel ul{
   max-height: 400px;
