@@ -169,7 +169,7 @@
                   <br/>
                   <span style="white-space: pre-wrap;" ng-bind-html='toTrustedHTML( inventory[inv].item.desc )'></span>
                   <br/>
-                  <button type="button" ng-if="inventory[inv].item.use" ng-click="useInventoryItem(inventory[inv].item.use)" name="button">Use</button>
+                  <button class="btn" type="button" ng-if="inventory[inv].item.use" ng-click="useInventoryItem(inventory[inv].item.use)" name="button">Use</button>
                 </details>
               </li>
             </ul>
@@ -352,22 +352,23 @@
 
         <!-- shop -->
         <div class="full responsive-panel" ng-if="currentShop">
-          <div class="panel-grid-3">
-            <div ng-repeat="product in currentShop" ng-if="product.quantity > 0" ng-click="buyItem(product)">
-              <div class="align jsb">
-                <div class="align">
-                  <img src="{{product.item.img}}" alt="">
-                  &nbsp;
-                  <span>
-                    <p>{{product.item.name}}</p>
-                    <p>{{product.price}} gold</p>
+          <ul>
+            <li class="inventory-list" ng-repeat="product in currentShop" ng-if="product.quantity > 0">
+              <details>
+                <summary class="align jsb pointer">
+                  <span class="align">
+                    <img src="{{product.item.img}}" alt="">
+                    x{{product.quantity}} {{product.item.name}}
                   </span>
-                </div>
-              </div>
-              <small style="white-space: pre-wrap;">{{product.item.desc}}</small>
-              <p>{{product.quantity}} in stock</p>
-            </div>
-          </div>
+                  <span>...</span>
+                </summary>
+                <br/>
+                <span>{{product.item.desc}}</span>
+                <br/>
+                <button class="btn" type="button" ng-click="buyItem(product)" name="button">Buy 1 for {{product.price}} Gold</button>
+              </details>
+            </li>
+          </ul>
         </div>
 
         <!-- talkbox -->

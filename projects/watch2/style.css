@@ -63,9 +63,15 @@ ul{
   border: 1px solid #cacaca;
   line-height: 1rem;
   user-select: none;
+  background: transparent;
+  color: #cacaca;
 }
-.btn:hover{
+summary{
+  border: 1px solid transparent;
+}
+.btn:hover, summary:hover{
   background: #333;
+  border: 1px solid #cacaca;
 }
 
 .speaker-name-tag{
@@ -315,6 +321,10 @@ ul{
   background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #333 16%, #333 60%, rgba(148,187,233,0) 100%);
   padding: 1rem;
   border-top:3px solid black;
+}
+.responsive-panel ul{
+  max-height: 400px;
+  overflow-y: auto;
 }
 .panel-grid img,
 .panel-grid-3 img,
