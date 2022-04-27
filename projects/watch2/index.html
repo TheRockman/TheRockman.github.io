@@ -17,6 +17,10 @@
 <body>
   <div class="mainC" ng-controller="mainCtrl" ng-cloak>
 
+    <div class="intro-fade" ng-if="currentRegion.showIntro">
+      <p class="intro-fade-text">{{currentRegion.name}} </p>
+    </div>
+
     <div ng-cloak class="toolbar align">
       <div class="align" ng-if="view !== null" ng-click="viewManager(null)" style="cursor:pointer" >
         <svg ng-cloak  style="width:1rem;height:1rem" viewBox="0 0 24 24">

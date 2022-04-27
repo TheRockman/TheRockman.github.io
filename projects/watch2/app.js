@@ -1,5 +1,5 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl",
-function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex, itemIndex, playerService) {
+function($scope, $timeout, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, factionIndex, itemIndex, playerService) {
 
   $scope.questFlags = questToggles.all;
   $scope.secretquestFlags = questToggles.secret;
@@ -136,10 +136,17 @@ function($scope, $sce, questToggles, wikiSercive, mapMarkers, followerIndex, fac
       return;
     }
 
-    if(!$scope.visitedRegions.includes(item.short) ){
+    item.showIntro = false;
+    if($scope.visitedRegions.includes(item.short) ){
+      item.showIntro = false;
       $scope.resetFollowerCanSpeak();
     } else{
+      item.showIntro = true;
       $scope.visitedRegions.push(item.short);
+
+      $timeout(function () {
+        $scope.currentRegion.showIntro = false;
+      }, 6000)
     }
 
     $scope.currentRegion = item;

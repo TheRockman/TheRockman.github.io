@@ -106,6 +106,63 @@ summary{
   background: teal;
   color: white;
 }
+.intro-fade{
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* background: radial-gradient(ellipse at center, rgba(89,89,89,0) 0%,rgba(89,89,89,1) 39%,rgba(89,89,89,1) 47%,rgba(25,25,25,1) 77%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 95%); */
+  background: black;
+  text-align: center;
+  line-height: 100vh;
+  animation: intro-fade-bg 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.intro-fade-text{
+  font-size: calc(0vw + 3vh + 2vmin);
+  opacity: 0;
+  animation: intro-fade-text 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  color: white;
+}
+
+@keyframes intro-fade-bg {
+  0% {
+    opacity: 1;
+  }
+  70%{
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+  }
+}
+@keyframes intro-fade-text {
+  0% {
+    opacity: 0;
+  }
+  20%{
+    opacity: 1;
+  }
+  60%{
+    opacity: 1;
+  }
+  80% {
+    margin-top: -16px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    user-select: none;
+  }
+}
 
 .bgImg{
   z-index: -1;
