@@ -15,20 +15,20 @@
           <div class="conversation">
             <div ng-repeat="message in messages">
               <div class="row" >
-                <div class="flex ">
-                  <div class="bot-msg msg padding" ng-if="message.botMsg">
+                <div class="flex" ng-if="message.botMsg">
+                  <div class="bot-msg msg padding">
                     {{message.botMsg}}
                   </div>
                 </div>
-                <div class="flex ">
-                  <div class="me-msg msg padding" ng-if="message.meMsg">
+                <div class="flex" ng-if="message.meMsg">
+                  <div class="me-msg msg padding">
                     {{message.meMsg}}
                   </div>
                 </div>
               </div>
               <div class="reply" ng-if="!botTyping && $last">
                 <div class="row">
-                  <div class="flex me-msg msg padding pointer center" ng-if="!reply.freeTextAllowed" ng-repeat="reply in message.replies" ng-click="sendReply(reply, message.replies, text)">
+                  <div class="flex answer msg padding pointer center" ng-if="!reply.freeTextAllowed" ng-repeat="reply in message.replies" ng-click="sendReply(reply, message.replies, text)">
                     {{reply.replyMsg}}
                   </div>
                   <div class="flex" ng-if="reply.freeTextAllowed" ng-repeat="reply in message.replies">

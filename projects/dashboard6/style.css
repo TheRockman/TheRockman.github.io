@@ -145,6 +145,7 @@ svg, svg path, img{
 .head-img{
   width: 120px;
   height: auto;
+  pointer-events: none;
   transform: scale(2) translateY(-13px) translateX(-20px);
 }
 

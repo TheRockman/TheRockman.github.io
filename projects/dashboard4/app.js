@@ -36,7 +36,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       title: 'Waluigi',
       subtitle: 'Number one',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      url: 'https://vignette.wikia.nocookie.net/supermarioglitchy4/images/4/46/Waluigi.png/revision/latest?cb=20140622194605',
+      url: 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.pikpng.com%2Fpngl%2Fb%2F179-1799878_exemplaryrequest-i-was-bored-in-digital-art-class.png&sp=1651607935T948af2cde1ce9d9787663505ca80ad06332e45304593cd30b2f62276f42e2021',
       rank: 5
     }
   ]

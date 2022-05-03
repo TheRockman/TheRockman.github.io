@@ -110,9 +110,17 @@ body{
   margin: 10px;
 }
 
+.answer{
+  background: purple;
+  color: white;
+}
 .me-msg{
   background: purple;
   color: white;
+  margin-left: 5rem;
+}
+.bot-msg{
+  margin-right: 5rem;
 }
 
 .reply{

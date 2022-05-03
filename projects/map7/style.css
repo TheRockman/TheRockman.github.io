@@ -61,7 +61,7 @@ svg, svg path, img{
   height: 640px;
   transform: perspective(50rem) rotateX(60deg);
   transform-origin: bottom center;
-  background: url('https://cdna.artstation.com/p/assets/images/images/007/803/170/large/jo-torres-grass-with-daisy.jpg?1508614198');
+  background: url('https://cdnb.artstation.com/p/assets/images/images/005/492/021/large/nathan-brandes-nathanbrandes-tilinggrasswip7.jpg?1491420341');
   background-size: contain;
   position: absolute;
   bottom: 0;
@@ -78,19 +78,6 @@ svg, svg path, img{
   background: red;
   background: url('https://png2.cleanpng.com/sh/0313f1620816662b128a75e9833059b5/L0KzQYq3V8EzN6l5e5H0aYP2gLBuTfZmdpRqReJ4coTkcr3sTf5mfKh0it02Z4LkgLnwgCMua51uiJ9qcoSwhMPojwNxaaNqRadtMkjkSLLtUsE2OGk3RqMCNEe4R4q9UcU3Omo5Tak6MUG2Roa1kP5o/kisspng-fence-portable-network-graphics-clip-art-transpare-5d28a8af215082.1747579615629457111365.png');
   background-size: 6% 100%;
-}
-.road{
-  transform: perspective(0rem) rotateX(-130deg);
-  height: 340px;
-  position: absolute;
-  transform-origin: center bottom;
-  top: -100px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  background: red;
-  background: url('https://s-media-cache-ak0.pinimg.com/736x/ac/45/32/ac4532af5172c86db15fb43b0b681280.jpg');
-  background-size: contain;
 }
 
 .light{
