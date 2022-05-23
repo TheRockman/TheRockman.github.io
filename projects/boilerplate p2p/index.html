@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"></script>
+  <script src="simplepeer.min.js"></script>
+</head>
+<body>
+
+  <style>
+    .outgoing {
+      width: 600px;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+  </style>
+
+  <div ng-controller="mainCtrl">
+    <p>connection: {{connected}}</p>
+
+
+    <a href="#1" target="_blank">Host</a>
+
+    <div ng-if="!connected">
+      <textarea placeholder="Paste key here" ng-model="incoming"></textarea>
+      <button ng-click="signal(incoming)">submit</button>
+
+      <div ng-if="outgoing">
+        <h4>Give this to peer:</h4>
+        <pre class="outgoing">{{outgoing}}</pre>
+      </div>
+    </div>
+
+    <div ng-if="connected">
+      <div ng-repeat="message in sharedState.test">
+        {{message}}
+      </div>
+      <input type="text" ng-model="chat" name="" value="">
+      <button type="button" ng-click="sendChat(chat)" name="button">Ping</button>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
