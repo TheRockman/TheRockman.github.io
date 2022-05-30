@@ -21,7 +21,7 @@ body {
 }
 
 .menu{
-  background: #222;
+  /* background: #222; */
   z-index: 10;
   position: absolute;
   transform: translateX(75px) translateY(-25px);
@@ -71,8 +71,7 @@ body {
   background: #555;
 }
 .item{
-  background-size: contain!important;
-  background: url('https://ubisafe.org/images/transparent-waves-vaporwave-4.gif') center center no-repeat;
+  background: lime!important;
 }
 .edge{
   background: #222!important;

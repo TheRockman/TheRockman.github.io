@@ -14,24 +14,27 @@
       <section
         ng-repeat="i in cubes"
         class="tile"
-        ng-click="turn(currentPlayer, i);"
+        ng-click="targetTile(i);"
         ng-class="{
           'danger':i.attack,
           'edge':i.edge,
           'door billboard':i.door,
           'interior':i.displayState == 'interior',
-          'current':i.state === currentPlayer,
-          'item billboard':i.state == 'item',
+          'current':i.state === 'player1',
+          'item':i.state == 'item',
           'player1 billboard':i.state == 'player1'}"
         >
+        {{i.coordinates.x}}/
+        {{i.coordinates.y}}
           <div class="menu">
             <div ng-show="i.state == 'player1'">
-              <button type="button" ng-click="attack()" name="button">Attack</button>
+              <button type="button" name="button">Attack</button>
               </br>
               <button type="button"  name="button">Search</button>
-              <ul class="itemlist">
+              {{player1.isInsideBuilding}}
+              <!-- <ul class="itemlist">
                 <li ng-click="useItem(i.itemName)" ng-repeat="i in player1.items">{{i.itemName}}</li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </section>
