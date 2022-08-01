@@ -139,10 +139,10 @@ function($scope, $timeout, $sce, questToggles, wikiSercive, mapMarkers, follower
     item.showIntro = false;
     if($scope.visitedRegions.includes(item.short) ){
       item.showIntro = false;
-      $scope.resetFollowerCanSpeak();
     } else{
       item.showIntro = true;
       $scope.visitedRegions.push(item.short);
+      $scope.resetFollowerCanSpeak();
 
       $timeout(function () {
         $scope.currentRegion.showIntro = false;
