@@ -1,0 +1,294 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+  /*shadows*/
+  --level1: 0.8px 1.6px 1.6px hsl(0deg 0% 0% / 0.48);
+  --level2: 1.6px 3.2px 3.2px hsl(0deg 0% 0% / 0.45);
+  --level3: 2.4px 4.8px 4.8px hsl(0deg 0% 0% / 0.43);
+  --level4: 3.2px 6.4px 6.4px hsl(0deg 0% 0% / 0.40);
+  --level5: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  --level6: 4.8px 9.6px 9.6px hsl(0deg 0% 0% / 0.35);
+  --level7: 5.6px 11.2px 11.2px hsl(0deg 0% 0% / 0.33);
+  --level10: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+
+/* resets START */
+*,*::before,*::after {box-sizing: border-box;}html:focus-within {scroll-behavior: smooth;}body,h1,h2,h3,h4,p,figure,blockquote,dl,dd {margin: 0;}body {text-rendering: optimizeSpeed;line-height: 1.5;}img{max-width: 100%;display: block;}input,button,textarea,select {font: inherit;}@media (prefers-reduced-motion: reduce) {html:focus-within {scroll-behavior: auto;}*,*::before,*::after {animation-duration: 0.01ms !important;animation-iteration-count: 1 !important;transition-duration: 0.01ms !important;scroll-behavior: auto !important;}}
+/* resets END */
+
+/*Animation*/
+@keyframes animation {
+  from {opacity: 0; transform:  translateY(-10px);}
+  to {opacity: 1; transform:  translateY(0px);}
+}
+@keyframes animation2 {
+  from { transform:  translateX(100%);}
+  to {transform:  translateX(0);}
+}
+@keyframes rotating {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+body{
+  background: #f5f5f5;
+  overflow-y: auto; scrollbar-gutter: stable both-edges;
+  font-family: 'Khula', sans-serif;
+  font-size: 16px;
+}
+nav{
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacer);
+  box-shadow: var(--level1);
+  background: white;
+  z-index: 100;
+}
+.pad{
+  padding: var(--spacer);
+}
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+
+summary, .pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+.parent {
+  margin: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+}
+.box{
+  animation-name: animation;
+  animation-duration: 0.6s;
+  color: white;
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 1s all ease;
+  box-shadow: var(--level1);
+}
+.box::after {
+    content: " ";
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(to bottom, #fff, transparent);
+    position: absolute;
+    opacity: 0.2;
+    top: -100%;
+    left: -30%;
+    pointer-events: none;
+    transform: rotate(45deg);
+}
+
+
+.config-wrap{
+  position: relative;
+}
+.config{
+  animation-name: animation2;
+  animation-duration: 0.3s;
+  background: #222;
+  color: white;
+  position: fixed;
+  width: 225px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  z-index: 101;
+}
+/*
+grid-row-start,
+grid-column-start,
+grid-row-end,
+grid-column-end
+*/
+.ww{
+  transition: 1s all ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-top: -2rem;
+}
+/* music */
+.music-widget > img{
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+.music-ctrls{
+  width: 100%;
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem;
+}
+.music-ctrls input{
+  width: 90%;
+  margin: 0 auto;
+}
+.play-btn{
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 53px;
+  border-radius: 10000px;
+  background: white;
+}
+
+/* air */
+.air-widget{
+  text-align: center;
+}
+.rot{
+  animation: rotating 0.6s linear infinite;
+}
+
+.temp-widget{
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+/* mobile   */
+  .parent {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+  .box{
+    grid-area: auto / auto / auto / auto!important;
+  }
+  .music-ctrls{
+    position: relative;
+  }
+}
+
+/* media */
+.media-widget{
+  overflow-y: auto;
+}
+
+/* Glow card */
+/* .glow-card-wrap {
+  margin:1rem;
+  width: 300px;
+  min-height: 230px;
+  position: relative;
+}
+.glow-card {
+  background-image: url('https://wallpaperaccess.com/full/898601.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.glow-card:before, .glow-card:after{
+  content: "";
+  background: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  border-radius: 15px;
+  z-index: 2;
+  box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+}
+.glow-card:before {
+  z-index: 1;
+  transform: translateY(20px) scale(0.9);
+  filter: blur(25px);
+  opacity: 0.9;
+} */
+
+/*Fab*/
+/*.fab{
+  background:dodgerblue;
+  width:18px;
+  height: 18px;
+  padding:15px;
+  border-radius:50%;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: var(--level1);
+}*/
+
+
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+.scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* select all on focus */
+/* .focus-select {
+  cursor: pointer;
+  -webkit-user-select: all;
+}
+.focus-select:focus {
+  animation: select 100ms step-end forwards;
+}
+@keyframes select {
+  to {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+} */

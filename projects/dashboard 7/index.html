@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div ng-if="plots.length < 1" class="center">
+      <h3>To get going</h3>
+      <button type="button" ng-click="addWidget()" name="button">Add Widget</button>
+      or use a
+      <button type="button" ng-click="setEx()" name="button">Template</button>
+    </div>
+    <div ng-if="plots.length > 0">
+      <nav class="align jsb">
+        <span>
+          Navbar
+          <button type="button" ng-click="addWidget()" name="button">Add Widget</button>
+        </span>
+      </nav>
+      <div  class="parent">
+        <div ng-repeat="plot in plots" class="box scroll" ng-style="plot.style">
+          <div class="align jsb">
+            <!-- <h3>{{plot.widgetType}}</h3> -->
+            <div >
+              <div class="config-wrap" ng-click="plot.config = !plot.config">
+                <svg class="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+                </svg>
+              </div>
+              <span ng-if="plot.config" class="config">
+                <h2>Config</h2>
+                <button type="button" ng-click="plot.config = !plot.config" name="button">Close</button>
+                <p>Widget type</p>
+                <select ng-model="plot.widgetType" name="">
+                  <option value="music">Music</option>
+                  <option value="car">Car</option>
+                  <option value="air">Air</option>
+                  <option value="temp">Temp</option>
+                  <option value="media">Media</option>
+                </select>
+                <p>Custom Layout:</p>
+                <small> y1 / x1 / y2 / x2 </small>
+                <input type="text" ng-model="plot.style['grid-area']" name="" value="">
+                <p>Background</p>
+                <select ng-model="plot.style['background']" name="">
+                  <option value="#333">Flat</option>
+                  <option value="linear-gradient(to bottom, #4776e6, #8e54e9)">Midnight</option>
+                  <option value="linear-gradient(to top, #dd5e89, #f7bb97)">Pinky</option>
+                  <option value="linear-gradient(to bottom, #ff512f, #dd2476)">Bloody mary</option>
+                  <option value="linear-gradient(to top, #3ca55c, #b5ac49)">Lemon twist</option>
+                </select>
+
+                <button type="button" ng-click="remove(plot)" name="button">Delete widget</button>
+              </span>
+            </div>
+          </div>
+          <!-- Widget content -->
+            <div ng-if="plot.widgetType === 'music'" class="ww music-widget">
+              <h3>
+                Feel good inc.
+                <br/><small>Gorillaz</small>
+              </h3>
+              <img src="https://www.emp-shop.se/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dw35bc45b3/images/4/2/6/4/426405-emp.jpg?sw=350&sh=400&sm=fit&sfrm=png" alt="">
+
+              <div class="music-ctrls">
+                <input type="range" min="0" max="100" value="90" step="5">
+                <div class="align jsb">
+                  <span>|<</span>
+                  <span><</span>
+                  <span class="play-btn">P</span>
+                  <span>></span>
+                  <span>>|</span>
+                </div>
+              </div>
+            </div>
+            <div ng-if="plot.widgetType === 'air'" class="ww air-widget">
+              <h3>
+                AC unit is <strong ng-if="plot.widgetData.ac">on</strong><strong ng-if="!plot.widgetData.ac">off</strong>
+              </h3>
+              <br/>
+              <svg class="fan" ng-class="{'rot':plot.widgetData.ac}" style="width:60px;height:60px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12,11A1,1 0 0,0 11,12A1,1 0 0,0 12,13A1,1 0 0,0 13,12A1,1 0 0,0 12,11M12.5,2C17,2 17.11,5.57 14.75,6.75C13.76,7.24 13.32,8.29 13.13,9.22C13.61,9.42 14.03,9.73 14.35,10.13C18.05,8.13 22.03,8.92 22.03,12.5C22.03,17 18.46,17.1 17.28,14.73C16.78,13.74 15.72,13.3 14.79,13.11C14.59,13.59 14.28,14 13.88,14.34C15.87,18.03 15.08,22 11.5,22C7,22 6.91,18.42 9.27,17.24C10.25,16.75 10.69,15.71 10.89,14.79C10.4,14.59 9.97,14.27 9.65,13.87C5.96,15.85 2,15.07 2,11.5C2,7 5.56,6.89 6.74,9.26C7.24,10.25 8.29,10.68 9.22,10.87C9.41,10.39 9.73,9.97 10.14,9.65C8.15,5.96 8.94,2 12.5,2Z" />
+              </svg>
+              <br/>
+              <span ng-click="plot.widgetData.ac = !plot.widgetData.ac">Turn <strong ng-if="plot.widgetData.ac">off</strong><strong ng-if="!plot.widgetData.ac">on</strong></span>
+            </div>
+            <div ng-if="plot.widgetType === 'media'" class="media-widget scroll" ng-style="plot.widgetData.mediaHeight">
+              <details>
+                  <summary class="align">
+                    <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    &nbsp;
+                    Photos
+                  </summary>
+                  <ul>
+                    <li>1232131231.png</li>
+                    <li>z87xy87xdsf3.png</li>
+                    <li>09810912.png</li>
+                    <li>2309480.png</li>
+                    <li>1280973.png</li>
+                    <li>vb.png</li>
+                    <li>23f.png</li>
+                    <li>21293yihj.png</li>
+                  </ul>
+              </details>
+              <details>
+                  <summary class="align">
+                    <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    &nbsp;
+                    Junk
+                  </summary>
+                  <ul>
+                    <li>1232131231.png</li>
+                    <li>z87xy87xdsf3.png</li>
+                    <li>09810912.png</li>
+                    <li>2309480.png</li>
+                    <li>1280973.png</li>
+                    <li>vb.png</li>
+                    <li>23f.png</li>
+                    <li>21293yihj.png</li>
+                  </ul>
+              </details>
+              <details>
+                  <summary class="align">
+                    <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    &nbsp;
+                    Documents
+                  </summary>
+                  <ul>
+                    <li>1232131231.png</li>
+                    <li>z87xy87xdsf3.png</li>
+                    <li>09810912.png</li>
+                    <li>2309480.png</li>
+                    <li>1280973.png</li>
+                    <li>vb.png</li>
+                    <li>23f.png</li>
+                    <li>21293yihj.png</li>
+                  </ul>
+              </details>
+            </div>
+            <div ng-if="plot.widgetType === 'car'" class="ww car-widget">
+              <h3>
+                Remote car controls
+              </h3>
+              <div style="width:100%;" class="align jsb">
+                <div class="play-btn">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                      <path fill="#333" d="M22,18V22H18V19H15V16H12L9.74,13.74C9.19,13.91 8.61,14 8,14A6,6 0 0,1 2,8A6,6 0 0,1 8,2A6,6 0 0,1 14,8C14,8.61 13.91,9.19 13.74,9.74L22,18M7,5A2,2 0 0,0 5,7A2,2 0 0,0 7,9A2,2 0 0,0 9,7A2,2 0 0,0 7,5Z" />
+                  </svg>
+                </div>
+                <div class="play-btn">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                      <path fill="#333" d="M19.77,7.23L19.78,7.22L16.06,3.5L15,4.56L17.11,6.67C16.17,7.03 15.5,7.93 15.5,9A2.5,2.5 0 0,0 18,11.5C18.36,11.5 18.69,11.42 19,11.29V18.5A1,1 0 0,1 18,19.5A1,1 0 0,1 17,18.5V14A2,2 0 0,0 15,12H14V5A2,2 0 0,0 12,3H6A2,2 0 0,0 4,5V21H14V13.5H15.5V18.5A2.5,2.5 0 0,0 18,21A2.5,2.5 0 0,0 20.5,18.5V9C20.5,8.31 20.22,7.68 19.77,7.23M12,13.5V19H6V12H12V13.5M12,10H6V5H12V10M18,10A1,1 0 0,1 17,9A1,1 0 0,1 18,8A1,1 0 0,1 19,9A1,1 0 0,1 18,10Z" />
+                  </svg>
+                </div>
+                <div class="play-btn">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path fill="#333" d="M12 10H15V8H12V7C12 6.4 11.6 6 11 6S10 6.4 10 7V17.3C9.4 17.6 9 18.3 9 19C9 20.1 9.9 21 11 21S13 20.1 13 19C13 18.3 12.6 17.6 12 17.3V14H15V12H12V10M24 12C24 15.31 22.66 18.31 20.5 20.5L19.42 19.42C21.32 17.5 22.5 14.9 22.5 12C22.5 9.11 21.32 6.5 19.42 4.58L20.5 3.5C22.66 5.69 24 8.69 24 12M1.5 12C1.5 14.9 2.68 17.5 4.58 19.42L3.5 20.5C1.34 18.31 0 15.31 0 12S1.34 5.69 3.5 3.5L4.58 4.58C2.68 6.5 1.5 9.11 1.5 12M21 12C21 15.53 18.96 18.58 16 20.05V17.74C17.81 16.47 19 14.37 19 12C19 8.14 15.86 5 12 5S5 8.14 5 12C5 14.37 6.19 16.47 8 17.74V20.05C5.04 18.58 3 15.53 3 12C3 7.03 7.03 3 12 3S21 7.03 21 12Z" />
+                  </svg>
+                </div>
+                <div class="play-btn">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                      <path fill="#333" d="M11.5,1A1.5,1.5 0 0,0 10,2.5V14.5C9.37,14.97 9,15.71 9,16.5A2.5,2.5 0 0,0 11.5,19A2.5,2.5 0 0,0 14,16.5C14,15.71 13.63,15 13,14.5V13H17V11H13V9H17V7H13V5H17V3H13V2.5A1.5,1.5 0 0,0 11.5,1M0,15V17C0.67,17 0.79,17.21 1.29,17.71C1.79,18.21 2.67,19 4,19C5.33,19 6.21,18.21 6.71,17.71C6.82,17.59 6.91,17.5 7,17.41V15.16C6.21,15.42 5.65,15.93 5.29,16.29C4.79,16.79 4.67,17 4,17C3.33,17 3.21,16.79 2.71,16.29C2.21,15.79 1.33,15 0,15M16,15V17C16.67,17 16.79,17.21 17.29,17.71C17.79,18.21 18.67,19 20,19C21.33,19 22.21,18.21 22.71,17.71C23.21,17.21 23.33,17 24,17V15C22.67,15 21.79,15.79 21.29,16.29C20.79,16.79 20.67,17 20,17C19.33,17 19.21,16.79 18.71,16.29C18.21,15.79 17.33,15 16,15M8,20C6.67,20 5.79,20.79 5.29,21.29C4.79,21.79 4.67,22 4,22C3.33,22 3.21,21.79 2.71,21.29C2.35,20.93 1.79,20.42 1,20.16V22.41C1.09,22.5 1.18,22.59 1.29,22.71C1.79,23.21 2.67,24 4,24C5.33,24 6.21,23.21 6.71,22.71C7.21,22.21 7.33,22 8,22C8.67,22 8.79,22.21 9.29,22.71C9.73,23.14 10.44,23.8 11.5,23.96C11.66,24 11.83,24 12,24C13.33,24 14.21,23.21 14.71,22.71C15.21,22.21 15.33,22 16,22C16.67,22 16.79,22.21 17.29,22.71C17.79,23.21 18.67,24 20,24C21.33,24 22.21,23.21 22.71,22.71C22.82,22.59 22.91,22.5 23,22.41V20.16C22.21,20.42 21.65,20.93 21.29,21.29C20.79,21.79 20.67,22 20,22C19.33,22 19.21,21.79 18.71,21.29C18.21,20.79 17.33,20 16,20C14.67,20 13.79,20.79 13.29,21.29C12.79,21.79 12.67,22 12,22C11.78,22 11.63,21.97 11.5,21.92C11.22,21.82 11.05,21.63 10.71,21.29C10.21,20.79 9.33,20 8,20Z" />
+                  </svg>
+                </div>
+                <div class="play-btn">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path fill="#333" d="M9 18C7.34 18 6 16.66 6 15C6 13 9 9.63 9 9.63S12 13 12 15C12 16.66 10.66 18 9 18M14 4V20H4V4H2V20C2 21.11 2.89 22 4 22H14C15.11 22 16 21.11 16 20V4H14M10 6V2H8V6H5V8H13V6H10M21 17.5V5.5C21 4.67 20.33 4 19.5 4S18 4.67 18 5.5V17.5C17.37 17.97 17 18.71 17 19.5C17 20.88 18.12 22 19.5 22S22 20.88 22 19.5C22 18.71 21.63 18 21 17.5M20 13H19V6H20V13Z" />
+                  </svg>
+                </div>
+              </div>
+              <div></div>
+            </div>
+            <div ng-if="plot.widgetType === 'temp'" class="ww temp-widget center">
+              <h1>09:10</h1>
+              <span>Monday 10 January</span>
+              <br/>
+              <svg style="width:60px;height:60px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9,12C9.53,12.14 9.85,12.69 9.71,13.22L8.41,18.05C8.27,18.59 7.72,18.9 7.19,18.76C6.65,18.62 6.34,18.07 6.5,17.54L7.78,12.71C7.92,12.17 8.47,11.86 9,12M13,12C13.53,12.14 13.85,12.69 13.71,13.22L11.64,20.95C11.5,21.5 10.95,21.8 10.41,21.66C9.88,21.5 9.56,20.97 9.7,20.43L11.78,12.71C11.92,12.17 12.47,11.86 13,12M17,12C17.53,12.14 17.85,12.69 17.71,13.22L16.41,18.05C16.27,18.59 15.72,18.9 15.19,18.76C14.65,18.62 14.34,18.07 14.5,17.54L15.78,12.71C15.92,12.17 16.47,11.86 17,12M17,10V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.43 4,15.6 3.5,15.32V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12C23,13.5 22.2,14.77 21,15.46V15.46C20.5,15.73 19.91,15.57 19.63,15.09C19.36,14.61 19.5,14 20,13.72V13.73C20.6,13.39 21,12.74 21,12A2,2 0 0,0 19,10H17Z" />
+              </svg>
+              <br/>
+              <h2>20°c</h2>
+            </div>
+
+          <!-- Widget content -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
