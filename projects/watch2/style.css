@@ -44,9 +44,10 @@ p{
 }
 
 em{
-  color: #cacaca;
+  color: #888;
   font-style: italic;
   display: block;
+  margin-bottom: 1rem;
   /* font-style: normal; */
 }
 ol{
@@ -192,7 +193,7 @@ summary{
 .toast{
   animation: slide-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   position: fixed;
-  top: 110px;
+  bottom: 1rem;
   right: 0;
   padding: 1rem;
   z-index: 20;
@@ -271,13 +272,7 @@ summary{
 .responsive-panel{
   color: white;
   padding: 1rem;
-  position: absolute;
-  bottom: 33vh;
   background: rgba(25,32,40,0.9);
-}
-.full{
-  left: 0;
-  right: 0;
 }
 .panel-grid{
   display: grid;
@@ -305,29 +300,68 @@ summary{
 }
 
 .responsive-container{
-  right: 0;
-  width: 66vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 100vw;
+  height: 100vh;
 }
+
 .aside-container{
   left: 0;
   width: 33vw;
   overflow: hidden;
 }
 .talkbox{
-  background: rgba(25,32,40,0.9);
+  grid-area: 1 / 3 / 4 / 4;
+  background: black;
   color: #fff;
-  height: 30vh;
-  width: 100%;
-  padding-bottom: 1rem;
-  margin: 0 auto;
+  min-width: 360px;
+  padding-top: 10rem;
   overflow-y: auto;
-  position: absolute;
   bottom: 0;
 }
 .talkbox ol{
   margin-bottom: 2rem;
 }
-
+.talkbox p{
+  padding: 0;
+  margin: 0 1rem;
+}
+/* + 0.4s each */
+.talkbox ol li:nth-child(1){
+  animation: slide-down 0.8s 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.talkbox ol li:nth-child(2){
+  animation: slide-down 0.8s 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.talkbox ol li:nth-child(3){
+  animation: slide-down 0.8s 1.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.talkbox ol li:nth-child(4){
+  animation: slide-down 0.8s 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.talkbox ol li:nth-child(5){
+  animation: slide-down 0.8s 2.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.talkbox ol li:nth-child(6){
+  animation: slide-down 0.8s 2.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.note-grid-area{
+  grid-area: 2 / 1 / 4 / 2;
+}
+.default-grid-area{
+  grid-area: 2 / 1 / 4 / 3;
+}
+.end{
+  padding: 1rem;
+  background: white;
+  color: black;
+  text-align: center;
+  animation: slide-up 0.8s 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 @keyframes fade-in-bck {
   0% {
     opacity: 0;
@@ -506,6 +540,9 @@ summary{
   0% {
     transform: translateX(100%);
   }
+  45% {
+    transform: translateX(-10%);
+  }
   100% {
     transform: translateX(0);
   }
@@ -514,6 +551,16 @@ summary{
   0% {
     opacity: 0;
     transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
   }
   100% {
     opacity: 1;
@@ -631,9 +678,21 @@ summary{
     top: -38rem;
     margin: 1rem;
   }
+  .toast{
+    bottom: unset;
+    top: 10rem;
+  }
   .speaker-name-tag{
     top: -4rem;
     left: 0;
     right: 0;
+  }
+  .talkbox {
+    grid-area: 1 / 1 / 3 / 4;
+    color: #fff;
+    padding-top: 1rem;
+  }
+  .note-grid-area, .default-grid-area{
+    grid-area: -1 / 1 / 4 / 4;
   }
 }

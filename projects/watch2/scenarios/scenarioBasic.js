@@ -86,7 +86,7 @@ let item = itemIndex.items;
     },
 //scenario
     {
-      text: '<em>An old man taps you on the shoulder</em> "Stay a while and listen" <em>He smiles a toothless smile</em>',
+      text: '<em>An old man taps you on the shoulder.\n His face is covered in knifemarks, like a butchers block.</em> "Stay a while and listen" <em>His face cracks into a toothless smile.</em>',
       actions: [
         {
           label: '"Sure"',
@@ -120,11 +120,8 @@ let item = itemIndex.items;
             },
             {
               label: '"Are you married?"',
-              action: actionService.smallTalk,
-              actionProps: {
-                smallTalkActionTaken: false,
-                epilog: '"No.. no."'
-              }
+              action: actionService.progress,
+              actionProps:{},
             },
             {
               label: '"So.. what do you do for a living?"',
@@ -142,6 +139,49 @@ let item = itemIndex.items;
               action: actionService.abort,
               actionProps: {
                 epilog: '<em>You sit back down.</em>'
+              }
+            }
+          ],
+        },
+        {
+          text: '"I am, would you mind giving this boot to my wife?"',
+          actions: [
+            {
+              label: '"I dont have time"',
+              action: actionService.abort,
+              actionProps: {
+                epilog: '<em>You hurry away.</em>'
+              }
+            },
+            {
+              label: '"Sure"',
+              action: actionService.multiAction,
+              actionProps: {
+                multiActionChain: [
+                  {
+                    action: actionService.modifyQuestList,
+                    actionProps:{
+                      quest: {
+                        title: 'Das boot',
+                        desc: 'Deliver a lether boot to a woman in Grimsdale.'
+                      }
+                    }
+                  },
+                  {
+                    action: actionService.putItemInInventory,
+                    actionProps: {
+                      item: {
+                        id: 'oldBoot',
+                        name: 'Lether boot',
+                        img: 'img/items/boot.png',
+                        desc: 'An old boot not fit to use.',
+                        use: '',
+                      },
+                      quantity: 1,
+                      epilog: '<em>He gives you a boot</em>'
+                    }
+                  },
+                ],
               }
             }
           ],

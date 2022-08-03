@@ -5,14 +5,12 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="parallax.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="avatars.css" media="screen" title="no title" charset="utf-8">
   <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js'></script>
+
 </head>
 <body>
   <div class="mainC" ng-controller="mainCtrl" ng-cloak>
@@ -129,7 +127,7 @@
             <br/>
             <br/>
             <!-- perks -->
-            <h3>Quests</h3>
+            <h3>Skills</h3>
             <span>Whenever you learn a skill or something important happens its noted here.</span>
             <details class="card pointer" ng-repeat="key in questFlags.keyList | orderBy:'title'" ng-if="questFlags[key].active && questFlags[key].desc">
               <summary class="align jsb">
@@ -177,10 +175,19 @@
                 </details>
               </li>
             </ul>
-
           </div>
+          <!-- quests -->
           <div class="flex" style="padding: 1rem;">
-
+            <div class="align jsb">
+              <h1>Quests</h1>
+            </div>
+            <span>Shows what you can do to earn fame and fortune.</span>
+            <details class="card pointer" ng-repeat="quest in quests">
+              <span>{{quest.desc}}</span>
+              <summary class="align jsb">
+                <b>{{quest.title}}</b>
+              </summary>
+            </details>
           </div>
         </div>
       </div>
@@ -210,63 +217,14 @@
             <img class="faction-icon" ng-cloak ng-if="currentScenario.speaker.faction" ng-src="{{factions[currentScenario.speaker.faction].icon}}" title="{{factions[currentScenario.speaker.faction].title}}">
             {{currentScenario.speaker.name}}
           </p>
-          <div class="awrap">
-                  <div class="shape head">
-                        <div class="face ft"></div>
-                        <div class="face bk"></div>
-                        <div class="face rt"></div>
-                        <div class="face lt"></div>
-                        <div class="face bm"></div>
-                        <div class="face tp"></div>
-                  </div>
-                  <div class="shape torso">
-                        <div class="face ft"></div>
-                        <div class="face bk"></div>
-                        <div class="face rt"></div>
-                        <div class="face lt"></div>
-                        <div class="face bm"></div>
-                        <div class="face tp"></div>
-                  </div>
-                  <div class="shape legLeft">
-                        <div class="face ft"></div>
-                        <div class="face bk"></div>
-                        <div class="face rt"></div>
-                        <div class="face lt"></div>
-                        <div class="face bm"></div>
-                        <div class="face tp"></div>
-                  </div>
-                  <div class="shape legRight">
-                        <div class="face ft"></div>
-                        <div class="face bk"></div>
-                        <div class="face rt"></div>
-                        <div class="face lt"></div>
-                        <div class="face bm"></div>
-                        <div class="face tp"></div>
-                  </div>
-                  <div class="shape armLeft">
-                        <div class="face ft"></div>
-                        <div class="face bk"></div>
-                        <div class="face rt"></div>
-                        <div class="face lt"></div>
-                        <div class="face bm"></div>
-                        <div class="face tp"></div>
-                  </div>
-                  <div class="shape armRight">
-                        <div class="face ft"></div>
-                        <div class="face bk"></div>
-                        <div class="face rt"></div>
-                        <div class="face lt"></div>
-                        <div class="face bm"></div>
-                        <div class="face tp"></div>
-                  </div>
-                </div>
         </div>
         <!-- end aside container -->
       </div>
 
       <div class="responsive-container">
+
         <!-- lockpick -->
-        <div class="responsive-panel lockpick-modal" ng-if="currentLockpickPuzzle.length > 0">
+        <div class="default-grid-area responsive-panel" ng-if="currentLockpickPuzzle.length > 0">
           LOCKPICK TEST
           <button type="button" ng-click="lockPickingAtempt(true)" name="button">Click to solve</button>
           <button type="button" ng-click="lockPickingAtempt(false)" name="button">Click to fail</button>
@@ -282,7 +240,7 @@
         </div>
 
         <!-- resting -->
-        <div ng-cloak ng-if="currentScenario.mapHint" class="responsive-panel follower-box">
+        <div ng-cloak ng-if="currentScenario.mapHint" class="default-grid-area responsive-panel follower-box">
           <div class="align" style="align-items: flex-start;">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
               <path fill="#fff" d="M15.9,18.5L21.9,20.1L21.5,22L12.1,19.5L2.7,22L2.2,20.1L8.2,18.5L2.1,16.9L2.6,15L12,17.5L21.4,15L21.9,16.9L15.9,18.5M16.07,7.92C15.91,7.7 15.71,7.5 15.5,7.33C15.05,6.9 14.5,6.59 14.06,6.13C13,5.08 12.79,3.34 13.44,2C12.79,2.17 12.18,2.54 11.67,2.95C9.84,4.46 9.11,7.1 10,9.38C10,9.45 10.04,9.53 10.04,9.62C10.04,9.78 9.93,9.92 9.79,10C9.63,10.05 9.46,10 9.33,9.9C9.28,9.86 9.25,9.82 9.22,9.77C8.42,8.74 8.29,7.26 8.84,6.07C7.65,7.06 7,8.72 7.11,10.29C7.13,10.65 7.18,11 7.3,11.36C7.41,11.8 7.59,12.23 7.82,12.61C8.57,13.86 9.9,14.76 11.32,14.94C12.84,15.14 14.46,14.85 15.63,13.79C16.93,12.59 17.4,10.67 16.71,9L16.61,8.83C16.47,8.5 16.28,8.2 16.04,7.93L16.07,7.92M13.83,12.47C13.63,12.65 13.31,12.83 13.05,12.91C12.26,13.19 11.46,12.79 11,12.31C11.84,12.11 12.34,11.47 12.5,10.83C12.61,10.25 12.39,9.78 12.29,9.22C12.21,8.69 12.22,8.23 12.42,7.73C12.55,8 12.69,8.28 12.86,8.5C13.41,9.22 14.27,9.54 14.45,10.5C14.47,10.63 14.5,10.72 14.5,10.83C14.5,11.43 14.26,12.07 13.82,12.47" />
@@ -300,14 +258,14 @@
         </div>
 
         <!-- note -->
-        <div class="full responsive-panel" ng-if="currentNote">
+        <div class="note-grid-area responsive-panel" ng-if="currentNote">
           <div class="note-panel">
             <i>{{currentNote}}</i>
           </div>
         </div>
 
         <!-- shop -->
-        <div class="full responsive-panel" ng-if="currentShop">
+        <div class="default-grid-area responsive-panel" ng-if="currentShop">
           <ul>
             <li class="inventory-list" ng-repeat="product in currentShop" ng-if="product.quantity > 0">
               <details>
@@ -355,11 +313,9 @@
             <!-- Ending -->
             <p class="description" ng-bind-html='toTrustedHTML( eventText )'></p>
             <br/>
-            <ol>
-              <li class="option pointer" ng-click="wrapUpAndPickNext()">
-                [Proceed]
-              </li>
-            </ol>
+            <div class="end pointer" ng-click="wrapUpAndPickNext()">
+              Move on
+            </div>
           </div>
         </div>
         <!-- end responsive container -->

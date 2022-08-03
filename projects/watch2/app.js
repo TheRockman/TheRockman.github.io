@@ -30,6 +30,7 @@ function($scope, $timeout, $sce, questToggles, wikiSercive, mapMarkers, follower
   $scope.scenarios = $scope.currentRegion.scenarios;
   $scope.currentScenario = $scope.scenarios[0];
   $scope.factions = factionIndex.factions;
+  $scope.quests = [];
 
   let rollForStat = function(){
     let roll1 = 1 + Math.floor(Math.random()*6);

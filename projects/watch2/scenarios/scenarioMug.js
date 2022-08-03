@@ -33,6 +33,44 @@ let item = itemIndex.items;
           }
         },
         {
+          label: '"I have this boot for you"',
+          action: actionService.multiAction,
+          visibleWhen: 'inventory.oldBoot.quantity',
+          actionProps: {
+            multiActionChain: [
+              {
+                action: actionService.modifyQuestList,
+                actionProps:{
+                  quest: {
+                    title: 'Das boot',
+                    clear: true
+                  }
+                }
+              },
+              {
+                action: actionService.awardExp,
+                actionProps:{
+                  expMod: 5
+                }
+              },
+              {
+                action: actionService.takeItemFromInventory,
+                actionProps: {
+                  item: {
+                    id: 'oldBoot',
+                    name: 'Lether boot',
+                    img: 'img/items/boot.png',
+                    desc: 'An old boot not fit to use.',
+                    use: '',
+                  },
+                  quantity: 1,
+                  epilog: '<em>She takes the boot</em>'
+                }
+              },
+            ],
+          }
+        },
+        {
           label: '[ignore her]',
           action: actionService.abort,
           actionProps: {

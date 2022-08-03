@@ -203,6 +203,34 @@ app.service('actionService', function($timeout, wikiSercive) {
     toTop();
   }
 
+  this.modifyQuestList = function (props, setScope, getScope) {
+    var current = getScope('quests');
+    var item = props.quest;
+
+    if(!item.clear){
+      current.push(props.quest);
+      displayToast('Quest  [' +item.title+ '] added.', setScope, getScope)
+    } else {
+      for (var i = current.length - 1; i >= 0; --i) {
+        if (current[i].field == item.title) {
+          current.splice(i,1);
+        }
+      }
+      displayToast('Quest  [' +item.title+ '] removed.', setScope, getScope)
+    }
+    setScope('quests', current);
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
+    }
+
+    toTop();
+  }
+
   this.modifyRegion = function (props, setScope, getScope) {
     var regions = getScope('regions');
     for (var i = 0; i < regions.length; i++) {
@@ -270,6 +298,52 @@ app.service('actionService', function($timeout, wikiSercive) {
         progress(props, setScope, getScope)
       }
     }
+  }
+
+  this.putItemInInventory = function (props, setScope, getScope) {
+    var current = getScope('inventory');
+
+    if(!current[props.item.id]){
+      current[props.item.id] = {
+        quantity: 0,
+      };
+    }
+
+    current[props.item.id].quantity = current[props.item.id].quantity + props.quantity;
+    current[props.item.id].item = props.item;
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
+    }
+
+    toTop();
+  }
+
+  this.takeItemFromInventory = function (props, setScope, getScope) {
+    var current = getScope('inventory');
+
+    if(!current[props.item.id]){
+      current[props.item.id] = {
+        quantity: 0,
+      };
+    } else {
+      current[props.item.id].quantity = current[props.item.id].quantity - props.quantity;
+      current[props.item.id].item = props.item;
+    }
+
+    if(!props.smallTalkAction){
+      if(props.epilog){
+        abort(props, setScope, getScope)
+      }else{
+        progress(props, setScope, getScope)
+      }
+    }
+
+    toTop();
   }
 
   this.awardExp = function (props, setScope, getScope) {
