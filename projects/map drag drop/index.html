@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="toolbar">
+      <h4>Tools</h4>
+      <button type="button" ng-click="partyMode()" name="button">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12,5A3.5,3.5 0 0,0 8.5,8.5A3.5,3.5 0 0,0 12,12A3.5,3.5 0 0,0 15.5,8.5A3.5,3.5 0 0,0 12,5M12,7A1.5,1.5 0 0,1 13.5,8.5A1.5,1.5 0 0,1 12,10A1.5,1.5 0 0,1 10.5,8.5A1.5,1.5 0 0,1 12,7M5.5,8A2.5,2.5 0 0,0 3,10.5C3,11.44 3.53,12.25 4.29,12.68C4.65,12.88 5.06,13 5.5,13C5.94,13 6.35,12.88 6.71,12.68C7.08,12.47 7.39,12.17 7.62,11.81C6.89,10.86 6.5,9.7 6.5,8.5C6.5,8.41 6.5,8.31 6.5,8.22C6.2,8.08 5.86,8 5.5,8M18.5,8C18.14,8 17.8,8.08 17.5,8.22C17.5,8.31 17.5,8.41 17.5,8.5C17.5,9.7 17.11,10.86 16.38,11.81C16.5,12 16.63,12.15 16.78,12.3C16.94,12.45 17.1,12.58 17.29,12.68C17.65,12.88 18.06,13 18.5,13C18.94,13 19.35,12.88 19.71,12.68C20.47,12.25 21,11.44 21,10.5A2.5,2.5 0 0,0 18.5,8M12,14C9.66,14 5,15.17 5,17.5V19H19V17.5C19,15.17 14.34,14 12,14M4.71,14.55C2.78,14.78 0,15.76 0,17.5V19H3V17.07C3,16.06 3.69,15.22 4.71,14.55M19.29,14.55C20.31,15.22 21,16.06 21,17.07V19H24V17.5C24,15.76 21.22,14.78 19.29,14.55M12,16C13.53,16 15.24,16.5 16.23,17H7.77C8.76,16.5 10.47,16 12,16Z" />
+        </svg>
+      </button>
+      <br/>
+      <button ng-class="{'activeBTN': penMode}" type="button" ng-click="penMode = !penMode" name="button">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M16.84,2.73C16.45,2.73 16.07,2.88 15.77,3.17L13.65,5.29L18.95,10.6L21.07,8.5C21.67,7.89 21.67,6.94 21.07,6.36L17.9,3.17C17.6,2.88 17.22,2.73 16.84,2.73M12.94,6L4.84,14.11L7.4,14.39L7.58,16.68L9.86,16.85L10.15,19.41L18.25,11.3M4.25,15.04L2.5,21.73L9.2,19.94L8.96,17.78L6.65,17.61L6.47,15.29" />
+        </svg>
+      </button>
+      <input type="color" id="favcolor" ng-model="penCol" ng-change="setPenCol()" name="favcolor" value="#ff0000">
+      <input type="range" ng-model="pixelSize" ng-change="setPixelSize()" min="8" max="32" step="8">
+      <button type="button" ng-click="clearPen()" name="button">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+        </svg>
+      </button>
+      <h4>Make token</h4>
+      <input type="text" name="" ng-model="tokenID" value="">
+      <button type="button" ng-click="addToken()" name="button">MAKE</button>
+
+      <h4>Current tokens</h4>
+        <div class="tokenList" ng-repeat="token in tokens | orderBy: '-init'">
+          {{token.name}}
+          <br/>
+          <input type="number" style="width: 3rem" ng-model="token.init" name="" value="">
+          <button style="float:right" type="button" ng-click="deleteToken(token.name)" name="button">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+          </button>
+          <hr/>
+        </div>
+    </div>
+
+    <div class="wrapper">
+      <canvas ng-class="{'activePen': penMode}" class="rainbow-pixel-canvas"></canvas>
+      <div ng-repeat="token in tokens" class="draggable">{{token.name}}</div>
+    </div>
+  </div>
+</body>
+<script>
+
+window.pixelSize = 8
+
+interact('.rainbow-pixel-canvas')
+  .draggable({
+    max: Infinity,
+    maxPerElement: Infinity,
+    origin: 'self',
+    modifiers: [
+      interact.modifiers.snap({
+        // snap to the corners of a grid
+        targets: [
+          interact.snappers.grid({ x: window.pixelSize, y: window.pixelSize })
+        ]
+      })
+    ],
+    listeners: {
+      // draw colored squares on move
+      move: function (event) {
+        var context = event.target.getContext('2d')
+        // calculate the angle of the drag direction
+        var dragAngle = 0 * Math.atan2(event.dx, event.dy) / Math.PI
+
+        context.fillStyle = window.penCol;
+
+        // draw squares
+        context.fillRect(
+          event.pageX - window.pixelSize / 2,
+          event.pageY - window.pixelSize / 2,
+          window.pixelSize,
+          window.pixelSize
+        )
+      }
+    }
+  })
+
+function resizeCanvases () {
+  [].forEach.call(document.querySelectorAll('.rainbow-pixel-canvas'), function (
+    canvas
+  ) {
+    delete canvas.width
+    delete canvas.height
+
+    var rect = canvas.getBoundingClientRect()
+
+    canvas.width = rect.width
+    canvas.height = rect.height
+  })
+}
+
+resizeCanvases()
+
+// interact.js can also add DOM event listeners
+interact(window).on('resize', resizeCanvases)
+
+// target elements with the "draggable" class
+interact('.draggable')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    // keep the element within the area of it's parent
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      }),
+      interact.modifiers.snap({
+       targets: [
+         interact.snappers.grid({ x: 50, y: 50 })
+       ],
+        offset: { x: 0, y: 2 },
+       range: Infinity,
+       relativePoints: [ { x: 0, y: 0 } ]
+     }),
+    ],
+    // enable autoScroll
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+
+      // call this function on every dragend event
+      end (event) {
+        var textEl = event.target.querySelector('p')
+
+        textEl && (textEl.textContent =
+          'moved a distance of ' +
+          (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                     Math.pow(event.pageY - event.y0, 2) | 0))
+            .toFixed(2) + 'px')
+      }
+    }
+  })
+
+function dragMoveListener (event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+</script>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
