@@ -14,30 +14,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="wrap" ng-controller="mainCtrl">
-    <nav class="align jsb desktopNav">
-      <div class="navGutter">
-        <span class="logo" ng-click="view(3)">DUMMY</span>
-      </div>
-      <div class="align jsb navlinks center">
-        <button ng-click="view(1)" type="button" class="pill" name="button">Home</button>
-        <button ng-click="view(2)" type="button" class="pill" name="button">Explore</button>
-        <button ng-click="view(3)" type="button" class="pill" name="button">Market</button>
-        <button ng-click="view(4)" type="button" class="pill" name="button">Community</button>
-        <button ng-click="view(5)" type="button" class="pill" name="button">Blog</button>
-        <button ng-click="view(6)" type="button" class="pill" name="button">About</button>
-      </div>
-      <div class="navGutter">
-        <button type="button" ng-click="view(4)" style="float:right;" class="pill main" name="button">My page</button>
-      </div>
-    </nav>
-    <nav class="mobileNav">
-      <div class="align jsb">
-        <span ng-click="toggle=!toggle">◉</span>
-        <span class="logo" ng-click="view(3)">DUMMY</span>
-        <span></span>
-      </div>
-      <div class="shade" ng-if="toggle">
+  <div ng-controller="mainCtrl">
+    <nav>
+        <div class="align">
+          <span class="logo" ng-click="view(3)">DUMMY</span>
+          <button type="button" ng-click="view(4)" class="pill main" name="button">My page</button>
+        </div>
+      <div>
         <button ng-click="view(1)" type="button" class="pill" name="button">Home</button>
         <button ng-click="view(2)" type="button" class="pill" name="button">Explore</button>
         <button ng-click="view(3)" type="button" class="pill" name="button">Market</button>
@@ -46,77 +29,70 @@
         <button ng-click="view(6)" type="button" class="pill" name="button">About</button>
       </div>
     </nav>
-    <div class="">
-      <div class="center hero viewSlate" ng-if="viewState===1">
+
+    <div>
+
+      <div class="viewSlate center" ng-if="viewState===1">
         <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
         <br/>
-        <p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod<br/>tempor incididunt ut labore et dolore magna aliqua</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod<br/>tempor incididunt ut labore et dolore magna aliqua</p>
         <br/>
-        <div class="align jsc">
-          <button class="pill main" ng-click="view(2)" type="button" name="button">Get Started →</button>
-          &nbsp;
-          &nbsp;
-          &nbsp;
-          <button class="pill" ng-click="view(3)" type="button" name="button">more stuff</button>
-        </div>
+        <button class="pill main" ng-click="view(2)" type="button" name="button">Get Started →</button>
+        <button class="pill" ng-click="view(3)" type="button" name="button">more stuff</button>
       </div>
+
       <div class="viewSlate" ng-if="viewState===2">
         <b>Today</b>
         <div class="grid-container">
-          <div style="grid-row-start: 1; grid-row-end: 3;"></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div style="grid-column-start: 3; grid-row-start: 2; grid-row-end: 4;"></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div style="grid-row-start: 1; grid-row-end: 3; background: url('https://cdn.dribbble.com/users/1770290/screenshots/6232132/bg_83.gif')">
+            <img src="https://robohash.org/1" alt="">
+          </div>
+          <div><img src="https://robohash.org/2" alt=""></div>
+          <div><img src="https://robohash.org/3" alt=""></div>
+          <div><img src="https://robohash.org/4" alt=""></div>
+          <div><img src="https://robohash.org/5" alt=""></div>
+          <div><img src="https://robohash.org/6" alt=""></div>
+          <div style="grid-column-start: 3; grid-row-start: 2; grid-row-end: 4;  background: url('https://cdn.dribbble.com/users/1770290/screenshots/6220590/bg_82.gif')">
+            <img src="https://robohash.org/7" alt="">
+          </div>
+          <div><img src="https://robohash.org/8" alt=""></div>
+          <div><img src="https://robohash.org/9" alt=""></div>
+          <div><img src="https://robohash.org/10" alt=""></div>
         </div>
         <button type="button" class="pill" style="float:right;" name="button">More from today</button>
         <br/>
         <br/>
         <b>Yesterday</b>
         <div class="grid-container">
-          <div style="grid-row-start: 1; grid-row-end: 3;"></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div style="grid-column-start: 3; grid-row-start: 2; grid-row-end: 4;"></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div style="grid-row-start: 1; grid-row-end: 3; background: url('https://cdn.dribbble.com/users/1770290/screenshots/6220590/bg_82.gif')">
+            <img src="https://robohash.org/11" alt="">
+          </div>
+          <div><img src="https://robohash.org/12" alt=""></div>
+          <div><img src="https://robohash.org/13" alt=""></div>
+          <div><img src="https://robohash.org/14" alt=""></div>
+          <div><img src="https://robohash.org/15" alt=""></div>
+          <div><img src="https://robohash.org/16" alt=""></div>
+          <div style="grid-column-start: 3; grid-row-start: 2; grid-row-end: 4;  background: url('https://cdn.dribbble.com/users/1770290/screenshots/6220590/bg_82.gif')">
+            <img src="https://robohash.org/17" alt="">
+          </div>
+          <div><img src="https://robohash.org/18" alt=""></div>
+          <div><img src="https://robohash.org/19" alt=""></div>
+          <div><img src="https://robohash.org/20" alt=""></div>
         </div>
         <button type="button" class="pill" style="float:right;" name="button">More from yesterday</button>
       </div>
+
       <div class="viewSlate" ng-if="viewState===3">
-        <div class="simpleFrame align">
-          <img src="https://picsum.photos/200/200/?random" alt="">
-          <div class="spacer"></div>
-          <div class="">
-            <h2>ABC</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h3 style="float:right;">$ 24.00</h3>
-          </div>
-        </div>
-        <div class="simpleFrame align">
-          <div class="">
-            <h2>ABC</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h3 style="float:right;">$ 24.00</h3>
-          </div>
-          <div class="spacer"></div>
+        <div class="simpleFrame">
           <img src="https://picsum.photos/200/201/?random" alt="">
+          <div class="spacer"></div>
+          <div class="">
+            <h2>ABC</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3 style="float:right;">$ 24.00</h3>
+          </div>
         </div>
-        <div class="fancyFrame">
-          <h2>ASOLKJ ASASLK DJ</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-          <img src="https://freepngimg.com/thumb/battlefield/3-2-battlefield-png-image.png" alt="">
-        </div>
-        <div class="simpleFrame align">
+        <div class="simpleFrame">
           <img src="https://picsum.photos/200/202/?random" alt="">
           <div class="spacer"></div>
           <div class="">
@@ -125,16 +101,35 @@
             <h3 style="float:right;">$ 24.00</h3>
           </div>
         </div>
-        <div class="simpleFrame align">
+        <div class="simpleFrame">
+          <img src="https://picsum.photos/200/203/?random" alt="">
+          <div class="spacer"></div>
           <div class="">
             <h2>ABC</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <h3 style="float:right;">$ 24.00</h3>
           </div>
+        </div>
+        <div class="simpleFrame">
+          <img src="https://picsum.photos/200/204/?random" alt="">
           <div class="spacer"></div>
-          <img src="https://picsum.photos/200/203/?random" alt="">
+          <div class="">
+            <h2>ABC</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3 style="float:right;">$ 24.00</h3>
+          </div>
+        </div>
+        <div class="simpleFrame">
+          <img src="https://picsum.photos/200/205/?random" alt="">
+          <div class="spacer"></div>
+          <div class="">
+            <h2>ABC</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3 style="float:right;">$ 24.00</h3>
+          </div>
         </div>
       </div>
+
       <div class="viewSlate" ng-if="viewState===5">
         <h2>Good news everyone!</h2>
         <small><i>2023-01-03 by: Jim Bobman</i></small>
@@ -162,19 +157,20 @@
           tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
         </p>
       </div>
+
       <div class="viewSlate" ng-if="viewState===6">
         <div class="fancyFrame">
-          <h2>Billy Bobman</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-          <img src="https://static.wefut.com/assets/images/fut23/playeravatars/custom/67266887.png" alt="">
-        </div>
-        <div class="fancyFrame">
-          <h2>John Doe</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+          <h3>Billy-bob Jones</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
           <img src="https://static.wefut.com/assets/images/fut23/playeravatars/custom/50489671.png" alt="">
         </div>
+        <br/>
+        <div class="fancyFrame">
+          <h3>Dirk Dorkly</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+          <img src="https://static.wefut.com/assets/images/fut23/playeravatars/custom/67266887.png" alt="">
+        </div>
       </div>
-    </div>
 
   </div>
 </body>
