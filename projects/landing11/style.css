@@ -1,0 +1,170 @@
+html {
+  font-family: sans-serif;
+  font-size: 1.2em;
+  line-height: 1.75;
+  margin: auto;
+  padding: 1em;
+  color: black;
+  background: linear-gradient(45deg, #dae6f2 0%, #eef3f9 100%);
+}
+body{
+  margin: 0 auto;
+  max-width: 70ch;
+}
+img {
+  width: 100%;
+}
+.align{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.center{
+  text-align: center;
+}
+.pill{
+  padding: 0.4rem 1rem;
+  border-radius: 1000px;
+  outline: none;
+  background: transparent;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.2s 0.5s all ease;
+}
+.pill:hover{
+  border-color: black;
+}
+.main{
+  color: white;
+  background: linear-gradient(to right, rgb(157, 80, 187), rgb(110, 72, 170))
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background: url('https://cdn.dribbble.com/users/1770290/screenshots/6183149/bg_79.gif');
+  background-size: cover!important;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  min-height: 150px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1rem;
+  filter: drop-shadow(6px 5px 4px rgba(0,0,0,0.4));
+}
+.grid-container > div::after{
+  content: "♥";
+  position: absolute;
+  color: #333;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 1000px;
+  font-size: 1rem;
+  line-height: 1rem;
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  transform: translateY(-10rem);
+  transition: 0.2s 0.2s all ease;
+}
+
+.grid-container > div:hover:after,
+.grid-container > div:hover:before {
+  transform: translateY(0rem);
+}
+.grid-container > div::before{
+  content: "ID: 123KVU31FG2D3";
+  position: absolute;
+  font-size: 12px;
+  color: white;
+  left: 0;
+  bottom: 0;
+  line-height: 1rem;
+  padding: 1rem;
+  transform: translateY(10rem);
+  transition: 0.2s 0.2s all ease;
+  z-index: 3;
+}
+
+.grid-container > div > img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform-origin: bottom center;
+  transition: 0.2s 0.2s all ease;
+}
+
+.simpleFrame {
+  margin-bottom: 3rem;
+}
+.simpleFrame > img{
+  width: 240px;
+  height: 240px;
+  float: left;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  animation-fill-mode: forwards;
+  animation: animation 1s;
+}
+
+.viewSlate{
+  min-height: 100vh;
+  padding-top: 2rem;
+  animation: animation 0.5s;
+}
+@keyframes animation {
+  from {transform: translateY(1rem); opacity: 0;}
+  to {transform: translateY(0rem); opacity: 1;}
+}
+
+.fancyFrame{
+  position: relative;
+  min-height: 300px;
+  background: white;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-right: 300px;
+  background: linear-gradient(145deg, #d9dfe4, #ffffff);
+  box-shadow:  8px 8px 16px #cdd3d7, -8px -8px 16px transparent;
+}
+.fancyFrame img{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 300px;
+  width: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container{
+    grid-template-columns: 1fr 1fr!important;
+  }
+  .grid-container > div{
+    grid-column-start:  unset!important;
+    grid-row-end: unset!important;
+  }
+  .simpleFrame > img{
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  .fancyFrame{
+    padding-right: 0;
+    border: 8px solid goldenrod;
+    background: linear-gradient(135deg, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
+  }
+  .fancyFrame img{
+    position: relative;
+  }
+}
