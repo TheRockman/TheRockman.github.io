@@ -6,6 +6,9 @@ $scope.dice = 'Ready to roll';
 $scope.addToOrder = function () {
   $scope.order.push($scope.form);
   $scope.form = {};
+
+
+    document.getElementById("myTextField").focus();
 }
 
 $scope.clear = function () {
