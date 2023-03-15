@@ -1,0 +1,139 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+
+  /*shadows*/
+  --level1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body{
+  margin: 0;
+  color: white;
+  background: url('https://www.lago.it/wp-content/uploads/2015/11/1_gallery_soggiorno.jpg') center center no-repeat;
+  background-size: cover;
+  font-family: 'Raleway', sans-serif;
+  font-size: calc(16px + (24 - 18)*(100vw - 600px)/(1200 - 600));
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.jsc{
+  justify-content: center;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+.view{
+  height: 100vh;
+  width: 100vw;
+}
+.p{
+  perspective: 100rem;
+}
+.mover{
+  cursor: grab;
+}
+.mover .wedge{
+  box-shadow: inset 0px 0px 79px 121px rgba(102,219,255,0.3);
+  
+}
+
+iframe{
+  height: 100%;
+  width: 100%;
+  background: #222;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+}
+
+.wedge{
+  user-select: none;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+  height: 600px;
+  width: 1000px;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 14px;
+  transition: var(--animation);
+  background: rgba(0, 0, 0, 0.2);
+  /* border: 1px solid white; */
+  transform: translateY(500px) translateZ(150px) rotateY(180deg)  rotateX(90deg);
+}
+.start{
+  transform-origin: bottom right;
+  transform: translateY(500px) translateZ(150px) rotateY(180deg) rotateZ(140deg) rotateX(90deg);
+}
+.end{
+  transform-origin: bottom left;
+  transform: translateY(500px) translateZ(150px) rotateY(180deg) rotateZ(-140deg) rotateX(90deg);
+}
+.expanded{
+  width: 2500px;
+}
+.content-flip{
+  transform:  rotateY(180deg);
+}
+
+.pie{
+  align-items: baseline!baseline;;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 1000px;
+  position: absolute;
+  top: 25rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  /* border: 10px dashed black; */
+}
+
+.app{
+  background: #333;
+  height: auto;
+  line-height: 64px;
+  cursor: pointer;
+}
+.app:hover{
+  background: #666;
+}
+
+svg{
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+}

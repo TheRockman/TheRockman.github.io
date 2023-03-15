@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+</head>
+<body>
+  <div ng-controller="mainCtrl" >
+      <div>y: {{y}}</div>
+      <div>x: {{x}}</div>
+    <div class="view align jsc p" ng-class="{'mover':ctrlMode}" ng-dblclick="ctrlMode = !ctrlMode;" ng-mousemove="captureCoordinate($event)">
+      <div class="pie align jsc" ng-style="{'transform': 'rotateX(85deg) rotateZ('+(x/8+60)+'deg)'}">
+        <div class="flex wedge start" ng-class="{expanded: oneExpander}">
+          <div class="content-flip">
+            <div class="align jsb">
+              Menu
+              <div class="" ng-click="oneExpander = !oneExpander">
+                <svg ng-if="!oneExpander" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" />
+                </svg>
+                <svg ng-if="oneExpander" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" />
+                </svg>
+              </div>
+            </div>
+            <br/>
+            <p>Doubleclick to enter move mode.</p>
+          </div>
+        </div>
+        <div class="flex wedge" ng-class="{expanded: twoExpander}">
+          <div class="align jsb">
+            Social feed
+            <div class="" ng-click="twoExpander = !twoExpander">
+              <svg ng-if="!twoExpander" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" />
+              </svg>
+              <svg ng-if="twoExpander" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" />
+              </svg>
+            </div>
+          </div>
+          <br/>
+          <iframe src="https://therockman.github.io/projects/scoreboard2/index.html" width="" height=""></iframe>
+        </div>
+        <div class="flex wedge end" ng-class="{expanded: threeExpander}">
+          <div class="content-flip">
+            <div class="align jsb">
+              Apps
+              <div class="" ng-click="threeExpander = !threeExpander">
+                <svg ng-if="!threeExpander" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" />
+                </svg>
+                <svg ng-if="threeExpander" style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" />
+                </svg>
+              </div>
+            </div>
+            <br/>
+            <div class="grid-container">
+              <div class="app">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M6.45,17.45L1,12L6.45,6.55L7.86,7.96L4.83,11H19.17L16.14,7.96L17.55,6.55L23,12L17.55,17.45L16.14,16.04L19.17,13H4.83L7.86,16.04L6.45,17.45Z" />
+                </svg>
+              </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+              <div class="app"> a </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>

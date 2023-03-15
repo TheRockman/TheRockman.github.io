@@ -15,31 +15,6 @@
   <div ng-controller="mainCtrl">
     <div class="row">
       <div class="flex card">
-        <form class="" ng-submit="addToOrder()">
-          <input class="iniPut" type="text" id="myTextField" placeholder="Name" name="" value="" ng-model="form.name">
-          <input class="iniPut" type="number" placeholder="Initiative" name="" value="" ng-model="form.ini">
-          <input class="iniPut" type="number" placeholder="HP" name="" value="" ng-model="form.hp">
-          <br>
-          <button type="submit" name="button">add</button>
-          <button type="button" tabindex="-1" ng-click="clear()" name="button">Clear</button>
-        </form>
-        <ul>
-          <li ng-repeat="item in order | orderBy: '-ini'">
-            <input type="number" placeholder="HP" name="" ng-model="item.hp" value="" style="width:3rem">
-            [{{item.ini}}] - {{item.name}}
-          </li>
-        </ull>
-
-        <div ng-if="order.length > 0">
-        <br />
-        <br />
-        <details>
-          <summary>Plain list</summary>
-          <li ng-repeat="item in order | orderBy: '-ini'">[{{item.ini}}] - {{item.name}}</li>
-        </details>
-        </div>        
-      </div>
-      <div class="flex card">
         <div style="margin: 0 auto;" class="center">
           <h3>{{dice}}</h3>
           <button type="button" ng-click="roll(4)" name="button">D4</button>
@@ -50,6 +25,18 @@
           <button type="button" ng-click="roll(20)" name="button">D20</button>
           <button type="button" ng-click="roll(100)" name="button">D100</button>
         </div>
+      </div>
+      <div class="flex card">
+        <form class="" ng-submit="addToOrder()">
+          <input type="text" placeholder="Name" name="" value="" ng-model="form.name">
+          <input type="number" placeholder="Initiative" name="" value="" ng-model="form.ini">
+          <br>
+          <button type="submit" name="button">add</button>
+          <button type="button" tabindex="-1" ng-click="clear()" name="button">Clear</button>
+        </form>
+        <ul>
+          <li ng-repeat="item in order | orderBy: 'ini'"> <input type="number" placeholder="HP" name="" value="" style="width:3rem"> [{{item.ini}}] - {{item.name}}  </li>
+        </ull>
       </div>
       <div class="flex card">
         <strong class="rd">Strength:</strong>
