@@ -78,7 +78,7 @@ svg, svg path, img{
   opacity: 0.8;
 }
 section{
-  margin: 0 6rem;
+  margin: 0 7rem;
   padding-top: 10rem;
   transition: var(--animation);
 }
@@ -167,6 +167,9 @@ article p:first-of-type::first-letter {
   /* tab   */
   .spacer {
     display: none;
+  }
+  .content{
+    margin-right:1rem;
   }
 }
 @media screen and (max-width: 768px) {
