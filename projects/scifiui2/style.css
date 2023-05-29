@@ -1,0 +1,258 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+  /*shadows*/
+  --level1: 0.8px 1.6px 1.6px hsl(0deg 0% 0% / 0.48);
+  --level2: 1.6px 3.2px 3.2px hsl(0deg 0% 0% / 0.45);
+  --level3: 2.4px 4.8px 4.8px hsl(0deg 0% 0% / 0.43);
+  --level4: 3.2px 6.4px 6.4px hsl(0deg 0% 0% / 0.40);
+  --level5: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  --level6: 4.8px 9.6px 9.6px hsl(0deg 0% 0% / 0.35);
+  --level7: 5.6px 11.2px 11.2px hsl(0deg 0% 0% / 0.33);
+  --level10: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+
+/* resets START */
+*,*::before,*::after {box-sizing: border-box;}html:focus-within {scroll-behavior: smooth;}body,h1,h2,h3,h4,p,figure,blockquote,dl,dd {margin: 0;}body {text-rendering: optimizeSpeed;line-height: 1.5;}img{max-width: 100%;display: block;}input,button,textarea,select {font: inherit;}@media (prefers-reduced-motion: reduce) {html:focus-within {scroll-behavior: auto;}*,*::before,*::after {animation-duration: 0.01ms !important;animation-iteration-count: 1 !important;transition-duration: 0.01ms !important;scroll-behavior: auto !important;}}
+/* resets END */
+
+body{
+  background: #f5f5f5;
+  overflow-y: auto; scrollbar-gutter: stable both-edges;
+  font-family: 'Khula', sans-serif;
+  font-size: 16px;
+}
+nav{
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacer);
+  box-shadow: var(--level1);
+  background: white;
+}
+.pad{
+  padding: var(--spacer);
+}
+.card{
+  margin: var(--spacer);
+  padding: var(--spacer);
+  border-radius: 8px;
+  background: white;
+  transition: var(--animation);
+  box-shadow: var(--level1);
+}
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+.stage {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  grid-auto-flow: column;
+  gap: 30px;
+}
+
+@property --_l {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: true;
+}
+
+@property --_r {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: true;
+}
+
+.panel {
+  --d: 18px;
+  /* the depth */
+  --a: 10deg;
+  /* the angle */
+
+  --x: 10px;
+
+  width: 350px;
+  height: 450px;
+  background-color: #fff;
+  object-fit: cover;
+  padding-block: var(--d);
+  padding: 2rem;
+  transform: perspective(400px) rotateY(calc(var(--_i, 1)*var(--a)));
+  outline: var(--d) solid #0008;
+  outline-offset: calc(-1*var(--d));
+  --_d: calc(100% - var(--d));
+  --_l: 0px;
+  --_r: 0px;
+  clip-path: polygon(var(--_l) calc(var(--_d) - var(--x)),
+      var(--_l) calc(var(--d) + var(--x)),
+      var(--d) var(--d), var(--_d) var(--d),
+      calc(var(--_d) + var(--_r)) calc(var(--d) + var(--x)),
+      calc(var(--_d) + var(--_r)) calc(var(--_d) - var(--x)),
+      var(--_d) var(--_d), var(--d) var(--_d));
+}
+
+.panel.alt {
+  --_l: var(--d);
+  --_r: var(--d);
+  --_i: -1;
+  transition-delay: 0s, .15s, 0s;
+}
+
+
+/*flex*/
+.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+.row {
+  display: flex;
+      display: -ms-flexbox;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.flex {
+  flex: 1;
+      -ms-flex: 1;
+}
+
+@media screen and (max-width: 768px) {
+/* mobile   */
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}
+
+/* Glow card */
+/* .glow-card-wrap {
+  margin:1rem;
+  width: 300px;
+  min-height: 230px;
+  position: relative;
+}
+.glow-card {
+  background-image: url('https://wallpaperaccess.com/full/898601.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.glow-card:before, .glow-card:after{
+  content: "";
+  background: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  border-radius: 15px;
+  z-index: 2;
+  box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+}
+.glow-card:before {
+  z-index: 1;
+  transform: translateY(20px) scale(0.9);
+  filter: blur(25px);
+  opacity: 0.9;
+} */
+
+/*Fab*/
+/*.fab{
+  background:dodgerblue;
+  width:18px;
+  height: 18px;
+  padding:15px;
+  border-radius:50%;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */
+
+/* select all on focus */
+/* .focus-select {
+  cursor: pointer;
+  -webkit-user-select: all;
+}
+.focus-select:focus {
+  animation: select 100ms step-end forwards;
+}
+@keyframes select {
+  to {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+} */
