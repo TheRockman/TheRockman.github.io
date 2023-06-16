@@ -1,0 +1,400 @@
+:root{
+  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --spacer: 1rem;
+  /*shadows*/
+  --level1: 0.8px 1.6px 1.6px hsl(0deg 0% 0% / 0.48);
+  --level2: 1.6px 3.2px 3.2px hsl(0deg 0% 0% / 0.45);
+  --level3: 2.4px 4.8px 4.8px hsl(0deg 0% 0% / 0.43);
+  --level4: 3.2px 6.4px 6.4px hsl(0deg 0% 0% / 0.40);
+  --level5: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  --level6: 4.8px 9.6px 9.6px hsl(0deg 0% 0% / 0.35);
+  --level7: 5.6px 11.2px 11.2px hsl(0deg 0% 0% / 0.33);
+  --level10: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+
+/* resets START */
+*,*::before,*::after {box-sizing: border-box;}html:focus-within {scroll-behavior: smooth;}body,h1,h2,h3,h4,p,figure,blockquote,dl,dd {margin: 0;}body {text-rendering: optimizeSpeed;line-height: 1.5;}img{max-width: 100%;display: block;}input,button,textarea,select {font: inherit;}@media (prefers-reduced-motion: reduce) {html:focus-within {scroll-behavior: auto;}*,*::before,*::after {animation-duration: 0.01ms !important;animation-iteration-count: 1 !important;transition-duration: 0.01ms !important;scroll-behavior: auto !important;}}
+/* resets END */
+
+body{
+  background: radial-gradient(circle, rgba(170, 173, 172, 1) 9%, rgba(62, 59, 54, 1) 100%);
+  background-position: 8rem center;
+  overflow-y: auto; scrollbar-gutter: stable both-edges;
+  font-family: 'Khula', sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+}
+nav{
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5rem;
+  box-shadow: var(--level1);
+  color: #c9cdb7;
+  background: #24211f;
+}
+nav > span {
+  transform-origin: bottom center;
+  cursor: pointer;
+  transition: 0.2s all ease;
+  opacity: 0.5;
+}
+*:focus-visible{
+  outline: none;
+  box-shadow: rgb(4, 159, 194) 0px 0px 10px inset, rgb(4, 159, 194) 0px 0px 20px;
+  border: 1px solid white!important;
+}
+.gear1{
+  background-color: rgba(62, 59, 54, 1);
+}
+.gear1, .gear2, .gear3, .gear4{
+  font-size: 0.8rem;
+  color: #c9cdb7;
+  min-height: 100vh;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+@keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.gear4{
+  animation: fade-in-right 0.8s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  background-image: url('https://www.freepnglogos.com/uploads/call-of-duty-png/game-characters-call-of-duty-transparent-pictures-icons-5.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.active{
+  opacity: 1;
+  transform: translateY(0.6rem);
+  padding: 0.5rem 1rem 0 1rem;
+  border-bottom: 1px solid #c9cdb7;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+hr {
+  opacity: 0.1;
+}
+
+.pad{
+  padding: var(--spacer);
+}
+.card{
+  cursor: pointer;
+  transition: 0.3s all ease;
+  padding: var(--spacer);
+  background: #202225;
+  color: #c9cdb7;
+  transition: var(--animation);
+  box-shadow: var(--level1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  width: 100%;
+  height: 4rem;
+}
+.card>span {
+  font-size: 2rem;
+  position: absolute;
+  z-index: 1;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.card>small {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+.card > img{
+  filter:grayscale(1);
+  position: absolute;
+  transform: scale(2);
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+.char{
+  width: 20rem;
+  position: absolute;
+  bottom: 10rem;
+  right: 3rem;
+  padding: 0.5rem;
+  border-left: 1px solid #c9cdb7;
+  animation: fade-in-right 0.9s 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  background: linear-gradient(90deg, rgba(62, 59, 54, 1) 0%, rgba(170, 173, 172, 0) 100%);
+}
+.prod {
+ height: unset;
+ padding-top: 8rem;
+}
+.prod>img, .prod>span{
+  filter: grayscale(0);
+  transform-origin: bottom;
+  position: unset;
+  left: unset;
+  top: unset;
+  z-index: 0;
+}
+.skillCard{
+  animation: fade-in-right 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.eqTitle{
+    background: #c9cdb7;
+    color: #222;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+}
+.eq{
+  transform: translateX(1.5rem);
+  border-color: #c9cdb7;
+}
+.ff{
+  border-bottom: 1px solid #c9cdb7;
+}
+.align{
+  display: flex;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.jsb{
+  justify-content: space-between;
+}
+.jsc{
+  justify-content: space-evenly;
+}
+.pointer{
+  cursor: pointer;
+}
+svg, svg path, img{
+  user-select: none;
+}
+.relative{
+  position: relative;
+}
+
+.tree > .flex{
+  margin-bottom: 3rem;
+}
+.node{
+  transition-delay: 0.2s;
+  transition: border 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  background-color: #333;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+}
+.maxStick{
+  top: 1.5rem;
+  width: 21rem;
+  position: absolute;
+  height: 7rem;
+  border-top: 2px solid #c9cdb7;
+  border-left: 2px solid #c9cdb7;
+  border-right: 2px solid #c9cdb7;
+}
+.node:hover, .stick{
+  border: 2px solid #c9cdb7;
+}
+.stick::after{
+  position: absolute;
+  right: 50%;
+  bottom: -3.1rem;
+  content: "";
+  height: 3rem;
+  width: 3px;
+  background: #c9cdb7;
+}
+
+progress {
+  border-radius: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #222;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #222;
+}
+
+progress::-webkit-progress-value {
+  background-color: #c9cdb7;
+}
+
+progress::-moz-progress-bar {
+  /* style rules */
+}
+
+
+/*flex*/
+.flex{
+  flex-basis: 100%;
+}
+.x3{
+  flex-basis: 50%!important;
+}
+.x2{
+  flex-basis: 25%!important;
+}
+.row {
+  display: flex;
+      display: -ms-flexbox;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.flex {
+  flex: 1;
+      -ms-flex: 1;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .x3 {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+/* mobile   */
+  .row {
+    display: flex;
+        display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .flex {
+    flex: 1 1 auto;
+  }
+}
+
+/* Glow card */
+/* .glow-card-wrap {
+  margin:1rem;
+  width: 300px;
+  min-height: 230px;
+  position: relative;
+}
+.glow-card {
+  background-image: url('https://wallpaperaccess.com/full/898601.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.glow-card:before, .glow-card:after{
+  content: "";
+  background: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  border-radius: 15px;
+  z-index: 2;
+  box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+}
+.glow-card:before {
+  z-index: 1;
+  transform: translateY(20px) scale(0.9);
+  filter: blur(25px);
+  opacity: 0.9;
+} */
+
+/*Fab*/
+/*.fab{
+  background:dodgerblue;
+  width:18px;
+  height: 18px;
+  padding:15px;
+  border-radius:50%;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: var(--level1);
+}*/
+
+/*Animation*/
+/*@keyframes animation {
+from {}
+to {}
+}
+div {
+animation-name: animation;
+animation-duration: 4s;
+} */
+
+ /*warm gradiend*/
+ /*
+ background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
+ */
+
+/*Slant*/
+/*
+clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+*/
+
+/*random image + background*/
+/*
+background: url(https://picsum.photos/1400/1400/?random) no-repeat center center fixed;
+background-size: cover;
+*/
+
+/* scrollbar */
+/* .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 6px rgba(0,0,0,0.5);
+} */
+
+/* select all on focus */
+/* .focus-select {
+  cursor: pointer;
+  -webkit-user-select: all;
+}
+.focus-select:focus {
+  animation: select 100ms step-end forwards;
+}
+@keyframes select {
+  to {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+} */

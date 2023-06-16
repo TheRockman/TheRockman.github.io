@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <nav>
+      <span>MAP</span>
+      <span tabindex="0" ng-click="setView('gear')" ng-class="{'active': view === 'gear'}">GEAR</span>
+      <span tabindex="0" ng-click="setView('skills')" ng-class="{'active': view === 'skills'}">SKILLS</span>
+    </nav>
+    <div ng-cloak class="row gear" ng-if="view === 'gear'">
+      <div class="flex pad gear1">
+        <h2>STATS</h2>
+        <ul>
+          <li>HEALTH <span>250</span></li>
+          <li>ARMOR <span>250</span></li>
+          <li>SHIELD <span>250</span></li>
+        </ul>
+
+        <hr/>
+
+        <h2>RESOURCES</h2>
+        <ul>
+          <li>GOLD <span>25</span></li>
+          <li>SCRAP <span>2500</span></li>
+          <li>GEMS <span>2</span></li>
+        </ul>
+
+      </div>
+      <div class="flex x2 pad gear2">
+        <div class="align jsb flex">
+          <h2>LOADOUT</h2>
+          <span>
+            <span tabindex="0" ng-class="{'ff': filter == '-name'}" class="pointer" ng-click="setFilter('-name')">A-Z</span> |
+            <span tabindex="0" ng-class="{'ff': filter == '-gearScore'}" class="pointer" ng-click="setFilter('-gearScore')">Pow</span> |
+            <span tabindex="0" ng-class="{'ff': filter == '-equipped'}" class="pointer" ng-click="setFilter('-equipped')">EQ</span>
+          </span>
+        </div>
+        <ul>
+          <li tabindex="0" ng-mouseEnter="setHover(item)" ng-mouseLeave="setHover(null)" ng-repeat="item in list | orderBy: filter" ng-click="item.equipped = !item.equipped">
+            <div class="card" ng-class="{'eq': item.equipped}">
+              <span>{{item.gearScore}}</span>
+              <img src="{{item.img}}" alt="">
+              <small>
+                {{item.name}} 
+                <span ng-if="item.equipped">✔</span>
+              </small>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="flex x2 pad gear3">
+        <div ng-if="hovered">
+          <h2></h2>
+          <div class="card prod skillCard">
+            <div ng-if="hovered.equipped" class="eqTitle">✔ Equipped</div>
+            <img style="margin: 0 auto;" src="{{hovered.img}}" alt="">
+            <span ng-style="{'color': hovered.rarityColor}" >{{hovered.name}}</span>
+            <hr/>
+            <div class="flex jsb align">
+              <span>{{hovered.rarity}} {{hovered.type}}</span>
+              <span>Power {{hovered.gearScore}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex x3 pad gear4">
+        <div class="char">
+          <h1>MR SHOOTY BANG MAN</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sed veritatis impedit expedita odit tempora id
+            saepe atque, natus adipisci esse! Aliquam vero et facilis veniam facere ducimus fuga cum?</p>
+        </div>
+      </div>
+    </div>
+    <div ng-cloak class="row" ng-if="view === 'skills'">
+      <div class="flex pad gear1">
+        <h2>LEVEL 69</h2>
+        <div class="flex jsb align">
+          <span>EXP</span>
+          <span>1500 / 3000</span>
+        </div>
+        <div class="flex jsb align">
+          <span>SKILL POINTS</span>
+          <span>4</span>
+        </div>
+        <progress value="50" min="0" max="100"></progress>
+      </div>
+      <div class="flex pad x2 gear3">
+        <div class="tree">
+          <div class="flex jsc align">
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'TOAST'})" ng-mouseLeave="setHover(null)" class="node"></div>
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'BEANS', equipped: true})" ng-mouseLeave="setHover(null)" class="node stick"></div>
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'HAM'})" ng-mouseLeave="setHover(null)" class="node"></div>
+          </div>
+          <div class="flex jsc align relative">
+            <div class="maxStick"></div>
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'JAM', equipped: true})" ng-mouseLeave="setHover(null)" class="node stick"></div>
+          </div>
+          <div class="flex jsc align">
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'SPAM'})" ng-mouseLeave="setHover(null)" class="node"></div>
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'COFEFE', equipped: true})" ng-mouseLeave="setHover(null)" class="node stick"></div>
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'EGGS'})" ng-mouseLeave="setHover(null)" class="node"></div>
+          </div>
+          <div class="flex jsc align">
+            <div tabindex="0" ng-mouseEnter="setHover({name: 'TEA'})" ng-mouseLeave="setHover(null)" class="node"></div>
+          </div>
+        </div>
+
+        <div ng-if="hovered">
+          <h2></h2>
+          <div class="card prod skillCard" style="padding-top: 3rem;">
+            <div ng-if="hovered.equipped" class="eqTitle">Unlocked</div>
+            <div ng-if="!hovered.equipped" style="background: #666; color: #c9cdb7" class="eqTitle">Spend 1 Skill Point To Ulock</div>
+            <span>{{hovered.name}}</span>
+            <hr />
+            <div class="flex jsb align">
+              <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet libero nostrum, ea earum laboriosam perspiciatis praesentium odit magni consequatur maiores, eos atque ad est neque similique mollitia itaque beatae minima.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex pad x2 gear4">
+        <div class="char">
+          <h1>MR SHOOTY BANG MAN</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sed veritatis impedit expedita odit tempora id saepe atque, natus adipisci esse! Aliquam vero et facilis veniam facere ducimus fuga cum?</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
