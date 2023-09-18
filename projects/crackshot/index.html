@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <div class="wrap">
+      <div class="wall">
+        <button ng-click="crankIt(0)">Go</button>
+        <span ng-if="ammo > 0">{{ammo}}/ 5</span>
+        <span ng-if="ammo === 0">...Reloading</span>
+      </div>
+      <div class="floor">
+        <img class="target" ng-click="shot(target)" ng-style="target.style" ng-repeat="target in targets" src="{{target.img}}" alt="">
+      </div>
+    </div>
+    
+    
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
