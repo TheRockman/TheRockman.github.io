@@ -1,0 +1,110 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  background-color: #e0e0e0;
+  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+}
+main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+section,
+body,
+.box {
+  container-type: inline-size;
+}
+section {
+  min-height: 50vh;
+}
+.side-text {
+  width: 10rem;
+  margin-right: 15rem;
+  float: right;
+}
+.side-text>span {
+  font-size: 22px;
+  font-style: italic;
+}
+.whatever-spacer {
+  height: 30rem;
+}
+
+.sticky {
+  width: 50%;
+  aspect-ratio: 1;
+  position: sticky;
+  bottom: 0;
+}
+.sticky img {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.box {
+  width: 100%;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: end;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+.box__content {
+  grid-column: 2;
+  min-height: 40cqi;
+  padding: 2rem 0rem;
+}
+
+@supports (animation-timeline: scroll()) {
+  section {
+    view-timeline-name: --section;
+  }
+
+  @keyframes slide {
+    to {
+      /*background-color: red;*/
+      translate: var(--x, 0) var(--y, 0);
+      scale: var(--scale, 1);
+    }
+  }
+
+  @keyframes slip {
+    to {
+      /*background-color: blue;*/
+      translate: -40% 15%;
+      scale: 1.1;
+    }
+  }
+
+  .sticky img {
+    /*background-color: green;*/
+    scale: 1;
+    translate: 200% -35%;
+    animation: slip both linear, slide both linear;
+    animation-range: entry 25% entry 70%, exit 0% exit 15%;
+    animation-timeline: --section;
+    --y: 30%;
+    --x: -15%;
+    --deg: 0deg;
+  }
+  
+  /*Scroll from top --> green --> blue ---> red*/
+
+  .sticky {
+    clip-path: inset(-100% -100% 0 -100%);
+  }
+}
