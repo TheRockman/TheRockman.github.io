@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
@@ -7,163 +8,96 @@
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="../../angularJs.js"></script>
 </head>
+
 <body>
   <div ng-controller="mainCtrl">
-    <div class="row">
-      <div class="flex">
-        <div class="phone-wrap scroll">
+    <div class="phone-wrap scroll">
+      <div class="innerWrap">
+        <div class="view zero" ng-if="view === 0">
+          <h2>Movies are nice</h2>
+          <small>Lorem ismallsum dolor sit amet consectetur adipisicing elit. Nemo dolores quas impedit explicabo, natus
+            mollitia velit. Aliquam amet ipsam voluptates odio, optio excepturi modi! Aspernatur deserunt delectus
+            assumenda eos saepe, Lorem ismallsum dolor sit amet consectetur adipisicing elit. Nemo dolores quas impedit
+            explicabo, natus mollitia velit. Aliquam amet ipsam voluptates odio, optio excepturi modi! Aspernatur
+            deserunt delectus assumenda eos saepe!</small>
+          <br />
+          <br />
+          <img style="width: 100%; height: auto;"
+            src="https://newyorkfolk.com/wp-content/uploads/2023/08/GettyImages-1147485288.jpg" alt="">
+          <br />
+          <h3>Now showing:</h3>
+          <div class="row align pointer" ng-repeat="m in movies" ng-click="setCurrent(m)">
+            <img class="poster mini" src="{{m.poster}}" alt="">
+            <span>
+              <h2>{{m.name}}</h2>
+              <span class="align cc">
+                <span>{{m.playtime}}</span>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <span class="pill">{{m.rating}}</span>
+              </span>
+            </span>
+          </div>
+        </div>
 
-          <div ng-if="state === 'start'">
-            <h2 class="padding header-fix">Popular</h2>
-            <div class="row featured">
-              <div class="flex card">
-                <img src="{{featured.poster}}" class="featured-poster" alt="">
-                <div class="card-content padding">
-                  <h2 class="header-fix">{{featured.name}}</h2>
-                  <small class="align space-between" style="padding: 0.5rem 0;">
-                    <span> Next show at {{featured.time | date: "HH:MM"}} </span>
-                    <span class="pull-right">Runtime: {{featured.playtimeH}} hour<span ng-if="featured.playtimeH > 1">s</span> {{featured.playtimeM}} minute<span ng-if="featured.playtimeM > 1">s</span></span>
-                  </small>
-                  <small class="endcap align space-between" style="padding: 0.5rem 0;">
-                    <span>Critic rating: {{featured.rating}}% </span>
-                    <span class="pull-right">{{featured.seatsTaken}} seats left </span>
-                  </small>
-                  <p>{{featured.desc}}</p>
-                  <button type="button" class="primary-btn" name="button" ng-click="setMovie(featured); goToState('booking');">Book</button>
-                </div>
-              </div>
-            </div>
-
-            <h3 class="padding header-fix play-header">
-              <label for="location">Playing at:</label>
-              <div class="selectdiv">
-                <select id="location">
-                  <option selected> My location</option>
-                  <option>Cinema 1</option>
-                  <option>Cinema 2</option>
-                  <option>The big cinema down the road</option>
-                </select>
-              </div>
-            </h3>
-            <div class="row listings">
-              <div class="flex card">
-                <div class="align space-around list-row list-header endcap center" >
-                  <p>Title</p>
-                  <p>Time</p>
-                  <p>Seats</p>
-                </div>
-                <div class="align space-around list-row endcap center" ng-repeat="movie in playing | orderBy: 'time'" ng-click="setMovie(movie); goToState('booking');">
-                  <p>{{movie.name}}</p>
-                  <p>{{movie.time | date: "HH:mm"}}</p>
-                  <p>{{movie.seatsTaken}} / {{movie.seatsTotal}}</p>
-                </div>
-              </div>
+        <div class="view 1" ng-if="view === 1">
+          <h2 class="align cc">
+            <small ng-click="back()">←</small>
+            &nbsp;
+            {{current.name}}
+          </h2>
+          <img class="poster" src="{{current.poster}}" alt="">
+          <div class="blurb">
+            <small>{{current.desc}}</small>
+            <h5>Showings:</h5>
+            <div class="row align cc pointer" ng-repeat="s in current.shows" ng-click="setShowing(s)">
+              {{s.time}}
+              &nbsp;
+              <span ng-if="s.threeD" class="pill">3D</span>
             </div>
           </div>
+        </div>
 
-          <div ng-if="state === 'booking'">
-            <div class="row featured">
-              <div class="flex card">
-                <div class="back">
-                  <svg class="pointer" ng-click="goToState('start')" style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path fill="#333" d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" />
-                  </svg>
-                </div>
-
-                <img src="{{selectedMovie.poster}}" class="featured-poster" alt="">
-                <div class="card-content padding">
-                  <h2 class="header-fix">{{selectedMovie.name}}</h2>
-                  <small class="align space-between" style="padding: 0.5rem 0;">
-                    <span> Next show at {{featured.time | date: "HH:MM"}} </span>
-                    <span class="pull-right">Runtime: {{featured.playtimeH}} hour<span ng-if="featured.playtimeH > 1">s</span> {{featured.playtimeM}} minute<span ng-if="featured.playtimeM > 1">s</span></span>
-                  </small>
-                  <small class="endcap align space-between" style="padding: 0.5rem 0;">
-                    <span>Critic rating: {{featured.rating}}% </span>
-                    <span class="pull-right">{{featured.seatsTaken}} seats left </span>
-                  </small>
-                  <p>{{selectedMovie.desc}}</p>
-                </div>
-              </div>
+        <div class="view 2" ng-if="view === 2">
+          <h2 class="align cc">
+            <small ng-click="back()">←</small>
+            &nbsp;
+            {{receipt.showing.time}}
+            &nbsp;
+            <span ng-if="receipt.showing.threeD" class="pill">3D</span>
+          </h2>
+          <div class="glow">
+            <div style="perspective: 3rem;">
+              <img class="screen" src="{{current.screenX}}" alt="">
             </div>
-            <div class="row">
-              <div class="flex card padding">
-                <h3>Prefered seats</h3>
-                <div class="theater-wrapper">
-                  <img src="{{selectedMovie.poster}}" class="screen-image" alt="">
-                  <div class="wrapper" ng-init="getNumber(selectedMovie.seatsTotal)">
-                    <div class="seat" ng-click="seat.selected = !seat.selected; calcSeats(seat);" ng-class="{'selected-seat':seat.selected}" ng-repeat="seat in seatNum track by $index"></div>
-                  </div>
-                </div>
-                <br></br>
-                <div ng-show="numberOfTickets > 0">
-                  <h2 class="align space-between">
-                    <span>
-                      {{numberOfTickets}}
-                      ticket<span ng-if="numberOfTickets > 1">s</span>
-                    </span>
-                    <span>
-                      {{numberOfTickets * 25}}$
-                    </span>
-                  </h2>
-                  <button type="button" class="primary-btn" name="button" ng-click="confirm(); goToState('checkout');">
-                    Book
-                  </button>
-                </div>
-              </div>
+            <div class="seatGrid">
+              <div class="seat" ng-class="{'selectedSeat': seat.state}" ng-click="setSeats(seat)"
+                ng-repeat="seat in seats"></div>
             </div>
           </div>
-
-          <div ng-if="state === 'checkout'">
-            <div class="back">
-              <svg class="pointer" ng-click="goToState('booking'); resetTickets();" style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="#333" d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" />
-              </svg>
-            </div>
-            <img src="{{selectedMovie.poster}}" class="backdrop" alt="">
-            <div  class="confirm-modal">
-              <div class="row featured">
-                <div class="flex card center conf" ng-class="{'done-card':booked}">
-                  <div class="card-content padding">
-                    <div ng-if="booked === null">
-                      <h2 class="header-fix">Please confirm</h2>
-                      <h3 class="align space-between">
-                        <span>
-                          {{selectedMovie.name}}
-                        </span>
-                        <span>
-                          {{selectedMovie.time | date: "HH:mm dd/MM/yy"}}
-                        </span>
-                      </h3>
-                      <h3 class="align space-between">
-                        <span>
-                          {{numberOfTickets}}
-                          ticket<span ng-if="numberOfTickets > 1">s</span>
-                        </span>
-                        <span>
-                          {{numberOfTickets * 25}}$
-                        </span>
-                      </h3>
-                    </div>
-                    <button ng-if="booked === null && loading === null" type="button" class="primary-btn" name="button" ng-click="booking();">Confirm</button>
-
-                    <div class="spinner" ng-if="loading || booked" ng-class="{'done': booked}">
-                      <svg ng-if="booked" style="width:25px;height:50px" viewBox="0 0 24 24">
-                        <path fill="#fff" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                      </svg>
-                    </div>
-                    <div ng-if="booked" style="color:#fff;">
-                      <h2>Enjoy the movie</h2>
-                      Your booking number is
-                      <br></br>
-                      <h3>12345678</h3>
-                      <br></br>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <br />
+          <div ng-if="receipt.totalPrice" style="text-align: center;">
+            <small>{{receipt.seats.length}} x ${{current.price}}</small>
+            <h2>${{receipt.totalPrice}}</h2>
           </div>
 
+          <button class="btn" ng-class="{'disabled': !receipt.seats || receipt.seats.length === 0}"  ng-click="confirm()">OK</button>
+        </div>
+
+        <div class="view 3 summary" ng-if="view === 3">
+          <h2 class="align cc">
+            <small ng-click="back()">←</small>
+            &nbsp;
+            {{current.name}}
+            &nbsp;
+            <span ng-if="receipt.showing.threeD" class="pill">3D</span>
+          </h2>
+          <p>{{receipt.seats.length}} tickets for showing startig at {{receipt.showing.time}}</p>
+          <hr />
+          <p>Total: ${{receipt.totalPrice}}</p>
+
+          <button class="btn" ng-click="confirm()">Pay</button>
         </div>
       </div>
     </div>

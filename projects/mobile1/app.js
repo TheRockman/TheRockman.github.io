@@ -1,125 +1,193 @@
-var app = angular.module("myApp", []); app.controller("mainCtrl", function($scope, $timeout) {
-  $scope.selectedMovie = null;
-  $scope.numberOfTickets = 0;
-  $scope.checkout = null;
-  $scope.booked = null;
-  $scope.loading = null;
-  $scope.state = 'start';
+var app = angular.module("myApp", []); app.controller("mainCtrl", function ($scope) {
 
-  $scope.featured = {
-    name: 'Avengers: Infinity War',
-    time: new Date(),
-    seatsTaken: 25,
-    seatsTotal: 125,
-    playtimeH: 2,
-    playtimeM: 30,
-    rating: 79,
-    poster: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fscottmendelson%2Ffiles%2F2018%2F04%2Fmarvel_studios_avengers_infinity_war_official_trailer_7-1200x676.jpg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  }
-  $scope.playing = [
-    {
-      name: 'The shape of water',
-      time: new Date(),
-      seatsTaken: 25,
-      seatsTotal: 125,
-      playtimeH: 2,
-      playtimeM: 00,
-      rating: 90,
-      poster: 'https://cdn.pastemagazine.com/www/articles/2018/04/25/best-movies-redbox-april.jpg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      name: 'Dunkirk',
-      time: new Date(),
-      seatsTaken: 25,
-      seatsTotal: 125,
-      playtimeH: 3,
-      playtimeM: 10,
-      rating: 82,
-      poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwdh6RtTvG3hndRtkgbYUtPkSKheAU4ZtbKKyCKI3yZ8UQALUO',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      name: 'name3',
-      time: new Date(),
-      seatsTaken: 25,
-      seatsTotal: 125,
-      playtimeH: 2,
-      playtimeM: 30,
-      rating: 60,
-      poster: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fscottmendelson%2Ffiles%2F2018%2F04%2Fmarvel_studios_avengers_infinity_war_official_trailer_7-1200x676.jpg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      name: 'name4',
-      time: new Date(),
-      seatsTaken: 25,
-      seatsTotal: 125,
-      playtimeH: 2,
-      playtimeM: 30,
-      rating: 45,
-      poster: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fscottmendelson%2Ffiles%2F2018%2F04%2Fmarvel_studios_avengers_infinity_war_official_trailer_7-1200x676.jpg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      name: 'name5',
-      time: new Date(),
-      seatsTaken: 25,
-      seatsTotal: 125,
-      playtimeH: 2,
-      playtimeM: 30,
-      rating: 79,
-      poster: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fscottmendelson%2Ffiles%2F2018%2F04%2Fmarvel_studios_avengers_infinity_war_official_trailer_7-1200x676.jpg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    },
-    {
-      name: 'name6',
-      time: new Date(),
-      seatsTaken: 25,
-      seatsTotal: 125,
-      playtimeH: 2,
-      playtimeM: 30,
-      rating: 10,
-      poster: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fscottmendelson%2Ffiles%2F2018%2F04%2Fmarvel_studios_avengers_infinity_war_official_trailer_7-1200x676.jpg',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    $scope.current;
+    $scope.view = 0;
+    $scope.seats = [];
+
+    for (let i = 0; i < 45; i++) {
+        $scope.seats.push(
+            { state: false, id: i }
+        )
     }
-  ];
 
-  $scope.setMovie = function (movie) {
-    $scope.selectedMovie = movie;
-  }
+    $scope.receipt = {};
 
-  $scope.getNumber = function(num) {
-    $scope.seatNum = new Array(num);
-  }
-
-  $scope.calcSeats = function (seat) {
-    if (seat.selected) {
-      $scope.numberOfTickets = $scope.numberOfTickets + 1;
-    } else {
-      $scope.numberOfTickets = $scope.numberOfTickets - 1;
+    $scope.movies = [
+        {
+            name: 'Avengers: Endgame',
+            desc: 'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.',
+            poster: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg',
+            screenX: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBbQVsnyG79AWad_qgjqojgEtRspwmCMJoQ&usqp=CAU',
+            rating: 'PG-13',
+            price: 110,
+            playtime: '123 min',
+            shows: [
+                {
+                    time: '12:00',
+                    threeD: false
+                },
+                {
+                    time: '13:00',
+                    threeD: true
+                },
+                {
+                    time: '14:00',
+                    threeD: false
+                },
+                {
+                    time: '15:00',
+                    threeD: true
+                },
+            ],
+            threeD: false,
+            basePrice: 123,
+            seats: []
+        },
+        {
+            name: 'abc',
+            desc: 'lorem',
+            poster: 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg',
+            screenX: 'https://img.freepik.com/free-vector/theater-cinema-curtains-with-focus-light-vector-illustration_1017-38346.jpg',
+            rating: 'PG-13',
+            price: 110,
+            playtime: '123 min',
+            shows: [
+                {
+                    time: '12:00',
+                    threeD: false
+                },
+                {
+                    time: '13:00',
+                    threeD: true
+                },
+                {
+                    time: '14:00',
+                    threeD: false
+                },
+                {
+                    time: '15:00',
+                    threeD: false
+                },
+            ],
+            threeD: false,
+            basePrice: 123,
+            seats: []
+        },
+        {
+            name: '1',
+            desc: 'lorem',
+            poster: 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg',
+            screenX: 'https://img.freepik.com/free-vector/theater-cinema-curtains-with-focus-light-vector-illustration_1017-38346.jpg',
+            rating: 'PG-13',
+            price: 110,
+            playtime: '123 min',
+            shows: [
+                {
+                    time: '12:00',
+                    threeD: false
+                },
+                {
+                    time: '13:00',
+                    threeD: true
+                },
+                {
+                    time: '14:00',
+                    threeD: false
+                },
+                {
+                    time: '15:00',
+                    threeD: false
+                },
+            ],
+            threeD: false,
+            basePrice: 123,
+        },
+        {
+            name: '2',
+            desc: 'lorem',
+            poster: 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg',
+            screenX: 'https://img.freepik.com/free-vector/theater-cinema-curtains-with-focus-light-vector-illustration_1017-38346.jpg',
+            rating: 'PG-13',
+            price: 110,
+            playtime: '123 min',
+            shows: [
+                {
+                    time: '12:00',
+                    threeD: false
+                },
+                {
+                    time: '13:00',
+                    threeD: true
+                },
+                {
+                    time: '14:00',
+                    threeD: false
+                },
+                {
+                    time: '15:00',
+                    threeD: false
+                },
+            ],
+            threeD: false,
+            basePrice: 123,
+        },
+        {
+            name: 'xyz',
+            desc: 'lorem',
+            poster: 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg',
+            screenX: 'https://img.freepik.com/free-vector/theater-cinema-curtains-with-focus-light-vector-illustration_1017-38346.jpg',
+            rating: 'PG-13',
+            price: 110,
+            playtime: '123 min',
+            shows: [
+                {
+                    time: '12:00',
+                    threeD: false
+                },
+                {
+                    time: '13:00',
+                    threeD: true
+                },
+                {
+                    time: '14:00',
+                    threeD: false
+                },
+                {
+                    time: '15:00',
+                    threeD: false
+                },
+            ],
+            threeD: false,
+            basePrice: 123,
+        }
+    ];
+    $scope.back = function() {
+        $scope.view = $scope.view-1;
     }
-  }
-
-  $scope.booking = function () {
-    $scope.loading = true;
-    $timeout( function(){
-      $scope.booked = true;
-      $scope.loading = null;
-    }, 4000 );
-  }
-
-  $scope.confirm = function () {
-    $scope.checkout = true;
-  }
-
-  $scope.goToState = function (newStateString) {
-    $scope.state = newStateString;
-  }
-
-  $scope.resetTickets = function () {
-    $scope.numberOfTickets = 0;
-  }
+    $scope.setCurrent = function (m) {
+        $scope.current = m;
+        $scope.view = 1;
+    }
+    $scope.setShowing = function (s) {
+        $scope.receipt.showing = s;
+        $scope.view = 2;
+    }
+    $scope.setSeats = function (c) {
+        c.state = !c.state;
+        $scope.receipt.seats = [];
+        for (let i = 0; i < $scope.seats.length; i++) {
+            if ($scope.seats[i].state) {
+                $scope.receipt.seats.push($scope.seats[i])
+            }
+        }
+        $scope.receipt.totalPrice = $scope.current.price * $scope.receipt.seats.length;
+    }
+    $scope.confirm = function () {
+        if ($scope.receipt.seats.length > 0) {
+            $scope.view = 3;
+        }
+    }
 
 });
+
+// {{}}
