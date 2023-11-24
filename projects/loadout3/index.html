@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="../../angularJs.js"></script>
+</head>
+
+<body>
+  <div ng-controller="mainCtrl">
+  
+    <div class="stage" ng-style="scaling" ng-if="view === 'world'"></div>
+
+    <div class="stage screen1" ng-style="scaling" ng-if="view === 'screen1'">
+      <button ng-click="setView('yard')">back</button>
+      <div class="copy" ng-init="snapshot()" id="buildCopy" ng-init=""></div>
+    </div>
+
+    <div class="stage yard" ng-style="scaling" ng-if="view === 'yard'" >
+
+      <div class="walker" ng-style="walkerStyle"></div>
+
+      <div class="launch" ng-click="setView('screen1')"></div>
+      <img src="sprites/base.png" class="base" alt="">
+      <div id="build" class="buildWrap">
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" droppable id="head" title="head"></div>
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" droppable id="body" title="body"></div>
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" style="text-align: right;" droppable id="leftArm" title="leftArm"></div>
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" style="text-align: left;" droppable id="rightArm" title="rightArm"></div>
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" droppable id="legs" title="legs"></div>
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" droppable id="flair" title="flair"></div>
+        <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop()" droppable id="back" title="back"></div>
+      </div>
+
+      <div class="pile" role="99" title="all" droppable drop="pileDrop()">
+        <div ng-repeat="piece in pile" ng-mouseDown="grab()" ng-style="{{piece.style}}" class="piece" title="{{piece.slot}}" id="{{piece.name}}" draggable>
+          <img src="{{piece.sprite}}" alt="">
+        </div>
+      </div>
+      <img src="ui/bin.png" ng-mouseenter="bin()" class="bin" alt="">
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="dd.js"></script>
+
+</html>
