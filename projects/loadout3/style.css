@@ -163,6 +163,13 @@ body {
   z-index: 2;
 }
 
+.copy{
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  transform-origin: top left;
+}
+
 .copy * {
   outline: unset !important;
 }
@@ -182,6 +189,42 @@ body {
 .screen1 .copy {
   transform: scale(1.2) translateX(32rem) translateY(2rem);
   z-index: 10;
+  position: relative;
+}
+
+@keyframes flip-in-hor-bottom {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.score{
+  opacity: 0;
+  animation: flip-in-hor-bottom 0.5s 1s;
+  animation-fill-mode: forwards;
+  background: url(bg/score.jpg);
+  position: absolute;
+  width: 490px;
+  height: 480px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: -84px;
+  left: -9px;
+  z-index: -1;
+}
+.score > p{
+  position: absolute;
+  top: 157px;
+  right: 122px;
+  font-size: 37px;
+  font-weight: bold;
+}
+
+.stageWrap{
   position: relative;
 }
 
@@ -298,15 +341,12 @@ body {
   cursor: pointer;
 }
 
-.world {
-  background: red;
-}
+.world {}
 
 .map {
-  background: url(https://www.mediastorehouse.com/p/629/topographic-map-europe-lithograph-15133668.jpg.webp) no-repeat;
+  background: url(https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fimages.igdb.com%2Figdb%2Fimage%2Fupload%2Ft_original%2Fsc7khk.jpg&sp=1701281680T78ba9a32368413f065ad36705302a7248cbe0c12954b3e467375cf324d0f353a) no-repeat;
   width: 88rem;
   height: 90rem;
-  outline: 20px solid green;
   position: absolute;
   z-index: -1;
   background-size: contain;
@@ -315,11 +355,12 @@ body {
 .walker {
   position: absolute;
   left: 0;
-  right: 0;
-  top: 50%;
+  right: -32px;
+  top: 70%;
   margin: 0 auto;
   width: 64px;
   height: 64px;
+  pointer-events: none;
 }
 
 .poi{
@@ -329,6 +370,6 @@ body {
   background: red;
 }
 #screen1{
-  top: 25rem;
-  left: 50rem;
+  top: 9rem;
+  left: 1rem;
 }

@@ -28,6 +28,11 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
     }
 
     $scope.view = 'yard';
+    $scope.copyStyle = {
+      "opacity": "0",
+      "top": "0rem",
+      "left": "0rem"
+    }
     $scope.buildStats;
     $scope.originalBuildStats = {
         beauty: 0,
@@ -43,10 +48,10 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
 
         var children = document.getElementById("build").children;
         for (var i = 0; i < children.length; i++) {
-            
+
             for (var j = 0; j < children[i].children.length; j++) {
                 var item = $scope.pile.find(item => item.name === children[i].children[j].id);
-                
+
                 $scope.buildStats.beauty = $scope.buildStats.beauty + (item.stats?.beauty || 0);
                 $scope.buildStats.speed = $scope.buildStats.speed + (item.stats?.speed || 0);
                 $scope.buildStats.strength = $scope.buildStats.strength + (item.stats?.strength || 0);
@@ -62,142 +67,49 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
         }
         $scope.view = destination;
 
+
+        switch (destination) {
+          case 'world':
+            $scope.copyStyle = {
+              "opacity": "0",
+              "top": "0rem",
+              "left": "0rem",
+            }
+            break;
+          case 'yard':
+            $scope.copyStyle = {
+              "opacity": "0",
+              "top": "0rem",
+              "left": "0rem"
+            }
+            break;
+          case 'screen1':
+            $scope.copyStyle = {
+              "opacity": "1",
+              "top": "6rem",
+              "left": "20rem",
+              "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")",
+            }
+            break;
+          case 'screen2':
+            $scope.copyStyle = {
+              "opacity": "1",
+              "top": "2rem",
+              "left": "50rem",
+              "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")",
+            }
+            $scope.setRandomPiece();
+            break;
+          default:
+            $scope.copyStyle = {
+              "opacity": "0",
+              "top": "0rem",
+              "left": "0rem"
+            }
+            break;
+        }
+
         console.log($scope.buildSummary);
-    }
-
-    $scope.findablePieces = [
-        {
-            name: 'Flair2',
-            slot: 'flair',
-            sprite: 'sprites/flair_1.png'
-        },
-        {
-            name: 'Back3',
-            slot: 'back',
-            sprite: 'sprites/back_2.png'
-        },
-    ];
-    $scope.randomPiecesPOIs = [
-        {
-            id: 'POI_1',
-            destination: 'screen2',
-            style: {
-                "top": "30rem",
-                "left": "30rem"
-            },
-            unlooted: true
-        },
-        {
-            id: 'POI_2',
-            destination: 'screen2',
-            style: {
-                "top": "30rem",
-                "left": "50rem"
-            },
-            unlooted: true
-        }
-    ]
-
-    $scope.randomPiece;
-    $scope.setRandomPiece = function() {
-        //let index = Math.floor(Math.random() * ());
-        let index = $scope.findablePieces.length - 1;
-        $scope.randomPiece = $scope.findablePieces[index];
-        $scope.pile.push($scope.findablePieces[index]);
-        $scope.findablePieces.splice(index, 1);
-    }
-
-    $scope.buildSummary;
-    $scope.getSnap = function () {
-        let element = document.getElementById("buildCopy");
-        element.replaceChildren(...$scope.buildSummary.childNodes);
-    }
-    $scope.setSnap = function () {
-        let p = document.getElementById("build");
-        let p_prime = p.cloneNode(true);
-        $scope.buildSummary = p_prime;
-    }
-
-    $scope.scaling = {
-        "transform": "scale(1)"
-    }
-    if ($window.innerWidth < 1280) {
-        $scope.scaling = {
-            "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")"
-        }
-    }
-    angular.element($window).bind('resize', function () {
-        if ($window.innerWidth < 1280){
-            $scope.scaling = {
-                "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")"
-            }
-        }
-        $scope.$apply();
-    });
-
-    $scope.walkerStyle = {
-        "background": "url('sprites/mech.png') 0 0"
-    }
-
-    $scope.mapX = 0;
-    $scope.mapY = 0;
-    $scope.mapStyle = {
-        "left": $scope.mapX + "px",
-        "top": $scope.mapY + "px"
-    }
-
-    window.addEventListener('keydown', function (e) {
-        if (e.key === "ArrowRight") {
-            $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 -128px"
-            }
-            $scope.mapX = $scope.mapX - $scope.buildStats.speed;
-        }
-        if (e.key === "ArrowLeft") {
-            $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 134px"
-            }
-            $scope.mapX = $scope.mapX + $scope.buildStats.speed;
-        }
-        if (e.key === "ArrowUp") {
-            $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 259px"
-            }
-            $scope.mapY = $scope.mapY + $scope.buildStats.speed;
-        }
-        if (e.key === "ArrowDown") {
-            $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 0"
-            }
-            $scope.mapY = $scope.mapY - $scope.buildStats.speed;
-        }
-        
-        $scope.mapStyle = {
-            "left": $scope.mapX + "px",
-            "top": $scope.mapY + "px"
-        }
-
-        $scope.$apply();
-    });
-
-    $scope.elementsOverlap = function (elID, destination, poiID) {
-        const player = document.getElementById('player');
-        const item = document.getElementById(elID);
-
-        const domRect1 = item.getBoundingClientRect();
-        const domRect2 = player.getBoundingClientRect();
-
-        const outside = domRect1.top > domRect2.bottom ||
-            domRect1.right < domRect2.left ||
-            domRect1.bottom < domRect2.top ||
-            domRect1.left > domRect2.right;
-
-        if (!outside) {
-            if (poiID !== undefined) {
-                $scope.randomPiecesPOIs[poiID].unlooted = false;
-            }
-            $scope.setView(destination, false);
-        }
     }
 
     $scope.pile = [
@@ -320,4 +232,140 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
             }
         }
     ]
+
+    $scope.findablePieces = [
+        {
+            name: 'Flair2',
+            slot: 'flair',
+            sprite: 'sprites/flair_1.png'
+        },
+        {
+            name: 'Back3',
+            slot: 'back',
+            sprite: 'sprites/back_2.png'
+        },
+    ];
+    $scope.randomPiecesPOIs = [
+        {
+            id: 'POI_1',
+            destination: 'screen2',
+            style: {
+                "top": "6rem",
+                "left": "60rem"
+            },
+            unlooted: true
+        },
+        {
+            id: 'POI_2',
+            destination: 'screen2',
+            style: {
+                "top": "29rem",
+                "left": "70rem"
+            },
+            unlooted: true
+        }
+    ]
+
+    $scope.randomPiece;
+    $scope.setRandomPiece = function() {
+        //let index = Math.floor(Math.random() * ());
+        let index = $scope.findablePieces.length - 1;
+        $scope.randomPiece = $scope.findablePieces[index];
+        $scope.pile.push($scope.findablePieces[index]);
+        $scope.findablePieces.splice(index, 1);
+    }
+
+    $scope.buildSummary;
+
+    $scope.setSnap = function () {
+        let p = document.getElementById("build");
+        let p_prime = p.cloneNode(true);
+        $scope.buildSummary = p_prime;
+        let element = document.getElementById("buildCopy");
+        element.replaceChildren(...$scope.buildSummary.childNodes);
+    }
+
+    $scope.scaling = {
+        "transform": "scale(1)"
+    }
+    if ($window.innerWidth < 1280) {
+        $scope.scaling = {
+            "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")"
+        }
+    }
+    angular.element($window).bind('resize', function () {
+        if ($window.innerWidth < 1280){
+            $scope.scaling = {
+                "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")"
+            }
+            $scope.copyStyle["transform"] = "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")";
+        }
+        $scope.$apply();
+    });
+
+    $scope.walkerStyle = {
+        "background": "url('sprites/mech.png') 0 0"
+    }
+
+    $scope.mapX = 0;
+    $scope.mapY = 0;
+    $scope.mapStyle = {
+        "left": $scope.mapX + "px",
+        "top": $scope.mapY + "px"
+    }
+
+    window.addEventListener('keydown', function (e) {
+        if (e.key === "ArrowRight") {
+            $scope.walkerStyle = {
+                "background": "url('sprites/mech.png') 0 -128px"
+            }
+            $scope.mapX = $scope.mapX - $scope.buildStats.speed;
+        }
+        if (e.key === "ArrowLeft") {
+            $scope.walkerStyle = {
+                "background": "url('sprites/mech.png') 0 134px"
+            }
+            $scope.mapX = $scope.mapX + $scope.buildStats.speed;
+        }
+        if (e.key === "ArrowUp") {
+            $scope.walkerStyle = {
+                "background": "url('sprites/mech.png') 0 259px"
+            }
+            $scope.mapY = $scope.mapY + $scope.buildStats.speed;
+        }
+        if (e.key === "ArrowDown") {
+            $scope.walkerStyle = {
+                "background": "url('sprites/mech.png') 0 0"
+            }
+            $scope.mapY = $scope.mapY - $scope.buildStats.speed;
+        }
+
+        $scope.mapStyle = {
+            "left": $scope.mapX + "px",
+            "top": $scope.mapY + "px"
+        }
+
+        $scope.$apply();
+    });
+
+    $scope.elementsOverlap = function (elID, destination, poiID) {
+        const player = document.getElementById('player');
+        const item = document.getElementById(elID);
+
+        const domRect1 = item.getBoundingClientRect();
+        const domRect2 = player.getBoundingClientRect();
+
+        const outside = domRect1.top > domRect2.bottom ||
+            domRect1.right < domRect2.left ||
+            domRect1.bottom < domRect2.top ||
+            domRect1.left > domRect2.right;
+
+        if (!outside) {
+            if (poiID !== undefined) {
+                $scope.randomPiecesPOIs[poiID].unlooted = false;
+            }
+            $scope.setView(destination, false);
+        }
+    }
+
 });
