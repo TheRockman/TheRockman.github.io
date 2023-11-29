@@ -86,6 +86,7 @@ body {
   text-align: center;
   align-items: end;
 }
+
 .over {
   outline: 1px solid red;
 }
@@ -100,11 +101,11 @@ body {
   right: 0;
 }
 
-.pieceBox>.piece:hover {
+.buildWrap>.pieceBox>.piece:hover {
   filter: drop-shadow(1px 0px 0px white) drop-shadow(-1px 0px 0px white) drop-shadow(0px 1px 0px white) drop-shadow(0px -1px 0px white);
 }
 
-.pieceBox>.piece:active {
+.buildWrap>.pieceBox>.piece:active {
   cursor: grabbing;
 }
 
@@ -122,15 +123,18 @@ body {
   height: fit-content;
 }
 
+.copy>.pieceBox>.piece {
+  cursor: unset;
+}
+
 .pile>.piece {
   cursor: grab;
   max-width: 10rem;
-  transform: unset!important;
+  transform: unset !important;
 }
 
 .pile>.piece:hover {
   transition: 0.2s 0.2s margin ease-in-out;
-  margin: 0 1rem;
   padding-bottom: 0.5rem;
 }
 
@@ -139,7 +143,7 @@ body {
 }
 
 .pile {
-  outline: none!important;
+  outline: none !important;
   padding-left: 2rem;
   align-items: end;
   justify-content: start;
@@ -183,12 +187,19 @@ body {
 
 .stage {
   overflow: hidden;
-  transform-origin: top left;
+  transform-origin: center;
   background-color: #333;
   width: 1280px;
   height: 720px;
-  
   position: relative;
+  margin: 0 auto;
+  margin-top: 4.5vw;
+}
+
+@media (max-width: 1280px) {
+  .stage {
+    transform-origin: top left;
+  }
 }
 
 #head {
@@ -253,6 +264,8 @@ body {
 }
 
 .yard {
+  position: relative;
+  z-index: 0;
   background: url('bg/bg_default.jpg');
 }
 
@@ -273,7 +286,8 @@ body {
 .screen1 {
   background: url('bg/bg_screen1.png');
 }
-.launch{
+
+.launch {
   position: absolute;
   outline: 1px solid red;
   left: 0;
@@ -284,7 +298,37 @@ body {
   cursor: pointer;
 }
 
-.walker{
+.world {
+  background: red;
+}
+
+.map {
+  background: url(https://www.mediastorehouse.com/p/629/topographic-map-europe-lithograph-15133668.jpg.webp) no-repeat;
+  width: 88rem;
+  height: 90rem;
+  outline: 20px solid green;
+  position: absolute;
+  z-index: -1;
+  background-size: contain;
+}
+
+.walker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: 0 auto;
   width: 64px;
   height: 64px;
+}
+
+.poi{
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  background: red;
+}
+#screen1{
+  top: 25rem;
+  left: 50rem;
 }
