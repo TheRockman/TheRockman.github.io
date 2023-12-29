@@ -83,20 +83,18 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
               "left": "0rem"
             }
             break;
-          case 'screen1':
+          case 'contest':
             $scope.copyStyle = {
               "opacity": "1",
               "top": "6rem",
-              "left": "20rem",
-              "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")",
+              "right": "55rem",
             }
             break;
-          case 'screen2':
+          case 'roadside':
             $scope.copyStyle = {
               "opacity": "1",
-              "top": "2rem",
-              "left": "50rem",
-              "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")",
+              "top": "4rem",
+              "left": "63rem",
             }
             $scope.setRandomPiece();
             break;
@@ -248,7 +246,7 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
     $scope.randomPiecesPOIs = [
         {
             id: 'POI_1',
-            destination: 'screen2',
+            destination: 'roadside',
             style: {
                 "top": "6rem",
                 "left": "60rem"
@@ -257,7 +255,7 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
         },
         {
             id: 'POI_2',
-            destination: 'screen2',
+            destination: 'roadside',
             style: {
                 "top": "29rem",
                 "left": "70rem"

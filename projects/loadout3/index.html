@@ -12,23 +12,25 @@
 <body>
   <div ng-controller="mainCtrl">
     <div class="stageWrap">
-      <div class="stage screen1" ng-style="scaling" ng-show="view === 'screen1'">
+
+      <div class="stage contest" ng-show="view === 'contest'">
         <div class="score">
           <p>{{buildStats.beauty}}</p>
         </div>
-        <button ng-click="setView('world')">back</button>
+        <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('world')" class="bin" alt="">
       </div>
 
-      <div class="stage screen2" ng-style="scaling" ng-show="view === 'screen2'">
-        <button ng-click="setView('world')">back</button>
+      <div class="stage roadside" ng-style="scaling" ng-show="view === 'roadside'">
+        <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('world')" class="bin" alt="">
         <div ng-click="setView('world')" ng-style="{{randomPiece.style}}" class="randomPiece piece">
             <img src="{{randomPiece.sprite}}">
         </div>
       </div>
 
       <div class="stage world" ng-cloak ng-style="scaling" ng-if="view === 'world'">
+        <div class="bar"></div>
         <div class="map" ng-style="mapStyle">
-          <div class="poi" ng-click="elementsOverlap('screen1', 'screen1')" id="screen1"></div>
+          <div class="poi" ng-click="elementsOverlap('contest', 'contest')" id="contest"></div>
           <div
           ng-repeat="poi in randomPiecesPOIs"
           ng-if="poi.unlooted"
@@ -37,7 +39,7 @@
           id="{{poi.id}}"
           ng-style="{{poi.style}}"></div>
         </div>
-        <button ng-click="setView('yard', true)">back</button>
+        <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('yard', true)" class="bin" alt="">
         <div class="walker" id="player" ng-style="walkerStyle"></div>
       </div>
 
