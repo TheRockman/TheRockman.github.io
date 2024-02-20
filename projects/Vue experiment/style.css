@@ -1,5 +1,5 @@
 :root{
-  --animation: all 600ms cubic-bezier(.33,.11,.02,.99);
+  --animation: all 200ms ease-in-out;
   --spacer: 1rem;
 
   /*shadows*/
@@ -27,76 +27,6 @@ body{
 .jsb{
   justify-content: space-between;
 }
-
-/* ng-animate */
-/* .fade{
-  transition:0.5s linear opacity;
-}
-.fade.ng-hide {
-  opacity:0;
-} */
-
-/*flex*/
-/*.flex{
-  flex-basis: 100%;
-}
-.x3{
-  flex-basis: 50%!important;
-}
-.x2{
-  flex-basis: 25%!important;
-}
-@media screen and (min-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1;
-        -ms-flex: 1;
-  }
-}
-@media screen and (max-width: 768px) {
-  .row {
-    display: flex;
-        display: -ms-flexbox;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  .flex {
-    flex: 1 1 auto;
-  }
-}*/
-
-/*fluid layout*/
-/*
-.fluid-row {
-  display: grid;
-  grid-gap: 0px;
-  grid-template-columns: repeat(auto-fill, minmax(33%, auto));
-}
-.fluid-flex{
-  padding: 5px;
-}
-
-.dense{
-  grid-template-columns: repeat(auto-fill, minmax(19%, auto));
-}
-
-@media screen and (max-width: 960px) {
-  .fluid-row{
-    grid-template-columns: repeat(auto-fill, minmax(49%, auto))!important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .fluid-row{
-    grid-template-columns: repeat(auto-fill, minmax(100%, auto))!important;
-  }
-}
-*/
 
 .card {
   background: #fff;
@@ -166,9 +96,6 @@ body{
   border-radius: 10px;
   color: white;
 }
-.poster:hover .info-overlay{
-  
-}
 .selected{
   transform: translateY(75%);
 }
@@ -234,42 +161,3 @@ body{
   }
   
 }
-
-/*Fab*/
-/*.fab{
-    background:dodgerblue;
-    width:18px;
-    height: 18px;
-    padding:15px;
-    border-radius:50%;
-    font-size: 18px;
-    line-height: 18px;
-    text-align: center;
-    box-shadow: var(--level1);
-}*/
-
-/*Animation*/
-/*@keyframes animation {
-from {}
-to {}
-}
-div {
-animation-name: animation;
-animation-duration: 4s;
-} */
-
- /*warm gradiend*/
- /*
- background: linear-gradient(to bottom, #fd9981 0%,#ed5f85 92%);
- */
-
-/*Slant*/
-/*
-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-*/
-
-/*background*/
-/*
-background: url(http://lorempixum.com/1440/900/sports) no-repeat center center fixed;
-background-size: cover;
-*/
