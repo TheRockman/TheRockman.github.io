@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    <img src="img/back.png" class="back" alt="">
+
+    <div class="focus-view enter" ng-if="currentDebate.pitch.pitched === false" ng-click="currentDebate.pitch.pitched = true">
+      <span ng-if="currentDebate.pitch.faction === 'CC'">
+        <p>Clocktoria III</p>
+        <img class="pitcher"  src="img/CC.png" alt="">
+      </span>
+      <span ng-if="currentDebate.pitch.faction === 'AA'">
+        <p>Abrams Stovevalve</p>
+        <img class="pitcher"  src="img/AA.png" alt="">
+      </span>
+      <span ng-if="currentDebate.pitch.faction === 'BB'">
+        <p>Bella MacGuffin</p>
+        <img class="pitcher" src="img/BB.png" alt="">
+      </span>
+      <span ng-if="currentDebate.pitch.faction === 'DD'">
+        <p>Dack Rowley</p>
+        <img class="pitcher" src="img/DD.png" alt="">
+      </span>
+      <span ng-if="currentDebate.pitch.faction === 'EE'">
+        <p>Enoch Diptych</p>
+        <img class="pitcher" src="img/EE.png" alt="">
+      </span>
+
+      <div class="talkbox" >
+        <span>{{currentDebate.pitch.desc}}</span>
+      </div>
+    </div>
+
+    <div class="focus-view enter" ng-if="currentArgument !== null" ng-click="setCurrentArgument()">
+      <span ng-if="currentArgument.faction === 'CC'" >
+        <p>Clocktoria III</p>
+        <img class="pitcher" src="img/CC.png" alt="">
+      </span>
+      <span ng-if="currentArgument.faction === 'AA'">
+        <p>Abrams Stovevalve</p>
+        <img class="pitcher" src="img/AA.png" alt="">
+      </span>
+      <span ng-if="currentArgument.faction === 'BB'">
+        <p>Bella MacGuffin</p>
+        <img class="pitcher" src="img/BB.png" alt="">
+      </span>
+      <span ng-if="currentArgument.faction === 'DD'">
+        <p>Dack Rowley</p>
+        <img class="pitcher" src="img/DD.png" alt="">
+      </span>
+      <span ng-if="currentArgument.faction === 'EE'">
+        <p>Enoch Diptych</p>
+        <img class="pitcher" src="img/EE.png" alt="">
+      </span>
+
+      <div class="talkbox">
+        <span ng-if="currentDebate.result === null"> {{currentArgument.desc}} </span>
+        <span ng-if="currentDebate.result === true"> {{currentArgument.descApproved}} </span>
+        <span ng-if="currentDebate.result === false"> {{currentArgument.descRejected}} </span>
+      </div>
+    </div>
+
+    <div ng-if="currentDebate.pitch.pitched && currentArgument === null">>
+      <div class="head">
+        <h2> "{{currentDebate.id}}"</h2>
+        <p> {{currentDebate.pitch.summary}} </p>
+
+
+        <div class="">
+          </br>
+          Clocktoria: {{factions.CC}}
+          </br>
+          Abrams: {{factions.AA}}
+          </br>
+          Bella: {{factions.BB}}
+          </br>
+          Dack: {{factions.DD}}
+          </br>
+          Enoch: {{factions.EE}}
+        </div>
+
+
+        <div class="align">
+          <button
+            type="button"
+            class="apbtn"
+            ng-if="currentDebate.result === null"
+            ng-class="{'active': currentDebate.result === true}"
+            ng-click="approve()">
+              YES
+          </button>
+          <button
+            type="button"
+            class="rebtn"
+            ng-if="currentDebate.result === null"
+            ng-class="{'active': currentDebate.result === false}"
+            ng-click="reject()">
+              NO
+          </button>
+        </div>
+      </div>
+      <div class="align group" ng-if="currentDebate.pitch.pitched && currentArgument === null">
+        <img ng-click="setCurrentArgument('CC')" class="char edge" ng-class="{'speaker': currentSpeaker === 'CC'}" src="img/CC.png" alt="">
+        <img ng-click="setCurrentArgument('AA')" class="char inner" ng-class="{'speaker': currentSpeaker === 'AA'}" src="img/AA.png" alt="">
+        <img ng-click="setCurrentArgument('BB')" class="char" ng-class="{'speaker': currentSpeaker === 'BB'}" src="img/BB.png" alt="">
+        <img ng-click="setCurrentArgument('DD')" class="char inner" ng-class="{'speaker': currentSpeaker === 'DD'}" src="img/DD.png" alt="">
+        <img ng-click="setCurrentArgument('EE')" class="char edge" ng-class="{'speaker': currentSpeaker === 'EE'}" src="img/EE.png" alt="">
+      </div>
+
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
