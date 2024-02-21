@@ -1,11 +1,12 @@
 body{
   overflow: hidden;
   background: black;
+  width: 95vw;
 }
 
 .back{
-  height: auto;
-  width: 100vw;
+  width: auto;
+  height: 100vh;
   position: absolute;
   left: 0;
   right: 0;
@@ -20,34 +21,16 @@ body{
 }
 
 .pitcher{
-  width: auto;
+  height: auto;
   position: relative;
-  height: 800px;
+  width: 600px;
+  max-width: 75vw;
 }
-
-@keyframes puff {
-  0% {
-      -webkit-transform: scale(2);
-              transform: scale(2);
-      -webkit-transform-origin: 50% 0%;
-              transform-origin: 50% 0%;
-      -webkit-filter: blur(4px);
-              filter: blur(4px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      -webkit-transform-origin: 50% 0%;
-              transform-origin: 50% 0%;
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
-    }
-}
-.enter {
-	-webkit-animation: puff 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	 animation: puff 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.pitch-pos{
+  position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 19rem;
 }
 
 .char{
@@ -116,22 +99,25 @@ body{
     text-align: left;
 }
 .talkbox{
+  position: absolute;
   text-align: left;
-  white-space: pre-line;
   background: #111;
   color: white;
   font-size: 1.7rem;
   padding: 1rem 2rem;
-  position: absolute;
   width: 66vw;
   margin: 0 auto;
   line-height: 2.2rem;
   left: 0;
   right: 0;
-  bottom: -6rem;
+  bottom: 0;
   height: 18rem;
+  overflow-y: auto;
   border: 2px solid white;
   z-index: 10;
+}
+.format{
+  white-space: pre-line;
 }
 
 .edge{
@@ -148,3 +134,29 @@ body{
   right: 2rem;
   margin: 0 auto;
 }
+
+
+@keyframes puff {
+  0% {
+      -webkit-transform: scale(2);
+              transform: scale(2);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+      -webkit-filter: blur(4px);
+              filter: blur(4px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+}
+.enter {
+	-webkit-animation: puff 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	 animation: puff 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+ }

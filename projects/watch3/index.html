@@ -12,37 +12,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+  <img src="img/back.png" class="back" alt="">
   <div ng-controller="mainCtrl">
-    <img src="img/back.png" class="back" alt="">
 
-    <div class="focus-view enter" ng-if="currentDebate.pitch.pitched === false" ng-click="currentDebate.pitch.pitched = true">
-      <span ng-if="currentDebate.pitch.faction === 'CC'">
+    <div class="focus-view" ng-if="currentDebate.pitch.pitched === false" ng-click="currentDebate.pitch.pitched = true">
+      <span class="pitch-pos" ng-if="currentDebate.pitch.faction === 'CC'">
         <p>Clocktoria III</p>
         <img class="pitcher"  src="img/CC.png" alt="">
       </span>
-      <span ng-if="currentDebate.pitch.faction === 'AA'">
+      <span class="pitch-pos" ng-if="currentDebate.pitch.faction === 'AA'">
         <p>Abrams Stovevalve</p>
         <img class="pitcher"  src="img/AA.png" alt="">
       </span>
-      <span ng-if="currentDebate.pitch.faction === 'BB'">
+      <span class="pitch-pos" ng-if="currentDebate.pitch.faction === 'BB'">
         <p>Bella MacGuffin</p>
         <img class="pitcher" src="img/BB.png" alt="">
       </span>
-      <span ng-if="currentDebate.pitch.faction === 'DD'">
+      <span class="pitch-pos" ng-if="currentDebate.pitch.faction === 'DD'">
         <p>Dack Rowley</p>
         <img class="pitcher" src="img/DD.png" alt="">
       </span>
-      <span ng-if="currentDebate.pitch.faction === 'EE'">
+      <span class="pitch-pos" ng-if="currentDebate.pitch.faction === 'EE'">
         <p>Enoch Diptych</p>
         <img class="pitcher" src="img/EE.png" alt="">
       </span>
 
       <div class="talkbox" >
-        <span>{{currentDebate.pitch.desc}}</span>
+        <span class="enter format" style="animation-delay:{{ $index/speed}}s;" ng-repeat="text in currentDebate.pitch.desc track by $index"> {{text}} </span>
       </div>
     </div>
 
-    <div class="focus-view enter" ng-if="currentArgument !== null" ng-click="setCurrentArgument()">
+    <div class="focus-view" ng-if="currentArgument !== null" ng-click="setCurrentArgument()">
       <span ng-if="currentArgument.faction === 'CC'" >
         <p>Clocktoria III</p>
         <img class="pitcher" src="img/CC.png" alt="">
@@ -65,13 +65,13 @@
       </span>
 
       <div class="talkbox">
-        <span ng-if="currentDebate.result === null"> {{currentArgument.desc}} </span>
-        <span ng-if="currentDebate.result === true"> {{currentArgument.descApproved}} </span>
-        <span ng-if="currentDebate.result === false"> {{currentArgument.descRejected}} </span>
+        <span ng-cloak class="enter format" style="animation-delay:{{ $index/speed}}s;" ng-repeat="text in currentArgument.desc  track by $index" ng-if="currentDebate.result === null"> {{text}} </span>
+        <span ng-cloak class="enter format" style="animation-delay:{{ $index/speed}}s;" ng-repeat="text in currentArgument.descApproved  track by $index" ng-if="currentDebate.result === true"> {{text}} </span>
+        <span ng-cloak class="enter format" style="animation-delay:{{ $index/speed}}s;" ng-repeat="text in currentArgument.descRejected  track by $index" ng-if="currentDebate.result === false"> {{text}} </span>
       </div>
     </div>
 
-    <div ng-if="currentDebate.pitch.pitched && currentArgument === null">>
+    <div ng-if="currentDebate.pitch.pitched && currentArgument === null">
       <div class="head">
         <h2> "{{currentDebate.id}}"</h2>
         <p> {{currentDebate.pitch.summary}} </p>
