@@ -26,20 +26,55 @@
           <button type="button" tabindex="-1" ng-click="clear()" name="button">Clear</button>
         </form>
         <ul>
-          <li ng-repeat="item in order | orderBy: '-ini'">
+          <li style="display: flex; align-items: center;" ng-repeat="item in order | orderBy: '-ini'">
+            <div ng-if="!item.ignore" ng-click="item.ignore = true">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="#e8eaed">
+                <path
+                  d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z" />
+              </svg>
+            </div>
+            <div ng-if="item.ignore" ng-click="item.ignore = false">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="#e8eaed">
+                <path
+                  d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
+              </svg>
+            </div>
+            &nbsp;
+            &nbsp;
             <input type="number" placeholder="HP" name="" ng-model="item.hp" value="" style="width:3rem">
+            &nbsp;
+            &nbsp;
             [{{item.ini}}] - {{item.name}}
           </li>
-          </ull>
+        </ul>
 
-          <div ng-if="order.length > 0">
+        <div ng-if="order.length > 0">
+          <br />
+          <br />
+          <details>
+            <summary>Plain list</summary>
+
+            <div id="a">
+              <span ng-repeat="item in order | orderBy: '-ini' | filter:{ignore: '!true'}">[{{item.ini}}] -
+                {{item.name}} <br /></span>
+            </div>
+
             <br />
-            <br />
-            <details>
-              <summary>Plain list</summary>
-              <li ng-repeat="item in order | orderBy: '-ini'">[{{item.ini}}] - {{item.name}}</li>
-            </details>
-          </div>
+            <button onclick="copyDivToClipboard()">copy</button>
+            <script>
+              function copyDivToClipboard() {
+                var range = document.createRange();
+                range.selectNode(document.getElementById("a"));
+                window.getSelection().removeAllRanges(); // clear current selection
+                window.getSelection().addRange(range); // to select text
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();// to deselect
+              }
+            </script>
+          </details>
+        </div>
       </div>
       <div class="flex card">
         <div style="margin: 0 auto;" class="center">
@@ -52,6 +87,13 @@
           <button type="button" ng-click="roll(20)" name="button">D20</button>
           <button type="button" ng-click="roll(100)" name="button">D100</button>
         </div>
+        <input type="number" ng-model="numDice" name="" id="">
+
+        <br/>
+        <div style="display: inline;" ng-repeat="result in diceArr | orderBy: '-val'">{{result.val}}, </div>
+        
+        <br/>
+        <h2 ng-if="diceTot > 0">{{diceTot}}</h2>
       </div>
       <div class="flex card">
         <strong class="rd">Strength:</strong>
