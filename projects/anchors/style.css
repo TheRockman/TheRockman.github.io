@@ -1,0 +1,20 @@
+:root {}
+
+.stage{
+  text-align: center;
+  width: 100vw;
+  padding-top: 15%;
+}
+
+
+.target {
+  position: absolute;
+  position-anchor: --anchor1;
+  position-area: bottom center;
+}
+
+/*HAX*/
+
+#toggle:checked~.control-me {
+  anchor-name: --anchor1;
+}
