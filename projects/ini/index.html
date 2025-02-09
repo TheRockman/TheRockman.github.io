@@ -90,81 +90,158 @@
         </div>
         <input type="number" ng-model="numDice" name="" id="">
 
-        <br/>
+        <br />
         <div style="display: inline;" ng-repeat="result in diceArr | orderBy: '-val'">{{result.val}}, </div>
 
-        <br/>
+        <br />
         <h2 ng-if="diceTot > 0">{{diceTot}}</h2>
       </div>
-      <div class="flex card">
-        <strong class="rd">Strength:</strong>
-        <small>
-          Athletics
-        </small>
-        <br>
-        <strong class="rd">Dexterity:</strong>
-        <small>
-          Acrobatics,
-          Sleight of Hand,
-          Stealth
-        </small>
-        <br>
-        <strong class="rd">Intelligence:</strong>
-        <small>
-          Arcana,
-          History,
-          Investigation,
-          Nature,
-          Religion
-        </small>
-        <br>
-        <strong class="rd">Wisdom:</strong>
-        <small>
-          Animal Handling,
-          Insight,
-          Medicine,
-          Perception,
-          Survival
-        </small>
-        <br>
-        <strong class="rd">Charisma:</strong>
-        <small>
-          Deception,
-          Intimidation,
-          Performance,
-          Persuasion
-        </small>
-        <br>
-        <br>
-        <hr/>
-        <br>
-        <strong class="rd">Arcana:</strong>
-        <small>
-          Aberration, Construct, Elemental, Fey, Monstrosity
-        </small>
-        <br>
-        <strong class="rd">History:</strong>
-        <small>
-          Giant, Humanoid
-        </small>
-        <br>
-        <strong class="rd">Nature:</strong>
-        <small>
-          Beast, Dragon, Ooze, Plant
-        </small>
-        <br>
-        <strong class="rd">Religion:</strong>
-        <small>
-          Celestial, Fiend, Undead
-        </small>
-      </div>
-      <div class="flex card center">
-        {{npc}}
-        <br />
-        {{work}}
-        <hr>
-        <button type="button" ng-click="gen('m')" name="button">M npc</button>
-        <button type="button" ng-click="gen('f')" name="button">F npc</button>
+      <div class="flex">
+        <div class="row flex card">
+          <div>
+            <strong class="rd">Strength:</strong>
+            <small>
+              Athletics
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Dexterity:</strong>
+            <small>
+              Acrobatics,
+              Sleight of Hand,
+              Stealth
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Intelligence:</strong>
+            <small>
+              Arcana,
+              History,
+              Investigation,
+              Nature,
+              Religion
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Wisdom:</strong>
+            <small>
+              Animal Handling,
+              Insight,
+              Medicine,
+              Perception,
+              Survival
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Charisma:</strong>
+            <small>
+              Deception,
+              Intimidation,
+              Performance,
+              Persuasion
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <hr />
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Arcana:</strong>
+            <small>
+              Aberration, Construct, Elemental, Fey, Monstrosity
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">History:</strong>
+            <small>
+              Giant, Humanoid
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Nature:</strong>
+            <small>
+              Beast, Dragon, Ooze, Plant
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Religion:</strong>
+            <small>
+              Celestial, Fiend, Undead
+            </small>
+          </div>
+          &nbsp;
+          &nbsp;
+        </div>
+        <div class="row flex card center">
+          {{npc}}
+          <br />
+          {{work}}
+          <hr>
+          <button type="button" ng-click="gen('m')" name="button">M npc</button>
+          <button type="button" ng-click="gen('f')" name="button">F npc</button>
+        </div>
+        <div class="row flex card">
+          <div>
+            <strong class="rd">Friendly</strong>
+            <p><span class="rd">0:</span>  Wont take risks</p>
+            <p><span class="rd">10:</span>  Take minor risks</p>
+            <p><span class="rd">20:</span>  Take Significant risk</p>
+          </div>
+          &nbsp;
+          &nbsp;
+          <hr/>
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Indifferent</strong>
+            <p>Wont help or harm</p>
+            <p>Wont take risks</p>
+            <p>Take minor risks</p>
+          </div>
+          &nbsp;
+          &nbsp;
+          <hr />
+          &nbsp;
+          &nbsp;
+          <div>
+            <strong class="rd">Hostile</strong>
+            <p>Will try to hinder</p>
+            <p>Wont help or harm</p>
+            <p>Help without risks</p>
+          </div>
+        </div>
+        <div class="row flex card">
+          <div>
+            <img src="iux.webp" alt="">
+          </div>
+          &nbsp;
+          &nbsp;
+          <hr />
+          &nbsp;
+          &nbsp;
+          <div>
+            <img src="iu.webp" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>
