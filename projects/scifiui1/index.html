@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
+  <script type="text/javascript" src="../../angularJs.js"></script>
+  <script type="text/javascript" src="../../ngTouch.js"></script>
+  <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="mainCtrl">
+    
+    <div class="row container">
+      <div class="flex">
+        <div class="slant ">
+          <div class="card" ng-repeat="item in items" ng-click="item.active = !item.active" ng-class="{'active':item.active}">
+           <div class="row">
+              <div class="flex x2">
+                <h2>Blalalala</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat minima cupiditate omnis dolor ipsa illo, rem, cumque repellendus neque suscipit tempore necessitatibus, obcaecati fugit qui corrupti est exercitationem id amet?</p>
+              </div>
+              <div class="flex">
+                <img style="opacity: 0.5;" src="https://freepngimg.com/thumb/logo/87160-of-symbol-character-ice-tshirt-black-fictional-thumb.png" alt="">
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex"></div>
+    </div>
+    <div class="bar">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officiis tempore quos voluptates earum nostrum aspernatur delectus eaque ratione magnam? Rem hic nisi et culpa delectus at voluptate animi aperiam.
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
