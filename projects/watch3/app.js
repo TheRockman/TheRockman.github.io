@@ -49,7 +49,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
         },
         DD: {
           faction: 'DD',
-          desc: "I have no ship in this race.Or rather no knife in this gunfight.While i´ll be the first to tell you that giving the barrel of monkeys explosive bananas is asking for carnage, maybe thats just kick we need.I´ll let you light this fuse entirely on your own mate.",
+          desc: "I have no ship in this race. Or rather no knife in this gunfight. While i´ll be the first to tell you that giving the barrel of monkeys explosive bananas is asking for carnage, maybe thats just kick we need.I´ll let you light this fuse entirely on your own mate.",
           modApproved: 0,
           descApproved: "As i said, i trust you on this.",
           modRejected: 0,
