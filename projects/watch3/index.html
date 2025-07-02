@@ -19,49 +19,82 @@
 
     <!-- HUD -->
     <div class="ranks" ng-if="currentArgument">
-      <div class="panel pointer" ng-click="resetCurrentSpeaker()">
-        back
-      </div>
-
-    </br>
-
       <div class="panel">
-        Clocktoria: {{factions.CC}}
+        <span class="pointer" ng-click="setCurrentArgument('CC')">
+          <span class="bullet" ng-if="currentArgument.faction === 'CC'">•</span>
+          Clocktoria: {{factions.CC}}
+        </span>
         </br>
-        Abrams: {{factions.AA}}
         </br>
-        Bella: {{factions.BB}}
+        <span class="pointer" ng-click="setCurrentArgument('AA')">
+          <span class="bullet" ng-if="currentArgument.faction === 'AA'">•</span>
+          Abrams: {{factions.AA}}
+        </span>
         </br>
-        Dack: {{factions.DD}}
         </br>
-        Enoch: {{factions.EE}}
+        <span class="pointer" ng-click="setCurrentArgument('BB')">
+          <span class="bullet" ng-if="currentArgument.faction === 'BB'">•</span>
+          Bella: {{factions.BB}}
+        </span>
+        </br>
+        </br>
+        <span class="pointer" ng-click="setCurrentArgument('DD')">
+          <span class="bullet" ng-if="currentArgument.faction === 'DD'">•</span>
+          Dack: {{factions.DD}}
+        </span>
+        </br>
+        </br>
+        <span class="pointer" ng-click="setCurrentArgument('EE')">
+          <span class="bullet" ng-if="currentArgument.faction === 'EE'">•</span>
+          Enoch: {{factions.EE}}
+        </span>
       </div>
-
     </div>
 
-    <div ng-cloak class="decider" ng-if="currentDebate.pitch.pitched && currentArgument === null">
-      <h2> "{{currentDebate.id}}"</h2>
-      <p> {{currentDebate.pitch.summary}} </p>
+    <div ng-cloak class="argument-header align jsb">
+      <div>
+        <div class="pointer" ng-if="currentArgument !== null && currentDebate.result === null" ng-click="resetCurrentSpeaker()">
+          back
+        </div>
+      </div>
 
-      <div class="ca">
-        <button type="button" ng-if="currentDebate.result === null" ng-class="{'active': currentDebate.result === true}"
-          ng-click="approve()">
-          YES
-        </button>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <button type="button" ng-if="currentDebate.result === null"
-          ng-class="{'active': currentDebate.result === false}" ng-click="reject()">
-          NO
-        </button>
+      <div>
+        <h2 style="margin-bottom: 5px;"><i>{{currentDebate.id}}</i></h2>
+        <span ng-if="currentDebate.pitch.pitched">
+          <span ng-if="currentDebate.result === false">❌</span>
+          <span ng-if="currentDebate.result === true">⭕</span>
+          
+          {{currentDebate.pitch.summary}}
+        </span>
+        <br />
+        <br />
+        <div class="ca" ng-if="currentDebate.pitch.pitched && currentArgument === null">
+          <button type="button" ng-if="currentDebate.result === null"
+            ng-class="{'active': currentDebate.result === true}" ng-click="approve()">
+            YES
+          </button>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <button type="button" ng-if="currentDebate.result === null"
+            ng-class="{'active': currentDebate.result === false}" ng-click="reject()">
+            NO
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
+          ng-click="currentDebate.pitch.pitched = true">
+          Start
+        </div>
       </div>
     </div>
     <!-- END HUD -->
 
 
     <!-- New Pitch view -->
-    <div ng-if="currentDebate.pitch.pitched === false" ng-click="currentDebate.pitch.pitched = true" class="align">
+    <div ng-if="currentDebate.pitch.pitched === false" class="align wrap bg">
       <div class="relative">
         <img ng-if="currentDebate.pitch.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">
@@ -69,11 +102,12 @@
         <img ng-if="currentDebate.pitch.faction === 'DD'" class="pitcher" src="img/DD.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'EE'" class="pitcher" src="img/EE.png" alt="">
 
-        <p class="center nameplate" ng-if="currentDebate.pitch.faction === 'CC'">Clocktoria III</p>
-        <p class="center nameplate" ng-if="currentDebate.pitch.faction === 'AA'">Abrams Stovevalve</p>
-        <p class="center nameplate" ng-if="currentDebate.pitch.faction === 'BB'">Bella MacGuffin</p>
-        <p class="center nameplate" ng-if="currentDebate.pitch.faction === 'DD'">Dack Rowley</p>
-        <p class="center nameplate" ng-if="currentDebate.pitch.faction === 'EE'">Enoch Diptych</p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'CC'">Clocktoria III</p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'AA'">Abrams Stovevalve</p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'BB'">Bella MacGuffin</p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'DD'">Dack Rowley</p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'EE'">Enoch Diptych</p>
+
       </div>
 
       <div class="talkbox">
@@ -87,25 +121,37 @@
     <!-- Hearing view -->
     <div ng-if="currentDebate.pitch.pitched && currentArgument === null">
       <div ng-if="currentDebate.pitch.pitched && currentArgument === null" class="align jsb" style="padding: 0 1rem;">
-        <span class="center pointer" ng-click="setCurrentArgument('CC')" ng-class="{'speaker': currentSpeaker === 'CC'}">
+
+
+        <span class="center pointer" ng-click="setCurrentArgument('CC')"
+          ng-class="{'speaker': currentSpeaker === 'CC'}">
+          <img class="framed-portrait" src="img/CC.png" alt="">
           <p>Clocktoria III</p>
-          {{factions.CC}}
+          <p>{{factions.CC}}</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('AA')" ng-class="{'speaker': currentSpeaker === 'AA'}">
+        <span class="center pointer" ng-click="setCurrentArgument('AA')"
+          ng-class="{'speaker': currentSpeaker === 'AA'}">
+          <img class="framed-portrait" src="img/AA.png" alt="">
           <p>Abrams Stovevalve</p>
-          {{factions.AA}}
+          <p>{{factions.AA}}</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('BB')" ng-class="{'speaker': currentSpeaker === 'BB'}">
+        <span class="center pointer" ng-click="setCurrentArgument('BB')"
+          ng-class="{'speaker': currentSpeaker === 'BB'}">
+          <img class="framed-portrait" src="img/BB.png" alt="">
           <p>Bella MacGuffin</p>
-          {{factions.BB}}
+          <p>{{factions.BB}}</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('DD')" ng-class="{'speaker': currentSpeaker === 'DD'}">
+        <span class="center pointer" ng-click="setCurrentArgument('DD')"
+          ng-class="{'speaker': currentSpeaker === 'DD'}">
+          <img class="framed-portrait" src="img/DD.png" alt="">
           <p>Dack Rowley</p>
-          {{factions.DD}}
+          <p>{{factions.DD}}</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('EE')" ng-class="{'speaker': currentSpeaker === 'EE'}">
+        <span class="center pointer" ng-click="setCurrentArgument('EE')"
+          ng-class="{'speaker': currentSpeaker === 'EE'}">
+          <img class="framed-portrait" src="img/EE.png" alt="">
           <p>Enoch Diptych</p>
-          {{factions.EE}}
+          <p>{{factions.EE}}</p>
         </span>
       </div>
     </div>
@@ -114,7 +160,10 @@
 
 
     <!-- Argument view -->
-    <div class="align" ng-if="currentArgument !== null && currentDebate.result === null">
+    <div class="align wrap bg {{currentSpeaker}}" ng-if="
+      (currentArgument !== null && currentDebate.result === null) ||
+      (currentArgument !== null && currentDebate.result !== null)
+      ">
       <div class="relative">
         <img ng-if="currentArgument.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
         <img ng-if="currentArgument.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">
@@ -122,52 +171,34 @@
         <img ng-if="currentArgument.faction === 'DD'" class="pitcher" src="img/DD.png" alt="">
         <img ng-if="currentArgument.faction === 'EE'" class="pitcher" src="img/EE.png" alt="">
 
-        <p class="center nameplate" ng-if="currentArgument.faction === 'CC'">Clocktoria III</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'AA'">Abrams Stovevalve</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'BB'">Bella MacGuffin</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'DD'">Dack Rowley</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'EE'">Enoch Diptych</p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'CC'">Clocktoria III</p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'AA'">Abrams Stovevalve</p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'BB'">Bella MacGuffin</p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'DD'">Dack Rowley</p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'EE'">Enoch Diptych</p>
       </div>
 
-      <div class="talkbox">
-        <span ng-cloak>
-          {{currentArgument.desc}}
-        </span>
+      <div class="talkbox" ng-if="currentArgument !== null && currentDebate.result === null">
+        {{currentArgument.desc}}
       </div>
+
+      <div class="talkbox"
+        ng-if="(currentArgument !== null && currentDebate.result !== null) && currentDebate.result === true">
+        {{currentArgument.descApproved}}
+      </div>
+
+      <div class="talkbox"
+        ng-if="((currentArgument !== null && currentDebate.result !== null)) && currentDebate.result === false">
+        {{currentArgument.descRejected}}
+      </div>
+
     </div>
-    <!-- END Argument view -->
-
-
-
-    <!-- Result view -->
-    <div class="align" ng-if="currentArgument !== null && currentDebate.result !== null">
-      <div >
-        <img ng-if="currentArgument.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
-        <img ng-if="currentArgument.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">
-        <img ng-if="currentArgument.faction === 'BB'" class="pitcher" src="img/BB.png" alt="">
-        <img ng-if="currentArgument.faction === 'DD'" class="pitcher" src="img/DD.png" alt="">
-        <img ng-if="currentArgument.faction === 'EE'" class="pitcher" src="img/EE.png" alt="">
-
-        <p class="center nameplate" ng-if="currentArgument.faction === 'CC'">Clocktoria III</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'AA'">Abrams Stovevalve</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'BB'">Bella MacGuffin</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'DD'">Dack Rowley</p>
-        <p class="center nameplate" ng-if="currentArgument.faction === 'EE'">Enoch Diptych</p>
-      </div>
-
-      <div class="talkbox">
-        <span ng-cloak ng-if="currentDebate.result === true">
-          {{currentArgument.descApproved}}
-        </span>
-        <span ng-cloak ng-if="currentDebate.result === false">
-          {{currentArgument.descRejected}}
-        </span>
-      </div>
-    </div>
-    <!-- END Arguments view -->
+  </div>
+  <!-- END Argument view -->
 
   </div>
 </body>
+
 <script type="text/javascript" src="app.js"></script>
 
 </html>
