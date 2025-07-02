@@ -21,31 +21,31 @@
     <div class="ranks" ng-if="currentArgument">
       <div class="panel">
         <span class="pointer" ng-click="setCurrentArgument('CC')">
-          <span class="bullet" ng-if="currentArgument.faction === 'CC'">•</span>
+          <span class="bullet" ng-if="currentArgument.faction === 'CC'">🔹</span>
           Clocktoria: {{factions.CC}}
         </span>
         </br>
         </br>
         <span class="pointer" ng-click="setCurrentArgument('AA')">
-          <span class="bullet" ng-if="currentArgument.faction === 'AA'">•</span>
+          <span class="bullet" ng-if="currentArgument.faction === 'AA'">🔹</span>
           Abrams: {{factions.AA}}
         </span>
         </br>
         </br>
         <span class="pointer" ng-click="setCurrentArgument('BB')">
-          <span class="bullet" ng-if="currentArgument.faction === 'BB'">•</span>
+          <span class="bullet" ng-if="currentArgument.faction === 'BB'">🔹</span>
           Bella: {{factions.BB}}
         </span>
         </br>
         </br>
         <span class="pointer" ng-click="setCurrentArgument('DD')">
-          <span class="bullet" ng-if="currentArgument.faction === 'DD'">•</span>
+          <span class="bullet" ng-if="currentArgument.faction === 'DD'">🔹</span>
           Dack: {{factions.DD}}
         </span>
         </br>
         </br>
         <span class="pointer" ng-click="setCurrentArgument('EE')">
-          <span class="bullet" ng-if="currentArgument.faction === 'EE'">•</span>
+          <span class="bullet" ng-if="currentArgument.faction === 'EE'">🔹</span>
           Enoch: {{factions.EE}}
         </span>
       </div>
@@ -54,7 +54,7 @@
     <div ng-cloak class="argument-header align jsb">
       <div>
         <div class="pointer" ng-if="currentArgument !== null && currentDebate.result === null" ng-click="resetCurrentSpeaker()">
-          back
+          &nbsp; Back ↩
         </div>
       </div>
 
@@ -81,12 +81,14 @@
             NO
           </button>
         </div>
+        <br />
+        <br />
       </div>
 
       <div>
         <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
           ng-click="currentDebate.pitch.pitched = true">
-          Start
+          ↪ Start
         </div>
       </div>
     </div>
