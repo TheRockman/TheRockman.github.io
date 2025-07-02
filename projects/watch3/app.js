@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope, $timeout) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function ($scope, $timeout) {
 
   $scope.factions = {
     AA: 5,
@@ -8,15 +8,30 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     EE: 5
   }
 
-  $scope.speed = 8;
+  $scope.metaStats = {
+    exp: 10,
+    popularity: 10,
+    power: 10
+  }
+
+  $scope.eventFlags = {
+    argumentHistory: {}
+  }
+
   $scope.currentArgument = null;
   $scope.currentDebate = null;
   $scope.currentSpeaker = null;
 
-  $scope.debates = [
+  const originalDebates = [
     {
       id: "A farewell to arms",
+      idShort: 'farewell_to_arms',
       result: null,
+      metaStats: {
+        exp: 100,
+        power: 100,
+        popularity: -100
+      },
       pitch: {
         pitched: false,
         faction: "AA",
@@ -43,9 +58,9 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
         CC: {
           faction: 'CC',
           desc: 'Absolutely unthinkable!\nOur fighters are alreday risking life and limb facing the enemy.\n"Singed eyebrows"? Blasted apart more likely.\nThe last thing they need is for their own weapons to jam or heaven forbid blow them into smithereens.',
-          modApproved: -5,
+          modApproved: -4,
           descApproved: "These are indeed dark times, where lives on either side of a trench are so easily gambled.",
-          modRejected: 5,
+          modRejected: 4,
           descRejected: "Empathy. Thats how we will win not only this war but rightfully earning the victory and peace that follows.",
         },
         DD: {
@@ -65,49 +80,146 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
           descRejected: "Splendid Sir! We´ll show them a proper old fashioned thrashing they´ll soon forget.All done right and by the book.",
         },
       }
-    }
+    },
+    {
+      id: "A hard days work",
+      idShort: 'hard_days_work',
+      result: null,
+      metaStats: {
+        exp: 100,
+        power: 100,
+        popularity: -100
+      },
+      pitch: {
+        pitched: false,
+        faction: "EE",
+        desc: "Sir!\nI have discovered a clerical error that should be simple enough to correct.\nThere are a number of holy days that are currently not officcially marked as rest days.\nShould be a simple enough problem to solve.",
+        summary: "Should we add more rest days for your people, possibly lowering production.",
+      },
+      arguments: {
+        AA: {
+          faction: 'AA',
+          desc: "Frankly i dont see the point in change a thing.\nNo wait!\nWe should reduce the rest days we have already to increase production!",
+          modApproved: -1,
+          descApproved: "If anyone comes whining to me about this when munitions run low I will just tell them im having a religious holidy.",
+          modRejected: 2,
+          descRejected: "Good. Im already drafting a suggestion to abolish rest days all together.",
+        },
+        BB: {
+          faction: 'BB',
+          desc: "Relaxation is an important factor for quality work.\nHowever, basing something like that on archaic theology seems suboptimal.\nI would rather see a scientific inquery into what days would give the greatest return as rest days.",
+          modApproved: -1,
+          descApproved: "There is a non-zero chance traditions are tested by reality to the point that they match up to theory - lets find out.",
+          modRejected: 1,
+          descRejected: "A smart decicion. Giving rights like these should not be done without evidence.",
+        },
+        CC: {
+          faction: 'CC',
+          desc: 'Obviously the working man and woman should be well rested!\nWhile i dont look to religion myself, i think its a splendid device to make sure the common man remembers to relax and unwind.',
+          modApproved: 5,
+          descApproved: "With the workers enjoying the holy days, we will have to re-double our efforts to keep them safe.",
+          modRejected: -5,
+          descRejected: "The term heartbroken doesnt sit right for someone without a real heart, but it is the closest to how i feel hearing this.",
+        },
+        DD: {
+          faction: 'DD',
+          desc: "A ship cant set sail if the crew is sleeping in, but neither if they are whipped into unconciousnes.\nLet the men rest a bit i say.",
+          modApproved: 2,
+          descApproved: "And with that on the books, i think i will go enjoy a bit of a holy day myself. In my bunkroom.",
+          modRejected: -1,
+          descRejected: "'And down came the whip, with a crack and a smack.\nAnchors away on that ship, to the horizon and back.\nAnd beyond! ... '",
+        },
+        EE: {
+          faction: 'EE',
+          desc: "As i said, a simple correction sir, barely worth thinking about.",
+          modApproved: 4,
+          descApproved: "Praise be the shapers.",
+          modRejected: -7,
+          descRejected: "This is akin to heresy, i say. Inconceivable!",
+        },
+      }
+    },
   ];
 
-  $scope.setCurrentDebate = function(debate) {
+  $scope.debates = JSON.parse(JSON.stringify(originalDebates));
+
+  $scope.setCurrentDebate = function (debate) {
     if (!debate) {
       $scope.currentDebate = null;
     }
     $scope.currentDebate = debate;
   };
 
-  $scope.resetCurrentSpeaker = function() {
+  $scope.resetCurrentSpeaker = function () {
     $scope.currentSpeaker = null;
     $scope.currentArgument = null;
   };
-  
-  $scope.setCurrentArgument = function(argument) {
+
+  $scope.setCurrentArgument = function (argument) {
     if (!argument) {
       $scope.currentArgument = null;
     }
     $scope.currentSpeaker = argument.toString();
     $scope.currentArgument = $scope.currentDebate.arguments[argument];
   };
-  
-  $scope.approve = function(){
+
+  function mergeMeta(objA, objB) {
+    let mergedObj = {};
+    Object.keys(objA).forEach(key => {
+      mergedObj[key] = objA[key] + (objB[key] || 0);
+    });
+
+    Object.keys(objB).filter(key => mergedObj[key] === undefined).forEach(key => (
+      mergedObj[key] = objB[key]
+    ));
+
+    $scope.metaStats = mergedObj;
+    console.log($scope.metaStats);
+    console.log($scope.eventFlags.argumentHistory);
+  }
+
+  $scope.approve = function () {
     $scope.factions.AA = $scope.factions.AA + $scope.currentDebate.arguments.AA.modApproved;
     $scope.factions.BB = $scope.factions.BB + $scope.currentDebate.arguments.BB.modApproved;
     $scope.factions.CC = $scope.factions.CC + $scope.currentDebate.arguments.CC.modApproved;
     $scope.factions.DD = $scope.factions.DD + $scope.currentDebate.arguments.DD.modApproved;
     $scope.factions.EE = $scope.factions.EE + $scope.currentDebate.arguments.EE.modApproved;
+
     $scope.currentDebate.result = true;
+    $scope.eventFlags.argumentHistory[$scope.currentDebate.idShort] = true;
+    mergeMeta($scope.currentDebate.metaStats, $scope.metaStats);
     $scope.setCurrentArgument($scope.currentDebate.pitch.faction);
   };
-  
-  $scope.reject = function(){
+
+  $scope.reject = function () {
     $scope.factions.AA = $scope.factions.AA + $scope.currentDebate.arguments.AA.modRejected;
     $scope.factions.BB = $scope.factions.BB + $scope.currentDebate.arguments.BB.modRejected;
     $scope.factions.CC = $scope.factions.CC + $scope.currentDebate.arguments.CC.modRejected;
     $scope.factions.DD = $scope.factions.DD + $scope.currentDebate.arguments.DD.modRejected;
     $scope.factions.EE = $scope.factions.EE + $scope.currentDebate.arguments.EE.modRejected;
+
     $scope.currentDebate.result = false;
+    $scope.eventFlags.argumentHistory[$scope.currentDebate.idShort] = false;
+    mergeMeta($scope.currentDebate.metaStats, $scope.metaStats);
     $scope.setCurrentArgument($scope.currentDebate.pitch.faction);
   }
-  
-  $scope.setCurrentDebate($scope.debates[0]);
+
+
+  $scope.startNextDebate = function() {
+    //Filter out current debate
+    $scope.debates = $scope.debates.filter(function (item) {
+      return item.idShort != $scope.currentDebate.idShort;
+    });
+
+    //reset
+    $scope.currentDebate = {};
+    $scope.currentArgument = null;
+    $scope.currentSpeaker = null;
+
+    // pick next random debate
+    $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length) + 0]);
+  }
+
+  $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length) + 0 ]);
 });
 //['ngTouch', 'angular-carousel']

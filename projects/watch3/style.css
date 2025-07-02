@@ -9,7 +9,8 @@ body {
 
 .panel {
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 0.1rem 0.1rem rgb(250, 188, 117));
+  background: #222;
   border-radius: 8px;
 }
 
@@ -75,8 +76,13 @@ body {
   clip-path: polygon(50% 0%, 100% 0, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 0 0);
   transition: 0.5s all ease;
 }
-.pointer:hover > .framed-portrait {
+
+.pointer:hover>.framed-portrait {
   filter: drop-shadow(0 0.4rem 1rem rgba(255, 255, 255, 1));
+}
+
+.spacerBtn {
+  width: 5rem;
 }
 
 .nameplate {
@@ -91,10 +97,11 @@ body {
 }
 
 .talkbox {
+  filter: drop-shadow(0 0.1rem 0.1rem rgb(250, 188, 117));
+  background: #222;
   animation: slide-in-bottom 0.2s 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   position: relative;
   white-space: pre-line;
-  background: rgba(0, 0, 0, 0.8);
   border-radius: .4em;
   padding: 1rem;
   padding-top: 0;
@@ -110,11 +117,15 @@ body {
   width: 0;
   height: 0;
   border: 33px solid transparent;
-  border-right-color: rgba(0, 0, 0, 0.8);
+  border-right-color: #222;
   border-left: 0;
   border-top: 0;
   margin-top: -16.5px;
   margin-left: -33px;
+}
+
+.hearing {
+  padding: 0 1rem;
 }
 
 .bg {
@@ -126,19 +137,23 @@ body {
   transition: 1s background-position ease;
 }
 
-.bg.CC{
+.bg.CC {
   background-position: -4rem 0;
 }
-.bg.AA{
+
+.bg.AA {
   background-position: -3rem 0;
 }
-.bg.BB{
+
+.bg.BB {
   background-position: -2rem 0;
 }
-.bg.DD{
+
+.bg.DD {
   background-position: -1rem 0;
 }
-.bg.EE{
+
+.bg.EE {
   background-position: 0rem 0;
 }
 
@@ -173,6 +188,10 @@ body {
 
 
 @media only screen and (max-width: 780px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .wrap {
     display: block;
   }
@@ -184,7 +203,15 @@ body {
     animation: unset;
   }
 
-  .ranks{
+  .pitcher {
+    max-width: 80%;
+  }
+
+  .hearing {
+    padding: 0;
+  }
+
+  .ranks {
     top: 30%;
   }
 

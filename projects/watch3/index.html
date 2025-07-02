@@ -52,9 +52,10 @@
     </div>
 
     <div ng-cloak class="argument-header align jsb">
-      <div>
-        <div class="pointer" ng-if="currentArgument !== null && currentDebate.result === null" ng-click="resetCurrentSpeaker()">
-          &nbsp; Back ↩
+      <div class="spacerBtn">
+        <div class="panel pointer" ng-if="currentArgument !== null && currentDebate.result === null" ng-click="resetCurrentSpeaker()">
+          ↩ <br/>
+          Back 
         </div>
       </div>
 
@@ -68,16 +69,14 @@
         </span>
         <br />
         <br />
-        <div class="ca" ng-if="currentDebate.pitch.pitched && currentArgument === null">
-          <button type="button" ng-if="currentDebate.result === null"
-            ng-class="{'active': currentDebate.result === true}" ng-click="approve()">
+        <div class="ca" ng-if="currentDebate.pitch.pitched && currentDebate.result === null">
+          <button type="button" ng-class="{'active': currentDebate.result === true}" ng-click="approve()">
             YES
           </button>
           &nbsp;
           &nbsp;
           &nbsp;
-          <button type="button" ng-if="currentDebate.result === null"
-            ng-class="{'active': currentDebate.result === false}" ng-click="reject()">
+          <button type="button" ng-class="{'active': currentDebate.result === false}" ng-click="reject()">
             NO
           </button>
         </div>
@@ -85,10 +84,16 @@
         <br />
       </div>
 
-      <div>
+      <div class="spacerBtn">
         <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
           ng-click="currentDebate.pitch.pitched = true">
-          ↪ Start
+          ↪ <br/>
+          Proceed
+        </div>
+        <div class="panel pointer" ng-if="currentDebate.result !== null"
+          ng-click="startNextDebate()">
+          ↪ <br/>
+          Proceed
         </div>
       </div>
     </div>
@@ -122,8 +127,7 @@
 
     <!-- Hearing view -->
     <div ng-if="currentDebate.pitch.pitched && currentArgument === null">
-      <div ng-if="currentDebate.pitch.pitched && currentArgument === null" class="align jsb" style="padding: 0 1rem;">
-
+      <div ng-if="currentDebate.pitch.pitched && currentArgument === null" class="hearing align jsb">
 
         <span class="center pointer" ng-click="setCurrentArgument('CC')"
           ng-class="{'speaker': currentSpeaker === 'CC'}">
