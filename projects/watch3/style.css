@@ -23,7 +23,7 @@ body {
   z-index: 10;
 }
 
-.ranks > .panel{
+.ranks>.panel {
   border-radius: 0;
   border-bottom-right-radius: 8px;
 }
@@ -243,13 +243,40 @@ body {
   }
 }
 
+.hideOnDesktop {
+  display: none;
+}
+
 @media only screen and (max-width: 780px) {
   body {
     overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .hideOnDesktop {
+    display: inherit;
+  }
+
+  .hideOnMobile {
+    display: none;
+  }
+
+  .ranks {
+    right: 0;
+    left: unset;
+  }
+
+  .ranks>.panel {
+    border-radius: 0;
+    border-bottom-left-radius: 8px;
   }
 
   .wrap {
     display: block;
+  }
+
+  .argumentSummary {
+    padding: 0 1rem;
   }
 
   .talkbox {

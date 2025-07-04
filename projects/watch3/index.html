@@ -52,7 +52,7 @@
     </div>
 
     <div ng-cloak class="argument-header align jsb">
-      <div class="spacerBtn">
+      <div class="spacerBtn hideOnMobile">
         <div class="panel pointer" ng-if="currentArgument !== null && currentDebate.result === null"
           ng-click="resetCurrentSpeaker()">
           ↩ <br />
@@ -60,11 +60,11 @@
         </div>
       </div>
 
-      <div>
-        <h2 style="margin-bottom: 5px;"><i>{{currentDebate.id}}</i></h2>
+      <div class="argumentSummary">
+        <h2 style="margin-bottom: 5px;">
+          <i>{{currentDebate.id}}</i>
+        </h2>
         <span ng-if="currentDebate.pitch.pitched">
-          <span ng-if="currentDebate.result === false">❌</span>
-          <span ng-if="currentDebate.result === true">⭕</span>
           {{currentDebate.pitch.summary}}
         </span>
         <br />
@@ -80,22 +80,47 @@
             NO
           </button>
         </div>
+        <div ng-if="currentDebate.pitch.pitched && currentDebate.result !== null">
+          <span ng-if="currentDebate.result === false">❌</span>
+          <span ng-if="currentDebate.result === true">⭕</span>
+        </div>
         <br />
         <br />
       </div>
 
-      <div class="spacerBtn">
-        <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
-          ng-click="currentDebate.pitch.pitched = true">
+      <div class="spacerBtn hideOnMobile">
+        <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false" ng-click="currentDebate.pitch.pitched = true">
           ↪ <br />
           Proceed
         </div>
-        <div class="panel pointer" ng-if="currentDebate.result !== null && debates.length > 0"
-          ng-click="startNextDebate()">
+        <div class="panel pointer" ng-if="currentDebate.result !== null && debates.length > 0" ng-click="startNextDebate()">
           ↪ <br />
           Proceed
         </div>
       </div>
+
+      <div class="hideOnDesktop align jsb">
+        <div class="spacerBtn" ng-if="currentArgument !== null && currentDebate.result === null">
+          <div class="panel pointer" 
+            ng-click="resetCurrentSpeaker()">
+            ↩ <br />
+            Back
+          </div>
+        </div>
+        <div>
+          <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
+            ng-click="currentDebate.pitch.pitched = true">
+            ↪ <br />
+            Proceed
+          </div>
+          <div class="panel pointer" ng-if="currentDebate.result !== null && debates.length > 0"
+            ng-click="startNextDebate()">
+            ↪ <br />
+            Proceed
+          </div>
+        </div>
+      </div>
+      
     </div>
     <!-- END HUD -->
 
@@ -109,11 +134,16 @@
         <img ng-if="currentDebate.pitch.faction === 'DD'" class="pitcher" src="img/DD.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'EE'" class="pitcher" src="img/EE.png" alt="">
 
-        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'CC'">Clocktoria III <br /><small>Head doctor at the Gearspring hospital</small></p>
-        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'AA'">Abrams Stovevalve <br /><small>CEO of Stovevale industries LLC</small></p>
-        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'BB'">Bella MacGuffin <br /><small>Head scientist at the Sprocket science center</small></p>
-        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'DD'">Dack Rowley <br /><small>Honored fellow of the adventurers guild</small></p>
-        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'EE'">Enoch Diptych <br /><small>Lord master of tradition and cermony</small></p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'CC'">Clocktoria III <br /><small>Head doctor at the
+            Gearspring hospital</small></p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'AA'">Abrams Stovevalve <br /><small>CEO of
+            Stovevale industries LLC</small></p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'BB'">Bella MacGuffin <br /><small>Head scientist at
+            the Sprocket science center</small></p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'DD'">Dack Rowley <br /><small>Honored fellow of the
+            adventurers guild</small></p>
+        <p class="nameplate" ng-if="currentDebate.pitch.faction === 'EE'">Enoch Diptych <br /><small>Lord master of
+            tradition and cermony</small></p>
 
       </div>
 
@@ -177,11 +207,16 @@
         <img ng-if="currentArgument.faction === 'DD'" class="pitcher" src="img/DD.png" alt="">
         <img ng-if="currentArgument.faction === 'EE'" class="pitcher" src="img/EE.png" alt="">
 
-        <p class="nameplate" ng-if="currentArgument.faction === 'CC'">Clocktoria III <br /><small>Head doctor at the Gearspring hospital</small></p>
-        <p class="nameplate" ng-if="currentArgument.faction === 'AA'">Abrams Stovevalve <br /><small>CEO of Stovevale industries LLC</small></p>
-        <p class="nameplate" ng-if="currentArgument.faction === 'BB'">Bella MacGuffin <br /><small>Head scientist at the Sprocket science center</small></p>
-        <p class="nameplate" ng-if="currentArgument.faction === 'DD'">Dack Rowley <br /><small>Honored fellow of the adventurers guild</small></p>
-        <p class="nameplate" ng-if="currentArgument.faction === 'EE'">Enoch Diptych <br /><small>Lord master of tradition and cermony</small></p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'CC'">Clocktoria III <br /><small>Head doctor at the
+            Gearspring hospital</small></p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'AA'">Abrams Stovevalve <br /><small>CEO of Stovevale
+            industries LLC</small></p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'BB'">Bella MacGuffin <br /><small>Head scientist at the
+            Sprocket science center</small></p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'DD'">Dack Rowley <br /><small>Honored fellow of the
+            adventurers guild</small></p>
+        <p class="nameplate" ng-if="currentArgument.faction === 'EE'">Enoch Diptych <br /><small>Lord master of
+            tradition and cermony</small></p>
       </div>
 
       <div class="talkbox" ng-if="currentArgument !== null && currentDebate.result === null">
