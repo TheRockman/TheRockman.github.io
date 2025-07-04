@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function ($scope, $timeout) {
+var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function ($scope) {
 
   $scope.factions = {
     AA: 5,
@@ -21,6 +21,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.currentArgument = null;
   $scope.currentDebate = null;
   $scope.currentSpeaker = null;
+
+  $scope.currentConsequences = [];
 
   const originalDebates = [
     {
@@ -140,8 +142,46 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       }
     },
   ];
-
   $scope.debates = JSON.parse(JSON.stringify(originalDebates));
+
+  $scope.consequences = [
+    {
+      condition: '$scope.factions.AA < 1',
+      title: 'Abrams Stovevalve is outraged',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+    },
+    {
+      condition: '$scope.factions.BB < 1',
+      title: 'Bella MacGuffin is outraged',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+    },
+    {
+      condition: '$scope.factions.CC < 1',
+      title: 'Clocktoria III is outraged',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+    },
+    {
+      condition: '$scope.factions.DD < 1',
+      title: 'Dack Rowley is outraged',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+    },
+    {
+      condition: '$scope.factions.EE < 1',
+      title: 'Enoch Diptych is outraged',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+    },
+    {
+      condition: '$scope.metaStats.popularity < 1',
+      title: 'Your popularity rating is dire',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      bg: 'https://assets.moxfield.net/cards/card-kydJr-art_crop.jpg'
+    },
+  ];
 
   $scope.setCurrentDebate = function (debate) {
     if (!debate) {
@@ -204,8 +244,30 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.setCurrentArgument($scope.currentDebate.pitch.faction);
   }
 
+  $scope.checkForConsequences = function () {
+    $scope.currentConsequences = [];
+    for (let i = 0; i < $scope.consequences.length; i++) {
+      let cons = $scope.consequences[i];
+      if (eval(cons.condition)) {
+        $scope.currentConsequences.push(cons);
+      }  
+    }
 
-  $scope.startNextDebate = function() {
+    if ($scope.currentConsequences.length < 1) {
+      $scope.currentConsequences = [];
+    }
+  };
+
+  $scope.acknowledgeConsequence = function (con) {
+    $scope.currentConsequences = $scope.currentConsequences.filter(function (item) {
+      return item != con;
+    });
+    $scope.consequences = $scope.consequences.filter(function (item) {
+      return item != con;
+    });
+  }
+
+  $scope.startNextDebate = function () {
     //Filter out current debate
     $scope.debates = $scope.debates.filter(function (item) {
       return item.idShort != $scope.currentDebate.idShort;
@@ -216,10 +278,15 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     $scope.currentArgument = null;
     $scope.currentSpeaker = null;
 
-    // pick next random debate
-    $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length) + 0]);
-  }
+    $scope.checkForConsequences();
 
-  $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length) + 0 ]);
+    // pick next random debate
+    if ($scope.debates.length > 0) {
+      $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length) + 0]);
+    }
+
+  };
+
+  $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length) + 0]);
 });
 //['ngTouch', 'angular-carousel']
