@@ -17,7 +17,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
 
       if (
         (element && element !== '' && !element.includes(' PM') && !element.includes('AM')) &&
-        (element === "Initiative: roll")
+        (element === "Initiative: roll" || element === "INITIATIVE: roll")
       ) {
         output.push({
           hp: null,
