@@ -15,18 +15,32 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     for (let i = 0; i < $scope.pasteDump.split("\n").length; i++) {
       const element = $scope.pasteDump.split("\n")[i];
 
-      if (
-        (element && element !== '' && !element.includes(' PM') && !element.includes('AM')) &&
-        (element === "Initiative: roll" || element === "INITIATIVE: roll")
-      ) {
+      if (element.includes('Initiative: roll')) {
+        let dataObj = {
+          result: 0,
+          character: $scope.pasteDump.split("\n")[i-1]
+        }
+
+        const roll = $scope.pasteDump.split("\n")[i +1]
+        if (roll.includes('(')) {
+          // console.log('roll is complex: ', roll);
+          dataObj.result = parseInt($scope.pasteDump.split("\n")[i + 4]);
+        } else if (roll.includes('+')){
+          dataObj.result = parseInt(eval(roll));
+          // console.log('roll is simple: ', roll);
+        } else {
+          dataObj.result = parseInt(roll);
+          // console.log('roll is flat: ', roll);
+        }
+
         output.push({
           hp: null,
-          ini: parseInt($scope.pasteDump.split("\n")[i + 1]),
-          name: $scope.pasteDump.split("\n")[i - 1]
+          ini: dataObj.result,
+          name: dataObj.character
         });
+      
       }
     }
-
 
     for (let j = 0; j < output.length; j++) {
       $scope.order.push(output[j]);

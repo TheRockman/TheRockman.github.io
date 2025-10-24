@@ -16,24 +16,29 @@
 <body>
   <div ng-controller="mainCtrl">
     <div class="row">
-      <div class="flex card">
-        <details>
-          <summary>Beta Paste feat</summary>
-          <form ng-submit="parsePasteDump()" class="align">
-            <textarea id="dump" ng-model="pasteDump" ></textarea>
-            <button type="submit" name="button">Parse</button>
-          </form>
-        </details>
-
-
-        <form class="" ng-submit="addToOrder()">
-          <input class="iniPut" type="text" id="myTextField" placeholder="Name" name="" value="" ng-model="form.name">
-          <input class="iniPut" type="number" placeholder="Initiative" name="" value="" ng-model="form.ini">
-          <input class="iniPut" type="number" placeholder="HP" name="" value="" ng-model="form.hp">
-          <br>
-          <button type="submit" name="button">add</button>
-          <button type="button" tabindex="-1" ng-click="clear()" name="button">Clear</button>
+      <div class="flex card relative">
+        <strong>Dump</strong>
+        <form ng-submit="parsePasteDump()">
+          <textarea placeholder="Paste area" style="width: 98%; background-color: #21252b!important; color: #cacaca;" id="dump" ng-model="pasteDump"></textarea>
+          <br/>
+          <button style="width: 100%; padding: 0.5rem;" type="submit" name="button">Parse</button>
         </form>
+        <br/>
+        <hr/>
+        <strong> Manual</strong>
+        <form class="" ng-submit="addToOrder()">
+          <input style="width: 90%;" class="iniPut" type="text" id="myTextField" placeholder="Name" name="" value="" ng-model="form.name">
+          <br/>
+          <br/>
+          <input style="width: 90%;" class="iniPut" type="number" placeholder="Initiative" name="" value="" ng-model="form.ini">
+          <br />
+          <br />
+          <input style="width: 90%;" class="iniPut" type="number" placeholder="HP" name="" value="" ng-model="form.hp">
+          <br>
+          <br>
+          <button style="width: 100%; padding: 0.5rem;" type="submit" name="button">add</button>
+         
+        
         <ul>
           <li style="display: flex; align-items: center;" ng-repeat="item in order | orderBy: '-name'">
             <div ng-if="!item.ignore" ng-click="item.ignore = true">
@@ -67,12 +72,23 @@
             <summary>Plain list</summary>
 
             <div id="a">
-              <span ng-repeat="item in order | orderBy: '-ini' | filter:{ignore: '!true'}">[{{item.ini}}] -
-                {{item.name}} <br /></span>
+              <span ng-repeat="item in order | orderBy: '-ini' | filter:{ignore: '!true'}" ng-if="item.ini">
+                [{{item.ini}}] - {{item.name}} <br />
+              </span>
             </div>
 
             <br />
-            <button onclick="copyDivToClipboard()">copy</button>
+
+          </details>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <hr/>
+        <div class="align jsb">
+            <button onclick="copyDivToClipboard()">Copy</button>
             <script>
               function copyDivToClipboard() {
                 var range = document.createRange();
@@ -83,8 +99,10 @@
                 window.getSelection().removeAllRanges();// to deselect
               }
             </script>
-          </details>
+
+            <button type="button" style="background-color: tomato;" tabindex="-1" ng-click="clear()" name="button">Erase all</button>
         </div>
+        </form>
       </div>
       <div class="flex card">
         <div style="margin: 0 auto;" class="center">
