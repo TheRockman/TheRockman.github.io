@@ -29,11 +29,10 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
 
     $scope.view = 'yard';
     $scope.copyStyle = {
-      "opacity": "0",
-      "top": "0rem",
-      "left": "0rem"
+        "opacity": "0",
     }
     $scope.buildStats;
+    $scope.buildSummary;
     $scope.originalBuildStats = {
         beauty: 0,
         speed: 0,
@@ -41,6 +40,14 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
         specialKeys: {
 
         }
+    }
+
+    $scope.setSnap = function () {
+        let p = document.getElementById("build");
+        let p_prime = p.cloneNode(true);
+        $scope.buildSummary = p_prime;
+        let element = document.getElementById("buildCopy");
+        element.replaceChildren(...$scope.buildSummary.childNodes);
     }
 
     $scope.gatherStats = function () {
@@ -60,54 +67,43 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
         }
     }
 
-    $scope.setView = function (destination, resetPosition) {
-        if (resetPosition){
-            $scope.mapX = 0;
-            $scope.mapY = 0;
-        }
-        $scope.view = destination;
-
+    $scope.setView = function (destination) {
 
         switch (destination) {
-          case 'world':
-            $scope.copyStyle = {
-              "opacity": "0",
-              "top": "0rem",
-              "left": "0rem",
-            }
-            break;
-          case 'yard':
-            $scope.copyStyle = {
-              "opacity": "0",
-              "top": "0rem",
-              "left": "0rem"
-            }
-            break;
-          case 'contest':
-            $scope.copyStyle = {
-              "opacity": "1",
-              "top": "6rem",
-              "right": "55rem",
-            }
-            break;
-          case 'roadside':
-            $scope.copyStyle = {
-              "opacity": "1",
-              "top": "4rem",
-              "left": "63rem",
-            }
-            $scope.setRandomPiece();
-            break;
-          default:
-            $scope.copyStyle = {
-              "opacity": "0",
-              "top": "0rem",
-              "left": "0rem"
-            }
-            break;
+            case 'world':
+                $scope.copyStyle = {
+                    "opacity": "0",
+                }
+                break;
+            case 'yard':
+                $scope.mapX = 0;
+                $scope.mapY = 0;
+                $scope.copyStyle = {
+                    "opacity": "0",
+                }
+                break;
+            case 'contest':
+                $scope.copyStyle = {
+                    "opacity": "1",
+                    "right": "30rem",
+                    "bottom": "25rem"
+                }
+                break;
+            case 'roadside':
+                $scope.copyStyle = {
+                    "opacity": "1",
+                }
+                //$scope.setRandomPiece();
+                break;
+            default:
+                $scope.copyStyle = {
+                    "opacity": "0",
+                }
+                break;
         }
 
-        console.log($scope.buildSummary);
+        $scope.view = destination;
+
     }
 
     $scope.pile = [
@@ -210,7 +206,7 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
             sprite: 'sprites/legs_2.png',
             style: {
                 "transform": "translate(-8.5rem, 0rem)",
-                "width":"26rem",
+                "width": "26rem",
                 "transform-origin": "center top",
             },
             stats: {
@@ -265,22 +261,12 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
     ]
 
     $scope.randomPiece;
-    $scope.setRandomPiece = function() {
+    $scope.setRandomPiece = function () {
         //let index = Math.floor(Math.random() * ());
         let index = $scope.findablePieces.length - 1;
         $scope.randomPiece = $scope.findablePieces[index];
         $scope.pile.push($scope.findablePieces[index]);
         $scope.findablePieces.splice(index, 1);
-    }
-
-    $scope.buildSummary;
-
-    $scope.setSnap = function () {
-        let p = document.getElementById("build");
-        let p_prime = p.cloneNode(true);
-        $scope.buildSummary = p_prime;
-        let element = document.getElementById("buildCopy");
-        element.replaceChildren(...$scope.buildSummary.childNodes);
     }
 
     $scope.scaling = {
@@ -292,17 +278,16 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
         }
     }
     angular.element($window).bind('resize', function () {
-        if ($window.innerWidth < 1280){
+        if ($window.innerWidth < 1280) {
             $scope.scaling = {
                 "transform": "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")"
             }
-            $scope.copyStyle["transform"] = "scale(" + (1 / Math.min(1280 / $window.innerWidth)) + ")";
         }
         $scope.$apply();
     });
 
     $scope.walkerStyle = {
-        "background": "url('sprites/mech.png') 0 0"
+        "background": "url('sprites/proxy-mech.jpg')"
     }
 
     $scope.mapX = 0;
@@ -315,25 +300,25 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
     window.addEventListener('keydown', function (e) {
         if (e.key === "ArrowRight") {
             $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 -128px"
+                "background": "url('sprites/proxy-mech.jpg')"
             }
             $scope.mapX = $scope.mapX - $scope.buildStats.speed;
         }
         if (e.key === "ArrowLeft") {
             $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 134px"
+                "background": "url('sprites/proxy-mech.jpg')"
             }
             $scope.mapX = $scope.mapX + $scope.buildStats.speed;
         }
         if (e.key === "ArrowUp") {
             $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 259px"
+                "background": "url('sprites/proxy-mech.jpg')"
             }
             $scope.mapY = $scope.mapY + $scope.buildStats.speed;
         }
         if (e.key === "ArrowDown") {
             $scope.walkerStyle = {
-                "background": "url('sprites/mech.png') 0 0"
+                "background": "url('sprites/proxy-mech.jpg')"
             }
             $scope.mapY = $scope.mapY - $scope.buildStats.speed;
         }
@@ -347,23 +332,25 @@ app.controller("mainCtrl", function ($scope, $window, $timeout) {
     });
 
     $scope.elementsOverlap = function (elID, destination, poiID) {
-        const player = document.getElementById('player');
-        const item = document.getElementById(elID);
+         $scope.setView(destination);
+    //    const player = document.getElementById('player');
+    //    const item = document.getElementById(elID);
 
-        const domRect1 = item.getBoundingClientRect();
-        const domRect2 = player.getBoundingClientRect();
+    //    const domRect1 = item.getBoundingClientRect();
+    //    const domRect2 = player.getBoundingClientRect();
 
-        const outside = domRect1.top > domRect2.bottom ||
-            domRect1.right < domRect2.left ||
-            domRect1.bottom < domRect2.top ||
-            domRect1.left > domRect2.right;
+    //    const outside = domRect1.top > domRect2.bottom ||
+    //        domRect1.right < domRect2.left ||
+    //        domRect1.bottom < domRect2.top ||
+    //        domRect1.left > domRect2.right;
 
-        if (!outside) {
-            if (poiID !== undefined) {
-                $scope.randomPiecesPOIs[poiID].unlooted = false;
-            }
-            $scope.setView(destination, false);
-        }
+    //    if (!outside) {
+    //        if (poiID !== undefined) {
+    //            $scope.randomPiecesPOIs[poiID].unlooted = false;
+    //        }
+    //        $scope.setView(destination);
+    //       
+    //    }
     }
 
 });

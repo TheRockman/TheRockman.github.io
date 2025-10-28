@@ -17,54 +17,58 @@
         <div class="score">
           <p>{{buildStats.beauty}}</p>
         </div>
+        <div ng-style="copyStyle" class="copy" id="buildCopy">_</div>
         <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('world')" class="bin" alt="">
       </div>
 
-      <div class="stage roadside" ng-style="scaling" ng-show="view === 'roadside'">
+      <div class="stage roadside" ng-show="view === 'roadside'">
+        <div ng-style="copyStyle" class="copy" id="buildCopy">_</div>
         <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('world')" class="bin" alt="">
-        <div ng-click="setView('world')" ng-style="{{randomPiece.style}}" class="randomPiece piece">
-            <img src="{{randomPiece.sprite}}">
-        </div>
       </div>
 
-      <div class="stage world" ng-cloak ng-style="scaling" ng-if="view === 'world'">
+
+      <div class="stage world" ng-cloak ng-style="scaling" ng-show="view === 'world'">
         <div class="bar"></div>
         <div class="map" ng-style="mapStyle">
-          <div class="poi" ng-click="elementsOverlap('contest', 'contest')" id="contest"></div>
-          <div
-          ng-repeat="poi in randomPiecesPOIs"
-          ng-if="poi.unlooted"
-          class="poi"
-          ng-click="elementsOverlap(poi.id, poi.destination, $index)"
-          id="{{poi.id}}"
-          ng-style="{{poi.style}}"></div>
+          <div class="poi" ng-click="elementsOverlap('contest', 'contest')" id="contest">C</div>
+          <div ng-repeat="poi in randomPiecesPOIs" ng-if="poi.unlooted" class="poi"
+            ng-click="setView(poi.destination);" id="{{poi.id}}" ng-style="{{poi.style}}"></div>
         </div>
-        <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('yard', true)" class="bin" alt="">
+        <img src="ui/bin.png" ng-mouseenter="bin()" ng-click="setView('yard')" class="bin" alt="">
+        <div ng-style="copyStyle" class="copy" id="buildCopy">_</div>
         <div class="walker" id="player" ng-style="walkerStyle"></div>
       </div>
 
-      <div class="stage yard" ng-show="view === 'yard'" ng-style="scaling" >
-        <div class="launch" ng-click="setView('world', true); gatherStats()"></div>
+      <div class="stage yard" ng-show="view === 'yard'" ng-style="scaling">
+        <div class="launch" ng-click="setView('world'); gatherStats()"></div>
         <img src="sprites/base.png" class="base" alt="">
         <div id="build" class="buildWrap">
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="head" title="head"></div>
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="body" title="body"></div>
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" style="text-align: right;" droppable id="leftArm" title="leftArm"></div>
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" style="text-align: left;" droppable id="rightArm" title="rightArm"></div>
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="legs" title="legs"></div>
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="flair" title="flair"></div>
-          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="back" title="back"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="head"
+            title="head"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="body"
+            title="body"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" style="text-align: right;"
+            droppable id="leftArm" title="leftArm"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" style="text-align: left;"
+            droppable id="rightArm" title="rightArm"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="legs"
+            title="legs"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="flair"
+            title="flair"></div>
+          <div class="pieceBox" role="1" ng-mouseDown="grab()" drop="pieceDrop();setSnap();" droppable id="back"
+            title="back"></div>
         </div>
 
         <div class="pile" role="99" title="all" droppable drop="pileDrop()">
-          <div ng-repeat="piece in pile" ng-mouseDown="grab()" ng-style="{{piece.style}}" class="piece" title="{{piece.slot}}" id="{{piece.name}}" draggable>
+          <div ng-repeat="piece in pile" ng-mouseDown="grab()" ng-style="{{piece.style}}" class="piece"
+            title="{{piece.slot}}" id="{{piece.name}}" draggable>
             <img src="{{piece.sprite}}" alt="">
           </div>
         </div>
         <img src="ui/bin.png" ng-mouseenter="bin()" class="bin" alt="">
       </div>
 
-      <div ng-style="copyStyle" class="copy" id="buildCopy">_</div>
+
 
     </div>
 
