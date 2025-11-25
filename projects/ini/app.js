@@ -15,7 +15,7 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
     for (let i = 0; i < $scope.pasteDump.split("\n").length; i++) {
       const element = $scope.pasteDump.split("\n")[i];
 
-      if (element.includes('Initiative: roll')) {
+      if (element.includes('Initiative: roll') || element.includes('INITIATIVE: roll')) {
         let dataObj = {
           result: 0,
           character: $scope.pasteDump.split("\n")[i-1]
