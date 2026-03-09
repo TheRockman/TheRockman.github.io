@@ -28,19 +28,26 @@
             <a href="#init">Initiative</a><br />
             <a href="#attrib">Attribution</a><br />
             <a href="#hostil">Hostility</a><br />
-            <a href="#monreact">Reactions</a><br />
-            <a href="#qref">Quick ref</a><br />
+            <a href="#monreact">Monster react</a><br />
+            <details>
+              <summary style="font-size: 14px; color: tomato">
+                Quick ref
+              </summary>
               &nbsp;&nbsp;&nbsp;<a href="#cover">Cover</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#obscured">Obscured</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#jump">Jumping</a><br />
+            </details>
             <details>
-              <summary style="font-size: 14px;">Conditions</summary>
+              <summary style="font-size: 14px; color: tomato">
+                Conditions
+              </summary>
               &nbsp;&nbsp;&nbsp;<a href="#h-Blinded">Blinded</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Charmed">Charmed</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Deafened">Deafened</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Frightened">Frightened</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Grappled">Grappled</a><br />
-              &nbsp;&nbsp;&nbsp;<a href="#h-Incapacitated">Incapacitated</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Incapacitated">Incapacitated</a
+              ><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Invisible">Invisible</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Paralyzed">Paralyzed</a><br />
               &nbsp;&nbsp;&nbsp;<a href="#h-Petrified">Petrified</a><br />
@@ -55,37 +62,56 @@
         <div class="flex" style="flex-basis: 75%">
           <details open>
             <summary id="dice">Dice</summary>
-            <div class="align">
-              <input
-                type="number"
-                placeholder="Number of dice"
-                ng-model="numDice"
-                name=""
-                id=""
-              />
-              &nbsp; ➡ &nbsp;
-              <div id="dice">
-                <button type="button" ng-click="roll(4)" name="button">
-                  D4
-                </button>
-                <button type="button" ng-click="roll(6)" name="button">
-                  D6
-                </button>
-                <button type="button" ng-click="roll(8)" name="button">
-                  D8
-                </button>
-                <button type="button" ng-click="roll(10)" name="button">
-                  D10
-                </button>
-                <button type="button" ng-click="roll(12)" name="button">
-                  D12
-                </button>
-                <button type="button" ng-click="roll(20)" name="button">
-                  D20
-                </button>
-                <button type="button" ng-click="roll(100)" name="button">
-                  D100
-                </button>
+            <div class="align jsb">
+              <div class="align">
+                <input
+                  type="number"
+                  placeholder="Number of dice"
+                  ng-model="numDice"
+                  name=""
+                  id=""
+                />
+                &nbsp; ➡ &nbsp;
+                <div id="dice">
+                  <button type="button" ng-click="roll(4)" name="button">
+                    D4
+                  </button>
+                  <button type="button" ng-click="roll(6)" name="button">
+                    D6
+                  </button>
+                  <button type="button" ng-click="roll(8)" name="button">
+                    D8
+                  </button>
+                  <button type="button" ng-click="roll(10)" name="button">
+                    D10
+                  </button>
+                  <button type="button" ng-click="roll(12)" name="button">
+                    D12
+                  </button>
+                  <button type="button" ng-click="roll(20)" name="button">
+                    D20
+                  </button>
+                  <button type="button" ng-click="roll(100)" name="button">
+                    D100
+                  </button>
+                </div>
+              </div>
+
+              <div ng-click="wizardSays()" class="align pointer" title="Ask the wizard">
+                <div
+                  ng-if="wizardSaid"
+                  style="
+                    font-size: 12px;
+                    border-radius: 8px;
+                    background-color: tan;
+                    color: black;
+                    font-style: italic;
+                    padding: 3px 5px;
+                  "
+                >
+                  "{{wizardSaid}}"
+                </div>
+                &nbsp; 🧙‍♂️
               </div>
             </div>
 
@@ -117,8 +143,8 @@
           <hr />
 
           <details open>
-            <summary id="dump">Initiative (Dump)</summary>
-            <form ng-submit="parsePasteDump()" class="align">
+            <summary>Initiative (Dump)</summary>
+            <form id="dump" ng-submit="parsePasteDump()" class="align">
               <textarea
                 placeholder="Paste area"
                 style="width: 100%"
@@ -266,8 +292,8 @@
           <hr />
 
           <details>
-            <summary id="attrib">Attribution</summary>
-            <div class="row">
+            <summary>Attribution</summary>
+            <div id="attrib" class="row">
               <div class="flex card">
                 <div>
                   <strong class="rd">Strength:</strong>
@@ -322,8 +348,8 @@
           <hr />
 
           <details>
-            <summary id="hostil">Hostility</summary>
-            <div class="row flex card">
+            <summary>Hostility</summary>
+            <div id="hostil" class="row flex card">
               <div>
                 <strong class="rd">Friendly</strong>
                 <p><span class="rd">0:</span> Wont take risks</p>
@@ -354,30 +380,34 @@
           <hr />
 
           <details>
-            <summary id="monreact">Monster react</summary>
-            <img src="iu.webp" alt="" />
+            <summary>Monster react</summary>
+            <img id="monreact" src="iu.webp" alt="" />
           </details>
 
           <hr />
 
           <details>
-            <summary id="qref">Quick reference</summary>
-            <div class="row">
+            <summary>Quick reference</summary>
+            <div id="qref" class="row">
               <div class="flex card">
-                <b id="cover">Cover</b><br/>
-                Cover: 1/2 = +2 AC and DEX save<br />
-                3/4 = +5 AC and DEX save
+                <b id="cover">Cover</b><br />
+                1/2 cover = +2 AC and DEX save<br />
+                3/4 cover = +5 AC and DEX save
               </div>
               <div class="flex card">
-                <b id="obscured">Obscured</b><br/>
+                <b id="obscured">Obscured</b><br />
                 Light obsucred = Disadvantage on WIS (perception)<br />
                 Heavily obscured = Vision blocked
               </div>
             </div>
             <div class="row">
               <div class="flex card">
-                <b id="jump">Jumping</b><br/>
-                <iframe src="https://fexlabs.com/5ejump/" style="width: 100%; min-height: 300px;" frameborder="0"></iframe>
+                <b id="jump">Jumping</b><br />
+                <iframe
+                  src="https://fexlabs.com/5ejump/"
+                  style="width: 100%; min-height: 400px"
+                  frameborder="0"
+                ></iframe>
               </div>
             </div>
           </details>
@@ -420,7 +450,7 @@
                   </li>
                 </ul>
                 <a name="h-Charmed"></a><a name="toc_2"></a>
-                <b>Charmed</b>
+                <br/><br/><b>Charmed</b>
                 <ul>
                   <li>
                     A charmed creature can’t
@@ -449,7 +479,7 @@
                   </li>
                 </ul>
                 <a name="h-Deafened"></a><a name="toc_3"></a>
-                <b>Deafened</b>
+                <br/><br/><b>Deafened</b>
                 <ul>
                   <li>
                     A deafened creature can’t hear and automatically fails any
@@ -462,7 +492,7 @@
                   </li>
                 </ul>
                 <br /><a name="h-Frightened"></a><a name="toc_4"></a>
-                <b>Frightened</b>
+                <br/><br/><b>Frightened</b>
                 <ul>
                   <li>
                     A frightened creature has&nbsp;<a
@@ -494,7 +524,7 @@
                   </li>
                 </ul>
                 <a name="h-Grappled"></a><a name="toc_5"></a>
-                <b>Grappled</b>
+                <br/><br/><b>Grappled</b>
                 <ul>
                   <li>
                     A grappled creature’s
@@ -529,7 +559,7 @@
                   </li>
                 </ul>
                 <a name="h-Incapacitated"></a><a name="toc_6"></a>
-                <b>Incapacitated</b>
+                <br/><br/><b>Incapacitated</b>
                 <ul>
                   <li>
                     An incapacitated creature can’t take
@@ -547,7 +577,7 @@
                   </li>
                 </ul>
                 <a name="h-Invisible"></a><a name="toc_7"></a>
-                <b>Invisible</b>
+                <br/><br/><b>Invisible</b>
                 <ul>
                   <li>
                     An invisible creature is impossible to see without the aid
@@ -578,7 +608,7 @@
                   </li>
                 </ul>
                 <a name="h-Paralyzed"></a><a name="toc_8"></a>
-                <b>Paralyzed</b>
+                <br/><br/><b>Paralyzed</b>
                 <ul>
                   <li>
                     A paralyzed creature is
@@ -637,7 +667,7 @@
                   </li>
                 </ul>
                 <a name="h-Petrified"></a><a name="toc_9"></a>
-                <b>Petrified</b>
+                <br/><br/><b>Petrified</b>
                 <ul>
                   <li>
                     A petrified creature is transformed, along with any
@@ -712,7 +742,7 @@
                   </li>
                 </ul>
                 <a name="h-Poisoned"></a><a name="toc_10"></a>
-                <b>Poisoned</b>
+                <br/><br/><b>Poisoned</b>
                 <ul>
                   <li>
                     A poisoned creature has
@@ -736,7 +766,7 @@
                   </li>
                 </ul>
                 <a name="h-Prone"></a><a name="toc_11"></a>
-                <b>Prone</b>
+                <br/><br/><b>Prone</b>
                 <ul>
                   <li>
                     A prone creature’s only
@@ -781,7 +811,7 @@
                   </li>
                 </ul>
                 <a name="h-Restrained"></a><a name="toc_12"></a>
-                <b>Restrained</b>
+                <br/><br/><b>Restrained</b>
                 <ul>
                   <li>
                     A restrained creature’s
@@ -827,7 +857,7 @@
                   </li>
                 </ul>
                 <a name="h-Stunned"></a><a name="toc_13"></a>
-                <b>Stunned</b>
+                <br/><br/><b>Stunned</b>
                 <ul>
                   <li>
                     A stunned creature is
@@ -871,7 +901,7 @@
                   </li>
                 </ul>
                 <a name="h-Unconscious"></a><a name="toc_14"></a>
-                <b>Unconscious</b>
+                <br/><br/><b>Unconscious</b>
                 <ul>
                   <li>
                     An unconscious creature is
@@ -944,12 +974,12 @@
         </div>
       </div>
     </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
   </body>
   <script type="text/javascript" src="app.js"></script>
 </html>

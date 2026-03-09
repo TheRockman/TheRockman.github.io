@@ -59,6 +59,28 @@ app.controller("mainCtrl", function ($scope) {
     $scope.order = [];
   };
 
+  $scope.wizard = [
+    "It is certain",
+    "It is decidedly so",
+    "Without a doubt",
+    "Yes definitely",
+    "Count on it",
+    "As I see it, yes",
+    "Most likely",
+    "Outlook good",
+    "Yes",
+    "Signs point to yes",
+    "Dont count on it",
+    "My reply is no",
+    "My sources say no",
+    "Outlook not so good",
+    "Very doubtful",
+  ];
+  $scope.wizardSaid;
+  $scope.wizardSays = function() {
+    $scope.wizardSaid = $scope.wizard[Math.floor(Math.random() * $scope.wizard.length)];
+  }
+
   $scope.numDice = 1;
 
   $scope.roll = function (sides) {
