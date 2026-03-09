@@ -1,0 +1,955 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title></title>
+    <link
+      rel="stylesheet"
+      href="style.css"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <script type="text/javascript" src="../../angularJs.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div ng-controller="mainCtrl">
+      <div class="row">
+        <div class="flex">
+          <div class="slidebar">
+            <a href="#dice">Dice</a><br />
+            <a href="#dump">Dump</a><br />
+            <a href="#init">Initiative</a><br />
+            <a href="#attrib">Attribution</a><br />
+            <a href="#hostil">Hostility</a><br />
+            <a href="#monreact">Reactions</a><br />
+            <a href="#qref">Quick ref</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#cover">Cover</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#obscured">Obscured</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#jump">Jumping</a><br />
+            <details>
+              <summary style="font-size: 14px;">Conditions</summary>
+              &nbsp;&nbsp;&nbsp;<a href="#h-Blinded">Blinded</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Charmed">Charmed</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Deafened">Deafened</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Frightened">Frightened</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Grappled">Grappled</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Incapacitated">Incapacitated</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Invisible">Invisible</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Paralyzed">Paralyzed</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Petrified">Petrified</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Poisoned">Poisoned</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Prone">Prone</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Restrained">Restrained</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Stunned">Stunned</a><br />
+              &nbsp;&nbsp;&nbsp;<a href="#h-Unconscious">Unconscious</a><br />
+            </details>
+          </div>
+        </div>
+        <div class="flex" style="flex-basis: 75%">
+          <details open>
+            <summary id="dice">Dice</summary>
+            <div class="align">
+              <input
+                type="number"
+                placeholder="Number of dice"
+                ng-model="numDice"
+                name=""
+                id=""
+              />
+              &nbsp; ➡ &nbsp;
+              <div id="dice">
+                <button type="button" ng-click="roll(4)" name="button">
+                  D4
+                </button>
+                <button type="button" ng-click="roll(6)" name="button">
+                  D6
+                </button>
+                <button type="button" ng-click="roll(8)" name="button">
+                  D8
+                </button>
+                <button type="button" ng-click="roll(10)" name="button">
+                  D10
+                </button>
+                <button type="button" ng-click="roll(12)" name="button">
+                  D12
+                </button>
+                <button type="button" ng-click="roll(20)" name="button">
+                  D20
+                </button>
+                <button type="button" ng-click="roll(100)" name="button">
+                  D100
+                </button>
+              </div>
+            </div>
+
+            <div ng-if="diceTot > 0" class="align">
+              <br />
+              <br />
+              <h2 class="accent">&nbsp; {{diceTot}}</h2>
+              &nbsp; &nbsp; &nbsp;
+              <br />
+              <div class="tipTarget" ng-if="mobResult">
+                ( Mob attacks: {{mobResult}} )
+                <div class="tip">
+                  <img src="iux.webp" alt="" />
+                </div>
+              </div>
+              <div ng-if="diceArr.length > 0">
+                (
+                <div
+                  style="display: inline"
+                  ng-repeat="result in diceArr | orderBy: '-val' track by $index"
+                >
+                  {{result.val}},
+                </div>
+                )
+              </div>
+            </div>
+          </details>
+
+          <hr />
+
+          <details open>
+            <summary id="dump">Initiative (Dump)</summary>
+            <form ng-submit="parsePasteDump()" class="align">
+              <textarea
+                placeholder="Paste area"
+                style="width: 100%"
+                id="dump"
+                ng-model="pasteDump"
+              ></textarea>
+              &nbsp; &nbsp;
+              <button
+                style="width: 100px; padding: 0.5rem"
+                type="submit"
+                name="button"
+              >
+                Parse
+              </button>
+            </form>
+          </details>
+
+          <hr />
+
+          <details open>
+            <summary id="init">Initiative</summary>
+            <form ng-submit="addToOrder()">
+              <div class="align">
+                <input
+                  class="iniPut"
+                  type="text"
+                  id="myTextField"
+                  placeholder="Name"
+                  name=""
+                  value=""
+                  ng-model="form.name"
+                />
+                &nbsp; &nbsp;
+                <input
+                  class="iniPut"
+                  type="number"
+                  placeholder="Initiative"
+                  name=""
+                  value=""
+                  ng-model="form.ini"
+                />
+                &nbsp; &nbsp;
+                <input
+                  class="iniPut"
+                  type="number"
+                  placeholder="HP"
+                  name=""
+                  value=""
+                  ng-model="form.hp"
+                />
+                &nbsp; &nbsp;
+                <button
+                  style="width: 100px; padding: 0.5rem"
+                  type="submit"
+                  name="button"
+                >
+                  add
+                </button>
+              </div>
+
+              <div class="row" ng-if="order.length > 0">
+                <div class="flex card">
+                  <ul>
+                    <li
+                      style="display: flex; align-items: center"
+                      ng-repeat="item in order | orderBy: '-name'"
+                    >
+                      <div ng-if="!item.ignore" ng-click="item.ignore = true">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24px"
+                          viewBox="0 -960 960 960"
+                          width="24px"
+                          fill="#e8eaed"
+                        >
+                          <path
+                            d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"
+                          />
+                        </svg>
+                      </div>
+                      <div ng-if="item.ignore" ng-click="item.ignore = false">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24px"
+                          viewBox="0 -960 960 960"
+                          width="24px"
+                          fill="#e8eaed"
+                        >
+                          <path
+                            d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"
+                          />
+                        </svg>
+                      </div>
+                      &nbsp; &nbsp;
+                      <input
+                        type="number"
+                        placeholder="HP"
+                        name=""
+                        ng-model="item.hp"
+                        value=""
+                        style="width: 3rem"
+                      />
+                      &nbsp; &nbsp;
+                      <input
+                        type="number"
+                        placeholder="Initiative"
+                        name=""
+                        ng-model="item.ini"
+                        value=""
+                        style="width: 3rem"
+                      />
+                      &nbsp;- {{item.name}}
+                    </li>
+                  </ul>
+                </div>
+                <div class="flex card">
+                  <div id="initiativeList" ng-if="order.length > 0">
+                    <div id="a">
+                      <span
+                        ng-repeat="item in order | orderBy: '-ini' | filter:{ignore: '!true'}"
+                        ng-if="item.ini"
+                      >
+                        [{{item.ini}}] - {{item.name}} <br />
+                      </span>
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                  <button onclick="copyDivToClipboard()">Copy</button>
+                  <script>
+                    function copyDivToClipboard() {
+                      var range = document.createRange();
+                      range.selectNode(document.getElementById("a"));
+                      window.getSelection().removeAllRanges(); // clear current selection
+                      window.getSelection().addRange(range); // to select text
+                      document.execCommand("copy");
+                      window.getSelection().removeAllRanges(); // to deselect
+                    }
+                  </script>
+                </div>
+              </div>
+            </form>
+          </details>
+
+          <hr />
+
+          <details>
+            <summary id="attrib">Attribution</summary>
+            <div class="row">
+              <div class="flex card">
+                <div>
+                  <strong class="rd">Strength:</strong>
+                  <small> Athletics </small>
+                </div>
+                <div>
+                  <strong class="rd">Dexterity:</strong>
+                  <small> Acrobatics, Sleight of Hand, Stealth </small>
+                </div>
+                <div>
+                  <strong class="rd">Intelligence:</strong>
+                  <small>
+                    Arcana, History, Investigation, Nature, Religion
+                  </small>
+                </div>
+                <div>
+                  <strong class="rd">Wisdom:</strong>
+                  <small>
+                    Animal Handling, Insight, Medicine, Perception, Survival
+                  </small>
+                </div>
+                <div>
+                  <strong class="rd">Charisma:</strong>
+                  <small>
+                    Deception, Intimidation, Performance, Persuasion
+                  </small>
+                </div>
+              </div>
+              <div class="flex card">
+                <div>
+                  <strong class="rd">Arcana:</strong>
+                  <small>
+                    Aberration, Construct, Elemental, Fey, Monstrosity
+                  </small>
+                </div>
+                <div>
+                  <strong class="rd">History:</strong>
+                  <small> Giant, Humanoid </small>
+                </div>
+                <div>
+                  <strong class="rd">Nature:</strong>
+                  <small> Beast, Dragon, Ooze, Plant </small>
+                </div>
+                <div>
+                  <strong class="rd">Religion:</strong>
+                  <small> Celestial, Fiend, Undead </small>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <hr />
+
+          <details>
+            <summary id="hostil">Hostility</summary>
+            <div class="row flex card">
+              <div>
+                <strong class="rd">Friendly</strong>
+                <p><span class="rd">0:</span> Wont take risks</p>
+                <p><span class="rd">10:</span> Take minor risks</p>
+                <p><span class="rd">20:</span> Take Significant risk</p>
+              </div>
+              &nbsp; &nbsp;
+              <hr />
+              &nbsp; &nbsp;
+              <div>
+                <strong class="rd">Indifferent</strong>
+                <p>Wont help or harm</p>
+                <p>Wont take risks</p>
+                <p>Take minor risks</p>
+              </div>
+              &nbsp; &nbsp;
+              <hr />
+              &nbsp; &nbsp;
+              <div>
+                <strong class="rd">Hostile</strong>
+                <p>Will try to hinder</p>
+                <p>Wont help or harm</p>
+                <p>Help without risks</p>
+              </div>
+            </div>
+          </details>
+
+          <hr />
+
+          <details>
+            <summary id="monreact">Monster react</summary>
+            <img src="iu.webp" alt="" />
+          </details>
+
+          <hr />
+
+          <details>
+            <summary id="qref">Quick reference</summary>
+            <div class="row">
+              <div class="flex card">
+                <b id="cover">Cover</b><br/>
+                Cover: 1/2 = +2 AC and DEX save<br />
+                3/4 = +5 AC and DEX save
+              </div>
+              <div class="flex card">
+                <b id="obscured">Obscured</b><br/>
+                Light obsucred = Disadvantage on WIS (perception)<br />
+                Heavily obscured = Vision blocked
+              </div>
+            </div>
+            <div class="row">
+              <div class="flex card">
+                <b id="jump">Jumping</b><br/>
+                <iframe src="https://fexlabs.com/5ejump/" style="width: 100%; min-height: 300px;" frameborder="0"></iframe>
+              </div>
+            </div>
+          </details>
+
+          <hr />
+
+          <details>
+            <summary id="conditions">Conditions</summary>
+            <div class="flex card">
+              <div id="pagecontent" data-pageid="5823">
+                <a name="h-Blinded"></a><a name="toc_1"></a>
+                <b>Blinded</b>
+                <ul>
+                  <li>
+                    A blinded creature can’t see and automatically fails any
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_4"
+                      target="_blank"
+                      >ability check</a
+                    >
+                    that requires sight.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >
+                    against the creature have
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >, and the creature’s attack rolls have
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Charmed"></a><a name="toc_2"></a>
+                <b>Charmed</b>
+                <ul>
+                  <li>
+                    A charmed creature can’t
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_21"
+                      target="_blank"
+                      >attack</a
+                    >
+                    the charmer or target the charmer with harmful abilities or
+                    magical effects.
+                  </li>
+                  <li>
+                    The charmer has
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >
+                    on any
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_4"
+                      target="_blank"
+                      >ability check</a
+                    >
+                    to interact socially with the creature.
+                  </li>
+                </ul>
+                <a name="h-Deafened"></a><a name="toc_3"></a>
+                <b>Deafened</b>
+                <ul>
+                  <li>
+                    A deafened creature can’t hear and automatically fails any
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_4"
+                      target="_blank"
+                      >ability check</a
+                    >
+                    that requires hearing.
+                  </li>
+                </ul>
+                <br /><a name="h-Frightened"></a><a name="toc_4"></a>
+                <b>Frightened</b>
+                <ul>
+                  <li>
+                    A frightened creature has&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >&nbsp;on
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_4"
+                      target="_blank"
+                      >ability checks</a
+                    >
+                    and
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >attack rolls</a
+                    >
+                    while the source of its fear is within line of sight.
+                  </li>
+                  <li>
+                    The creature can’t willingly
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_9"
+                      target="_blank"
+                      >move</a
+                    >
+                    closer to the source of its fear.
+                  </li>
+                </ul>
+                <a name="h-Grappled"></a><a name="toc_5"></a>
+                <b>Grappled</b>
+                <ul>
+                  <li>
+                    A grappled creature’s
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Movement?expansion=34047#toc_1"
+                      target="_blank"
+                      >speed</a
+                    >
+                    becomes 0, and it can’t benefit from any bonus to its speed.
+                  </li>
+                  <li>
+                    The condition ends if the grappler is
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Conditions?expansion=34047#toc_6"
+                      target="_blank"
+                      >incapacitated</a
+                    >
+                    (see the condition).
+                  </li>
+                  <li>
+                    The condition also ends if an effect removes the grappled
+                    creature from the reach of the grappler or grappling effect,
+                    such as when a creature is hurled away by the
+                    <em
+                      ><a
+                        href="https://roll20.net/compendium/dnd5e/Thunderwave?expansion=34047#content"
+                        target="_blank"
+                        >thunderwave</a
+                      ></em
+                    >
+                    spell.
+                  </li>
+                </ul>
+                <a name="h-Incapacitated"></a><a name="toc_6"></a>
+                <b>Incapacitated</b>
+                <ul>
+                  <li>
+                    An incapacitated creature can’t take
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_20"
+                      target="_blank"
+                      >actions</a
+                    >
+                    or
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_8"
+                      target="_blank"
+                      >reactions</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Invisible"></a><a name="toc_7"></a>
+                <b>Invisible</b>
+                <ul>
+                  <li>
+                    An invisible creature is impossible to see without the aid
+                    of magic or a special sense. For the purpose of
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Ability%20Scores?expansion=34047#toc_22"
+                      target="_blank"
+                      >hiding</a
+                    >, the creature is heavily obscured. The creature’s location
+                    can be detected by any noise it makes or any tracks it
+                    leaves.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >
+                    against the creature have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >, and the creature’s attack rolls have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Paralyzed"></a><a name="toc_8"></a>
+                <b>Paralyzed</b>
+                <ul>
+                  <li>
+                    A paralyzed creature is
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Conditions?expansion=34047#toc_6"
+                      target="_blank"
+                      >incapacitated</a
+                    >
+                    (see the condition) and can’t move or speak.
+                  </li>
+                  <li>
+                    The creature automatically fails
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_12"
+                      target="_blank"
+                      >Strength</a
+                    >
+                    and
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_17"
+                      target="_blank"
+                      >Dexterity</a
+                    >
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_35"
+                      target="_blank"
+                      >saving throws</a
+                    >.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >
+                    against the creature have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >.
+                  </li>
+                  <li>
+                    Any
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_21"
+                      target="_blank"
+                      >attack</a
+                    >
+                    that hits the creature is a
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_49"
+                      target="_blank"
+                      >critical hit</a
+                    >
+                    if the attacker is within 5 feet of the creature.
+                  </li>
+                </ul>
+                <a name="h-Petrified"></a><a name="toc_9"></a>
+                <b>Petrified</b>
+                <ul>
+                  <li>
+                    A petrified creature is transformed, along with any
+                    nonmagical object it is wearing or carrying, into a solid
+                    inanimate substance (usually stone). Its weight increases by
+                    a factor of ten, and it ceases aging.
+                  </li>
+                  <li>
+                    The creature is
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Conditions?expansion=34047#toc_6"
+                      target="_blank"
+                      >incapacitated</a
+                    >
+                    (see the condition), can’t move or speak, and is unaware of
+                    its surroundings.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >&nbsp;against the creature have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >.
+                  </li>
+                  <li>
+                    The creature automatically fails&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_12"
+                      target="_blank"
+                      >Strength</a
+                    >&nbsp;and&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_17"
+                      target="_blank"
+                      >Dexterity</a
+                    >&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_35"
+                      target="_blank"
+                      >saving throws</a
+                    >.
+                  </li>
+                  <li>
+                    The creature has
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_51"
+                      target="_blank"
+                      >resistance</a
+                    >
+                    to all
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_46"
+                      target="_blank"
+                      >damage</a
+                    >.
+                  </li>
+                  <li>
+                    The creature is immune to
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Poisons?expansion=34047#content"
+                      target="_blank"
+                      >poison</a
+                    >
+                    and
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Diseases?expansion=34047#content"
+                      target="_blank"
+                      >disease</a
+                    >, although a poison or disease already in its system is
+                    suspended, not neutralized.
+                  </li>
+                </ul>
+                <a name="h-Poisoned"></a><a name="toc_10"></a>
+                <b>Poisoned</b>
+                <ul>
+                  <li>
+                    A poisoned creature has
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >
+                    on
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >attack rolls</a
+                    >
+                    and
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_4"
+                      target="_blank"
+                      >ability checks</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Prone"></a><a name="toc_11"></a>
+                <b>Prone</b>
+                <ul>
+                  <li>
+                    A prone creature’s only
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Movement?expansion=34047#content"
+                      target="_blank"
+                      >movement</a
+                    >
+                    option is to
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Movement?expansion=34047#toc_5"
+                      target="_blank"
+                      >crawl</a
+                    >, unless it stands up and thereby ends the condition.
+                  </li>
+                  <li>
+                    The creature has&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >&nbsp;on&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >attack rolls</a
+                    >.
+                  </li>
+                  <li>
+                    An&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >attack roll</a
+                    >&nbsp;against the creature has&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >&nbsp;if the attacker is within 5 feet of the creature.
+                    Otherwise, the attack roll has&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Restrained"></a><a name="toc_12"></a>
+                <b>Restrained</b>
+                <ul>
+                  <li>
+                    A restrained creature’s
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Movement?expansion=34047#toc_1"
+                      target="_blank"
+                      >speed</a
+                    >
+                    becomes 0, and it can’t benefit from any bonus to its speed.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >
+                    against the creature have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >, and the creature’s attack rolls have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >.
+                  </li>
+                  <li>
+                    The creature has&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >disadvantage</a
+                    >&nbsp;on
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_17"
+                      target="_blank"
+                      >Dexterity</a
+                    >
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_35"
+                      target="_blank"
+                      >saving throws</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Stunned"></a><a name="toc_13"></a>
+                <b>Stunned</b>
+                <ul>
+                  <li>
+                    A stunned creature is
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Conditions?expansion=34047#toc_6"
+                      target="_blank"
+                      >incapacitated</a
+                    >
+                    (see the condition), can’t
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_9"
+                      target="_blank"
+                      >move</a
+                    >, and can speak only falteringly.
+                  </li>
+                  <li>
+                    The creature automatically fails&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_12"
+                      target="_blank"
+                      >Strength</a
+                    >&nbsp;and&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_17"
+                      target="_blank"
+                      >Dexterity</a
+                    >&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_35"
+                      target="_blank"
+                      >saving throws</a
+                    >.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >&nbsp;against the creature have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >.
+                  </li>
+                </ul>
+                <a name="h-Unconscious"></a><a name="toc_14"></a>
+                <b>Unconscious</b>
+                <ul>
+                  <li>
+                    An unconscious creature is
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Conditions?expansion=34047#toc_6"
+                      target="_blank"
+                      >incapacitated</a
+                    >
+                    (see the condition), can’t
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_9"
+                      target="_blank"
+                      >move</a
+                    >
+                    or speak, and is unaware of its surroundings
+                  </li>
+                  <li>
+                    The creature drops whatever it’s holding and falls
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Conditions?expansion=34047#toc_11"
+                      target="_blank"
+                      >prone</a
+                    >.
+                  </li>
+                  <li>
+                    The creature automatically fails&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_12"
+                      target="_blank"
+                      >Strength</a
+                    >&nbsp;and&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_17"
+                      target="_blank"
+                      >Dexterity</a
+                    >&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_35"
+                      target="_blank"
+                      >saving throws</a
+                    >.
+                  </li>
+                  <li>
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_32"
+                      target="_blank"
+                      >Attack rolls</a
+                    >&nbsp;against the creature have&nbsp;<a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Ability%20Scores?expansion=34047#toc_2"
+                      target="_blank"
+                      >advantage</a
+                    >.
+                  </li>
+                  <li>
+                    Any
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_21"
+                      target="_blank"
+                      >attack</a
+                    >
+                    that hits the creature is a
+                    <a
+                      href="https://roll20.net/compendium/dnd5e/Rules:Combat?expansion=34047#toc_49"
+                      target="_blank"
+                      >critical hit</a
+                    >
+                    if the attacker is within 5 feet of the creature.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </body>
+  <script type="text/javascript" src="app.js"></script>
+</html>
