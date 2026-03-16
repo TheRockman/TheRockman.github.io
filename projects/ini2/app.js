@@ -40,8 +40,15 @@ app.controller("mainCtrl", function ($scope) {
           // console.log('roll is flat: ', roll);
         }
 
+        const h1 = $scope.pasteDump.split("\n")[i + 2];
+        const h2 = h1.includes("HP: ");
+        let h3;
+        if (h2) {
+          h3 = parseInt(h1.replace("HP: ", ""));
+        }
+
         output.push({
-          hp: null,
+          hp:  h3 || null,
           ini: dataObj.result,
           name: dataObj.character,
         });
