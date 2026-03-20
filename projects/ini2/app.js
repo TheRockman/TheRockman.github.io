@@ -1,5 +1,5 @@
 var app = angular.module("myApp", []);
-app.controller("mainCtrl", function ($scope) {
+app.controller("mainCtrl", function ($scope, $timeout) {
   $scope.form = {};
   $scope.order = [];
   $scope.dice = "Ready to roll";
@@ -12,6 +12,13 @@ app.controller("mainCtrl", function ($scope) {
       $scope.form = {};
       document.getElementById("myTextField").focus();
     }
+  };
+
+  $scope.ping = function () {
+    $scope.pinging = true;
+    $timeout(function () {
+      $scope.pinging = false;
+    }, 500);
   };
 
   $scope.parsePasteDump = function () {
@@ -48,7 +55,7 @@ app.controller("mainCtrl", function ($scope) {
         }
 
         output.push({
-          hp:  h3 || null,
+          hp: h3 || null,
           ini: dataObj.result,
           name: dataObj.character,
         });
@@ -84,9 +91,10 @@ app.controller("mainCtrl", function ($scope) {
     "Very doubtful",
   ];
   $scope.wizardSaid;
-  $scope.wizardSays = function() {
-    $scope.wizardSaid = $scope.wizard[Math.floor(Math.random() * $scope.wizard.length)];
-  }
+  $scope.wizardSays = function () {
+    $scope.wizardSaid =
+      $scope.wizard[Math.floor(Math.random() * $scope.wizard.length)];
+  };
 
   $scope.numDice = 1;
 

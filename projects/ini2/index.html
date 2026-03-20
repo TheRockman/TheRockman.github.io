@@ -97,7 +97,11 @@
                 </div>
               </div>
 
-              <div ng-click="wizardSays()" class="align pointer" title="Ask the wizard">
+              <div
+                ng-click="wizardSays()"
+                class="align pointer"
+                title="Ask the wizard"
+              >
                 <div
                   ng-if="wizardSaid"
                   style="
@@ -145,13 +149,6 @@
           <details open>
             <summary>Initiative (Dump)</summary>
             <form id="dump" ng-submit="parsePasteDump()" class="align">
-              <textarea
-                placeholder="Paste area"
-                style="width: 100%"
-                id="dump"
-                ng-model="pasteDump"
-              ></textarea>
-              &nbsp; &nbsp;
               <button
                 style="width: 100px; padding: 0.5rem"
                 type="submit"
@@ -159,6 +156,14 @@
               >
                 Parse
               </button>
+              &nbsp; &nbsp;
+
+              <textarea
+                placeholder="Paste area"
+                style="width: 100%; min-height: 6rem;"
+                id="dump"
+                ng-model="pasteDump"
+              ></textarea>
             </form>
           </details>
 
@@ -273,7 +278,7 @@
                   </div>
                   <br />
                   <br />
-                  <button onclick="copyDivToClipboard()">Copy</button>
+                  <button  onclick="copyDivToClipboard();" class="preBling" ng-click="ping()" ng-class="{'bling':pinging === true}">Copy</button>
                   <script>
                     function copyDivToClipboard() {
                       var range = document.createRange();
@@ -449,8 +454,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Charmed"></a><a name="toc_2"></a>
-                <br/><br/><b>Charmed</b>
+                <a name="h-Charmed"></a><a name="toc_2"></a> <br /><br /><b
+                  >Charmed</b
+                >
                 <ul>
                   <li>
                     A charmed creature can’t
@@ -478,8 +484,9 @@
                     to interact socially with the creature.
                   </li>
                 </ul>
-                <a name="h-Deafened"></a><a name="toc_3"></a>
-                <br/><br/><b>Deafened</b>
+                <a name="h-Deafened"></a><a name="toc_3"></a> <br /><br /><b
+                  >Deafened</b
+                >
                 <ul>
                   <li>
                     A deafened creature can’t hear and automatically fails any
@@ -492,7 +499,7 @@
                   </li>
                 </ul>
                 <br /><a name="h-Frightened"></a><a name="toc_4"></a>
-                <br/><br/><b>Frightened</b>
+                <br /><br /><b>Frightened</b>
                 <ul>
                   <li>
                     A frightened creature has&nbsp;<a
@@ -523,8 +530,9 @@
                     closer to the source of its fear.
                   </li>
                 </ul>
-                <a name="h-Grappled"></a><a name="toc_5"></a>
-                <br/><br/><b>Grappled</b>
+                <a name="h-Grappled"></a><a name="toc_5"></a> <br /><br /><b
+                  >Grappled</b
+                >
                 <ul>
                   <li>
                     A grappled creature’s
@@ -559,7 +567,7 @@
                   </li>
                 </ul>
                 <a name="h-Incapacitated"></a><a name="toc_6"></a>
-                <br/><br/><b>Incapacitated</b>
+                <br /><br /><b>Incapacitated</b>
                 <ul>
                   <li>
                     An incapacitated creature can’t take
@@ -576,8 +584,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Invisible"></a><a name="toc_7"></a>
-                <br/><br/><b>Invisible</b>
+                <a name="h-Invisible"></a><a name="toc_7"></a> <br /><br /><b
+                  >Invisible</b
+                >
                 <ul>
                   <li>
                     An invisible creature is impossible to see without the aid
@@ -607,8 +616,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Paralyzed"></a><a name="toc_8"></a>
-                <br/><br/><b>Paralyzed</b>
+                <a name="h-Paralyzed"></a><a name="toc_8"></a> <br /><br /><b
+                  >Paralyzed</b
+                >
                 <ul>
                   <li>
                     A paralyzed creature is
@@ -666,8 +676,9 @@
                     if the attacker is within 5 feet of the creature.
                   </li>
                 </ul>
-                <a name="h-Petrified"></a><a name="toc_9"></a>
-                <br/><br/><b>Petrified</b>
+                <a name="h-Petrified"></a><a name="toc_9"></a> <br /><br /><b
+                  >Petrified</b
+                >
                 <ul>
                   <li>
                     A petrified creature is transformed, along with any
@@ -741,8 +752,9 @@
                     suspended, not neutralized.
                   </li>
                 </ul>
-                <a name="h-Poisoned"></a><a name="toc_10"></a>
-                <br/><br/><b>Poisoned</b>
+                <a name="h-Poisoned"></a><a name="toc_10"></a> <br /><br /><b
+                  >Poisoned</b
+                >
                 <ul>
                   <li>
                     A poisoned creature has
@@ -765,8 +777,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Prone"></a><a name="toc_11"></a>
-                <br/><br/><b>Prone</b>
+                <a name="h-Prone"></a><a name="toc_11"></a> <br /><br /><b
+                  >Prone</b
+                >
                 <ul>
                   <li>
                     A prone creature’s only
@@ -810,8 +823,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Restrained"></a><a name="toc_12"></a>
-                <br/><br/><b>Restrained</b>
+                <a name="h-Restrained"></a><a name="toc_12"></a> <br /><br /><b
+                  >Restrained</b
+                >
                 <ul>
                   <li>
                     A restrained creature’s
@@ -856,8 +870,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Stunned"></a><a name="toc_13"></a>
-                <br/><br/><b>Stunned</b>
+                <a name="h-Stunned"></a><a name="toc_13"></a> <br /><br /><b
+                  >Stunned</b
+                >
                 <ul>
                   <li>
                     A stunned creature is
@@ -900,8 +915,9 @@
                     >.
                   </li>
                 </ul>
-                <a name="h-Unconscious"></a><a name="toc_14"></a>
-                <br/><br/><b>Unconscious</b>
+                <a name="h-Unconscious"></a><a name="toc_14"></a> <br /><br /><b
+                  >Unconscious</b
+                >
                 <ul>
                   <li>
                     An unconscious creature is

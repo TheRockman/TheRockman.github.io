@@ -44,6 +44,30 @@ summary{
   font-size: 18px;
   font-weight: bold;
 }
+.preBling{
+  transition: 0.2s all ease;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+}
+.preBling::after{
+  transition: 0.3s all ease-in-out;
+  position: absolute;
+  margin-left: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  content: "👍";
+  transform: rotate(20deg);
+  transform-origin: -2rem 0;
+}
+
+.bling{
+  border-color: limegreen!important;
+}
+.bling::after{
+  opacity: 1;
+  transform: rotate(-8deg);
+}
 
 textarea,
 input,
