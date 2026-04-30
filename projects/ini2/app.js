@@ -46,6 +46,12 @@ app.controller("mainCtrl", function ($scope, $timeout) {
           dataObj.result = parseInt(roll);
           // console.log('roll is flat: ', roll);
         }
+        if(roll.includes("*")){
+          const strip = roll.replace("*", "");
+          const natRoll = Math.floor(Math.random() * 20 + 1);
+          dataObj.result = natRoll + parseInt(strip);
+          console.log(dataObj.result, natRoll, parseInt(strip));
+        }
 
         const h1 = $scope.pasteDump.split("\n")[i + 2];
         const h2 = h1.includes("HP: ");
