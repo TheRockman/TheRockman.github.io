@@ -68,6 +68,30 @@ summary{
   opacity: 1;
   transform: rotate(-8deg);
 }
+.preBling2{
+  transition: 0.2s all ease;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+}
+.preBling2::after{
+  transition: 0.3s all ease-in-out;
+  position: absolute;
+  margin-left: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  content: "👍";
+  transform: rotate(20deg);
+  transform-origin: -2rem 0;
+}
+
+.bling2{
+  border-color: limegreen!important;
+}
+.bling2::after{
+  opacity: 1;
+  transform: rotate(-8deg);
+}
 
 textarea,
 input,
@@ -114,6 +138,10 @@ a:hover{
 .slidebar{
   position: sticky;
   top: 1rem;
+}
+
+li{
+list-style-type: none;
 }
 
 .pad{

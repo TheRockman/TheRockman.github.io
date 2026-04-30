@@ -5,6 +5,8 @@ app.controller("mainCtrl", function ($scope, $timeout) {
   $scope.dice = "Ready to roll";
   $scope.diceArr = [];
   $scope.mobResult;
+  $scope.monsterReaction;
+  $scope.monsterReactionPath = [];
 
   $scope.addToOrder = function () {
     if ($scope.form.name && $scope.form.ini) {
@@ -46,7 +48,7 @@ app.controller("mainCtrl", function ($scope, $timeout) {
           dataObj.result = parseInt(roll);
           // console.log('roll is flat: ', roll);
         }
-        if(roll.includes("*")){
+        if (roll.includes("*")) {
           const strip = roll.replace("*", "");
           const natRoll = Math.floor(Math.random() * 20 + 1);
           dataObj.result = natRoll + parseInt(strip);
@@ -168,4 +170,64 @@ app.controller("mainCtrl", function ($scope, $timeout) {
       }
     }
   };
+
+  //Start Vibe coded junk
+  function rollD20() {
+    let r = Math.floor(Math.random() * 20) + 1;
+    return r;
+  }
+
+  function setMonsterReactionD20() {
+    let roll = rollD20();
+
+    while (true) {
+      // FIRST ROLL
+      if (roll === 1) return "Immediate Attack";
+
+      if (roll >= 2 && roll <= 6) {
+        roll = rollD20();
+        if (roll >= 1 && roll <= 13) return "Attack";
+        if (roll >= 14 && roll <= 20) {
+          roll = rollD20();
+          if (roll >= 1 && roll <= 8) return "Attack";
+          if (roll >= 9 && roll <= 14) return "Leave";
+          if (roll >= 15 && roll <= 20) return "Friendly";
+        }
+      }
+
+      if (roll >= 7 && roll <= 14) {
+        roll = rollD20();
+        if (roll >= 1 && roll <= 8) return "Attack";
+
+        if (roll >= 9 && roll <= 14) {
+          roll = rollD20();
+          if (roll >= 1 && roll <= 8) return "Attack";
+          if (roll >= 9 && roll <= 14) return "Leave";
+          if (roll >= 15 && roll <= 20) return "Friendly";
+        }
+
+        if (roll >= 15 && roll <= 20) return "Friendly";
+      }
+
+      if (roll >= 15 && roll <= 19) {
+        roll = rollD20();
+
+        if (roll >= 1 && roll <= 8) {
+          roll = rollD20();
+          if (roll >= 1 && roll <= 8) return "Attack";
+          if (roll >= 9 && roll <= 14) return "Leave";
+          if (roll >= 15 && roll <= 20) return "Friendly";
+        }
+
+        if (roll >= 9 && roll <= 20) return "Friendly";
+      }
+
+      if (roll === 20) return "Immediately Friendly";
+    }
+  }
+
+  $scope.monsReactRoll = function () {
+    $scope.monsterReaction = setMonsterReactionD20();
+  };
+  //End Vibe coded junk
 });

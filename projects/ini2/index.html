@@ -160,7 +160,7 @@
 
               <textarea
                 placeholder="Paste area"
-                style="width: 100%; min-height: 6rem;"
+                style="width: 100%; min-height: 6rem"
                 id="dump"
                 ng-model="pasteDump"
               ></textarea>
@@ -278,7 +278,14 @@
                   </div>
                   <br />
                   <br />
-                  <button  onclick="copyDivToClipboard();" class="preBling" ng-click="ping()" ng-class="{'bling':pinging === true}">Copy</button>
+                  <button
+                    onclick="copyDivToClipboard()"
+                    class="preBling"
+                    ng-click="ping()"
+                    ng-class="{'bling':pinging === true}"
+                  >
+                    Copy
+                  </button>
                   <script>
                     function copyDivToClipboard() {
                       var range = document.createRange();
@@ -353,40 +360,48 @@
           <hr />
 
           <details>
-            <summary>Hostility</summary>
-            <div id="hostil" class="row flex card">
+            <summary>NPC reactions</summary>
+            <div class="align" style="align-items: flex-start">
               <div>
-                <strong class="rd">Friendly</strong>
-                <p><span class="rd">0:</span> Wont take risks</p>
-                <p><span class="rd">10:</span> Take minor risks</p>
-                <p><span class="rd">20:</span> Take Significant risk</p>
+                <div class="align jsb" style="align-items: flex-start;">
+                  <button
+                    class="preBling2"
+                    ng-click="monsReactRoll(); ping();"
+                    ng-class="{'bling2':pinging === true}"
+                  >
+                    ✨ Roll for me
+                  </button>
+                  <b style="color:tomato">{{monsterReaction}}</b>
+                </div>
+                <img id="monreact" src="iu.webp" alt="" />
+              </div>  
+
+              &nbsp;&nbsp;
+              <div id="hostil" class=" flex">
+                <div>
+                  <strong class="rd">Friendly</strong>
+                  <p><span class="rd">0:</span> Wont take risks</p>
+                  <p><span class="rd">10:</span> Take minor risks</p>
+                  <p><span class="rd">20:</span> Take Significant risk</p>
+                </div>
+                <hr/>
+                <div>
+                  <strong class="rd">Indifferent</strong>
+                  <p><span class="rd">0:</span> Wont help or harm</p>
+                  <p><span class="rd">10:</span> Wont take risks</p>
+                  <p><span class="rd">20:</span> Take minor risks</p>
+                </div>
+                <hr/>
+                <div>
+                  <strong class="rd">Hostile</strong>
+                  <p><span class="rd">0:</span> Will try to hinder</p>
+                  <p><span class="rd">10:</span> Wont help or harm</p>
+                  <p><span class="rd">20:</span> Help without risks</p>
+                </div>
               </div>
-              &nbsp; &nbsp;
-              <hr />
-              &nbsp; &nbsp;
-              <div>
-                <strong class="rd">Indifferent</strong>
-                <p>Wont help or harm</p>
-                <p>Wont take risks</p>
-                <p>Take minor risks</p>
-              </div>
-              &nbsp; &nbsp;
-              <hr />
-              &nbsp; &nbsp;
-              <div>
-                <strong class="rd">Hostile</strong>
-                <p>Will try to hinder</p>
-                <p>Wont help or harm</p>
-                <p>Help without risks</p>
-              </div>
+              &nbsp;&nbsp;
+              <div></div>
             </div>
-          </details>
-
-          <hr />
-
-          <details>
-            <summary>Monster react</summary>
-            <img id="monreact" src="iu.webp" alt="" />
           </details>
 
           <hr />
