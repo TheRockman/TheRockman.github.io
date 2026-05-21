@@ -23,6 +23,17 @@ app.controller("mainCtrl", function ($scope, $timeout) {
     }, 500);
   };
 
+  $scope.pickCombatant = function () {
+    
+    for (let i = 0; i < $scope.order.length; i++) {
+      const element = $scope.order[i].picked = false;
+      
+    }
+
+    $scope.order[Math.floor(Math.random() * $scope.order.length)].picked = true;
+  };
+
+
   $scope.parsePasteDump = function () {
     let output = [];
     for (let i = 0; i < $scope.pasteDump.split("\n").length; i++) {
