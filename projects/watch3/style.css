@@ -249,10 +249,32 @@ body {
   animation: puff-in-center 1s 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
+.sideChat {
+  transform: rotateY(180deg);
+}
+
+.sideChat>p,
+.sideChat>*>p,
+.sideChat>.talkbox,
+.sideChat>.nameplate {
+  transform: rotateY(180deg) !important
+}
+
+.sideChat>.talkbox:after {
+  left: 105%;
+  width: 0;
+  height: 0;
+  border: 33px solid transparent;
+  border-left-color: #fefefe;
+  border-right: 0;
+  margin-right: -33px;
+}
+
 .soleSolver {
   width: 100%;
 }
-.soleSolver > .panel{
+
+.soleSolver>.panel {
   position: relative;
   z-index: 5;
 }
@@ -271,7 +293,7 @@ body {
 }
 
 .bg2 {
-  background:#bfbfbf;
+  background: #bfbfbf;
 }
 
 .bg.CC {
@@ -412,12 +434,12 @@ body {
     padding: 15% 2rem;
   }
 
- .onomotopoeia {
+  .onomotopoeia {
     display: none;
   }
 
   .slider {
-    width: 100%!important;
+    width: 100% !important;
   }
 
   .nameplate {

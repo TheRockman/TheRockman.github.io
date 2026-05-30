@@ -11,7 +11,7 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
   };
 
   $scope.metaStats = {
-    exp: 0,  
+    exp: 0,
     popularity: 0, // -1000 to 1000 with 0 being the starting point
     power: 0 // -1000 to 1000 with 0 being the starting point
   };
@@ -68,7 +68,7 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
   // DD - Dack encourages adventure and risk.
   // EE- Enoch invokes the traditions of the Shapers, 
 
-  const originalDebates = [
+  let originalDebates = [
     {
       id: "A farewell to arms",
       idShort: 'farewell_to_arms',
@@ -172,7 +172,7 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
           desc: "A ship cant set sail if the crew is sleeping in, but neither if they are whipped into unconciousnes.\nLet the men rest a bit i say.",
           modApproved: 2,
           descApproved: "And with that on the books, i think i will go enjoy a bit of a holy day myself. In my bunkroom.",
-          modRejected: -1,
+          modRejected: -2,
           descRejected: "'And down came the whip, with a crack and a smack.\nAnchors away on that ship, to the horizon and back.\nAnd beyond! ... '",
         },
         EE: {
@@ -594,6 +594,143 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
   ];
   $scope.debates = JSON.parse(JSON.stringify(originalDebates));
 
+  $scope.discussions = {
+    'care_for_the_wounded': {
+      id: "Clocktoria approaches you between sessions",
+      idShort: 'clocktoria_discussion_1',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "CC",
+        chain: [
+          {
+            desc: "My lord, i have been meaning to speak with you about something rather important.\nI know you are busy, but it has been weighing on my mind and i would be grateful for a moment of your time.",
+            yes: "Of course, Clocktoria. What is it that you wanted to discuss?",
+            no: "I'm sorry, Clocktoria, but I don't have time for this right now."
+          },
+          {
+            desc: "Thank you, my lord. I have been hearing some troubling reports from the front lines.\nOur soldiers are facing not only the enemy but also harsh conditions and dwindling supplies.\nI fear that if we do not address these issues soon, we may lose the morale of our troops.",
+            yes: "What do you suggest we do to improve the situation for our soldiers?",
+            no: "I appreciate your concern, Clocktoria, but we have more pressing matters to attend to at the moment."
+          },
+          {
+            desc: "I believe we should prioritize improving the living conditions for our soldiers.\nThis could include better shelter, more nutritious food, and regular rest periods.\nBy taking care of our troops, we can boost their morale and ensure they are better prepared to face the challenges ahead.",
+            yes: "That sounds like a reasonable plan, I will allocate resources to improve the conditions for our soldiers.",
+            no: "While I understand your intentions, we need to focus on our strategic objectives first. We will consider improving conditions for our soldiers when we have more resources available."
+          }
+        ]
+      },
+    },
+    'streamline_the_factories': {
+      id: "Bella requests a meeting about output",
+      idShort: 'bella_discussion_1',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "BB",
+        chain: [
+          {
+            desc: "My lord, our industrial output is inconsistent. I believe there are improvements we can make to increase productivity without sacrificing quality.",
+            yes: "Tell me what you have in mind.",
+            no: "Not now, Bella. I need to handle the current crisis first."
+          },
+          {
+            desc: "A scientific audit of the factories would reveal bottlenecks and waste. With modest investment, we can redesign the workflow to produce more with less effort.",
+            yes: "Proceed with the audit, and suggest the best improvements.",
+            no: "I cannot spare the resources. We must accept the current output for now."
+          },
+          {
+            desc: "Excellent. I will prepare a proposal for the top three interventions. They will preserve our workforce and increase efficiency, not simply push them harder.",
+            yes: "Very well. I trust your judgment on this.",
+            no: "I appreciate the offer, but we will not change the factories at this time."
+          }
+        ]
+      },
+    },
+    'dack_discussion_x': {
+      id: "Dack has a look of determination on his face as he approaches",
+      idShort: 'dack_discussion_x',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "DD",
+        chain: [
+          {
+            desc: "My lord, This is the last straw im sorry to say. Im setting sail, never to return. I have been asking for your support for years and you have always said no.\nI cant wait around for you to change your mind, so im going to do it myself.",
+            yes: "Dack, wait! I want to hear you out before you make such a drastic decision.",
+            no: "I understand your frustration, Dack, but I cannot support a decision that could endanger the fleet and our people. Please reconsider."
+          },
+          {
+            desc: "Cleary you have no sense of adventure, or you would have said yes by now. I have a crew ready and a ship im not wasting my life waiting for you to get on board.",
+            yes: "Let's work together to make this happen safely.",
+            no: "I urge you to reconsider for the sake of the crew and the realm."
+          },
+          {
+            desc: "*Dack turns to leave*",
+            no: "Farewell, Dack. I hope you find what you're looking for out there.",
+          }
+        ]
+      },
+    },
+    'prepare_the_expedition': {
+      id: "Dack wants your blessing for the next voyage",
+      idShort: 'dack_discussion_1',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "DD",
+        chain: [
+          {
+            desc: "My lord, the crew is eager to set sail beyond the Fog Sea again. We need your blessing to outfit the expedition properly.",
+            yes: "What do you need to make it safe?",
+            no: "Not now. We have more urgent land matters to resolve."
+          },
+          {
+            desc: "A stronger hull, more experienced sailors, and a reliable long-range chart are the difference between glory and disaster.\nIf you provide these, I will guarantee a safe return or at least a story worth remembering.",
+            yes: "Allocate the resources and make the preparations.",
+            no: "I cannot risk the fleet on another uncertain voyage."
+          },
+          {
+            desc: "Excellent, my lord. With your support, the expedition will set off as soon as the wind is favorable.\nIf you would rather wait, I can keep the crew ready until the time is right.",
+            yes: "Go ahead. Bring back whatever you find.",
+            no: "Wait for a better moment."
+          }
+        ]
+      },
+    },
+    'honor_the_ancestors': {
+      id: "Enoch seeks your counsel about a new decree",
+      idShort: 'enoch_discussion_1',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "EE",
+        chain: [
+          {
+            desc: "My lord, the Shapers taught us to honor the past. There is a new proposal that would alter one of our oldest customs.",
+            yes: "Explain the proposal and your concerns.",
+            no: "I don't have time for this conversation right now."
+          },
+          {
+            desc: "The proposal would change how we select our festival leaders. Some say it will bring efficiency, but I fear it will weaken the bond our people have with tradition.",
+            yes: "We need to balance tradition with practical needs. What is your recommendation?",
+            no: "We can revisit this later when I am less occupied."
+          },
+          {
+            desc: "I advise caution. Tradition is not merely ritual; it is the framework that holds our community together.\nIf we tamper with it too quickly, we may fracture the very spirit we are trying to preserve.",
+            yes: "Then maintain the tradition and look for more gradual improvements.",
+            no: "If the change proves necessary, I will consider it carefully."
+          }
+        ]
+      },
+    }
+  };
+
   $scope.consequences = [
     {
       condition: function (factions) { return factions.AA < 1; },
@@ -944,13 +1081,21 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
     return result;
   };
 
-  $scope.setStart = function(value) {
+  $scope.setStart = function (value) {
     $scope.start = value;
   };
 
-  $scope.setHints = function(value) {
+  $scope.setHints = function (value) {
     $scope.hints = value;
   };
+
+  var scrubFactionFromDebates = function (faction) {
+    for (var i = 0; i < $scope.debates.length; i++) {
+      if ($scope.debates[i].pitch.faction === faction) {
+        delete $scope.debates[i];
+      }
+    }
+  }
 
   $scope.setCurrentDebate = function (debate) {
     $scope.currentDebate = debate || null;
@@ -1059,6 +1204,9 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
   }
 
   $scope.startNextDebate = function () {
+
+    const memoId = JSON.parse(JSON.stringify($scope.currentDebate.idShort));
+
     $scope.debates = $scope.debates.filter(function (item) {
       return item.idShort != $scope.currentDebate.idShort;
     });
@@ -1069,8 +1217,44 @@ angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function 
 
     $scope.checkForConsequences();
 
+    // Trigger specific dialogue or event following the current debate, either based on variables, or the previous debate.
+    let newDebate;
+
+    // Direct responses
+    if ($scope.factions.DD < 0 && $scope.discussions.dack_discussion_x) {
+      newDebate = JSON.parse(JSON.stringify($scope.discussions.dack_discussion_x));
+      delete $scope.discussions.dack_discussion_x;
+      delete $scope.factions.DD;
+      scrubFactionFromDebates("DD");
+      $scope.setCurrentDebate(newDebate);
+      return;
+    }
+
+    // Side story 
+    switch (memoId) {
+      case 'NULL':
+        newDebate = JSON.parse(JSON.stringify($scope.discussions.care_for_the_wounded));
+        $scope.setCurrentDebate(newDebate);
+        return;
+      case 'farewell_to_arms':
+        newDebate = JSON.parse(JSON.stringify($scope.discussions.honor_the_ancestors));
+        $scope.setCurrentDebate(newDebate);
+        return;
+      case 'greenlight_gambit':
+        newDebate = JSON.parse(JSON.stringify($scope.discussions.streamline_the_factories));
+        $scope.setCurrentDebate(newDebate);
+        return;
+      case 'hard_days_work':
+        newDebate = JSON.parse(JSON.stringify($scope.discussions.honor_the_ancestors));
+        $scope.setCurrentDebate(newDebate);
+        return;
+
+      default:
+        break;
+    }
+
     // Possibly trigger a crisis
-     $scope.maybeTriggerCrisisEvent()
+    $scope.maybeTriggerCrisisEvent();
 
     if ($scope.debates.length > 0) {
       $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length)]);

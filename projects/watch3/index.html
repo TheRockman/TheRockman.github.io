@@ -32,31 +32,31 @@
     <!-- HUD -->
     <div class="ranks" ng-if="currentArgument">
       <div class="panel">
-        <span class="pointer" ng-click="setCurrentArgument('CC')">
+        <span class="pointer" ng-if="factions.CC < 999" ng-click="setCurrentArgument('CC')">
           <span class="bullet" ng-if="currentArgument.faction === 'CC'">🔹</span>
           {{factions.CC}} : Clocktoria
         </span>
         </br>
         </br>
-        <span class="pointer" ng-click="setCurrentArgument('AA')">
+        <span class="pointer" ng-if="factions.AA < 999" ng-click="setCurrentArgument('AA')">
           <span class="bullet" ng-if="currentArgument.faction === 'AA'">🔹</span>
           {{factions.AA}} : Abrams
         </span>
         </br>
         </br>
-        <span class="pointer" ng-click="setCurrentArgument('BB')">
+        <span class="pointer" ng-if="factions.BB < 999" ng-click="setCurrentArgument('BB')">
           <span class="bullet" ng-if="currentArgument.faction === 'BB'">🔹</span>
           {{factions.BB}} : Bella
         </span>
         </br>
         </br>
-        <span class="pointer" ng-click="setCurrentArgument('DD')">
+        <span class="pointer" ng-if="factions.DD < 999" ng-click="setCurrentArgument('DD')">
           <span class="bullet" ng-if="currentArgument.faction === 'DD'">🔹</span>
           {{factions.DD}} : Dack
         </span>
         </br>
         </br>
-        <span class="pointer" ng-click="setCurrentArgument('EE')">
+        <span class="pointer" ng-if="factions.EE < 999" ng-click="setCurrentArgument('EE')">
           <span class="bullet" ng-if="currentArgument.faction === 'EE'">🔹</span>
           {{factions.EE}} : Enoch
         </span>
@@ -127,7 +127,7 @@
           </div>
         </div>
         <div>
-          <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
+          <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false && !currentDebate.pitch.chain"
             ng-click="currentDebate.pitch.pitched = true">
             ↪ <br />
             Proceed
@@ -145,7 +145,8 @@
 
 
     <!-- New Pitch view -->
-    <div ng-if="currentDebate.pitch.pitched === false && !currentCrisis" class="align wrap bg" style="margin: 0 auto;">
+    <div ng-if="currentDebate.pitch.pitched === false && !currentCrisis" class="align wrap bg" style="margin: 0 auto;"
+      ng-class="{sideChat: currentDebate.pitch.chain}">
       <div class="relative">
         <img ng-if="currentDebate.pitch.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">
@@ -167,7 +168,21 @@
       </div>
 
       <div class="talkbox">
-        {{currentDebate.pitch.desc}}
+        <div ng-if="currentDebate.pitch.desc">
+          {{currentDebate.pitch.desc}}
+        </div>
+        <div ng-if="currentDebate.pitch.chain">
+          {{currentDebate.pitch.chain[0].desc}}
+
+          <button ng-if="currentDebate.pitch.chain[0].yes" style="width: 100%" class="panel pointer"
+            ng-click="currentDebate.pitch.chain.length > 1 ? currentDebate.pitch.chain.shift() : startNextDebate()">
+            {{currentDebate.pitch.chain[0].yes}}
+          </button>
+          <hr />
+          <button ng-if="currentDebate.pitch.chain[0].no" style="width: 100%" class="panel pointer" ng-click="startNextDebate()">
+            {{currentDebate.pitch.chain[0].no}}
+          </button>
+        </div>
       </div>
     </div>
     <!-- END New Pitch view-->
@@ -176,35 +191,35 @@
     <div ng-if="currentDebate.pitch.pitched && currentArgument === null">
       <div ng-if="currentDebate.pitch.pitched && currentArgument === null" class="hearing align jsb">
 
-        <span class="center pointer" ng-click="setCurrentArgument('CC')"
+        <span ng-if="factions.CC < 999" class="center pointer" ng-click="setCurrentArgument('CC')"
           ng-class="{'speaker': currentSpeaker === 'CC'}">
           <img class="framed-portrait" src="img/CC.png" alt="">
           <p>Clocktoria III</p>
           <p>{{factions.CC}}</p>
           <p ng-if="devotedFlags.CC">Devoted</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('AA')"
+        <span ng-if="factions.AA < 999" class="center pointer" ng-click="setCurrentArgument('AA')"
           ng-class="{'speaker': currentSpeaker === 'AA'}">
           <img class="framed-portrait" src="img/AA.png" alt="">
           <p>Abrams Stovevalve</p>
           <p>{{factions.AA}}</p>
           <p ng-if="devotedFlags.AA">Devoted</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('BB')"
+        <span ng-if="factions.BB < 999" class="center pointer" ng-click="setCurrentArgument('BB')"
           ng-class="{'speaker': currentSpeaker === 'BB'}">
           <img class="framed-portrait" src="img/BB.png" alt="">
           <p>Bella MacGuffin</p>
           <p>{{factions.BB}}</p>
           <p ng-if="devotedFlags.BB">Devoted</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('DD')"
+        <span ng-if="factions.DD < 999" class="center pointer" ng-click="setCurrentArgument('DD')"
           ng-class="{'speaker': currentSpeaker === 'DD'}">
           <img class="framed-portrait" src="img/DD.png" alt="">
           <p>Dack Rowley</p>
           <p>{{factions.DD}}</p>
           <p ng-if="devotedFlags.DD">Devoted</p>
         </span>
-        <span class="center pointer" ng-click="setCurrentArgument('EE')"
+        <span ng-if="factions.EE < 999" class="center pointer" ng-click="setCurrentArgument('EE')"
           ng-class="{'speaker': currentSpeaker === 'EE'}">
           <img class="framed-portrait" src="img/EE.png" alt="">
           <p>Enoch Diptych</p>
@@ -270,7 +285,7 @@
         </div>
         <div class="hearing align jsb">
           <span class="center pointer"
-            ng-if="!currentCrisis.resolved || crisisSolver === 'CC' && currentCrisis.resolved"
+            ng-if="factions.CC < 999 && (!currentCrisis.resolved || crisisSolver === 'CC' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'CC' && currentCrisis.resolved}" ng-click="setCrisisSolver('CC')">
             <div>
               <p>Clocktoria III</p>
@@ -289,7 +304,7 @@
             </p>
           </span>
           <span class="center pointer"
-            ng-if="!currentCrisis.resolved || crisisSolver === 'AA' && currentCrisis.resolved"
+            ng-if="factions.AA < 999 && (!currentCrisis.resolved || crisisSolver === 'AA' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'AA' && currentCrisis.resolved}" ng-click="setCrisisSolver('AA')">
             <div>
               <p>Abrams Stovevalve</p>
@@ -308,7 +323,7 @@
             </p>
           </span>
           <span class="center pointer"
-            ng-if="!currentCrisis.resolved || crisisSolver === 'BB' && currentCrisis.resolved"
+            ng-if="factions.BB < 999 && (!currentCrisis.resolved || crisisSolver === 'BB' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'BB' && currentCrisis.resolved}" ng-click="setCrisisSolver('BB')">
             <div>
               <p>Bella MacGuffin</p>
@@ -327,7 +342,7 @@
             </p>
           </span>
           <span class="center pointer"
-            ng-if="!currentCrisis.resolved || crisisSolver === 'DD' && currentCrisis.resolved"
+            ng-if="factions.DD < 999 && (!currentCrisis.resolved || crisisSolver === 'DD' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'DD' && currentCrisis.resolved}" ng-click="setCrisisSolver('DD')">
             <div>
               <p>Dack Rowley</p>
@@ -346,7 +361,7 @@
             </p>
           </span>
           <span class="center pointer"
-            ng-if="!currentCrisis.resolved || crisisSolver === 'EE' && currentCrisis.resolved "
+            ng-if="factions.EE < 999 && (!currentCrisis.resolved || crisisSolver === 'EE' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'EE' && currentCrisis.resolved}" ng-click="setCrisisSolver('EE')">
             <div>
               <p>Enoch Diptych</p>
