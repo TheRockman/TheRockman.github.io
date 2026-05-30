@@ -1,4 +1,6 @@
-var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function ($scope) {
+'use strict';
+
+angular.module("myApp", ['ngTouch']).controller("mainCtrl", ["$scope", function ($scope) {
 
   $scope.factions = {
     AA: 5,
@@ -6,17 +8,39 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
     CC: 5,
     DD: 5,
     EE: 5
-  }
+  };
 
   $scope.metaStats = {
     exp: 0,  
     popularity: 0, // -1000 to 1000 with 0 being the starting point
     power: 0 // -1000 to 1000 with 0 being the starting point
-  }
+  };
 
   $scope.eventFlags = {
     argumentHistory: {}
-  }
+  };
+
+  var getSafeNumber = function (value) {
+    return typeof value === 'number' ? value : 0;
+  };
+
+  var getArgumentChange = function (argument, key) {
+    return getSafeNumber(argument && argument[key]);
+  };
+
+  var sumValues = function (objectToSum) {
+    return Object.values(objectToSum || {}).reduce(function (sum, value) {
+      return sum + getSafeNumber(value);
+    }, 0);
+  };
+
+  var randomIndex = function (length) {
+    return Math.floor(Math.random() * Math.max(0, length));
+  };
+
+  var CRISIS_FREQUENCY = 4;
+
+  $scope.start = false;
 
   $scope.currentArgument = null;
   $scope.currentDebate = null;
@@ -24,6 +48,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   $scope.currentCrisis = null;
   $scope.crisisSolver = null;
+  $scope.hints = true;
 
   $scope.currentConsequences = [];
   $scope.devotedFlags = {};
@@ -277,7 +302,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       }
     },
     {
-      id: "Beyond the Fog Chart",
+      id: "Off the charts",
       idShort: 'fog_chart_expedition',
       result: null,
       metaStats: {
@@ -380,7 +405,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
           modApproved: 0,
           descApproved: "Remind me to stay close to the shore, just in case i need to dip below the surface all of a sudden.",
           modRejected: 0,
-          descRejected: "I think thats the right heading, maybe this can be reconfigured to be of use at sea? Or maybe we can use the tech to power a new kind lighthouse?",
+          descRejected: "I think thats the right heading, maybe this can be reconfigured to be of use at sea? Or maybe we can use the tech to power a new kind of lighthouse?",
         },
         EE: {
           faction: 'EE',
@@ -462,7 +487,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       pitch: {
         pitched: false,
         faction: "EE",
-        desc: "My lord!\nThe long neutral duke of the Northsteel mountains is now offering a secret non-aggression pact if we send envoys and give a few trade concessions.\nIt is quite elegant diplomacy with no bloodshed as long as our enemies remain in the dark about the whole affair.",
+        desc: "My lord!\nThe long neutral duke of the Northsteel mountains is now offering a secret non-aggression pact if we send envoys and give a few trade concessions.\n\nIt is quite elegant diplomacy with no bloodshed as long as our enemies remain in the dark about the whole affair.",
         summary: "Should we accept a quiet peace treaty?",
       },
       arguments: {
@@ -526,7 +551,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       arguments: {
         AA: {
           faction: 'AA',
-          desc: "Blocking trade is a guaranteed way to kill our own profits.\nLet them pass under watch instead. Whats the worst they could do, smuggle a few contraband trinkets?",
+          desc: "Blocking trade is a guaranteed way to kill our own profits.\nLet them pass under watch instead.\n\nWhats the worst they could do, smuggle a few contraband trinkets?",
           modApproved: -2,
           descApproved: "Good thing it wont be you who has to explain to the merchants why their goods are being held up. That headache is now on me.",
           modRejected: 3,
@@ -574,115 +599,133 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       condition: function (factions) { return factions.AA < 1; },
       title: 'Abrams Stovevalve is outraged',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      bg: ''
     },
     {
       condition: function (factions) { return factions.BB < 1; },
       title: 'Bella MacGuffin is outraged',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      bg: ''
     },
     {
       condition: function (factions) { return factions.CC < 1; },
       title: 'Clocktoria III is outraged',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      bg: ''
     },
     {
       condition: function (factions) { return factions.DD < 1; },
       title: 'Dack Rowley is outraged',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      bg: ''
     },
     {
       condition: function (factions) { return factions.EE < 1; },
       title: 'Enoch Diptych is outraged',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      bg: ''
     },
     {
       condition: function (factions, metaStats) { return metaStats.popularity < 1; },
       title: 'Your popularity rating is dire',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F70%2Fca%2F61%2F70ca61b145ca23810fa2efbb9e2f40a9.jpg&sp=1780144513T9035b5a88f86d793d8b04a4b4553db2ce2411eceffd4fc8cbe4287e6cbae6e62'
+      desc: 'You have completely lost the support of the people of the realm.\nYour name is now synonymous with failure and incompetence.',
+      bg: ''
     },
     {
-      condition: function (factions, metaStats) { return metaStats.popularity > 9; },
-      title: 'The people demand more from you',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'hhttps://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F70%2Fca%2F61%2F70ca61b145ca23810fa2efbb9e2f40a9.jpg&sp=1780144513T9035b5a88f86d793d8b04a4b4553db2ce2411eceffd4fc8cbe4287e6cbae6e62'
+      condition: function (factions, metaStats) { return metaStats.power < 1; },
+      title: 'Your military strength is abysmal',
+      desc: 'Your recent decisions have left the realm vulnerable and exposed.\nOur enemies, emboldened by our weakness, are amassing their forces.',
+      bg: ''
+    },
+    {
+      condition: function (factions, metaStats) { return metaStats.power > 800; },
+      title: 'Your military strength is formidable',
+      desc: 'Your recent decisions have strengthened the realm and inspired confidence in our forces.\nOur enemies fear your power and respect your leadership.',
+      bg: ''
+    },
+    {
+      condition: function (factions, metaStats) { return metaStats.popularity > 800; },
+      title: 'The people of the realm praise your name',
+      desc: 'Your recent choices have not gone unnoticed by the people of the realm.\nThere are many who speak highly of your leadership.',
+      bg: ''
+    },
+    {
+      condition: function (factions, metaStats) { return metaStats.popularity < 100; },
+      title: 'The people of the realm demand more from you',
+      desc: 'Your recent choices have not gone unnoticed by the people of the realm.\nIf you fail to meet these expectations, you risk a swift fall from grace.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.AA > 8; },
       title: 'Abrams Stovevalve is your devoted ally',
-      desc: 'Your suport for him has earned you the loyalty of Abrams Stovevalve, a powerful figure in the industry.\nThe next time you would lose standing with him, he will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for him has earned you the loyalty of Abrams Stovevalve, a powerful figure in the industry.\nThe next time you would lose standing with him, he will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.BB > 8; },
       title: 'Bella MacGuffin is your devoted ally',
-      desc: 'Your suport for her has earned you the loyalty of Bella MacGuffin, a titan of science.\nThe next time you would lose standing with her, she will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for her has earned you the loyalty of Bella MacGuffin, a titan of science.\nThe next time you would lose standing with her, she will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.CC > 8; },
       title: 'Clocktoria III is your devoted ally',
-      desc: 'Your suport for her has earned you the loyalty of Clocktoria III, a medical marvel.\nThe next time you would lose standing with her, she will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for her has earned you the loyalty of Clocktoria III, a medical marvel.\nThe next time you would lose standing with her, she will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.DD > 8; },
       title: 'Dack Rowley is your devoted ally',
-      desc: 'Your suport for him has earned you the loyalty of Dack Rowley, a seasoned veteran.\nThe next time you would lose standing with him, he will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for him has earned you the loyalty of Dack Rowley, a seasoned veteran.\nThe next time you would lose standing with him, he will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.EE > 8; },
       title: 'Enoch Diptych is your devoted ally',
-      desc: 'Your suport for him has earned you the loyalty of Enoch Diptych, unshakable in his convictions.\nThe next time you would lose standing with him, he will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for him has earned you the loyalty of Enoch Diptych, unshakable in his convictions.\nThe next time you would lose standing with him, he will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return Object.values(factions).reduce(function (sum, v) { return sum + v; }, 0) < -5; },
       title: 'The council turns against you',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      bg: ''
     },
     {
       condition: function (factions) { return factions.AA > 14 && !$scope.devotedFlags.AA; },
       title: 'Abrams Stovevalve is your devoted ally',
-      desc: 'Your suport for him has earned you the loyalty of Abrams Stovevalve, a powerful figure in the industry.\nThe next time you would lose standing with him, he will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for him has earned you the loyalty of Abrams Stovevalve, a powerful figure in the industry.\nThe next time you would lose standing with him, he will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.BB > 14 && !$scope.devotedFlags.BB; },
       title: 'Bella MacGuffin is your devoted ally',
-      desc: 'Your suport for her has earned you the loyalty of Bella MacGuffin, a titan of science.\nThe next time you would lose standing with her, she will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for her has earned you the loyalty of Bella MacGuffin, a titan of science.\nThe next time you would lose standing with her, she will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.CC > 14 && !$scope.devotedFlags.CC; },
       title: 'Clocktoria III is your devoted ally',
-      desc: 'Your suport for her has earned you the loyalty of Clocktoria III, a medical marvel.\nThe next time you would lose standing with her, she will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for her has earned you the loyalty of Clocktoria III, a medical marvel.\nThe next time you would lose standing with her, she will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.DD > 14 && !$scope.devotedFlags.DD; },
       title: 'Dack Rowley is your devoted ally',
-      desc: 'Your suport for him has earned you the loyalty of Dack Rowley, a seasoned veteran.\nThe next time you would lose standing with him, he will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for him has earned you the loyalty of Dack Rowley, a seasoned veteran.\nThe next time you would lose standing with him, he will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return factions.EE > 14 && !$scope.devotedFlags.EE; },
       title: 'Enoch Diptych is your devoted ally',
-      desc: 'Your suport for him has earned you the loyalty of Enoch Diptych, unshakable in his convictions.\nThe next time you would lose standing with him, he will overlook it.',
-      bg: 'https://i.pinimg.com/736x/1f/35/68/1f3568375ecbd3b79093dda5776ec307.jpg'
+      desc: 'Your suport for him has earned you the loyalty of Enoch Diptych, unshakable in his convictions.\nThe next time you would lose standing with him, he will let it slide.',
+      bg: ''
     },
     {
       condition: function (factions) { return Object.values(factions).reduce(function (sum, v) { return sum + v; }, 0) < -5; },
       title: 'The council turns against you',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      bg: 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F70%2Fca%2F61%2F70ca61b145ca23810fa2efbb9e2f40a9.jpg&sp=1780144513T9035b5a88f86d793d8b04a4b4553db2ce2411eceffd4fc8cbe4287e6cbae6e62'
+      desc: 'Your decisions have alienated the council members and eroded their trust in your leadership.\nYou will find itextremely difficult to regain their support.\n\nYour authority is severely undermined.',
+      bg: ''
     },
   ];
 
@@ -879,17 +922,35 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   //  $scope.setCurrentCrisis($scope.crisisEvents[0]);
   $scope.resolveCrisis = function () {
-    console.log("Resolving crisis with solver", $scope.crisisSolver);
+    if (!$scope.currentCrisis || !$scope.crisisSolver) {
+      console.warn("resolveCrisis called without a selected crisis or solver");
+      return false;
+    }
+
+    var solverValue = getSafeNumber($scope.factions[$scope.crisisSolver]);
+    var result = "fail";
+
     if ($scope.currentCrisis.stat === "loyalty") {
-      return $scope.factions[$scope.crisisSolver] >= $scope.currentCrisis.dc ? $scope.currentCrisis.resolved = "pass" : $scope.currentCrisis.resolved = "fail";
+      result = solverValue >= getSafeNumber($scope.currentCrisis.dc) ? "pass" : "fail";
+    } else if ($scope.currentCrisis.stat === "power") {
+      result = getSafeNumber($scope.metaStats.power) + solverValue * 10 >= getSafeNumber($scope.currentCrisis.dc) ? "pass" : "fail";
+    } else if ($scope.currentCrisis.stat === "popularity") {
+      result = getSafeNumber($scope.metaStats.popularity) + solverValue * 10 >= getSafeNumber($scope.currentCrisis.dc) ? "pass" : "fail";
+    } else {
+      console.warn("Unknown crisis stat:", $scope.currentCrisis.stat);
     }
-    if ($scope.currentCrisis.stat === "power") {
-      return $scope.metaStats.power+($scope.factions[$scope.crisisSolver]*10) >= $scope.currentCrisis.dc ? $scope.currentCrisis.resolved = "pass" : $scope.currentCrisis.resolved = "fail";
-    }
-    if ($scope.currentCrisis.stat === "popularity") {
-      return $scope.metaStats.popularity+($scope.factions[$scope.crisisSolver]*10) >= $scope.currentCrisis.dc ? $scope.currentCrisis.resolved = "pass" : $scope.currentCrisis.resolved = "fail";
-    }
-  }
+
+    $scope.currentCrisis.resolved = result;
+    return result;
+  };
+
+  $scope.setStart = function(value) {
+    $scope.start = value;
+  };
+
+  $scope.setHints = function(value) {
+    $scope.hints = value;
+  };
 
   $scope.setCurrentDebate = function (debate) {
     $scope.currentDebate = debate || null;
@@ -909,10 +970,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   $scope.startDebateCount = 0;
 
   $scope.maybeTriggerCrisisEvent = function () {
-    var crisisFreq = 6; // Trigger a crisis this often
-    
     $scope.startDebateCount = ($scope.startDebateCount || 0) + 1;
-    if ($scope.startDebateCount % crisisFreq === 0) {
+    if ($scope.startDebateCount % CRISIS_FREQUENCY === 0) {
       if (!$scope.crisisEvents || $scope.crisisEvents.length === 0) return false;
       var idx = Math.floor(Math.random() * $scope.crisisEvents.length);
       var crisis = $scope.crisisEvents.splice(idx, 1)[0];
@@ -924,7 +983,8 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   };
 
   $scope.setCurrentArgument = function (argument) {
-    if (!argument) {
+    if (!argument || !$scope.currentDebate || !$scope.currentDebate.arguments || !$scope.currentDebate.arguments[argument]) {
+      $scope.currentSpeaker = null;
       $scope.currentArgument = null;
       return;
     }
@@ -934,16 +994,21 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
 
   function mergeMeta(objA, objB) {
     var mergedObj = {};
-    var allKeys = new Set(Object.keys(objA).concat(Object.keys(objB)));
+    var allKeys = new Set(Object.keys(objA || {}).concat(Object.keys(objB || {})));
     allKeys.forEach(function (key) {
-      mergedObj[key] = (objA[key] !== undefined ? objA[key] : 0) + (objB[key] !== undefined ? objB[key] : 0);
+      mergedObj[key] = getSafeNumber(objA[key]) + getSafeNumber(objB[key]);
     });
     $scope.metaStats = mergedObj;
   }
 
   function applyDecision(modKey, result) {
+    if (!$scope.currentDebate || !$scope.currentDebate.arguments) {
+      console.warn("applyDecision called without an active debate");
+      return;
+    }
+
     Object.keys($scope.factions).forEach(function (faction) {
-      var change = $scope.currentDebate.arguments[faction][modKey];
+      var change = getArgumentChange($scope.currentDebate.arguments[faction], modKey);
       if ($scope.devotedFlags[faction] && change < 0) {
         console.log("Devoted flag for " + faction + " prevented a change of " + change, $scope.devotedFlags);
         delete $scope.devotedFlags[faction];
@@ -951,6 +1016,7 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
       }
       $scope.factions[faction] += change;
     });
+
     $scope.currentDebate.result = result;
     $scope.eventFlags.argumentHistory[$scope.currentDebate.idShort] = result;
     mergeMeta($scope.currentDebate.metaStats, $scope.metaStats);
@@ -1012,4 +1078,4 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
   };
 
   $scope.setCurrentDebate($scope.debates[Math.floor(Math.random() * $scope.debates.length)]);
-});
+}]);
