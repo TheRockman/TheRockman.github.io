@@ -89,27 +89,27 @@
       </div>
 
       <div class="spacerBtn hideOnMobile" ng-if="!currentCrisis">
-        <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false" ng-click="currentDebate.pitch.pitched = true">
+        <div class="panel pointer" ng-if="currentDebate.pitch.pitched === false"
+          ng-click="currentDebate.pitch.pitched = true">
           ↪ <br />
           Proceed
         </div>
-        <div class="panel pointer" ng-if="currentDebate.result !== null && debates.length > 0" ng-click="startNextDebate()">
+        <div class="panel pointer" ng-if="currentDebate.result !== null && debates.length > 0"
+          ng-click="startNextDebate()">
           ↪ <br />
           Proceed
         </div>
       </div>
 
-      <div ng-if="currentCrisis && currentCrisis.resolved">
-          <div class="panel pointer"
-            ng-click="dismissCrisis()">
-            ↪ <br />
-            Proceed
-          </div>
+      <div ng-if="currentCrisis && currentCrisis.resolved" style="position: relative; z-index: 15;">
+        <div class="panel pointer" ng-click="dismissCrisis()">
+          ↪ <br />
+          Proceed
+        </div>
       </div>
       <div class="hideOnDesktop align jsb" ng-if="!currentCrisis">
         <div class="spacerBtn" ng-if="currentArgument !== null && currentDebate.result === null">
-          <div class="panel pointer" 
-            ng-click="resetCurrentSpeaker()">
+          <div class="panel pointer" ng-click="resetCurrentSpeaker()">
             ↩ <br />
             Back
           </div>
@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
     <!-- END HUD -->
 
@@ -160,8 +160,6 @@
     </div>
     <!-- END New Pitch view-->
 
-
-
     <!-- Hearing view -->
     <div ng-if="currentDebate.pitch.pitched && currentArgument === null">
       <div ng-if="currentDebate.pitch.pitched && currentArgument === null" class="hearing align jsb">
@@ -171,30 +169,35 @@
           <img class="framed-portrait" src="img/CC.png" alt="">
           <p>Clocktoria III</p>
           <p>{{factions.CC}}</p>
+          <p ng-if="devotedFlags.CC">Devoted</p>
         </span>
         <span class="center pointer" ng-click="setCurrentArgument('AA')"
           ng-class="{'speaker': currentSpeaker === 'AA'}">
           <img class="framed-portrait" src="img/AA.png" alt="">
           <p>Abrams Stovevalve</p>
           <p>{{factions.AA}}</p>
+          <p ng-if="devotedFlags.AA">Devoted</p>
         </span>
         <span class="center pointer" ng-click="setCurrentArgument('BB')"
           ng-class="{'speaker': currentSpeaker === 'BB'}">
           <img class="framed-portrait" src="img/BB.png" alt="">
           <p>Bella MacGuffin</p>
           <p>{{factions.BB}}</p>
+          <p ng-if="devotedFlags.BB">Devoted</p>
         </span>
         <span class="center pointer" ng-click="setCurrentArgument('DD')"
           ng-class="{'speaker': currentSpeaker === 'DD'}">
           <img class="framed-portrait" src="img/DD.png" alt="">
           <p>Dack Rowley</p>
           <p>{{factions.DD}}</p>
+          <p ng-if="devotedFlags.DD">Devoted</p>
         </span>
         <span class="center pointer" ng-click="setCurrentArgument('EE')"
           ng-class="{'speaker': currentSpeaker === 'EE'}">
           <img class="framed-portrait" src="img/EE.png" alt="">
           <p>Enoch Diptych</p>
           <p>{{factions.EE}}</p>
+          <p ng-if="devotedFlags.EE">Devoted</p>
         </span>
       </div>
     </div>
@@ -241,6 +244,108 @@
     </div>
     <!-- END Argument view -->
 
+    <!-- Crisis view -->
+    <div ng-cloak ng-show="currentCrisis !== null" class="bg2 crisisWrap align wrap bg">
+      <div class="relative" style="width:100%;">
+        <div class="center panel">
+          <b>{{currentCrisis.id}}</b>
+          <p>{{currentCrisis.desc}}</p>
+          <button class="panel pointer" ng-if="crisisSolver && currentCrisis.resolved === null"
+            ng-click="resolveCrisis()">
+            Send {{name[crisisSolver]}} to handle the crisis
+          </button>
+        </div>
+        <div class="hearing align jsb">
+          <span class="center pointer"
+            ng-if="!currentCrisis.resolved || crisisSolver === 'CC' && currentCrisis.resolved"
+            ng-click="setCrisisSolver('CC')">
+            <div>
+              <p>Clocktoria III</p>
+              <p>{{factions.CC}}</p>
+            </div>
+            <img class="framed-portrait" src="img/CC.png" alt="">
+            <p>
+            <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
+              {{currentCrisis.results[crisisSolver].failedCheck}}
+            </div>
+            <div class="panel" ng-show="currentCrisis.resolved === 'pass' ">
+              {{currentCrisis.results[crisisSolver].passCheck}}
+            </div>
+            </p>
+          </span>
+          <span class="center pointer"
+            ng-if="!currentCrisis.resolved || crisisSolver === 'AA' && currentCrisis.resolved"
+            ng-click="setCrisisSolver('AA')">
+            <div>
+              <p>Abrams Stovevalve</p>
+              <p>{{factions.AA}}</p>
+            </div>
+            <img class=" framed-portrait" src="img/AA.png" alt="">
+            <p>
+            <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
+              {{currentCrisis.results[crisisSolver].failedCheck}}
+            </div>
+            <div class="panel" ng-show="currentCrisis.resolved === 'pass' ">
+              {{currentCrisis.results[crisisSolver].passCheck}}
+            </div>
+            </p>
+          </span>
+          <span class="center pointer"
+            ng-if="!currentCrisis.resolved || crisisSolver === 'BB' && currentCrisis.resolved"
+            ng-click="setCrisisSolver('BB')">
+            <div>
+              <p>Bella MacGuffin</p>
+              <p>{{factions.BB}}</p>
+            </div>
+            <img class="framed-portrait" src="img/BB.png" alt="">
+            <p>
+            <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
+              {{currentCrisis.results[crisisSolver].failedCheck}}
+            </div>
+            <div class="panel" ng-show="currentCrisis.resolved === 'pass' ">
+              {{currentCrisis.results[crisisSolver].passCheck}}
+            </div>
+            </p>
+          </span>
+          <span class="center pointer"
+            ng-if="!currentCrisis.resolved || crisisSolver === 'DD' && currentCrisis.resolved"
+            ng-click="setCrisisSolver('DD')">
+            <div>
+              <p>Dack Rowley</p>
+              <p>{{factions.DD}}</p>
+            </div>
+            <img class="framed-portrait" src="img/DD.png" alt="">
+            <p>
+            <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
+              {{currentCrisis.results[crisisSolver].failedCheck}}
+            </div>
+            <div class="panel" ng-show="currentCrisis.resolved === 'pass' ">
+              {{currentCrisis.results[crisisSolver].passCheck}}
+            </div>
+            </p>
+          </span>
+          <span class="center pointer"
+            ng-if="!currentCrisis.resolved || crisisSolver === 'EE' && currentCrisis.resolved "
+            ng-click="setCrisisSolver('EE')">
+            <div>
+              <p>Enoch Diptych</p>
+              <p>{{factions.EE}}</p>
+            </div>
+            <img class="framed-portrait" src="img/EE.png" alt="">
+            <p>
+            <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
+              {{currentCrisis.results[crisisSolver].failedCheck}}
+            </div>
+            <div class="panel" ng-show="currentCrisis.resolved === 'pass' ">
+              {{currentCrisis.results[crisisSolver].passCheck}}
+            </div>
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- END Crisis view -->
+
     <!-- Consequences view -->
     <div ng-cloak ng-show="currentConsequences.length > 0">
       <div class="conBack">
@@ -254,99 +359,6 @@
       </div>
     </div>
     <!-- END Consequences view -->
-
-    <!-- Crisis view -->
-    <div ng-cloak ng-show="currentCrisis !== null" class="align wrap bg" style="background-color: red;">
-      <div class="relative">
-        {{currentCrisis.name}}
-        {{currentCrisis.desc}}
-
-        <button ng-if="crisisSolver" ng-click="resolveCrisis()">
-          Send {{name[crisisSolver] to handle the crisis}}
-        </button>
-        <span class="center pointer" ng-if="!currentCrisis.resolved || crisisSolver === 'CC' && currentCrisis.resolved" ng-click="setCrisisSolver('CC')">
-          <img class="framed-portrait" src="img/CC.png" alt="">
-          <p>Clocktoria III</p>
-          <p>{{factions.CC}}</p>
-          <p>
-            <div ng-show="currentCrisis.resolved === 'fail' ">
-              {{currentCrisis.results[crisisSolver].failedCheck}}
-            </div>
-            <div ng-show="currentCrisis.resolved === 'pass' ">
-              {{currentCrisis.results[crisisSolver].passCheck}}
-            </div>
-          </p>
-        </span>
-        <span class="center pointer" ng-if="!currentCrisis.resolved || crisisSolver === 'AA' && currentCrisis.resolved" ng-click="setCrisisSolver('AA')" ">
-          <img class="framed-portrait" src="img/AA.png" alt="">
-          <p>Abrams Stovevalve</p>
-          <p>{{factions.AA}}</p>
-          <p>
-            <div ng-show="currentCrisis.resolved === 'fail' ">
-              {{currentCrisis.results[crisisSolver].failedCheck}}
-            </div>
-            <div ng-show="currentCrisis.resolved === 'pass' ">
-              {{currentCrisis.results[crisisSolver].passCheck}}
-            </div>
-          </p>
-        </span>
-        <span class="center pointer" ng-if="!currentCrisis.resolved || crisisSolver === 'BB' && currentCrisis.resolved" ng-click="setCrisisSolver('BB')">
-          <img class="framed-portrait" src="img/BB.png" alt="">
-          <p>Bella MacGuffin</p>
-          <p>{{factions.BB}}</p>
-          <p>
-            <div ng-show="currentCrisis.resolved === 'fail' ">
-              {{currentCrisis.results[crisisSolver].failedCheck}}
-            </div>
-            <div ng-show="currentCrisis.resolved === 'pass' ">
-              {{currentCrisis.results[crisisSolver].passCheck}}
-            </div>
-          </p>
-        </span>
-        <span class="center pointer" ng-if="!currentCrisis.resolved || crisisSolver === 'DD' && currentCrisis.resolved" ng-click="setCrisisSolver('DD')">
-          <img class="framed-portrait" src="img/DD.png" alt="">
-          <p>Dack Rowley</p>
-          <p>{{factions.DD}}</p>
-          <p>
-            <div ng-show="currentCrisis.resolved === 'fail' ">
-              {{currentCrisis.results[crisisSolver].failedCheck}}
-            </div>
-            <div ng-show="currentCrisis.resolved === 'pass' ">
-              {{currentCrisis.results[crisisSolver].passCheck}}
-            </div>
-          </p>
-        </span>
-        <span class="center pointer" ng-if="!currentCrisis.resolved || crisisSolver === 'EE' && currentCrisis.resolved " ng-click="setCrisisSolver('EE')">
-          <img class="framed-portrait" src="img/EE.png" alt="">
-          <p>Enoch Diptych</p>
-          <p>{{factions.EE}}</p>
-          <p>
-            <div ng-show="currentCrisis.resolved === 'fail' ">
-              {{currentCrisis.results[crisisSolver].failedCheck}}
-            </div>
-            <div ng-show="currentCrisis.resolved === 'pass' ">
-              {{currentCrisis.results[crisisSolver].passCheck}}
-            </div>
-          </p>
-        </span>
-      </div>
-
-      <div class="talkbox" ng-if="currentArgument !== null && currentDebate.result === null">
-        {{currentArgument.desc}}
-      </div>
-
-      <div class="talkbox"
-        ng-if="(currentArgument !== null && currentDebate.result !== null) && currentDebate.result === true">
-        {{currentArgument.descApproved}}
-      </div>
-
-      <div class="talkbox"
-        ng-if="((currentArgument !== null && currentDebate.result !== null)) && currentDebate.result === false">
-        {{currentArgument.descRejected}}
-      </div>
-
-    </div>
-    <!-- END Crisis view -->
 
   </div>
 </body>

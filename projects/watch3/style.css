@@ -88,6 +88,18 @@ body {
   filter: drop-shadow(0 0.4rem 1rem rgba(255, 255, 255, 1));
 }
 
+.crisisWrap .framed-portrait {
+  clip-path: none;
+  transform: translateY(6rem);
+  border-bottom: 10rem solid black;
+  filter: none!important;
+  transition: 0.5s all ease;
+}
+
+.crisisWrap .framed-portrait:hover {
+  transform: translateY(5rem);
+}
+
 .spacerBtn {
   width: 5rem;
 }
@@ -176,6 +188,15 @@ body {
   transition: 1s background-position ease;
 }
 
+.bg2 {
+  background-origin: center center;
+  background-image: url('https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5893436.jpg&sp=1780144611T65abad3cef37dffb0e310f996942787088a6eee6d5c1a588188ff847206ed57c');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 120%;
+  transition: 1s background-position ease;
+}
+
 .bg.CC {
   background-position: -4rem 0;
 }
@@ -196,6 +217,15 @@ body {
   background-position: 0rem 0;
 }
 
+.crisisWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  color: white;
+  animation: puff-in-center 1s 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
 
 @keyframes slide-in-left {
   0% {
