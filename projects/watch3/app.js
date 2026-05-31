@@ -184,6 +184,7 @@ app.controller("mainCtrl", function($scope, debateService, discussionService, cr
     $scope.currentDebate.result = result;
     $scope.eventFlags.argumentHistory[$scope.currentDebate.idShort] = result;
     mergeMeta($scope.currentDebate.metaStats, $scope.metaStats);
+    
     $scope.setCurrentArgument($scope.currentDebate.pitch.faction);
   }
 
@@ -222,9 +223,13 @@ app.controller("mainCtrl", function($scope, debateService, discussionService, cr
     });
   }
 
-  $scope.startNextDebate = function () {
+  let eventOrderHistory = [];
 
+
+  $scope.startNextDebate = function () {
     const memoId = JSON.parse(JSON.stringify($scope.currentDebate.idShort));
+    eventOrderHistory.push(memoId);
+    console.log("Event order history:", eventOrderHistory);
 
     $scope.debates = $scope.debates.filter(function (item) {
       return item.idShort != $scope.currentDebate.idShort;
@@ -239,7 +244,7 @@ app.controller("mainCtrl", function($scope, debateService, discussionService, cr
     // Trigger specific dialogue or event following the current debate, either based on variables, or the previous debate.
     let newDebate;
 
-    // Direct responses
+    // Direct responses &  side stories
     if ($scope.factions.DD < 0 && $scope.discussions.dack_discussion_x) {
       newDebate = JSON.parse(JSON.stringify($scope.discussions.dack_discussion_x));
       delete $scope.discussions.dack_discussion_x;
@@ -248,28 +253,24 @@ app.controller("mainCtrl", function($scope, debateService, discussionService, cr
       $scope.setCurrentDebate(newDebate);
       return;
     }
-
-    // Side story 
-    switch (memoId) {
-      case 'NULL':
-        newDebate = JSON.parse(JSON.stringify($scope.discussions.care_for_the_wounded));
-        $scope.setCurrentDebate(newDebate);
-        return;
-      case 'farewell_to_arms':
+    if ( eventOrderHistory.at(-1) === 'greenlight_gambit' && $scope.discussions.honor_the_ancestors) {
         newDebate = JSON.parse(JSON.stringify($scope.discussions.honor_the_ancestors));
+        delete $scope.honor_the_ancestors;
         $scope.setCurrentDebate(newDebate);
         return;
-      case 'greenlight_gambit':
+    }
+    if ( $scope.metaStats.popularity > 100 && $scope.discussions.streamline_the_factories) {
         newDebate = JSON.parse(JSON.stringify($scope.discussions.streamline_the_factories));
+        delete $scope.discussions.streamline_the_factories;
         $scope.setCurrentDebate(newDebate);
         return;
-      case 'hard_days_work':
-        newDebate = JSON.parse(JSON.stringify($scope.discussions.honor_the_ancestors));
+    }
+    // This is an example of a direct response of a direect respoinse, allowing them to chain.
+    if ( eventOrderHistory.at(-1) === 'dack_discussion_x' && $scope.discussions.care_for_the_wounded) {
+        newDebate = JSON.parse(JSON.stringify($scope.discussions.care_for_the_wounded));
+        delete $scope.discussions.care_for_the_wounded;
         $scope.setCurrentDebate(newDebate);
         return;
-
-      default:
-        break;
     }
 
     // Possibly trigger a crisis

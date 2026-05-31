@@ -17,20 +17,15 @@ app.service('discussionService', function() {
         faction: "CC",
         chain: [
           {
-            desc: "My lord, i have been meaning to speak with you about something rather important.<br/>I know you are busy, but it has been weighing on my mind and i would be grateful for a moment of your time.",
-            yes: "Of course, Clocktoria. What is it that you wanted to discuss?",
-            no: "I'm sorry, Clocktoria, but I don't have time for this right now."
+            desc: "Did Dack just leave the council?",
+            yes: "So it seems",
+            no: "Yes, but I'm sorry, Clocktoria, but I don't have time for this right now."
           },
           {
-            desc: "Thank you, my lord. I have been hearing some troubling reports from the front lines.<br/>Our soldiers are facing not only the enemy but also harsh conditions and dwindling supplies.<br/>I fear that if we do not address these issues soon, we may lose the morale of our troops.",
-            yes: "What do you suggest we do to improve the situation for our soldiers?",
-            no: "I appreciate your concern, Clocktoria, but we have more pressing matters to attend to at the moment."
+            desc: "... I did not factor that as a possibility, but I suppose it is not entirely surprising. He has always been a bit reckless.",
+            yes: "True, but I hope he is safe out there.",
+            no: "I understand your concern, but we must focus on the matters at hand."
           },
-          {
-            desc: "I believe we should prioritize improving the living conditions for our soldiers.<br/>This could include better shelter, more nutritious food, and regular rest periods.<br/>By taking care of our troops, we can boost their morale and ensure they are better prepared to face the challenges ahead.",
-            yes: "That sounds like a reasonable plan, I will allocate resources to improve the conditions for our soldiers.",
-            no: "While I understand your intentions, we need to focus on our strategic objectives first. We will consider improving conditions for our soldiers when we have more resources available."
-          }
         ]
       },
     },

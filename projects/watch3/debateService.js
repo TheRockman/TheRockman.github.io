@@ -1,4 +1,4 @@
-  // Established character:
+  // Established characters:
   // AA - Abrams is always chasing profit, 
   // BB - Bella wants solid data, 
   // CC - Clocktoria thinks in human costs, 
@@ -526,6 +526,64 @@ app.service('debateService', function() {
           descApproved: "So long as it is done with honor and justice, I can accept it.",
           modRejected: -1,
           descRejected: "Do not let fear make you unjust.",
+        },
+      }
+    },
+    {
+      id: "The Refinery Embargo",
+      idShort: 'refinery_embargo',
+      result: null,
+      metaStats: {
+        exp: 130,
+        power: 120,
+        popularity: -20
+      },
+      pitch: {
+        pitched: false,
+        faction: "AA",
+        desc: "My lord, an outside consortium wants to buy our refinery´s steam output at a premium.<br/>I propose we embargo sales to them and reserve the fuel for our war factories instead.<br/>It may hurt foreign relations, but keep our machines running.",
+        summary: "Should we embargo steam exports to reserve fuel for domestic war production?",
+      },
+      arguments: {
+        AA: {
+          faction: 'AA',
+          desc: "The profit on exports is tempting, but a factory at standstill does no one any good.<br/>We should keep ours fed first and let those mercantile dragons sulk a little longer.",
+          modApproved: 3,
+          descApproved: "Right. None will outbid us for the steam that keeps our armories glowing white hot.",
+          modRejected: -2,
+          descRejected: "Fine, i will se what i can do to dilute the product. We might end up getting payed for them taking our waste.<br/>I can rationalise that.",
+        },
+        BB: {
+          faction: 'BB',
+          desc: "From an efficiency standpoint, spoiling the supply chain for external buyers could backfire.<br/>If the embargo causes retaliatory sanctions, the overall resource picture may worsen.",
+          modApproved: -1,
+          descApproved: "I will keep track of the numbers closely. This is not a decision to make lightly.",
+          modRejected: 1,
+          descRejected: "Good. We should always weigh the diplomatic cost as well as the immediate gain.",
+        },
+        CC: {
+          faction: 'CC',
+          desc: 'I do not like the idea of hoarding power while others suffer.<br/>If the embargo is to keep our people safe and our factories alive, then it is defensible. Otherwise, it is cruelty.',
+          modApproved: 1,
+          descApproved: "Then at least ensure the fuel is distributed fairly among the plants that impact the greatest number of lives.",
+          modRejected: -1,
+          descRejected: "If this is merely to punish others, I cannot stand behind it.",
+        },
+        DD: {
+          faction: 'DD',
+          desc: "A blockade feels familiar to me. If we need the steam to hold the line, I say we do it.<br/>But if it leaves our own people out in the cold, i´ll call all hands.",
+          modApproved: 1,
+          descApproved: "Just make sure the embargo is reversible, just in case we need to shift course.",
+          modRejected: 0,
+          descRejected: "I will stand by whatever keeps the fleet and the factories afloat.",
+        },
+        EE: {
+          faction: 'EE',
+          desc: "The Shapers teach that a city must first sustain itself before it can be generous.<br/>Preserving our own strength is not selfish if it allows us to endure and protect our people.",
+          modApproved: 2,
+          descApproved: "I support this embargo, although i fear the papers will smear me as an isolationist.",
+          modRejected: -2,
+          descRejected: "If this is merely a ploy to spite others, i would be amiss if did not recount to you the parables of pride.",
         },
       }
     },
