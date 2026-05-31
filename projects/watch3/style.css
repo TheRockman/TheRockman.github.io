@@ -1,3 +1,8 @@
+@font-face {
+  font-family: ACES;
+  src: url('./ace.ttf') format('truetype');
+}
+
 body {
   overflow: hidden;
   background: #010101;
@@ -141,17 +146,17 @@ body {
 }
 
 .talkbox {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  white-space: pre-line;
+  font-family: ACES, sans-serif;
+  line-height: 1.5rem;
+  padding-top: 0.5rem;
   filter:
     drop-shadow(3px 0px 0px #010101) drop-shadow(-3px 0px 0px #010101) drop-shadow(0px 3px 0px #010101) drop-shadow(0px -3px 0px #010101);
   background: #fefefe;
+  color: #010101;
   animation: slide-in-bottom 0.2s 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   position: relative;
-  #fefefe-space: pre-line;
   border-radius: 2rem;
   padding: 1rem;
-  padding-top: 0;
   left: -8rem;
   top: -2rem;
   color: #010101;
@@ -170,6 +175,10 @@ body {
   border-top: 0;
   margin-top: -16.5px;
   margin-left: -33px;
+}
+
+.talkbox > div > button {
+  text-align: left;
 }
 
 .onomotopoeia {
@@ -506,6 +515,7 @@ body {
 
 .content-slider {
   position: absolute;
+  z-index: -1;
   left: 0;
   right: 0;
   bottom: 0;

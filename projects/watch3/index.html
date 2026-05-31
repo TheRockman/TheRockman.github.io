@@ -9,6 +9,7 @@
   <!-- <link rel="stylesheet" href="../../carousel.css" media="screen" title="no title" charset="utf-8"> -->
   <script type="text/javascript" src="../../angularJs.js"></script>
   <script type="text/javascript" src="../../ngTouch.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
 </head>
@@ -164,21 +165,19 @@
             adventurers guild</small></p>
         <p class="nameplate" ng-if="currentDebate.pitch.faction === 'EE'">Enoch Diptych <br /><small>Lord master of
             tradition and cermony</small></p>
-
       </div>
 
       <div class="talkbox">
-        <div ng-if="currentDebate.pitch.desc">
-          {{currentDebate.pitch.desc}}
-        </div>
-        <div ng-if="currentDebate.pitch.chain">
-          {{currentDebate.pitch.chain[0].desc}}
+        <div ng-if="currentDebate.pitch.desc" ng-bind-html="currentDebate.pitch.desc"></div>
 
+        <div ng-if="currentDebate.pitch.chain">
+          <div ng-bind-html="currentDebate.pitch.chain[0].desc"></div>
+          <hr />
           <button ng-if="currentDebate.pitch.chain[0].yes" style="width: 100%" class="panel pointer"
             ng-click="currentDebate.pitch.chain.length > 1 ? currentDebate.pitch.chain.shift() : startNextDebate()">
             {{currentDebate.pitch.chain[0].yes}}
           </button>
-          <hr />
+          <br/>
           <button ng-if="currentDebate.pitch.chain[0].no" style="width: 100%" class="panel pointer" ng-click="startNextDebate()">
             {{currentDebate.pitch.chain[0].no}}
           </button>
@@ -259,19 +258,11 @@
             tradition and cermony</small></p>
       </div>
 
-      <div class="talkbox" ng-if="currentArgument !== null && currentDebate.result === null">
-        {{currentArgument.desc}}
-      </div>
+      <div class="talkbox" ng-if="currentArgument !== null && currentDebate.result === null" ng-bind-html="currentArgument.desc"></div>
 
-      <div class="talkbox"
-        ng-if="(currentArgument !== null && currentDebate.result !== null) && currentDebate.result === true">
-        {{currentArgument.descApproved}}
-      </div>
-
-      <div class="talkbox"
-        ng-if="((currentArgument !== null && currentDebate.result !== null)) && currentDebate.result === false">
-        {{currentArgument.descRejected}}
-      </div>
+      <div class="talkbox" ng-if="(currentArgument !== null && currentDebate.result !== null) && currentDebate.result === true" ng-bind-html="currentArgument.descApproved"></div>
+      
+      <div class="talkbox" ng-if="((currentArgument !== null && currentDebate.result !== null)) && currentDebate.result === false" ng-bind-html="currentArgument.descRejected"></div>
 
     </div>
     <!-- END Argument view -->
@@ -431,10 +422,11 @@
       </div>
     </div>
 
-
   </div>
 </body>
-
 <script type="text/javascript" src="app.js"></script>
-
+<script type="text/javascript" src="./debateService.js"></script>
+<script type="text/javascript" src="./discussionService.js"></script>
+<script type="text/javascript" src="./crisisService.js"></script>
+<script type="text/javascript" src="./consequencesService.js"></script>
 </html>
