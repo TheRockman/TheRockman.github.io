@@ -1,9 +1,9 @@
-  // Established character:
-  // AA - Abrams is always chasing profit, 
-  // BB - Bella wants solid data, 
-  // CC - Clocktoria thinks in human costs, 
-  // DD - Dack encourages adventure and risk.
-  // EE- Enoch invokes conservative traditions of the Shapers, 
+  // Established characters:
+  // AA - Abrams Stovevalve, CEO of Stovevale industries LLC, a ruthless businessman. Always chasing profit and upwards trending numbers. 
+  // BB - Bella MacGuffin, Head scientist at the Sprocket science center, a prodigy in many fields. Always wants solid data and sound reasons. 
+  // CC - Clocktoria III, Head doctor at the Gearspring hospital, a clockwork automaton designed for compassion and healing. Always wheighs in human costs and safety. 
+  // DD - Dack Rowly, Honored fellow of the adventurers guild, a devil-may-care sailor. Always encourages adventure and bold actions.
+  // EE- Enoch Diptych, Lord master of tradition and cermony. Always has a conservative outlook and invokes the ainchent traditions of the Shapers, 
 
 app.service('crisisService', function() {
   this.crisisEvents = [

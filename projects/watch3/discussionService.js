@@ -1,12 +1,100 @@
-  // Established character:
-  // AA - Abrams is always chasing profit, 
-  // BB - Bella wants solid data, 
-  // CC - Clocktoria thinks in human costs, 
-  // DD - Dack encourages adventure and risk.
-  // EE- Enoch invokes conservative traditions of the Shapers, 
+  // Establish  eed characters:
+  // AA - Abrams Stovevalve, CEO of Stovevale industries LLC, a ruthless businessman. Always chasing profit and upwards trending numbers. 
+  // BB - Bella MacGuffin, Head scientist at the Sprocket science center, a prodigy in many fields. Always wants solid data and sound reasons. 
+  // CC - Clocktoria III, Head doctor at the Gearspring hospital, a clockwork automaton designed for compassion and healing. Always wheighs in human costs and safety. 
+  // DD - Dack Rowly, Honored fellow of the adventurers guild, a devil-may-care sailor. Always encourages adventure and bold actions.
+  // EE- Enoch Diptych, Lord master of tradition and cermony. Always has a conservative outlook and invokes the ainchent traditions of the Shapers, 
 
 app.service('discussionService', function() {
   this.discussions = {
+    'the_great_gala': {
+      id: "Bella nervously approaches",
+      idShort: 'the_great_gala',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "BB",
+        chain: [
+          {
+            desc: "My Lord, There is a upcoming gala at the sprocket science center. One of the organizers have requested council representation at the opening cermony. ",
+            yes: "And you want me to send someone?",
+          },
+          {
+            desc: "Correct. I obviously put myself forward as a candidate, but it would only be fair for you to pick who is best suited for the task.",
+              special: {
+              text: "Very well.",
+              actionParams: {
+                type: "crisis",
+                crisis: {
+                  id: "The gala representative",
+                  idShort: "the_gala",
+                  desc: "Who should be sent to represent the council at the Sprocket science center gala",
+                  stat: "loyalty",
+                  dc: 8,
+                  resolved: null,
+                  rewardStat: "popularity",
+                  rewardVal: 500,
+                  results: {
+                    AA: {
+                      passCheck:
+                        "It might suprise you, but I have been moving in these circles for decades. This is my natural habitat.",
+                      failedCheck:
+                        "A bunch of eggheads the lot of them, wouldnt know culture if it beat their face in with a wrench. That reminds me, i have somewhere to be.",
+                    },
+                    BB: {
+                      passCheck:
+                        "I was worried I would be overlooked for this, but I see that my nerves were getting the better of me.",
+                      failedCheck:
+                        "I should have kept my mouth shut. How did i ever think i was cut out for public appearances?!",
+                    },
+                    CC: {
+                      passCheck:
+                        "I am not designed for social functions, but my compassion cogs were used to deliver a heartfelt speach.",
+                      failedCheck:
+                        "I am sorry, I was unable to put the sick and wounded out of my mind enough to fully focus on the event.",
+                    },
+                    DD: {
+                      passCheck:
+                        "These things tend to be a bit stuffy, I want to belive i livened up the place enough to make it unforgettable.",
+                      failedCheck:
+                        "You didnt tell me there was an open bar, and since i dont remember what happend im blaming you for this, sir.",
+                    },
+                    EE: {
+                      passCheck:
+                        "I am sure any of us would have done a fine job, but none other could have done it better than I.",
+                      failedCheck:
+                        "I can not be held responsible for what happend, the animal cages were clearly of poor quality and a disaster waiting to happen regardless.",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        ]
+      },
+    },
+    'a_moment_of_your_time': {
+      id: "Abrams nods towards you",
+      idShort: 'a_moment_of_your_time',
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "AA",
+        chain: [
+          {
+            desc: "I didnt want to make a scene in the coucil room, but i need to make it clear that i am not pleased with you shooting down my weapons suggestion yesterday.<br/>I spent good money on those weapons, only to be told to sit down like a dog.<br/>Say i find another buyer to recoupe some of the losses, how'd that sound?",
+            yes: "Are you threatening me?",
+            no: "We handled this yesterday Abrams, i will not discuss it further."
+          },
+          {
+            desc: "Say i was, you couldnt do a thing about it. Without my gear you have no army.<br/><br/>But im not, just a friendly reminder.",
+            no: "Reminder taken, i suppose."
+          },
+        ]
+      },
+    },
     'care_for_the_wounded': {
       id: "Clocktoria approaches you between sessions",
       idShort: 'clocktoria_discussion_1',
@@ -17,9 +105,8 @@ app.service('discussionService', function() {
         faction: "CC",
         chain: [
           {
-            desc: "Did Dack just leave the council?",
-            yes: "So it seems",
-            no: "Yes, but I'm sorry, Clocktoria, but I don't have time for this right now."
+            desc: "I just met Dack stomping down the hallway. Did he just leave the council?",
+            yes: "So it seems.",
           },
           {
             desc: "... I did not factor that as a possibility, but I suppose it is not entirely surprising. He has always been a bit reckless.",

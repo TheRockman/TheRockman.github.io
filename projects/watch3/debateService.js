@@ -1,9 +1,9 @@
   // Established characters:
-  // AA - Abrams is always chasing profit, 
-  // BB - Bella wants solid data, 
-  // CC - Clocktoria thinks in human costs, 
-  // DD - Dack encourages adventure and risk.
-  // EE- Enoch invokes conservative traditions of the Shapers, 
+  // AA - Abrams Stovevalve, CEO of Stovevale industries LLC, a ruthless businessman. Always chasing profit and upwards trending numbers. 
+  // BB - Bella MacGuffin, Head scientist at the Sprocket science center, a prodigy in many fields. Always wants solid data and sound reasons. 
+  // CC - Clocktoria III, Head doctor at the Gearspring hospital, a clockwork automaton designed for compassion and healing. Always wheighs in human costs and safety. 
+  // DD - Dack Rowly, Honored fellow of the adventurers guild, a devil-may-care sailor. Always encourages adventure and bold actions.
+  // EE - Enoch Diptych, Lord master of tradition and cermony. Always has a conservative outlook and invokes the ainchent traditions of the Shapers, 
 
 app.service('debateService', function() {
   this.originalDebates = [
@@ -530,60 +530,176 @@ app.service('debateService', function() {
       }
     },
     {
-      id: "The Refinery Embargo",
-      idShort: 'refinery_embargo',
+      id: "The clockwork labor question",
+      idShort: 'clockwork_labor',
       result: null,
       metaStats: {
-        exp: 130,
-        power: 120,
-        popularity: -20
+        exp: 100,
+        power: 150,
+        popularity: -100
       },
       pitch: {
         pitched: false,
         faction: "AA",
-        desc: "My lord, an outside consortium wants to buy our refinery´s steam output at a premium.<br/>I propose we embargo sales to them and reserve the fuel for our war factories instead.<br/>It may hurt foreign relations, but keep our machines running.",
-        summary: "Should we embargo steam exports to reserve fuel for domestic war production?",
+        desc: "My lord!<br/>I have a new proposal that will revolutionise our factories.<br/>Our engineers have produced a line of clockwork automatons capable of performing the most labour-intensive tasks with tireless precision.<br/><br/>No sick days. No holidays. No wages.<br/>What could possibly be better for production?",
+        summary: "Should we begin replacing human factory workers with clockwork automatons?",
       },
       arguments: {
         AA: {
           faction: 'AA',
-          desc: "The profit on exports is tempting, but a factory at standstill does no one any good.<br/>We should keep ours fed first and let those mercantile dragons sulk a little longer.",
-          modApproved: 3,
-          descApproved: "Right. None will outbid us for the steam that keeps our armories glowing white hot.",
-          modRejected: -2,
-          descRejected: "Fine, i will se what i can do to dilute the product. We might end up getting payed for them taking our waste.<br/>I can rationalise that.",
+          desc: "The numbers simply do not lie.<br/>An automaton works twenty-four hours a day, never complains, never organises into a union.<br/>Every clockwork unit installed pays back its cost in under a year.",
+          modApproved: 4,
+          descApproved: "Excellent. I will have the first batch of units on the factory floor by end of month. And if you want to discuss combat applications, i have some ideas for that too.",
+          modRejected: -4,
+          descRejected: "Sentiment over profit.<br/>Mark my words - whoever does this first will own the market inside a decade.",
         },
         BB: {
           faction: 'BB',
-          desc: "From an efficiency standpoint, spoiling the supply chain for external buyers could backfire.<br/>If the embargo causes retaliatory sanctions, the overall resource picture may worsen.",
+          desc: "Current clockwork units require significant maintenance and calibration.<br/>We are not quite ready to deploy them at scale.<br/>I would recommend a phased pilot programme before any full rollout.",
           modApproved: -1,
-          descApproved: "I will keep track of the numbers closely. This is not a decision to make lightly.",
+          descApproved: "I will insist on a rigorous testing protocol. Surprises in a factory environment tend to be costly and ... unpleasant ones.",
           modRejected: 1,
-          descRejected: "Good. We should always weigh the diplomatic cost as well as the immediate gain.",
+          descRejected: "A sensible delay. The science will be there eventually - rushing it now would likely set the field back.",
         },
         CC: {
           faction: 'CC',
-          desc: 'I do not like the idea of hoarding power while others suffer.<br/>If the embargo is to keep our people safe and our factories alive, then it is defensible. Otherwise, it is cruelty.',
-          modApproved: 1,
-          descApproved: "Then at least ensure the fuel is distributed fairly among the plants that impact the greatest number of lives.",
-          modRejected: -1,
-          descRejected: "If this is merely to punish others, I cannot stand behind it.",
+          desc: 'This is a difficult topic to me in particular i must admit.<br>But that aside these are people we are talking about. People with families and a sense of purpose tied to their work.',
+          modApproved: -5,
+          descApproved: "At the very minimum i require a support programme for every displaced worker. No exceptions.",
+          modRejected: 5,
+          descRejected: "Good. The measure of a civilisation is how it treats those who can no longer be of use to it.<br/>I just hope im not about to join the ranks of the unemployed myself.",
         },
         DD: {
           faction: 'DD',
-          desc: "A blockade feels familiar to me. If we need the steam to hold the line, I say we do it.<br/>But if it leaves our own people out in the cold, i´ll call all hands.",
-          modApproved: 1,
-          descApproved: "Just make sure the embargo is reversible, just in case we need to shift course.",
+          desc: "I have sailed with brass boys before - on this experimental vessel out of Port Cogsworth.<br/>Honest workers, but they foul their gears in salt air something fierce.<br/>Not sure thats a problem in a factory.<br/>So i say; your waters, your call.",
+          modApproved: 0,
+          descApproved: "Make sure someone oils the joints regularly.<br/>Line them up in a circle and have them oil each other. That should be fun to watch.",
           modRejected: 0,
-          descRejected: "I will stand by whatever keeps the fleet and the factories afloat.",
+          descRejected: "Happy to see a sweaty brow still has a place in this city.<br/>But poor Abrams there seems to have gone from sweating to steaming.",
         },
         EE: {
           faction: 'EE',
-          desc: "The Shapers teach that a city must first sustain itself before it can be generous.<br/>Preserving our own strength is not selfish if it allows us to endure and protect our people.",
+          desc: "Our craftsmen apprentice for years. They inherit the wisdom of the generations before them, passed hand to hand across the centuries.<br/>No clockwork thing, however clever, carries that.<br/>We would be trading living tradition for a ticking novelty.",
+          modApproved: -3,
+          descApproved: "I shall be documenting every craft tradition lost to this machine.<br/>For the record and for posterity.",
+          modRejected: 3,
+          descRejected: "Craft is a covenant with the past. We would do well not to break it lightly.",
+        },
+      }
+    },
+    {
+      id: "The Academy of Gears",
+      idShort: 'academy_of_gears',
+      result: null,
+      metaStats: {
+        exp: 150,
+        power: -50,
+        popularity: 100
+      },
+      pitch: {
+        pitched: false,
+        faction: "BB",
+        desc: "Sir, we are squandering a generation.<br/>The demand for trained engineers, physicians, and scientists far outstrips what private apprenticeships can produce.<br/>I am proposing a public academy - open to all citizens regardless of birth or guild - where the next generation of minds can be properly cultivated.<br/><br/>The upfront cost is significant, i will not pretend otherwise. But the return over twenty years is incalculable.",
+        summary: "Should we fund a public academy open to all citizens to train engineers and scientists?",
+      },
+      arguments: {
+        AA: {
+          faction: 'AA',
+          desc: "A public academy? Open to all?<br/>So we are to educate the competition are we?<br/>Every cobbler´s son who graduates is another engineer undercutting my contracted specialists.<br/>I fail to see the appeal.",
+          modApproved: -2,
+          descApproved: "Fine. But i want first refusal on recruiting top graduates. A formal sponsorship arrangement. Non-negotiable.",
+          modRejected: 2,
+          descRejected: "Correct. Let the guilds manage their own training as they always have.",
+        },
+        BB: {
+          faction: 'BB',
+          desc: "This is perhaps the most straightforward decision before us.<br/>An educated populace produces better engineers, better doctors, better~ everything!<br/>The science on this is rock solid.",
+          modApproved: 4,
+          descApproved: "I will personally design the first curriculum. We begin with natural philosophy and engineering fundamentals.",
+          modRejected: -3,
+          descRejected: "A generation from now we will surely feel this gap. I only hope it is not too late to correct by then.",
+        },
+        CC: {
+          faction: 'CC',
+          desc: 'A healthy society requires educated citizens.<br/>I would also advocate for a dedicated medical and public health wing within the academy.<br/>Knowledge is prevention.',
+          modApproved: 4,
+          descApproved: "Wonderful. I will be volunteering as a guest lecturer on anatomy and field medicine.",
+          modRejected: -3,
+          descRejected: "Ignorance is a kind of illness too. One we could have cured.",
+        },
+        DD: {
+          faction: 'DD',
+          desc: "Talent comes from within, not from a classroom.<br/>I have seen the most brilliant sailors come from the humblest backgrounds, and the most useless ones come from the finest academies.<br/>What is needed is a chance to test oneself in the real world, not a fancy certificate.",
+          modApproved: -2,
+          descApproved: "Soft hands and a head full of conflicting theories do not a daring sailor make.<br/>I'll be lucky to round up a crew that isn't landlubber by the end of the year.",
+          modRejected: 2,
+          descRejected: "Send them out to sea, let them learn the hard way.<br/>Staring a giant squid in the eye will make your mind race faster than any textbook ever could.",
+        },
+        EE: {
+          faction: 'EE',
+          desc: "I am not opposed to education.<br/>But the guild apprenticeship system is a sacred compact between master and student, refined over generations.<br/>An open academy may produce technically capable minds and yet hollow out the character that tradition forges.<br/>Knowledge without reverence is a dangerous thing.",
+          modApproved: -2,
+          descApproved: "I will be submitting a proposal for a compulsory history and traditions module in the curriculum. It is the least we can do.",
+          modRejected: 3,
+          descRejected: "The wisdom of the Shapers was passed through discipline and devotion, not open enrolment.",
+        },
+      }
+    },
+    {
+      id: "The Smog Ordinance",
+      idShort: 'smog_ordinance',
+      result: null,
+      metaStats: {
+        exp: 100,
+        power: -100,
+        popularity: 100
+      },
+      pitch: {
+        pitched: false,
+        faction: "CC",
+        desc: "My lord, the registers at Gearspring Hospital have reached a threshold i can no longer in good conscience ignore.<br/>The particulate output from the eastern foundries has increased threefold this past year.<br/><br/>I am requesting a mandatory emissions reduction ordinance on all heavy industry - filters, stack heights, coal composition standards.<br/>I understand the cost to production. But i am seeing the cost in patients every single day.",
+        summary: "Should we impose mandatory emissions controls on the foundries to address the smog?",
+      },
+      arguments: {
+        AA: {
+          faction: 'AA',
+          desc: "Let me see if i have this straight.<br/>You want me to retrofit every foundry with expensive new filters, hire compliance inspectors, and slow down production - because of a bit of smog?<br/>Smog has been the smell of prosperity in this city since my grandfather´s day.",
+          modApproved: -4,
+          descApproved: "If i must, i must. But i want tax relief to offset every single crown this costs me. In writing.",
+          modRejected: 4,
+          descRejected: "Ah, do you smell that? That is the smell of progress. I will not be the one to put a hand over the city´s nose.",
+        },
+        BB: {
+          faction: 'BB',
+          desc: "The correlation between airborne particulate density and respiratory illness rates is documented and conclusive.<br/>I would add that the smog is also degrading precision instruments across the city - my own measurements are being thrown off by the interference.<br/>Clocktoria III´s ordinance is scientifically justified.",
           modApproved: 2,
-          descApproved: "I support this embargo, although i fear the papers will smear me as an isolationist.",
+          descApproved: "I will contribute a monitoring system to track compliance and publish the data quarterly.",
           modRejected: -2,
-          descRejected: "If this is merely a ploy to spite others, i would be amiss if did not recount to you the parables of pride.",
+          descRejected: "I am going to keep collecting data regardless. When the case becomes impossible to ignore, i trust we will revisit this.",
+        },
+        CC: {
+          faction: 'CC',
+          desc: 'I have children in my wards who have never known a clear breath. Infants born with fouled lungs in the shadow of the foundries.<br/>I will not soften this for the sake of diplomacy: we are poisoning our own people, and we have the means to stop.',
+          modApproved: 5,
+          descApproved: "Thank you. I will have emission threshold protocols ready for review within the week.",
+          modRejected: -6,
+          descRejected: "Then i ask that you at least visit the fever ward and look them in the eye.",
+        },
+        DD: {
+          faction: 'DD',
+          desc: "Bad air is bad air whether it comes from a storm or a chimney.<br/>I have lost crew to rot-lung and it is not a good death.<br/>Aye, let the breeze blow.",
+          modApproved: 2,
+          descApproved: "The harbour air will thank us too. My rigging does not need a second coat of tar.",
+          modRejected: -1,
+          descRejected: "Your call. Though i note the wind does not stay on one side of a fence forever.",
+        },
+        EE: {
+          faction: 'EE',
+          desc: "The old city breathed clean air before the great furnaces came.<br/>There is nothing traditional about choking one´s neighbours - that is a recent innovation, and not one the Shapers would have sanctioned.<br/>I find myself compelled to follow the doctors orders.",
+          modApproved: 3,
+          descApproved: "Let the record show that tradition and progress can, on occasion, point in the same direction.",
+          modRejected: -2,
+          descRejected: "I shall have my scribes record the names of every patient affected. History will render its own verdict.",
         },
       }
     },
