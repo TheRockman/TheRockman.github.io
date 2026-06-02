@@ -150,6 +150,7 @@
     <!-- New Pitch view -->
     <div ng-if="currentDebate.pitch.pitched === false && !currentCrisis" class="align wrap bg" style="margin: 0 auto;"
       ng-class="{sideChat: isChain()}">
+      <div ng-cloak ng-if="isStartingToDebate() || isStartingIntermission()" class="transitionOverlay"></div>
       <div class="relative">
         <img ng-if="currentDebate.pitch.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">
@@ -500,7 +501,7 @@
 </body>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="./debateService.js"></script>
-<script type="text/javascript" src="./discussionService.js"></script>
+<script type="text/javascript" src="./intermissionsService.js"></script>
 <script type="text/javascript" src="./crisisService.js"></script>
 <script type="text/javascript" src="./consequencesService.js"></script>
 
