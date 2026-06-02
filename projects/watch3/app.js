@@ -5,7 +5,7 @@ app.controller(
   function (
     $scope,
     debateService,
-    discussionService,
+    intermissionsService,
     crisisService,
     consequencesService,
   ) {
@@ -79,7 +79,7 @@ app.controller(
     let originalDebates = debateService.originalDebates;
     $scope.debates = JSON.parse(JSON.stringify(originalDebates));
 
-    $scope.discussions = discussionService.discussions;
+    $scope.intermissions = intermissionsService.intermissions;
     $scope.consequences = consequencesService.consequences;
     $scope.crisisEvents = crisisService.crisisEvents;
 
@@ -288,19 +288,19 @@ app.controller(
       let newDebate;
 
       // Direct responses &  side stories
-      if ($scope.factions.BB > 0 && $scope.discussions.the_great_gala) {
+      if ($scope.factions.BB > 0 && $scope.intermissions.intermission_the_great_gala) {
         newDebate = JSON.parse(
-          JSON.stringify($scope.discussions.the_great_gala),
+          JSON.stringify($scope.intermissions.intermission_the_great_gala),
         );
-        delete $scope.discussions.the_great_gala;
+        delete $scope.intermissions.intermission_the_great_gala;
         $scope.setCurrentDebate(newDebate);
         return;
       }
-      if ($scope.factions.DD < 0 && $scope.discussions.dack_discussion_x) {
+      if ($scope.factions.DD < 0 && $scope.intermissions.intermission_dack_leaves_0) {
         newDebate = JSON.parse(
-          JSON.stringify($scope.discussions.dack_discussion_x),
+          JSON.stringify($scope.intermissions.intermission_dack_leaves_0),
         );
-        delete $scope.discussions.dack_discussion_x;
+        delete $scope.intermissions.intermission_dack_leaves_0;
         delete $scope.factions.DD;
         scrubFactionFromDebates("DD");
         $scope.setCurrentDebate(newDebate);
@@ -308,12 +308,12 @@ app.controller(
       }
       if (
         eventOrderHistory.at(-1) === "greenlight_gambit" &&
-        $scope.discussions.honor_the_ancestors
+        $scope.intermissions.intermission_honor_the_ancestors
       ) {
         newDebate = JSON.parse(
-          JSON.stringify($scope.discussions.honor_the_ancestors),
+          JSON.stringify($scope.intermissions.intermission_honor_the_ancestors),
         );
-        delete $scope.honor_the_ancestors;
+        delete $scope.intermission_honor_the_ancestors;
         $scope.setCurrentDebate(newDebate);
         return;
       }
@@ -321,35 +321,23 @@ app.controller(
         eventOrderHistory.at(-2) === "farewell_to_arms" &&
         $scope.eventFlags.argumentHistory["farewell_to_arms"] === false &&
         $scope.factions.AA < 6 &&
-        $scope.discussions.a_moment_of_your_time
+        $scope.intermissions.intermission_a_moment_of_your_time
       ) {
         newDebate = JSON.parse(
-          JSON.stringify($scope.discussions.a_moment_of_your_time),
+          JSON.stringify($scope.intermissions.intermission_a_moment_of_your_time),
         );
-        delete $scope.a_moment_of_your_time;
+        delete $scope.intermission_a_moment_of_your_time;
         $scope.setCurrentDebate(newDebate);
         return;
       }
       if (
         $scope.metaStats.popularity > 100 &&
-        $scope.discussions.streamline_the_factories
+        $scope.intermissions.intermission_streamline_the_factories
       ) {
         newDebate = JSON.parse(
-          JSON.stringify($scope.discussions.streamline_the_factories),
+          JSON.stringify($scope.intermissions.intermission_streamline_the_factories),
         );
-        delete $scope.discussions.streamline_the_factories;
-        $scope.setCurrentDebate(newDebate);
-        return;
-      }
-      // This is an example of a direct response of a direect respoinse, allowing them to chain.
-      if (
-        eventOrderHistory.at(-1) === "dack_discussion_x" &&
-        $scope.discussions.care_for_the_wounded
-      ) {
-        newDebate = JSON.parse(
-          JSON.stringify($scope.discussions.care_for_the_wounded),
-        );
-        delete $scope.discussions.care_for_the_wounded;
+        delete $scope.intermissions.intermission_streamline_the_factories;
         $scope.setCurrentDebate(newDebate);
         return;
       }
@@ -368,9 +356,26 @@ app.controller(
       $scope.debates[Math.floor(Math.random() * $scope.debates.length)],
     );
 
+    $scope.isStartingToDebate = function(){
+      const lastWasIntermission = eventOrderHistory?.at(-1)?.includes("intermission"); 
+      const currentIsDebate= !$scope.currentDebate?.idShort?.includes("intermisison");
+      return lastWasIntermission && currentIsDebate;
+    }
+
+    $scope.isStartingIntermission = function(){
+      const lastWasDebate = !eventOrderHistory?.at(-1)?.includes("intermission"); 
+      const currentIsIntermission= $scope.currentDebate?.idShort?.includes("intermisison");
+      return lastWasDebate && currentIsIntermission;
+    }
+
     $scope.handleSpecial = function (params) {
       if (params.type === "crisis") {
         $scope.setCurrentCrisis(params.crisis);
+      }
+
+      if (params.type === "intermission") {
+        $scope.setCurrentDebate(params.intermission);
+        return;
       }
 
       if ($scope.debates.length > 0) {
