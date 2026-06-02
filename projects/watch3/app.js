@@ -28,8 +28,12 @@ app.controller(
     $scope.metaStats = {
       exp: 0,
       popularity: 0, // -1000 to 1000 with 0 being the starting point
+      funds: 0, // -1000 to 1000 with 0 being the starting point
       power: 0, // -1000 to 1000 with 0 being the starting point
     };
+
+    let eventOrderHistory = [];
+    let eventQue = [];
 
     $scope.eventFlags = {
       argumentHistory: {},
@@ -145,6 +149,14 @@ app.controller(
     };
 
     $scope.setCurrentDebate = function (debate) {
+
+      if (eventQue.length > 0) {
+        console.log(eventQue);
+
+        const firstElement = eventQue.shift();
+        debate = firstElement;
+      }
+
       $scope.currentDebate = debate || null;
     };
 
@@ -267,8 +279,6 @@ app.controller(
       });
     };
 
-    let eventOrderHistory = [];
-
     $scope.startNextDebate = function () {
       const memoId = JSON.parse(JSON.stringify($scope.currentDebate.idShort));
       eventOrderHistory.push(memoId);
@@ -288,34 +298,72 @@ app.controller(
       let newDebate;
 
       // Direct responses &  side stories
-      if ($scope.factions.BB > 0 && $scope.intermissions.intermission_the_great_gala) {
+      if (
+        $scope.factions.BB > 0 &&
+        $scope.intermissions.intermission_the_great_gala
+      ) {
         newDebate = JSON.parse(
           JSON.stringify($scope.intermissions.intermission_the_great_gala),
         );
         delete $scope.intermissions.intermission_the_great_gala;
-        $scope.setCurrentDebate(newDebate);
-        return;
+        eventQue.push(newDebate);
       }
-      if ($scope.factions.DD < 0 && $scope.intermissions.intermission_dack_leaves_0) {
+      if (
+        $scope.factions.BB > 0 &&
+        eventOrderHistory.length > 8 &&
+        $scope.intermissions.intermission_streamline_the_factories
+      ) {
+        newDebate = JSON.parse(
+          JSON.stringify(
+            $scope.intermissions.intermission_streamline_the_factories,
+          ),
+        );
+        delete $scope.intermissions.intermission_streamline_the_factories;
+        eventQue.push(newDebate);
+      }
+      if (
+        $scope.factions.DD < 0 &&
+        $scope.intermissions.intermission_dack_leaves_0
+      ) {
         newDebate = JSON.parse(
           JSON.stringify($scope.intermissions.intermission_dack_leaves_0),
         );
         delete $scope.intermissions.intermission_dack_leaves_0;
         delete $scope.factions.DD;
         scrubFactionFromDebates("DD");
-        $scope.setCurrentDebate(newDebate);
-        return;
+        eventQue.push(newDebate);
+      }
+      if (
+        $scope.eventFlags.argumentHistory["border_blockade"] === true &&
+        $scope.factions.DD > 6 &&
+        $scope.intermissions.intermission_fog_trade_offer
+      ) {
+        newDebate = JSON.parse(
+          JSON.stringify($scope.intermissions.intermission_fog_trade_offer),
+        );
+        delete $scope.intermissions.intermission_fog_trade_offer;
+        eventQue.push(newDebate);
       }
       if (
         eventOrderHistory.at(-1) === "greenlight_gambit" &&
+        $scope.eventFlags.argumentHistory["greenlight_gambit"] === true &&
         $scope.intermissions.intermission_honor_the_ancestors
       ) {
         newDebate = JSON.parse(
           JSON.stringify($scope.intermissions.intermission_honor_the_ancestors),
         );
-        delete $scope.intermission_honor_the_ancestors;
-        $scope.setCurrentDebate(newDebate);
-        return;
+        delete $scope.intermissions.intermission_honor_the_ancestors;
+        eventQue.push(newDebate);
+      }
+      if (
+        eventOrderHistory.at(-1) === "academy_of_gears" &&
+        $scope.intermissions.intermission_academy_followup
+      ) {
+        newDebate = JSON.parse(
+          JSON.stringify($scope.intermissions.intermission_academy_followup),
+        );
+        delete $scope.intermissions.intermission_academy_followup;
+        eventQue.push(newDebate);
       }
       if (
         eventOrderHistory.at(-2) === "farewell_to_arms" &&
@@ -324,23 +372,30 @@ app.controller(
         $scope.intermissions.intermission_a_moment_of_your_time
       ) {
         newDebate = JSON.parse(
-          JSON.stringify($scope.intermissions.intermission_a_moment_of_your_time),
+          JSON.stringify(
+            $scope.intermissions.intermission_a_moment_of_your_time,
+          ),
         );
-        delete $scope.intermission_a_moment_of_your_time;
-        $scope.setCurrentDebate(newDebate);
+        delete $scope.intermissions.intermission_a_moment_of_your_time;
+        eventQue.push(newDebate);
+      }
+
+      if (eventQue.length > 0) {
+        $scope.setCurrentDebate('');
         return;
       }
-      if (
-        $scope.metaStats.popularity > 100 &&
-        $scope.intermissions.intermission_streamline_the_factories
-      ) {
-        newDebate = JSON.parse(
-          JSON.stringify($scope.intermissions.intermission_streamline_the_factories),
-        );
-        delete $scope.intermissions.intermission_streamline_the_factories;
-        $scope.setCurrentDebate(newDebate);
-        return;
-      }
+
+      // if (
+      //   $scope.metaStats.popularity > 100 &&
+      //   $scope.intermissions.intermission_streamline_the_factories
+      // ) {
+      //   newDebate = JSON.parse(
+      //     JSON.stringify($scope.intermissions.intermission_streamline_the_factories),
+      //   );
+      //   delete $scope.intermissions.intermission_streamline_the_factories;
+      //   $scope.setCurrentDebate(newDebate);
+      //   return;
+      // }
 
       // Possibly trigger a crisis
       $scope.maybeTriggerCrisisEvent();
@@ -356,17 +411,23 @@ app.controller(
       $scope.debates[Math.floor(Math.random() * $scope.debates.length)],
     );
 
-    $scope.isStartingToDebate = function(){
-      const lastWasIntermission = eventOrderHistory?.at(-1)?.includes("intermission"); 
-      const currentIsDebate= !$scope.currentDebate?.idShort?.includes("intermisison");
+    $scope.isStartingToDebate = function () {
+      const lastWasIntermission = eventOrderHistory
+        ?.at(-1)
+        ?.includes("intermission");
+      const currentIsDebate =
+        !$scope.currentDebate?.idShort?.includes("intermisison");
       return lastWasIntermission && currentIsDebate;
-    }
+    };
 
-    $scope.isStartingIntermission = function(){
-      const lastWasDebate = !eventOrderHistory?.at(-1)?.includes("intermission"); 
-      const currentIsIntermission= $scope.currentDebate?.idShort?.includes("intermisison");
+    $scope.isStartingIntermission = function () {
+      const lastWasDebate = !eventOrderHistory
+        ?.at(-1)
+        ?.includes("intermission");
+      const currentIsIntermission =
+        $scope.currentDebate?.idShort?.includes("intermisison");
       return lastWasDebate && currentIsIntermission;
-    }
+    };
 
     $scope.handleSpecial = function (params) {
       if (params.type === "crisis") {

@@ -7,7 +7,8 @@
 
 app.service("intermissionsService", function () {
   //Chained items
-  const intermission_dack_leaves_0_1 = {
+  const chainItems = {
+  intermission_dack_leaves_0_1: {
     id: "Clocktoria approaches you between sessions",
     idShort: "intermission_dack_leaves_0_1",
     result: null,
@@ -27,7 +28,52 @@ app.service("intermissionsService", function () {
         },
       ],
     },
-  };
+  },
+  intermission_ancestors_remembrance: {
+    id: "A small ceremony for the Shapers",
+    idShort: "intermission_ancestors_remembrance",
+    result: null,
+    metaStats: {},
+    pitch: {
+      pitched: false,
+      faction: "EE",
+      chain: [
+        {
+          desc: "The ceremony is modest but meaningful. It asks only that we acknowledge the ancestors and renew our vows to the old ways before the city embraces new power.",
+          yes: "Hold the ceremony.",
+          no: "We can honor them later, once the city is secure.",
+        },
+        {
+          desc: "A formal vow and a quiet procession would not cost us much, but it would show the council that tradition is not abandoned.",
+          yes: "Very well. Make it simple and dignified.",
+          no: "No. We move forward without it.",
+        },
+      ],
+    },
+  },
+  intermission_academy_donor_event: {
+    id: "A donor banquet invitation",
+    idShort: "intermission_academy_donor_event",
+    result: null,
+    metaStats: {},
+    pitch: {
+      pitched: false,
+      faction: "BB",
+      chain: [
+        {
+          desc: "A group of wealthy sponsors have offered to host a banquet to raise funds for the academy. They demand a seat at the council table in return.",
+          yes: "Accept their offer, but keep us in control.",
+          no: "We cannot trade our independence for their coins.",
+        },
+        {
+          desc: "If we accept with clear terms, the banquet could secure funding while preserving our oversight.",
+          yes: "Host the banquet with strict council conditions.",
+          no: "Decline. We fund the academy from our own coffers.",
+        },
+      ],
+    },
+  },
+  }
 
   this.intermissions = {
     intermission_the_great_gala: {
@@ -145,6 +191,83 @@ app.service("intermissionsService", function () {
         ],
       },
     },
+    intermission_honor_the_ancestors: {
+      id: "Enoch seeks your counsel about a new decree",
+      idShort: "intermission_honor_the_ancestors",
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "EE",
+        chain: [
+          {
+            desc: "My lord, the Shapers taught us to honor the past. There is a new proposal that would alter one of our oldest customs.",
+            yes: "Explain the proposal and your concerns.",
+            no: "I don't have time for this conversation right now.",
+          },
+          {
+            desc: "The proposal would change how we select our festival leaders. Some say it will bring efficiency, but I fear it will weaken the bond our people have with tradition.",
+            yes: "We need to balance tradition with practical needs. What is your recommendation?",
+            no: "We can revisit this later when I am less occupied.",
+          },
+          {
+            desc: "I advise caution. Tradition is not merely ritual; it is the framework that holds our community together.<br/>If we tamper with it too quickly, we may fracture the very spirit we are trying to preserve.",
+            yes: "Then maintain the tradition and look for more gradual improvements.",
+            no: "If the change proves necessary, I will consider it carefully.",
+          },
+        ],
+      },
+    },
+    intermission_academy_followup: {
+      id: "Bella asks for funding advice",
+      idShort: "intermission_academy_followup",
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "BB",
+        chain: [
+          {
+            desc: "The academy will need ongoing support. I have proposals from guild sponsors, private donors, and our own treasury. Which route should we explore?",
+            yes: "Explore outside funding while protecting state oversight.",
+            no: "The academy must remain a public institution only.",
+          },
+          {
+            desc: "A donor banquet could raise the necessary coffers and keep the academy open to everyone, if we do not let them dictate the curriculum.",
+            special: {
+              text: "Host the banquet with clear council terms.",
+              actionParams: {
+                type: "intermission",
+                intermission: chainItems.intermission_academy_donor_event,
+              },
+            },
+            yes: "Proceed carefully with the banquet.",
+            no: "We keep this within the treasury.",
+          },
+        ],
+      },
+    },
+    intermission_fog_trade_offer: {
+      id: "Dack signals you over with a sly grin",
+      idShort: "intermission_fog_trade_offer",
+      result: null,
+      metaStats: {},
+      pitch: {
+        pitched: false,
+        faction: "DD",
+        chain: [
+          {
+            desc: "Alright captain, im just about to send the patrol out to check on that convoy that was spotted near the fog sea.<br/>How do you want to handle it?<br/>I can send them silently, or we can open with a shot across the bow to show we mean business.",
+            yes: "I want to send a clear message.",
+            no: "Take a more cautious approach. We don't want to start a fight if we can avoid it.",
+          },
+          {
+            desc: "Aye aye captain, I knew i could count on you to be bold. I'll make sure the patrol is ready to fire.",
+            no: "Keep me updated on the situation.",
+          },
+        ],
+      },
+    },
     intermission_dack_leaves_0: {
       id: "Dack has a look of determination on his face as he approaches",
       idShort: "intermission_dack_leaves_0",
@@ -161,7 +284,7 @@ app.service("intermissionsService", function () {
               text: "I understand your frustration, Dack, but I cannot support a decision that could endanger the fleet and our people. Please reconsider.",
               actionParams: {
                 type: "intermission",
-                intermission: intermission_dack_leaves_0_1,
+                intermission: chainItems.intermission_dack_leaves_0_1,
               },
             },
           },
@@ -172,7 +295,7 @@ app.service("intermissionsService", function () {
               text: "I urge you to reconsider for the sake of the crew and the realm.",
               actionParams: {
                 type: "intermission",
-                intermission: intermission_dack_leaves_0_1,
+                intermission: chainItems.intermission_dack_leaves_0_1,
               },
             },
           },
@@ -182,7 +305,7 @@ app.service("intermissionsService", function () {
               text: "Farewell, Dack. I hope you find what you're looking for out there.",
               actionParams: {
                 type: "intermission",
-                intermission: intermission_dack_leaves_0_1,
+                intermission: chainItems.intermission_dack_leaves_0_1,
               },
             },
           },

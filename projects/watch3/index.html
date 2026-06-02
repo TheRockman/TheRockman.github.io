@@ -38,27 +38,30 @@
         <span class="pointer" ng-if="factionExists('CC')" ng-click="setCurrentArgument('CC')">
           <span class="bullet" ng-if="currentArgument.faction === 'CC'">🔹</span>
           {{factions.CC}} : Clocktoria
+          </br>
+          </br>
         </span>
-        </br>
-        </br>
         <span class="pointer" ng-if="factionExists('AA')" ng-click="setCurrentArgument('AA')">
           <span class="bullet" ng-if="currentArgument.faction === 'AA'">🔹</span>
           {{factions.AA}} : Abrams
+          </br>
+          </br>
         </span>
-        </br>
-        </br>
+
         <span class="pointer" ng-if="factionExists('BB')" ng-click="setCurrentArgument('BB')">
           <span class="bullet" ng-if="currentArgument.faction === 'BB'">🔹</span>
           {{factions.BB}} : Bella
+          </br>
+          </br>
+
         </span>
-        </br>
-        </br>
         <span class="pointer" ng-if="factionExists('DD')" ng-click="setCurrentArgument('DD')">
           <span class="bullet" ng-if="currentArgument.faction === 'DD'">🔹</span>
           {{factions.DD}} : Dack
+          </br>
+          </br>
         </span>
-        </br>
-        </br>
+
         <span class="pointer" ng-if="factionExists('EE')" ng-click="setCurrentArgument('EE')">
           <span class="bullet" ng-if="currentArgument.faction === 'EE'">🔹</span>
           {{factions.EE}} : Enoch
@@ -84,6 +87,7 @@
         </span>
         <br />
         <br />
+
         <div class="ca" ng-if="currentDebate.pitch.pitched && currentDebate.result === null">
           <button type="button" class="panel pointer" ng-click="approve()">
             YES
@@ -173,19 +177,17 @@
       <div class="talkbox">
         <div ng-if="currentDebate.pitch.desc" ng-bind-html="currentDebate.pitch.desc"></div>
 
-        <div ng-if="isChain()">
+        <div ng-if="isChain()" class="chainChat">
           <div ng-bind-html="currentDebate.pitch.chain[0].desc"></div>
           <hr />
           <button ng-if="currentDebate.pitch.chain[0].yes" style="width: 100%" class="panel pointer"
             ng-click="currentDebate.pitch.chain.length > 1 ? currentDebate.pitch.chain.shift() : startNextDebate()">
             {{currentDebate.pitch.chain[0].yes}}
           </button>
-          <br />
-           <button ng-if="currentDebate.pitch.chain[0].special" style="width: 100%" class="panel pointer"
+          <button ng-if="currentDebate.pitch.chain[0].special" style="width: 100%" class="panel pointer"
             ng-click="handleSpecial(currentDebate.pitch.chain[0].special.actionParams)">
             {{currentDebate.pitch.chain[0].special.text}}
           </button>
-          <br />
           <button ng-if="currentDebate.pitch.chain[0].no" style="width: 100%" class="panel pointer"
             ng-click="startNextDebate()">
             {{currentDebate.pitch.chain[0].no}}
@@ -234,6 +236,21 @@
           <p>{{factions.EE}}</p>
           <p ng-if="devotedFlags.EE">Devoted</p>
         </span>
+      </div>
+      <div>
+        <p class="center">Click on an advisor to hear their arguments.</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="center">
+          <p>Parameters</p>
+          <p>Funds: <progress id="funds" max="2000" min="0" ng-value="metaStats.funds+1000"></progress></p>
+          <p>Military: <progress id="power" max="2000" min="0" ng-value="metaStats.power+1000"></progress></p>
+          <p>Popularity: <progress id="popularity" max="2000" min="0" ng-value="metaStats.popularity+1000"></progress>
+          </p>
+        </div>
+
       </div>
     </div>
     <!-- END Hearing view -->

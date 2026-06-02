@@ -72,7 +72,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 100,
-        popularity: -100
+        popularity: -100,
+        funds: -50
       },
       pitch: {
         pitched: false,
@@ -130,7 +131,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: -50,
-        popularity: 50
+        popularity: 50,
+        funds: -50
       },
       pitch: {
         pitched: false,
@@ -188,7 +190,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 150,
-        popularity: -50
+        popularity: -50,
+        funds: 150
       },
       pitch: {
         pitched: false,
@@ -246,7 +249,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 150,
         power: 50,
-        popularity: 50
+        popularity: 50,
+        funds: 100
       },
       pitch: {
         pitched: false,
@@ -304,7 +308,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 100,
-        popularity: -100
+        popularity: -100,
+        funds: -50
       },
       pitch: {
         pitched: false,
@@ -362,7 +367,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 100,
-        popularity: -100
+        popularity: 200,
+        funds: -150
       },
       pitch: {
         pitched: false,
@@ -420,7 +426,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 100,
-        popularity: -100
+        popularity: -100,
+        funds: 50
       },
       pitch: {
         pitched: false,
@@ -478,7 +485,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 100,
-        popularity: -100
+        popularity: -100,
+        funds: -100
       },
       pitch: {
         pitched: false,
@@ -536,7 +544,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: 150,
-        popularity: -100
+        popularity: -100,
+        funds: 100
       },
       pitch: {
         pitched: false,
@@ -594,7 +603,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 150,
         power: -50,
-        popularity: 100
+        popularity: 100,
+        funds: -100
       },
       pitch: {
         pitched: false,
@@ -652,7 +662,8 @@ app.service('debateService', function() {
       metaStats: {
         exp: 100,
         power: -100,
-        popularity: 100
+        popularity: 100,
+        funds: -50
       },
       pitch: {
         pitched: false,

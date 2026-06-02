@@ -29,6 +29,14 @@ body {
   padding: 15% 33%;
 }
 
+.chainChat button{
+  margin-bottom: 0.5rem;
+}
+.chainChat button:nth-of-type(1){
+  margin-top: 0.5rem;
+}
+
+
 .transitionOverlay{
     background-color: #010101;
     left: 0;
