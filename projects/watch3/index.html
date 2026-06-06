@@ -122,7 +122,7 @@
       </div>
 
       <div ng-if="currentCrisis && currentCrisis.resolved" style="position: relative; z-index: 15;">
-        <div class="panel pointer" ng-click="dismissCrisis()">
+        <div class="panel pointer" style="position: fixed; right: 0;" ng-click="dismissCrisis()">
           ↪ <br />
           Proceed
         </div>
@@ -155,7 +155,7 @@
     <!-- New Pitch view -->
     <div ng-if="currentDebate.pitch.pitched === false && !currentCrisis" class="align wrap bg" style="margin: 0 auto;"
       ng-class="{sideChat: isChain()}">
-      
+
       <div class="relative">
         <img ng-if="currentDebate.pitch.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">
@@ -300,7 +300,7 @@
     <!-- END Argument view -->
 
     <!-- Crisis view -->
-    <div ng-cloak ng-show="currentCrisis !== null" class="bg2 crisisWrap align wrap bg" style="margin: 0 auto;">
+    <div ng-cloak ng-show="currentCrisis !== null" class="bg2 crisisWrap align wrap" style="margin: 0 auto;">
       <div class="relative" style="width:100%;">
         <div class="center panel">
           <h2>{{currentCrisis.id}}</h2>
@@ -310,11 +310,7 @@
           <span class="center pointer"
             ng-if="factionExists('CC') && (!currentCrisis.resolved || crisisSolver === 'CC' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'CC' && currentCrisis.resolved}" ng-click="setCrisisSolver('CC')">
-            <div>
-              <p>Clocktoria III</p>
-              <p>{{factions.CC}}</p>
-            </div>
-            <img class="framed-portrait" src="img/CC.png" alt="">
+            <img class="full-portrait" src="img/CCF.png" alt="">
             <p>
             <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
               Clocktoria failed.<br />
@@ -329,11 +325,7 @@
           <span class="center pointer"
             ng-if="factionExists('AA') && (!currentCrisis.resolved || crisisSolver === 'AA' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'AA' && currentCrisis.resolved}" ng-click="setCrisisSolver('AA')">
-            <div>
-              <p>Abrams Stovevalve</p>
-              <p>{{factions.AA}}</p>
-            </div>
-            <img class=" framed-portrait" src="img/AA.png" alt="">
+            <img class="full-portrait" src="img/AAF.png" alt="">
             <p>
             <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
               Abrams failed.<br />
@@ -348,11 +340,7 @@
           <span class="center pointer"
             ng-if="factionExists('BB') && (!currentCrisis.resolved || crisisSolver === 'BB' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'BB' && currentCrisis.resolved}" ng-click="setCrisisSolver('BB')">
-            <div>
-              <p>Bella MacGuffin</p>
-              <p>{{factions.BB}}</p>
-            </div>
-            <img class="framed-portrait" src="img/BB.png" alt="">
+            <img class="full-portrait" src="img/BBF.png" alt="">
             <p>
             <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
               Bella failed.<br />
@@ -367,11 +355,7 @@
           <span class="center pointer"
             ng-if="factionExists('DD') && (!currentCrisis.resolved || crisisSolver === 'DD' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'DD' && currentCrisis.resolved}" ng-click="setCrisisSolver('DD')">
-            <div>
-              <p>Dack Rowley</p>
-              <p>{{factions.DD}}</p>
-            </div>
-            <img class="framed-portrait" src="img/DD.png" alt="">
+            <img class="full-portrait" src="img/DDF.png" alt="">
             <p>
             <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
               Dack failed.<br />
@@ -386,11 +370,7 @@
           <span class="center pointer"
             ng-if="factionExists('EE') && (!currentCrisis.resolved || crisisSolver === 'EE' && currentCrisis.resolved)"
             ng-class="{'soleSolver': crisisSolver === 'EE' && currentCrisis.resolved}" ng-click="setCrisisSolver('EE')">
-            <div>
-              <p>Enoch Diptych</p>
-              <p>{{factions.EE}}</p>
-            </div>
-            <img class="framed-portrait" src="img/EE.png" alt="">
+            <img class="full-portrait" src="img/EEF.png" alt="">
             <p>
             <div class="panel" ng-show="currentCrisis.resolved === 'fail' ">
               Enoch failed.<br />
@@ -403,10 +383,8 @@
             </p>
           </span>
         </div>
-        <button class="panel pointer" ng-if="crisisSolver && currentCrisis.resolved === null" style="position: absolute;
-    left: 0;
-    right: 0px;
-    top: 16rem;" ng-click="resolveCrisis()">
+        <button class="panel pointer solveCrisisPanel" ng-if="crisisSolver && currentCrisis.resolved === null"
+          ng-click="resolveCrisis()">
           Send {{name[crisisSolver]}} to handle it.
         </button>
       </div>
