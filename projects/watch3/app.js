@@ -8,6 +8,7 @@ app.controller(
     intermissionsService,
     crisisService,
     consequencesService,
+    $timeout,
   ) {
     $scope.factions = {
       AA: 5,
@@ -69,6 +70,21 @@ app.controller(
     $scope.crisisSolver = null;
     $scope.hints = true;
 
+    // transition overlay flag used to animate view transitions
+    $scope.transitionOverlay = false;
+
+    $scope.triggerTransition = function (ms) {
+      ms = typeof ms === "number" ? ms : 700;
+      if ($scope._transitionTimer) {
+        $timeout.cancel($scope._transitionTimer);
+      }
+      $scope.transitionOverlay = true;
+      $scope._transitionTimer = $timeout(function () {
+        $scope.transitionOverlay = false;
+        $scope._transitionTimer = null;
+      }, ms);
+    };
+
     $scope.currentConsequences = [];
     $scope.devotedFlags = {};
 
@@ -92,6 +108,7 @@ app.controller(
     };
 
     $scope.setCurrentCrisis = function (crisis) {
+      $scope.triggerTransition();
       $scope.currentCrisis = crisis || null;
     };
 
@@ -115,13 +132,13 @@ app.controller(
       } else if ($scope.currentCrisis.stat === "power") {
         result =
           getSafeNumber($scope.metaStats.power) + solverValue * 10 >=
-          getSafeNumber($scope.currentCrisis.dc)
+            getSafeNumber($scope.currentCrisis.dc)
             ? "pass"
             : "fail";
       } else if ($scope.currentCrisis.stat === "popularity") {
         result =
           getSafeNumber($scope.metaStats.popularity) + solverValue * 10 >=
-          getSafeNumber($scope.currentCrisis.dc)
+            getSafeNumber($scope.currentCrisis.dc)
             ? "pass"
             : "fail";
       } else {
@@ -156,6 +173,9 @@ app.controller(
         const firstElement = eventQue.shift();
         debate = firstElement;
       }
+
+      // show a transition when the debate view changes
+      $scope.triggerTransition();
 
       $scope.currentDebate = debate || null;
     };
@@ -200,6 +220,8 @@ app.controller(
       }
       $scope.currentSpeaker = argument.toString();
       $scope.currentArgument = $scope.currentDebate.arguments[argument];
+      // show transition when opening an argument (speaker view)
+      // $scope.triggerTransition();
     };
 
     function mergeMeta(objA, objB) {
@@ -357,6 +379,7 @@ app.controller(
       }
       if (
         eventOrderHistory.at(-1) === "academy_of_gears" &&
+        $scope.eventFlags.argumentHistory["academy_of_gears"] === true &&
         $scope.intermissions.intermission_academy_followup
       ) {
         newDebate = JSON.parse(
@@ -385,17 +408,17 @@ app.controller(
         return;
       }
 
-      // if (
-      //   $scope.metaStats.popularity > 100 &&
-      //   $scope.intermissions.intermission_streamline_the_factories
-      // ) {
-      //   newDebate = JSON.parse(
-      //     JSON.stringify($scope.intermissions.intermission_streamline_the_factories),
-      //   );
-      //   delete $scope.intermissions.intermission_streamline_the_factories;
-      //   $scope.setCurrentDebate(newDebate);
-      //   return;
-      // }
+      if (
+        $scope.metaStats.popularity > 100 &&
+        $scope.intermissions.intermission_streamline_the_factories
+      ) {
+        newDebate = JSON.parse(
+          JSON.stringify($scope.intermissions.intermission_streamline_the_factories),
+        );
+        delete $scope.intermissions.intermission_streamline_the_factories;
+        $scope.setCurrentDebate(newDebate);
+        return;
+      }
 
       // Possibly trigger a crisis
       $scope.maybeTriggerCrisisEvent();

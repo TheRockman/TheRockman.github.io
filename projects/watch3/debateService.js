@@ -432,7 +432,7 @@ app.service('debateService', function() {
       pitch: {
         pitched: false,
         faction: "EE",
-        desc: "My lord!<br/>The long neutral duke of the Northsteel mountains is now offering a secret non-aggression pact if we send envoys and give a few trade concessions.<br/><br/>It is quite elegant diplomacy with no bloodshed as long as our enemies remain in the dark about the whole affair.",
+        desc: "My lord!<br/>The long neutral duke of the Steel mountains is now offering a secret non-aggression pact if we send envoys and give a few trade concessions.<br/><br/>It is quite elegant diplomacy with no bloodshed as long as our enemies remain in the dark about the whole affair.",
         summary: "Should we accept a quiet peace treaty?",
       },
       arguments: {
@@ -454,7 +454,7 @@ app.service('debateService', function() {
         },
         CC: {
           faction: 'CC',
-          desc: 'If these concessions impact our peoples access to medicine or basic needs, then i cannot support it.<br/>And what about the risks of Northsteel being dragged into the war alongside us if we sign this?',
+          desc: 'If these concessions impact our peoples access to medicine or basic needs, then i cannot support it.<br/>And what about the risks of Steel mountain being dragged into the war alongside us if we sign this?',
           modApproved: -3,
           descApproved: "I would prefer to see a treaty that is more reciprocal, but if this is the best we can get, then i will put my hopes in it.",
           modRejected: 2,
@@ -472,7 +472,7 @@ app.service('debateService', function() {
           faction: 'EE',
           desc: "This is the kind of quiet power our ancestors preached.<br/>We should accept peace while it is offered, even if it costs us a little standing.",
           modApproved: 5,
-          descApproved: "I am sending my most trusted envoys to Northsteel with a gift of our finest craftsmanship as a token of goodwill.",
+          descApproved: "I am sending my most trusted envoys to Steel mountain with a gift of our finest craftsmanship as a token of goodwill.",
           modRejected: -5,
           descRejected: "Turning away from peace is a grave decision. I hope we are prepared for the consequences.",
         },

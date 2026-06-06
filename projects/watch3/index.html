@@ -17,6 +17,7 @@
 
 <body>
   <div ng-controller="mainCtrl">
+    <div ng-cloak ng-if="transitionOverlay" class="transitionOverlay"></div>
     <!-- img src="img/back.png" class="back" alt=""> -->
 
     <div class="startScreen" ng-class="{'engage': start}">
@@ -154,7 +155,7 @@
     <!-- New Pitch view -->
     <div ng-if="currentDebate.pitch.pitched === false && !currentCrisis" class="align wrap bg" style="margin: 0 auto;"
       ng-class="{sideChat: isChain()}">
-      <div ng-cloak ng-if="isStartingToDebate() || isStartingIntermission()" class="transitionOverlay"></div>
+      
       <div class="relative">
         <img ng-if="currentDebate.pitch.faction === 'CC'" class="pitcher" src="img/CC.png" alt="">
         <img ng-if="currentDebate.pitch.faction === 'AA'" class="pitcher" src="img/AA.png" alt="">

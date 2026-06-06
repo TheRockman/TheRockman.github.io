@@ -29,33 +29,47 @@ body {
   padding: 15% 33%;
 }
 
-.chainChat button{
+.chainChat button {
   margin-bottom: 0.5rem;
 }
-.chainChat button:nth-of-type(1){
+
+.chainChat button:nth-of-type(1) {
   margin-top: 0.5rem;
 }
 
+.chainChat button {
+  border: 1px solid #000;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #000, 0 0 0 8px #fff, 0 0 0 9px #000;
+  transition: box-shadow 0.3s ease, background-color 0.25s, color 0.2s, transform 0.2s;
+}
 
-.transitionOverlay{
-    background-color: #010101;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 800px;
-    width: 200vw;
-    z-index: 100;
-    position: absolute;
-    text-align: center;
-    padding-top: 10%;
-    font-size: 30px;
-    pointer-events: none;
-    font-family: ACES, sans-serif;
-    animation-fill-mode: forwards;
-    transform: translateX(-100%);
-    opacity: 0;
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-    animation: overlay-bg 4s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+.chainChat button:hover {
+  background-color: #000;
+  color: #fff;
+  transform: scale(0.97);
+  box-shadow: 0 0 0 3px #000, 0 0 0 5px #fff, 0 0 0 8px #000, 0 0 0 10px #fff;
+}
+
+
+.transitionOverlay {
+  background-color: #010101;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 800px;
+  width: 200vw;
+  z-index: 100;
+  position: absolute;
+  text-align: center;
+  padding-top: 10%;
+  font-size: 30px;
+  pointer-events: none;
+  font-family: ACES, sans-serif;
+  animation-fill-mode: forwards;
+  transform: translateX(-100%);
+  opacity: 0;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  animation: overlay-bg 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 @keyframes overlay-bg {
@@ -63,13 +77,16 @@ body {
     transform: translateX(-25%);
     opacity: 1;
   }
+
   20% {
     transform: translateX(-25%);
   }
+
   99% {
     opacity: 1;
     transform: translateX(200%);
   }
+
   100% {
     transform: translateX(200%);
     opacity: 0;
@@ -81,9 +98,11 @@ body {
     letter-spacing: -0.5em;
     opacity: 0;
   }
+
   40% {
     opacity: 0.6;
   }
+
   100% {
     opacity: 1;
     pointer-events: none;
