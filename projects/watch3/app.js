@@ -40,6 +40,14 @@ app.controller(
       argumentHistory: {},
     };
 
+    var scrollTop = function () {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+
     var getSafeNumber = function (value) {
       return typeof value === "number" ? value : 0;
     };
@@ -108,12 +116,14 @@ app.controller(
     };
 
     $scope.setCurrentCrisis = function (crisis) {
+      scrollTop();
       $scope.triggerTransition();
       $scope.currentCrisis = crisis || null;
     };
 
     //  $scope.setCurrentCrisis($scope.crisisEvents[0]);
     $scope.resolveCrisis = function () {
+      scrollTop();
       if (!$scope.currentCrisis || !$scope.crisisSolver) {
         console.warn(
           "resolveCrisis called without a selected crisis or solver",
@@ -166,7 +176,7 @@ app.controller(
     };
 
     $scope.setCurrentDebate = function (debate) {
-
+      scrollTop();
       if (eventQue.length > 0) {
         console.log(eventQue);
 
@@ -236,6 +246,7 @@ app.controller(
     }
 
     function applyDecision(modKey, result) {
+      scrollTop();
       if (!$scope.currentDebate || !$scope.currentDebate.arguments) {
         console.warn("applyDecision called without an active debate");
         return;

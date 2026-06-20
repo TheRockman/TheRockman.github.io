@@ -3,8 +3,12 @@
   src: url('./ace.ttf') format('truetype');
 }
 
+/* Prevent horizontal scroll from large animated elements */
+html {
+  overflow-x: hidden;
+}
+
 body {
-  overflow: hidden;
   background: #010101;
   color: #fefefe;
   /* text-shadow: 0 0 8px #010101; */
@@ -30,11 +34,11 @@ body {
 }
 
 .chainChat button {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .chainChat button:nth-of-type(1) {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .chainChat button {
@@ -57,7 +61,7 @@ body {
   top: 0;
   right: 0;
   height: 800px;
-  width: 200vw;
+  width: 100vw;
   z-index: 100;
   position: absolute;
   text-align: center;
