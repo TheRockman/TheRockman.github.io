@@ -115,28 +115,35 @@ app.controller("mainCtrl", function ($scope, $timeout) {
 
   $scope.numDice = 1;
 
+  function dice(sides) {
+    return Math.floor(Math.random() * sides + 1);
+  }
+
   $scope.roll = function (sides) {
     $scope.dice = 0;
     $scope.diceArr = [];
     $scope.diceTot = 0;
     $scope.mobResult = 0;
 
-    var t = 0;
+    let t = 0;
 
     if ($scope.numDice > 1) {
       for (let index = 0; index < $scope.numDice; index++) {
+      let flatRoll = dice(sides);
+      let modRoll = parseInt(flatRoll) + parseInt($scope.modifier);
         let ding = {
-          val: Math.floor(Math.random() * sides + 1),
+          val: `${flatRoll} ${$scope.modifier > 0 ? '+' + $scope.modifier +' = ' : ''} `,
+          res: modRoll,
           id: new Date(),
         };
-        t = t + ding.val;
+        t = t + modRoll;
         $scope.diceTot = t;
 
         $scope.diceArr.push(ding);
       }
     } else {
-      var flatRoll = Math.floor(Math.random() * sides + 1);
-      var modRoll = parseInt(flatRoll) + parseInt($scope.modifier);
+      let flatRoll = dice(sides);
+      let modRoll = parseInt(flatRoll) + parseInt($scope.modifier);
       $scope.diceTot = `${flatRoll} ${$scope.modifier > 0 ? '+' + $scope.modifier +' = ' + modRoll : ''} `;
     }
   };

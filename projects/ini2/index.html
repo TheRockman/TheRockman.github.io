@@ -27,8 +27,6 @@
             <a href="#dump">Dump</a><br />
             <a href="#init">Initiative</a><br />
             <a href="#attrib">Attribution</a><br />
-            <a href="#hostil">Hostility</a><br />
-            <a href="#monreact">Monster react</a><br />
             <details>
               <summary style="font-size: 14px; color: tomato">
                 Quick ref
@@ -60,6 +58,7 @@
           </div>
         </div>
         <div class="flex" style="flex-basis: 75%">
+            <br/>
           <details open>
             <summary id="dice">Dice</summary>
             <div class="align jsb">
@@ -130,14 +129,14 @@
               &nbsp; &nbsp; &nbsp;
               <br />
               <div ng-if="diceArr.length > 0">
-                (
+                
                 <div
-                  style="display: inline"
-                  ng-repeat="result in diceArr | orderBy: '-val' track by $index"
+                  style="display: inline; color: #777;"
+                  ng-repeat="result in diceArr | orderBy: '-res' track by $index"
                 >
-                  {{result.val}},
+                 (<span ng-if="modifier > 0">{{result.val}}</span> <b class="accent">{{result.res}}</b>) ,
                 </div>
-                )
+                
               </div>
             </div>
           </details>
