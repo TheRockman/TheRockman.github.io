@@ -97,6 +97,10 @@
                 </div>
               </div>
 
+              <span>
+                <input type="range" ng-model="modifier" value="0" min="0" max="10" step="1" /> + {{modifier}}
+              </span>
+
               <div
                 ng-click="wizardSays()"
                 class="align pointer"
@@ -119,18 +123,12 @@
               </div>
             </div>
 
-            <div ng-if="diceTot > 0" class="align">
+            <div ng-if="diceTot" class="align">
               <br />
               <br />
               <h2 class="accent">&nbsp; {{diceTot}}</h2>
               &nbsp; &nbsp; &nbsp;
               <br />
-              <div class="tipTarget" ng-if="mobResult">
-                ( Mob attacks: {{mobResult}} )
-                <div class="tip">
-                  <img src="iux.webp" alt="" />
-                </div>
-              </div>
               <div ng-if="diceArr.length > 0">
                 (
                 <div
@@ -359,53 +357,6 @@
                   <small> Celestial, Fiend, Undead </small>
                 </div>
               </div>
-            </div>
-          </details>
-
-          <hr />
-
-          <details>
-            <summary>NPC reactions</summary>
-            <div class="align" style="align-items: flex-start">
-              <div>
-                <div class="align jsb" style="align-items: flex-start;">
-                  <button
-                    class="preBling2"
-                    ng-click="monsReactRoll(); ping();"
-                    ng-class="{'bling2':pinging === true}"
-                  >
-                    ✨ Roll for me
-                  </button>
-                  <b style="color:tomato">{{monsterReaction}}</b>
-                </div>
-                <img id="monreact" src="iu.webp" alt="" />
-              </div>  
-
-              &nbsp;&nbsp;
-              <div id="hostil" class=" flex">
-                <div>
-                  <strong class="rd">Friendly</strong>
-                  <p><span class="rd">0:</span> Wont take risks</p>
-                  <p><span class="rd">10:</span> Take minor risks</p>
-                  <p><span class="rd">20:</span> Take Significant risk</p>
-                </div>
-                <hr/>
-                <div>
-                  <strong class="rd">Indifferent</strong>
-                  <p><span class="rd">0:</span> Wont help or harm</p>
-                  <p><span class="rd">10:</span> Wont take risks</p>
-                  <p><span class="rd">20:</span> Take minor risks</p>
-                </div>
-                <hr/>
-                <div>
-                  <strong class="rd">Hostile</strong>
-                  <p><span class="rd">0:</span> Will try to hinder</p>
-                  <p><span class="rd">10:</span> Wont help or harm</p>
-                  <p><span class="rd">20:</span> Help without risks</p>
-                </div>
-              </div>
-              &nbsp;&nbsp;
-              <div></div>
             </div>
           </details>
 
