@@ -275,6 +275,7 @@ body {
   color: #010101;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 2rem;
+  position: absolute;
   filter:
     drop-shadow(3px 0px 0px #fefefe) drop-shadow(-3px 0px 0px #fefefe) drop-shadow(0px 3px 0px #fefefe) drop-shadow(0px -3px 0px #fefefe);
 }
