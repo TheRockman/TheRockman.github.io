@@ -18,22 +18,22 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       players: [
         {
           name: 'Raya',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Healer'
         },
         {
           name: 'Spartak',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Tank'
         },
         {
           name: 'Alesya',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'DPS'
         },
         {
           name: 'Aglaya',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Tank'
         },
       ]
@@ -44,74 +44,74 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
       players: [
         {
           name: 'Yong',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Healer'
         },
         {
           name: 'Daria',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Healer'
         },
         {
           name: 'Andrei',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'DPS'
         },
         {
           name: 'Rufina',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Tank'
         },
       ]
     },
     {
       name: 'Guardian',
-      url: 'https://media1.thehungryjpeg.com/thumbs2/ori_3677457_xap8vhq86d46ie8gzur5m7tivic9at5e55zhn40d_guardian-esports-mascot-logo-design.png',
+      url: 'https://graphicsfamily.com/wp-content/uploads/edd/2023/12/Alien-Head-Mascot-Esport-Game-Logo-Vector-Template-PNG-Transparent.png',
       players: [
         {
           name: 'Maksim',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'DPS'
         },
         {
           name: 'Kostya',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'DPS'
         },
         {
           name: 'Sang-Hun',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Healer'
         },
         {
           name: 'U-Jin',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Tank'
         },
       ]
     },
     {
       name: 'Mello',
-      url: 'https://carbonmade-media.accelerator.net/35625237;640x594.png?auto=webp',
+      url: 'https://images.seeklogo.com/logo-png/66/2/ac-esport-logo-png_seeklogo-668411.png',
       players: [
         {
           name: 'Mi-Gyeong',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'DPS'
         },
         {
           name: 'Jung-Hoon',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Tank'
         },
         {
           name: 'Feodosiya',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Healer'
         },
         {
           name: 'Zinoviya',
-          url: 'https://gamersorigin.com/wp-content/uploads/2018/03/silhouette-2.png',
+          url: 'https://www.pngmart.com/files/22/Fortnite-Skins-PNG-Isolated-Pic.png',
           role: 'Tank'
         },
       ]

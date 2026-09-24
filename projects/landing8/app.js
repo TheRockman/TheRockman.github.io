@@ -2,9 +2,9 @@ var app = angular.module("myApp", ['ngTouch', 'angular-carousel']); app.controll
   $scope.index = 0;
 
   $scope.images = [
-    'https://c1.scryfall.com/file/scryfall-cards/large/front/9/2/926b49a1-f220-41ab-8c67-8354a91a15e8.jpg?1562790454',
-    'https://c1.scryfall.com/file/scryfall-cards/large/front/a/8/a8e9f4d2-bba5-4061-8ae7-a68b912f2c11.jpg?1572893504',
-    'https://c1.scryfall.com/file/scryfall-cards/large/front/7/5/7593d5fb-c6b3-4d24-b9d3-97a4378161fd.jpg?1543676084'
+    'https://m.media-amazon.com/images/I/61clQxmEl7L._AC_SX679_.jpg',
+    'https://m.media-amazon.com/images/I/61e5LNdIbFL._AC_SX679_.jpg',
+    'https://m.media-amazon.com/images/I/51u6XVF6W2L._AC_SX679_.jpg'
   ]
 
   $scope.reviews = [

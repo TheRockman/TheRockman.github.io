@@ -20,7 +20,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
    {
      thumb: 'https://cdn.europosters.eu/image/350/posters/minecraft-charged-creeper-i76673.jpg',
      name: 'Changed creeper',
-     desc: 'Minecraft, Cringe'
+     desc: 'Minecraft, Creeper'
    }
  ];
  

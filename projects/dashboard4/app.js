@@ -8,14 +8,14 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       title: 'Mario',
       subtitle: 'Jumpman',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      url: 'http://mario.nintendo.com/assets/img/home/char-mario.png',
+      url: 'https://pngimg.com/uploads/mario/mario_PNG54.png',
       rank: 1
     },
     {
       title: 'Luigi',
       subtitle: 'Player 2',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      url: 'https://vignette.wikia.nocookie.net/pachirapong/images/6/6d/Luigi.png/revision/latest?cb=20171124211639',
+      url: 'https://www.pngmart.com/files/2/Luigi-PNG-HD.png',
       rank: 2
     },
     {
@@ -36,7 +36,7 @@ var app = angular.module("myApp", ['ngAnimate']); app.controller("mainCtrl", fun
       title: 'Waluigi',
       subtitle: 'Number one',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      url: 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.pikpng.com%2Fpngl%2Fb%2F179-1799878_exemplaryrequest-i-was-bored-in-digital-art-class.png&sp=1651607935T948af2cde1ce9d9787663505ca80ad06332e45304593cd30b2f62276f42e2021',
+      url: 'https://static.wikia.nocookie.net/mario/images/2/27/SuperMarioParty_Waluigi.png/revision/latest?cb=20260110155652',
       rank: 5
     }
   ]

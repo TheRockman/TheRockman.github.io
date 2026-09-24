@@ -102,10 +102,6 @@ b, small, p{
   color: white;
   background: linear-gradient(#8c4af2 0%, #6e54f5 100%);
 }
-.grad-card:hover .showcase{
-  transform: translateX(0);
-  box-shadow: var(--level1);
-}
 .content{
   margin: 1rem;
 }

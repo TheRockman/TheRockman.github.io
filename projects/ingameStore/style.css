@@ -89,9 +89,10 @@ nav{
 }
 
 .stage{
+  z-index: 0;
   width: 80vw;
   height: 80vh;
-  background: url('https://playdauntless.com/assets/media/layout/pages/media/screenshots/dauntless-screenshot-enviroment_river-preview.jpg') center left fixed no-repeat;
+  background: url('https://cdnb.artstation.com/p/assets/images/images/072/600/315/large/cactimore-1-9-mountinlab.jpg?1707766623') center left fixed no-repeat;
   margin: 0 auto;
   background-size: 120%;
   margin-top: 2vh;
@@ -108,9 +109,9 @@ nav{
   background-position: center right;
 }
 .char{
-  z-index: 1;
-  background: url('https://freepikpsd.com/media/2019/11/gaming-characters-png-4-Transparent-Images.png') no-repeat;
-  background-position-x: 50%;
+  z-index: 0;
+  background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5925e7dd-fbd8-4b74-a807-ca9b2f32cf80/df0iub5-2bc304a5-336d-4846-95b2-15be05bda1f7.png/v1/fill/w_932,h_858/spy_tf2_render_by_christophermcgrath_df0iub5-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE3OCIsInBhdGgiOiIvZi81OTI1ZTdkZC1mYmQ4LTRiNzQtYTgwNy1jYTliMmYzMmNmODAvZGYwaXViNS0yYmMzMDRhNS0zMzZkLTQ4NDYtOTViMi0xNWJlMDViZGExZjcucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.8kJchHZKH04S5Cj8L-qUAhCf8eB8BF8OQ6L3Bwq-ncU') no-repeat;
+  background-position-x: 0%;
   position: absolute;
   left: 0;
   right: 0;
@@ -123,16 +124,17 @@ nav{
   transition: var(--animation);
 }
 .stageOneInverse{
-  background-position-x: 0%;
+  background-position-x: -25%;
 }
 .stageTwoInverse{
-  background-position-x: 110%;
+  background-position-x: 140%;
 }
 .coin-card{
   color: white!important;
   background: #7c488e!important;
   overflow: hidden;
   cursor: pointer;
+  height: 20rem;
   transition: var(--animation);
 }
 .coin-card:hover{

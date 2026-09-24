@@ -58,12 +58,13 @@ svg, svg path, img{
 }
 .player img{
   transform-origin: bottom right;
-  transform: scale(2);
+  transform: scale(4);
 }
 .death{
   animation-name: death;
   animation-fill-mode: forwards;
   animation-duration: 0.5s;
+  
 }
 .p2{
   margin-left: -1rem;
@@ -81,8 +82,8 @@ svg, svg path, img{
 /* transform: translateY(20px) scale(2); */
 
 @keyframes death {
-  0% { transform: rotate(90deg) translateY(200px) scale(2); }
-  100% { transform: rotate(0deg) translateY(20px) scale(2); }
+  0% { transform: rotate(90deg) translateY(200px) scale(4); }
+  100% { transform: rotate(0deg) translateY(20px) scale(4); }
 }
 @keyframes hit {
   0% { opacity: 0}

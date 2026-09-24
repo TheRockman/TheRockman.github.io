@@ -78,6 +78,7 @@ body {
   font-family: 'Khula', sans-serif;
   font-size: 16px;
   overflow: hidden;
+  background-color: black;
 }
 
 nav {
@@ -99,9 +100,10 @@ nav {
   cursor: pointer;
   margin: var(--spacer);
   padding: var(--spacer);
+  border-radius: 1rem;
   background: white;
   transition: var(--animation);
-  min-height: 200px;
+  min-height: 10rem;
   transform: rotate(20deg);
   margin-top: 2rem;
 }
@@ -156,15 +158,15 @@ img {
 }
 
 .bar {
-  background: #222;
-  border: 1px solid #cacaca;
+  text-align: center;
+  background: black;
   position: fixed;
   padding: 1rem;
   color: white;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 300px;
+  height: 27rem;
 }
 
 /*flex*/

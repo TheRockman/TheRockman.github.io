@@ -55,9 +55,9 @@
               </div>
             </span>
           </div>
-
-          {{char.Name}}
-          {{char.BASHP}}
+          <span style="color: white">{{char.Name}}</span>
+          <span style="color: green">{{char.BASHP}}</span>
+          
           <img class="avatar" ng-src="{{char.URL}}" alt="">
           <b class="state" ng-if="currentTarget === char && state">
             {{state.text}}
@@ -68,7 +68,7 @@
       </div>
       <div class="align">
         <div
-          class="unit relative"
+          class="unit relative pointer"
           ng-repeat="enemy in enemyParty"
           ng-click="target(enemy, $index)"
           ng-class="{'active': currentChar === enemy, 'target': currentTarget === enemy, 'enemyAttacking': attacking && currentChar === enemy, 'enemyBeingAttacked': attacking && currentTarget === enemy, 'corpse': enemy.Dead,  'cameraBlur': attacking && currentChar !== enemy && currentTarget !== enemy}">
@@ -101,8 +101,8 @@
             </span>
           </div>
           
-          {{enemy.Name}}
-          {{enemy.BASHP}}
+          <span style="color: white">{{enemy.Name}}</span>
+          <span style="color: red">{{enemy.BASHP}}</span>
           <img class="avatar" ng-src="{{enemy.URL}}" alt="">
           <b class="state" ng-if="currentTarget === enemy && state.text">
             {{state.text}}
