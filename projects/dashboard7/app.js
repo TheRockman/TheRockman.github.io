@@ -1,10 +1,32 @@
 var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", function($scope) {
   $scope.plots = [];
+  $scope.activeConfigId = null;
+
+  $scope.toggleConfig = function(plot) {
+    var isOpen = $scope.activeConfigId === plot.id;
+    $scope.activeConfigId = isOpen ? null : plot.id;
+
+    $scope.plots.forEach(function(item) {
+      item.config = item.id === plot.id && !isOpen;
+    });
+  };
+
+  $scope.remove = function(plot) {
+    var index = $scope.plots.indexOf(plot);
+
+    if (index > -1) {
+      $scope.plots.splice(index, 1);
+    }
+
+    if ($scope.activeConfigId === plot.id) {
+      $scope.activeConfigId = null;
+    }
+  };
 
   $scope.addWidget = function(){
     $scope.plots.push(
       {
-        id: new Date(),
+        id: new Date().getTime(),
         widgetData: {},
         config: false,
         style: {
@@ -13,10 +35,15 @@ var app = angular.module("myApp", ['ngTouch']); app.controller("mainCtrl", funct
         }
       }
     )
+    $scope.activeConfigId = null;
   }
 
   $scope.setEx = function(){
-    $scope.plots = $scope.ex;
+    $scope.plots = $scope.ex.map(function(plot) {
+      plot.config = false;
+      return plot;
+    });
+    $scope.activeConfigId = null;
   }
   $scope.ex = [
   {id:"2022-07-01T10:44:27.180Z",widgetData:{},config:false,widgetType:"music",style:{"grid-area":"1/1/3/1","background":"linear-gradient(to top, #3ca55c, #b5ac49)"}},

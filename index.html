@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp" lang="en">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
@@ -10,6 +11,7 @@
   <script type="text/javascript" src="angularJs.js"></script>
   <script type="text/javascript" src="angular-animate.min.js"></script>
 </head>
+
 <body>
   <div ng-controller="mainCtrl">
     <nav class="align jsb">
@@ -25,12 +27,15 @@
     <div class="pw" ng-if="currentProjectUrl && menu">
       <iframe ng-cloak ng-src="{{currentProjectUrl}}" class="preview-frame" width="" height=""></iframe>
     </div>
-    <div class="menu scroll" ng-class="{'menuOpen':menu}" >
+    <div class="menu scroll" ng-class="{'menuOpen':menu}">
       <input type="text" ng-model="filter.path" placeholder="Filter projects" name="" value="">
-      <div ng-repeat="project in projects | filter: filter">
-        <a target="_blank" href="projects/{{project.path}}/index.html" ng-mouseenter="preview(project)"> {{project.path}} </a>
+      <div ng-repeat="project in sortedProjects | filter: filter">
+        <a target="_blank" href="projects/{{project.path}}/index.html" ng-mouseenter="preview(project)">
+          {{project.path}} </a>
       </div>
-      <img ng-if="!filter.path" style="width: 200px; margin: 0 auto; height: auto; filter:drop-shadow(-30px 0 6px rgba(0,0,0,0.3));" src="https://i.imgur.com/j51uHm1.gif" alt="">
+      <img ng-if="!filter.path"
+        style="width: 200px; margin: 0 auto; height: auto; filter:drop-shadow(-30px 0 6px rgba(0,0,0,0.3));"
+        src="https://i.imgur.com/j51uHm1.gif" alt="">
     </div>
 
     <div class="content" ng-click="menu = false">
@@ -38,24 +43,58 @@
         <div class="row">
           <div class="flex x2">
             <h1>&nbsp;Rockman</h1>
+
+            <div class="flex x2">
+              <div class="align" style="justify-content: flex-end; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+
+                <div class="card">
+                  <h3>Mobile experiments</h3>
+                  <a target="_blank" href="projects/{{mobile.path}}/index.html" ng-repeat="mobile in mobiles"
+                    ng-mouseenter="preview(mobile)">
+                    {{mobile.path}} </a>
+                </div>
+
+                <div class="card">
+                  <h3>Landing page experiments</h3>
+                  <a target="_blank" href="projects/{{landing.path}}/index.html" ng-repeat="landing in landings"
+                    ng-mouseenter="preview(landing)">
+                    {{landing.path}} </a>
+                </div>
+
+                <div class="card">
+                  <h3>Dashboard experiments</h3>
+                  <a target="_blank" href="projects/{{dashboard.path}}/index.html" ng-repeat="dashboard in dashboards"
+                    ng-mouseenter="preview(dashboard)">
+                    {{dashboard.path}} </a>
+                </div>
+
+
+              </div>
+
+
+            </div>
           </div>
+
         </div>
       </div>
-      <div class="">
-
-      </div>
     </div>
+    <div class="">
+
+    </div>
+  </div>
   </div>
   <small class="footer">
     <a href="https://github.com/TheRockman" id="github1">
       <svg style="width:24px;height:24px" viewBox="0 0 24 24" name="GitIcon" alt="GitIcon" id="gitIcon">
-        <path fill="#fff" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+        <path fill="#fff"
+          d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
       </svg>
     </a>
     &nbsp; | &nbsp;
     <a href="https://www.behance.net/TheRockman">
       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path fill="#fff" d="M19.58,12.27C19.54,11.65 19.33,11.18 18.96,10.86C18.59,10.54 18.13,10.38 17.58,10.38C17,10.38 16.5,10.55 16.19,10.89C15.86,11.23 15.65,11.69 15.57,12.27M21.92,12.04C22,12.45 22,13.04 22,13.81H15.5C15.55,14.71 15.85,15.33 16.44,15.69C16.79,15.92 17.22,16.03 17.73,16.03C18.26,16.03 18.69,15.89 19,15.62C19.2,15.47 19.36,15.27 19.5,15H21.88C21.82,15.54 21.53,16.07 21,16.62C20.22,17.5 19.1,17.92 17.66,17.92C16.47,17.92 15.43,17.55 14.5,16.82C13.62,16.09 13.16,14.9 13.16,13.25C13.16,11.7 13.57,10.5 14.39,9.7C15.21,8.87 16.27,8.46 17.58,8.46C18.35,8.46 19.05,8.6 19.67,8.88C20.29,9.16 20.81,9.59 21.21,10.2C21.58,10.73 21.81,11.34 21.92,12.04M9.58,14.07C9.58,13.42 9.31,12.97 8.79,12.73C8.5,12.6 8.08,12.53 7.54,12.5H4.87V15.84H7.5C8.04,15.84 8.46,15.77 8.76,15.62C9.31,15.35 9.58,14.83 9.58,14.07M4.87,10.46H7.5C8.04,10.46 8.5,10.36 8.82,10.15C9.16,9.95 9.32,9.58 9.32,9.06C9.32,8.5 9.1,8.1 8.66,7.91C8.27,7.78 7.78,7.72 7.19,7.72H4.87M11.72,12.42C12.04,12.92 12.2,13.53 12.2,14.24C12.2,15 12,15.64 11.65,16.23C11.41,16.62 11.12,16.94 10.77,17.21C10.37,17.5 9.9,17.72 9.36,17.83C8.82,17.94 8.24,18 7.61,18H2V5.55H8C9.53,5.58 10.6,6 11.23,6.88C11.61,7.41 11.8,8.04 11.8,8.78C11.8,9.54 11.61,10.15 11.23,10.61C11,10.87 10.7,11.11 10.28,11.32C10.91,11.55 11.39,11.92 11.72,12.42M20.06,7.32H15.05V6.07H20.06V7.32Z" />
+        <path fill="#fff"
+          d="M19.58,12.27C19.54,11.65 19.33,11.18 18.96,10.86C18.59,10.54 18.13,10.38 17.58,10.38C17,10.38 16.5,10.55 16.19,10.89C15.86,11.23 15.65,11.69 15.57,12.27M21.92,12.04C22,12.45 22,13.04 22,13.81H15.5C15.55,14.71 15.85,15.33 16.44,15.69C16.79,15.92 17.22,16.03 17.73,16.03C18.26,16.03 18.69,15.89 19,15.62C19.2,15.47 19.36,15.27 19.5,15H21.88C21.82,15.54 21.53,16.07 21,16.62C20.22,17.5 19.1,17.92 17.66,17.92C16.47,17.92 15.43,17.55 14.5,16.82C13.62,16.09 13.16,14.9 13.16,13.25C13.16,11.7 13.57,10.5 14.39,9.7C15.21,8.87 16.27,8.46 17.58,8.46C18.35,8.46 19.05,8.6 19.67,8.88C20.29,9.16 20.81,9.59 21.21,10.2C21.58,10.73 21.81,11.34 21.92,12.04M9.58,14.07C9.58,13.42 9.31,12.97 8.79,12.73C8.5,12.6 8.08,12.53 7.54,12.5H4.87V15.84H7.5C8.04,15.84 8.46,15.77 8.76,15.62C9.31,15.35 9.58,14.83 9.58,14.07M4.87,10.46H7.5C8.04,10.46 8.5,10.36 8.82,10.15C9.16,9.95 9.32,9.58 9.32,9.06C9.32,8.5 9.1,8.1 8.66,7.91C8.27,7.78 7.78,7.72 7.19,7.72H4.87M11.72,12.42C12.04,12.92 12.2,13.53 12.2,14.24C12.2,15 12,15.64 11.65,16.23C11.41,16.62 11.12,16.94 10.77,17.21C10.37,17.5 9.9,17.72 9.36,17.83C8.82,17.94 8.24,18 7.61,18H2V5.55H8C9.53,5.58 10.6,6 11.23,6.88C11.61,7.41 11.8,8.04 11.8,8.78C11.8,9.54 11.61,10.15 11.23,10.61C11,10.87 10.7,11.11 10.28,11.32C10.91,11.55 11.39,11.92 11.72,12.42M20.06,7.32H15.05V6.07H20.06V7.32Z" />
       </svg>
     </a>
   </small>

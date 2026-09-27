@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
@@ -11,34 +12,37 @@
   <!-- <script type="text/javascript" src="../../carousel.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="card" ng-controller="mainCtrl">
 
     <b for="age">Abc the 123</b>
-    <br/>
+    <br />
     <form class="" ng-submit="add()">
       <label for="name">Given name:</label>
-      <br/>
+      <br />
       <input type="text" required id="name" ng-model="workObj.name" placeholder="Given name" name="" value="">
-      <br/>
+      <br />
       <label for="lname">Family name:</label>
-      <br/>
+      <br />
       <input type="text" required id="lname" ng-model="workObj.lastName" placeholder="Family name" name="" value="">
-      <br/>
-      <label for="hair">Hair color:</label>
-      <br/>
-      <select required id="hair" ng-model="workObj.hairColor" placeholder="Hair color">
+      <br />
+
+      <label for="hair">Choose a hair color:</label><br />
+      <select name="hair" id="hair" required ng-model="workObj.hairColor">
+        <option value="" selected disabled>-</option>
         <option value="blond">Blond</option>
         <option value="brown">Brown</option>
         <option value="black">Black</option>
         <option value="red">Red</option>
         <option value="gray">Gray</option>
       </select>
-      <br/>
+
+      <br />
       <label for="ss">Shoe size:</label>
-      <br/>
+      <br />
       <input max="70" required type="number" id="ss" ng-model="workObj.sSize" placeholder="Shoe size" name="" value="">
-      <br/>
+      <br />
       <button type="submit" name="button">Add</button>
     </form>
 

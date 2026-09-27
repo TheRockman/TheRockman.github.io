@@ -13,7 +13,7 @@ var app = angular.module("myApp", []); app.controller("mainCtrl", function($scop
      desc: 'Disney, Star wars'
    },
    {
-     thumb: 'https://cdn.europosters.eu/image/350/posters/avengers-infinity-war-one-sheet-i58560.jpg',
+     thumb: 'https://preview.redd.it/a-fan-made-poster-for-avengers-infinity-war-by-camw1n-v0-x058xb3pkccz.png?width=640&crop=smart&auto=webp&s=45262dc21a2461e4de30be92f856d1279b08d0ff',
      name: 'Avengers - Infinity war',
      desc: 'Disney, Marvel'
    },

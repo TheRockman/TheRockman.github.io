@@ -144,12 +144,6 @@ progress::-webkit-progress-bar {
   z-index: 2;
   position: relative;
 }
-.time p{
-  z-index: 1;
-  position: absolute;
-  right: -65%;
-  bottom: 15%;
-}
 
 .alert{
   background: none;
